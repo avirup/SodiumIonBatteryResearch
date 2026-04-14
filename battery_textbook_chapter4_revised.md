@@ -15,10 +15,12 @@ By the end of this chapter, you will be able to look at any commercial cell — 
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Basic mechanical and thermal intuitions (stress, strain, heat conduction) — helpful for understanding calendering and thermal management
 > - Familiarity with manufacturing tolerance concepts — relevant to electrode coating uniformity
 >
 > From Chapters 1–3:
+>
 > - The SEI and its formation during the first cycles (Chapter 2, Section 2.3) — essential for Section 4.3
 > - Current collector material choices (Chapter 1, Section 1.3) — this chapter expands on those reasons
 > - The three overpotential types (Chapter 2, Section 2.7) — needed to understand why porosity and tortuosity matter
@@ -71,7 +73,7 @@ The great practical challenge of pouch cells is **gas management**. During the f
 The choice of form factor is a system-level engineering decision that balances energy density, power density, thermal management, mechanical robustness, manufacturing cost, and application-specific shape constraints. A table helps:
 
 | Property | Cylindrical (18650/21700) | Prismatic | Pouch |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Gravimetric energy density | Moderate (can weight) | Moderate | High (light packaging) |
 | Volumetric packing efficiency | ~60–74% (round packing) | ~85–95% | ~85–95% |
 | Mechanical robustness | High (steel can) | Moderate | Low (no rigid case) |
@@ -263,7 +265,7 @@ The electrical resistivity of copper is $1.72 \times 10^{-8}$ Ω·m; of aluminiu
 Before moving on, it helps to have all of the current-collector trade-offs laid out side by side:
 
 | Property | Copper (Cu) | Aluminium (Al) |
-|---|---|---|
+| --- | --- | --- |
 | Density (g/cm³) | 8.96 | 2.70 |
 | Electrical resistivity (Ω·m) | $1.72 \times 10^{-8}$ | $2.65 \times 10^{-8}$ |
 | Approx. commodity cost (USD/kg) | ~9 | ~2.5 |
@@ -295,12 +297,14 @@ Let us make the connection between the manufacturing choices described in this c
 A published characterisation study of the commercial **LG MJ1 18650 NMC cell** (3.5 Ah) by Ecker et al. (*Journal of the Electrochemical Society*, 2015) reports the following electrode parameters extracted from a combination of physical measurements (SEM, XRD, mercury porosimetry) and electrochemical characterisation (GITT, EIS):
 
 **Positive electrode (NMC):**
+
 - Thickness: 70 µm (per side)
 - Porosity: 0.30
 - Particle radius: 5.2 µm
 - Active material volume fraction: 0.60
 
 **Negative electrode (graphite):**
+
 - Thickness: 73 µm (per side)
 - Porosity: 0.34
 - Particle radius: 8.6 µm

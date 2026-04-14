@@ -19,17 +19,21 @@ With that context established, we can read this chapter as an engineering survey
 > **Prerequisites Check**
 >
 > From Chapter 1:
+>
 > - Standard electrode potentials of Li⁺/Li and Na⁺/Na (Section 1.4) — directly needed here
 > - Faraday's law for theoretical capacity calculation (Section 1.7)
 >
 > From Chapter 2:
+>
 > - Intercalation host structure families: layered, spinel, olivine, polyanionic (Section 2.2)
 > - The SEI and first-cycle irreversibility (Section 2.3)
 >
 > From Chapter 3:
+>
 > - All cell metrics: capacity, energy density, C-rate, cycle life, ICE, OCV shape (full chapter)
 >
 > From Chapter 5:
+>
 > - LCO, LFP, NMC chemistry details (Sections 5.2–5.4) — SIB chemistries are best understood by comparison
 > - The five-dimensional trade-off framework (Section 5.1)
 > - The flat OCV / SOC estimation problem introduced for LFP (Section 5.3) — critically important for SIB hard carbon
@@ -245,7 +249,7 @@ Solving the water problem is the key to unlocking PBA's natural advantages: the 
 Before we move on to anodes, it is worth collecting the three SIB cathode families into a single reference table. The numbers below are representative of state-of-the-art research-grade and early-commercial materials as of 2024–2025; specific cells will deviate, sometimes significantly.
 
 | Family | Representative | Avg. voltage (V vs. Na/Na⁺) | Practical capacity (mAh/g) | Specific energy, material level (Wh/kg) | Rate | Cycle life | Cost drivers | Main open problem |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | O3 layered oxide | Na[Ni,Fe,Mn]O₂ | 3.2–3.4 | 140–180 | 450–600 | Moderate | Moderate | Ni, sometimes Co | O3→P3 phase transition |
 | P2 layered oxide | Na₀.₆₇[Mn,Ni]O₂ | 3.3–3.5 | 120–160 | 400–560 | Moderate–good | Moderate–good | Ni, Mn | Starts Na-deficient; balance/presodiation |
 | Polyanionic (NVPF) | Na₃V₂(PO₄)₂F₃ | ~3.95 | ~120 | ~480 | Excellent | Excellent | V (toxic, regulated) | V dependence |
@@ -322,7 +326,7 @@ Practical SIB BMS designs work around this by combining three things: (i) curren
 Representative performance metrics for state-of-the-art commercial-grade hard carbon anodes (as of 2024–2025) are summarised in the table below. All values are for hard carbons optimised for sodium storage, typically biomass- or sucrose-derived and carbonised at 1100–1400 °C.
 
 | Metric | Typical range | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Practical specific capacity (mAh/g) | 250–350 | Slope + plateau combined; higher values for carbons with larger closed-pore fraction |
 | Initial Coulombic efficiency (%) | 75–90 | Lower than graphite (85–95%) due to higher BET surface area (5–15 m²/g vs. 1–4 m²/g for synthetic graphite) and correspondingly more SEI formation |
 | Average anode potential (V vs. Na/Na⁺) | ~0.2 | Weighted average across slope and plateau; the plateau itself sits at ~0.05 V |
@@ -431,7 +435,7 @@ The chapter deliverable (in the Deliverable section at the end of this chapter) 
 The following table provides representative cell-level values for five major SIB cells and five major LIB cells, covering all the Chapter 3 metrics. Values are from published literature or public specification sheets as of 2024–2025 and should be treated as representative rather than definitive:
 
 | Cell | Chemistry | Format | Nom V (V) | Cap (Ah) | Sp. Energy (Wh/kg) | Vol. Energy (Wh/L) | Cycle Life (cycles) | DCIR (mΩ) | OCV shape |
-|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | HiNa BC-1 | O3 LO / HC | 26650 | 3.2 | 1.33 | 146 | ~280 | >4000 | ~100 | Mixed slope/flat |
 | CATL 1st Gen SIB | PBA / HC | 26650 | ~3.1 | ~3.0 | ~160 | ~290 | >3000 | ~80 | Flat-heavy |
 | Faradion 18650 | O3 LO / HC | 18650 | 3.2 | ~2.0 | ~150 | ~350 | >1000 | ~90 | Mixed |
@@ -492,7 +496,7 @@ In every chapter up to this point, this section has appeared to preview SIB-spec
 The following table makes the mapping from cell-level performance metric to underlying physical cause explicit — it is the "why" behind the numbers in Section 6.9.
 
 | SIB vs. LIB metric difference | Direction | Dominant physical cause | Chapter introduced |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Cell voltage | ~0.3–0.5 V lower | Na⁺/Na reference 0.33 V above Li⁺/Li; minor cathode-side offsets | 1, 6.1 |
 | Gravimetric capacity | Lower | Heavier ion per charge carried (3.3×); sometimes lower utilisation of host sites | 1, 6.1 |
 | DCIR | 1.5–2× higher | Lower electrolyte conductivity; thicker/more resistive SEI on hard carbon; heavier ion transport | 2, 6.1, 6.5 |

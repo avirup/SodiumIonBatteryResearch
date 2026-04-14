@@ -15,15 +15,18 @@ By the end of this chapter, you will be able to read a set of capacity-fade and 
 > **Prerequisites Check**
 >
 > From Chapter 2:
+>
 > - The SEI: formation, composition, and role (Section 2.3) — central to Sections 7.2 and 7.7
 > - Butler-Volmer kinetics and overpotential (Sections 2.5, 2.8) — needed for Section 7.3
 > - Mass transport and diffusion (Section 2.6) — needed for Section 7.4
 >
 > From Chapter 3:
+>
 > - Coulombic efficiency, cycle life, calendar life (Sections 3.6, 3.7) — the measurable signatures of degradation
 > - EIS and differential capacity ($dQ/dV$) as diagnostic tools (Section 3.10) — used throughout this chapter
 >
 > From Chapters 5 and 6:
+>
 > - Crystal structures of LCO, NMC, LFP, layered oxides, hard carbon (Chapters 5, 6) — needed to understand material-specific failure modes
 > - Hard carbon slope/plateau mechanism (Chapter 6, Section 6.5) — needed for SIB-specific degradation
 >
@@ -69,7 +72,7 @@ The value of this three-mode classification is that it separates degradation sig
 
 Before we dive in, it is worth fixing the landscape in your head. The three modes are orthogonal axes of failure, and every mechanism we will discuss projects onto one or more of them. Here is the rough map:
 
-```
+```text
                 LLI          LAM        CL
                 (guest)      (host)     (transport)
                 ---------    ---------  ---------
@@ -127,15 +130,26 @@ The rate constant $k_\text{SEI}$ depends on temperature through the **Arrhenius 
 
 If you have ever looked at reverse-bias current in a Schottky diode, or the thermal generation current in a BJT, you have seen the same exponential. In semiconductor physics we write it $\exp(-\phi_B/k_B T)$, where $\phi_B$ is the barrier height; in chemistry we write it $\exp(-E_a/RT)$. It is the same physics and the same math — a thermally excited population clearing a barrier — and it pays to recognise the pattern wherever it appears.
 
-$$k_\text{SEI}(T) = A \exp\!\left(-\frac{E_a}{RT}\right) \tag{7.3}$$
+$$k_{\mathrm{SEI}}(T) = A \exp\left(-\frac{E_a}{RT}\right) \tag{7.3}$$
 
 where $E_a$ is the activation energy for the diffusion of reactive species through the SEI, typically 40–80 kJ/mol for commercial cells. At this activation energy, an Arrhenius calculation gives:
 
-$$\frac{k_\text{SEI}(35\,^\circ\text{C})}{k_\text{SEI}(25\,^\circ\text{C})} = \exp\!\left[\frac{E_a}{R}\left(\frac{1}{298\,\text{K}} - \frac{1}{308\,\text{K}}\right)\right]$$
+$$
+\frac{k_{\mathrm{SEI}}(35^\circ\mathrm{C})}{k_{\mathrm{SEI}}(25^\circ\mathrm{C})}
+= \exp\left(\frac{E_a}{R}\left(\frac{1}{298\mathrm{K}} - \frac{1}{308\mathrm{K}}\right)\right)
+$$
 
-With $E_a = 60\,\text{kJ/mol}$ and $R = 8.314\,\text{J}\,\text{mol}^{-1}\,\text{K}^{-1}$:
+With $E_a = 60\,\mathrm{kJ\,mol^{-1}}$ and $R = 8.314\,\mathrm{J\,mol^{-1}\,K^{-1}}$:
 
-$$\frac{k_\text{SEI}(35\,^\circ\text{C})}{k_\text{SEI}(25\,^\circ\text{C})} = \exp\!\left[\frac{60000\,\text{J/mol}}{8.314\,\text{J}\,\text{mol}^{-1}\,\text{K}^{-1}} \cdot \frac{10\,\text{K}}{298 \cdot 308\,\text{K}^2}\right] = \exp(0.786) \approx 2.19$$
+$$
+\frac{k_{\mathrm{SEI}}(35^\circ\mathrm{C})}{k_{\mathrm{SEI}}(25^\circ\mathrm{C})}
+= \exp\left(
+\frac{60000\,\mathrm{J\,mol^{-1}}}{8.314\,\mathrm{J\,mol^{-1}\,K^{-1}}}
+\cdot
+\frac{10\mathrm{K}}{298 \cdot 308\mathrm{K}^2}
+\right)
+= \exp(0.786) \approx 2.19
+$$
 
 A 10°C temperature increase roughly doubles the calendar aging rate. This factor-of-two is the quantitative basis for the industry rule of thumb you will hear often: storing lithium-ion cells at elevated temperature dramatically accelerates calendar aging. Carrying the same calculation forward, a cell stored at 45 °C ages approximately 4–5× faster than the same cell at 25 °C, and roughly 20× faster than a cell stored at 5 °C. These numbers depend sensitively on the assumed activation energy — a cell chemistry with $E_a = 40$ kJ/mol would show factors closer to 3× and 10×, while a cell with $E_a = 80$ kJ/mol would show factors closer to 6× and 40× for the same temperature range. When you see a calendar-aging acceleration table in a datasheet or paper, recognise that the underlying $E_a$ is doing most of the work and is worth extracting.
 
@@ -221,16 +235,16 @@ This small margin means that fast charging of SIBs at low temperatures can trigg
 
 To summarise the plating comparison in a single view:
 
-| Property | Lithium plating on graphite | Sodium plating on hard carbon |
+|Property|Lithium plating on graphite|Sodium plating on hard carbon|
 |---|---|---|
-| Threshold anode potential | 0 V vs. Li/Li⁺ | 0 V vs. Na/Na⁺ |
-| Plating margin at top of charge | ~0.05 V (stage-1 graphite) | ~0.01–0.02 V (hard-carbon plateau) |
-| Dominant deposit morphology | Mossy → dendritic under severe conditions | Mossy, more equiaxed; dendrites rare |
-| Short-circuit risk from dendrites | High under severe plating | Substantially lower |
-| Contribution to LLI / LSI | High (dead lithium) | High (dead sodium) |
-| Temperature sensitivity of onset | Very steep (Arrhenius $R_\text{ct}$) | Less steep; hard-carbon kinetics differ |
-| Fast-charging tolerance at 0 °C | Poor (prohibited for graphite) | Moderate (better than graphite) |
-| BMS management required | Plating-aware charging (delta-V, dV/dT) | Plating-aware charging, tighter margin in plateau |
+|Threshold anode potential|0 V vs. Li/Li⁺|0 V vs. Na/Na⁺|
+|Plating margin at top of charge|~0.05 V (stage-1 graphite)|~0.01–0.02 V (hard-carbon plateau)|
+|Dominant deposit morphology|Mossy → dendritic under severe conditions|Mossy, more equiaxed; dendrites rare|
+|Short-circuit risk from dendrites|High under severe plating|Substantially lower|
+|Contribution to LLI / LSI|High (dead lithium)|High (dead sodium)|
+|Temperature sensitivity of onset|Very steep (Arrhenius $R_\text{ct}$)|Less steep; hard-carbon kinetics differ|
+|Fast-charging tolerance at 0 °C|Poor (prohibited for graphite)|Moderate (better than graphite)|
+|BMS management required|Plating-aware charging (delta-V, dV/dT)|Plating-aware charging, tighter margin in plateau|
 
 Read this table as the "short form" of the SIB plating story. When you encounter a SIB fast-charging paper, the claims about low-temperature tolerance and thin plateau margin will track the relevant rows.
 
@@ -400,30 +414,46 @@ For the physics-based DFN model (Doyle–Fuller–Newman), calendar and cycle ag
 
 Let us put numbers on a calendar-aging prediction for a commercial NMC/graphite cell. Rather than quoting parameter values from a specific paper and risking a unit mismatch, we will work with a clean phenomenological form calibrated to typical commercial-cell behaviour, and then compare the result to published field data.
 
-Take the parabolic Arrhenius form from equation (7.12) and suppose we know, for this cell chemistry, that storage at a reference condition of 25 °C and 50% SOC produces 2.5% capacity loss after one year. This is a typical mid-range figure for well-designed NMC622/graphite cells and is consistent with datasheet calendar-life specifications. Take $E_a = 50$ kJ/mol, near the middle of the 40–80 kJ/mol range we quoted in §7.2.
+Take the parabolic Arrhenius form from equation (7.12) and suppose we know, for this cell chemistry, that storage at a reference condition of 25 °C and 50% SOC produces 2.5% capacity loss after one year. This is a typical mid-range figure for well-designed NMC622/graphite cells and is consistent with datasheet calendar-life specifications. Take $E_a = 50\,\mathrm{kJ\,mol^{-1}}$, near the middle of the 40–80 kJ/mol range we quoted in §7.2.
 
-From the reference point, we can back out $B(25\,^\circ\text{C}, 50\%)$ directly: with $t = 365\,\text{days}$ and $Q_\text{loss} = 0.025$,
-$$B(25\,^\circ\text{C}) = \frac{0.025}{\sqrt{365}} = \frac{0.025}{19.10} \approx 1.31 \times 10^{-3}\,\text{day}^{-1/2}.$$
-We do not need to separately compute $B_0$ — for predicting the cell's behaviour at other temperatures, we only need the *ratio* $B(T)/B(25\,^\circ\text{C})$, which the Arrhenius form gives us cleanly:
-$$\frac{B(T)}{B(25\,^\circ\text{C})} = \exp\!\left[\frac{E_a}{R}\left(\frac{1}{298\,\text{K}} - \frac{1}{T}\right)\right].$$
+From the reference point, we can back out $B(25^\circ\mathrm{C}, 50\%)$ directly: with $t = 365\,\mathrm{days}$ and $Q_{\mathrm{loss}} = 0.025$,
+$$
+B(25^\circ\mathrm{C}) = \frac{0.025}{\sqrt{365}} = \frac{0.025}{19.10} \approx 1.31 \times 10^{-3}\,\mathrm{day}^{-1/2}.
+$$
+We do not need to separately compute $B_0$; for predicting the cell's behaviour at other temperatures, we only need the ratio $B(T)/B(25^\circ\mathrm{C})$, which the Arrhenius form gives us cleanly:
+$$
+\frac{B(T)}{B(25^\circ\mathrm{C})} = \exp\left(\frac{E_a}{R}\left(\frac{1}{298\mathrm{K}} - \frac{1}{T}\right)\right).
+$$
 
 Now let us use this to answer three practical questions.
 
 *How much capacity does the cell lose in one year at 35 °C?* The Arrhenius ratio is
-$$\exp\!\left[\frac{50000}{8.314}\left(\frac{1}{298} - \frac{1}{308}\right)\right] = \exp(0.655) \approx 1.93,$$
-so $B(35\,^\circ\text{C}) \approx 2.53 \times 10^{-3}\,\text{day}^{-1/2}$, and
-$$Q_\text{loss,cal}(1\,\text{year},\,35\,^\circ\text{C}) \approx 2.53 \times 10^{-3} \cdot 19.10 \approx 4.8\%.$$
+$$
+\exp\left(\frac{50000}{8.314}\left(\frac{1}{298} - \frac{1}{308}\right)\right) = \exp(0.655) \approx 1.93,
+$$
+so $B(35^\circ\mathrm{C}) \approx 2.53 \times 10^{-3}\,\mathrm{day}^{-1/2}$, and
+$$
+Q_{\mathrm{loss,cal}}(1\,\mathrm{year}, 35^\circ\mathrm{C}) \approx 2.53 \times 10^{-3} \cdot 19.10 \approx 4.8\%.
+$$
 Roughly double the 25 °C value, as expected from the rule of thumb.
 
 *How long does it take this cell to reach end-of-life (80% of initial capacity, or 20% loss) from calendar aging alone at 25 °C?*
-$$\sqrt{t_\text{EOL}} = \frac{0.20}{B(25\,^\circ\text{C})} = \frac{0.20}{1.31 \times 10^{-3}} \approx 152.7\,\text{day}^{1/2},$$
-$$t_\text{EOL} \approx 152.7^2 \approx 23{,}300\,\text{days} \approx 64\,\text{years}.$$
+$$
+\sqrt{t_{\mathrm{EOL}}} = \frac{0.20}{B(25^\circ\mathrm{C})} = \frac{0.20}{1.31 \times 10^{-3}} \approx 152.7\,\mathrm{day}^{1/2},
+$$
+$$
+t_{\mathrm{EOL}} \approx 152.7^2 \approx 23{,}300\,\mathrm{days} \approx 64\,\mathrm{years}.
+$$
 This is a striking number, and it is worth pausing on. A well-designed NMC cell sitting in a cool climate at half-charge, never used, would last more than six decades before calendar aging alone took it to 80% capacity. This is consistent with laboratory calendar-aging studies, which routinely report fresh-cell behaviour extrapolating to decade-plus shelf lives at low temperature and moderate SOC. The *reason* we do not see 60-year field lifetimes is that real cells are not sitting quietly at 25 °C and 50% SOC — they are cycling, they are hot, they are at high or low SOC, and cycle-aging mechanisms are operating in parallel.
 
 *And what if the same cell is stored at 45 °C instead of 25 °C?* The Arrhenius ratio becomes
-$$\exp\!\left[\frac{50000}{8.314}\left(\frac{1}{298} - \frac{1}{318}\right)\right] = \exp(1.268) \approx 3.55,$$
-so $B(45\,^\circ\text{C}) \approx 4.66 \times 10^{-3}\,\text{day}^{-1/2}$ and the time to 20% capacity loss collapses to
-$$t_\text{EOL} \approx \left(\frac{0.20}{4.66 \times 10^{-3}}\right)^2 \approx 1{,}840\,\text{days} \approx 5.0\,\text{years}.$$
+$$
+\exp\left(\frac{50000}{8.314}\left(\frac{1}{298} - \frac{1}{318}\right)\right) = \exp(1.268) \approx 3.55,
+$$
+so $B(45^\circ\mathrm{C}) \approx 4.66 \times 10^{-3}\,\mathrm{day}^{-1/2}$ and the time to 20% capacity loss collapses to
+$$
+t_{\mathrm{EOL}} \approx \left(\frac{0.20}{4.66 \times 10^{-3}}\right)^2 \approx 1{,}840\,\mathrm{days} \approx 5.0\,\mathrm{years}.
+$$
 Raising the storage temperature by 20 °C has cut the calendar life from 64 years to 5 years — a factor of about 13. This is the same Arrhenius factor we estimated in §7.2 (about $3.55^2 \approx 12.6$, since the rate constant enters twice through the $B(T)$ that sits inside $\sqrt{t}$), and it is the quantitative reason calendar aging is the concern it is for hot-climate deployments.
 
 ---
@@ -436,9 +466,9 @@ Having identified the mechanisms and their models, we can now systematically exa
 
 Temperature is the single most powerful lever in battery degradation, but its effects run in different directions for different mechanisms. The thermally-activated *chemical* mechanisms — SEI growth (Arrhenius, $E_a \approx 40$–80 kJ/mol), transition metal dissolution (Arrhenius, strong temperature dependence), and electrolyte oxidation — all accelerate with temperature. The *mechanical* mechanism of particle cracking goes the other way: higher temperature increases the solid-state diffusivity of lithium within the particle, so at a fixed C-rate the internal concentration gradients are shallower and the diffusion-induced stresses are smaller, which actually *reduces* per-cycle mechanical fatigue. So high temperature speeds up the chemistry and slows down the cracking, and low temperature does the reverse. This is one of the reasons why the combined temperature dependence of total cell aging can be non-monotonic in the sense that different failure modes dominate in different temperature regimes.
 
-**High temperature** ($>35\,^\circ\text{C}$) accelerates calendar aging (SEI growth, electrolyte decomposition) through Arrhenius kinetics, accelerates transition metal dissolution because HF generation increases with temperature, and increases the rate of electrolyte oxidation at the cathode. It does *not*, however, increase particle cracking — as just discussed, it tends to reduce it.
+**High temperature** ($>35^\circ\mathrm{C}$) accelerates calendar aging (SEI growth, electrolyte decomposition) through Arrhenius kinetics, accelerates transition metal dissolution because HF generation increases with temperature, and increases the rate of electrolyte oxidation at the cathode. It does *not*, however, increase particle cracking — as just discussed, it tends to reduce it.
 
-**Low temperature** ($<10\,^\circ\text{C}$) does not accelerate thermally-activated mechanisms — calendar aging slows down significantly. However, low temperature dramatically reduces charge-transfer kinetics ($i_0$ decreases exponentially), increasing charge overpotential during fast charging and precipitating lithium or sodium plating even at moderate C-rates. Low-temperature cycle aging is dominated by plating-driven LLI rather than SEI-driven LLI.
+**Low temperature** ($<10^\circ\mathrm{C}$) does not accelerate thermally-activated mechanisms — calendar aging slows down significantly. However, low temperature dramatically reduces charge-transfer kinetics ($i_0$ decreases exponentially), increasing charge overpotential during fast charging and precipitating lithium or sodium plating even at moderate C-rates. Low-temperature cycle aging is dominated by plating-driven LLI rather than SEI-driven LLI.
 
 **Temperature cycling** — non-uniform temperature distribution within a cell or pack (centre hotter than edges, for example) — creates regions of accelerated and decelerated aging within a single cell, leading to SOC and SOH heterogeneity over time. This pack-level non-uniformity is one of the motivations for thermal management system design in BMS (Chapter 9).
 
@@ -489,15 +519,15 @@ For hard-carbon SIBs the copper dissolution concern does not apply, because SIBs
 
 ### Stressor Summary
 
-| Stressor | Primary mechanisms driven | Relative impact |
+|Stressor|Primary mechanisms driven|Relative impact|
 |---|---|---|
-| **High temperature** ($T > 35\,^\circ\text{C}$) | SEI growth (Arrhenius), TM dissolution, electrolyte oxidation | Accelerates everything chemical; single most influential stressor |
-| **High SOC during storage** | SEI growth (exponential in $U_\text{anode}$), cathode oxidation at top of charge | Dominant calendar-aging driver; controlled by storage SOC |
-| **High DOD (deep cycling)** | Particle cracking, DIS, LAM | Dominant mechanical-fatigue driver; matters for full-swing cycling |
-| **High C-rate (charge)** | Lithium plating, DIS, concentration gradients | Triggers plating at thresholds; damages aged cells disproportionately |
-| **High C-rate (discharge)** | DIS (opposite sign), ohmic heating, concentration polarisation | Less damaging than high charge rate but still accelerates cracking |
-| **High upper voltage limit** | Cathode TM dissolution, CEI growth, electrolyte oxidation | Small voltage increases produce large life reductions |
-| **Low temperature operation** | Plating (via $R_\text{ct}$ rise), concentration polarisation | Dangerous only during charging; discharge is tolerated |
+|**High temperature** ($T > 35^\circ\mathrm{C}$)|SEI growth (Arrhenius), TM dissolution, electrolyte oxidation|Accelerates everything chemical; single most influential stressor|
+|**High SOC during storage**|SEI growth (exponential in $U_\text{anode}$), cathode oxidation at top of charge|Dominant calendar-aging driver; controlled by storage SOC|
+|**High DOD (deep cycling)**|Particle cracking, DIS, LAM|Dominant mechanical-fatigue driver; matters for full-swing cycling|
+|**High C-rate (charge)**|Lithium plating, DIS, concentration gradients|Triggers plating at thresholds; damages aged cells disproportionately|
+|**High C-rate (discharge)**|DIS (opposite sign), ohmic heating, concentration polarisation|Less damaging than high charge rate but still accelerates cracking|
+|**High upper voltage limit**|Cathode TM dissolution, CEI growth, electrolyte oxidation|Small voltage increases produce large life reductions|
+|**Low temperature operation**|Plating (via $R_\text{ct}$ rise), concentration polarisation|Dangerous only during charging; discharge is tolerated|
 
 This table is the reference card for the rest of this chapter: if someone shows you a cycling protocol and asks what will kill the cell, run down the stressors in the left column, tick the ones present in the protocol, and the right two columns tell you what to expect.
 
@@ -587,6 +617,7 @@ Loss of lithium/sodium inventory (LLI), loss of active material (LAM), conductiv
 **Guidance:** The paper is freely available via DOI: 10.1016/j.jpowsour.2016.09.105. On your first reading, focus on the overall framework (Sections 1–3) and absorb the three-mode classification and the concept of the half-cell model. On your second reading, go through Section 4 carefully: this is where specific diagnostic signatures are described for each mechanism.
 
 Your one-page summary should be structured around the diagnostic question: for each mechanism listed in the paper, answer:
+
 1. Which degradation mode does it primarily drive (LLI, LAMpe, LAMne, CL)?
 2. What external measurement reveals it (OCV curve shape, $dQ/dV$, EIS, DCIR, Coulombic efficiency, visual inspection)?
 3. What is the specific signature (e.g., "LLI shifts $dQ/dV$ peaks toward lower voltage on discharge and reduces peak area proportionally")?

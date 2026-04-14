@@ -15,6 +15,7 @@ By the end of this chapter, you will be able to name any major lithium-ion chemi
 > **Prerequisites Check**
 >
 > From Chapters 1–4:
+>
 > - Half-reactions and standard electrode potentials (Chapter 1, Sections 1.2–1.4)
 > - Crystal structure families for intercalation — layered, spinel, olivine, polyanionic (Chapter 2, Section 2.2)
 > - The SEI and first-cycle efficiency (Chapter 2, Section 2.3; Chapter 3, Section 3.6)
@@ -49,7 +50,7 @@ A useful mental model is a **pentagon diagram** (sometimes called a Ragone-exten
 
 Concretely, imagine five axes radiating from a central origin at 72° intervals, labelled (clockwise from the top): Energy density, Power density, Safety, Cycle life, Cost (where "cost" is scored so that *low cost* is toward the outside — i.e., the axis is really "affordability"). Each chemistry is plotted by placing a dot on each axis at the appropriate score and connecting the five dots into a polygon. For LFP/graphite, the polygon is *large* along Safety, Cycle life, and Affordability (all pushed to the outside), and *small* along Energy density and Power density (pulled toward the centre) — a lopsided pentagon leaning toward the "cost-life-safety" half of the diagram. For NMC811/graphite, the polygon is *large* along Energy density and Power density but *small* along Safety and Cycle life, with Affordability in the middle — a nearly mirror-image lopsided pentagon.
 
-```
+```text
                   Energy
                      .
                    .   .
@@ -92,7 +93,7 @@ However — and this is the central limitation of LCO — only about half of thi
 
 The practical specific capacity of LCO is therefore approximately **140–160 mAh/g**, corresponding to $x \leq 0.5$. Cell-level specific energy for LCO/graphite 18650 cells is approximately 200–260 Wh/kg.
 
-### Performance Profile
+### LCO Performance Profile
 
 LCO has a moderately sloped OCV curve (good for SOC estimation), good rate capability (the 2D Li diffusion in the CoO₂ plane is facile), moderate cycle life (500–1000 cycles under careful voltage management), and excellent volumetric energy density (>700 Wh/L for 18650 cells) due to the high density of LCO (5.06 g/cm³) and the reasonably high practical capacity.
 
@@ -158,7 +159,7 @@ This means that even if an LFP cell is short-circuited, overcharged, or subjecte
 
 The same structural rigidity that makes LFP thermally safe also contributes to its exceptional cycle life: the volume change between LiFePO₄ and FePO₄ is a modest ~6.8%, small enough that the particles do not fracture appreciably under cycling, and the two-phase mechanism means the interior of a particle experiences a sharp phase boundary rather than a continuous concentration gradient — which, counterintuitively, reduces the mechanical stresses that drive crack formation. We will return to particle cracking as a degradation mechanism in Chapter 7.
 
-### Performance Profile
+### LFP Performance Profile
 
 LFP summary: nominal voltage 3.2–3.35 V; practical specific capacity 155–170 mAh/g; cell-level specific energy 150–200 Wh/kg; cycle life >3,000 cycles (often >5,000 at partial DOD); excellent safety; low cost (iron and phosphorus are among the cheapest battery materials); poor volumetric energy density (LFP's density is 3.6 g/cm³, lower than LCO's 5.06 g/cm³, and the lower voltage also contributes); SOC estimation challenge from flat OCV.
 
@@ -212,7 +213,7 @@ Adding silicon to the graphite anode — typically 5–10% by weight, or up to 5
 
 The catch, as noted in Chapter 2, is the ~300% volume expansion of silicon during full lithiation. This volume change causes particle fracturing, repeated SEI formation on newly exposed surfaces, progressive capacity fade, and electrical isolation of cracked particles. The engineering challenge is to design silicon-containing composite anodes (silicon nanoparticles, silicon-carbon composites, silicon dispersed in graphite matrix) that accommodate the volume change without fracturing. This is an intensely active research area. Current state-of-the-art silicon-graphite anodes in commercial cells (e.g., Tesla 4680 with ~5% silicon) achieve 400–500+ mAh/g effective capacity at the cost of somewhat higher first-cycle irreversibility and somewhat faster capacity fade relative to pure graphite.
 
-### Performance Profile
+### NMC Performance Profile
 
 NMC/graphite summary: nominal voltage 3.6–3.7 V; practical specific capacity 160–220 mAh/g (cathode-limited); cell-level specific energy 200–280 Wh/kg depending on variant; cycle life 500–2000 cycles depending on nickel content, DOD, and temperature; safety good to moderate (decreasing with increasing Ni content); cost moderate (decreasing as cobalt content drops with higher-Ni variants).
 

@@ -17,15 +17,18 @@ We will work with real numbers throughout. Battery engineering is a quantitative
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - RC circuits and impedance in the complex plane (essential for Section 3.10, EIS)
 > - Basic concepts of efficiency and power (Section 3.6)
 > - Familiarity with Bode plots and frequency-domain thinking (helpful for Section 3.10)
 >
 > From Chapter 1:
+>
 > - Faraday's laws connecting charge to mass (Section 1.7) — needed for Section 3.1
 > - The Nernst equation and its connection to OCV (Section 1.5) — needed for Section 3.4
 >
 > From Chapter 2:
+>
 > - The three overpotentials (ohmic, activation, concentration) and their time constants (Section 2.7) — needed for Sections 3.5 and 3.10
 > - Butler-Volmer equation and exchange current density (Section 2.8) — needed for Section 3.10
 > - The SEI and first-cycle irreversibility (Section 2.3) — needed for Section 3.6
@@ -87,7 +90,7 @@ The distinction between **cell-level** and **material-level** (or electrode-leve
 A representative table of cell-level specific energies for common chemistries (approximate, commercial cells, room temperature, mid-2020s state of practice):
 
 | Chemistry | Nominal Voltage (V) | Specific Energy (Wh/kg) | Volumetric Energy (Wh/L) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | LCO (consumer) | 3.7 | 200–260 | 550–700 |
 | NMC811 (EV) | 3.7 | 230–280 | 600–750 |
 | NCA (EV) | 3.6 | 220–270 | 600–700 |
@@ -336,7 +339,7 @@ For SIB cells, calendar aging is less well-characterised than for lithium-ion, b
 The two ageing modes can be summarised side by side:
 
 | Aspect | Cycle ageing | Calendar ageing |
-|---|---|---|
+| --- | --- | --- |
 | Driver | Charge throughput (cycles, DOD, C-rate) | Time spent at a given (T, SOC) |
 | Dominant mechanism (LIB) | SEI growth at exposed anode surfaces, particle cracking, lithium plating | SEI growth at the equilibrium anode potential, cathode electrolyte oxidation |
 | Strongest stressor | High DOD, high C-rate, voltage extremes | High temperature, high SOC |
