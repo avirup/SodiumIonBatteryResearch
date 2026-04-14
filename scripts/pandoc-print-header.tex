@@ -1,0 +1,62 @@
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{newunicodechar}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{bookmark}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{fvextra}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  breaklines,
+  breakanywhere,
+  commandchars=\\\{\},
+  fontsize=\small
+}
+
+\AtBeginDocument{\justifying}
+\setstretch{1.12}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.35em}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newunicodechar{≪}{\ensuremath{\ll}}
+
+\AtBeginDocument{
+  \let\frontmatter\relax
+  \let\mainmatter\relax
+  \let\maketitle\relax
+}
+\hypersetup{
+  hidelinks,
+  pdfauthor={Pandoc},
+  pdftitle={Battery Research Notes}
+}
+
+\fancyhf{}
+\fancyhead[LE]{\thepage}
+\fancyhead[RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+
+% Reserve enough room for double-digit section and subsection numbers in the TOC.
+\setlength{\cftsecnumwidth}{3.8em}
+\setlength{\cftsubsecnumwidth}{4.8em}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[LE]{\thepage}
+  \fancyhead[RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
