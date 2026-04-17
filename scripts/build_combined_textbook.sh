@@ -25,6 +25,8 @@ chapters=(
   "battery_textbook_chapter5_revised.md"
   "battery_textbook_chapter6_revised.md"
   "battery_textbook_chapter7_edited.md"
+  "battery_textbook_chapter8_reviewed.md"
+  "battery_textbook_chapter9_reviewed.md"
 )
 
 mkdir -p "${TEXTBOOK_DIR}/pdf"
