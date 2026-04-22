@@ -447,7 +447,7 @@ The electrolyte contributes to thermal runaway both as a fuel (organic solvents 
 
 ### Quantifying the Safety Advantage: Accelerating Rate Calorimetry Data
 
-Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares representative cells:
+Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares **representative literature-scale values** for cells near full charge; exact onset temperatures and total heat release vary substantially with SOC, format, electrolyte, and the calorimetry protocol:
 
 | ARC Parameter | NMC811/graphite 18650 (3 Ah) | SIB O3/hard carbon 26650 (1.33 Ah) | SIB Advantage |
 | --- | --- | --- | --- |
@@ -598,7 +598,7 @@ Bernardi equation, irreversible heat, reversible heat, entropic heat, ohmic heat
 
 **Task:** Hand-calculate steady-state heat generation for a commercial cell at 1C discharge using datasheet internal resistance. Compare to a rough convective cooling estimate.
 
-**Guidance:** We worked through this calculation for the Samsung 30Q (NMC, 18650) in Section 8.7. Your task is to repeat the calculation for a different cell — specifically, for a SIB cell — and compare the results.
+**Guidance:** We worked through this calculation for the Samsung 30Q (NMC, 18650) in the **Worked Interpretation Exercise** above. Your task is to repeat the calculation for a different cell — specifically, for a SIB cell — and compare the results.
 
 Use the **HiNa BC-1** (SIB, 26650 format, 1.33 Ah, DCIR ≈ 100 mΩ, nominal voltage 3.2 V) for the SIB calculation.
 
@@ -622,7 +622,7 @@ Step through the following:
 
 **8. Repeat at 3C**: Does the BC-1 cell overheat in natural convection at 3C?
 
-Compare your SIB results to the LIB results from the worked example in Section 8.7. Which cell runs hotter at 1C? At 3C? Which is safer in a natural-convection environment at high ambient temperature (say, 40°C)?
+Compare your SIB results to the LIB results from the **Worked Interpretation Exercise** above. Which cell runs hotter at 1C? At 3C? Which is safer in a natural-convection environment at high ambient temperature (say, 40°C)?
 
 ---
 

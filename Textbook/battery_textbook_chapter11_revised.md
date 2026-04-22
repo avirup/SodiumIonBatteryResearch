@@ -250,7 +250,7 @@ Let us put numbers on the competing choices through a worked analysis that draws
 
 ### Problem Setup
 
-Consider a 16s1p LFP pack (16 cells in series, 1 cell in parallel — a small pack for a residential storage system) using **CATL LFP prismatic cells** (100 Ah capacity per cell, $R_\text{int} \approx 0.5$ mΩ per cell, nominal 3.2 V). The pack has been operating for 18 months, and cell-to-cell capacity spread has developed to a distribution with the following characteristics (based on post-aging measurements): cells 1–13 retain 97–99 Ah; cells 14–15 retain 92–94 Ah; cell 16 retains 87 Ah. The mean capacity is 96.3 Ah; cell 16 is 9.3 Ah below the mean.
+Consider a 16s1p LFP pack (16 cells in series, 1 cell in parallel — a small pack for a residential storage system) using **representative 100 Ah LFP prismatic cells** ($R_\text{int} \approx 0.5$ mΩ per cell, nominal 3.2 V). The pack has been operating for 18 months, and cell-to-cell capacity spread has developed to a distribution with the following characteristics (based on post-aging measurements): cells 1–13 retain 97–99 Ah; cells 14–15 retain 92–94 Ah; cell 16 retains 87 Ah. The mean capacity is 96.3 Ah; cell 16 is 9.3 Ah below the mean.
 
 After a full charge session with top balancing (to the upper voltage limit), every cell is at 100% SOC — each has been charged to its own individual maximum capacity and held at $V_\text{max} \approx 3.65 \, \text{V}$. The pack appears perfectly balanced, because all cell voltages are equal. But recall that "100% SOC" means something different for each cell: 100% of 98 Ah for a healthy cell, versus 100% of 87 Ah for cell 16. The voltage alignment at the top masks the capacity disparity underneath.
 
@@ -312,37 +312,27 @@ Let us apply the chapter's framework to a real commercial BMS. The **Texas Instr
 
 | Parameter | BQ76952 Specification | Notes |
 | --- | --- | --- |
-| Voltage measurement resolution | ~0.19 mV | See ADC architecture discussion below |
-| Balancing switch type | Internal N-channel MOSFET | Cells 1–15 only; cell 16 requires external component |
-| Max balancing current | 200 mA | Limited by internal MOSFET path resistance (~18 Ω) |
-| Balancing trigger threshold | Configurable, default 10 mV | Above minimum cell voltage in the string |
-| Thermal protection | Auto-inhibit above 60°C | Applies to cell temperature, not resistor temperature |
+| Cell voltage measurement accuracy | <10 mV typical | TI product-page accuracy figure; quantization is finer than this |
+| Balancing implementation | Autonomous or host-controlled passive balancing | Top-of-stack behavior in 16s designs needs special care in the external circuitry and measurement path |
+| Internal balancing current | Typically on the order of 50–65 mA with recommended internal-balancing resistor choices | Higher balancing currents generally use external balancing circuitry |
+| Automatic balancing start threshold | Configurable; TI TRM defaults are 40 mV start delta and 20 mV stop delta in charge/relax modes | Threshold is measured relative to the minimum cell voltage in the string |
+| Thermal protection | Automatic inhibit above 60°C cell temperature by default | Applies to cell temperature configuration; resistor self-heating still needs board-level thermal design |
 
 Now let us interpret each of these specifications and understand what they mean for balancing performance.
 
-**0.19 mV voltage resolution**: The usefulness of this resolution depends entirely on the OCV curve slope at the operating SOC. For an NMC/graphite cell near the top of charge (90–100% SOC), the OCV curve is steep — a typical local slope is $dV_{\text{OC}}/d\text{SOC} \approx 1000 \, \text{mV per unit SOC}$ (meaning the OCV changes by roughly 100 mV over the last 10% of SOC). At this slope, the minimum detectable SOC difference is:
+**Voltage measurement versus balancing threshold**: For balancing, the crucial practical limit is usually not the raw ADC granularity but the balancing start/stop thresholds and the chemistry's OCV slope. Consider an LFP cell in the flattest part of its plateau (approximately 30–70% SOC). Here the OCV curve slope can drop to $dV_{\text{OC}}/d\text{SOC} \approx 30\text{–}80 \, \text{mV per unit SOC}$. Taking the worst case of 30 mV/unit, the BQ76952 TRM default automatic balancing start threshold of 40 mV corresponds to:
 
-$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{1000 \, \text{mV/unit}} = 1.9 \times 10^{-4} = 0.019\%$$
+$$\Delta\text{SOC}_\text{trigger} = \frac{40 \, \text{mV}}{30 \, \text{mV/unit}} \approx 1.33 = 133\%$$
 
-Excellent resolution — the ADC is not the bottleneck; noise and thermal drift dominate at this level.
+That number is physically absurd as a required SOC difference, and that is exactly the point: in the flattest part of the plateau, a voltage-threshold-based autonomous trigger is effectively blind to realistic SOC imbalance. Even the 20 mV stop threshold still corresponds to about 67% SOC at this slope. In practice, balancing of LFP (and SIB) cells must rely on the steeper OCV regions at the extremes of the SOC range, or switch to SOC-based triggers from the state estimator. For SIB cells with hard carbon anodes, where the plateau can be even flatter than LFP, the situation is worse still.
 
-Now consider an LFP cell in the flattest part of its plateau (approximately 30–70% SOC). Here the OCV curve slope can drop to $dV_{\text{OC}}/d\text{SOC} \approx 30\text{–}80 \, \text{mV per unit SOC}$. Taking the worst case of 30 mV/unit:
-
-$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{30 \, \text{mV/unit}} = 0.0063 = 0.63\%$$
-
-The ADC can still resolve sub-1% SOC differences — but the 10 mV default balancing trigger threshold now corresponds to a SOC difference of:
-
-$$\Delta\text{SOC}_\text{trigger} = \frac{10 \, \text{mV}}{30 \, \text{mV/unit}} = 0.33 = 33\%$$
-
-This is the key problem: the trigger threshold, not the ADC resolution, is the practical limit for flat-OCV chemistries. With a 10 mV trigger, the CMIC will not initiate balancing until cells differ by 33% SOC in the flattest part of the LFP plateau — effectively blind in this region. In practice, balancing of LFP (and SIB) cells must rely on the steeper OCV regions at the extremes of the SOC range, or switch to SOC-based triggers from the state estimator. For SIB cells with hard carbon anodes, where the plateau can be even flatter than LFP, the situation is worse still.
-
-**200 mA maximum balancing current**: For a 100 Ah cell (residential storage scale), a 1% SOC imbalance requires correcting:
+**Internal balancing current**: For a 100 Ah cell (residential storage scale), a 1% SOC imbalance requires correcting:
 
 $$\Delta Q = 0.01 \times 100 \, \text{Ah} = 1 \, \text{Ah}$$
 
-At 200 mA, this takes $1/0.2 = 5$ hours. Passive balancing at the BQ76952's maximum current is very slow for large cells. This is why BQ76952-based systems are more appropriate for smaller cells (3–10 Ah consumer or light automotive cells) where 200 mA represents a more reasonable fraction of the cell capacity (C/15–C/50).
+At 65 mA, this takes $1/0.065 \approx 15.4$ hours. Internal passive balancing at this current is very slow for large cells. This is why BQ76952-based systems that need faster equalisation typically add external balancing circuitry rather than relying only on the internal path.
 
-**Cell 16 external requirement**: The asymmetry in CMIC design (cell 16 requires an external component) is a genuine engineering nuisance in 16s packs. It arises because the highest cell in a bottom-referenced stack requires its balancing switch to be driven from a gate voltage that is higher than the pack voltage — requiring either an isolated gate driver or an external high-side MOSFET with a bootstrap circuit. Most CMIC designs handle up to 15 cells internally and leave the top cell as an external requirement. Engineers designing 16s packs with BQ76952 must add this external circuit, and its omission is a common rookie mistake that leaves the highest cell unbalanced.
+**Top-of-stack implementation detail**: In 16s packs, the highest cell deserves extra care. TI's balancing notes and support discussions repeatedly point out that the VC16 path and the external balancing implementation for the top cell need special attention, because the top-of-stack measurement path is also involved in supplying balancing-drive current. In practice, engineers often need a modified resistor choice and careful external circuitry around the top cell to make balancing and measurement behave well.
 
 **Thermal inhibit at 60°C**: The BMS automatically stops balancing if any cell temperature exceeds 60°C. This is a safety feature to prevent balancing from adding heat to an already overtemperature situation — but it also means that in a hot pack (summer storage in an uncooled space), balancing may be frequently inhibited, allowing imbalance to accumulate without correction. Thermal management and balancing are not independent system concerns.
 
@@ -415,7 +405,7 @@ As a targeted exercise for this chapter, implement the following calculation in 
 
 **Part 1 — No balancing**: Simulate a constant-current discharge at $I = 5$ A (approximately 1C for the mean cell). For each time step, compute the SOC of each cell. Identify when the first cell reaches 0% SOC and compute the SOC remaining in every other cell at that moment. Calculate the total stranded energy.
 
-**Part 2 — With continuous passive balancing**: Add a 100 Ω bypass resistor to each cell. During discharge, if any cell's SOC falls more than 2% below the mean SOC, activate its bypass to slow its discharge rate. Recompute the discharge trajectory and compare the stranded energy to Part 1.
+**Part 2 — With continuous passive balancing**: Add a 100 Ω bypass resistor to each cell. During discharge, if any cell's SOC rises more than 2% above the mean SOC, activate its bypass to accelerate its discharge rate and pull it back toward the mean. Recompute the discharge trajectory and compare the stranded energy to Part 1.
 
 **Worked partial solution for Part 1**: Cell 12 (4.30 Ah) reaches 0% SOC at time $t = 4.30 \times 3600 / 5 = 3096$ s = 51.6 min. At this moment, cell 11 (4.60 Ah) is at SOC = $1 - 5 \times 3096 / (4.60 \times 3600) = 1 - 0.935 = 6.5\%$. Cells 1–10 (4.85 Ah) are at SOC = $1 - 5 \times 3096 / (4.85 \times 3600) = 1 - 0.887 = 11.3\%$. Stranded energy: $(10 \times 0.113 \times 4.85 + 1 \times 0.065 \times 4.60) \times 3.7 \approx (5.48 + 0.299) \times 3.7 \approx 21.4$ Wh, or about 9.6% of the 12-cell pack's nominal energy of $12 \times 5 \times 3.7 = 222$ Wh.
 
@@ -425,7 +415,7 @@ Notice that with a 12.8% spread between the lowest and highest cell capacities, 
 
 ## Further Reading
 
-1. **Hoque, M. M., Hannan, M. A., and Mohamed, A., "Charging and discharging model of lithium-ion battery for charge equalization control using particle swarm optimisation algorithm," *PLOS ONE* 11 (9), e0161630 (2016).** A balanced treatment of passive and active balancing algorithms with simulation results showing the time-to-balance and energy efficiency for each approach. Particularly useful for the quantitative comparisons of topology performance.
+1. **Hoque, M. M., Hannan, M. A., and Mohamed, A., "Charging and discharging model of lithium-ion battery for charge equalization control using particle swarm optimization algorithm," *Journal of Renewable and Sustainable Energy* 8 (6), 065701 (2016), doi:10.1063/1.4967972.** A flyback-converter-based charge equalization study that is useful for understanding active balancing control structure and converter-level trade-offs.
 
 2. **Daowd, M. et al., "Passive and active battery balancing comparison based on MATLAB simulation," *Proceedings of the 2011 IEEE Vehicle Power and Propulsion Conference*, 1–7 (2011).** A straightforward comparative simulation study of passive vs. active balancing for EV packs, showing how the balancing time and energy waste compare under realistic cell spread conditions. Good entry point for understanding the trade-offs in practice.
 

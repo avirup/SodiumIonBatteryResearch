@@ -368,9 +368,9 @@ and $\mu_i$ has units of joules per mole. A species spontaneously flows from reg
 
 For an ideal gas or an ideally dilute solution, the chemical potential depends logarithmically on concentration:
 
-$$\mu = \mu^\circ + RT \ln c \tag{1.7}$$
+$$\mu = \mu^\circ + RT \ln\left(\frac{c}{c^\circ}\right) \tag{1.7}$$
 
-where $c$ is molar concentration and $\mu^\circ$ is a standard chemical potential (the value $\mu$ takes when $c$ equals a reference concentration, conventionally 1 mol/L). The logarithmic form is not a choice — it falls out of statistical mechanics when you count the number of microstates accessible to non-interacting particles at concentration $c$, and the entropy contribution $-TS$ becomes $-RT\ln c$ per mole. This is where the $\ln Q$ term in the Nernst equation ultimately comes from: the Nernst log is a chemical-potential log in disguise.
+where $c$ is molar concentration, $c^\circ$ is a reference concentration (conventionally 1 mol/L), and $\mu^\circ$ is the standard chemical potential referenced to that state. The logarithmic form is not a choice — it falls out of statistical mechanics when you count the number of microstates accessible to non-interacting particles at concentration $c$, and the entropy contribution becomes logarithmic in the dimensionless ratio $c/c^\circ$. This is where the $\ln Q$ term in the Nernst equation ultimately comes from: the Nernst log is a chemical-potential log in disguise.
 
 But real solutions at finite concentration are not ideal. Ions interact with each other electrostatically. The solvent molecules around an ion are disturbed, and those disturbances extend to the neighbours of that ion and their neighbours. The result is that the effective "thermodynamic concentration" — the concentration that correctly predicts equilibria and electrode potentials — is not the actual molar concentration, but a corrected quantity.
 
@@ -546,9 +546,9 @@ Typical values of $(\partial E/\partial T)_P$ for lithium-ion cells are on the o
 
 To complete the picture, let us compute $\Delta G^\circ$ for the LCO/graphite cell using tabulated data.
 
-The overall cell reaction for LiCoO₂/graphite is approximately:
+The overall cell reaction for the **discharge** of an LCO/graphite cell is approximately:
 
-$$\text{LiCoO}_2 + \text{C}_6 \rightarrow \text{Li}_{1-x}\text{CoO}_2 + \text{Li}_x\text{C}_6$$
+$$\text{Li}_{1-x}\text{CoO}_2 + \text{Li}_x\text{C}_6 \rightarrow \text{LiCoO}_2 + \text{C}_6$$
 
 Let us compute for the standard discharge of the full cell. Using $E_\text{cell} \approx 3.8$ V and $n = 1$ (per Li):
 

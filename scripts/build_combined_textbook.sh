@@ -52,7 +52,120 @@ clean_chapter() {
     s/^(#+)\s+Chapter\s+\d+:\s+/$1 /mg;
     s/^(#+)\s+\d+(?:\.\d+)*\s+/$1 /mg;
     s/\n*---\n\n\*Next chapter:.*?Prompt me with "write Chapter \d+" to continue\.\*\s*\z/\n/s;
+    s/^\$\$(.+?\\tag\{[^}]*\}.*?)\$\$\s*$/\\begin{equation}\n$1\n\\end{equation}/mg;
   ' "${input_file}"
+}
+
+format_chapter() {
+  local input_file="$1"
+
+  clean_chapter "${input_file}" | perl -ne '
+    BEGIN {
+      $mode = "body";
+    }
+
+    sub normalize_heading_text {
+      my ($text) = @_;
+
+      $text =~ s/⁺/\\textsuperscript{+}/g;
+      $text =~ s/⁻/\\textsuperscript{-}/g;
+      $text =~ s/₀/\\textsubscript{0}/g;
+      $text =~ s/₁/\\textsubscript{1}/g;
+      $text =~ s/₂/\\textsubscript{2}/g;
+      $text =~ s/₃/\\textsubscript{3}/g;
+      $text =~ s/₄/\\textsubscript{4}/g;
+      $text =~ s/₅/\\textsubscript{5}/g;
+      $text =~ s/₆/\\textsubscript{6}/g;
+      $text =~ s/₇/\\textsubscript{7}/g;
+      $text =~ s/₈/\\textsubscript{8}/g;
+      $text =~ s/₉/\\textsubscript{9}/g;
+
+      return $text;
+    }
+
+    sub reset_body_style {
+      if ($mode ne "body") {
+        print "\\bodytextstyle\n\n";
+        $mode = "body";
+      }
+    }
+
+    if (/^# (.+?)\s*$/) {
+      reset_body_style();
+      my $title = normalize_heading_text($1);
+      print "\\chapter{$title}\n\n";
+      next;
+    }
+
+    if (/^## (.+?)\s*$/) {
+      my $title = normalize_heading_text($1);
+
+      if ($title eq "Chapter Opening") {
+        reset_body_style();
+        print "\\chapteropeningstyle\n\n";
+        $mode = "opening";
+        next;
+      }
+
+      reset_body_style();
+
+      if ($title =~ /^Worked Interpretation Exercise:\s*(.+)$/) {
+        my $subtitle = normalize_heading_text($1);
+        print "\\specialsectionwithsubtitle{Worked Interpretation Exercise}{$subtitle}\n\n";
+        print "\\specialsectionstyle\n\n";
+        $mode = "special";
+        next;
+      }
+
+      if ($title =~ /^(What Changes for [^:]+):\s*(.+)$/) {
+        my $label = normalize_heading_text($1);
+        my $subtitle = normalize_heading_text($2);
+        print "\\specialsectionwithsubtitle{$label}{$subtitle}\n\n";
+        print "\\specialsectionstyle\n\n";
+        $mode = "special";
+        next;
+      }
+
+      if ($title =~ /^What Changes for /) {
+        print "\\specialsectionplain{$title}\n\n";
+        print "\\specialsectionstyle\n\n";
+        $mode = "special";
+        next;
+      }
+
+      if ($title eq "Chapter Summary" || $title eq "Deliverable" || $title eq "Further Reading") {
+        if ($mode ne "chapterend") {
+          print "\\chapterendstyle\n\n";
+          $mode = "chapterend";
+        }
+        print "\\chapterendsection{$title}\n\n";
+        next;
+      }
+
+      print "\\section{$title}\n\n";
+      next;
+    }
+
+    if (/^### (.+?)\s*$/) {
+      reset_body_style();
+      my $title = normalize_heading_text($1);
+      print "\\subsection{$title}\n\n";
+      next;
+    }
+
+    if (/^#### (.+?)\s*$/) {
+      reset_body_style();
+      my $title = normalize_heading_text($1);
+      print "\\subsubsection{$title}\n\n";
+      next;
+    }
+
+    print;
+
+    END {
+      reset_body_style();
+    }
+  '
 }
 
 {
@@ -73,13 +186,13 @@ clean_chapter() {
 \null
 \vspace*{\fill}
 \begingroup
-\small
+\fontsize{11pt}{14pt}\selectfont
 \setlength{\parindent}{0pt}
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \tolerance=1000
 \emergencystretch=1.5em
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.8\textwidth}
 \raggedright
 \textbf{Copyright \textcopyright{} ${COPYRIGHT_YEAR} ${COPYRIGHT_HOLDER}}\par
 
@@ -134,7 +247,7 @@ EOF
       printf '\n\\newpage\n\n'
     fi
 
-    clean_chapter "${chapter_path}"
+    format_chapter "${chapter_path}"
     printf '\n'
   done
 } > "${OUTPUT_MD}"
@@ -142,18 +255,18 @@ EOF
 pandoc "${OUTPUT_MD}" \
   --standalone \
   --from markdown+tex_math_dollars \
-  --number-sections \
   --pdf-engine=xelatex \
   --include-in-header="${HEADER_FILE}" \
+  -V mainfont="Libertinus Serif" \
+  -V mathfont="Libertinus Math" \
+  -V sansfont="TeX Gyre Adventor" \
+  -V monofont="DejaVu Sans Mono" \
   -V documentclass:book \
   -V classoption:openany \
   -V classoption:twoside \
-  -V papersize:a4 \
-  -V geometry:margin=22mm \
+  -V geometry:paperwidth=7in,paperheight=10in,inner=0.90in,outer=0.72in,top=0.64in,bottom=0.82in \
   -V fontsize=11pt \
-  -V colorlinks=false \
-  -V linkcolor=black \
-  -V urlcolor=black \
+  -V colorlinks=true \
   -o "${TMP_PDF}"
 
 mv "${TMP_PDF}" "${OUTPUT_PDF}"

@@ -14,13 +14,13 @@
 \null
 \vspace*{\fill}
 \begingroup
-\small
+\fontsize{11pt}{14pt}\selectfont
 \setlength{\parindent}{0pt}
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \tolerance=1000
 \emergencystretch=1.5em
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.8\textwidth}
 \raggedright
 \textbf{Copyright \textcopyright{} 2026 Avirup Kundu}\par
 
@@ -61,9 +61,11 @@ Modelling and Simulation Companion to Battery Technology for Electrical Engineer
 \setcounter{page}{1}
 \pagestyle{fancy}
 
-# Electrochemistry for Engineers
+\chapter{Electrochemistry for Engineers}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 There is a moment that happens to almost every electrical engineer who ventures into battery research for the first time. You pick up a paper — something from *Nature Energy* or the *Journal of the Electrochemical Society* — and within the first two paragraphs you encounter phrases like "Li⁺ intercalation into a layered oxide host," "reductive decomposition of the electrolyte at the graphite surface," or "the SEI-limited rate capability of hard carbon." You know you are reading about a battery. You vaguely understand that lithium ions are moving. But the precise physical meaning of each phrase, the chain of logic that connects the chemistry to the measured voltage, and the reason the author chose those words rather than some other words — all of that is opaque.
 
@@ -93,7 +95,10 @@ One important framing point before we begin. Electrochemistry is sometimes taugh
 
 ---
 
-## What Is a Battery? Galvanic vs. Electrolytic Cells
+\bodytextstyle
+
+\section{What Is a Battery? Galvanic vs. Electrolytic Cells}
+
 
 Let us begin with a picture that, once fixed clearly in your mind, will underpin everything in this book.
 
@@ -113,7 +118,8 @@ One more vocabulary point before we move on. The word **cell** in electrochemist
 
 ---
 
-## Oxidation, Reduction, and Half-Reactions
+\section{Oxidation, Reduction, and Half-Reactions}
+
 
 Chemistry happens when electrons are transferred. Everything else — the ionic motion, the phase changes, the gas evolution — is a consequence. Understanding batteries therefore requires a clear mental model of electron transfer, and the most powerful tool for building that model is the concept of **half-reactions**.
 
@@ -170,11 +176,13 @@ We will return to these specific half-reactions in the deliverable at the end of
 
 ---
 
-## Anode, Cathode, Electrolyte, Separator, Current Collector — Anatomy of a Cell
+\section{Anode, Cathode, Electrolyte, Separator, Current Collector — Anatomy of a Cell}
+
 
 Before we go further into thermodynamics and electrochemistry, let us establish the physical vocabulary for talking about what is inside a battery cell. This section is partly a glossary and partly a physical description, and it is worth reading carefully because ambiguous use of terms like "anode" and "cathode" is one of the most consistent sources of confusion in battery literature.
 
-### The Electrolyte
+\subsection{The Electrolyte}
+
 
 The **electrolyte** is the medium through which ions move inside the cell. It is ionically conductive but electronically insulating — that is, ions can move through it freely, but electrons cannot. This is the critical property: by forcing electrons to travel through the external circuit while ions travel through the electrolyte, the cell does electrical work.
 
@@ -182,7 +190,8 @@ Electrolytes in commercial lithium-ion cells are typically liquid solutions of a
 
 The electrolyte is the component you know least about from your EE background, and it will require the most new vocabulary. For now, here is the mental model to hold onto. The electrolyte is a **selective conductor**: it conducts ions readily (ionic conductivities on the order of 10 mS/cm are typical for Li-ion electrolytes) but is essentially an insulator for electrons (electronic conductivities many orders of magnitude lower). This selectivity is the whole trick of a battery. If the electrolyte conducted electrons too, the cell would short-circuit through its own interior — the electrons would simply flow from anode to cathode through the electrolyte itself, dissipating all the free energy as heat and producing no current in the external circuit. By making the internal conductor *ionic-only*, we force the electrons to take the long way around — through the copper foil, out of the cell, through your load, and back — and it is along that long way around that they do useful electrical work. This asymmetry between ionic and electronic conductivity is the single most important property of any electrolyte, and most electrolyte development is ultimately about pushing ionic conductivity up and electronic conductivity down.
 
-### The Electrodes
+\subsection{The Electrodes}
+
 
 **Electrodes** are the solid materials at which the electrode reactions take place. In a battery, the electrodes are porous structures — think of a highly compressed sponge made of fine particles — coated onto metal foil current collectors. Lithium ions and electrons must both reach the same electrode surface for the half-reaction to proceed, so the electrode must be both ionically accessible (the electrolyte fills the pores) and electronically conductive (electrons move through the solid matrix).
 
@@ -200,11 +209,13 @@ Battery engineers — particularly those working on cell design and degradation 
 
 **Students often encounter the statement "the anode is always negative."** This is only true for a galvanic cell (battery discharging). During charging, the electrode that was the negative electrode becomes the cathode (it is being reduced — lithium is being inserted back into graphite), while the positive electrode becomes the anode (it is being oxidised — lithium is being forced out of LCO back into solution). The voltage conventions can be confusing, but the redox definitions never are: anode = oxidation, cathode = reduction, always.
 
-### The Separator
+\subsection{The Separator}
+
 
 The **separator** is a thin porous membrane placed physically between the two electrodes. Its job is mechanical: it prevents the electrodes from touching (which would cause a short circuit) while still allowing ions to pass through its pores in the electrolyte. In lithium-ion cells, separators are typically microporous polyolefin sheets (polyethylene or polypropylene) 10–25 micrometers thick. The pore structure allows electrolyte to permeate through, maintaining ionic continuity, while the polymer matrix is insulating. One safety feature of polyethylene separators is "shutdown" — at elevated temperature, the pores melt closed, blocking ionic conduction and shutting down the cell before thermal runaway proceeds further.
 
-### The Current Collectors
+\subsection{The Current Collectors}
+
 
 **Current collectors** are the metal foils onto which the electrode material is coated. They serve two functions: mechanical support for the porous electrode coating, and electronic conduction to carry the electron current from the electrode particles to the external terminal.
 
@@ -212,7 +223,8 @@ In commercial lithium-ion cells, the positive electrode is coated on aluminum fo
 
 One of the cost and manufacturing advantages of sodium-ion cells, which we will explore in Chapter 6, is that **sodium does not alloy with aluminum at any relevant potential**, allowing aluminum foil to be used for both current collectors. Copper is the second-most expensive commodity in a lithium-ion cell after the active materials; eliminating it cuts material cost meaningfully.
 
-### The Full Anatomy
+\subsection{The Full Anatomy}
+
 
 Here is a schematic description of a cell cross-section during discharge — the kind of diagram that appears in almost every battery textbook. Picture a layered sandwich:
 
@@ -248,11 +260,13 @@ This interdependence of electronic and ionic current is a deep constraint that d
 
 ---
 
-## Standard Electrode Potentials and the Electrochemical Series
+\section{Standard Electrode Potentials and the Electrochemical Series}
+
 
 Now we have the physical picture. It is time to ask: where does the voltage come from? Why does a Daniell cell produce 1.10 V and not 0.75 V or 2.50 V? The answer is rooted in thermodynamics and is captured in the concept of **standard electrode potentials**.
 
-### The Reference Electrode Problem
+\subsection{The Reference Electrode Problem}
+
 
 To assign a voltage to an electrode, you need a reference. This is a familiar situation in electrical engineering: voltages are always relative, and you choose a convenient zero point — chassis ground, earth ground, a signal reference — whichever is most useful for the measurement at hand. You can freely switch between references by adding or subtracting a constant offset, and nothing physical depends on which one you use. Electrochemistry works exactly the same way. Its universal "ground" is the **standard hydrogen electrode (SHE)**, against which all other electrode potentials are reported in reference tables. But just as an EE routinely uses non-ground references for convenience (differential measurements, floating supplies, etc.), electrochemists routinely use non-SHE references for convenience — most importantly the Li/Li⁺ and Na/Na⁺ references in non-aqueous battery work, which we will meet at the end of this section. Switching between references is always a simple offset, and you should feel as comfortable doing it in electrochemistry as you do in EE.
 
@@ -264,7 +278,8 @@ By international convention, this reaction is assigned a potential of exactly ze
 
 The SHE is more of a theoretical construct than a practical device — it is finicky to set up and maintain. In real experiments, secondary reference electrodes (silver/silver chloride, saturated calomel, Li/Li⁺ in non-aqueous solutions, etc.) are used. But all electrode potentials in tables are ultimately reported on the SHE scale.
 
-### The Standard Electrode Potential
+\subsection{The Standard Electrode Potential}
+
 
 The **standard electrode potential** $E^\circ$ for a half-reaction is the potential of that half-reaction, written as a reduction, measured against the SHE under standard conditions: all dissolved species at unit activity, all gases at 1 bar, temperature at 298.15 K.
 
@@ -280,13 +295,15 @@ $$\text{Na}^+ + e^- \rightarrow \text{Na} \quad E^\circ = -2.71 \text{ V}$$
 
 A quick note on the sign convention. A negative standard reduction potential, like $E^\circ = -3.04$ V for Li⁺/Li, does *not* mean "lithium ions don't like to be reduced" in an absolute sense; it means "lithium ions are less eager to grab an electron than a hydrogen ion is." Since we zeroed the scale at the hydrogen electrode by fiat, anything that is a weaker oxidiser than H⁺ ends up with a negative number. Equivalently — and this is the perspective that matters for battery anodes — a very negative $E^\circ$ for the reduction direction means a very *positive* $E^\circ$ for the reverse (oxidation) direction. Lithium metal very much wants to give up its electron, and that eagerness is exactly what makes it a superb anode material.
 
-### Interpreting the Electrochemical Series
+\subsection{Interpreting the Electrochemical Series}
+
 
 These potentials, arranged in order from most positive to most negative, constitute the **electrochemical series** (sometimes called the **activity series** in general chemistry texts; note that the "galvanic series" you will encounter in corrosion engineering is a related but distinct empirical ranking of metals in seawater, and is not identical to this thermodynamic table).
 
 Here is how to read it physically. A large positive $E^\circ$ for the reduction half-reaction means the reaction has a strong thermodynamic tendency to proceed in the reduction direction — the species on the left strongly wants to accept electrons. Fluorine, with $E^\circ = +2.87$ V, is an extraordinarily powerful oxidising agent: it will forcibly grab electrons from almost anything. Conversely, a very negative $E^\circ$ means the reduction half-reaction has a strong tendency to proceed in reverse — the species on the right strongly wants to give electrons away. Lithium metal, with $E^\circ = -3.04$ V, is an extraordinarily powerful reducing agent: it barely wants to hold onto its electron at all.
 
-### Predicting Cell Voltage
+\subsection{Predicting Cell Voltage}
+
 
 The **standard cell voltage** for a galvanic cell is:
 
@@ -312,7 +329,8 @@ The key insight from the electrochemical series is this: **cell voltage is a mea
 
 There is one more observation worth pausing on. Among the alkali metals — Li, Na, K, Rb, Cs — lithium has both the smallest atomic mass (6.94 g/mol) and the most negative standard reduction potential (−3.04 V vs SHE). These two facts are the reason lithium-ion batteries dominate the portable energy storage landscape. High voltage times high specific capacity (small molar mass means many moles of electrons per gram, via Faraday's first law) equals high gravimetric energy density. No other element in the periodic table combines light mass and strongly negative reduction potential as favourably as lithium does. Sodium is the closest contender — 23 g/mol, −2.71 V vs SHE — and even that modest shift costs about 10–15% on both voltage and specific capacity compared to lithium. The value proposition of sodium-ion batteries is therefore not "better energy density" (it never will be); it is abundance, cost, low-temperature behaviour, safety, and strategic supply-chain considerations, all of which we will unpack in Chapters 6 and 13. When someone asks you "why not just use sodium instead of lithium in a laptop?", the answer is right here in the electrochemical series and in the periodic table: at the cell level, you are giving up roughly 15% of the energy density in exchange for abundance and safety, and that tradeoff is great for grid storage and entry-level EVs but not for laptops. Holding this tradeoff clearly in mind is one of the most useful mental anchors a battery person can have.
 
-### A Note on the Word "Potential"
+\subsection{A Note on the Word "Potential"}
+
 
 Electrochemistry uses the word *potential* in several related but distinct ways, and it is worth laying them out explicitly before we continue, because a reader who conflates them will get stuck. Here is a compact comparison.
 
@@ -329,13 +347,15 @@ For this chapter, you only need to keep the first three straight. When we say "e
 
 ---
 
-## The Nernst Equation and What It Predicts
+\section{The Nernst Equation and What It Predicts}
+
 
 The standard electrode potentials in Section 1.4 are defined at standard conditions: unit activity, 298 K, 1 bar. But real batteries do not operate at standard conditions. The lithium ion concentration in a cell's electrolyte changes as the cell charges and discharges. The lithium content in the electrode host materials changes continuously. Temperature varies. The question we need to answer is: how does electrode potential change when conditions deviate from standard?
 
 The answer is the **Nernst equation**, and it is one of the most important equations in all of electrochemistry. Let us derive it from thermodynamics, carefully.
 
-### Derivation
+\subsection{Derivation}
+
 
 Consider a general half-reaction written as a reduction:
 
@@ -345,45 +365,53 @@ where $A$ and $B$ are the oxidised species, $C$ and $D$ are the reduced species,
 
 The **Gibbs free energy change** for this reaction, at non-standard conditions, is related to the standard Gibbs free energy change $\Delta G^\circ$ by:
 
-$$\Delta G = \Delta G^\circ + RT \ln Q \tag{1.1}$$
-
+\begin{equation}
+\Delta G = \Delta G^\circ + RT \ln Q \tag{1.1}
+\end{equation}
 where $R = 8.314$ J mol⁻¹ K⁻¹ is the gas constant, $T$ is temperature in Kelvin, and $Q$ is the **reaction quotient** — the ratio of the activities of products to reactants, each raised to their stoichiometric power:
 
-$$Q = \frac{a_C^c \cdot a_D^d}{a_A^a \cdot a_B^b} \tag{1.2}$$
-
+\begin{equation}
+Q = \frac{a_C^c \cdot a_D^d}{a_A^a \cdot a_B^b} \tag{1.2}
+\end{equation}
 (We will define **activity** precisely in Section 1.6. For now, treat it as a normalised concentration.)
 
 Now, the Gibbs free energy change is related to the cell potential by:
 
-$$\Delta G = -nFE \tag{1.3}$$
-
+\begin{equation}
+\Delta G = -nFE \tag{1.3}
+\end{equation}
 where $F = 96{,}485$ C/mol is **Faraday's constant** — the total charge of one mole of electrons — and $E$ is the electrode potential. You can take this equation on faith for now — we will derive it rigorously in Section 1.8 — but the intuition behind it is worth stating here, because it is almost trivial. The left-hand side is the Gibbs free energy released per mole of reaction. The right-hand side is the electrical work done per mole of reaction, which is (charge transferred per mole of reaction) × (potential through which that charge moves). The charge transferred per mole is $nF$: $n$ electrons per formula unit, $F$ coulombs per mole of electrons. The potential is $E$. So the product is $nFE$ joules per mole. The minus sign enforces the convention that a spontaneous reaction ($\Delta G < 0$) drives a positive cell voltage ($E > 0$), which is what "spontaneous" means operationally — you can stick a voltmeter on the cell and read a positive number. Equation (1.3) is literally "free energy released equals electrical work done," which is just the first law of thermodynamics specialised to a reversible electrochemical cell.
 
 Similarly, at standard conditions:
 
-$$\Delta G^\circ = -nFE^\circ \tag{1.4}$$
-
+\begin{equation}
+\Delta G^\circ = -nFE^\circ \tag{1.4}
+\end{equation}
 Substituting equations (1.3) and (1.4) into (1.1):
 
 $$-nFE = -nFE^\circ + RT \ln Q$$
 
 Dividing through by $-nF$:
 
-$$E = E^\circ - \frac{RT}{nF} \ln Q \tag{1.5}$$
-
+\begin{equation}
+E = E^\circ - \frac{RT}{nF} \ln Q \tag{1.5}
+\end{equation}
 This is the **Nernst equation**. It tells us how the electrode potential changes from its standard value as the composition of the system departs from standard conditions. At 298 K, the prefactor $RT/F = (8.314 \times 298.15)/96485 = 0.02569$ V, and converting the natural log to log base 10:
 
-$$E = E^\circ - \frac{0.05916}{n} \log_{10} Q \tag{1.6}$$
-
+\begin{equation}
+E = E^\circ - \frac{0.05916}{n} \log_{10} Q \tag{1.6}
+\end{equation}
 The factor 0.05916 V ≈ 59.16 mV is called the **Nernst slope** (sometimes "the 59 mV rule"), and it appears constantly in electrochemistry. At room temperature, a tenfold change in the activity ratio shifts the potential by about 59 mV per electron transferred. For a two-electron reaction, a tenfold change shifts the potential by about 30 mV. This is a small but measurable shift — it matters for precision OCV (open-circuit voltage) modelling.
 
-### Physical Interpretation
+\subsection{Physical Interpretation}
+
 
 The Nernst equation is telling us something physically sensible: the tendency of a species to be reduced depends on how much of it is available. If you have a very high concentration of oxidised species (Q is small), the reduction reaction can proceed more easily — the potential is higher than $E^\circ$. If the oxidised species is nearly exhausted (Q is large), the potential is lower. This is, in a sense, a free-energy argument dressed up in electrical language.
 
 In a battery context, the Nernst equation is the thermodynamic backbone of the **open-circuit voltage (OCV) curve** — the voltage you measure when no current is flowing, as a function of state of charge. The "state of charge" of a battery is essentially a measure of the lithium (or sodium) content of the electrodes, and as that content changes, the activity of Li in the host changes, and the cell voltage changes accordingly. But here is the subtlety: for a real electrode material, the relationship between Li content and Li activity is not a simple logarithm. It reflects the statistical mechanics of site occupancy, the interactions between Li ions in neighbouring sites, phase transitions as the host restructures, and in some materials (LiFePO₄ being the canonical example) two-phase coexistence over large composition ranges. So while the Nernst equation *form* is right — potential is always $E^\circ - (RT/nF)\ln Q$ in equilibrium — the $Q$ for an intercalation host is a much richer object than the dilute-solution version we used for the Cu²⁺ half-cell. We will address these host-specific effects in Chapter 2 and Chapter 3.
 
-### A Worked Example
+\subsection{A Worked Example}
+
 
 Consider the reduction reaction for a copper half-cell:
 
@@ -401,7 +429,8 @@ $$E = 0.34 - \frac{0.05916}{2} \log_{10}(1000) = 0.34 - (0.02958)(3) = 0.34 - 0.
 
 So diluting the Cu²⁺ by a factor of 1000 drops the electrode potential by about 89 mV. This is a real, measurable effect. If you connected this dilute copper half-cell to a Daniell cell zinc electrode (at standard conditions), the cell voltage would be $0.251 - (-0.76) = 1.011$ V rather than the standard 1.10 V.
 
-### The Nernst Equation in Battery Research
+\subsection{The Nernst Equation in Battery Research}
+
 
 For a battery researcher, the Nernst equation's most important application is in understanding the shape of OCV curves. When you plot the open-circuit voltage of a cell versus its state of charge, the shape of that curve carries thermodynamic information about the electrode materials.
 
@@ -413,11 +442,13 @@ The practical payoff is large: looking at an OCV curve, you can tell at a glance
 
 ---
 
-## Activity vs. Concentration — and Why the Distinction Matters Later
+\section{Activity vs. Concentration — and Why the Distinction Matters Later}
+
 
 In writing the Nernst equation we used the symbol $a$ for activity and quietly noted it was "like a normalised concentration." It is time to be more precise, because the distinction between activity and concentration will matter when we get to real electrolyte solutions and to the activity of lithium (or sodium) within electrode host materials.
 
-### Why Concentration Is Not Enough
+\subsection{Why Concentration Is Not Enough}
+
 
 The thermodynamic quantity that governs chemical equilibria and electrode potentials is the **chemical potential** $\mu$ of a species. You can think of $\mu$ as the "voltage for particles": just as voltage tells you how much electrical work it takes to move a unit of charge into a region, the chemical potential of species $i$ tells you how much Gibbs free energy it takes to add one mole of species $i$ to a system (holding temperature, pressure, and the amounts of all other species fixed). Formally,
 
@@ -427,29 +458,34 @@ and $\mu_i$ has units of joules per mole. A species spontaneously flows from reg
 
 For an ideal gas or an ideally dilute solution, the chemical potential depends logarithmically on concentration:
 
-$$\mu = \mu^\circ + RT \ln c \tag{1.7}$$
-
-where $c$ is molar concentration and $\mu^\circ$ is a standard chemical potential (the value $\mu$ takes when $c$ equals a reference concentration, conventionally 1 mol/L). The logarithmic form is not a choice — it falls out of statistical mechanics when you count the number of microstates accessible to non-interacting particles at concentration $c$, and the entropy contribution $-TS$ becomes $-RT\ln c$ per mole. This is where the $\ln Q$ term in the Nernst equation ultimately comes from: the Nernst log is a chemical-potential log in disguise.
+\begin{equation}
+\mu = \mu^\circ + RT \ln\left(\frac{c}{c^\circ}\right) \tag{1.7}
+\end{equation}
+where $c$ is molar concentration, $c^\circ$ is a reference concentration (conventionally 1 mol/L), and $\mu^\circ$ is the standard chemical potential referenced to that state. The logarithmic form is not a choice — it falls out of statistical mechanics when you count the number of microstates accessible to non-interacting particles at concentration $c$, and the entropy contribution becomes logarithmic in the dimensionless ratio $c/c^\circ$. This is where the $\ln Q$ term in the Nernst equation ultimately comes from: the Nernst log is a chemical-potential log in disguise.
 
 But real solutions at finite concentration are not ideal. Ions interact with each other electrostatically. The solvent molecules around an ion are disturbed, and those disturbances extend to the neighbours of that ion and their neighbours. The result is that the effective "thermodynamic concentration" — the concentration that correctly predicts equilibria and electrode potentials — is not the actual molar concentration, but a corrected quantity.
 
-### Defining Activity
+\subsection{Defining Activity}
+
 
 The **activity** $a_i$ of species $i$ is defined such that the chemical potential always takes the clean form:
 
-$$\mu_i = \mu_i^\circ + RT \ln a_i \tag{1.8}$$
-
+\begin{equation}
+\mu_i = \mu_i^\circ + RT \ln a_i \tag{1.8}
+\end{equation}
 For an ideal solution, $a_i = c_i / c^\circ$ where $c^\circ = 1$ mol/L is the standard concentration. The activity and concentration are equal (in the normalised sense) when the solution behaves ideally.
 
 For a non-ideal solution, the activity is related to concentration through the **activity coefficient** $\gamma_i$:
 
-$$a_i = \gamma_i \cdot \frac{c_i}{c^\circ} \tag{1.9}$$
-
+\begin{equation}
+a_i = \gamma_i \cdot \frac{c_i}{c^\circ} \tag{1.9}
+\end{equation}
 In dilute aqueous solutions, $\gamma \approx 1$ and activity ≈ normalised concentration. In concentrated solutions, or in the organic electrolytes of lithium-ion batteries (where concentrations of 1 mol/L are typical and interactions are significant), $\gamma$ can deviate substantially from 1 — sometimes by factors of two or more.
 
 For solid species and pure liquids, the activity is defined as 1. This is why the activity of solid copper, solid lithium, or crystalline electrode materials appears as 1 in reaction quotients.
 
-### Activity of Lithium in an Electrode Host
+\subsection{Activity of Lithium in an Electrode Host}
+
 
 This is where activity becomes subtle and important for battery applications. The "concentration" of lithium in a graphite electrode, for instance, is not a simple ionic concentration in solution — it is the fraction of available sites that are occupied by lithium atoms in the graphite lattice. This quantity, called the **stoichiometric coefficient** or **insertion fraction** $x$ (so the electrode composition is written as Li$_x$C$_6$, $0 \le x \le 1$), enters the Nernst equation through the activity of lithium in the host material. The relationship between $a_\text{Li}$ in the host and $x$ depends on the statistical mechanics of site occupancy and the interaction energies between lithium atoms in neighbouring sites.
 
@@ -463,8 +499,9 @@ $$\mu_\text{Li} = \mu_\text{Li}^\circ + RT \ln\left(\frac{x}{1-x}\right)$$
 
 (where we have used $N_A k_B = R$ to convert from per-site to per-mole quantities.) Comparing with equation (1.8), we read off the activity:
 
-$$a_\text{Li} = \frac{x}{1-x} \tag{1.10}$$
-
+\begin{equation}
+a_\text{Li} = \frac{x}{1-x} \tag{1.10}
+\end{equation}
 This is a **Langmuir-type isotherm**, and it captures an intuition you should carry with you: when the host is nearly empty ($x \to 0$), adding more lithium is easy (low chemical potential, high activity ratio of empty-to-full sites); when the host is nearly full ($x \to 1$), adding more lithium is hard (high chemical potential, because the few remaining sites are "hard to find"). Feed this activity into the Nernst equation and you get an OCV that drops monotonically from +∞ to −∞ as $x$ sweeps from 0 to 1 — a smooth, featureless logarithmic curve.
 
 Real electrode materials almost never produce curves this simple. Interactions between neighbouring Li atoms (repulsive in some materials, attractive in others), ordering transitions (where Li atoms arrange into specific superlattices at particular compositions), staging phenomena (where Li preferentially fills every $k$-th layer in graphite), and outright two-phase coexistence (like the LiFePO₄ ↔ FePO₄ conversion) all cause deviations — plateaus, steps, wiggles, hysteresis. The OCV curve of a real cell is a fingerprint of all these effects superimposed on the basic Langmuir backbone. Reading that fingerprint is a large part of what OCV-based characterisation is about, and we will return to it in Chapter 3.
@@ -475,29 +512,34 @@ We will not need to work through the full statistical-mechanical derivation of a
 
 ---
 
-## Faraday's Laws of Electrolysis — Linking Charge to Mass
+\section{Faraday's Laws of Electrolysis — Linking Charge to Mass}
+
 
 Michael Faraday, working in the 1830s before any atomic theory of matter was established, made a series of experimental observations about electrolysis that are, with our modern understanding, completely unsurprising — and yet remain among the most practically useful quantitative relationships in all of electrochemistry.
 
-### First Law
+\subsection{First Law}
+
 
 **Faraday's First Law of Electrolysis:** The mass of a substance deposited or dissolved at an electrode is directly proportional to the total charge that has passed through the electrode.
 
 In modern notation:
 
-$$m = \frac{M}{nF} Q_\text{total} \tag{1.11}$$
-
+\begin{equation}
+m = \frac{M}{nF} Q_\text{total} \tag{1.11}
+\end{equation}
 where $m$ is mass in grams, $M$ is the molar mass of the substance in g/mol, $n$ is the number of electrons transferred per formula unit in the half-reaction, $F = 96{,}485$ C/mol is Faraday's constant, and $Q_\text{total}$ is the total charge in coulombs.
 
 This law is exact — it is a consequence of charge conservation and the quantised nature of electron transfer. There are no approximations here.
 
-### Second Law
+\subsection{Second Law}
+
 
 **Faraday's Second Law of Electrolysis:** The same quantity of electricity always deposits or dissolves the same number of equivalents of any substance.
 
 In practice this means: if you pass the same total charge through two different electrolytic cells in series, the ratio of masses deposited in the two cells is the ratio $M/n$ for each substance. The quantity $M/n$ is called the **equivalent weight** of the substance.
 
-### Faraday's Constant
+\subsection{Faraday's Constant}
+
 
 Faraday's constant $F$ is the charge of one mole of electrons:
 
@@ -507,7 +549,8 @@ where $N_A$ is Avogadro's number and $e$ is the elementary charge. Operationally
 
 Historically, this relationship is also a lovely piece of science: Faraday derived his constant empirically in the 1830s, with no knowledge of electrons, atoms, or Avogadro's number, simply by carefully weighing how much metal a given amount of charge deposited in electrolysis. The fact that his empirical number agrees precisely with $N_A \cdot e$ — a product of two quantities he had no access to — was one of the early confirmations of atomic theory.
 
-### Using Faraday's Laws: Two Worked Examples
+\subsection{Using Faraday's Laws: Two Worked Examples}
+
 
 **Example 1: Theoretical capacity of a lithium cobalt oxide cathode.**
 
@@ -541,30 +584,35 @@ $$m = (7.19 \times 10^{-5} \text{ g/C}) \times (10{,}800 \text{ C}) = 0.777 \tex
 
 A 3 Ah lithium-ion cell cycles roughly 0.78 grams of lithium back and forth between electrodes during each charge-discharge cycle. For context, a typical 18650 cell (the cylindrical form factor you might find in a laptop battery) has a capacity of about 3.0–3.5 Ah, so this calculation is directly applicable.
 
-### The Connection to Capacity Measurements
+\subsection{The Connection to Capacity Measurements}
+
 
 This is where Faraday's laws become indispensable for battery engineers. **Capacity** — the amount of charge a cell can store — is measured in ampere-hours (Ah) or milliampere-hours (mAh). Faraday's first law is the bridge between the electrical measurement (charge in Ah) and the chemical reality (moles of lithium or sodium cycled). This bridge is used constantly: to calculate theoretical capacities from crystal chemistry, to determine how much cyclable lithium inventory has been lost to side reactions (the mechanism we will meet in Chapter 7 as "loss of lithium inventory," one of the three canonical degradation modes), and to interpret results from techniques like ICP-OES (Inductively Coupled Plasma Optical Emission Spectrometry) that measure elemental composition of harvested electrodes. Every time a paper reports capacity fade in mAh per cycle, there is an implicit Faraday's-law conversion behind it from coulombs of lost capacity to moles of trapped lithium.
 
 A key quantity derived from Faraday's laws is the **theoretical specific capacity** $C_\text{th}$ of an electrode material (in mAh/g):
 
-$$C_\text{th} = \frac{nF}{3.6 \cdot M} \tag{1.12}$$
-
+\begin{equation}
+C_\text{th} = \frac{nF}{3.6 \cdot M} \tag{1.12}
+\end{equation}
 where the factor 3.6 converts C/g to mAh/g ($3600 \text{ C/Ah} = 3.6 \text{ C/mAh}$). This equation is worth memorising — you will use it every time you encounter a new electrode material.
 
 ---
 
-## Gibbs Free Energy and Cell Voltage
+\section{Gibbs Free Energy and Cell Voltage}
+
 
 We have been using the relationship $\Delta G = -nFE$ without deriving it. This section provides that derivation, because understanding the thermodynamic origin of cell voltage is essential to understanding why voltage changes with temperature, state of charge, and current — effects that will matter throughout the book.
 
-### The Work Done by a Galvanic Cell
+\subsection{The Work Done by a Galvanic Cell}
+
 
 Consider a galvanic cell operating reversibly — meaning it operates infinitely slowly, in thermodynamic quasi-static equilibrium, with no kinetic losses. (We will relax this assumption in Chapter 2 when we introduce Butler-Volmer kinetics.) Under these ideal conditions, all of the Gibbs free energy released by the cell reaction is converted to electrical work.
 
 The **maximum electrical work** that a system can do at constant temperature and pressure equals the decrease in Gibbs free energy:
 
-$$W_\text{elec,max} = -\Delta G \tag{1.13}$$
-
+\begin{equation}
+W_\text{elec,max} = -\Delta G \tag{1.13}
+\end{equation}
 Now, what is the electrical work done when a charge $Q$ moves through a potential difference $E$? It is simply $W = QE$ (in joules). For one mole of reaction proceeding, the charge transferred is $nF$ coulombs (from Faraday's laws). Therefore:
 
 $$W_\text{elec,max} = nFE$$
@@ -573,41 +621,48 @@ Setting this equal to $-\Delta G$:
 
 $$-\Delta G = nFE$$
 
-$$\boxed{\Delta G = -nFE} \tag{1.14}$$
-
+\begin{equation}
+\boxed{\Delta G = -nFE} \tag{1.14}
+\end{equation}
 This relationship is exact under the assumption of reversible operation. It connects the thermodynamics (the Gibbs free energy of the cell reaction) to the electrochemistry (the cell voltage and the moles of charge transferred). It is, in a sense, the fundamental equation of electrochemistry.
 
-### Interpreting the Signs
+\subsection{Interpreting the Signs}
+
 
 The sign convention in equation (1.14) is worth dwelling on. A spontaneous reaction has $\Delta G < 0$. With $n > 0$ and $F > 0$, this means $E > 0$ for a spontaneous (galvanic) cell. Conversely, a non-spontaneous reaction has $\Delta G > 0$ and would require $E < 0$ — meaning you would need to apply a voltage larger than $|E|$ from the outside to drive the reaction (the electrolytic case). The formula is consistent with our earlier physical description.
 
 At standard conditions, $\Delta G^\circ = -nFE^\circ$. Substituting into $\Delta G = \Delta G^\circ + RT \ln Q$ immediately gives us back the Nernst equation (equation 1.5). So the Nernst equation is simply $\Delta G = -nFE$ combined with the thermodynamic relation for non-standard states. There is nothing mysterious about it: it is just thermodynamics in electrical language.
 
-### The Temperature Coefficient of Cell Voltage
+\subsection{The Temperature Coefficient of Cell Voltage}
+
 
 One immediate consequence of equation (1.14) is a relationship between cell voltage and temperature. From thermodynamics, the Gibbs free energy is related to enthalpy and entropy:
 
-$$\Delta G = \Delta H - T\Delta S \tag{1.15}$$
-
+\begin{equation}
+\Delta G = \Delta H - T\Delta S \tag{1.15}
+\end{equation}
 Combining with (1.14):
 
-$$E = -\frac{\Delta G}{nF} = -\frac{\Delta H - T\Delta S}{nF} = -\frac{\Delta H}{nF} + \frac{T\Delta S}{nF} \tag{1.16}$$
-
+\begin{equation}
+E = -\frac{\Delta G}{nF} = -\frac{\Delta H - T\Delta S}{nF} = -\frac{\Delta H}{nF} + \frac{T\Delta S}{nF} \tag{1.16}
+\end{equation}
 To differentiate this with respect to temperature, we need to recognise that $\Delta H$ and $\Delta S$ are themselves functions of temperature — but only weakly. Over the modest temperature ranges relevant to battery operation (say, −20 °C to +60 °C), both can be treated as approximately constant, and the $-\Delta H/(nF)$ term contributes essentially nothing to the derivative. (The rigorous statement is that $(\partial \Delta H / \partial T)_P = \Delta C_P$ and $(\partial \Delta S / \partial T)_P = \Delta C_P / T$, and these two contributions cancel in the derivative of $\Delta G$ because of the Gibbs–Helmholtz relation — so the result below is actually exact, not approximate.) Differentiating (1.16) at constant pressure and treating $\Delta H$ and $\Delta S$ as constants gives:
 
-$$\left(\frac{\partial E}{\partial T}\right)_P = \frac{\Delta S}{nF} \tag{1.17}$$
-
+\begin{equation}
+\left(\frac{\partial E}{\partial T}\right)_P = \frac{\Delta S}{nF} \tag{1.17}
+\end{equation}
 This is the **temperature coefficient of the cell voltage**, sometimes called the **entropic coefficient**. It is not a nuisance — it carries real information. The entropy change of the cell reaction $\Delta S$ can be measured by measuring how the open-circuit voltage changes with temperature, a technique called **electrochemical calorimetry**. More practically, this temperature coefficient contributes to heat generation in the cell (the "entropic heat" or reversible heat), which is a component of the full heat generation equation we will derive in Chapter 8 (the Bernardi equation).
 
 Typical values of $(\partial E/\partial T)_P$ for lithium-ion cells are on the order of $\pm 0.1$ to $\pm 1$ mV/K, and the sign can change with state of charge. This means that at some states of charge, an LFP cell actually absorbs heat during discharge (endothermic, $\Delta S > 0$) and releases heat during charging — counterintuitive but thermodynamically consistent.
 
-### The Gibbs Free Energy of the Full Cell Reaction
+\subsection{The Gibbs Free Energy of the Full Cell Reaction}
+
 
 To complete the picture, let us compute $\Delta G^\circ$ for the LCO/graphite cell using tabulated data.
 
-The overall cell reaction for LiCoO₂/graphite is approximately:
+The overall cell reaction for the **discharge** of an LCO/graphite cell is approximately:
 
-$$\text{LiCoO}_2 + \text{C}_6 \rightarrow \text{Li}_{1-x}\text{CoO}_2 + \text{Li}_x\text{C}_6$$
+$$\text{Li}_{1-x}\text{CoO}_2 + \text{Li}_x\text{C}_6 \rightarrow \text{LiCoO}_2 + \text{C}_6$$
 
 Let us compute for the standard discharge of the full cell. Using $E_\text{cell} \approx 3.8$ V and $n = 1$ (per Li):
 
@@ -623,7 +678,10 @@ This is the **theoretical gravimetric energy density based on the cathode mass a
 
 ---
 
-## Worked Interpretation Exercise: Reading a Half-Reaction Table
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading a Half-Reaction Table}
+
+\specialsectionstyle
+
 
 Let us now apply everything in this chapter to a real example from the battery literature. Consider the following entry from a published paper on hard carbon anodes for sodium-ion batteries (a slight simplification of data from Komaba et al., Advanced Functional Materials, 2011):
 
@@ -649,7 +707,12 @@ This is the kind of reading you should be able to do fluently by the end of this
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 Most of what we covered in this chapter applies to sodium-ion batteries without modification. The Nernst equation, Faraday's laws, Gibbs free energy, and half-reaction notation are universal — they were derived from thermodynamics, not from any specific chemistry. What changes between Li-ion and SIB is the *numerical content*: specific potentials, specific ionic sizes, specific host materials. Those numerical differences will turn out to have consequences that reach all the way up into BMS algorithms, but at this stage of the book the preview is deliberately brief. Here are the two most important differences to plant in your head now.
 
@@ -661,7 +724,12 @@ We will revisit these consequences in detail in Chapter 6 and Chapter 13.
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -694,7 +762,12 @@ Galvanic cell, electrolytic cell, redox reaction, oxidation, reduction, half-rea
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Write out the half-reactions for a Li-ion cell (graphite/LCO) and a Na-ion cell (hard carbon/layered oxide). Calculate theoretical cell voltage from standard potentials.
 
@@ -726,7 +799,12 @@ Write the half-reactions explicitly, noting which species are being oxidised and
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Atkins, P. W. and de Paula, J., *Physical Chemistry*, Oxford University Press (any recent edition), Chapter on Electrochemistry.** The foundational treatment of activity, chemical potential, and the Nernst equation for physical chemists. Mathematically rigorous without being inaccessible. Read this to solidify the thermodynamic underpinning of everything in this chapter.
 
@@ -737,13 +815,17 @@ Write the half-reactions explicitly, noting which species are being oxidised and
 4. **Bard, A. J. and Faulkner, L. R., *Electrochemical Methods: Fundamentals and Applications*, Wiley (2nd edition, 2001), Chapter 2.** The definitive reference for electrochemical methods and kinetics. Chapter 2 covers thermodynamics and potential, and is essential background for the Butler-Volmer material we will reach in Chapter 2 of this book.
 
 5. **Reddy, T. B. (ed.), *Linden's Handbook of Batteries*, McGraw-Hill (4th edition, 2011), Chapter 1.** A broad engineering reference with excellent summaries of electrochemical fundamentals from a practical standpoint. Useful for seeing how the chemistry in this chapter connects to real cell specifications.
+\bodytextstyle
+
 
 
 \newpage
 
-# How a Battery Works in Operation
+\chapter{How a Battery Works in Operation}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Chapter 1 gave you the thermodynamic skeleton of a battery: the half-reactions, the free-energy driving force, the Nernst equation telling you what voltage to expect at equilibrium. That framework is necessary, but it describes a battery that is infinitely slow and perfectly at rest — a Platonic ideal that never quite exists in the laboratory. Real batteries do real things: they charge and discharge at finite rates, they lose some of their energy to heat, their voltage sags under load and then recovers when the load is removed, and they slowly degrade with every cycle. None of that can be explained by thermodynamics alone.
 
@@ -774,7 +856,10 @@ This chapter is the conceptual heart of the book. Everything in Parts IV, V, and
 
 ---
 
-## Intercalation — the Guest-Host Mechanism
+\bodytextstyle
+
+\section{Intercalation — the Guest-Host Mechanism}
+
 
 Let us begin with the most important single concept in modern battery technology: **intercalation**. Almost every commercial rechargeable battery built in the last three decades relies on it, and understanding it deeply will pay dividends throughout this book.
 
@@ -790,7 +875,8 @@ The guest ions in a lithium-ion battery are Li⁺ ions. In a sodium-ion battery,
 
 There is a second important distinction: intercalation is not the same as **alloying**, even though alloying also stores guest atoms in a solid host. In alloying, the insertion of the guest changes the crystal structure so dramatically — often creating entirely new intermetallic phases — that the volumetric expansion can be 100–400%. Silicon, for instance, alloys with lithium to form Li₁₅Si₄, expanding by about 300% in volume. This huge volume change causes mechanical fracture of the silicon particles after repeated cycling. Intercalation hosts, by contrast, typically expand by only 1–10% in volume when fully loaded, which is why they survive thousands of cycles without cracking.
 
-### What Happens Microscopically During Intercalation
+\subsection{What Happens Microscopically During Intercalation}
+
 
 Let us trace exactly what happens when a lithium-ion cell discharges, at the atomic scale.
 
@@ -808,11 +894,13 @@ The reversibility of this process relies on a crucial property of the host mater
 
 ---
 
-## Why Intercalation Hosts Matter: Layered, Spinel, Olivine, and Polyanionic Structures
+\section{Why Intercalation Hosts Matter: Layered, Spinel, Olivine, and Polyanionic Structures}
+
 
 Not all crystal structures make good intercalation hosts. The host material must satisfy several simultaneous requirements: it must have enough structural void space to accommodate the guest ion, it must be rigid enough not to collapse when the guest is removed, it must be electronically conductive within the solid (so half-reactions can proceed at particle surfaces), and the energy of insertion must be in the right range to produce a useful cell voltage. Different crystal structure families satisfy these requirements to different degrees, and understanding the major families will help you read the battery materials literature much more fluently.
 
-### Layered Oxides
+\subsection{Layered Oxides}
+
 
 The **layered oxide** structure is the workhorse of lithium-ion and sodium-ion cathode materials. The archetype is LiCoO₂ — lithium cobalt oxide — first proposed as a cathode by Goodenough in 1980 and still used in consumer electronics today.
 
@@ -822,17 +910,20 @@ When lithium is extracted (during charge), the CoO₂ layers remain intact, held
 
 For sodium-ion batteries, layered oxides such as $\text{Na}_x\text{CoO}_2$, $\text{Na}_x\text{NiO}_2$, and multi-component variants like $\text{Na}_x[\text{Ni}_{0.25}\text{Fe}_{0.25}\text{Mn}_{0.5}]\text{O}_2$ are the most studied cathodes. The notation "O3" and "P2" that you will frequently see refers to the stacking sequence of the oxide layers and the coordination environment of the alkali ion: **O3** means the alkali ion sits in an octahedral (O) site with a three-layer (3) repeating unit; **P2** means the alkali ion sits in a prismatic (P) site with a two-layer repeating unit. The P2 structure tends to be more stable during sodium cycling than O3, though the reason is subtler than simple site geometry. The direct argument is that Na⁺, being large, fits comfortably in a prismatic site. The more important argument — and the one that matters for long cycle life — is that O3-type Na cathodes undergo a cascade of phase transitions during desodiation (O3 → P3 → O1 type stackings) that repeatedly slide the oxide layers past each other, generating mechanical stress and inviting crack formation. P2 cathodes cycle within a single phase over a much wider composition range and therefore avoid that fatigue cycle. We will return to this — and to the price P2 pays for its stability, namely a lower sodium content per formula unit and therefore lower theoretical capacity — in Chapter 6.
 
-### Spinel Structures
+\subsection{Spinel Structures}
+
 
 **Spinel** structures (exemplified by LiMn₂O₄ for lithium-ion) have a three-dimensional framework of interconnected tetrahedral and octahedral sites. The manganese atoms form a continuous three-dimensional lattice, and lithium occupies tetrahedral sites within it. The guest can diffuse through the three-dimensional channel network, which gives spinel materials their excellent rate capability — ions have multiple pathways through the solid rather than being constrained to move within planes. The trade-off is energy density: the three-dimensional structure is less efficient at packing lithium per unit volume than layered structures.
 
-### Olivine Structures
+\subsection{Olivine Structures}
+
 
 **Olivine** structures, exemplified by LiFePO₄ (lithium iron phosphate, LFP), are the basis of the most commercially important low-cost lithium-ion chemistry. The olivine crystal structure has one-dimensional channels along which lithium can diffuse — the lithium moves in tunnels along the $b$-axis of the crystal. This one-dimensional pathway makes diffusion highly anisotropic: lithium moves quickly in one direction but not at all in the others. Consequently, olivine materials must be made into very small particles (typically 50–200 nm) so the diffusion path length is short.
 
 The characteristic feature of LFP from a battery perspective is its **flat discharge plateau**: over about 95% of its capacity, the cell voltage stays nearly constant at around 3.2–3.4 V vs. Li/Li⁺. This is because LiFePO₄ undergoes a two-phase reaction during lithiation/delithiation: lithium-rich LiFePO₄ and lithium-poor FePO₄ coexist, and as the reaction proceeds, one phase grows at the expense of the other. As we noted in Chapter 1, when two phases coexist, the activity ratio is fixed and the voltage is constant — Nernst equation logic, applied to a solid-state two-phase system. This flat voltage profile makes SOC estimation by voltage lookup very difficult, a problem we will encounter repeatedly in Chapters 10 and 13.
 
-### Polyanionic Structures
+\subsection{Polyanionic Structures}
+
 
 **Polyanionic** cathode materials contain complex anions like (PO₄)³⁻, (SO₄)²⁻, or (PO₃F)²⁻ as structural building blocks. Examples include LiFePO₄ (just discussed), Na₃V₂(PO₄)₂F₃ (NVPF, an important SIB cathode), and Na₃V₂(PO₄)₃ (NVP). The polyanionic framework is very rigid and thermally stable — the strong covalent bonding in the polyanion resists structural collapse even when the framework is fully delithiated/desodiated. This rigidity is the source of the exceptional safety and long cycle life of LFP: even at elevated temperatures, the olivine framework does not release oxygen, unlike layered oxides where oxygen evolution under stress is a thermal runaway initiator.
 
@@ -842,11 +933,13 @@ The reason we have spent time on crystal structures here — even though we will
 
 ---
 
-## The Solid-Electrolyte Interphase (SEI): Formation, Function, and Consequences
+\section{The Solid-Electrolyte Interphase (SEI): Formation, Function, and Consequences}
+
 
 This section covers one of the most important — and most studied, and still not fully understood — phenomena in battery science. The **solid-electrolyte interphase**, or **SEI**, is a thin film that forms spontaneously on the surface of battery electrodes during the first few charge cycles, as the electrolyte reacts with the electrode surface. Understanding the SEI is essential to understanding capacity fade, impedance growth, first-cycle irreversibility, temperature sensitivity, and several degradation mechanisms. It is also a subject of intense ongoing research: despite decades of study, the exact composition, morphology, and formation mechanism of the SEI remain areas of active debate.
 
-### Why the SEI Forms
+\subsection{Why the SEI Forms}
+
 
 Recall from Chapter 1 that the electrolyte must be electronically insulating — it conducts ions, not electrons. This is what forces the electrons to travel through the external circuit rather than short-circuiting through the electrolyte. The electrolyte must also be chemically stable: it should not react with either electrode.
 
@@ -858,7 +951,8 @@ This passivation is not incidental — it is the mechanism that makes graphite a
 
 A direct analogy from engineering: the native oxide layer that forms on aluminum metal in air. When aluminum is freshly cut, it reacts with oxygen and forms a thin, dense, adherent Al₂O₃ layer. This layer is impermeable to further oxygen diffusion, so the bulk aluminum is protected. The SEI is the electrochemical equivalent — a self-limiting passivation layer formed not by oxidation in air but by reduction at an electrochemical interface.
 
-### Composition and Structure of the SEI
+\subsection{Composition and Structure of the SEI}
+
 
 The SEI is not a single compound — it is a complex, heterogeneous, layered mixture of reaction products. Its composition depends on the electrolyte solvent, the salt, the electrode material, the first-cycle conditions (temperature, current), and the specific contaminants (water, oxygen) present during formation.
 
@@ -866,17 +960,19 @@ For a graphite anode in a LiPF₆/EC:DMC electrolyte (the most studied system), 
 
 The inner inorganic layer is denser and more electrically insulating. The outer organic layer is more porous and less stable. The total SEI thickness on graphite after formation is typically 10–100 nm — thin enough to allow good ionic conductivity (the Li⁺ transport resistance across 20 nm of SEI is much smaller than other resistances in the cell), but thick enough to passivate the surface.
 
-### First-Cycle Irreversibility
+\subsection{First-Cycle Irreversibility}
+
 
 The formation of the SEI consumes lithium. The lithium that is used to form the SEI — the lithium that reacts with the electrolyte and becomes locked up in LiF, Li₂CO₃, and organic compounds — is permanently lost from the cell inventory. It cannot be returned to the cathode.
 
-This is why the capacity measured in the first discharge of a freshly assembled lithium-ion cell is always higher than the capacity measured in the first charge: some of the lithium that left the cathode and arrived at the anode was consumed by SEI formation rather than being stored reversibly in the graphite. The ratio of charge extracted in the first discharge to the charge put in during the first charge is called the **first-cycle Coulombic efficiency** (or **initial Coulombic efficiency**, ICE), and it is typically 85–95% for graphite anodes. The 5–15% deficit represents lithium permanently consumed by SEI formation.
+This is why the capacity measured in the first discharge of a freshly assembled lithium-ion full cell is always **lower** than the capacity delivered during the first charge: some of the lithium that left the cathode and arrived at the anode was consumed by SEI formation rather than being stored reversibly in the graphite. The ratio of charge extracted in the first discharge to the charge put in during the first charge is called the **first-cycle Coulombic efficiency** (or **initial Coulombic efficiency**, ICE), and it is typically 85–95% for graphite anodes. The 5–15% deficit represents lithium permanently consumed by SEI formation.
 
 For hard carbon anodes in sodium-ion batteries, the initial Coulombic efficiency is often even lower — 75–85% — partly because hard carbon has a much higher surface area than crystalline graphite (more surface for the SEI to form on) and partly because the SEI chemistry in carbonate-ester electrolytes with NaPF₆ is less well-controlled than the analogous lithium system. Improving the ICE of hard carbon is an active area of sodium-ion battery research.
 
 A worked example is worth walking through. Consider a graphite electrode designed to hold 10 mAh of reversible capacity (at a practical 350 mAh/g, that is about 28 mg of graphite). An initial Coulombic efficiency of 92% means that of the lithium delivered during the first charge, 8% — roughly 0.8 mAh-equivalent of lithium — is permanently consumed by SEI formation. In a full cell, that lithium comes from the cathode, so the cell's usable capacity is set not by the cathode's capacity and not by the anode's capacity but by *whichever is smaller after subtracting the first-cycle loss*. This is why commercial cells are routinely built with a small excess of either cathode or anode, and why "cathode prelithiation" and "anode prelithiation" (adding a sacrificial lithium source to compensate) are active areas of industrial development. For hard carbon in a sodium-ion cell with an ICE of 80%, the same accounting gives a 20% first-cycle loss — two-and-a-half times worse — and the motivation for sodium-specific prelithiation strategies becomes sharp.
 
-### The SEI as a Degradation Mechanism
+\subsection{The SEI as a Degradation Mechanism}
+
 
 The SEI is not static. With every charge-discharge cycle, the graphite electrode expands and contracts slightly as lithium inserts and de-inserts. This mechanical breathing — roughly 10% volume change for graphite — stresses the SEI. The SEI can crack where the electrode surface expands rapidly. Fresh electrode surface is exposed. Fresh electrolyte contacts that surface. More SEI grows to re-passivate it. More lithium is consumed. The SEI grows thicker.
 
@@ -886,11 +982,13 @@ There is also a calendar aging component: even when the cell is sitting idle (es
 
 ---
 
-## The Electric Double Layer and Double-Layer Capacitance
+\section{The Electric Double Layer and Double-Layer Capacitance}
+
 
 When an electrode surface is in contact with an electrolyte, something interesting happens at the interface even when no faradaic (redox) reaction is occurring. Charges redistribute. A structured arrangement of ions and solvent molecules forms at the surface. This structure is called the **electric double layer (EDL)**, and it has a capacitance associated with it that is measurable, important, and very much analogous to a capacitor in a circuit.
 
-### The Physics of the Double Layer
+\subsection{The Physics of the Double Layer}
+
 
 Imagine the surface of a graphite electrode at some potential, say 0.1 V vs. Li/Li⁺. The electrode surface has an excess of negative charge (electrons in the graphene layers). This excess negative charge on the electrode surface attracts positive ions (Li⁺) from the electrolyte and repels negative ions (PF₆⁻). The positive ions accumulate near the electrode surface, forming a dense layer of positive charge. This layer of charge on the electrode surface paired with the layer of positive ions in the electrolyte is the "double layer."
 
@@ -898,8 +996,9 @@ More precisely, the structure has two regions. The **inner Helmholtz plane (IHP)
 
 For our purposes, the crucial observation is simpler: charge is separated across a very thin layer (roughly 0.5–5 nm), and this charge separation has a capacitance associated with it. The thin layer acts exactly like the dielectric in a parallel-plate capacitor. The capacitance is:
 
-$$C_\text{dl} = \frac{\varepsilon_r \varepsilon_0 A}{d} \tag{2.1}$$
-
+\begin{equation}
+C_\text{dl} = \frac{\varepsilon_r \varepsilon_0 A}{d} \tag{2.1}
+\end{equation}
 where $\varepsilon_r$ is the relative permittivity of the medium in the double layer, $\varepsilon_0 = 8.854 \times 10^{-12}$ F/m is the permittivity of free space, $d$ is the effective thickness of the double layer, and $A$ is the electrode area.
 
 Because $d$ is so small — a few nanometres — and the electrode area in a porous battery electrode is enormous (20–100 m²/g of electrode material, summing over all the particle surfaces), the double-layer capacitance per unit area is very high: typically 10–40 µF/cm² of real electrode area, or 5–20 F per gram of electrode material. For a full battery cell with tens of grams of electrode, this amounts to tens of farads of capacitive storage. That is not a small number: it is six orders of magnitude beyond a typical ceramic capacitor and three orders of magnitude beyond a bulk electrolytic capacitor of comparable physical size. It is in fact comparable to a commercial supercapacitor — which is no coincidence, because the same double-layer phenomenon is what makes supercapacitors work. This double-layer capacitance is the physical basis of **electrochemical double-layer capacitors (EDLCs)**, also called supercapacitors or ultracapacitors, which store energy purely in the EDL without any faradaic reaction.
@@ -910,13 +1009,15 @@ This is the first of many places where your EE background maps directly onto bat
 
 ---
 
-## Charge Transfer Kinetics at the Electrode–Electrolyte Interface
+\section{Charge Transfer Kinetics at the Electrode–Electrolyte Interface}
+
 
 So far we have discussed what reactions occur at electrodes (half-reactions), where they occur (electrode–electrolyte interface, after the ion crosses the double layer), and what passivation film sits in the way (the SEI). Now we need to ask: how fast do they proceed? Thermodynamics tells us the direction and equilibrium state; kinetics tells us the rate.
 
 This next idea took me a while to get comfortable with, so let us go slowly.
 
-### The Activation Energy Barrier
+\subsection{The Activation Energy Barrier}
+
 
 Every chemical reaction — including the electrode half-reaction — has to get over an **activation energy barrier**. Think of the reaction coordinate as a landscape of potential energy: the reactants sit at one energy level, the products sit at a lower energy level (for a spontaneous reaction), and between them is a hill — the transition state. The reaction can only proceed if the reactants have enough thermal energy to climb over the hill.
 
@@ -928,11 +1029,13 @@ the activation energy is the energy required to strip the solvation shell off th
 
 The Arrhenius law for the rate constant of a chemical reaction is:
 
-$$k = A \exp\left(-\frac{E_a}{RT}\right) \tag{2.2}$$
-
+\begin{equation}
+k = A \exp\left(-\frac{E_a}{RT}\right) \tag{2.2}
+\end{equation}
 where $E_a$ is the activation energy, $A$ is a pre-exponential factor, $R$ is the gas constant, and $T$ is absolute temperature. This exponential dependence on temperature explains one of the most practically important observations about batteries: at low temperature, charge transfer kinetics slow down exponentially, and the cell's power capability drops dramatically. A lithium-ion cell at $-20$°C may deliver only 30–50% of its room-temperature capacity at moderate discharge rates, not because there is less lithium in the electrodes but because the kinetics of lithium desolvation and transfer are sluggish.
 
-### The Effect of Electrode Potential on Kinetics
+\subsection{The Effect of Electrode Potential on Kinetics}
+
 
 Here is where electrode kinetics becomes richer than simple chemical kinetics: the rate of the electrode reaction is also controlled by the electrode potential, not just temperature. Changing the electrode potential changes the energy of the electrons at the electrode surface, which changes the relative heights of the activation energy barrier in the forward (reduction) and reverse (oxidation) directions.
 
@@ -940,44 +1043,51 @@ Specifically: if you make the electrode more negative (more reducing potential, 
 
 The potential applied to an electrode relative to its equilibrium (Nernst) potential is called the **overpotential** $\eta$:
 
-$$\eta = E - E_\text{eq} \tag{2.3}$$
-
+\begin{equation}
+\eta = E - E_\text{eq} \tag{2.3}
+\end{equation}
 where $E$ is the actual electrode potential and $E_\text{eq}$ is the equilibrium (open-circuit) potential for that electrode at the current composition, from the Nernst equation. When $\eta < 0$ (the electrode is driven more negative than its equilibrium), the reduction reaction is favoured. When $\eta > 0$, the oxidation reaction is favoured.
 
 The overpotential is the "driving force" for the electrode reaction, analogous to the voltage above a diode's threshold that drives current through it. A small overpotential produces a small current. A large overpotential produces an exponentially larger current. This nonlinear relationship is the Butler-Volmer equation, which we will introduce in Section 2.8.
 
 ---
 
-## Mass Transport: Diffusion, Migration, and Convection
+\section{Mass Transport: Diffusion, Migration, and Convection}
+
 
 Even if charge transfer at the electrode surface were infinitely fast, the cell's rate capability would still be limited by how quickly ions can be delivered to (or removed from) the electrode surface. This is the domain of **mass transport** — the movement of species through the electrolyte and within the electrode materials.
 
 There are three mechanisms of mass transport, and each dominates in a different regime. Understanding them separately — and then together — is essential to understanding power limitations, impedance spectra, and the shapes of voltage curves under load.
 
-### Diffusion
+\subsection{Diffusion}
+
 
 **Diffusion** is the motion of a species from regions of high concentration to regions of low concentration, driven by the concentration gradient. It is governed by Fick's laws.
 
 **Fick's First Law** states that the molar flux $J$ (mol m⁻² s⁻¹) of a species is proportional to its concentration gradient:
 
-$$J = -D \frac{\partial c}{\partial x} \tag{2.4}$$
-
+\begin{equation}
+J = -D \frac{\partial c}{\partial x} \tag{2.4}
+\end{equation}
 where $D$ is the **diffusion coefficient** (m²/s) and $c$ is the concentration (mol/m³). The negative sign captures the physical intuition: flux is from high to low concentration, opposite the gradient.
 
 **Fick's Second Law** gives the time evolution of concentration:
 
-$$\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} \tag{2.5}$$
-
+\begin{equation}
+\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} \tag{2.5}
+\end{equation}
 This is a parabolic partial differential equation — mathematically identical to the heat equation, which you likely encountered in undergraduate mathematics. The analogy is deep: diffusion of mass is governed by the same mathematical structure as diffusion of heat, with the diffusion coefficient $D$ playing the role of thermal diffusivity $\alpha$. If you have solved heat diffusion problems in a slab or cylinder, you already know how to solve battery diffusion problems.
 
 From a circuits perspective, diffusion in one dimension has an equivalent circuit representation: the **Warburg impedance**, a distributed RC ladder network. In a semi-infinite uniform medium, the Warburg impedance goes as $Z_W \propto (j\omega)^{-1/2}$ — a 45-degree phase angle in the impedance plane, distinct from a pure resistor (0°) or capacitor (90°). This 45-degree signature appears in electrochemical impedance spectra and is a diagnostic fingerprint for diffusion-limited processes.
 
-#### The Diffusion Time Constant
+\subsubsection{The Diffusion Time Constant}
+
 
 How long does diffusion take? The characteristic time for a diffusing species to travel a distance $L$ is:
 
-$$\tau_\text{diff} = \frac{L^2}{D} \tag{2.6}$$
-
+\begin{equation}
+\tau_\text{diff} = \frac{L^2}{D} \tag{2.6}
+\end{equation}
 This is the most useful single formula for estimating whether diffusion is limiting a battery process. Let us plug in some numbers.
 
 Lithium-ion diffusion coefficient in liquid electrolyte: $D_{\text{Li}^+} \approx 10^{-10}$ m²/s. Thickness of a typical battery electrode: $L \approx 100$ µm = $10^{-4}$ m. Diffusion time:
@@ -998,35 +1108,41 @@ It is worth running the same calculation for a sodium-ion analogue to see where 
 
 Liquid-phase diffusion in SIB electrolytes is broadly comparable to Li-ion: $D_{\text{Na}^+} \approx 10^{-10}$ m²/s in typical carbonate solvents, with somewhat lower absolute values than Li⁺ in the same solvent because the Na⁺ ion drags a larger solvation shell. The Bruggeman-corrected diffusion time across a 100 µm porous electrode is therefore also about 1000 s, and the practical C-rate ceiling before concentration polarisation dominates sits in the same 3–5C neighbourhood. The transport physics of the two chemistries is quantitatively similar; the important differences are in the solid-state kinetics and the interfacial chemistry, not the liquid transport.
 
-### Migration
+\subsection{Migration}
+
 
 **Migration** is the directed motion of charged species in an electric field. In the electrolyte, both Li⁺ and PF₆⁻ ions experience the electric field set up by the potential difference across the cell, and they drift in opposite directions: Li⁺ toward the anode (which is negative during discharge), PF₆⁻ toward the cathode.
 
 The migration flux of species $i$ is:
 
-$$J_{\text{mig},i} = -z_i \frac{F}{RT} D_i c_i \frac{\partial \phi}{\partial x} \tag{2.7}$$
-
+\begin{equation}
+J_{\text{mig},i} = -z_i \frac{F}{RT} D_i c_i \frac{\partial \phi}{\partial x} \tag{2.7}
+\end{equation}
 where $z_i$ is the charge number of the species, $\phi$ is the electric potential, and the other symbols have their usual meanings. The full expression for the total flux of a charged species combines diffusion and migration:
 
-$$J_i = -D_i \frac{\partial c_i}{\partial x} - z_i \frac{F}{RT} D_i c_i \frac{\partial \phi}{\partial x} \tag{2.8}$$
-
+\begin{equation}
+J_i = -D_i \frac{\partial c_i}{\partial x} - z_i \frac{F}{RT} D_i c_i \frac{\partial \phi}{\partial x} \tag{2.8}
+\end{equation}
 This is the **Nernst-Planck equation** — one of the foundational equations of electrochemical transport. Notice that it contains both Fick's law (first term) and an electric field driving term (second term). In a battery, both terms are generally active simultaneously.
 
 An important practical point: in the electrolyte, only a fraction of the total ionic current is carried by Li⁺. The rest is carried by the anion (PF₆⁻). The fraction of current carried by Li⁺ is called the **transference number** $t_+$, and for typical LIB electrolytes, $t_+ \approx 0.35$–$0.4$. This means that 60–65% of the ionic current in the electrolyte is carried by the bulky, non-reactive PF₆⁻ anion. Only the Li⁺ current matters for the electrode reaction, so the effective capacity for ion delivery to the electrode is lower than the total ionic conductivity would suggest.
 
 Low transference number is also the origin of **concentration polarisation**. Here is the physical picture. Both Li⁺ and PF₆⁻ carry current in the electrolyte, but only Li⁺ is consumed at the cathode and generated at the anode — PF₆⁻ is electrochemically inert at both electrodes. If $t_+$ were equal to 1, Li⁺ migration alone would deliver exactly the current the reaction demands. Because $t_+ \approx 0.4$, migration under-supplies Li⁺ at the consuming electrode and over-supplies at the generating electrode, and the shortfall must be made up by *diffusion of the whole salt* — Li⁺ and PF₆⁻ moving together to preserve electroneutrality. This is why, under load, the salt concentration builds up near the anode (during discharge) and falls near the cathode. The resulting concentration gradient across the separator and electrodes limits rate capability, causes the voltage to sag more severely at high current, and is one of the reasons electrolytes with higher $t_+$ (a long-standing goal of polymer and single-ion-conductor research) are so eagerly pursued.
 
-### Convection
+\subsection{Convection}
+
 
 **Convection** is transport due to bulk fluid motion. In most battery cells, there is no externally driven flow — the electrolyte is not being pumped or stirred. However, small density-driven convection can occur due to concentration gradients, and gas evolution (from side reactions) can drive convective mixing. In most battery models and for most operating conditions, convection in the electrolyte is neglected. It does play a role in flow batteries (redox flow cells) where electrolyte is actively circulated, but that is outside our scope here.
 
 ---
 
-## Kinetic vs. Transport Limitations — Which Dominates When
+\section{Kinetic vs. Transport Limitations — Which Dominates When}
+
 
 We now have two distinct mechanisms that can limit the rate of a battery: **charge transfer kinetics** (the electrode reaction rate, governed by the Butler-Volmer equation and activation energy) and **mass transport** (diffusion and migration of ions to and from the reaction site). Understanding which one dominates under what conditions is crucial for interpreting performance data, choosing appropriate models, and diagnosing degradation.
 
-### The Two Types of Overpotential
+\subsection{The Two Types of Overpotential}
+
 
 The voltage loss (compared to the thermodynamic open-circuit voltage) in a real operating cell can be separated into contributions from different physical processes:
 
@@ -1038,15 +1154,18 @@ The voltage loss (compared to the thermodynamic open-circuit voltage) in a real 
 
 These three contributions add to give the total overpotential:
 
-$$\eta_\text{total} = \eta_\Omega + \eta_\text{act} + \eta_\text{conc} \tag{2.9}$$
-
+\begin{equation}
+\eta_\text{total} = \eta_\Omega + \eta_\text{act} + \eta_\text{conc} \tag{2.9}
+\end{equation}
 And the terminal voltage of a discharging cell is:
 
-$$V_\text{terminal} = E_\text{OCV} - \eta_\text{total} \tag{2.10}$$
-
+\begin{equation}
+V_\text{terminal} = E_\text{OCV} - \eta_\text{total} \tag{2.10}
+\end{equation}
 (For a charging cell, $V_\text{terminal} = E_\text{OCV} + \eta_\text{total}$, since overpotentials always oppose the reaction.)
 
-### A Note on Charge/Discharge Symmetry
+\subsection{A Note on Charge/Discharge Symmetry}
+
 
 Everything we have said so far has implicitly assumed a discharging cell. The language has reflected this: "voltage sag," "voltage drop under load," "the cathode during discharge," and so on. Before we go further, it is worth pausing to make the symmetry explicit, because a surprising amount of later confusion traces back to not having done so.
 
@@ -1056,7 +1175,8 @@ Concretely: during discharge, Li⁺ flows from the graphite electrode through th
 
 There are two practical asymmetries worth flagging, even though they do not break the underlying symmetry of the equations. First, fast charging is mechanically harder than fast discharging because of lithium plating: if you push Li⁺ into a graphite electrode faster than it can intercalate, the excess Li⁺ reduces to metallic lithium on the graphite surface rather than inserting into the lattice, and that metallic lithium is largely irreversible (and a safety hazard — we will return to it in Chapter 7). There is no analogous failure mode on the discharge side. Second, the concentration polarisation at high C-rate develops in opposite directions on charge and discharge, which means the rate at which you can safely push current may be asymmetric in the two directions for a given cell design. Otherwise, everything you have learned in this chapter about how voltages and overpotentials and time constants behave under load applies equally to charging and discharging. When Chapter 10 asks you to reason about state estimation during regenerative braking in an EV — a scenario in which charge and discharge alternate on a second-by-second timescale — you will lean on this symmetry heavily.
 
-### Identifying Which Dominates
+\subsection{Identifying Which Dominates}
+
 
 A useful physical heuristic for deciding which limitation dominates:
 
@@ -1085,22 +1205,26 @@ We will use these signatures extensively in Chapter 3 when we discuss characteri
 
 ---
 
-## Introduction to the Butler-Volmer Equation (Intuition Only)
+\section{Introduction to the Butler-Volmer Equation (Intuition Only)}
+
 
 We have been circling the Butler-Volmer equation throughout this chapter: we know it relates current to overpotential at an electrode surface, we know it is nonlinear, and we know it is the kinetic companion to the Nernst equation (which governs equilibrium). Let us now develop enough intuition for it that the full derivation, when it comes, will feel like confirmation of what we already believed.
 
-### The Analogy to a Diode
+\subsection{The Analogy to a Diode}
+
 
 Consider the current-voltage characteristic of a p-n junction diode. The Shockley diode equation is:
 
-$$I = I_s \left[\exp\left(\frac{V}{V_T}\right) - 1\right] \tag{2.11}$$
-
+\begin{equation}
+I = I_s \left[\exp\left(\frac{V}{V_T}\right) - 1\right] \tag{2.11}
+\end{equation}
 where $I_s$ is the reverse saturation current, $V$ is the forward voltage, and $V_T = kT/q$ is the thermal voltage (~26 mV at room temperature). The diode characteristic is exponential for forward bias and saturates at $-I_s$ for reverse bias.
 
 The Butler-Volmer equation has exactly this structure, but for an electrode reaction:
 
-$$i = i_0 \left[\exp\left(\frac{\alpha_a F \eta}{RT}\right) - \exp\left(-\frac{\alpha_c F \eta}{RT}\right)\right] \tag{2.12}$$
-
+\begin{equation}
+i = i_0 \left[\exp\left(\frac{\alpha_a F \eta}{RT}\right) - \exp\left(-\frac{\alpha_c F \eta}{RT}\right)\right] \tag{2.12}
+\end{equation}
 where $i$ is the current density (A/m²), $i_0$ is the **exchange current density** (A/m²), $\eta = E - E_\text{eq}$ is the overpotential, and $\alpha_a$ and $\alpha_c$ are the **anodic and cathodic transfer coefficients**, with $\alpha_a + \alpha_c = 1$ (and often $\alpha_a = \alpha_c = 0.5$ for symmetric reactions).
 
 Compare equations (2.11) and (2.12):
@@ -1112,7 +1236,8 @@ Compare equations (2.11) and (2.12):
 
 The **exchange current density $i_0$** deserves special attention. It is the current density flowing in each direction (forward and reverse) when the electrode is exactly at its equilibrium potential ($\eta = 0$). At equilibrium, the forward and reverse reactions are balanced and there is no net current — but they are not static. Lithium ions are continuously being reduced into the graphite and continuously being oxidised back out, at equal rates. The exchange current density is the magnitude of these balanced fluxes. A high $i_0$ means the electrode reaction is facile — small overpotentials drive large currents. A low $i_0$ means the reaction is sluggish — large overpotentials are needed to drive even modest currents.
 
-### The Four Regimes of Butler-Volmer
+\subsection{The Four Regimes of Butler-Volmer}
+
 
 Let us examine the Butler-Volmer equation qualitatively in each of four regimes:
 
@@ -1122,14 +1247,16 @@ $$i \approx i_0 \left[\left(1 + \frac{\alpha_a F\eta}{RT}\right) - \left(1 - \fr
 
 The constant terms cancel, the two linear terms *add* (note the minus signs on the second exponential and on the second $\alpha$ both flipping), and the transfer coefficients conveniently sum to one. The electrode behaves like a linear resistor:
 
-$$R_\text{ct} = \frac{RT}{i_0 F A} \tag{2.13}$$
-
+\begin{equation}
+R_\text{ct} = \frac{RT}{i_0 F A} \tag{2.13}
+\end{equation}
 where $A$ is the electrode area. This is the **charge-transfer resistance** that appears in the equivalent circuit model and in impedance spectra. Notice that $R_\text{ct}$ is inversely proportional to $i_0$: a facile electrode (high $i_0$) has low charge-transfer resistance.
 
 **Anodic Tafel regime** ($\eta \gg RT/F$, positive overpotential): The cathodic exponential becomes negligible:
 
-$$i \approx i_0 \exp\left(\frac{\alpha_a F \eta}{RT}\right) \tag{2.14}$$
-
+\begin{equation}
+i \approx i_0 \exp\left(\frac{\alpha_a F \eta}{RT}\right) \tag{2.14}
+\end{equation}
 Taking the logarithm: $\ln i = \ln i_0 + \alpha_a F \eta / RT$. A plot of $\ln(i)$ vs. $\eta$ is linear — this is the **Tafel plot**, and its slope $\alpha_a F / RT$ gives the transfer coefficient.
 
 Two practical rules at room temperature, both worth committing to memory. First, with $\alpha = 0.5$, each ~51 mV of additional overpotential multiplies the current by a factor of $e$ (because $RT/(\alpha F) = 0.0257/0.5 \approx 0.0514$ V). Second, the *Tafel slope* — the slope of $\eta$ versus $\log_{10} i$ — is $2.303 RT/(\alpha F) \approx 118$ mV/decade for $\alpha = 0.5$. A Tafel slope of 59 mV/decade, often quoted in electroanalytical textbooks, corresponds to $\alpha = 1$ (full-barrier transfer) and is characteristic of certain outer-sphere redox couples, not of intercalation electrodes. When you see a Tafel slope reported in a paper, the first thing to check is which $\alpha$ it implies.
@@ -1138,23 +1265,28 @@ Two practical rules at room temperature, both worth committing to memory. First,
 
 **Concentration-limited regime**: When the current becomes large enough that the surface concentration of the reacting species drops to zero, the concentration term in $i_0$ (which depends on surface concentration) goes to zero, and no further increase in overpotential can increase the current. This is the limiting current, determined by mass transport.
 
-### What $i_0$ Depends On
+\subsection{What $i_0$ Depends On}
+
 
 The exchange current density depends on temperature (Arrhenius), on the surface concentration of the reacting species, and on the electrode material and its surface chemistry (including the SEI). These dependencies are what connect the kinetic picture back to the transport and materials picture:
 
-$$i_0 = F k_0 \, c_{\text{Li}^+}^{\,1-\alpha} \, c_{\text{Li,max}}^{\,\alpha} \, (1-x)^{\alpha} \, x^{1-\alpha} \tag{2.15}$$
-
+\begin{equation}
+i_0 = F k_0 \, c_{\text{Li}^+}^{\,1-\alpha} \, c_{\text{Li,max}}^{\,\alpha} \, (1-x)^{\alpha} \, x^{1-\alpha} \tag{2.15}
+\end{equation}
 where $k_0$ is the rate constant for the electrode reaction, $c_{\text{Li}^+}$ is the Li⁺ concentration in the electrolyte at the electrode surface, $c_{\text{Li,max}}$ is the maximum lithium concentration in the host material, and $x$ is the state of lithiation (fraction of sites occupied). As $x \to 0$ (nearly empty electrode) or $x \to 1$ (nearly full electrode), $i_0 \to 0$ — the electrode reaction slows at the extremes of its composition range, because there are either too few lithium ions in the host to be oxidised or too few vacancies to accept new lithium. This is why cells become harder to charge near full state of charge and harder to discharge near empty state of charge, independent of the Nernst-equation voltage changes.
 
 We will derive the Butler-Volmer equation from first principles in a later chapter, using transition state theory. Before moving on, let us consolidate. Butler-Volmer is the nonlinear current–voltage relationship at an electrode surface — the battery equivalent of the diode equation, with two exponential branches instead of one. The exchange current density $i_0$ sets the overall scale: a facile electrode has high $i_0$, low activation overpotential, and low charge-transfer resistance; a sluggish electrode has the opposite. At small overpotentials the electrode is a linear resistor with $R_\text{ct} = RT/(i_0 F A)$, and at large overpotentials the current grows exponentially in the Tafel regime. Finally, because $i_0$ itself carries an Arrhenius temperature dependence, the electrode kinetics collapse exponentially as the cell cools — and this is the root-cause physical explanation for why batteries lose so much of their power capability in the cold.
 
 ---
 
-## Worked Interpretation Exercise: The Voltage Relaxation Experiment
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{The Voltage Relaxation Experiment}
+
+\specialsectionstyle
+
 
 Here is a real experimental observation from a standard battery characterisation test, and we will use the physical concepts from this chapter to interpret it completely.
 
-**The experiment:** A fully charged 18650 NMC/graphite cell (rated 3.0 Ah, nominal voltage 3.6 V, Panasonic NCR18650B) is discharged at a constant 3.0 A (1C) for 600 seconds. Current is then switched off. The following voltage profile is observed:
+**The experiment:** A fully charged commercial 18650 layered-oxide/graphite cell (Panasonic NCR18650B, rated 3.0 Ah, nominal voltage 3.6 V) is discharged at a constant 3.0 A (1C) for 600 seconds. Current is then switched off. The following voltage profile is observed:
 
 - Before current starts: $V = 4.16$ V (resting OCV, fully charged)
 - Immediately when 3A current starts: voltage drops to 3.97 V (a 190 mV instant drop)
@@ -1169,17 +1301,22 @@ Let us interpret each feature using the physics from this chapter.
 
 **The gradual voltage decline during discharge** is the build-up of activation overpotential ($\eta_\text{act}$, which rises as the electrode surfaces become more chemically perturbed) and concentration overpotential ($\eta_\text{conc}$, which grows as concentration gradients develop across the electrodes and separator). The Nernst-equation change (OCV decreasing as SOC decreases) is also included in this gradual decline — distinguishing kinetic and thermodynamic contributions requires a separate OCV measurement, which is why GITT (Section 3.10) is needed for clean characterisation.
 
-**The 120 mV instant recovery at current switch-off** is the immediate disappearance of the ohmic overpotential. The current is zero; $\eta_\Omega = IR_\Omega = 0$ instantly. Notice, though, that the instant recovery (120 mV) is smaller than the instant drop (190 mV) at current onset. The ohmic resistance itself has not changed — a 63 mΩ resistance at $t=0$ is still 63 mΩ at $t=600$ s. What has changed is the OCV. During 600 s of 3 A discharge we extracted $Q = 3.0 \text{ A} \times 600 \text{ s} = 1800 \text{ C}$ of charge, which is $1800/3600 = 0.5$ Ah out of a 3.0 Ah cell — roughly 17% of the cell's capacity, or a ΔSOC of about 0.17. For an NMC cell in the high-SOC region, the OCV slope is roughly 400 mV per full SOC swing, so a 0.17 ΔSOC corresponds to an OCV drop of about $0.17 \times 0.4 \approx 70$ mV. That 70 mV is exactly the difference between the 190 mV instant drop at current onset and the 120 mV instant recovery at current switch-off. The arithmetic reconciles to within the rounding of our reading precision, and we have extracted two separate quantities — $R_\Omega$ and $dV_\text{OCV}/d\text{SOC}$ — from what looked like a single voltage trace.
+**The 120 mV instant recovery at current switch-off** is the immediate disappearance of the ohmic overpotential. The current is zero; $\eta_\Omega = IR_\Omega = 0$ instantly. Notice, though, that the instant recovery (120 mV) is smaller than the instant drop (190 mV) at current onset. The ohmic resistance itself has not changed — a 63 mΩ resistance at $t=0$ is still 63 mΩ at $t=600$ s. What has changed is the OCV. During 600 s of 3 A discharge we extracted $Q = 3.0 \text{ A} \times 600 \text{ s} = 1800 \text{ C}$ of charge, which is $1800/3600 = 0.5$ Ah out of a 3.0 Ah cell — roughly 17% of the cell's capacity, or a ΔSOC of about 0.17. For a layered-oxide/graphite 18650 cell in the high-SOC region, the OCV slope is roughly 400 mV per full SOC swing, so a 0.17 ΔSOC corresponds to an OCV drop of about $0.17 \times 0.4 \approx 70$ mV. That 70 mV is exactly the difference between the 190 mV instant drop at current onset and the 120 mV instant recovery at current switch-off. The arithmetic reconciles to within the rounding of our reading precision, and we have extracted two separate quantities — $R_\Omega$ and $dV_\text{OCV}/d\text{SOC}$ — from what looked like a single voltage trace.
 
 **The slow 110 mV recovery over 600 s** is the relaxation of the activation and concentration overpotentials. The fast component (milliseconds to seconds, barely visible in this data) is the RC discharge of the double-layer capacitance — the activation overpotential decays as the electrode surfaces return to equilibrium. The slow component (seconds to minutes) is the diffusion of lithium ions re-equilibrating their concentration gradients across the electrodes and separator. The fact that this takes several minutes confirms our earlier estimate that diffusion across a 100 µm electrode layer (with the Bruggeman correction) takes on the order of a few hundred to a thousand seconds.
 
-**The new OCV at 3.88 V rather than 4.16 V** simply reflects that the cell has been partially discharged. The OCV is lower because the cathode has been lithiated further (lower potential) and the anode has been delithiated (higher potential, but less — the voltage is dominated by the cathode in an NMC cell at high SOC).
+**The new OCV at 3.88 V rather than 4.16 V** simply reflects that the cell has been partially discharged. The OCV is lower because the cathode has been lithiated further (lower potential) and the anode has been delithiated (higher potential, but less — in a layered-oxide/graphite cell, the voltage change in this region is dominated by the positive-electrode OCV slope).
 
 By interpreting a single voltage relaxation trace, we have identified the ohmic resistance (63 mΩ), confirmed the presence of activation and diffusion overpotentials, observed their different time constants, and read off the OCV change due to discharge. This kind of physical interpretation is what battery engineers do every day, and it relies entirely on the framework developed in this chapter.
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The physics of this chapter — intercalation, SEI, double-layer capacitance, Butler-Volmer, diffusion — all apply equally to sodium-ion batteries. But several parameters take different values, and a few mechanisms are qualitatively different.
 
@@ -1195,7 +1332,12 @@ We will return to all of these differences systematically in Chapters 6 and 13. 
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -1208,27 +1350,39 @@ We will return to all of these differences systematically in Chapters 6 and 13. 
 
 **Key equations:**
 
-$$C_\text{dl} = \frac{\varepsilon_r \varepsilon_0 A}{d} \quad \text{(double-layer capacitance)} \tag{2.1}$$
-
-$$J = -D \frac{\partial c}{\partial x} \quad \text{(Fick's First Law)} \tag{2.4}$$
-
-$$\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} \quad \text{(Fick's Second Law)} \tag{2.5}$$
-
-$$\tau_\text{diff} = \frac{L^2}{D} \quad \text{(diffusion time constant)} \tag{2.6}$$
-
-$$i = i_0 \left[\exp\!\left(\frac{\alpha_a F \eta}{RT}\right) - \exp\!\left(-\frac{\alpha_c F \eta}{RT}\right)\right] \quad \text{(Butler-Volmer)} \tag{2.12}$$
-
-$$R_\text{ct} = \frac{RT}{i_0 F A} \quad \text{(charge-transfer resistance, linear regime)} \tag{2.13}$$
-
-$$V_\text{terminal} = E_\text{OCV} - \eta_\Omega - \eta_\text{act} - \eta_\text{conc} \quad \text{(terminal voltage, discharge)} \tag{2.10}$$
-
+\begin{equation}
+C_\text{dl} = \frac{\varepsilon_r \varepsilon_0 A}{d} \quad \text{(double-layer capacitance)} \tag{2.1}
+\end{equation}
+\begin{equation}
+J = -D \frac{\partial c}{\partial x} \quad \text{(Fick's First Law)} \tag{2.4}
+\end{equation}
+\begin{equation}
+\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} \quad \text{(Fick's Second Law)} \tag{2.5}
+\end{equation}
+\begin{equation}
+\tau_\text{diff} = \frac{L^2}{D} \quad \text{(diffusion time constant)} \tag{2.6}
+\end{equation}
+\begin{equation}
+i = i_0 \left[\exp\!\left(\frac{\alpha_a F \eta}{RT}\right) - \exp\!\left(-\frac{\alpha_c F \eta}{RT}\right)\right] \quad \text{(Butler-Volmer)} \tag{2.12}
+\end{equation}
+\begin{equation}
+R_\text{ct} = \frac{RT}{i_0 F A} \quad \text{(charge-transfer resistance, linear regime)} \tag{2.13}
+\end{equation}
+\begin{equation}
+V_\text{terminal} = E_\text{OCV} - \eta_\Omega - \eta_\text{act} - \eta_\text{conc} \quad \text{(terminal voltage, discharge)} \tag{2.10}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Intercalation, host material, guest ion, hard carbon, layered oxide, spinel, olivine, polyanionic, two-phase reaction, single-phase reaction, solid-electrolyte interphase (SEI), passivation, loss of lithium inventory (LLI), first-cycle Coulombic efficiency, initial Coulombic efficiency (ICE), electric double layer (EDL), Helmholtz plane, diffuse layer, double-layer capacitance, overpotential, activation energy, transfer coefficient, exchange current density, charge-transfer resistance, Fick's laws, diffusion coefficient, Nernst-Planck equation, transference number, Warburg impedance, Bruggeman correction, ohmic overpotential, activation overpotential, concentration overpotential, Butler-Volmer equation, Tafel regime.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Draw a labeled diagram of a Li-ion cell during discharge showing ion flow, electron flow, and where each loss mechanism occurs.
 
@@ -1239,7 +1393,7 @@ Intercalation, host material, guest ion, hard carbon, layered oxide, spinel, oli
 3. Location of ohmic drop (across the electrolyte and electrode matrices)
 4. Location of activation overpotential (at the electrode–electrolyte interface, both sides)
 5. Location of concentration overpotential (within the electrode pore electrolyte and at electrode surfaces)
-6. Location of SEI (thin film on graphite surface and, to a lesser extent, on LCO surface)
+6. Location of interphases: SEI on the graphite surface and the cathode-electrolyte interphase (CEI) on the positive-electrode surface
 
 A partial ASCII sketch to get you started — annotate and extend this:
 
@@ -1259,7 +1413,12 @@ On your diagram, also annotate which processes are slower (diffusion in solid �
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Huggins, R. A., *Advanced Batteries: Materials Science Aspects*, Springer (2009), Chapters 3–4.** Huggins is exceptional on the physical meaning of intercalation, the thermodynamics of solid-solution reactions versus two-phase reactions, and the connection between crystal structure and voltage profile shape. Chapters 3–4 are the direct complement to Sections 2.1 and 2.2 of this chapter.
 
@@ -1270,13 +1429,17 @@ On your diagram, also annotate which processes are slower (diffusion in solid �
 4. **Bard, A. J. and Faulkner, L. R., *Electrochemical Methods: Fundamentals and Applications*, Wiley (2nd edition, 2001), Chapter 3.** The canonical derivation and discussion of the Butler-Volmer equation, Tafel behaviour, and exchange current density. The treatment of the electrical double layer in Chapter 13 is also excellent.
 
 5. **Doyle, M., Fuller, T. F., and Newman, J., "Modeling of Galvanostatic Charge and Discharge of the Lithium/Polymer/Insertion Cell," *Journal of the Electrochemical Society* 140 (6), 1526–1533 (1993).** The paper that established the Doyle-Fuller-Newman (DFN) model — the foundational physics-based model that formalises everything in this chapter into a complete set of coupled PDEs. Reading this after Chapter 2 gives you the jump from physical intuition to mathematical model.
+\bodytextstyle
+
 
 
 \newpage
 
-# Performance Metrics and Terminology
+\chapter{Performance Metrics and Terminology}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Imagine picking up a cell datasheet for the first time. It is a dense document, usually two to four pages, packed with numbers, graphs, and abbreviations. There is a discharge capacity at multiple C-rates, a family of voltage curves, a cycle life plot that descends to 80% of something, a table of temperatures with associated capacities, a graph labelled "DCIR" with values in milliohms, a note about CC-CV charging, and perhaps a Ragone plot tucked into a corner. If you have been reading this book from the beginning, you now know enough electrochemistry to understand *why* these numbers exist — you know about half-reactions, overpotentials, diffusion limitations, and the three-component voltage equation. What you may not yet have is the engineering vocabulary to *name* what you are looking at and to connect each measurement on the datasheet to the physical processes beneath it.
 
@@ -1313,39 +1476,49 @@ We will work with real numbers throughout. Battery engineering is a quantitative
 
 ---
 
-## Capacity (Ah) vs. Energy (Wh): Specific vs. Volumetric
+\bodytextstyle
+
+\section{Capacity (Ah) vs. Energy (Wh): Specific vs. Volumetric}
+
 
 The first and most fundamental metric of a battery is its **capacity** — how much charge it can store and deliver. Before we can define capacity precisely, we need to agree on what we mean, because the word is used in two senses that are related but not identical.
 
-### Charge Capacity
+\subsection{Charge Capacity}
+
 
 The **charge capacity** $Q$ of a cell is the total charge it can deliver under specified conditions, measured in ampere-hours (Ah) or milliampere-hours (mAh). The defining relationship is:
 
-$$Q = \int_0^{t_d} I(t)\, dt \tag{3.1}$$
-
+\begin{equation}
+Q = \int_0^{t_d} I(t)\, dt \tag{3.1}
+\end{equation}
 where $I(t)$ is the discharge current (in amperes) and $t_d$ is the time until the voltage reaches a specified **cutoff voltage** $V_\text{cutoff}$. For a constant-current discharge at current $I$:
 
-$$Q = I \cdot t_d \tag{3.2}$$
-
+\begin{equation}
+Q = I \cdot t_d \tag{3.2}
+\end{equation}
 This is the simplest case: a 3.0 Ah cell discharged at 1.0 A for 3 hours delivers 3.0 Ah. But capacity is not a single fixed number — it depends on the rate of discharge, the temperature, and the cutoff voltage. A cell rated at 3.0 Ah at C/5 (a slow discharge over 5 hours) might deliver only 2.6 Ah at 1C (discharged in one hour) because concentration overpotential depletes the surface of the electrode before the bulk is exhausted, causing the voltage to hit the cutoff early. We will quantify this rate dependence in Section 3.2.
 
-### Energy
+\subsection{Energy}
+
 
 **Energy** $E$ is what you actually want from a battery in most applications. It is the integral of power over time:
 
-$$E = \int_0^{t_d} V(t)\, I(t)\, dt \tag{3.3}$$
-
+\begin{equation}
+E = \int_0^{t_d} V(t)\, I(t)\, dt \tag{3.3}
+\end{equation}
 and it is measured in watt-hours (Wh) or kilowatt-hours (kWh). For a constant-current discharge:
 
-$$E = \bar{V} \cdot Q \tag{3.4}$$
-
+\begin{equation}
+E = \bar{V} \cdot Q \tag{3.4}
+\end{equation}
 where $\bar{V}$ is the average discharge voltage. The relationship $E = \bar{V} \cdot Q$ is the most important equation in practical battery engineering — it says that energy is the product of how much charge you move and at what average voltage you move it. Both factors matter.
 
 A cell with a capacity of 3.0 Ah at a nominal voltage of 3.6 V contains $3.0 \times 3.6 = 10.8$ Wh of energy. The same capacity at 3.2 V (LFP chemistry) contains only $3.0 \times 3.2 = 9.6$ Wh — 11% less, just from the lower chemistry voltage.
 
 **Students sometimes confuse capacity (Ah) with energy (Wh).** They are related by voltage but are distinct quantities. When a BMS calculates "state of charge" using coulomb counting, it tracks charge (Ah), not energy (Wh). When comparing battery packs across chemistries with different nominal voltages, energy (Wh) is the fair comparison. A system that says "100 Ah pack" without specifying voltage is only telling you half the story.
 
-### Specific and Volumetric Metrics
+\subsection{Specific and Volumetric Metrics}
+
 
 Capacity and energy per se are extensive quantities — they scale with the size of the cell. More useful for comparing different cells and chemistries are the normalised, **intensive** quantities:
 
@@ -1380,23 +1553,27 @@ A useful calibration for an EE: the best electrolytic capacitors store about 0.0
 
 ---
 
-## C-Rate and What "1C" Actually Means
+\section{C-Rate and What "1C" Actually Means}
+
 
 The **C-rate** is one of the most commonly used and most commonly misunderstood terms in battery engineering. It is not a unit — it is a normalised rate of charge or discharge relative to the cell's capacity.
 
-### Definition
+\subsection{Definition}
+
 
 The C-rate is defined such that a discharge at **1C** completely discharges a cell (from full to empty) in exactly one hour. A charge at **1C** fully charges a cell in one hour. More generally, a discharge at **$n$C** completes in $1/n$ hours; a charge at **$n$C** completes in $1/n$ hours.
 
 The current corresponding to 1C is:
 
-$$I_{1C} = \frac{Q_\text{rated}}{1 \text{ hour}} \tag{3.5}$$
-
+\begin{equation}
+I_{1C} = \frac{Q_\text{rated}}{1 \text{ hour}} \tag{3.5}
+\end{equation}
 For a cell with rated capacity 3.0 Ah, $I_{1C} = 3.0$ A. A 2C discharge draws 6.0 A; a C/5 (0.2C) discharge draws 0.6 A.
 
 This is the reason C-rate is useful: it allows comparison across cells of different sizes. A 1C discharge of a 3 Ah cell (3 A) and a 1C discharge of a 300 Ah bus battery (300 A) place the same relative electrochemical stress on both cells — both will nominally empty in one hour, and both have the same ratio of current to available lithium inventory.
 
-### The Complication: Capacity Depends on C-Rate
+\subsection{The Complication: Capacity Depends on C-Rate}
+
 
 Here is the subtlety that trips up beginners. The rated capacity $Q_\text{rated}$ used to define 1C is itself measured at a specific (usually low) rate, often C/5 or C/10. But the actual deliverable capacity decreases at higher rates, because concentration overpotential drives the terminal voltage to the cutoff before all the charge has been extracted. So the "capacity" in the denominator of the C-rate definition is not the capacity at that C-rate — it is a reference capacity at a standard rate.
 
@@ -1404,7 +1581,8 @@ Here is the subtlety that trips up beginners. The rated capacity $Q_\text{rated}
 
 As a rule of thumb for a good-quality NMC cell: the deliverable capacity at 2C is about 93–96% of the rated capacity; at 5C it is roughly 80–90%; at 10C it may be 60–75%. These numbers degrade significantly at low temperature.
 
-### Practical Notes
+\subsection{Practical Notes}
+
 
 The C-rate convention is not perfectly consistent across the industry. Some manufacturers define 1C based on the actual delivered capacity at that rate, which leads to circular definitions. Others define it based on the nominal capacity printed on the label, which may differ from the measured capacity. Always check how a manufacturer defines their C-rate when interpreting datasheet curves.
 
@@ -1412,42 +1590,50 @@ When you see a Ragone plot — a plot of specific power vs. specific energy, usu
 
 ---
 
-## State of Charge, Depth of Discharge, State of Health
+\section{State of Charge, Depth of Discharge, State of Health}
+
 
 Three state variables appear constantly in battery management systems and in the literature. Defining them precisely matters because imprecise use of these terms causes confusion in both modelling and engineering.
 
-### State of Charge
+\subsection{State of Charge}
 
-**State of charge (SOC)** is the fraction of the cell's usable charge capacity that is currently stored, expressed as a percentage or decimal:
 
-$$\text{SOC} = \frac{Q_\text{remaining}}{Q_\text{max}} \times 100\% \tag{3.6}$$
+**State of charge (SOC)** is the fraction of the cell's usable charge capacity that is currently stored, expressed either as a decimal fraction or, after multiplying by 100, as a percentage:
 
+\begin{equation}
+\text{SOC} = \frac{Q_\text{remaining}}{Q_\text{max}} \tag{3.6}
+\end{equation}
 where $Q_\text{remaining}$ is the charge currently available for discharge (under the same conditions used to measure $Q_\text{max}$) and $Q_\text{max}$ is the maximum deliverable capacity of the cell in its current state of health.
 
 SOC = 100% means the cell is fully charged. SOC = 0% means the cell is at its lower cutoff voltage under the reference conditions — not that all lithium has been extracted from the electrode (the lower cutoff voltage is set conservatively above the structural instability limits of the electrodes).
 
 The critical point is that SOC is defined relative to $Q_\text{max}$, which itself degrades over the cell's life. A cell that once had $Q_\text{max} = 3.0$ Ah and now has $Q_\text{max} = 2.7$ Ah (after degradation) can still reach SOC = 100% — it just stores less total charge. SOC tracks *fractional* fill level, not absolute charge.
 
-### Depth of Discharge
+\subsection{Depth of Discharge}
+
 
 **Depth of discharge (DOD)** is the complement of SOC:
 
-$$\text{DOD} = 1 - \text{SOC} = \frac{Q_\text{discharged}}{Q_\text{max}} \tag{3.7}$$
-
+\begin{equation}
+\text{DOD} = 1 - \text{SOC} = \frac{Q_\text{discharged}}{Q_\text{max}} \tag{3.7}
+\end{equation}
 DOD = 0% means fully charged (SOC = 100%). DOD = 100% means fully discharged (SOC = 0%). DOD is preferred in degradation discussions because stress on the electrodes is often framed as how deeply the cell was discharged: a DOD of 80% (which means SOC swung from 100% to 20%) is more mechanically stressful than a DOD of 20% (SOC swings from 60% to 40%), because the volume change of the electrode materials scales with lithiation range.
 
 The relationship between cycle life and DOD is a key degradation parameter. We will establish empirical models for it in Chapter 7, but qualitatively: shallow cycling (low DOD) dramatically extends cycle life. A cell rated for 500 full cycles (100% DOD) might survive 3,000+ cycles if cycled over only 20% DOD, because the electrode volume changes are much smaller and the SEI stress is reduced.
 
-### State of Health
+\subsection{State of Health}
+
 
 **State of health (SOH)** is a scalar metric (percentage or decimal) that captures how degraded a cell is relative to its beginning-of-life specifications. It is not a single standardised quantity — the industry uses several definitions, and you will see all of them in the literature.
 
 The two most common definitions are **capacity-based SOH** and **resistance-based SOH**:
 
-$$\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{max}(t=0)} \times 100\% \tag{3.8}$$
-
-$$\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \times 100\% \tag{3.9}$$
-
+\begin{equation}
+\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{max}(t=0)} \tag{3.8}
+\end{equation}
+\begin{equation}
+\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \tag{3.9}
+\end{equation}
 where $Q_\text{max}(t)$ is the current maximum capacity and $Q_\text{max}(t=0)$ is the beginning-of-life capacity; $R_0(t)$ is the current internal resistance and $R_0(t=0)$ is the beginning-of-life resistance.
 
 The conventional **end-of-life (EOL)** criterion for traction batteries is SOH$_Q = 80\%$ — that is, when the cell retains only 80% of its original capacity. This is somewhat arbitrary (why not 75% or 85%?), but it has become a de facto industry standard for EV batteries. The choice reflects a balance between two pressures: on the one hand, drivers tolerate a noticeable but not crippling range loss at 80%; on the other, capacity fade in many lithium-ion chemistries accelerates noticeably below ~80%, so the "knee" of the fade curve provides a natural stopping point. Different applications use different thresholds — grid storage often targets 70%, aviation as high as 90%.
@@ -1456,11 +1642,13 @@ A subtlety: capacity-fade SOH and resistance-rise SOH do not always track togeth
 
 ---
 
-## Open-Circuit Voltage vs. Terminal Voltage; Why OCV Curve Shape Matters for BMS
+\section{Open-Circuit Voltage vs. Terminal Voltage; Why OCV Curve Shape Matters for BMS}
+
 
 The distinction between **open-circuit voltage (OCV)** and **terminal voltage** ($V_\text{terminal}$) is fundamental to everything from Nernst-equation thermodynamics to BMS state estimation, yet the two are often conflated in casual usage.
 
-### Open-Circuit Voltage
+\subsection{Open-Circuit Voltage}
+
 
 The **open-circuit voltage** is the voltage measured across the cell's terminals when no current is flowing — or, more precisely, when the cell has been allowed to relax to thermodynamic equilibrium after any prior current. Conceptually, OCV is the equilibrium electrode potential difference between the two electrodes, as the Nernst equation predicts for the current composition (SOC) of each electrode.
 
@@ -1470,19 +1658,23 @@ For battery modelling purposes, the OCV curve $E_\text{OCV}(\text{SOC})$ is the 
 
 Why does relaxation take hours rather than seconds? The slow relaxation is the long-time tail of solid-state diffusion: after the current stops, lithium concentrations within the active particles are non-uniform (high at the surface during charge, depleted at the surface during discharge), and re-equilibration occurs by diffusion through the particles, which is slow. The relevant time constant is $\tau_\text{diff} \sim r^2 / D_s$, where $r$ is the particle radius and $D_s$ is the solid-state diffusion coefficient. For a 5 µm NMC particle with $D_s \sim 10^{-14}\,\text{m}^2/\text{s}$, $\tau_\text{diff} \sim (5 \times 10^{-6})^2 / 10^{-14} = 2{,}500$ seconds, or about 40 minutes. For thicker electrodes, additional liquid-phase relaxation in the porous matrix adds further slow components. The picture an EE should hold is that of an RC ladder network with a wide spread of time constants — and full relaxation requires waiting out the longest of them.
 
-### Terminal Voltage
+\subsection{Terminal Voltage}
+
 
 The **terminal voltage** is what you actually measure across the cell terminals during operation — under current. It differs from OCV by the sum of overpotentials. During discharge, all three overpotentials subtract from the equilibrium OCV:
 
-$$V_\text{terminal} = E_\text{OCV}(\text{SOC}) - \eta_\Omega - \eta_\text{act} - \eta_\text{conc} \tag{3.10}$$
-
+\begin{equation}
+V_\text{terminal} = E_\text{OCV}(\text{SOC}) - \eta_\Omega - \eta_\text{act} - \eta_\text{conc} \tag{3.10}
+\end{equation}
 During charge, all three overpotentials add to the equilibrium OCV:
 
-$$V_\text{terminal} = E_\text{OCV}(\text{SOC}) + \eta_\Omega + \eta_\text{act} + \eta_\text{conc} \tag{3.11}$$
-
+\begin{equation}
+V_\text{terminal} = E_\text{OCV}(\text{SOC}) + \eta_\Omega + \eta_\text{act} + \eta_\text{conc} \tag{3.11}
+\end{equation}
 In discharge, the voltage is pulled below OCV by the overpotentials. In charge, it is pushed above OCV. The size of these deviations — the "spread" between the charge and discharge curves at a given SOC — is a measure of the cell's internal loss.
 
-### Why OCV Curve Shape Matters for BMS
+\subsection{Why OCV Curve Shape Matters for BMS}
+
 
 The shape of the OCV-vs-SOC curve has enormous practical consequences for the accuracy of SOC estimation in a battery management system.
 
@@ -1492,7 +1684,8 @@ If the OCV curve is flat — voltage barely changes with SOC over a wide range �
 
 Hard carbon anodes in sodium-ion batteries present an even more extreme version of this problem. Their OCV curve has a very flat plateau at low potential (below ~0.1 V vs. Na/Na⁺) that accounts for a substantial fraction of the cell capacity (recall the plateau from the worked exercise in Chapter 1). The full cell OCV of a hard carbon/layered oxide SIB therefore has a flat region that is even harder to work with than LFP. This is one of the most practically important challenges for SIB BMS design, and we will address it specifically in Chapters 10 and 13.
 
-### Hysteresis
+\subsection{Hysteresis}
+
 
 One more subtlety about OCV: many battery chemistries exhibit **OCV hysteresis** — the OCV measured after charging to a given SOC is slightly higher than the OCV measured after discharging to the same SOC. The cell remembers (weakly and temporarily) the direction from which it arrived at its current SOC.
 
@@ -1502,16 +1695,19 @@ The practical implication is that a BMS that uses an OCV lookup table must use s
 
 ---
 
-## Internal Resistance and the Three Polarizations
+\section{Internal Resistance and the Three Polarizations}
+
 
 A cell's **internal resistance** is a catch-all term for the collection of mechanisms that cause the terminal voltage to deviate from OCV under current. (You will see two words used interchangeably for these voltage deviations in the literature: **overpotential** and **polarisation**. They mean the same thing — the deviation of the electrode potential from its equilibrium value caused by the passage of current. We use both in this book to keep the reader fluent in both conventions.) We introduced the three overpotentials in Chapter 2 (Section 2.7); now we connect them to how resistance is measured and reported.
 
-### DC Internal Resistance (DCIR)
+\subsection{DC Internal Resistance (DCIR)}
+
 
 The simplest measure of internal resistance is:
 
-$$R_\text{int} = \frac{E_\text{OCV} - V_\text{terminal}}{I} = \frac{\Delta V}{I} \tag{3.12}$$
-
+\begin{equation}
+R_\text{int} = \frac{E_\text{OCV} - V_\text{terminal}}{I} = \frac{\Delta V}{I} \tag{3.12}
+\end{equation}
 This is the **DC internal resistance** (DCIR) or apparent DC resistance. The single most important fact about DCIR is that *it is not a single number* — its value depends on how long after the current step you measure it.
 
 The cleanest way for an EE to picture this is as a Thévenin source ($E_\text{OCV}$) in series with a small network: a pure resistor $R_\Omega$, then a parallel RC block ($R_\text{ct}$ in parallel with $C_\text{dl}$), then a long diffusion tail. When you step the current at $t=0$:
@@ -1522,7 +1718,8 @@ The cleanest way for an EE to picture this is as a Thévenin source ($E_\text{OC
 
 So an HPPC test reporting "10-second DCIR = 35 mΩ" is not measuring a property of the cell, it is measuring the integral of the cell's response over a particular 10-second window. A 1-second test on the same cell would give a smaller number; a 60-second test, a larger one. Pulse duration is part of the measurement, not a footnote.
 
-### The Three Components Revisited
+\subsection{The Three Components Revisited}
+
 
 From Chapter 2, recall:
 
@@ -1536,7 +1733,8 @@ where $i_0$ is the exchange current density, $A$ is the active electrode area, $
 
 **Diffusion (concentration) "resistance" $R_\text{diff}$** is not truly a resistance in the ohmic sense. It is a frequency-dependent impedance — the Warburg impedance — whose magnitude scales as $|Z_W| \propto 1/\sqrt{\omega}$ and whose phase is fixed at $-45^\circ$. (We will see in Section 3.10 why diffusion gives this odd half-power behaviour.) But in DC pulse tests of a few seconds duration, it contributes to the apparent voltage drop and can be loosely characterised as an effective resistance over that time window.
 
-### Total Apparent Resistance vs. True Ohmic Resistance
+\subsection{Total Apparent Resistance vs. True Ohmic Resistance}
+
 
 Battery datasheets report **DC internal resistance (DCIR)** measured by a specific protocol, typically a 10–30 second current pulse at 50% SOC and 25°C. This number includes contributions from all three components over the measurement window. It is useful for comparing cells and for BMS power calculations, but it is not a material property — it is a system property that depends on temperature, SOC, SOH, and pulse duration.
 
@@ -1544,16 +1742,19 @@ For electrochemical modelling, the distinction between $R_\Omega$, $R_\text{ct}$
 
 ---
 
-## Coulombic, Voltage, and Energy Efficiency
+\section{Coulombic, Voltage, and Energy Efficiency}
+
 
 Efficiency metrics quantify how much of the energy you put into a cell during charging you can recover during discharging. Three distinct efficiency definitions are important in battery engineering, and they measure different things.
 
-### Coulombic Efficiency
+\subsection{Coulombic Efficiency}
 
-**Coulombic efficiency** (CE, also called **faradaic efficiency**) is the ratio of charge discharged to charge charged over one complete cycle:
 
-$$\text{CE} = \frac{Q_\text{discharge}}{Q_\text{charge}} \times 100\% \tag{3.13}$$
+**Coulombic efficiency** (CE, also called **faradaic efficiency**) is the ratio of charge discharged to charge charged over one complete cycle, usually reported either as a decimal or multiplied by 100 as a percent:
 
+\begin{equation}
+\text{CE} = \frac{Q_\text{discharge}}{Q_\text{charge}} \tag{3.13}
+\end{equation}
 For a perfectly reversible cell with no side reactions, CE would be 100% — every coulomb put in during charge comes out during discharge. In real cells, CE is always less than 100% because some charge goes into side reactions: SEI growth, electrolyte decomposition, lithium plating. For a fresh lithium-ion cell in a stable state (not its first few cycles), CE is typically 99.8–99.95% per cycle.
 
 This might sound impressively close to 100%, but the engineering implication of even a tenth-of-a-percent shortfall is alarming once you compound it over many cycles. Each cycle, a fraction $(1 - \text{CE})$ of the cycled charge is lost irreversibly to side reactions — typically going into incremental SEI growth on the anode. Over $N$ cycles, the cumulative loss is approximately
@@ -1564,31 +1765,37 @@ Plugging in CE = 99.8% and $N = 500$: $\Delta Q_\text{lost} \approx 0.002 \times
 
 **First-cycle Coulombic efficiency (ICE)** is distinguished from cycle-averaged CE. As discussed in Chapter 2, the ICE reflects the large irreversible charge consumed by SEI formation in the first cycle, typically 85–95% for graphite and 75–85% for hard carbon.
 
-### Voltage Efficiency
+\subsection{Voltage Efficiency}
+
 
 **Voltage efficiency** is the ratio of the average discharge voltage to the average charge voltage:
 
-$$\eta_V = \frac{\bar{V}_\text{discharge}}{\bar{V}_\text{charge}} \tag{3.14}$$
-
+\begin{equation}
+\eta_V = \frac{\bar{V}_\text{discharge}}{\bar{V}_\text{charge}} \tag{3.14}
+\end{equation}
 Since charging always occurs at a higher average voltage than discharging (overpotentials add during charge and subtract during discharge), $\eta_V < 1$. For a cell with modest internal resistance, $\eta_V$ might be 95–98%.
 
-### Energy (Round-Trip) Efficiency
+\subsection{Energy (Round-Trip) Efficiency}
+
 
 **Energy efficiency** (also called **round-trip efficiency** or **RTE**) is the ratio of energy recovered during discharge to energy invested during charge:
 
-$$\eta_E = \frac{E_\text{discharge}}{E_\text{charge}} = \frac{\bar{V}_\text{discharge} \cdot Q_\text{discharge}}{\bar{V}_\text{charge} \cdot Q_\text{charge}} = \eta_V \cdot \text{CE} \tag{3.15}$$
-
+\begin{equation}
+\eta_E = \frac{E_\text{discharge}}{E_\text{charge}} = \frac{\bar{V}_\text{discharge} \cdot Q_\text{discharge}}{\bar{V}_\text{charge} \cdot Q_\text{charge}} = \eta_V \cdot \text{CE} \tag{3.15}
+\end{equation}
 Round-trip efficiency is the product of voltage efficiency and Coulombic efficiency. For a high-quality lithium-ion cell cycled at 1C: CE ≈ 99.9%, $\eta_V$ ≈ 96%, so $\eta_E$ ≈ 95.9%. At higher C-rates, voltage efficiency drops (larger overpotentials) and energy efficiency degrades.
 
 For grid storage applications, round-trip efficiency directly translates to operating economics: if the RTE is 92%, then for every 100 kWh of grid electricity purchased to charge a battery, only 92 kWh can be sold when discharged. Over millions of cycles at the grid scale, efficiency differences of a few percentage points represent enormous cumulative energy losses.
 
 ---
 
-## Cycle Life vs. Calendar Life; What Counts as "A Cycle"
+\section{Cycle Life vs. Calendar Life; What Counts as "A Cycle"}
+
 
 **Cycle life** and **calendar life** are two distinct degradation trajectories with different physical origins, different accelerating stressors, and different modelling approaches. Understanding the distinction is essential for predicting battery longevity in real applications.
 
-### Cycle Life
+\subsection{Cycle Life}
+
 
 **Cycle life** is the number of charge-discharge cycles a cell can complete before its SOH (usually capacity-based) falls below a specified threshold (typically 80%). It is measured under defined cycling conditions: fixed DOD, C-rate, temperature, voltage window.
 
@@ -1602,7 +1809,8 @@ A partial cycle is counted by the charge throughput: one "equivalent full cycle"
 
 A **rainflow counting** algorithm (borrowed from mechanical fatigue analysis) is the most sophisticated approach: it identifies all charge-discharge cycles of varying depth in an arbitrary current profile, weights each by its DOD, and accumulates damage. This is what sophisticated BMS algorithms use for SOH tracking.
 
-### Calendar Life
+\subsection{Calendar Life}
+
 
 **Calendar life** is the degradation that occurs over time regardless of cycling — simply from sitting at a given SOC and temperature. The dominant mechanism is continuous SEI growth (even at rest, the anode is at a low potential where the electrolyte is thermodynamically unstable, so the SEI creeps forward), along with electrolyte oxidation at the cathode. Calendar aging is particularly insidious because it continues even when the battery is not being used.
 
@@ -1627,7 +1835,8 @@ Real cells experience both simultaneously, and a complete fade model superposes 
 
 ---
 
-## Self-Discharge
+\section{Self-Discharge}
+
 
 **Self-discharge** is the spontaneous loss of stored charge over time when a cell is open-circuit (not connected to any load or charger). It is distinct from calendar aging: self-discharge refers to the loss of charge (SOC decreases over days or weeks), while calendar aging refers to capacity fade and resistance rise over months or years. A cell can self-discharge significantly over a month without meaningfully degrading in calendar aging terms, and vice versa.
 
@@ -1643,11 +1852,13 @@ Self-discharge rates for lithium-ion cells are typically 1–5% per month at roo
 
 ---
 
-## CC-CV Charging Protocol
+\section{CC-CV Charging Protocol}
+
 
 Almost every lithium-ion cell is charged using the **constant-current constant-voltage (CC-CV)** protocol, and for good reason. Understanding why CC-CV is used — and why simpler alternatives do not work well — requires combining the OCV concept, the overpotential framework, and the practical voltage limits of the cell.
 
-### The Protocol
+\subsection{The Protocol}
+
 
 A CC-CV charge proceeds in two phases:
 
@@ -1655,7 +1866,8 @@ A CC-CV charge proceeds in two phases:
 
 **Phase 2, Constant Voltage (CV):** Once the terminal voltage reaches $V_\text{max}$, the charger holds the voltage constant at $V_\text{max}$ and allows the current to taper down naturally. The current decreases as the cell's internal state approaches full charge (overpotentials diminish as the lithium concentration gradient relaxes and the electrode composition approaches its equilibrium fully-charged state). Charging is considered complete when the current drops below a threshold, typically C/20 or C/50.
 
-### Why CC-CV Is Used
+\subsection{Why CC-CV Is Used}
+
 
 The upper cutoff voltage $V_\text{max}$ is a safety limit, not an arbitrary choice. For NMC cells, exceeding 4.2–4.3 V causes lithium over-extraction from the cathode, leading to structural instability, metal dissolution, and electrolyte oxidation. For graphite anodes, operating below about 0.0 V vs. Li/Li⁺ causes lithium plating — metallic lithium depositing on the graphite surface rather than inserting intercalation — which is both a safety hazard (lithium dendrites can puncture the separator) and an irreversible capacity loss mechanism.
 
@@ -1667,11 +1879,13 @@ A note on sodium-ion cells: they use the same CC-CV protocol, but the voltage li
 
 ---
 
-## Characterisation Tests: HPPC, GITT, PITT, EIS
+\section{Characterisation Tests: HPPC, GITT, PITT, EIS}
+
 
 This section is where the toolkit of battery characterisation is introduced. Each technique probes a different aspect of the cell's physics, and understanding what each measures — and crucially, why — requires applying almost everything from Chapters 1 and 2.
 
-### HPPC: Hybrid Pulse Power Characterisation
+\subsection{HPPC: Hybrid Pulse Power Characterisation}
+
 
 The **Hybrid Pulse Power Characterisation (HPPC)** test, developed at the Idaho National Laboratory for the U.S. Department of Energy's Advanced Technology Development programme, is the standard method for measuring a cell's internal resistance and power capability as a function of SOC. It is described in the USABC (United States Advanced Battery Consortium) test manual and is used by virtually every EV battery developer.
 
@@ -1685,7 +1899,8 @@ By repeating the measurement at multiple SOC levels, HPPC generates $R(SOC)$ cur
 
 **Engineering use:** HPPC data are the standard input for equivalent circuit model (ECM) parameter identification, which feeds into BMS algorithms for power prediction and SOC estimation. We will see this application in Chapter 10.
 
-### GITT: Galvanostatic Intermittent Titration Technique
+\subsection{GITT: Galvanostatic Intermittent Titration Technique}
+
 
 The **Galvanostatic Intermittent Titration Technique (GITT)** was introduced by Weppner and Huggins in 1977 and remains one of the most powerful methods for measuring the thermodynamic OCV curve and the solid-state diffusion coefficient within electrode materials.
 
@@ -1699,8 +1914,9 @@ $$c_s(t) - c_0 = \frac{2I}{z_i F A}\sqrt{\frac{t}{\pi D_s}}$$
 
 The measured voltage change tracks this surface concentration through the local slope of the equilibrium OCV curve, $dE/dx$ (where $x$ is the dimensionless composition of the host). Converting concentration to composition with the molar volume $V_m$ gives the standard Weppner–Huggins short-time form:
 
-$$\Delta E(t) = \frac{2I\,V_m}{z_i F A\,\sqrt{\pi D_s}}\left|\frac{dE}{dx}\right|\sqrt{t} \tag{3.16}$$
-
+\begin{equation}
+\Delta E(t) = \frac{2I\,V_m}{z_i F A\,\sqrt{\pi D_s}}\left|\frac{dE}{dx}\right|\sqrt{t} \tag{3.16}
+\end{equation}
 where $I$ is the applied current, $V_m$ is the molar volume of the electrode material, $z_i$ is the charge number of the inserting ion, $A$ is the electrode geometric area, and $D_s$ is the solid-state diffusion coefficient. The key insight is that the GITT measurement gives us *two* slopes: the slope of $\Delta E$ vs. $\sqrt{t}$ during the current pulse, and the slope $dE/dx$ taken from the equilibrium OCV curve traced out by the rest-period endpoints. Together they pin down $D_s$:
 
 $$D_s = \frac{4}{\pi}\left(\frac{I\,V_m}{z_i F A}\right)^{2}\left(\frac{dE/dx}{dE/d\sqrt{t}}\right)^{2}$$
@@ -1709,7 +1925,8 @@ This is a remarkable result: from a simple current step and voltage measurement,
 
 **Limitations of GITT:** The extraction of $D_s$ from equation (3.16) assumes a specific geometry (usually planar or spherical particles of uniform size), uniform current distribution, and negligible electrolyte transport effects. In real porous electrodes, these assumptions are approximate. The values of $D_s$ extracted from GITT on porous electrodes should be treated as effective apparent diffusivities rather than true single-particle quantities.
 
-### PITT: Potentiostatic Intermittent Titration Technique
+\subsection{PITT: Potentiostatic Intermittent Titration Technique}
+
 
 The **Potentiostatic Intermittent Titration Technique (PITT)** is the potential-controlled complement of GITT. Instead of applying current pulses and measuring voltage, PITT applies voltage steps and measures the current response.
 
@@ -1717,14 +1934,16 @@ The **Potentiostatic Intermittent Titration Technique (PITT)** is the potential-
 
 **What it measures:** PITT measures both the diffusion coefficient (from the shape of the current transient, analogous to GITT) and the differential capacity $dQ/dV$. The differential capacity curve — which is $dQ/dV$ plotted against voltage — is a highly sensitive fingerprint of the electrode's thermodynamic behaviour. Peaks in $dQ/dV$ correspond to phase transitions or lithium-ordering events in the host material; flat plateaus in $Q$-vs-$V$ appear as sharp peaks in $dQ/dV$. The incremental capacity analysis (ICA) technique for degradation diagnostics (which we will encounter in Chapter 7) is based directly on $dQ/dV$ curves measured by PITT or derived from slow C-rate galvanostatic discharge.
 
-### EIS: Electrochemical Impedance Spectroscopy
+\subsection{EIS: Electrochemical Impedance Spectroscopy}
+
 
 **Electrochemical Impedance Spectroscopy (EIS)** is the most information-rich single measurement technique available to battery researchers. It measures the frequency-resolved impedance of a cell (or electrode), and because different physical processes have different characteristic frequencies, EIS can in principle deconvolve all the contributions to cell impedance — ohmic resistance, double-layer capacitance, charge-transfer resistance, solid-state diffusion — in a single measurement.
 
 **The principle:** A small sinusoidal voltage perturbation $\Delta V(t) = \Delta V_0 \sin(\omega t)$ is applied to the cell at a given frequency $\omega$ (or equivalently, $f = \omega/2\pi$). The resulting sinusoidal current response $\Delta I(t) = \Delta I_0 \sin(\omega t + \phi)$ has an amplitude $\Delta I_0$ and a phase shift $\phi$. The complex impedance at that frequency is:
 
-$$Z(\omega) = \frac{\Delta V}{\Delta I} = |Z| e^{j\phi} = Z' + jZ'' \tag{3.17}$$
-
+\begin{equation}
+Z(\omega) = \frac{\Delta V}{\Delta I} = |Z| e^{j\phi} = Z' + jZ'' \tag{3.17}
+\end{equation}
 where $Z'$ is the real part (in phase with the voltage, resistive character) and $Z''$ is the imaginary part (out of phase, reactive character). A full EIS measurement sweeps $\omega$ over a range of typically 100 kHz to 10 mHz, measuring $Z(\omega)$ at each frequency.
 
 The results are usually displayed as a **Nyquist plot**: $-Z''$ on the y-axis vs. $Z'$ on the x-axis, with frequency as an implicit parameter (decreasing frequency from left to right for most battery impedance plots — but always check). The reason for plotting $-Z''$ rather than $Z''$ is that capacitive elements have negative imaginary impedance, so $-Z''$ is positive for capacitive features, making the plot more intuitive.
@@ -1765,14 +1984,17 @@ Total impedance at 10 mHz: $Z' \approx 120$ mΩ — much larger than the ohmic v
 
 ---
 
-## Worked Interpretation Exercise: Reading a Commercial Cell Datasheet
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading a Commercial Cell Datasheet}
+
+\specialsectionstyle
+
 
 Let us apply the full vocabulary of this chapter to a real commercial datasheet. We will use the publicly available datasheet for the **Panasonic NCR18650B** cell — a 3.4 Ah, NCA chemistry, 18650 cylindrical cell widely used in electric vehicles (it was the cell used in early Tesla Model S battery packs) and frequently studied in the academic literature.
 
 **Header information:**
 
 - **Nominal voltage: 3.6 V.** This is the average discharge voltage at a standard (low) C-rate. It is not the OCV at any specific SOC — it is a weighted average across the full discharge curve.
-- **Minimum voltage: 2.5 V.** This is the lower cutoff voltage $V_\text{cutoff}$. Discharging below this risks deep lithiation of the cathode and potential structural damage.
+- **Minimum voltage: 2.5 V.** This is the lower cutoff voltage $V_\text{cutoff}$. Discharging below this risks over-delithiation of the graphite anode, copper current-collector dissolution at very low anode potentials during severe overdischarge, and broader cell damage.
 - **Charge voltage: 4.2 V.** This is $V_\text{max}$ for CC-CV charging. Exceeding this accelerates cathode degradation and electrolyte oxidation.
 - **Standard charge: CC-CV at 1.625 A (≈ C/2) to 4.2 V, cutoff at 50 mA.** This defines the standard charging protocol: CC at roughly 0.5C until 4.2 V, then CV at 4.2 V until the current tapers to 50 mA (about C/70 — a very conservative CV termination criterion).
 
@@ -1805,7 +2027,12 @@ The Panasonic NCR18650B datasheet does not include: OCV-vs-SOC curve (you must m
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The metrics and terminology in this chapter are chemistry-agnostic — capacity, C-rate, SOC, SOH, CC-CV charging, OCV, DCIR, all apply equally to sodium-ion cells. What changes are the specific values, and in one case — the OCV curve shape — something qualitatively important changes.
 
@@ -1817,7 +2044,12 @@ The **internal resistance** of commercial SIB cells tends to be higher than comp
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -1853,7 +2085,12 @@ Capacity (Ah), energy (Wh), C-rate, cutoff voltage, gravimetric energy density, 
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Download a CATL or Samsung cell datasheet and a HiNa SIB datasheet. Write a one-page interpretation of each, explaining every graph and specification in your own words.
 
@@ -1865,7 +2102,7 @@ For SIB: The **HiNa BC-1** cell (1.33 Ah, hard carbon / O3-type layered oxide, 2
 
 When writing your interpretation, address each of the following explicitly for both cells:
 
-The nominal voltage and what chemistry it implies. The rated capacity and at which C-rate it was measured. The shape of the discharge curves at multiple C-rates — is the OCV shape sloped or flat, and what does that imply for SOC estimation? The temperature performance — at what temperature does the cell retain 80% of room-temperature capacity, and is this consistent with Arrhenius-type kinetic limitations? The cycle life specification — is the EOL criterion 80% capacity retention, and over what DOD? The internal resistance (if provided) and how it compares between the two cells.
+The nominal voltage and what chemistry it implies. The rated capacity and at which C-rate it was measured. The shape of the discharge curves at multiple C-rates — and what that, together with any OCV information provided, implies for SOC estimation. The temperature performance — at what temperature does the cell retain 80% of room-temperature capacity, and is this consistent with Arrhenius-type kinetic limitations? The cycle life specification — is the EOL criterion 80% capacity retention, and over what DOD? The internal resistance (if provided) and how it compares between the two cells.
 
 A **partial worked example for the Samsung INR21700-50E** based on published data (Sturm et al., *Journal of Power Sources*, 2021):
 
@@ -1873,7 +2110,12 @@ Nominal voltage 3.6 V, rated capacity 4.9 Ah at C/5 (note: rated as "50E" for 5.
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Plett, G. L., *Battery Management Systems, Vol. 1: Battery Modeling*, Artech House (2015), Chapters 1–2.** The most EE-friendly introduction to battery metrics, OCV curves, and equivalent circuit models. Plett's notation is clean and his examples are numerical and direct. This is the companion text for Part VI of this book, but Chapters 1–2 are directly relevant here.
 
@@ -1884,13 +2126,17 @@ Nominal voltage 3.6 V, rated capacity 4.9 Ah at C/5 (note: rated as "50E" for 5.
 4. **Barsoukov, E. and Macdonald, J. R. (eds.), *Impedance Spectroscopy: Theory, Experiment, and Applications*, Wiley (3rd edition, 2018), Chapter 4.** The standard reference for EIS, with a comprehensive treatment of the physical models underlying battery impedance spectra. Chapter 4 covers Randles circuits and Warburg impedance in depth.
 
 5. **Dubarry, M. et al., "Synthesize battery degradation modes via a diagnostic and prognostic model," *Journal of Power Sources* 219, 204–216 (2012).** The paper that established incremental capacity analysis (ICA) as a diagnostic tool for identifying degradation modes from $dQ/dV$ and $dV/dQ$ curves. Directly connects PITT/slow-discharge measurements to the degradation mechanisms we will study in Chapter 7.
+\bodytextstyle
+
 
 
 \newpage
 
-# Cell Construction
+\chapter{Cell Construction}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 So far in this book we have inhabited a somewhat abstract world. We have talked about electrodes, electrolytes, and separators as if they were ideal geometric planes of material sitting in a beaker. The physics and chemistry we have built up — intercalation, Butler-Volmer kinetics, Fick's diffusion, the SEI — is real and accurate, but it has existed, up to this point, largely without context. A real battery is not a beaker. It is a precisely engineered product that must pack as much energy as possible into as little space and mass as possible, survive thousands of charge-discharge cycles without mechanical failure, resist thermal runaway under abuse, and be manufactured at a cost measured in tens of dollars per kilowatt-hour rather than thousands.
 
@@ -1918,11 +2164,15 @@ By the end of this chapter, you will be able to look at any commercial cell — 
 
 ---
 
-## Form Factors: Cylindrical, Pouch, and Prismatic
+\bodytextstyle
+
+\section{Form Factors: Cylindrical, Pouch, and Prismatic}
+
 
 The same electrochemical system — the same active materials, the same electrolyte chemistry, the same separator — can be packaged in radically different physical forms. The three dominant form factors in commercial lithium-ion (and increasingly sodium-ion) cells are **cylindrical**, **prismatic**, and **pouch**. Each has a distinct manufacturing process, a distinct set of mechanical advantages and disadvantages, and a distinct set of applications where it excels. Understanding why each form factor exists requires thinking about the engineering problem from the top down: how do you pack the maximum electrochemically active material into the minimum volume, maintain structural integrity over thousands of cycles, manage heat, and do it at low manufacturing cost?
 
-### Cylindrical Cells
+\subsection{Cylindrical Cells}
+
 
 The **cylindrical cell** is the oldest and in many ways the most mature format. The basic construction is a long, thin "jelly roll" — a multilayer sandwich of anode, separator, electrolyte-wetted cathode, and another separator, wound tightly around a central mandrel into a spiral and then inserted into a cylindrical steel can. The steel can is sealed at both ends, with one end forming the negative terminal and the other (with a safety vent) the positive terminal.
 
@@ -1938,7 +2188,8 @@ If you want an EE analogy, think of a high-current ground plane on a PCB. If you
 
 A characteristic of cylindrical cells that matters for pack design is their **isotropic volume expansion**: as the jelly roll swells slightly with lithiation cycling, the cell expands radially inside the rigid steel can. Because the can constrains the expansion, the electrode stack is under compressive stress — this actually helps maintain good inter-particle contact and electrode-separator contact over cycling, one reason cylindrical cells tend to have relatively good cycle life compared to pouch cells without external compression.
 
-### Prismatic Cells
+\subsection{Prismatic Cells}
+
 
 **Prismatic cells** use either a wound jelly roll or a stacked flat-plate construction, inserted into a rigid rectangular aluminium or steel case. The prismatic format is dominant in automotive applications from Asian manufacturers (CATL, BYD, Samsung SDI, and others) and in stationary storage. The rectangular geometry allows prismatic cells to be packed together in modules without wasted space between cells — the volumetric efficiency of rectangular packing is higher than cylindrical packing.
 
@@ -1948,7 +2199,8 @@ Heat management in prismatic cells is easier than in cylindrical cells in one re
 
 The **blade cell** (BYD's LFP cell design) is a particularly thin prismatic format — typically 13.5 mm thick but up to 960 mm long and 90 mm tall — designed to be stacked directly into a battery pack without an intermediate module structure (the "cell-to-pack" concept). The extreme aspect ratio of the blade cell minimises the thermal path to the cooling surface and eliminates module hardware, reducing pack mass and cost.
 
-### Pouch Cells
+\subsection{Pouch Cells}
+
 
 The **pouch cell** (also called a **soft-pack cell** or **laminate cell**) replaces the rigid metal can with a thin, flexible aluminium-plastic laminate film. The electrodes are cut into flat rectangular sheets and stacked in an alternating anode-separator-cathode-separator arrangement, connected by thin current collector tabs that exit through the heat-sealed edge of the pouch. The laminate film is formed into an envelope around the stack and the edges are heat-sealed under vacuum.
 
@@ -1958,7 +2210,8 @@ The gravimetric energy density of pouch cells is typically the highest of the th
 
 The great practical challenge of pouch cells is **gas management**. During the first few cycles (the formation process, discussed in Section 4.3), gas is evolved as electrolyte decomposes and the SEI forms. In a metal-can cell, the gas is absorbed by the liquid electrolyte or vented through a safety valve. In a pouch cell, if this gas is not managed — either by a designed gas pocket at one end of the pouch that is separated and removed after formation, or by a degassing step — the cell swells and the internal pressure pushes the electrode layers apart, increasing ionic resistance and degrading performance. All commercial pouch cells go through a degassing step after formation for this reason.
 
-### Comparative Summary
+\subsection{Comparative Summary}
+
 
 The choice of form factor is a system-level engineering decision that balances energy density, power density, thermal management, mechanical robustness, manufacturing cost, and application-specific shape constraints. A table helps:
 
@@ -1976,11 +2229,13 @@ For sodium-ion cells, all three form factors are in commercial use. CATL's first
 
 ---
 
-## Electrode Manufacturing: Slurry, Coating, Calendering, Slitting
+\section{Electrode Manufacturing: Slurry, Coating, Calendering, Slitting}
+
 
 Transforming powdered active material into a functional electrode is one of the most technically demanding steps in battery manufacturing, and it is the step with the most direct impact on the electrochemical parameters that appear in simulation models. Understanding the process allows you to interpret manufacturing-related parameters physically.
 
-### The Slurry
+\subsection{The Slurry}
+
 
 The starting point of electrode manufacturing is the **slurry** — a viscous suspension of the active material powder in a solvent, mixed with two additives: a **binder** and a **conductive carbon**.
 
@@ -1994,7 +2249,8 @@ The slurry is mixed in a high-shear planetary mixer to ensure uniform distributi
 
 For sodium-ion cells, the slurry chemistry is similar. Hard carbon anodes typically use aqueous CMC/SBR binders. Cathode slurry formulations depend on the cathode family: layered oxides use PVDF/NMP; NVPF and Prussian blue analogue (PBA) cathodes sometimes use aqueous binders due to environmental and cost advantages, though water sensitivity of some PBA phases requires careful humidity control.
 
-### Coating
+\subsection{Coating}
+
 
 The slurry is **coated** onto the current collector foil using a **slot-die coater** or **comma-bar coater** in a continuous roll-to-roll process. The foil — copper for anodes, aluminium for cathodes — is fed from a supply roll, passes under the coating head where the slurry is deposited as a uniform wet film, travels through a drying oven that evaporates the solvent (NMP or water), and winds onto a take-up roll as a dry electrode tape.
 
@@ -2004,7 +2260,8 @@ Coating uniformity is critical. Variations in coating weight of even a few perce
 
 The drying step is more complex than it might appear. The solvent (NMP for PVDF-based cathodes) must be removed completely — residual NMP contaminates the electrolyte and degrades performance — but drying too rapidly causes **binder migration**: the polymer binder, carried by the solvent flux toward the surface during evaporation, accumulates at the top surface of the coating rather than being uniformly distributed throughout the electrode thickness. This binder migration can leave the interior of the electrode binder-poor (poor adhesion between particles) and the surface binder-rich (blocked ionic access, surface cracking). Controlled drying profiles that slow the final evaporation stage are used to mitigate this effect.
 
-### Calendering
+\subsection{Calendering}
+
 
 After drying, the electrode tape passes through a **calendering** step: it is pressed between two precision steel rollers under high pressure (tens to hundreds of MPa). Calendering serves two purposes.
 
@@ -2022,8 +2279,9 @@ A quick numerical feel for how sharp these trade-offs are. Suppose you start wit
 
 The Bruggeman relation (Equation 4.1) is the workhorse model for electrolyte-phase transport in a porous electrode:
 
-$$D_\text{eff} = D_0 \cdot \varepsilon^{1.5} \tag{4.1}$$
-
+\begin{equation}
+D_\text{eff} = D_0 \cdot \varepsilon^{1.5} \tag{4.1}
+\end{equation}
 where $D_\text{eff}$ is the effective diffusion coefficient ions experience in the porous electrode, $D_0$ is the diffusion coefficient in the free (bulk) electrolyte, and $\varepsilon$ is the porosity (the void fraction of the electrode). The exponent 1.5 is not pulled out of thin air — it is the result of a self-consistent effective-medium calculation Bruggeman did in 1935 for the conductivity of a random packing of spherical inclusions. The cleanest way to remember where it comes from is to think of two effects multiplying:
 
 First, ions only occupy a fraction $\varepsilon$ of the volume — there is just less liquid for them to be in. This alone would give $D_\text{eff} = \varepsilon D_0$, a factor of $\varepsilon^1$. Second, the path an ion must take to get from one face of the electrode to the other is not a straight line; it has to wind around solid particles, and the geometric path is longer than the straight-line distance by a factor we call the tortuosity. For a random sphere packing, Bruggeman's effective-medium argument gives a tortuosity of $\varepsilon^{-0.5}$, contributing another factor of $\varepsilon^{0.5}$ to the diffusivity reduction. Multiply: $\varepsilon^1 \cdot \varepsilon^{0.5} = \varepsilon^{1.5}$.
@@ -2040,7 +2298,8 @@ where $\tau$ is the **tortuosity factor** — a single number that lumps togethe
 
 In simulation work, porosity and tortuosity are the parameters you will most need to estimate carefully. Published values for commercial electrodes from synchrotron X-ray tomography and focused ion beam (FIB) cross-sectional imaging are available in the literature for several commercial cells and are the best reference for establishing physically reasonable model parameters.
 
-### Slitting and Notching
+\subsection{Slitting and Notching}
+
 
 After calendering, the wide electrode tape (typically 300–800 mm wide, produced in rolls of several hundred metres) must be cut to the final dimensions required for the specific cell format. This is done by **slitting** — precision cutting using laser or mechanical blades — and (for pouch and prismatic stacked cells) **notching**, which cuts the electrode sheets to their final rectangular shape and forms the current collector tab extensions.
 
@@ -2048,11 +2307,13 @@ The quality of the slit edge matters for cell safety. Burrs or metal fragments o
 
 ---
 
-## Formation Cycling and Why First Cycles Differ
+\section{Formation Cycling and Why First Cycles Differ}
+
 
 After a cell is physically assembled — electrodes wound or stacked, case crimped or heat-sealed, electrolyte filled — it is not yet a functional battery. It is an inert electrochemical assembly that must be activated by its first controlled charge-discharge cycles. This activation process, called **formation**, is one of the most critically important steps in cell manufacturing, and it has direct electrochemical consequences that shape the cell's performance for its entire lifetime.
 
-### What Happens During Formation
+\subsection{What Happens During Formation}
+
 
 When a freshly assembled cell is first charged, the electrodes are "dry" in the sense that they have never been in contact with an electrolyte under electrochemical conditions. The active material particles are in their pristine, as-manufactured state: no SEI exists yet.
 
@@ -2068,7 +2329,8 @@ As the charging current begins, the cell undergoes several processes simultaneou
 
 **Gas evolution**: The SEI formation reactions produce gases — predominantly CO₂, CO, and hydrocarbons (ethylene, propylene) from the reduction of carbonate solvents. In a pouch cell, this gas can significantly swell the cell during formation, which is why pouch cells are typically formed while clamped, and are then degassed: the cell is opened under inert atmosphere, the gas pocket (a deliberately formed unsealed region at one end of the pouch) is removed, and the cell is heat-resealed. In cylindrical and prismatic cells, the gas is largely absorbed into the electrolyte or vented through safety valves.
 
-### The Formation Protocol
+\subsection{The Formation Protocol}
+
 
 Formation is not simply "charge the cell once." It is a carefully designed electrochemical conditioning protocol, often proprietary to the cell manufacturer, that may include:
 
@@ -2082,7 +2344,8 @@ A final capacity check and impedance measurement to bin the cell — to categori
 
 Formation adds cost and time to manufacturing: a formation step that requires 12–24 hours at temperature, followed by 48 hours of resting, followed by testing, before the cell is ready to ship represents a significant fraction of the manufacturing cycle time. Reducing formation time without sacrificing SEI quality is an active area of industrial research. One approach is to use formation electrolytes with different solvent compositions (more reactive, faster SEI formers) that are then flushed and replaced with the final electrolyte — a two-electrolyte process that is complex but can produce excellent SEIs.
 
-### Why First Cycles Differ From Steady State
+\subsection{Why First Cycles Differ From Steady State}
+
 
 Even after a proper formation step, the second cycle is not identical to the first. The cell approaches steady-state behaviour gradually over typically 5–20 cycles as the SEI stabilises, residual lithium inventory adjustments settle, and the electrode microstructure accommodates its new cycling state. This is why cells reported in the research literature are generally "pre-cycled" or "broken in" for 3–5 cycles before any characterisation measurements are taken — you want to measure the steady-state cell, not the transient post-assembly cell.
 
@@ -2098,7 +2361,8 @@ For simulation researchers, this means: when you characterise a cell to extract 
 
 *A common misconception.* It is tempting, especially for an engineer used to mechanical systems, to think of formation as "breaking the cell in" the way you break in a new engine — gentle initial cycling that loosens up the moving parts. This is the wrong picture. Nothing in a battery is loosening up. Formation is the irreversible chemical *construction* of a thin solid film (the SEI) that did not exist before the first charge and that will protect the anode for thousands of cycles afterward. A poorly executed formation step does not produce a cell that gets better with use; it produces a cell that has a defective protective film for its entire life, and that defective film will determine how that cell ages, how it tolerates fast charging, and how soon its capacity falls off the cliff. Manufacturers spend a lot of effort getting formation right because there is no second chance.
 
-### Formation for SIBs
+\subsection{Formation for SIBs}
+
 
 Formation in sodium-ion cells follows the same conceptual framework — SEI formation, gas evolution, first-cycle irreversibility — but has some distinctive features.
 
@@ -2110,11 +2374,13 @@ The formation step in SIBs often must be extended to achieve adequate SEI stabil
 
 ---
 
-## Current Collectors: Copper, Aluminium, and Why SIB Can Use Aluminium on Both Sides
+\section{Current Collectors: Copper, Aluminium, and Why SIB Can Use Aluminium on Both Sides}
+
 
 In Chapter 1 we introduced the current collectors and noted that lithium-ion cells use copper on the anode side and aluminium on the cathode side, while sodium-ion cells can use aluminium on both sides. The electrochemical reason was stated briefly: lithium alloys with aluminium at low potentials, but sodium does not. Here we will explore this in detail — including what "alloys with aluminium" means thermodynamically and structurally, why the potential window matters, and what using aluminium on both sides means for cell manufacturing and economics.
 
-### The Electrochemical Stability Window of Current Collectors
+\subsection{The Electrochemical Stability Window of Current Collectors}
+
 
 A current collector must be electrochemically inert — it must not react with the electrode material, the electrolyte, or the ions being cycled, over the entire range of potentials the electrode experiences during operation. If the current collector corrodes, dissolves, alloys with the active material, or undergoes any other electrochemical transformation, it ceases to be a current collector and becomes a contaminant that poisons the electrode and the electrolyte.
 
@@ -2130,7 +2396,8 @@ For a graphite anode, which spends almost all of its operating life in the 0.05�
 
 At the cathode potential (3.5–4.5 V vs. Li/Li⁺), copper would be oxidised (Cu → Cu²⁺ + 2e⁻ becomes thermodynamically favourable above about 3.3 V vs. Li/Li⁺), introducing copper contamination into the electrolyte. This copper dissolution is a real degradation mechanism in overcharged cells where the cathode potential exceeds this limit. Aluminium, with its stable oxide passivation at these potentials, does not dissolve. Hence aluminium is correct for the cathode.
 
-### Why Sodium Changes the Picture
+\subsection{Why Sodium Changes the Picture}
+
 
 The key question is: does sodium form stable alloys with aluminium?
 
@@ -2144,7 +2411,8 @@ This is a profoundly practically important result. Copper is one of the most exp
 
 The ability to use a single current collector material on both sides also simplifies manufacturing: the same foil inventory, the same processing equipment, the same winding parameters can be used for both electrodes, reducing manufacturing complexity and capital equipment requirements. For a technology like sodium-ion batteries, which must ultimately compete on cost with mature lithium-ion manufacturing, this is a meaningful structural advantage.
 
-### Current Collector Thickness and Its Electrochemical Consequences
+\subsection{Current Collector Thickness and Its Electrochemical Consequences}
+
 
 Current collector foils are typically 6–20 µm thick — extremely thin, because thicker foils add dead weight without adding energy storage capacity. For an 8 µm copper foil and a 12 µm aluminium foil, the current collectors together account for roughly 15–25% of total electrode mass in a commercial cell.
 
@@ -2170,7 +2438,8 @@ Before moving on, it helps to have all of the current-collector trade-offs laid 
 
 The two rows that matter most for the SIB cost story are the volume-cost row and the bottom four. Aluminium is roughly an order of magnitude cheaper than copper *per litre of foil* — and a foil's contribution to a cell is naturally measured by volume, not by mass. Combined with the fact that Al works on both electrodes, this is where the cost advantage really lives.
 
-### Current Collector Adhesion and Interfacial Resistance
+\subsection{Current Collector Adhesion and Interfacial Resistance}
+
 
 The adhesion between the active material coating and the current collector is critical for both electrical performance and mechanical durability. Poor adhesion leads to delamination — the electrode coating peeling away from the foil — particularly at the edges and corners where residual stress concentrates. Delaminated regions are electrically disconnected from the current path, appearing as dead capacity.
 
@@ -2180,7 +2449,10 @@ For sodium-ion cells, the compatibility of hard carbon slurry formulations with 
 
 ---
 
-## Worked Interpretation Exercise: Connecting Manufacturing to Simulation Parameters
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Connecting Manufacturing to Simulation Parameters}
+
+\specialsectionstyle
+
 
 Let us make the connection between the manufacturing choices described in this chapter and the numerical parameters that appear in a physics-based cell model — specifically the Doyle-Fuller-Newman (DFN) model, which you will encounter when we reach Chapter 13 and which is the standard framework for SIB simulation research.
 
@@ -2202,7 +2474,7 @@ A published characterisation study of the commercial **LG MJ1 18650 NMC cell** (
 
 Now let us interpret each number in terms of the manufacturing steps we have discussed.
 
-**Electrode thickness of 70–73 µm** is a post-calendering dimension. It is the thickness of the dry electrode coating after the calendering step has compressed it from a thicker wet-coated, dried dimension. For a 70 µm coating on a 12 µm aluminium current collector (cathode side), the total cathode tape thickness is 82 µm per side, or 164 µm for a double-side-coated foil. In an 18650 cell with a jelly roll of roughly 60 cm length and 4.5 cm width, the total active area is approximately $0.60 \times 0.045 \times 2 \approx 0.054$ m² per electrode side, or about 540 cm² — consistent with published values.
+**Electrode thickness of 70–73 µm** is a post-calendering dimension. It is the thickness of the dry electrode coating after the calendering step has compressed it from a thicker wet-coated, dried dimension. For a 70 µm coating on a 12 µm aluminium current collector (cathode side), the total cathode tape thickness is 82 µm per side, or 164 µm for a double-side-coated foil. In an 18650 cell with a jelly roll of roughly 60 cm length and 4.5 cm width, the total coated active area is approximately $0.60 \times 0.045 \times 2 \approx 0.054$ m², or about 540 cm², across both coated sides — consistent with published values.
 
 **Porosity of 0.30–0.34** is a direct outcome of the calendering pressure. A porosity of 0.30 means 30% of the electrode volume is open pore space filled by electrolyte in the assembled cell, and 70% is occupied by solid (active material, binder, conductive carbon). This is a moderately compressed electrode. For context: as-coated (before calendering), NMC electrodes typically have porosities of 0.50–0.60; heavy calendering can reduce this to 0.20–0.25. The 0.30 value represents a compromise between rate capability (higher porosity preferred) and energy density (lower porosity preferred).
 
@@ -2222,7 +2494,12 @@ This exercise demonstrates why the manufacturing choices — calendering pressur
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The form factor landscape, electrode manufacturing processes, and formation protocols for sodium-ion cells are largely derived from lithium-ion technology — most SIB manufacturers are either spin-offs of the LIB industry or have licensed LIB manufacturing know-how. The main differences are:
 
@@ -2236,7 +2513,12 @@ The form factor landscape, electrode manufacturing processes, and formation prot
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -2247,19 +2529,27 @@ The form factor landscape, electrode manufacturing processes, and formation prot
 
 **Key equations:**
 
-$$D_\text{eff} = D_0 \cdot \varepsilon^{1.5} \quad \text{(Bruggeman relation for porous-electrode transport)} \tag{4.1}$$
-
-$$\tau_\text{diff} \sim \frac{r_p^2}{D_s} \quad \text{(order-of-magnitude solid-state diffusion time for a spherical particle of radius } r_p\text{)} \tag{4.2}$$
-
-$$R_\square = \frac{\rho}{t} \quad \text{(current-collector sheet resistance, in ohms per square)} \tag{4.3}$$
-
+\begin{equation}
+D_\text{eff} = D_0 \cdot \varepsilon^{1.5} \quad \text{(Bruggeman relation for porous-electrode transport)} \tag{4.1}
+\end{equation}
+\begin{equation}
+\tau_\text{diff} \sim \frac{r_p^2}{D_s} \quad \text{(order-of-magnitude solid-state diffusion time for a spherical particle of radius } r_p\text{)} \tag{4.2}
+\end{equation}
+\begin{equation}
+R_\square = \frac{\rho}{t} \quad \text{(current-collector sheet resistance, in ohms per square)} \tag{4.3}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Jelly roll, 18650 / 21700 / 4680, tab, tabless electrode, prismatic cell, blade cell, pouch cell (soft-pack / laminate cell), degassing, cell-to-pack, slurry, binder (PVDF, CMC, SBR), NMP, conductive carbon, slot-die coating, areal loading (coating weight), binder migration, calendering, electrode porosity, tortuosity factor, Bruggeman exponent, slitting, formation cycling, cathode-electrolyte interphase (CEI), gas evolution, electrode balance, formation electrolyte, cell binning, current collector, Li-Al alloying, intermetallic alloy, electrochemical stability window, sheet resistance.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The original chapter plan does not specify a dedicated deliverable for Chapter 4. Instead, the knowledge from this chapter feeds into the deliverable for Chapter 6, where you will construct a comparison table of SIB vs. LIB cells across all Chapter 3 metrics. To prepare, do the following now:
 
@@ -2269,7 +2559,12 @@ Then answer the following questions using the concepts from this chapter. For th
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Schmuch, R. et al., "Performance and cost of materials for lithium-based rechargeable automotive batteries," *Nature Energy* 3, 267–278 (2018).** An authoritative review of the full electrode manufacturing chain from materials cost to cell-level performance, with quantitative data on how manufacturing choices (calendering, areal loading, electrolyte volume) affect energy density and cost. Directly relevant to the manufacturing-to-simulation connection.
 
@@ -2280,13 +2575,17 @@ Then answer the following questions using the concepts from this chapter. For th
 4. **An, S. J. et al., "The state of understanding of the lithium-ion-battery graphite solid electrolyte interphase (SEI) and its relationship to formation cycling," *Carbon* 105, 52–76 (2016).** A comprehensive review of what formation cycling actually does to the SEI, with detailed chemistry and protocols. Read this to understand Section 4.3 in greater depth.
 
 5. **Komaba, S. et al., "Na-ion batteries using hard carbon and conventional electrolyte," *ECS Transactions* 28 (8), 43–55 (2010).** One of the early papers establishing that hard carbon / aluminium current collector assemblies are stable for sodium-ion cycling, providing the experimental basis for the SIB aluminium current collector advantage discussed in Section 4.4.
+\bodytextstyle
+
 
 
 \newpage
 
-# Lithium-Ion Chemistry Families
+\chapter{Lithium-Ion Chemistry Families}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 If you have spent any time reading battery news — or even just following the electric vehicle industry — you have encountered a cascade of acronyms: LCO, LFP, NMC, NCA, LMO, LTO. Each refers to a different combination of electrode materials. Each represents a different set of trade-offs. Each dominates in a different application, and each is the right answer to a different question. Yet the abbreviations are thrown around casually, often without explanation, as if the reader is expected to already know why NMC won the EV market in 2018 while LFP is winning it back in 2024, or why LTO is used in fast-charging buses in China despite its dramatically lower energy density, or why LCO remains dominant in your phone despite being the oldest chemistry and the most expensive.
 
@@ -2312,7 +2611,10 @@ By the end of this chapter, you will be able to name any major lithium-ion chemi
 
 ---
 
-## The Five-Dimensional Trade-Off Space
+\bodytextstyle
+
+\section{The Five-Dimensional Trade-Off Space}
+
 
 Before examining individual chemistries, we need a conceptual framework for comparing them. Battery chemistries do not compete on a single axis — the "best" chemistry depends entirely on what the application demands. An attempt to find a single "winner" misses the point. What we need is a multi-dimensional trade-off framework.
 
@@ -2351,9 +2653,11 @@ Sketch this for yourself after you finish the chapter. The exercise of placing e
 
 ---
 
-## LCO: Lithium Cobalt Oxide — The Original Chemistry
+\section{LCO: Lithium Cobalt Oxide — The Original Chemistry}
 
-### History and Structure
+
+\subsection{History and Structure}
+
 
 **Lithium cobalt oxide (LCO)**, chemical formula LiCoO₂, is where the modern lithium-ion battery story begins. John Goodenough's group at Oxford demonstrated its use as a lithium-ion cathode in 1980; Rachid Yazami and Philippe Touzain showed that graphite could reversibly intercalate lithium in 1980–1983; and Akira Yoshino at Asahi Kasei assembled the first practical lithium-ion cell (petroleum-coke anode / LCO cathode) in 1985. Graphite did not replace coke as the standard anode until the early 1990s, once ethylene carbonate electrolytes were introduced that allowed a stable SEI to form on graphite without exfoliating it — a detail we will revisit when we discuss electrolyte selection. Sony commercialised this chemistry in 1991, and it powered virtually every portable electronic device for the following two decades. Goodenough, Whittingham, and Yoshino shared the Nobel Prize in Chemistry in 2019 for this work.
 
@@ -2361,17 +2665,19 @@ LCO has the **layered O3 crystal structure** (α-NaFeO₂ structure type) descri
 
 Here is the intuition. Imagine Li ions as charges hopping between sites on a grid. In LCO, the grid is flat: a Li ion can hop north, south, east, or west within its layer with roughly equal ease, but cannot hop "up" or "down" to the next layer because the CoO₂ sheets in between form a kinetic wall. So transport is effectively 2D. In LFP, which we will meet next, the geometry is opposite — transport is effectively 1D, confined to parallel tunnels through the olivine lattice. And in spinel LMO and LTO, transport is 3D, with the ion free to hop in any direction. The dimensionality of the diffusion pathway matters enormously for rate capability: 3D > 2D > 1D in general, because 3D geometries have more parallel paths for current to take and are more tolerant of blockages. Think of it as the difference between a city with a full grid of streets (3D spinel), a city with avenues only (2D layered, limited turns), and a city with a single one-way expressway you cannot exit (1D olivine). An accident on the expressway is catastrophic; the grid routes around it trivially.
 
-### Electrochemistry
+\subsection{Electrochemistry}
+
 
 The half-reaction at the LCO cathode during discharge is:
 
-$$\text{Li}_{1-x}\text{CoO}_2 + x\,\text{Li}^+ + x\,e^- \longrightarrow \text{LiCoO}_2 \tag{5.1}$$
-
+\begin{equation}
+\text{Li}_{1-x}\text{CoO}_2 + x\,\text{Li}^+ + x\,e^- \longrightarrow \text{LiCoO}_2 \tag{5.1}
+\end{equation}
 where the potential ranges from approximately 3.7 V (near full lithiation, $x \to 0$) to 4.2 V (at the practical delithiation cutoff of $x \approx 0.5$), both measured vs. Li/Li⁺.
 
 The theoretical specific capacity follows from Faraday's first law:
 
-$$C_\text{th} = \frac{nF}{3.6\,M}, \tag{5.A}$$
+$$C_\text{th} = \frac{nF}{3.6\,M}$$
 
 where $n$ is the number of electrons transferred per formula unit, $F = 96485$ C/mol is the Faraday constant, $M$ is the molar mass in g/mol, and the factor of 3.6 converts coulombs to milliamp-hours ($1~\text{mAh} = 3.6~\text{C}$). For LCO with $n = 1$ and $M = 97.87$ g/mol, this gives $C_\text{th} = 96485 / (3.6 \times 97.87) = 274$ mAh/g, as we calculated in Chapter 1.
 
@@ -2379,7 +2685,8 @@ However — and this is the central limitation of LCO — only about half of thi
 
 The practical specific capacity of LCO is therefore approximately **140–160 mAh/g**, corresponding to $x \leq 0.5$. Cell-level specific energy for LCO/graphite 18650 cells is approximately 200–260 Wh/kg.
 
-### LCO Performance Profile
+\subsection{LCO Performance Profile}
+
 
 LCO has a moderately sloped OCV curve (good for SOC estimation), good rate capability (the 2D Li diffusion in the CoO₂ plane is facile), moderate cycle life (500–1000 cycles under careful voltage management), and excellent volumetric energy density (>700 Wh/L for 18650 cells) due to the high density of LCO (5.06 g/cm³) and the reasonably high practical capacity.
 
@@ -2387,7 +2694,8 @@ Its Achilles heel is **safety**. Fully delithiated (or near-fully delithiated) L
 
 The second weakness is **cost**: cobalt is expensive (~$30–50/kg as of this writing, with large price fluctuations), geographically concentrated (the Democratic Republic of Congo supplies over 70% of world production), and subject to supply security concerns. LCO uses approximately 0.6 g of cobalt per watt-hour of cell energy — one of the highest cobalt intensities of any cathode chemistry.
 
-### Application Domain
+\subsection{Application Domain}
+
 
 LCO dominates **consumer electronics** (smartphones, laptops, tablets, cameras) where the priorities are maximum volumetric energy density (thin devices) and a cycle life *just* adequate for the product lifetime. Consider a phone over two years: if the user charges roughly every 1.5 days, that is ~490 cycles. Add a safety margin and you need a cell good for 500–800 cycles to 80% retention — which LCO, used conservatively, can provide. A vehicle battery that needs 1500+ cycles would be a terrible fit for LCO, but a pocket device that is expected to be obsolete after two years is a near-ideal match. LCO is poorly suited to EVs (cost, safety at scale, cycle life) and completely unsuited to stationary storage (cost per Wh is too high).
 
@@ -2395,9 +2703,11 @@ A note on the asymmetry of this chapter: we will spend most of our time on catho
 
 ---
 
-## LFP: Lithium Iron Phosphate — The Safe Workhorse
+\section{LFP: Lithium Iron Phosphate — The Safe Workhorse}
 
-### Structure and the Inductive Effect
+
+\subsection{Structure and the Inductive Effect}
+
 
 **Lithium iron phosphate (LFP)**, chemical formula LiFePO₄, occupies the diametrically opposite position from LCO in the trade-off space: it sacrifices energy density and volumetric compactness to achieve extraordinary safety, cycle life, and low cost. Goodenough's group at UT Austin reported it as a cathode material in 1997, and while its commercialisation was initially hampered by poor electronic conductivity (requiring carbon coating and nanostructuring), it is now one of the largest-volume battery chemistries in the world.
 
@@ -2405,12 +2715,14 @@ LFP has the **olivine crystal structure**: iron atoms sit in octahedral FeO₆ s
 
 The voltage of LFP is tuned by the **inductive effect** mentioned in Chapter 2: the phosphate anion $(\text{PO}_4)^{3-}$ is strongly electron-withdrawing, pulling electron density away from the iron ion. This raises the energy of the Fe³⁺/Fe²⁺ redox couple from ~1.0 V vs. SHE in simple iron oxides to ~3.45 V vs. Li/Li⁺ — a useful cathode potential. The stronger the inductive effect of the polyanion, the higher the voltage; fluorinated polyanions (as in LiVPO₄F) raise this further, and more weakly withdrawing anions (silicates, borates) produce lower voltages. The inductive effect is a beautifully general concept that battery materials scientists use to rationally design cathode voltages.
 
-### Electrochemistry: The Two-Phase Reaction
+\subsection{Electrochemistry: The Two-Phase Reaction}
+
 
 The LFP cathode undergoes a **two-phase reaction** during cycling. Rather than a continuous solid-solution of varying lithium content, LFP exists in two discrete phases: lithium-rich LiFePO₄ (fully lithiated, Fe²⁺) and lithium-poor FePO₄ (fully delithiated, Fe³⁺). As the cell charges, the LiFePO₄ phase is converted to FePO₄; as it discharges, the reverse occurs. The two phases coexist throughout most of the charge or discharge.
 
-$$\text{LiFePO}_4 \rightleftharpoons \text{FePO}_4 + \text{Li}^+ + e^- \tag{5.2}$$
-
+\begin{equation}
+\text{LiFePO}_4 \rightleftharpoons \text{FePO}_4 + \text{Li}^+ + e^- \tag{5.2}
+\end{equation}
 with $E^\circ \approx +3.45$ V vs. Li/Li⁺ for this half-reaction.
 
 As we established in Chapter 1 and reinforced in Chapter 3, a two-phase reaction gives a flat voltage plateau. It is worth revisiting the reason explicitly, because it matters again in a moment.
@@ -2429,15 +2741,17 @@ The practical consequence of the two-phase mechanism for SOC estimation bears re
 
 **A common misconception — the flat plateau is about OCV, not V(t).** Students new to LFP often assume that the flat voltage plateau means an LFP cell under load also holds its terminal voltage constant. It does not. Under any non-zero current, the terminal voltage is displaced from the OCV by ohmic and polarisation overpotentials, both of which are SOC-dependent (especially at the ends of the plateau and at extreme DOD). So the terminal-voltage curve of a loaded LFP cell is *not* flat — it has a clear SOC dependence through the IR drop. The flat part is the open-circuit voltage, measured at rest. What this means in practice is that you can sometimes squeeze a little SOC information out of an LFP cell during dynamic operation by observing how the terminal voltage responds to current pulses, even though the OCV-based lookup is useless. Chapter 10 will make this precise when we discuss model-based SOC estimation.
 
-The theoretical specific capacity of LFP follows from equation (5.A) with $n = 1$ and $M_\text{LFP} = 157.76$ g/mol: $C_\text{th} = 96485/(3.6 \times 157.76) = 169.9$ mAh/g. The practical capacity is close to this theoretical value — approximately **155–170 mAh/g** — because LFP can be nearly fully cycled without structural degradation, unlike LCO which can only use half its theoretical range.
+The theoretical specific capacity of LFP follows from Faraday's first law with $n = 1$ and $M_\text{LFP} = 157.76$ g/mol: $C_\text{th} = 96485/(3.6 \times 157.76) = 169.9$ mAh/g. The practical capacity is close to this theoretical value — approximately **155–170 mAh/g** — because LFP can be nearly fully cycled without structural degradation, unlike LCO which can only use half its theoretical range.
 
-### The Electronic Conductivity Problem and Carbon Coating
+\subsection{The Electronic Conductivity Problem and Carbon Coating}
+
 
 Early attempts to use LFP as a cathode failed because its intrinsic electronic conductivity is extremely low — about $10^{-9}$ S/cm, compared to roughly $10^{-4}$ S/cm for LCO and $10^{-3}$ S/cm for NMC. To see what this means physically, imagine an electron trying to reach an iron centre 100 nm deep inside an uncoated LFP particle. Using $R = \rho L / A$ with $\rho = 10^9$ Ω·cm, a path length of $10^{-5}$ cm, and a particle cross-section of $10^{-10}$ cm², the resistance of that single path is on the order of $10^{24}$ Ω — absurdly high. Scaled across all the iron centres in an electrode carrying realistic current, the electronic-transport overpotential alone would dominate everything else in the cell. The electrons needed for the Fe²⁺ ↔ Fe³⁺ redox reaction cannot reach or leave the iron centres fast enough, and the cell cannot deliver useful current at any rate.
 
 The solution, developed by Ravet, Armand and colleagues in the early 2000s, was **carbon coating**: a thin (1–3 nm) layer of conductive carbon is deposited on each LFP nanoparticle surface during synthesis. The coating provides a high-conductivity shell through which electrons can reach the LFP surface, and the final leg of electron transport into the iron centre is short enough that the low intrinsic conductivity no longer dominates. Combined with reducing the particle size to 100–200 nm — which shortens both the solid-state Li diffusion path and the distance electrons must travel through the insulating core — carbon-coated nano-LFP has acceptable rate capability for most applications. This is why LFP in the literature is always "C-LFP" or "carbon-coated LFP," and why the specific capacity reported for LFP electrodes implicitly includes the 2–5% carbon coating mass.
 
-### Safety: Why LFP Is Uniquely Stable
+\subsection{Safety: Why LFP Is Uniquely Stable}
+
 
 The safety advantage of LFP relative to LCO and NMC is not merely quantitative — it is qualitative. The LFP crystal structure is thermodynamically stable up to very high temperatures even when fully delithiated: the fully delithiated FePO₄ phase does not release oxygen until temperatures above approximately 400–450°C. Compare this to delithiated LCO (oxygen release at ~150–180°C) or delithiated NMC811 (oxygen release at ~180–200°C). The phosphate framework physically locks up the oxygen in strong covalent P-O bonds that are thermodynamically more stable than the oxide framework in layered materials.
 
@@ -2445,7 +2759,8 @@ This means that even if an LFP cell is short-circuited, overcharged, or subjecte
 
 The same structural rigidity that makes LFP thermally safe also contributes to its exceptional cycle life: the volume change between LiFePO₄ and FePO₄ is a modest ~6.8%, small enough that the particles do not fracture appreciably under cycling, and the two-phase mechanism means the interior of a particle experiences a sharp phase boundary rather than a continuous concentration gradient — which, counterintuitively, reduces the mechanical stresses that drive crack formation. We will return to particle cracking as a degradation mechanism in Chapter 7.
 
-### LFP Performance Profile
+\subsection{LFP Performance Profile}
+
 
 LFP summary: nominal voltage 3.2–3.35 V; practical specific capacity 155–170 mAh/g; cell-level specific energy 150–200 Wh/kg; cycle life >3,000 cycles (often >5,000 at partial DOD); excellent safety; low cost (iron and phosphorus are among the cheapest battery materials); poor volumetric energy density (LFP's density is 3.6 g/cm³, lower than LCO's 5.06 g/cm³, and the lower voltage also contributes); SOC estimation challenge from flat OCV.
 
@@ -2453,9 +2768,11 @@ Application: **grid energy storage, e-bikes, electric buses, mass-market EVs (pa
 
 ---
 
-## NMC: The Dominant EV Chemistry
+\section{NMC: The Dominant EV Chemistry}
 
-### The Nickel-Manganese-Cobalt Family
+
+\subsection{The Nickel-Manganese-Cobalt Family}
+
 
 **NMC** — **lithium nickel manganese cobalt oxide**, general formula Li(Ni$_x$Mn$_y$Co$_z$)O₂ where $x + y + z = 1$ — is not a single material but an entire family of materials sharing the layered O3 structure of LCO but with three transition metals sharing the octahedral sites in the cobalt layers. The three metals serve distinct electrochemical roles: nickel is the primary redox-active species (Ni²⁺/Ni⁴⁺ couple provides most of the capacity); cobalt improves electronic conductivity and helps maintain structural order during cycling; manganese (electrochemically inactive at these potentials, remaining as Mn⁴⁺) acts as a structural stabiliser, improving thermal stability relative to pure nickel or cobalt oxides.
 
@@ -2473,7 +2790,8 @@ $$C_\text{th} = \frac{nF}{3.6\,M} = \frac{96485}{3.6 \times 96.27} = 278 \text{ 
 
 The practical capacity of NMC811, approximately 200–220 mAh/g, corresponds to extracting roughly 72–79% of the lithium inventory before you hit the upper voltage limit beyond which thermal stability collapses. NMC111 is computed the same way (M ≈ 96.5 g/mol, since the three transition metals have similar atomic mass), giving nearly the same theoretical capacity of ~278 mAh/g — but NMC111 can only safely access about 58% of it (~160 mAh/g). So the difference in practical capacity between NMC111 and NMC811 is *not* a theoretical-capacity difference (they are nearly identical); it is a difference in how much of the capacity can be safely used before the cathode becomes thermally unstable. This is a subtle but important point: the nickel dilemma is fundamentally about the *usable fraction of a nearly-constant theoretical capacity*, and it is why the cycle-life–capacity trade-off across the NMC family is so sharp.
 
-### The Nickel Dilemma
+\subsection{The Nickel Dilemma}
+
 
 The trend toward higher nickel is driven by two simultaneous motivations: higher capacity (each additional Ni replacing Mn or Co adds redox activity) and lower cobalt content (lower cost, lower supply-chain risk). But nickel brings its own problems, and the "nickel dilemma" is one of the central tensions in current LIB cathode research.
 
@@ -2483,7 +2801,8 @@ The **surface reconstruction** problem: during cycling, the surface of high-nick
 
 The **thermal stability** problem: delithiated high-nickel NMC is a powerful oxidiser. The oxygen release temperature for NMC811 is approximately 180–200°C, significantly lower than for NMC111 (~260°C). For this reason, NMC811 cells require more sophisticated thermal management and BMS overvoltage protection than lower-nickel variants. High-profile recalls involving high-nickel NMC cells — the Hyundai Kona EV and Chevrolet Bolt recalls of 2020–2021, both involving LG-manufactured Ni-rich cells (characterised in the literature as NMC622-class, not NMC811 as sometimes reported) — triggered an industry-wide re-examination of high-nickel cathode safety practices, even though the immediate root cause in both cases was traced to manufacturing defects (folded anode tabs and separator damage) rather than the chemistry itself. The episode is still instructive: high-nickel cells are less forgiving of manufacturing imperfections precisely because their thermal runaway onset is closer to achievable in-pack temperatures.
 
-### The Anode Side: Graphite with NMC
+\subsection{The Anode Side: Graphite with NMC}
+
 
 NMC cathodes are almost universally paired with **graphite anodes** (or, in premium cells, graphite with a small percentage of silicon added). The graphite anode has the **staged intercalation** chemistry described in Chapter 2 — a sequence of discrete, ordered arrangements of Li between the graphene layers, labelled by the integer "stage number" $n$, where stage-$n$ means one Li-filled gallery between every $n$ adjacent empty galleries. The fully lithiated stage-1 compound (LiC₆) has every gallery filled; stage-2 (LiC₁₂) has every other gallery filled; higher stages have progressively sparser Li layers. Each stage-to-stage transition is a genuine phase transformation that produces a flat plateau in the graphite OCV curve, and these plateaus are what create the sharp peaks in a dQ/dV measurement that we will read later in the chapter. The combined NMC/graphite full cell OCV curve is moderately sloped across the full SOC range — dominated by the NMC cathode shape, which slopes continuously. This makes voltage-based SOC estimation more tractable than for LFP/graphite cells.
 
@@ -2493,13 +2812,15 @@ $$C_\text{th} = \frac{nF}{3.6\,M} = \frac{96485}{3.6 \times 72.06} = 372 \text{ 
 
 Graphite achieves a practical capacity of approximately 350–365 mAh/g — remarkably close to theoretical, because graphite can be nearly fully lithiated to LiC₆ without side reactions — and a nominal potential of roughly 0.1–0.2 V vs. Li/Li⁺ on average.
 
-### Silicon Addition
+\subsection{Silicon Addition}
+
 
 Adding silicon to the graphite anode — typically 5–10% by weight, or up to 50% in advanced cells — increases anode specific capacity significantly. Silicon's theoretical specific capacity for the Li₁₅Si₄ phase is 3579 mAh/g, roughly 10× graphite. Even a 5% silicon addition can increase the anode specific capacity from ~360 to ~450 mAh/g, enabling a meaningful cell-level energy density increase.
 
 The catch, as noted in Chapter 2, is the ~300% volume expansion of silicon during full lithiation. This volume change causes particle fracturing, repeated SEI formation on newly exposed surfaces, progressive capacity fade, and electrical isolation of cracked particles. The engineering challenge is to design silicon-containing composite anodes (silicon nanoparticles, silicon-carbon composites, silicon dispersed in graphite matrix) that accommodate the volume change without fracturing. This is an intensely active research area. Current state-of-the-art silicon-graphite anodes in commercial cells (e.g., Tesla 4680 with ~5% silicon) achieve 400–500+ mAh/g effective capacity at the cost of somewhat higher first-cycle irreversibility and somewhat faster capacity fade relative to pure graphite.
 
-### NMC Performance Profile
+\subsection{NMC Performance Profile}
+
 
 NMC/graphite summary: nominal voltage 3.6–3.7 V; practical specific capacity 160–220 mAh/g (cathode-limited); cell-level specific energy 200–280 Wh/kg depending on variant; cycle life 500–2000 cycles depending on nickel content, DOD, and temperature; safety good to moderate (decreasing with increasing Ni content); cost moderate (decreasing as cobalt content drops with higher-Ni variants).
 
@@ -2507,7 +2828,8 @@ Application: **premium EVs, high-energy consumer electronics, energy storage whe
 
 ---
 
-## NCA: The High-Energy Variant
+\section{NCA: The High-Energy Variant}
+
 
 **NCA** — **lithium nickel cobalt aluminium oxide**, formula Li(Ni$_x$Co$_y$Al$_z$)O₂, typically Li(Ni$_{0.8}$Co$_{0.15}$Al$_{0.05}$)O₂ — has its origins in work on Ni-rich layered oxides in Japan in the 1990s (notably Ohzuku and Makimura on related LiNiO₂ derivatives) and was commercialised by SAFT and then by Panasonic/Matsushita. It is most visible today in the Panasonic 18650 and 2170 cells used in Tesla vehicles from 2012 onward.
 
@@ -2523,18 +2845,20 @@ Application: **high-energy-density EVs and premium consumer electronics.** NCA i
 
 ---
 
-## LMO: Lithium Manganese Oxide — The Spinel
+\section{LMO: Lithium Manganese Oxide — The Spinel}
+
 
 **LMO** — **lithium manganese oxide**, formula LiMn₂O₄ — was one of the earliest alternative cathode materials explored for lithium-ion batteries. Unlike LCO, NMC, and NCA with their layered structures, LMO has the **spinel** crystal structure: manganese ions occupy octahedral 16d sites in a cubic close-packed oxygen framework, with lithium occupying tetrahedral 8a sites. The 8a tetrahedral sites are connected through vacant 16c octahedral sites to form a three-dimensional network of equivalent diffusion pathways — in effect, a full grid in all three spatial directions, to return to the street-network analogy. Compared to LCO's 2D planes and LFP's 1D tunnels, a 3D network has many more parallel paths for lithium to take, and a blockage anywhere can be routed around. This structural choice is why LMO has intrinsically excellent rate capability (it can deliver and accept very high currents) and why it is immune to the anti-site-defect sensitivity that plagues LFP: no single defect can isolate a region of the crystal.
 
-The theoretical specific capacity follows from equation (5.A) with $n = 1$ and $M_\text{LMO} = 180.81$ g/mol: $C_\text{th} = 96485/(3.6 \times 180.81) = 148.3$ mAh/g. Practical specific capacity is lower at **100–120 mAh/g**, reflecting the difficulty of fully cycling LMO without structural degradation. The nominal voltage is approximately 4.0 V vs. Li/Li⁺ — higher than LCO's 3.7 V, which is thermodynamically attractive.
+The theoretical specific capacity follows from Faraday's first law with $n = 1$ and $M_\text{LMO} = 180.81$ g/mol: $C_\text{th} = 96485/(3.6 \times 180.81) = 148.3$ mAh/g. Practical specific capacity is lower at **100–120 mAh/g**, reflecting the difficulty of fully cycling LMO without structural degradation. The nominal voltage is approximately 4.0 V vs. Li/Li⁺ — higher than LCO's 3.7 V, which is thermodynamically attractive.
 
 LMO's safety profile is excellent: manganese oxides are thermally stable to high temperature, there is no cobalt dissolution, and the three-dimensional structure is robust. The cost is very low — manganese is among the cheapest transition metals.
 
 The problem with LMO is **manganese dissolution** into the electrolyte. In pristine LiMn₂O₄ the manganese exists as a 1:1 mixture of Mn³⁺ and Mn⁴⁺ — an average oxidation state of +3.5 — because charge balance with one Li⁺ and four O²⁻ demands it. At elevated temperatures (above ~40°C), and especially when trace HF is present in the electrolyte from LiPF₆ hydrolysis, surface Mn³⁺ ions undergo a disproportionation reaction:
 
-$$2\,\text{Mn}^{3+}_{(\text{solid})} \longrightarrow \text{Mn}^{2+}_{(\text{solution})} + \text{Mn}^{4+}_{(\text{solid})} \tag{5.3}$$
-
+\begin{equation}
+2\,\text{Mn}^{3+}_{(\text{solid})} \longrightarrow \text{Mn}^{2+}_{(\text{solution})} + \text{Mn}^{4+}_{(\text{solid})} \tag{5.3}
+\end{equation}
 The Mn²⁺ that is produced is soluble in the electrolyte and leaves the cathode; the Mn⁴⁺ stays behind but cannot participate in redox cycling at normal cell voltages. The cathode thus loses both Mn and its associated capacity. The dissolved Mn²⁺ then migrates to the graphite anode, deposits on its surface, and catalyses the decomposition of the SEI — dramatically accelerating capacity fade. This mechanism, called **transition metal crossover** or **Mn crosstalk**, is severe enough at operating temperatures above 40–50°C that LMO cells stored at elevated temperature degrade rapidly. This temperature sensitivity limits LMO's practical application range.
 
 **LNMO** (LiNi₀.₅Mn₁.₅O₄, the high-voltage spinel) is an important variant that operates at approximately 4.7 V vs. Li/Li⁺ — the highest cathode voltage of any commercially relevant material. At this voltage, conventional carbonate electrolytes are near the edge of their oxidative stability window, which has prevented LNMO from commercialising despite its attractive electrochemistry. Finding electrolytes stable at 4.7+ V vs. Li/Li⁺ is one of the open challenges in battery materials research.
@@ -2553,14 +2877,16 @@ The table encodes a rule that battery materials chemists internalise early: *str
 
 ---
 
-## LTO: Lithium Titanate — The Safe, Long-Life Anode
+\section{LTO: Lithium Titanate — The Safe, Long-Life Anode}
+
 
 **LTO** — **lithium titanium oxide**, formula Li₄Ti₅O₁₂ — is the odd one out in this chapter: it is an **anode material**, not a cathode material. Its inclusion is justified by its distinct performance profile and its importance in specific applications.
 
 LTO has the spinel crystal structure (like LMO), with lithium and titanium sharing octahedral and tetrahedral sites. Its intercalation half-reaction is:
 
-$$\text{Li}_4\text{Ti}_5\text{O}_{12} + 3\,\text{Li}^+ + 3\,e^- \longrightarrow \text{Li}_7\text{Ti}_5\text{O}_{12} \tag{5.4}$$
-
+\begin{equation}
+\text{Li}_4\text{Ti}_5\text{O}_{12} + 3\,\text{Li}^+ + 3\,e^- \longrightarrow \text{Li}_7\text{Ti}_5\text{O}_{12} \tag{5.4}
+\end{equation}
 with $E^\circ \approx +1.55$ V vs. Li/Li⁺.
 
 This is the defining characteristic of LTO: its potential (1.55 V vs. Li/Li⁺) is much higher than graphite (0.05–0.25 V vs. Li/Li⁺). This high anode potential has three important consequences.
@@ -2577,17 +2903,20 @@ Application: **fast-charging public transit buses (Toshiba SCiB cells, widely de
 
 ---
 
-## Anode Alternatives: A Brief Survey
+\section{Anode Alternatives: A Brief Survey}
+
 
 We have now covered the major cathode chemistries. The anode side is somewhat simpler: graphite dominates overwhelmingly, with silicon-graphite composites as the primary performance enhancement. LTO has been covered above. Two other anode materials deserve brief mention.
 
-### Hard Carbon for Lithium-Ion
+\subsection{Hard Carbon for Lithium-Ion}
+
 
 Hard carbon intercalates lithium as well as sodium. In lithium-ion cells, hard carbon offers a specific capacity of approximately 200–300 mAh/g (higher than LTO, lower than graphite) at potentials of 0.1–1.0 V vs. Li/Li⁺. Its disordered structure means it is less prone to graphite's stage-phase-transition-related mechanical stress, potentially giving better rate capability and cycle life.
 
 However, hard carbon's ICE for lithium is typically 80–90% — somewhat lower than graphite — and its lower density compared to graphite means lower volumetric energy density. Hard carbon anodes for LIBs remain a niche application (some sodium-ion researchers argue the distinction between HC-based LIBs and SIBs is primarily a matter of which ion is being intercalated). For the purposes of this book, hard carbon as an anode is primarily a sodium-ion story, which we take up in Chapter 6.
 
-### Lithium Metal
+\subsection{Lithium Metal}
+
 
 The ultimate anode for lithium-ion batteries is lithium metal itself. Its theoretical specific capacity is $C_\text{th} = F/(3.6 \cdot 6.941) = 3862$ mAh/g, and its potential is, by definition, 0 V vs. Li/Li⁺ — the most negative (most reducing) electrode potential achievable in a lithium cell, and therefore the one that, paired with any given cathode, yields the largest possible cell voltage and the highest energy density. Compared to graphite, lithium metal gives you roughly 10× the specific capacity and eliminates the ~100 mV of graphite overpotential that eats into cell voltage. The energy density ceiling for a lithium metal / NMC811 cell is approximately 500+ Wh/kg — nearly double current state-of-the-art.
 
@@ -2597,7 +2926,8 @@ Solving the lithium metal anode problem (achieving 99.9%+ CE, suppressing dendri
 
 ---
 
-## Which Chemistry Wins in Which Application?
+\section{Which Chemistry Wins in Which Application?}
+
 
 We now have enough vocabulary to answer the question explicitly. Before we look at the metric-by-metric comparison, it is useful to see the current distribution of these chemistries in actual manufactured cells. The table below gives rough global EV-market shares as of the mid-2020s (the numbers shift meaningfully year over year and should be taken as approximate):
 
@@ -2633,7 +2963,10 @@ The LTO case illustrates a broader principle: sometimes the right answer is to a
 
 ---
 
-## Worked Interpretation Exercise: Reading a Differential Capacity ($dQ/dV$) Curve
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading a Differential Capacity ($dQ/dV$) Curve}
+
+\specialsectionstyle
+
 
 The differential capacity (or **incremental capacity**) curve — $dQ/dV$ plotted against voltage $V$ — is one of the most diagnostic fingerprints of a battery chemistry. We introduced this concept in Chapter 3 (Section 3.10) in the context of PITT measurements; now we can read one meaningfully.
 
@@ -2657,7 +2990,12 @@ For now, the key takeaway is that the $dQ/dV$ curve is a Rosetta Stone: it trans
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 Chapter 6 is entirely devoted to sodium-ion chemistry, so this section is briefer than usual and serves mainly to orient the transitions.
 
@@ -2669,7 +3007,12 @@ The energy density comparison is also important context. Current SIB cells achie
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -2702,7 +3045,12 @@ Energy-power-safety-cost-life pentagon, LCO, layered O3 structure, quasi-2D diff
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The primary deliverable for this chapter feeds the Chapter 6 table task. Begin building the LIB half of the comparison table now.
 
@@ -2716,7 +3064,12 @@ Nominal voltage: 3.6 V. Rated capacity: 3000 mAh at C/5, 25°C. Specific energy:
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Goodenough, J. B. and Kim, Y., "Challenges for Rechargeable Li Batteries," *Chemistry of Materials* 22 (3), 587–603 (2010).** Goodenough's own retrospective on the development of LCO, LFP, and the cathode challenge landscape. Authoritative, concise, and a model of clear scientific writing. Read this for historical context and for Goodenough's perspective on what the unsolved problems are.
 
@@ -2727,13 +3080,17 @@ Nominal voltage: 3.6 V. Rated capacity: 3000 mAh at C/5, 25°C. Specific energy:
 4. **Etacheri, V. et al., "Challenges in the development of advanced Li-ion batteries: a review," *Energy & Environmental Science* 4, 3243–3262 (2011).** A systems-level review of the major challenges facing each chemistry family, from electrolyte compatibility to thermal management. Particularly useful for its treatment of the silicon anode challenge and the lithium metal anode problem.
 
 5. **Dahn, J. R. et al., "Suppression of Hydrogen Evolution and Voltaic Efficiency Improvement in Rechargeable Lithium Batteries by Electrolyte Additives," and associated works.** Dahn's group at Dalhousie has published hundreds of systematic studies on LIB electrolyte and electrode performance. The series of papers using the "100-cell testing" methodology for cycle life prediction are the most rigorous long-term cycle life studies in the literature and establish quantitative comparisons between NMC variants under controlled conditions.
+\bodytextstyle
+
 
 
 \newpage
 
-# Sodium-Ion Chemistry Families
+\chapter{Sodium-Ion Chemistry Families}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 There is a question that serious researchers ask when they encounter sodium-ion batteries for the first time, and it is worth stating plainly: if we already have lithium-ion batteries that work extraordinarily well, why would we deliberately choose to build batteries around a heavier, bulkier ion that sits higher on the reduction potential scale, cannot use graphite as an anode, and cannot use copper as a current collector? What problem is sodium-ion actually solving?
 
@@ -2775,11 +3132,15 @@ With that context established, we can read this chapter as an engineering survey
 
 ---
 
-## Why Na⁺ Is Harder to Work With Than Li⁺
+\bodytextstyle
+
+\section{Why Na\textsuperscript{+} Is Harder to Work With Than Li\textsuperscript{+}}
+
 
 Before we discuss specific SIB materials, we need to establish the fundamental physical and chemical differences between sodium and lithium ions as battery charge carriers. These differences explain why SIBs cannot simply use the same electrode materials as LIBs with sodium substituted for lithium — every material choice must be reconsidered from the ground up.
 
-### Ionic Radius and Its Consequences
+\subsection{Ionic Radius and Its Consequences}
+
 
 The sodium ion Na⁺ has an ionic radius of **1.02 Å** in octahedral coordination; the lithium ion Li⁺ has a radius of **0.76 Å** in the same coordination. This 34% difference in radius is the most important single physical fact about SIBs. It has consequences at every level of the cell, from crystal structure to electrolyte to SEI.
 
@@ -2787,17 +3148,20 @@ At the crystal structure level, the larger Na⁺ ion requires larger interstitia
 
 For cathode materials, the larger Na⁺ preference for larger coordination environments means that some crystal structures work better as sodium hosts than as lithium hosts, and vice versa. In particular, prismatic coordination (where the ion sits at the centre of a trigonal prism of six oxygen atoms) accommodates Na⁺ more comfortably than the octahedral coordination favoured by Li⁺ — this is the physical origin of the P2-type layered structure that is uniquely important in SIBs and has no significant lithium-ion analogue.
 
-### Ionic Mass
+\subsection{Ionic Mass}
+
 
 Sodium is 23.0 g/mol; lithium is 6.941 g/mol — a factor of 3.3× heavier. For a fixed molar capacity (moles of ions cycled), the sodium-based electrode will contain 3.3× more mass from the charge carrier alone. This contributes directly to lower gravimetric specific capacity compared to lithium-based analogues, all else being equal. The magnitude of the penalty depends on what fraction of the electrode mass is the ion versus the host material, but it is always unfavourable.
 
-### Standard Electrode Potential
+\subsection{Standard Electrode Potential}
+
 
 As established in Chapter 1, the Na⁺/Na standard reduction potential is −2.71 V vs. SHE, compared to −3.04 V for Li⁺/Li — a difference of 0.33 V, with Na⁺/Na sitting higher on the reduction scale. The practical consequence: if you built the same cathode material twice, once as a lithium host and once as a sodium host, and paired each with its own alkali-metal anode, the sodium cell's open-circuit voltage would come out 0.33 V lower than the lithium cell's. That 0.33 V is a fixed contribution from the anode reference and cannot be undone by tuning the cathode side of the same material.
 
 A careful reader will immediately object that real SIBs don't use sodium metal anodes and their cathodes aren't simple translations of lithium cathodes. That's right. In a commercial SIB, the anode is hard carbon (which sits ~0.05–0.2 V above the Na/Na⁺ reference), and the cathode is chosen for chemistry that works well with Na⁺, not for faithfulness to a lithium precedent. The net result is that the real cell-level voltage penalty relative to an equivalent LIB lands in the 0.3–0.5 V range rather than being exactly 0.33 V. The underlying 0.33 V anode-reference shift is the dominant piece, though, and it is the right number to keep in your head as the thermodynamic "cost of switching to sodium."
 
-### Diffusion Coefficient in Solids
+\subsection{Diffusion Coefficient in Solids}
+
 
 **Common misconception:** "The bigger, heavier ion must always diffuse more slowly." It sounds obvious — and for liquids and plasmas it's usually right — but in solid intercalation hosts it is not a theorem. In a solid, diffusion of an alkali ion is a sequence of thermally activated hops between discrete sites, and the rate depends on the *local* energy landscape: the size of the bottleneck the ion has to squeeze through, the depth of the site it is currently sitting in, and how those two compare to the ion's own size. If a host is tight around Li⁺ (small bottleneck, deep site) but loose around Na⁺ (wider bottleneck, shallower site), Na⁺ can actually hop *faster*. This is observed in several polyanionic and PBA frameworks where the channels are sized for the bigger ion. It is also part of why some solid electrolytes are excellent Na⁺ conductors despite being mediocre Li⁺ conductors.
 
@@ -2809,13 +3173,15 @@ Why, then, do SIBs typically show higher charge-transfer resistance and higher c
 
 One place where desolvation *does* visibly matter is in ether-based electrolytes. In diglyme (DEGDME) and related glymes, Na⁺ forms strongly coordinated, geometrically rigid solvation complexes with 2–3 glyme molecules, and under certain conditions it can intercalate into graphite *together with its solvent shell* (co-intercalation). On hard carbon, the result is a distinctively thinner, more inorganic-rich SEI and faster interfacial kinetics than in carbonate electrolytes — at the cost of a narrower electrochemical stability window. We'll return to this when we discuss ether electrolytes in Section 6.7.
 
-### Electrolyte Considerations
+\subsection{Electrolyte Considerations}
+
 
 SIB electrolytes are structurally similar to LIB electrolytes: a sodium salt dissolved in organic solvent(s), or in ethers. The dominant sodium salts are **NaPF₆** (sodium hexafluorophosphate, analogous to LiPF₆) and **NaClO₄** (sodium perchlorate, with no direct LIB analogue at high commercial use since LiClO₄ is less commonly used in LIBs due to explosion risk, though NaClO₄ is widely used in SIB research). NaFSI (sodium bis(fluorosulfonyl)imide) and NaTFSI are also studied for their improved conductivity and stability.
 
 The same carbonate solvent blends used in LIBs (EC:DMC, EC:DEC, EC:DMC:EMC) are used in SIBs, though the optimum blend ratios differ because of the different solvation chemistry of Na⁺. One practical challenge: NaPF₆ has lower solubility in some carbonate mixtures than LiPF₆ at the same molarity, which limits achievable salt concentrations and ionic conductivity. The 1 M NaPF₆ in EC:DMC electrolyte commonly used in SIB research has an ionic conductivity of approximately 5–7 mS/cm at 25 °C, somewhat lower than the 10–12 mS/cm of 1 M LiPF₆ in EC:DMC.
 
-### Why SIBs Survive Cold Better Than LIBs
+\subsection{Why SIBs Survive Cold Better Than LIBs}
+
 
 The chapter opening mentioned the low-temperature advantage of SIBs as one of the properties that makes them attractive for grid and EV applications in cold climates. It is worth explaining briefly where this advantage comes from, because it will come up again in Section 6.5 and in Chapter 8.
 
@@ -2827,11 +3193,13 @@ With this physical background established, we can now examine each SIB material 
 
 ---
 
-## Cathodes: Layered Oxides — O3 and P2 Types
+\section{Cathodes: Layered Oxides — O3 and P2 Types}
+
 
 Layered transition metal oxides are the most studied and most commercially relevant SIB cathode family. They share the structural philosophy of LCO and NMC — a layered arrangement of transition metal oxide sheets separated by alkali-ion layers — but the larger Na⁺ ion and the different ionic radii of sodium relative to the host cations create a richer variety of stacking sequences and coordination geometries.
 
-### The Structural Notation: O3, P2, P3, O2
+\subsection{The Structural Notation: O3, P2, P3, O2}
+
 
 The classification system for layered sodium transition metal oxides was established by Claude Delmas in the 1980s and is based on two descriptors. The first letter indicates the coordination environment of the sodium ion: **O** for octahedral, **P** for prismatic, **T** for tetrahedral (rare in battery materials). The number indicates how many oxide layers are in the repeating unit cell.
 
@@ -2867,7 +3235,8 @@ The practical consequence is what to look for in a research paper. When someone 
 
 The notation also encodes the stacking sequence: ABCABC (O3), ABBA (P2), ABBCCA (P3). During electrochemical cycling, as sodium is extracted, the electrostatic repulsion between adjacent oxide layers changes, and transitions between these stacking sequences can occur — for instance, O3 materials often transition to P3 upon partial desodiation. These phase transitions are partially reversible and contribute to irreversible capacity loss and impedance growth during early cycles. Managing or suppressing these phase transitions is one of the central design goals for SIB layered oxide cathodes.
 
-### O3-Type Layered Oxides
+\subsection{O3-Type Layered Oxides}
+
 
 The O3 family starts with compositions close to $\text{NaMO}_2$ — sodium-rich, analogous to $\text{LiMO}_2$. The prototypical examples are $\text{NaCoO}_2$ (the sodium analogue of LCO), $\text{NaNiO}_2$, $\text{NaMnO}_2$, $\text{NaFeO}_2$, and multi-component variants.
 
@@ -2883,7 +3252,8 @@ A representative high-performing O3 composition from the research literature is 
 
 The cycle life challenge for O3 oxides is the **O3-P3 phase transition** that occurs during deep desodiation. When sodium content drops below about $x = 0.75$ in $\text{Na}_x\text{MO}_2$, the stacking of MO₂ layers rearranges from the O3 sequence to a P3 sequence — the transition metal oxide layers glide relative to each other. This gliding is partially irreversible and introduces structural defects. Limiting the upper charge voltage (and thus the depth of desodiation) suppresses this transition but reduces accessible capacity. Finding O3 compositions that suppress the O3→P3 transition while maintaining high capacity is a major ongoing research challenge.
 
-### P2-Type Layered Oxides
+\subsection{P2-Type Layered Oxides}
+
 
 P2-type layered oxides are arguably the most distinctive and scientifically interesting cathode material unique to sodium-ion batteries. Their prismatic sodium coordination — for which there is no good lithium analogue — produces a set of properties that make them complementary to O3 oxides.
 
@@ -2899,7 +3269,8 @@ The most commercially important P2 composition for SIBs is the $\text{Na}_{0.67}
 
 ---
 
-## Cathodes: Polyanionic Frameworks — NVPF, NFPP, and Related
+\section{Cathodes: Polyanionic Frameworks — NVPF, NFPP, and Related}
+
 
 Polyanionic cathodes for sodium-ion batteries are the sodium-world equivalent of LFP. They use the **inductive effect** of a complex anion framework to tune the transition metal redox potential upward, and they gain structural stability and safety from the strongly covalent polyanion bonds that lock oxygen into the lattice even under extreme conditions.
 
@@ -2911,31 +3282,36 @@ That's the inductive effect: the electron-withdrawing phosphate or fluorophospha
 
 An EE analogy that is imperfect but useful: the inductive effect acts a bit like a DC level shift on an op-amp output. You pick the redox couple for your capacity (the "signal"), and you pick the polyanion for your voltage offset (the "bias"). Every battery chemist is at some level tuning this offset.
 
-### NVPF: Sodium Vanadium Fluorophosphate
+\subsection{NVPF: Sodium Vanadium Fluorophosphate}
+
 
 **NVPF** — **Na₃V₂(PO₄)₂F₃**, sodium vanadium fluorophosphate — is widely considered the highest-performing SIB polyanionic cathode currently in research use, and is the basis of Tiamat's commercial SIB cells in France.
 
 NVPF has a three-dimensional open framework structure with large channels for Na⁺ ion transport (better than the one-dimensional channels of LFP). The compound contains vanadium in the V³⁺ oxidation state in the fully sodiated form. During charging, two sodium ions per formula unit are extracted, and vanadium is oxidised from V³⁺ to V⁴⁺ (and partially to V⁵⁺ at higher voltages):
 
-$$\text{Na}_3\text{V}_2(\text{PO}_4)_2\text{F}_3 \rightarrow \text{NaV}_2(\text{PO}_4)_2\text{F}_3 + 2\text{Na}^+ + 2e^- \tag{6.1}$$
-
+\begin{equation}
+\text{Na}_3\text{V}_2(\text{PO}_4)_2\text{F}_3 \rightarrow \text{NaV}_2(\text{PO}_4)_2\text{F}_3 + 2\text{Na}^+ + 2e^- \tag{6.1}
+\end{equation}
 To pin down the theoretical specific capacity, we use the same Faraday's-law recipe from Chapter 1. Two sodium ions are extracted per formula unit (so $n = 2$), and the molar mass of $\text{Na}_3\text{V}_2(\text{PO}_4)_2\text{F}_3$ works out to $3(22.99) + 2(50.94) + 2(30.97) + 8(16.00) + 3(19.00) = 417.8$ g/mol. The theoretical gravimetric capacity is therefore
 
-$$C_\text{th} = \frac{nF}{3.6\,M} = \frac{2 \times 96485\,\text{C/mol}}{3.6 \times 417.8\,\text{g/mol}} \approx 128.3\,\text{mAh/g} \tag{6.2}$$
-
+\begin{equation}
+C_\text{th} = \frac{nF}{3.6\,M} = \frac{2 \times 96485\,\text{C/mol}}{3.6 \times 417.8\,\text{g/mol}} \approx 128.3\,\text{mAh/g} \tag{6.2}
+\end{equation}
 where the factor of 3.6 converts coulombs to milliamp-hours (1 mAh = 3.6 C). This is already lower than the layered oxides on a per-gram basis, but the key advantage of NVPF is its **high voltage**: the two-sodium extraction occurs at two distinct plateaux, at approximately 3.7 V and 4.2 V vs. Na/Na⁺ respectively. The average voltage of approximately 3.95 V vs. Na/Na⁺ is the highest of any widely studied SIB cathode — significantly above the layered oxide average of 3.2–3.5 V.
 
 The combination of high voltage and good structural stability gives NVPF an excellent specific energy (approximately 480 Wh/kg at the material level, or roughly 110–130 Wh/kg at the cell level) and exceptional rate capability: the three-dimensional channels allow rapid Na⁺ diffusion, and NVPF cells have been demonstrated at rates up to 10C with good capacity retention. The Tiamat 18650 SIB cell using NVPF achieves approximately 90% capacity retention at 10C versus C/5 — power density comparable to LTO with significantly higher energy density.
 
 The drawbacks of NVPF are **vanadium toxicity** (V compounds are environmentally regulated in many jurisdictions, adding manufacturing and disposal costs), and the somewhat lower gravimetric capacity compared to layered oxides. The vanadium issue is a genuine commercial obstacle and has motivated search for vanadium-free polyanionic alternatives.
 
-### NVP: Na₃V₂(PO₄)₃
+\subsection{NVP: Na\textsubscript{3}V\textsubscript{2}(PO\textsubscript{4})\textsubscript{3}}
+
 
 **NVP** — sodium vanadium phosphate, Na₃V₂(PO₄)₃ — is the fluorine-free analogue of NVPF. It has the NASICON crystal structure — a three-dimensional framework of corner-sharing VO₆ octahedra and PO₄ tetrahedra named after the fast sodium ion conductor Na₁₊ₓZr₂SiₓP₃₋ₓO₁₂ (NASICON = Sodium Super Ionic CONductor). The NASICON framework has particularly wide and open channels for Na⁺ transport, giving excellent ionic conductivity even in the solid state.
 
 NVP delivers approximately 117 mAh/g theoretical specific capacity at a single flat plateau of approximately 3.4 V vs. Na/Na⁺, based on the V³⁺/V⁴⁺ redox couple. The flat plateau is thermodynamically analogous to LFP — NVP undergoes a two-phase reaction between $\text{Na}_1\text{V}_2(\text{PO}_4)_3$ and $\text{Na}_3\text{V}_2(\text{PO}_4)_3$ — and carries the same OCV estimation challenge. Like NVPF, NVP faces the vanadium toxicity issue.
 
-### NFPP: Na₄Fe₃(PO₄)₂(P₂O₇) and Related
+\subsection{NFPP: Na\textsubscript{4}Fe\textsubscript{3}(PO\textsubscript{4})\textsubscript{2}(P\textsubscript{2}O\textsubscript{7}) and Related}
+
 
 **NFPP** (Na₄Fe₃(PO₄)₂(P₂O₇)) and related iron-based polyanionic cathodes represent the most promising avenue for cobalt-free, nickel-free, vanadium-free SIB cathodes. NFPP is based entirely on iron (abundant, cheap, non-toxic) and has a mixed phosphate/pyrophosphate structure.
 
@@ -2943,7 +3319,8 @@ The electrochemistry of NFPP involves two sets of Fe²⁺/Fe³⁺ redox reaction
 
 **NASICON-structured Na₃MnTi(PO₄)₃** and similar manganese-titanium NASICON compounds are also attracting attention as vanadium-free, cobalt-free alternatives with voltage profiles intermediate between NFPP and NVPF. This is an active research frontier as of the mid-2020s.
 
-### General Advantages of Polyanionic SIB Cathodes
+\subsection{General Advantages of Polyanionic SIB Cathodes}
+
 
 Relative to layered oxides, all polyanionic SIB cathodes share several advantages: thermal stability is superior (the strong covalent polyanion framework resists oxygen release at high temperature), cycle life is generally better (the rigid framework accommodates the small volume changes during sodiation/desodiation without structural fatigue), and voltage profiles are often flat or step-wise (clean two-phase reactions, thermodynamically well-defined). The flat voltage profile is scientifically clean but practically challenging for SOC estimation — the same issue as LFP in the lithium world.
 
@@ -2951,11 +3328,13 @@ The disadvantages are also shared: lower gravimetric specific capacity than laye
 
 ---
 
-## Cathodes: Prussian Blue Analogues (PBAs)
+\section{Cathodes: Prussian Blue Analogues (PBAs)}
+
 
 **Prussian blue analogues (PBAs)** are an unusual but commercially important SIB cathode family with no significant equivalent in the lithium-ion world (they can intercalate lithium, but the cell voltage and capacity are not competitive).
 
-### Structure
+\subsection{Structure}
+
 
 Prussian blue itself is the compound Fe₄[Fe(CN)₆]₃ — the intensely blue pigment first synthesised around 1704 and still used in artists' paints today. Its crystal structure is an open three-dimensional framework built from two kinds of iron site linked by cyanide. Imagine a simple cubic lattice whose corners alternate between "high-spin" Fe (call it the M′ site) and "low-spin" Fe (the M site, sitting inside the carbon-coordinated [Fe(CN)₆] group). Along every edge of that cube lies a straight M′–N≡C–M bridge: the nitrogen end of cyanide binds M′, the carbon end binds M, and the bond is essentially linear. The result is a rigid scaffolding in which each metal sits at a cube corner and is octahedrally coordinated by six cyanide ligands, with the cyanide groups forming the twelve edges of each cubic subcell.
 
@@ -2963,13 +3342,15 @@ The alkali ions live inside the empty cubic cavities — one cavity per M/M′ c
 
 The general formula for battery-relevant PBAs is $\text{Na}_x\text{M}'[\text{M}(\text{CN})_6]_{1-y} \cdot \square_y \cdot n\text{H}_2\text{O}$, where M′ and M are transition metals (typically combinations of Fe, Mn, Co, Ni, Cu), $\square$ represents hexacyanometalate vacancies (sites where [M(CN)₆] groups are missing), and $n\text{H}_2\text{O}$ represents coordinated and zeolitic water molecules.
 
-### Electrochemistry
+\subsection{Electrochemistry}
+
 
 The redox activity in PBAs comes from the transition metal ions in both the M′ and M positions. For iron-based PBAs (the most studied), both Fe²⁺/Fe³⁺ at the M site and Fe²⁺/Fe³⁺ at the M′ site are electrochemically active, though at different voltages (due to different crystal field splitting in the two environments). This can give two distinct plateaux — one at approximately 3.0 V and one at 3.4 V vs. Na/Na⁺ for iron-based PBAs — and a combined theoretical specific capacity of approximately 170 mAh/g. In practice, the presence of vacancies ($\square$) and water reduces the accessible capacity to approximately 100–150 mAh/g for state-of-the-art PBA cathodes.
 
-**Natron Energy** (formerly Alveo Energy) has commercialised PBA-based SIB cells using Na₂MnFe(CN)₆ (manganese iron PBA) in aqueous electrolyte for ultra-high-rate, ultra-long-life applications (grid frequency regulation, data centre backup power). Their cells achieve cycle lives of tens of thousands of cycles at very high C-rates (10C–40C) — exceeding even LTO in lifetime and rate capability — though with lower energy density.
+**Natron Energy** (formerly Alveo Energy) has commercialised sodium-ion systems based on **Prussian-blue-family electrodes** for ultra-high-rate, ultra-long-life applications (grid frequency regulation, data centre backup power). Natron's own technical materials describe a non-aqueous sodium-ion architecture built around a family of Prussian blue electrodes rather than the hard-carbon or layered-oxide pairings used elsewhere in this chapter. Their products achieve cycle lives of tens of thousands of deep cycles and very high rate capability, but are optimised for power rather than energy density.
 
-### The Water Problem
+\subsection{The Water Problem}
+
 
 The practical challenge with PBAs is water. The open PBA framework strongly adsorbs water: both coordinated water (directly bound to transition metal sites that lack a cyanide ligand, due to vacancies) and zeolitic water (residing in the open channels). Water in the electrode reacts with the sodium electrolyte, consumes sodium (forming NaOH), and accelerates capacity fade. Controlling the water content of PBA cathodes — through careful synthesis conditions (dry room, controlled humidity synthesis), thermal treatment, and electrolyte additives — is the central manufacturing challenge for PBA-based SIBs. We'll return to water-induced PBA degradation in Chapter 7, where it serves as one of the examples of a degradation mode that is genuinely unique to sodium-ion — there is no meaningful LIB analogue of PBA water uptake because PBAs are not competitive LIB cathodes.
 
@@ -2977,7 +3358,8 @@ Solving the water problem is the key to unlocking PBA's natural advantages: the 
 
 **Prussian white** (Na₂Fe[Fe(CN)₆], fully sodiated iron-only PBA) is particularly interesting because it contains only iron, is completely cobalt-free and nickel-free, can be synthesised at room temperature in aqueous conditions (extremely low manufacturing energy and cost), and has a theoretical specific capacity of approximately 170 mAh/g. Altris AB is developing Prussian white-based SIBs specifically for the Nordic grid storage market. The primary remaining challenges are water content control and the relatively modest operating voltage (average ~3.1 V vs. Na/Na⁺).
 
-### Cathode Family Summary
+\subsection{Cathode Family Summary}
+
 
 Before we move on to anodes, it is worth collecting the three SIB cathode families into a single reference table. The numbers below are representative of state-of-the-art research-grade and early-commercial materials as of 2024–2025; specific cells will deviate, sometimes significantly.
 
@@ -2994,11 +3376,13 @@ Two patterns stand out. First, the three families occupy clearly different posit
 
 ---
 
-## Anodes: Hard Carbon — The Dominant Choice
+\section{Anodes: Hard Carbon — The Dominant Choice}
+
 
 The anode side of a sodium-ion cell is simpler than the cathode side in terms of material options, because most of the alternatives that work for lithium (silicon, LTO) do not translate cleanly to sodium. **Hard carbon** is the overwhelmingly dominant SIB anode material, used in essentially all commercial SIB cells today.
 
-### What Hard Carbon Is
+\subsection{What Hard Carbon Is}
+
 
 **Hard carbon** is a disordered, non-graphitic carbon material produced by pyrolysis of organic precursors at intermediate temperatures, typically 1000–1500 °C. It is also sometimes called **turbostratic carbon** — "turbostratic" meaning that adjacent graphene-like sheets are stacked without a fixed rotational alignment. Unlike graphite, where each sheet is registered to the one above and below in the familiar ABAB (or ABCABC for rhombohedral graphite) pattern, the sheets in a turbostratic carbon are twisted randomly relative to each other, so the stacking has no long-range order perpendicular to the basal plane. This looks minor but it has large consequences: the interlayer spacing is wider and more variable than in graphite (~0.37–0.40 nm rather than 0.335 nm), and the electronic and ionic behaviour inside those spaces is fundamentally different from perfectly stacked graphite. The material is called "hard" because (unlike "soft carbon" or graphitisable carbon) it cannot be converted to graphite by further heat treatment — the cross-linking between the disordered sheets prevents the graphitisation ordering process.
 
@@ -3008,7 +3392,8 @@ The disordered structure creates two types of microstructural feature that are d
 
 **Closed nanopores** between microcrystallite domains: these are nano-scale voids (typically 1–5 nm diameter) that are completely enclosed by the carbon structure and inaccessible to the liquid electrolyte. Sodium can accumulate in these pores, but only as quasi-metallic sodium clusters (the environment is similar to sodium in a very confined space — the activity of sodium in the nanopores is close to 1, the activity of sodium metal). This is the "nanopore filling" mechanism.
 
-### The Slope and Plateau Regions
+\subsection{The Slope and Plateau Regions}
+
 
 The electrochemical storage of sodium in hard carbon produces a distinctive OCV profile that we introduced briefly in Chapters 1 and 3 but now deserves a full physical explanation. During sodiation (charging the anode), the voltage profile has two distinct regions:
 
@@ -3018,8 +3403,9 @@ The electrochemical storage of sodium in hard carbon produces a distinctive OCV 
 
 Recall the Nernst equation for the half-reaction Na⁺ + e⁻ → Na (in some host environment):
 
-$$E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}} \tag{6.4}$$
-
+\begin{equation}
+E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}} \tag{6.3}
+\end{equation}
 where $a_\text{Na(host)}$ is the activity of stored sodium inside the host — a dimensionless measure of how "free" the sodium behaves, equal to 1 for sodium metal and less than 1 for sodium bound in an intercalation site. $a_{\text{Na}^+}$ is the activity of sodium ion in the electrolyte, effectively constant during a slow measurement.
 
 Now, when we're measuring a half-cell OCV curve against a sodium metal reference electrode, we're asking "what is the potential of the working electrode relative to metallic sodium?" If the sodium stored in the working electrode happens to behave *exactly* like metallic sodium — same activity, same chemical environment — then $a_\text{Na(host)} = a_\text{Na(metal)} = 1$, and the Nernst equation gives $E = E^\circ = 0$ V vs. Na/Na⁺. The potential of the working electrode equals the potential of the reference electrode, because they are chemically indistinguishable.
@@ -3036,12 +3422,14 @@ It is worth flagging that the modern view is more nuanced. Work from 2018 onward
 
 The mechanistic distinction matters practically in another way too: the slope region sodium is more readily de-sodiated than the plateau region sodium (the plateau-region sodium is more tightly confined in the pores and requires a larger driving force to remove). This contributes to the rate-capability asymmetry of hard carbon: it charges the slope region more easily than the plateau at high rates.
 
-### The Flat Plateau: Implications for BMS
+\subsection{The Flat Plateau: Implications for BMS}
+
 
 The plateau region of hard carbon — occupying anywhere from 20% to 50% of total capacity depending on material and processing — sits very close to 0 V vs. Na/Na⁺. In a full SIB cell (hard carbon anode paired with a layered oxide or polyanionic cathode), the full cell OCV is:
 
-$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC}) \tag{6.3}$$
-
+\begin{equation}
+E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC}) \tag{6.4}
+\end{equation}
 The cathode voltage typically slopes from about 3.5 V to about 2.5 V vs. Na/Na⁺ during discharge. The anode voltage during the plateau region is nearly constant at ~0.05 V vs. Na/Na⁺. Therefore, during the fraction of discharge that corresponds to the anode plateau, the cell OCV is nearly flat at whatever the cathode voltage is at that point in discharge. For a layered oxide cathode that is itself relatively flat at intermediate SOC, both curves conspire to create a nearly flat full-cell OCV region that can span 30–50% of total capacity.
 
 This is the "flat OCV" problem for SIB state-of-charge estimation that we have referenced repeatedly since Chapter 3. It is a more severe version of a problem you already know about from LFP.
@@ -3054,7 +3442,8 @@ The consequence for BMS design is severe. In the language of state estimation, w
 
 Practical SIB BMS designs work around this by combining three things: (i) current integration through the flat region, (ii) whatever small voltage variation remains — even sub-millivolt trends can be exploited with careful calibration and temperature compensation, and (iii) anchor points at the edges of the flat region where the OCV starts to slope again, which provide the "observations" that the estimator's correction step needs. The accuracy of coulomb counting across the unobservable interval depends critically on current-sensor accuracy and on the stability of the cell's Coulombic efficiency, because any small bias in either one integrates into an ever-growing SOC error. We'll see in Chapter 10 that this is the single most important algorithmic difference between LFP/SIB BMS design and NMC/NCA BMS design.
 
-### Hard Carbon Performance Metrics
+\subsection{Hard Carbon Performance Metrics}
+
 
 Representative performance metrics for state-of-the-art commercial-grade hard carbon anodes (as of 2024–2025) are summarised in the table below. All values are for hard carbons optimised for sodium storage, typically biomass- or sucrose-derived and carbonised at 1100–1400 °C.
 
@@ -3069,13 +3458,15 @@ Representative performance metrics for state-of-the-art commercial-grade hard ca
 
 The ICE gap between hard carbon (75–90%) and graphite (85–95%) is one of the most actively worked-on problems in SIB materials science, because every percentage point of ICE translates directly to pack-level energy density — a 5% ICE loss on the anode is a 5% energy penalty at the cell level that no amount of cathode optimisation can recover.
 
-### Pre-sodiation: A Fix for the ICE Problem
+\subsection{Pre-sodiation: A Fix for the ICE Problem}
+
 
 One approach to the low-ICE problem of hard carbon deserves explicit mention. **Pre-sodiation** is the practice of loading extra sodium into the cell at manufacture time so that the irreversible loss to SEI formation during the first cycle does not come out of the reversible sodium inventory. In practice, pre-sodiation can be done in several ways: by adding a sacrificial sodium-rich additive to the cathode (for example, an organic sodium salt that releases Na⁺ on the first charge and is then inert), by using a slightly sodium-rich cathode composition to begin with, by making direct chemical contact with sodium metal during electrode assembly (expensive and process-hostile), or by pre-cycling the anode against a sodium reference before assembly (also process-hostile). The sacrificial-additive approach is the most commercially viable today and is used in some research SIB cells to push ICE from the baseline 78–85% into the 90–95% range.
 
 Pre-sodiation is the SIB analogue of prelithiation in LIBs, which is itself an active research area for silicon anodes. The core accounting is the same: the first-cycle sodium (or lithium) loss to SEI is a permanent tax on the cell's energy density, and pre-loading extra alkali metal at manufacture time buys that energy density back at the cost of some manufacturing complexity. Whether this trade is worth it depends on how much ICE gap remains after electrolyte optimisation — as hard carbon ICE keeps improving, the economic case for pre-sodiation gets weaker.
 
-### Hard Carbon Precursors and Synthesis
+\subsection{Hard Carbon Precursors and Synthesis}
+
 
 The properties of hard carbon — especially the ratio of closed to open pore volume, the interlayer spacing, and the surface chemistry — are controlled by the choice of precursor material and the carbonisation temperature. Common precursors include cellulose and biomass-derived carbons (glucose, sucrose, phenolic resins, waste agricultural products), which are inexpensive and environmentally attractive, and whose relatively high oxygen content in the precursor creates defects and functional groups in the final carbon that can enhance sodium storage capacity — the specific capacity of biomass-derived hard carbon can reach 300–350 mAh/g. Polyacrylonitrile (PAN), similar to the precursor used for structural carbon fibre, gives hard carbon with moderate surface area and a well-controlled pore structure and is often used in research because the synthesis conditions are reproducible. Petroleum-derived resins are used in some commercial processes for cost and scale reasons.
 
@@ -3083,21 +3474,25 @@ The carbonisation temperature profoundly affects the closed/open pore ratio: tem
 
 ---
 
-## Anodes: Alternatives to Hard Carbon
+\section{Anodes: Alternatives to Hard Carbon}
+
 
 Hard carbon dominates SIB anodes today but is not perfect. Several alternative anode materials are under active development, each addressing a specific limitation of hard carbon.
 
-### Soft Carbon
+\subsection{Soft Carbon}
+
 
 **Soft carbon** (graphitisable carbon, graphitisable at temperatures above 2000 °C) has lower practical capacity for sodium (~150–200 mAh/g) and a more heavily slope-dominated profile (less plateau), but offers higher initial Coulombic efficiency (often 85–90%) and better rate capability at very high C-rates due to its more ordered structure and better electronic conductivity. It is used in some commercial SIB cells as a blend or partial replacement for hard carbon.
 
-### Alloy-Type Anodes: Tin, Antimony, Bismuth
+\subsection{Alloy-Type Anodes: Tin, Antimony, Bismuth}
+
 
 Sodium alloys with tin (Na₁₅Sn₄, theoretical capacity 847 mAh/g), antimony (Na₃Sb, 660 mAh/g), and bismuth (Na₃Bi, 385 mAh/g), following the same principle as silicon alloying with lithium. The high theoretical capacities are attractive, but the same volume expansion problem applies: tin expands by approximately 420% during full sodiation, antimony by approximately 300%, bismuth by approximately 250%.
 
 In SIBs the alloy anode challenge is if anything more severe than silicon in LIBs, because the larger sodium ion causes even larger volume changes. However, nanostructured composites (tin nanoparticles in carbon matrix, antimony dispersed in carbon) have shown promising cycle lives of >300–500 cycles with practical capacities of 400–600 mAh/g. These materials are primarily in the research-to-early-commercialisation stage.
 
-### Titanate Anodes
+\subsection{Titanate Anodes}
+
 
 Several sodium titanium oxides exhibit reversible sodium storage at potentials of approximately 0.3–0.8 V vs. Na/Na⁺, analogous to LTO in the lithium world. **Na₂Ti₃O₇** has a layered structure with a very low average sodiation potential (~0.3 V vs. Na/Na⁺ — the lowest of any SIB anode material, approaching the Na plating limit) and a theoretical capacity of approximately 177 mAh/g. **Na₂Ti₆O₁₃** has a tunnel structure and better cycling stability.
 
@@ -3105,17 +3500,20 @@ Titanate anodes for SIBs combine the safety advantage (no sodium plating) with r
 
 ---
 
-## Electrolytes for SIBs: Differences from LIBs
+\section{Electrolytes for SIBs: Differences from LIBs}
+
 
 We discussed SIB electrolyte basics in Section 6.1. Here we add the specific details needed for understanding cell performance and degradation.
 
-### Carbonate Electrolytes
+\subsection{Carbonate Electrolytes}
+
 
 The standard SIB electrolyte for research is **1 M NaPF₆ in EC:DMC (1:1 by volume)** or **1 M NaPF₆ in EC:PC (ethylene carbonate:propylene carbonate)**. The inclusion of propylene carbonate (PC) — which causes exfoliation of graphite in LIBs (a known incompatibility) — is not a problem for hard carbon anodes, which do not exfoliate. PC improves low-temperature performance because it has a lower melting point than EC alone. This is one of the practical manufacturing advantages of SIB: the electrolyte formulation has fewer constraints than LIB electrolytes.
 
 NaPF₆ at 1 M gives an ionic conductivity of approximately 6–7 mS/cm at 25 °C. NaClO₄ in EC:DMC gives comparable or slightly higher conductivity (~7–8 mS/cm) and is more common in academic research because NaClO₄ is cheaper and more soluble than NaPF₆. NaPF₆ is preferred for commercial cells because ClO₄⁻ is a strong oxidiser: under the combination of heat, mechanical shock, and organic fuel present in a failing cell, perchlorate salts mixed with carbonate solvents can react violently. This is the same reason LiClO₄ fell out of favour for commercial LIBs decades ago.
 
-### Ether-Based Electrolytes
+\subsection{Ether-Based Electrolytes}
+
 
 Ether-based electrolytes — particularly **1 M NaPF₆ or NaFSI in DEGDME** (diethylene glycol dimethyl ether, also called diglyme) — have attracted significant attention for SIBs because they produce a distinctly different and often superior SEI on hard carbon compared to carbonate electrolytes.
 
@@ -3123,45 +3521,54 @@ The SEI formed on hard carbon in ether electrolytes is thinner and more inorgani
 
 The disadvantage of ether electrolytes is their narrower electrochemical stability window: DEGDME is oxidised at approximately 4.0 V vs. Na/Na⁺, which limits the use of high-voltage cathodes like NVPF (average 3.95 V vs. Na/Na⁺) with ether electrolytes. For layered oxide cathodes operating below 4.0 V, ether electrolytes are highly attractive. For NVPF, carbonate electrolytes or specialised fluorinated ether electrolytes are required.
 
-### Electrolyte Additives
+\subsection{Electrolyte Additives}
+
 
 Additives used in LIB electrolytes — fluoroethylene carbonate (FEC), vinylene carbonate (VC), propane sultone — have SIB analogues. **FEC** (even at 5–10% volume fraction) significantly improves the ICE and cycle life of hard carbon anodes in carbonate electrolytes by modifying the SEI composition, forming a more NaF-rich, more inorganic inner SEI layer. FEC addition is the most reliably effective single additive for improving SIB hard carbon performance and is expected to be standard in commercial SIB cells.
 
 ---
 
-## Commercial SIB Cells: Who Has Shipped What
+\section{Commercial SIB Cells: Who Has Shipped What}
+
 
 As of early-to-mid 2025, sodium-ion batteries have moved from a purely academic subject to an emerging commercial technology. The commercialisation landscape is moving rapidly, and the following describes the state at the time of writing — a snapshot that will certainly have evolved by the time you read it. Cross-reference with recent reviews and company announcements for current status.
 
-### CATL (Contemporary Amperex Technology)
+\subsection{CATL (Contemporary Amperex Technology)}
+
 
 CATL announced its first-generation SIB in 2021 and delivered its first commercial cells in 2023. The first-generation cell uses a **Prussian white-type cathode** (iron-sodium PBA) paired with **hard carbon** anode, with a cell-level specific energy of approximately **160 Wh/kg** — comparable to the top end of what SIBs have achieved at the cell level. CATL announced a second-generation AB-battery design (a pack where SIB and LFP cells are mixed in the same pack to leverage SIB's low-temperature advantage while LFP provides higher energy density), targeting applications where the best of both chemistries is needed.
 
-### HiNa (High Na-ion Battery Technology Company, China)
+\subsection{HiNa (High Na-ion Battery Technology Company, China)}
+
 
 HiNa is a spin-off from the Institute of Physics at the Chinese Academy of Sciences (CAS), founded by Hu Yong-Sheng's group — one of the world's leading SIB research teams. Their commercial cell, the **BC-1**, uses an **O3-type layered oxide** cathode ($\text{Na}[\text{Cu}_{0.22}\text{Fe}_{0.3}\text{Mn}_{0.48}]\text{O}_2$ — cobalt-free, nickel-free, based on copper-iron-manganese) paired with an **anthracite-derived hard carbon** anode.
 
 Published specifications for the BC-1 (26650 cylindrical format): nominal voltage 3.2 V; rated capacity 1.33 Ah at 0.1C; specific energy approximately 146 Wh/kg; cycle life >4,000 cycles at 1C to 80% retention; operating temperature −40 °C to +80 °C. The low-temperature performance is particularly noteworthy: the BC-1 retains approximately 88% of room-temperature capacity at −20 °C and approximately 70% at −40 °C — significantly better than most LIB chemistries.
 
-### Faradion / Reliance Industries
+\subsection{Faradion / Reliance Industries}
+
 
 Faradion (UK, acquired by Reliance Industries India in 2022) was among the first companies to commercialise SIB cells at the 18650 scale, using **O3-type $\text{NaNi}_{0.25}\text{Mn}_{0.25}\text{Fe}_{0.25}\text{Mg}_{0.1}\text{Ti}_{0.15}\text{O}_2$** cathode (or similar multi-metal O3 compositions) paired with hard carbon. Their cells achieve approximately 150 Wh/kg and are designed for grid storage and industrial applications. The Reliance acquisition has been oriented toward deploying SIBs in the Indian market for stationary storage and two/three-wheeled EVs.
 
-### Natron Energy (USA)
+\subsection{Natron Energy (USA)}
 
-Natron uses **Na₂MnFe(CN)₆ Prussian blue analogue** cathode with a **NaTi₂(PO₄)₃ NASICON anode** in aqueous sodium electrolyte — a fully aqueous cell chemistry. The aqueous chemistry eliminates flammability concerns (water-based electrolyte) but limits cell voltage to approximately 1.4 V (the electrochemical stability window of water). Natron targets data centre UPS, fast-charging bus depots, and grid frequency regulation with extremely high cycle counts (>50,000 cycles claimed) and ultra-high rate capability (60C charge/discharge). This is a niche but real commercial market.
 
-### Altris AB (Sweden)
+Natron targets data centre UPS, EV fast-charging support, and grid-frequency-regulation markets with sodium-ion systems built around **Prussian-blue-family electrodes**. Natron's public materials emphasise non-flammability, full recharge in 15 minutes or less, and **>50,000 deep discharge cycles**, which makes the chemistry a credible commercial option for very high-power, short-duration duty rather than for high-energy mobile applications. Because Natron sells integrated power products rather than commodity cylindrical cells, direct one-to-one comparison with 18650-class LIB cells should be treated cautiously.
+
+\subsection{Altris AB (Sweden)}
+
 
 Altris uses **Prussian white Na₂Fe[Fe(CN)₆]** cathode paired with hard carbon in organic electrolyte. Their cell is designed specifically for grid storage in Northern Europe, leveraging the extremely low cost of iron hexacyanide precursors and the potential for local manufacture anywhere in the world. First commercial cells were delivered in 2024.
 
-### Tiamat (France)
+\subsection{Tiamat (France)}
+
 
 Tiamat's commercial SIB uses the **NVPF** cathode (Na₃V₂(PO₄)₂F₃) as described in Section 6.3, paired with hard carbon or soft carbon anode. Target application is high-rate, moderate-energy systems: power tools, industrial equipment, fast-charging infrastructure. Their 18650-format cell demonstrates ~10C rate capability with good retention — the highest published rate performance of any commercial-format SIB cell. The vanadium content remains a commercial challenge but Tiamat is working on scale-up in France as part of the European SIB ecosystem.
 
 ---
 
-## A Quantitative Comparison: SIB vs. LIB
+\section{A Quantitative Comparison: SIB vs. LIB}
+
 
 The chapter deliverable (in the Deliverable section at the end of this chapter) asks for a detailed comparison table; here we establish the key quantitative comparisons at the cell level, which will anchor your table-building exercise.
 
@@ -3173,12 +3580,14 @@ The following table provides representative cell-level values for five major SIB
 | CATL 1st Gen SIB | PBA / HC | 26650 | ~3.1 | ~3.0 | ~160 | ~290 | >3000 | ~80 | Flat-heavy |
 | Faradion 18650 | O3 LO / HC | 18650 | 3.2 | ~2.0 | ~150 | ~350 | >1000 | ~90 | Mixed |
 | Tiamat 18650 | NVPF / HC | 18650 | ~3.7 | ~1.0 | ~130 | ~300 | >4000 | ~60 | Stepped plateau |
-| Natron (aqueous) | PBA / NTP | Cylindrical | 1.4 | Varies | ~40–50 | ~80 | >50000 | Low | Flat |
+| Natron (power platform) | PBA-family / PBA-family | Rack/module | Varies | Varies | ~40–50 | ~80 | >50000 | Low | Flat |
 | Samsung 30Q | NMC622/Gr | 18650 | 3.6 | 3.0 | 243 | 650 | ~500 | 45 | Moderate slope |
 | Panasonic NCR18650B | NCA/Gr | 18650 | 3.6 | 3.4 | 248 | 700 | ~400 | 40 | Moderate slope |
 | LG INR21700-M50 | NMC811/Gr | 21700 | 3.6 | 5.0 | 260 | 730 | ~500 | 35 | Moderate slope |
 | BYD Blade (LFP) | LFP/Gr | Prismatic | 3.2 | ~135 | ~150–160 | ~330–350 | >3000 | ~80 | Flat |
 | Toshiba SCiB | LTO/LMO | 20700 | 2.4 | 10 | 67 | 177 | >20000 | ~20 | Flat |
+
+Natron is the outlier in this table: the quoted values correspond to a commercial high-power battery platform rather than a commodity single cell, so nominal voltage and amp-hour capacity depend on the configured module or cabinet rather than on a standard cylindrical cell.
 
 Several patterns emerge immediately from this table. Current SIB cells cluster at 130–160 Wh/kg — below the 230–260 Wh/kg range of premium NMC cells but competitive with LFP (~150–180 Wh/kg) and well above LTO (~50–90 Wh/kg). The cycle life of SIB cells is already competitive with LFP for the cells designed for long-life applications (HiNa BC-1 at >4,000 cycles is comparable to commercial LFP). The DCIR of SIB cells is notably higher than equivalent-format LIB cells — reflecting the higher charge-transfer resistance and thicker SEI discussed in earlier sections. The OCV shape of SIB cells is flat-heavy, consistently more challenging for SOC estimation than NMC/NCA cells.
 
@@ -3186,7 +3595,10 @@ The performance gap between SIBs and LFP — roughly 10–20% lower specific ene
 
 ---
 
-## Worked Interpretation Exercise: Reading a Hard Carbon Half-Cell OCV Curve
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading a Hard Carbon Half-Cell OCV Curve}
+
+\specialsectionstyle
+
 
 Let us apply the physical understanding of Section 6.5 to an actual published hard carbon OCV measurement. The following describes data from a sucrose-derived hard carbon carbonised at 1300 °C, measured against a sodium metal reference electrode in 1 M NaClO₄/PC electrolyte. The measurement uses GITT with very small increments (C/50 current pulses, 1-hour rest).
 
@@ -3196,7 +3608,7 @@ The OCV curve during sodiation (from the empty state at ~2.0 V vs. Na/Na⁺ down
 
 **At approximately 0.1 V**: The OCV curve reaches a kink — the potential levels off and the slope suddenly decreases. This marks the onset of nanopore filling.
 
-**From ~0.1 V to ~0.01 V (plateau region)**: The OCV is nearly constant at approximately 0.05–0.08 V vs. Na/Na⁺ for the remainder of the capacity, approximately 80 mAh/g of additional charge. The plateau confirms quasi-metallic sodium storage in the nanopores — the activity of sodium in the pores has become nearly constant (≈1), so the equilibrium potential is nearly constant at close to 0 V vs. Na/Na⁺, exactly as equation 6.4 predicts.
+**From ~0.1 V to ~0.01 V (plateau region)**: The OCV is nearly constant at approximately 0.05–0.08 V vs. Na/Na⁺ for the remainder of the capacity, approximately 80 mAh/g of additional charge. The plateau confirms quasi-metallic sodium storage in the nanopores — the activity of sodium in the pores has become nearly constant (≈1), so the equilibrium potential is nearly constant at close to 0 V vs. Na/Na⁺, exactly as equation 6.3 predicts.
 
 **Total capacity**: 190 + 80 = 270 mAh/g. **ICE**: The measurement reports 81%, meaning that 270/0.81 ≈ 333 mAh/g was charged during the first sodiation, and only 270 mAh/g was recovered on the first desodiation — about 63 mAh/g was consumed irreversibly by SEI formation. This is consistent with the ~15–25 m²/g surface area typical of this precursor and carbonisation temperature.
 
@@ -3210,7 +3622,12 @@ The OCV curve during sodiation (from the empty state at ~2.0 V vs. Na/Na⁺ down
 
 ---
 
-## What Changes for Sodium-Ion? (Consolidated Summary)
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion? (Consolidated Summary)}
+
+\specialsectionstyle
+
 
 In every chapter up to this point, this section has appeared to preview SIB-specific considerations as a small addendum. Chapter 6 is the first chapter in which SIB has been the main subject rather than the forward-reference, so the usual "what changes for sodium-ion" section doesn't quite fit here — everything in the chapter has been about sodium. Instead, this section plays a different role: it consolidates the SIB differences we've accumulated across Chapters 1–6, organised by the chapter that first introduced the underlying concept, and sets up a clean handoff to the later parts of the book. If you want a single-page crib sheet for "what is actually different about sodium-ion," this is it. The items below will re-appear, each with more detail, when we reach the relevant chapter.
 
@@ -3241,7 +3658,12 @@ The following table makes the mapping from cell-level performance metric to unde
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -3250,21 +3672,21 @@ The following table makes the mapping from cell-level performance metric to unde
 - SIB cathode families: O3 layered oxides (NaMO₂, direct analogue of LCO/NMC, phase transitions during cycling are the main challenge); P2 layered oxides (prismatic Na coordination, unique to SIB, better structural stability during cycling, starts Na-deficient); polyanionic NVPF (highest voltage SIB cathode at ~3.95 V average, excellent rate capability, vanadium toxicity concern) and NFPP (iron-based, no critical materials); Prussian blue analogues (open framework, excellent rate capability and cycle life, water contamination challenge).
 - Hard carbon dominates SIB anodes: turbostratic disordered carbon with slope region (intercalation, 0.1–2 V vs. Na/Na⁺) and plateau region (nanopore filling, ~0.01–0.1 V vs. Na/Na⁺). The plateau produces a near-flat OCV close to 0 V vs. Na/Na⁺ — the most practically important performance challenge for SIB BMS. The flat-OCV region is best thought of as an observability failure: terminal voltage carries almost no information about SOC, and coulomb counting becomes the dominant estimator.
 - ICE of hard carbon is 75–90%, lower than graphite (85–95%), due to higher surface area and less mature SEI chemistry. Ether electrolytes improve ICE vs. carbonate electrolytes. Pre-sodiation is the additional manufacturing-stage fix that buys back some of the ICE loss.
-- Commercial SIB landscape (2024–2025): CATL (PBA/HC, ~160 Wh/kg), HiNa (O3/HC, ~146 Wh/kg, >4000 cycles), Faradion/Reliance (O3/HC), Tiamat (NVPF/HC, ultra-high rate), Natron (aqueous PBA, >50,000 cycles), Altris (Prussian white/HC).
+- Commercial SIB landscape (2024–2025): CATL (PBA/HC, ~160 Wh/kg), HiNa (O3/HC, ~146 Wh/kg, >4000 cycles), Faradion/Reliance (O3/HC), Tiamat (NVPF/HC, ultra-high rate), Natron (Prussian-blue-family power systems, >50,000 cycles), Altris (Prussian white/HC).
 - SIB cell-level specific energy (130–160 Wh/kg) is competitive with LFP, well below NMC. SIB advantages: lower raw material cost and supply chain risk; no cobalt/nickel required; aluminium current collectors on both sides; better low-temperature performance than most LIBs; lower thermal runaway risk; competitive cycle life.
 
 **Key equations:**
-
-Full-cell open-circuit voltage decomposed into electrode half-cell potentials (equation 6.3):
-$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC})$$
 
 Theoretical gravimetric capacity of an intercalation material, with $n$ electrons per formula unit, Faraday constant $F$, and molar mass $M$ in g/mol (equation 6.2):
 $$C_\text{th} = \frac{nF}{3.6\,M}$$
 
 For NVPF ($n = 2$, $M = 417.8$ g/mol): $C_\text{th} \approx 128$ mAh/g. For Prussian white $\text{Na}_2\text{Fe}[\text{Fe}(\text{CN})_6]$ ($n = 2$, $M = 314$ g/mol): $C_\text{th} \approx 171$ mAh/g.
 
-Nernst equation applied to a sodium-storage half-cell (equation 6.4):
+Nernst equation applied to a sodium-storage half-cell (equation 6.3):
 $$E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}}$$
+
+Full-cell open-circuit voltage decomposed into electrode half-cell potentials (equation 6.4):
+$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC})$$
 
 Reference potentials:
 $$E^\circ(\text{Na}^+/\text{Na}) = -2.71\ \text{V vs. SHE}, \qquad E^\circ(\text{Li}^+/\text{Li}) = -3.04\ \text{V vs. SHE}$$
@@ -3276,7 +3698,12 @@ desolvation energy, O3 layered oxide, P2 layered oxide, Delmas notation (O/P, la
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Build a comparison table of five commercial SIB cells vs. five commercial LIB cells across all Chapter 3 metrics.
 
@@ -3294,7 +3721,12 @@ Samsung 30Q (18650, NMC622/Gr): Nominal 3.6 V, 3.0 Ah at C/5, ~243 Wh/kg, ~650 W
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Yabuuchi, N. et al., "Research Development on Sodium-Ion Batteries," *Chemical Reviews* 114 (23), 11636–11682 (2014).** The most comprehensive early review of SIB cathode and anode materials, written by Shinichi Komaba's group — one of the foundational SIB research teams. Covers layered oxides, polyanionics, hard carbon, and electrolytes in systematic depth. Still the best single reference for understanding the breadth of the material landscape.
 
@@ -3305,13 +3737,17 @@ Samsung 30Q (18650, NMC622/Gr): Nominal 3.6 V, 3.0 Ah at C/5, ~243 Wh/kg, ~650 W
 4. **Vaalma, C. et al., "A cost and resource analysis of sodium-ion batteries," *Nature Reviews Materials* 3, 18013 (2018).** The authoritative techno-economic analysis showing why sodium-ion batteries could offer cost advantages over lithium-ion, with careful accounting of raw material costs, manufacturing costs, and economies of scale. The paper that put the cost argument for SIBs on a quantitative footing.
 
 5. **Tarascon, J.-M., "Na-ion versus Li-ion Batteries: Complementarity Rather Than Competitiveness," *Joule* 4 (8), 1616–1620 (2020).** A short commentary from one of the founders of modern electrochemistry research, arguing that the right framing for SIBs is not "will they replace Li-ion" but "which market segments do they fill that Li-ion never will." Useful for recalibrating expectations after reading the cost-optimistic literature. Pair with Vaalma et al. (entry 4) to get both the quantitative and the strategic argument.
+\bodytextstyle
+
 
 
 \newpage
 
-# Degradation Mechanisms
+\chapter{Degradation Mechanisms}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Every battery in the world is dying. Slowly, irreversibly, at a rate that depends on temperature, current, voltage, and the choices made by the engineer who designed the system around it — but dying nonetheless. Understanding why is not just an academic exercise. It is the difference between a battery pack that lasts twelve years in an electric vehicle and one that needs replacement after six. It is the difference between a grid storage system that earns a positive return on investment and one that does not. And for a simulation researcher, it is the difference between a model that can predict end-of-life behaviour and one that can only reproduce fresh-cell data.
 
@@ -3345,13 +3781,17 @@ By the end of this chapter, you will be able to read a set of capacity-fade and 
 
 ---
 
-## The Three Degradation Modes: A Unifying Framework
+\bodytextstyle
 
-The degradation literature contains dozens of named mechanisms. This abundance can be overwhelming. The key to navigating it is a hierarchical classification that separates *how a cell fails* (the mode) from *why it fails* (the mechanism). This framework was systematised by Birkl, Roberts, McTurk, Bruce, and Howey in their landmark 2017 review paper, and it has become the standard language for discussing battery degradation.
+\section{The Three Degradation Modes: A Unifying Framework}
 
-At the top level, there are exactly three degradation modes. Every mechanism we will discuss — SEI growth, lithium plating, particle cracking, transition metal dissolution, electrolyte decomposition — feeds into one or more of these three modes.
 
-### Mode 1: Loss of Lithium (or Sodium) Inventory (LLI)
+The degradation literature contains dozens of named mechanisms. This abundance can be overwhelming. The key to navigating it is a hierarchical classification that separates *how a cell fails* (the mode) from *why it fails* (the mechanism). Birkl, Roberts, McTurk, Bruce, and Howey's 2017 paper systematised the **capacity-fade** side of this picture using LLI, LAMpe, and LAMne. In this chapter we extend that diagnostic language slightly by treating **conductivity loss (CL)** as a third engineering axis, because resistance rise matters just as much as capacity fade in real cells.
+
+At the practical engineering level used in this chapter, there are three top-level degradation modes. Every mechanism we will discuss — SEI growth, lithium plating, particle cracking, transition metal dissolution, electrolyte decomposition — feeds into one or more of these three modes.
+
+\subsection{Mode 1: Loss of Lithium (or Sodium) Inventory (LLI)}
+
 
 **Loss of lithium inventory (LLI)** refers to a decrease in the total amount of cyclable lithium (or sodium, in SIBs) in the cell. Lithium that has been consumed irreversibly — locked up in the SEI, deposited as metallic lithium that cannot be re-intercalated, converted to an inactive chemical compound — is no longer available to carry charge between the electrodes. Capacity decreases because there is less mobile ion available to fill the electrode's sites.
 
@@ -3363,7 +3803,8 @@ In this balanced state, the cathode's delithiated composition at top of charge, 
 
 LLI is primarily detected through changes in the full cell OCV curve and in the differential capacity ($dQ/dV$) curve. As LLI accumulates, the electrode OCV curves slide relative to each other on the SOC axis — a phenomenon called **electrode slippage** or **lithium inventory drift**. The features in the $dQ/dV$ curve (phase transition peaks, staging peaks) shift in voltage and decrease in area as the electrode pair loses its original alignment.
 
-### Mode 2: Loss of Active Material (LAM)
+\subsection{Mode 2: Loss of Active Material (LAM)}
+
 
 **Loss of active material (LAM)** refers to a decrease in the electrochemically accessible quantity of electrode material — the amount of electrode that is connected to both the electronic pathway and the ionic pathway. Material that has become electronically isolated (particle cracking that severs the electronic network) or ionically isolated (pore clogging that prevents electrolyte access) is no longer available to store or release charge. Capacity decreases because there are fewer sites available, even if the lithium inventory were sufficient to fill them all.
 
@@ -3371,13 +3812,15 @@ LAM can affect the positive electrode (LAMpe), the negative electrode (LAMne), o
 
 LAM is distinct from LLI: in LAM, the problem is the host, not the guest. If you imagine the bus again: LAM is equivalent to some of the seats being broken and unusable. The passengers (lithium) are still there, but they cannot sit in those seats.
 
-### Mode 3: Conductivity Loss (CL) / Impedance Growth
+\subsection{Mode 3: Conductivity Loss (CL) / Impedance Growth}
+
 
 **Conductivity loss (CL)** — also called impedance growth or resistance rise — refers to an increase in any of the resistive elements of the cell: the electrolyte ionic resistance, the SEI ionic resistance, the charge-transfer resistance at electrode surfaces, or the electronic resistance of the electrode matrices. Resistance rise directly reduces the available power (the cell cannot deliver high current without excessive voltage sag), increases heat generation, and (by increasing polarisation) can indirectly accelerate further degradation by pushing the local electrode potential outside safe limits.
 
 Impedance growth is primarily detected by DCIR measurements or EIS, and by the increased separation between charge and discharge voltage curves at a given current (the larger the gap, the more resistive the cell).
 
-### Using the Framework
+\subsection{Using the Framework}
+
 
 The value of this three-mode classification is that it separates degradation signatures in measurable data. A capacity check at low C-rate (C/20 or lower) measures the combined effect of LLI and LAM but is relatively insensitive to conductivity loss (at very low rate, overpotentials are small and resistance barely affects deliverable capacity). A capacity check at moderate C-rate (1C) reflects all three modes. A resistance measurement (HPPC or EIS) directly quantifies conductivity loss. An OCV or $dQ/dV$ curve reveals the relative shifts of the two electrode OCV curves, enabling separation of LLI from LAM and identification of which electrode is more degraded.
 
@@ -3401,11 +3844,13 @@ With this framework in hand, we can now examine each specific mechanism, underst
 
 ---
 
-## SEI Growth — The Dominant Calendar Aging Mechanism
+\section{SEI Growth — The Dominant Calendar Aging Mechanism}
+
 
 We introduced the SEI in Chapter 2 and encountered it again in Chapter 4's formation discussion. Now we need to understand its long-term evolution quantitatively, because continuous SEI growth is the single most important degradation mechanism in lithium-ion cells under normal operating conditions.
 
-### The Thermodynamic Instability That Never Fully Goes Away
+\subsection{The Thermodynamic Instability That Never Fully Goes Away}
+
 
 Recall from Chapter 2 that the graphite anode operates at 0.05–0.25 V vs. Li/Li⁺ — a strongly reducing potential at which the organic electrolyte is thermodynamically unstable. The SEI forms during the first cycles and passivates the surface, creating a kinetic barrier that slows further electrolyte reduction to a very low rate. But it never fully stops.
 
@@ -3421,28 +3866,32 @@ This is a separable ODE. Rearranging gives $L\,dL = v D c_0\,dt$, and integratin
 $$L^2 - L_0^2 = 2 v D c_0\, t.$$
 For $L \gg L_0$ (well past the formation cycles), the constant drops out and we recover
 $$L(t) \approx \sqrt{2 v D c_0}\,\sqrt{t},$$
-which is the parabolic growth law in its cleanest form. The expression under the outer square root is the rate constant $k_\text{SEI}$. Writing this with the initial offset restored gives equation (7.1):
+which is the parabolic growth law in its cleanest form. Writing this with the initial offset restored gives equation (7.1):
 
-$$L_\text{SEI}(t) = L_0 + k_\text{SEI} \sqrt{t} \tag{7.1}$$
-
+\begin{equation}
+L_\text{SEI}(t) = \sqrt{L_0^2 + k_\text{SEI}\, t} \tag{7.1}
+\end{equation}
 If this structure looks familiar, it should: it is the same math that governs the growth of an oxide layer on silicon during thermal oxidation (the Deal–Grove model), the depletion of a diffusing species into a semi-infinite medium, and — the EE version — the spreading of a voltage disturbance down a diffusive RC transmission line, whose penetration depth grows as $\sqrt{t}$. Whenever the rate of a process is throttled by diffusion through its own product, $\sqrt{t}$ is the signature.
 
 It is worth stopping to put a number on the SEI's physical dimensions, because most readers imagine it as either invisibly thin or much thicker than it really is. A freshly-formed SEI on a graphite particle is typically 5–20 nanometres thick — a few tens of atomic layers, on the same scale as a thermal gate oxide in a modern MOSFET. Over years of calendar aging and thousands of cycles, the SEI on an aged cell might grow to 50–100 nanometres: still thin on any macroscopic scale, but now thick enough to meaningfully impede ion transport and to contribute measurably to the impedance rise of the cell. The fact that a difference of a few tens of nanometres of film thickness — invisible at any normal microscopy resolution — is the difference between a fresh cell and an end-of-life cell is one of the counterintuitive things about battery aging, and it is why "more SEI" is synonymous with "older cell."
 
 The lithium consumed by SEI growth is directly proportional to the SEI thickness: each nanometre of new SEI consumes a calculable amount of lithium per unit area. Since LLI scales with SEI thickness, and SEI thickness grows as $\sqrt{t}$, we expect capacity fade from SEI-driven LLI to also follow a $\sqrt{t}$ law:
 
-$$\Delta Q_\text{LLI}(t) \propto \sqrt{t} \tag{7.2}$$
-
+\begin{equation}
+\Delta Q_\text{LLI}(t) \propto \sqrt{t} \tag{7.2}
+\end{equation}
 This square-root time dependence is a quantitative prediction of the diffusion-limited SEI growth model, and it can be tested experimentally by measuring capacity at intervals during long-term calendar aging. Empirical calendar aging data for lithium-ion cells at fixed temperature and SOC typically show excellent $\sqrt{t}$ fits over periods of months to years. When a dataset deviates from $\sqrt{t}$ behaviour — for example, showing a faster-than-$\sqrt{t}$ rate later in life — it is a signal that a secondary degradation mechanism has become active (perhaps particle cracking has exposed fresh surface area, giving the SEI a new growth front).
 
-### Temperature Dependence: The Arrhenius Law for SEI Growth
+\subsection{Temperature Dependence: The Arrhenius Law for SEI Growth}
+
 
 The rate constant $k_\text{SEI}$ depends on temperature through the **Arrhenius equation**, which is the workhorse expression for any thermally activated process. In physical terms: the reaction (here, the diffusion step that rate-limits SEI growth) requires a molecule to climb an energy barrier of height $E_a$, called the **activation energy**. The probability of a molecule having enough thermal energy to clear that barrier follows a Boltzmann distribution, and integrating over the distribution gives an $\exp(-E_a/k_B T)$ factor per molecule, or equivalently $\exp(-E_a/RT)$ if $E_a$ is expressed per mole and $R = N_A k_B$ is the gas constant. The prefactor $A$ lumps together everything else — collision frequency, geometric factors, attempt rate.
 
 If you have ever looked at reverse-bias current in a Schottky diode, or the thermal generation current in a BJT, you have seen the same exponential. In semiconductor physics we write it $\exp(-\phi_B/k_B T)$, where $\phi_B$ is the barrier height; in chemistry we write it $\exp(-E_a/RT)$. It is the same physics and the same math — a thermally excited population clearing a barrier — and it pays to recognise the pattern wherever it appears.
 
-$$k_{\mathrm{SEI}}(T) = A \exp\left(-\frac{E_a}{RT}\right) \tag{7.3}$$
-
+\begin{equation}
+k_{\mathrm{SEI}}(T) = A \exp\left(-\frac{E_a}{RT}\right) \tag{7.3}
+\end{equation}
 where $E_a$ is the activation energy for the diffusion of reactive species through the SEI, typically 40–80 kJ/mol for commercial cells. At this activation energy, an Arrhenius calculation gives:
 
 $$
@@ -3464,19 +3913,22 @@ $$
 
 A 10°C temperature increase roughly doubles the calendar aging rate. This factor-of-two is the quantitative basis for the industry rule of thumb you will hear often: storing lithium-ion cells at elevated temperature dramatically accelerates calendar aging. Carrying the same calculation forward, a cell stored at 45 °C ages approximately 4–5× faster than the same cell at 25 °C, and roughly 20× faster than a cell stored at 5 °C. These numbers depend sensitively on the assumed activation energy — a cell chemistry with $E_a = 40$ kJ/mol would show factors closer to 3× and 10×, while a cell with $E_a = 80$ kJ/mol would show factors closer to 6× and 40× for the same temperature range. When you see a calendar-aging acceleration table in a datasheet or paper, recognise that the underlying $E_a$ is doing most of the work and is worth extracting.
 
-### SOC Dependence
+\subsection{SOC Dependence}
+
 
 The rate of SEI growth also depends on the state of charge of the cell during storage. At higher SOC, the anode is more lithiated and therefore sits at a lower potential (closer to 0 V vs. Li/Li⁺), where the thermodynamic driving force for electrolyte reduction is stronger. The overvoltage for SEI-forming reactions is larger, driving more rapid electrolyte decomposition.
 
 Quantitatively, the SOC dependence is often modelled as an exponential in the anode potential $U_\text{anode}$:
 
-$$k_\text{SEI}(\text{SOC}) \propto \exp\!\left(-\frac{\beta F U_\text{anode}}{RT}\right) \tag{7.4}$$
-
+\begin{equation}
+k_\text{SEI}(\text{SOC}) \propto \exp\!\left(-\frac{\beta F U_\text{anode}}{RT}\right) \tag{7.4}
+\end{equation}
 where $\beta$ is an empirical coefficient. Since $U_\text{anode}$ decreases as SOC increases (lower potential = more reducing = higher SEI growth rate), $k_\text{SEI}$ increases with SOC. The practical implication: a cell stored at 100% SOC ages faster than a cell stored at 50% SOC, which ages faster than a cell stored at 20% SOC.
 
 The combined temperature-SOC dependence of calendar aging is what drives the engineering recommendation to store lithium-ion batteries at 30–50% SOC in a cool location — not arbitrary caution, but a quantitative optimisation of the Arrhenius kinetics.
 
-### What the Cycle-by-Cycle SEI Evolution Looks Like
+\subsection{What the Cycle-by-Cycle SEI Evolution Looks Like}
+
 
 During cycling, the SEI is not simply growing — it is simultaneously growing on fresh surfaces and being disrupted. Graphite is not an isotropic swelling material: between empty graphite and fully lithiated LiC₆, the $c$-axis (the stacking direction, perpendicular to the graphene planes) expands by roughly 10%, while the $a$-axis barely moves at all. The overall volumetric change over a full charge-discharge excursion is on the order of 10–13%, and because the expansion is anisotropic, particles experience shear strains at grain boundaries and at contact points with neighbouring particles. The SEI cracks preferentially at these locations — at particle contacts, at sharp surface features, and along high-curvature edges. The cracked regions expose fresh graphite. The electrolyte re-contacts those surfaces and new SEI nucleates.
 
@@ -3490,11 +3942,13 @@ We will see this $\sqrt{t}$ law again in Chapter 10, where it shows up as the st
 
 ---
 
-## Lithium and Sodium Plating — When and Why
+\section{Lithium and Sodium Plating — When and Why}
+
 
 Lithium plating — the deposition of metallic lithium on the graphite anode surface rather than intercalation into the graphite — is one of the most dangerous and irreversible degradation mechanisms in lithium-ion batteries. It is also one of the most practically relevant, because it is directly triggered by fast charging and by low-temperature operation — precisely the operating conditions that battery users most want to improve.
 
-### The Physical Mechanism
+\subsection{The Physical Mechanism}
+
 
 During charging, a lithium ion arriving at the graphite anode surface from the electrolyte has two competing reactions available to it. One is the intended reaction — intercalation into the graphite host:
 $$\text{Li}^+ + e^- + \text{C}_6 \rightarrow \text{LiC}_6 \quad \text{(intercalation; good)}$$
@@ -3506,15 +3960,17 @@ For intercalation to win cleanly, then, two conditions must be met simultaneousl
 
 The local electrode potential at any point on the graphite surface during charging is:
 
-$$E_\text{local} = E_\text{OCV,anode}(\text{local SOC}) - |\eta_\text{local}| \tag{7.5}$$
-
+\begin{equation}
+E_\text{local} = E_\text{OCV,anode}(\text{local SOC}) - |\eta_\text{local}| \tag{7.5}
+\end{equation}
 where $E_\text{OCV,anode}$ is the anode equilibrium potential at the local state of lithiation, and $|\eta_\text{local}|$ is the magnitude of the local overpotential (sum of activation and concentration contributions). During charging, the anode is being driven cathodically — reduction is happening, current flows into the anode — so in the standard sign convention $\eta_\text{local} = E_\text{local} - E_\text{OCV,anode}$ is negative, and $E_\text{local}$ sits *below* $E_\text{OCV,anode}$. We have written the equation with an absolute value so that the geometric picture ("the local potential is pulled down from equilibrium by the overpotential") is unambiguous. If $|\eta_\text{local}|$ becomes large enough that $E_\text{local}$ drops to or below 0 V vs. Li/Li⁺, lithium cannot preferentially intercalate — it plates as metal instead.
 
 There are five things that push $|\eta_\text{local}|$ up, and they mostly act together rather than in isolation. The first is **charging current**: a higher current demands more driving force from the Butler-Volmer equation, which directly enlarges the activation overpotential $\eta_\text{act}$. The second is **temperature**: the charge-transfer resistance at the SEI–graphite interface follows an Arrhenius law, so at low temperatures the kinetics slow down exponentially and a much larger overpotential is required to drive the same current. The third is **local lithiation** — note that the operative word here is *local*, not *global*. Plating is not fundamentally a global-SOC phenomenon; it is a local-composition phenomenon. Under fast charging the separator-facing side of the anode sees the highest current density and fills up first, so its local lithiation can be significantly higher than the anode's average lithiation, and its local equilibrium potential correspondingly closer to 0 V vs. Li/Li⁺. This is why plating can initiate at a globally modest SOC — 60–80% — under aggressive charging, and it is why a proper plating model requires a pseudo-2D description that resolves the through-thickness lithiation profile rather than collapsing the anode to a single state-of-charge tank. The fourth is **electrode thickness and tortuosity**: diffusion limitation in the electrolyte-filled pores adds concentration overpotential $\eta_\text{conc}$ on top of the activation contribution, and this term grows with electrode thickness. The fifth is **SEI thickness**: as the SEI thickens with age, the ion transfer resistance through the film grows, and the extra $\eta_\text{act}$ it demands can by itself push an old cell into plating under charging conditions that a fresh cell would tolerate comfortably.
 
 This is why the combination of fast charging (high current) at low temperature (slow kinetics) at high SOC (low equilibrium margin), on an aged cell with a thickened SEI, is the worst possible condition for lithium plating — and why manufacturers specify charging below 0 °C as prohibited for graphite-anode lithium-ion cells.
 
-### What Happens to Plated Lithium
+\subsection{What Happens to Plated Lithium}
+
 
 Once lithium metal deposits on the graphite surface, there are three possible fates, in roughly ascending order of severity. The most benign is **re-intercalation during discharge**. If the plated lithium remains in good electronic contact with the graphite surface, the subsequent discharge will strip it back: the metallic lithium dissolves anodically and re-enters the electrolyte as Li⁺, and from there it can intercalate into the cathode just as if nothing had happened. This is the least harmful outcome, but it is not free: the stripped lithium leaves behind a porous, surface-area-rich graphite surface that presents a larger footprint for SEI formation on the next charge, so even "reversible" plating still accelerates LLI indirectly.
 
@@ -3522,7 +3978,8 @@ A worse outcome is **isolation as dead lithium**. Metallic lithium that is strip
 
 The most catastrophic outcome is **dendrite growth and internal short circuit**. Under conditions of repeated or severe plating, lithium deposits preferentially at high-electric-field points on the electrode surface — sharp edges, SEI defects, dead-lithium stubs — and grows there as needle-like metallic filaments called **dendrites**. If a dendrite grows long enough to pierce the separator and contact the cathode, it creates an internal short circuit: a sudden, uncontrolled energy release that can ignite the electrolyte and trigger thermal runaway. This is the dominant failure mode for lithium-metal anodes and, under severe abuse, for graphite anodes too. It is also the reason lithium plating is treated as a safety issue and not merely an aging issue, and it is why BMS algorithms that suppress plating during fast charging are considered safety functions, not just longevity functions.
 
-### Diagnosing Lithium Plating from External Measurements
+\subsection{Diagnosing Lithium Plating from External Measurements}
+
 
 Lithium plating leaves several diagnostic signatures.
 
@@ -3536,7 +3993,8 @@ Finally, **post-mortem cell opening** is the gold standard when it can be done. 
 
 **A common misconception worth flagging.** Students often treat "lithium plating" and "dendrite formation" as synonyms. They are not. Plating is the *event* — the reduction of Li⁺ to Li(s) on the anode surface instead of into the graphite host. Dendrites are a *morphological outcome* of plating under specific conditions: high local current density, localised SEI defects, and sustained plating over many cycles. Most plating events in commercial cells, especially early in life, produce soft, mossy, relatively uniform deposits rather than sharp dendrites. These mossy deposits contribute to LLI (they are lithium that cannot come back) but they do not puncture the separator, and the cell does not short. The transition from mossy plating to dendritic plating happens when plating concentrates at a few points — typically after many plating cycles have reshaped the SEI and after dead lithium has accumulated to the point where the electric field is no longer uniform across the anode surface. When you read that a cell "showed plating" in a cycling study, the default assumption should be mossy, not dendritic, unless the authors specifically report a separator short or a safety event.
 
-### Sodium Plating in SIBs
+\subsection{Sodium Plating in SIBs}
+
 
 The analogous concern in sodium-ion batteries is **sodium plating** on the hard carbon anode surface. The physics is identical: if the local anode potential drops to or below 0 V vs. Na/Na⁺, sodium plates as metal rather than inserting into the carbon.
 
@@ -3561,11 +4019,13 @@ Read this table as the "short form" of the SIB plating story. When you encounter
 
 ---
 
-## Particle Cracking and Mechanical Fatigue
+\section{Particle Cracking and Mechanical Fatigue}
+
 
 Electrode active material particles are not inert solids — they breathe. Every time a lithium or sodium ion intercalates, the host lattice expands. Every time an ion de-intercalates, the lattice contracts. Over thousands of cycles, these repeated expansion-contraction cycles impose mechanical fatigue on the electrode particles, eventually causing them to crack.
 
-### The Mechanism: Diffusion-Induced Stress
+\subsection{The Mechanism: Diffusion-Induced Stress}
+
 
 When an electrode particle is charged (or discharged) at finite rate, the lithium (or sodium) concentration inside the particle is not uniform. The ion arrives at the particle surface first — that is where the electrolyte is — and diffuses inward from there. Equilibration takes time, and that time is set by the particle's diffusion time constant $\tau_\text{diff} \sim r^2/D_\text{s}$, where $r$ is the particle radius and $D_\text{s}$ is the solid-state diffusivity of lithium in the host material. If you drive the surface with a current that changes faster than $\tau_\text{diff}$, the interior of the particle cannot keep up. The surface fills or empties while the core is still near its starting composition.
 
@@ -3575,23 +4035,27 @@ Now, here is the mechanical twist that makes it matter. In most intercalation ho
 
 The magnitude of DIS scales with the rate of charging (higher rate = steeper concentration gradient = larger mismatch), the partial molar volume of the ion in the host material $\Omega$ (larger volume change = larger strain per unit composition change), the elastic modulus of the material, and the particle size. The maximum tensile stress at the particle surface (the location where cracks typically initiate) scales as:
 
-$$\sigma_\text{max} \sim \frac{E\,\Omega\,\Delta c_\text{max}}{1-\nu} \tag{7.6}$$
-
+\begin{equation}
+\sigma_\text{max} \sim \frac{E\,\Omega\,\Delta c_\text{max}}{1-\nu} \tag{7.6}
+\end{equation}
 where $E$ is the Young's modulus of the host material, $\Omega$ is the partial molar volume of the inserted species, $\Delta c_\text{max}$ is the maximum concentration difference between surface and centre, and $\nu$ is Poisson's ratio. The dimensionless prefactor, which we have absorbed into the $\sim$, is on the order of $1/3$ to $2/9$ for a spherical particle and depends on whether one evaluates the radial or tangential stress at the surface or the centre (this is the Cheng–Verbrugge analysis, which is the canonical derivation and worth looking up when you need a precise value). For our purposes, the important thing is the *scaling*: stress grows linearly with modulus, with partial molar volume (a proxy for how much the lattice swells), and with the concentration gradient, and it is amplified for stiffer (larger $E$) and more constrained (larger $\nu$) materials. This stress is tensile at the surface for the case where the surface is more expanded than the core (insertion into a shell first), and tensile at the core for the reverse case. Both can cause cracking; the location of crack initiation depends on the sign of $\Delta c$ and the relative toughness of the material.
 
-### Fracture Mechanics of Electrode Particles
+\subsection{Fracture Mechanics of Electrode Particles}
+
 
 A crack initiates when the stress intensity factor $K$ at the crack tip exceeds the fracture toughness $K_{1C}$ of the material:
 
-$$K = Y \sigma_\text{max} \sqrt{\pi a} \geq K_{1C} \tag{7.7}$$
-
+\begin{equation}
+K = Y \sigma_\text{max} \sqrt{\pi a} \geq K_{1C} \tag{7.7}
+\end{equation}
 where $Y$ is a geometry-dependent dimensionless factor and $a$ is the crack length. For a small flaw of size $a_0$ already present in the particle (all real particles have manufacturing defects), the critical stress to propagate the crack decreases with increasing particle size (because $K \propto \sigma\sqrt{a}$ and larger particles have longer initial flaws and experience higher total strain). This explains why **particle size optimisation** is a central strategy for improving the cycle life of high-expansion electrode materials: smaller particles (below a critical size $r_c$) are more resistant to fracture because their total strain is smaller and their initial flaw size is proportionally smaller.
 
 For NMC and NCA cathode particles (secondary particles composed of many smaller primary grains), cracking occurs preferentially **along grain boundaries** within the secondary particle — the interface between neighbouring primary grains is a stress concentration point and the grain boundary toughness is lower than the intragranular toughness. This mode of failure is called **intergranular cracking**, and it is the dominant fracture mechanism in high-nickel NMC (NMC622, NMC811) under aggressive cycling. Single-crystal NMC particles — where the secondary particle is a single grain — eliminate intergranular cracking and significantly improve cycle life, at the cost of more difficult synthesis and somewhat lower rate capability.
 
 For hard carbon (SIB anode), the amorphous, cross-linked structure is more crack-resistant than crystalline LCO or NMC because there are no grain boundaries and the isotropic structure distributes stress more evenly. However, repeated expansion of the interlayer spacing during sodium intercalation can cause delamination of disordered graphene sheets, which is a softer form of mechanical degradation.
 
-### Consequences of Cracking
+\subsection{Consequences of Cracking}
+
 
 Particle cracking has three downstream consequences that matter, and they all amplify the initial mechanical damage. The first is **active material isolation**, which is LAM in its purest form: when a crack propagates through a particle, it can sever the electronic percolation network that connects that particle's interior to the current collector, and the severed fragment becomes electronically orphaned. The lattice is intact, the lithium sites are still there, but there is no wire to reach them — they are dark, as far as the external circuit is concerned.
 
@@ -3599,7 +4063,8 @@ The second consequence is the creation of **new surface area for SEI formation**
 
 The third consequence is **corrosion fatigue**. Once a crack opens, electrolyte penetrates into the crack interior, where it is trapped and experiences concentration changes during cycling that generate additional osmotic stress at the crack tip. This stress can propagate the crack further under conditions that the particle's outer surface alone would have survived. Cracking is thus autocatalytic: a single initial flaw can, over enough cycles, grow into a network of cracks that shatters the particle and transfers most of its volume into the LAM bucket.
 
-### Detecting Particle Cracking
+\subsection{Detecting Particle Cracking}
+
 
 Cracking is harder to diagnose non-invasively than the other mechanisms we've met in this chapter, and the most definitive methods are all destructive. The gold standard is **post-mortem microscopy**: a cycled cell is disassembled in a glove box, electrodes are rinsed and dried, and cross-sections of individual particles are imaged directly. Scanning electron microscopy (SEM) on focused-ion-beam-prepared cross-sections — what the literature calls FIB-SEM — is the reference technique for nanoscale crack imaging, though preparing the cross-sections without introducing preparation artifacts is technically demanding and the authors of a good FIB-SEM study have typically spent substantial time on sample preparation alone.
 
@@ -3607,18 +4072,21 @@ There are also several in-operando proxies. **Gas chromatography of the cell hea
 
 ---
 
-## Transition Metal Dissolution and Crosstalk
+\section{Transition Metal Dissolution and Crosstalk}
+
 
 When the cathode operates at high potential, transition metal ions at the cathode surface can be chemically or electrochemically extracted from the host structure and dissolved into the electrolyte. These dissolved metal ions then migrate toward the anode and deposit on or into the graphite surface, catalysing destructive reactions there. This chain of events — dissolution at the cathode, migration through the electrolyte, deposition at the anode — is called **transition metal crosstalk** (or simply **metal contamination**).
 
-### The Dissolution Mechanism
+\subsection{The Dissolution Mechanism}
+
 
 The dissolution of transition metals from cathode materials is driven by two coupled processes: chemical attack by hydrofluoric acid, and electrochemical oxidation at high cathode potential.
 
 The chemical pathway starts with **HF attack**. The LiPF₆ salt in LIB electrolytes is thermodynamically unstable in the presence of trace water — which is inevitably present from electrode drying imperfections, from moisture ingress during assembly, and from downstream reactions. The hydrolysis proceeds as:
 
-$$\text{LiPF}_6 + \text{H}_2\text{O} \rightarrow \text{LiF} + \text{POF}_3 + 2\,\text{HF} \tag{7.8}$$
-
+\begin{equation}
+\text{LiPF}_6 + \text{H}_2\text{O} \rightarrow \text{LiF} + \text{POF}_3 + 2\,\text{HF} \tag{7.8}
+\end{equation}
 and POF₃ continues to react with further water to generate more HF. The upshot is that *any* Li-ion cell with a PF₆⁻-based salt and non-zero water content will contain some HF, and the HF concentration grows over time — especially at elevated temperature, where the hydrolysis is faster.
 
 "HF attack" on a cathode surface needs a moment of unpacking, because the word "attack" makes it sound more mysterious than it is. At a metal oxide cathode surface — say, the (104) facet of an NMC particle — the terminal metal atoms are coordinated to oxygen. When HF molecules reach this surface, the fluoride is a strong ligand for transition metals, and the reaction
@@ -3627,27 +4095,32 @@ is thermodynamically favoured. The metal fluoride is soluble in carbonate electr
 
 For the Mn³⁺/Mn⁴⁺-containing spinel LiMn₂O₄, the reaction proceeds through the **Hunter mechanism**, a disproportionation driven by protons (or, equivalently, by HF):
 
-$$2\,\text{LiMn}_2\text{O}_4 + 4\,\text{H}^+ \rightarrow 3\,\text{MnO}_2\,(\text{s}) + \text{Mn}^{2+}\,(\text{aq}) + 2\,\text{Li}^+ + 2\,\text{H}_2\text{O} \tag{7.9}$$
-
+\begin{equation}
+2\,\text{LiMn}_2\text{O}_4 + 4\,\text{H}^+ \rightarrow 3\,\text{MnO}_2\,(\text{s}) + \text{Mn}^{2+}\,(\text{aq}) + 2\,\text{Li}^+ + 2\,\text{H}_2\text{O} \tag{7.9}
+\end{equation}
 Parse this one carefully, because the oxidation-state bookkeeping is the whole point. In LiMn₂O₄, Mn is in a mixed +3/+4 state, averaging +3.5. When protons attack the spinel surface, three of every four Mn atoms are left behind as solid MnO₂ (Mn⁴⁺), while the fourth is released as soluble Mn²⁺ — i.e., three Mn atoms are oxidised and one is reduced, all within the same reaction. This is exactly the Mn³⁺ disproportionation we first wrote in Chapter 5 (Equation 5.3), now happening at the cathode surface in the presence of acid:
 
-$$2\,\text{Mn}^{3+} \rightarrow \text{Mn}^{2+}\,(\text{dissolved}) + \text{Mn}^{4+}\,(\text{stable solid}) \tag{7.10}$$
-
+\begin{equation}
+2\,\text{Mn}^{3+} \rightarrow \text{Mn}^{2+}\,(\text{dissolved}) + \text{Mn}^{4+}\,(\text{stable solid}) \tag{7.10}
+\end{equation}
 Equation (7.9) is just the fully-written-out version of (7.10) on the LMO surface, with the protons and water molecules explicitly accounted for. The soluble Mn²⁺ is the species that leaves the cathode and goes on to cause crosstalk at the anode. For NMC, the analogous mechanism runs over any Mn³⁺ fraction present in the cathode — which is why higher-Mn compositions (NMC111, NMC442) are more susceptible than lower-Mn compositions (NMC811) to HF-driven Mn loss, even though the latter have worse *overall* TM dissolution because of Ni dissolution at high voltage. Temperature accelerates both HF generation and dissolution: above approximately 40–50 °C, Mn dissolution from LMO becomes rapid enough to cause severe cycle-life degradation within hundreds of cycles.
 
 The second pathway is **electrochemical dissolution at high voltage**. Independent of HF, highly delithiated cathode surfaces (at high positive electrode potential) can spontaneously dissolve transition metals through an oxidative mechanism. Cobalt dissolution from LCO at potentials above approximately 4.2 V vs. Li/Li⁺, and nickel dissolution from high-Ni NMC at potentials above approximately 4.3 V, are well-documented. This is one reason that overcharging — even slightly above the rated upper voltage — accelerates degradation dramatically.
 
-### The Crosstalk Mechanism
+\subsection{The Crosstalk Mechanism}
+
 
 Once transition metal ions (most commonly Mn²⁺, Co²⁺, Ni²⁺) are dissolved in the electrolyte, they migrate toward the graphite anode under the combined influence of diffusion and the electric field in the electrolyte. At the anode, they are electrochemically reduced at the much lower anode potential:
 
-$$\text{M}^{2+} + 2e^- \rightarrow \text{M}\,(\text{metal deposit}) \tag{7.11}$$
-
+\begin{equation}
+\text{M}^{2+} + 2e^- \rightarrow \text{M}\,(\text{metal deposit}) \tag{7.11}
+\end{equation}
 These metal deposits (manganese, cobalt, or nickel metal particles) on the graphite surface catalyse the continued decomposition of the electrolyte. The metal particles act as heterogeneous catalysts for SEI-decomposing reactions, dramatically accelerating the rate of LLI at the anode. This catalytic effect means that even very small concentrations of dissolved transition metal can cause disproportionate acceleration of capacity fade — parts-per-million levels of dissolved manganese in the electrolyte measurably increase capacity fade rates.
 
 Additionally, metal deposition on the SEI changes its mechanical and transport properties, causing it to become less effective as a passivation layer and more variable in thickness. In severe cases, the modified SEI cracks more easily, further exposing fresh graphite and compounding the problem.
 
-### Crosstalk in SIBs
+\subsection{Crosstalk in SIBs}
+
 
 Transition metal dissolution in SIBs follows the same chemical logic. Iron-containing cathodes (NFPP, Prussian white) and manganese-containing cathodes (P2-NaMnO₂, PBA with Mn) are subject to dissolution. The hydrolysis pathway that generates HF in a LiPF₆ electrolyte applies essentially unchanged to a NaPF₆ electrolyte — the unstable species is the PF₆⁻ anion, whose decomposition in the presence of trace water produces POF₃ and HF largely independent of the counter-cation. In practice, NaPF₆ is often described as having similar or slightly worse thermal stability than LiPF₆, and the HF problem is not mitigated by the switch from lithium to sodium. Vanadium dissolution from NVPF is a specific concern — dissolved vanadium species are toxic and also interfere with the hard carbon SEI — and is one of the reasons NVPF cells tend to show accelerated fade at elevated temperature compared to their lithium analogues.
 
@@ -3655,21 +4128,25 @@ Prussian blue analogues have their own dominant degradation pathway, and it is n
 
 ---
 
-## Electrolyte Decomposition and Gas Generation
+\section{Electrolyte Decomposition and Gas Generation}
+
 
 The electrolyte is not a passive bystander in degradation — it is consumed. The SEI formation reactions (Chapter 2) are a form of electrolyte decomposition, but ongoing electrolyte decomposition occurs throughout the cell's life at both electrodes and is one of the major contributors to capacity fade in long-life applications.
 
-### Reductive Decomposition at the Anode
+\subsection{Reductive Decomposition at the Anode}
+
 
 Ongoing reductive decomposition at the anode is primarily the SEI growth mechanism we discussed in Section 7.2. The products include organic lithium salts (lithium alkyl carbonates), inorganic species (LiF, Li₂CO₃, Li₂O), and gases (CO₂, CO, C₂H₄). In a sealed cell, the gases dissolve back into the electrolyte to some extent; what cannot dissolve contributes to internal gas pressure. In a pouch cell, this manifests as cell swelling. In a cylindrical cell, as rising internal pressure that can eventually actuate the safety vent.
 
-### Oxidative Decomposition at the Cathode
+\subsection{Oxidative Decomposition at the Cathode}
+
 
 At the high potentials of the positive electrode (3.5–4.5 V vs. Li/Li⁺), the electrolyte undergoes oxidative decomposition — the solvent molecules are electrochemically oxidised at the cathode surface, forming the **cathode–electrolyte interphase (CEI)** mentioned in Chapter 4. The CEI is generally thinner and less well-studied than the SEI, but its growth contributes to impedance rise and to a gradual loss of electrolyte (which, if sufficient, can dry out the cell and cause sudden death).
 
 The oxidation onset potential for EC:DMC electrolyte is approximately 4.5–5.0 V vs. Li/Li⁺ in the absence of a catalyst. However, in the presence of surface impurities (water, HF, dissolved metals) or at elevated temperature, oxidative decomposition begins at much lower potentials — as low as 4.0–4.2 V vs. Li/Li⁺. This is why operating voltage limits are carefully managed in high-nickel NMC cells, and why electrolyte additives that preferentially oxidise to form a stable CEI (analogous to how VC and FEC form a stable SEI) are an active area of electrolyte development.
 
-### Gas Generation and Its Consequences
+\subsection{Gas Generation and Its Consequences}
+
 
 The gases produced by electrolyte decomposition — CO₂, CO, C₂H₄, C₃H₆ (propylene, from PC decomposition), H₂ — affect cell performance in three distinct ways.
 
@@ -3681,47 +4158,56 @@ The third is **electrolyte depletion**. Each mole of electrolyte consumed to gen
 
 ---
 
-## Calendar Aging vs. Cycle Aging — Different Physics, Different Models
+\section{Calendar Aging vs. Cycle Aging — Different Physics, Different Models}
+
 
 With the individual mechanisms established, we can now address the distinction between calendar aging and cycle aging at the model level. This distinction matters practically because real applications combine both: a cell in an EV is cycling during the day and resting at night, and the total degradation is the combined result of both contributions.
 
-### Calendar Aging: The Diffusion-Limited Regime
+\subsection{Calendar Aging: The Diffusion-Limited Regime}
+
 
 **Calendar aging** is dominated by SEI growth during storage and by electrolyte decomposition at the cathode under static conditions. Both are diffusion-limited processes. As established in Section 7.2, the capacity fade from calendar aging follows the parabolic (square-root-time) law:
 
-$$Q_\text{loss,cal}(t, T, \text{SOC}) = B(T, \text{SOC}) \cdot \sqrt{t}, \qquad B(T, \text{SOC}) = B_0(\text{SOC})\,\exp\!\left(-\frac{E_a}{RT}\right) \tag{7.12}$$
-
+\begin{equation}
+Q_\text{loss,cal}(t, T, \text{SOC}) = B(T, \text{SOC}) \cdot \sqrt{t}, \qquad B(T, \text{SOC}) = B_0(\text{SOC})\,\exp\!\left(-\frac{E_a}{RT}\right) \tag{7.12}
+\end{equation}
 where $B_0$ is a pre-exponential factor that depends on SOC (encoding the SEI growth rate's SOC dependence through the exponential-in-$U_\text{anode}$ form of equation 7.4), $E_a$ is the effective activation energy, $T$ is temperature, and $t$ is time. This is the **Wang model** or **Arrhenius square-root model** for calendar aging, and it fits empirical data for graphite/LFP and graphite/NMC cells over 1–5 years with reasonable accuracy.
 
 The model breaks down at very long times and high temperatures for two reasons. First, above ~60 °C, additional mechanisms (CEI growth, electrolyte oxidation) that are not diffusion-limited begin to contribute. Second, the $\sqrt{t}$ law assumes the SEI grows on the same surface throughout — but particle cracking creates new surface area, adding a new kinetic regime after significant mechanical degradation has occurred.
 
-### Cycle Aging: A Superposition of Mechanisms
+\subsection{Cycle Aging: A Superposition of Mechanisms}
+
 
 **Cycle aging** is mechanistically more complex because it involves contributions from LLI (per-cycle SEI formation), LAM (per-cycle cracking and isolation), and conductivity loss (per-cycle SEI restructuring and thickening), all of which scale with cycle count $N$, DOD, C-rate, and temperature in different ways.
 
 The empirical models used in industry are typically **power-law** or **exponential** in cycle count:
 
-$$Q_\text{loss,cyc}(N, \text{DOD}, I, T) = C \cdot N^z \cdot f(\text{DOD}) \cdot g(I) \cdot h(T) \tag{7.13}$$
-
+\begin{equation}
+Q_\text{loss,cyc}(N, \text{DOD}, I, T) = C \cdot N^z \cdot f(\text{DOD}) \cdot g(I) \cdot h(T) \tag{7.13}
+\end{equation}
 where $C$ is a chemistry-dependent constant and $z$ is an empirical power-law exponent, typically in the range 0.5–1.0. A value near 1.0 corresponds to the simplest scenario, in which each cycle costs roughly the same fraction of capacity (so cumulative loss is linear in cycle count) — this is what you observe when the dominant mechanism is cycle-driven SEI regeneration on freshly-cracked surfaces, which presents a roughly constant fraction of new area per cycle. A sub-linear exponent $z < 1$ (commonly $z \approx 0.5$–0.8) is observed when the per-cycle damage slows down over time, typically because the cell is in the early-life regime where the calendar-aging $\sqrt{t}$ contribution is dominant and the "cycle" clock and the "time" clock are running at proportional rates. The exponent is best treated as an empirical fit parameter and not overinterpreted — $z$ absorbs several physical mechanisms at once and its value depends on how $N$ itself is defined (full cycles, equivalent cycles, throughput). The functions $f$, $g$, $h$ are empirical multipliers capturing DOD, C-rate, and temperature dependence respectively, and we treat each in turn in §7.8.
 
 The DOD function $f(\text{DOD})$ typically increases strongly with DOD: cycling over 100% DOD is much more damaging per cycle than cycling over 20% DOD. A common empirical form is:
 
-$$f(\text{DOD}) = (\text{DOD})^\kappa \tag{7.14}$$
-
+\begin{equation}
+f(\text{DOD}) = (\text{DOD})^\kappa \tag{7.14}
+\end{equation}
 with $\kappa \approx 1.0$–2.0 depending on chemistry. This is the basis of the **rainflow-counting** approach to SOH estimation: each cycle is weighted by $\text{DOD}^\kappa$, and the weighted sum of cycle damage is tracked as a degradation accumulator.
 
-### Combining Calendar and Cycle Aging
+\subsection{Combining Calendar and Cycle Aging}
+
 
 The total capacity fade over a cell's life is the combination of calendar and cycle degradation. The two contributions are not simply additive — there can be interactions (cycling accelerates calendar-type mechanisms by disrupting the SEI; calendar aging thickens the SEI and changes the charge-transfer kinetics that govern cycle aging). The simplest model that captures the interaction is a weighted sum:
 
-$$Q_\text{loss,total}(t, N) = Q_\text{loss,cal}(t) + Q_\text{loss,cyc}(N) \tag{7.15}$$
-
+\begin{equation}
+Q_\text{loss,total}(t, N) = Q_\text{loss,cal}(t) + Q_\text{loss,cyc}(N) \tag{7.15}
+\end{equation}
 where $t$ is the *total* elapsed time since the cell was built — resting or cycling, it does not matter — and $N$ is the number of equivalent full cycles accumulated over that time. The thing to notice is that the two terms run on different clocks but in the same frame: calendar aging is happening continuously, including during the hours the cell is cycling, because SEI growth is a chemical process that does not pause when current is flowing. The cycle-aging term captures the *additional* damage that cycling contributes on top of the baseline calendar contribution. This is why equation (7.15) is only an approximation — the two mechanisms are not perfectly separable because cycling disrupts the SEI passivation and thereby changes the calendar-aging rate itself, and at aggressive cycling conditions the two terms become coupled in ways that a simple sum cannot capture. For a rough engineering estimate it is nevertheless useful, and it is the starting point for most industry life-prediction models.
 
 For the physics-based DFN model (Doyle–Fuller–Newman), calendar and cycle aging are not empirically parameterised but emerge from the mechanistic equations for SEI growth, particle cracking, and mechanical degradation — a more rigorous but computationally expensive approach that we will revisit in Chapter 13.
 
-### A Worked Numerical Example: Estimating Calendar Life
+\subsection{A Worked Numerical Example: Estimating Calendar Life}
+
 
 Let us put numbers on a calendar-aging prediction for a commercial NMC/graphite cell. Rather than quoting parameter values from a specific paper and risking a unit mismatch, we will work with a clean phenomenological form calibrated to typical commercial-cell behaviour, and then compare the result to published field data.
 
@@ -3769,11 +4255,13 @@ Raising the storage temperature by 20 °C has cut the calendar life from 64 year
 
 ---
 
-## Stressors: Temperature, SOC, DOD, C-Rate, Voltage Limits
+\section{Stressors: Temperature, SOC, DOD, C-Rate, Voltage Limits}
+
 
 Having identified the mechanisms and their models, we can now systematically examine the **stressors** — the operational and environmental variables that accelerate or decelerate each mechanism. This is the practical engineering summary of the chapter.
 
-### Temperature
+\subsection{Temperature}
+
 
 Temperature is the single most powerful lever in battery degradation, but its effects run in different directions for different mechanisms. The thermally-activated *chemical* mechanisms — SEI growth (Arrhenius, $E_a \approx 40$–80 kJ/mol), transition metal dissolution (Arrhenius, strong temperature dependence), and electrolyte oxidation — all accelerate with temperature. The *mechanical* mechanism of particle cracking goes the other way: higher temperature increases the solid-state diffusivity of lithium within the particle, so at a fixed C-rate the internal concentration gradients are shallower and the diffusion-induced stresses are smaller, which actually *reduces* per-cycle mechanical fatigue. So high temperature speeds up the chemistry and slows down the cracking, and low temperature does the reverse. This is one of the reasons why the combined temperature dependence of total cell aging can be non-monotonic in the sense that different failure modes dominate in different temperature regimes.
 
@@ -3785,7 +4273,8 @@ Temperature is the single most powerful lever in battery degradation, but its ef
 
 The **optimal storage temperature** for minimising calendar aging is as low as practical — 5–10 °C storage cuts calendar aging rate by 4–8× compared to room temperature while introducing no additional degradation mechanisms.
 
-### State of Charge (SOC)
+\subsection{State of Charge (SOC)}
+
 
 **High SOC** (>80%) accelerates calendar aging because the anode sits at a lower potential, producing a stronger driving force for SEI formation. It also increases cathode oxidative stress (cathode at higher potential, more susceptible to electrolyte oxidation and metal dissolution). In some chemistries (LCO, NMC at high Ni content), the cathode structure is less stable at high SOC — extended high-SOC storage can cause irreversible structural changes.
 
@@ -3795,14 +4284,16 @@ The **optimal storage temperature** for minimising calendar aging is as low as p
 
 **Mid SOC** (30–60%) is optimal for calendar life storage. The anode is at a relatively high potential (modest SEI driving force) and the cathode is not severely stressed.
 
-### Depth of Discharge
+\subsection{Depth of Discharge}
+
 
 **DOD** directly controls the volume change of the electrode materials per cycle, and thus the mechanical fatigue load. A DOD of 100% puts the electrode particles through their full expansion-contraction cycle every time — maximum mechanical stress per cycle, maximum SEI disruption. A DOD of 20% (say, cycling between 40% and 60% SOC) uses only a fraction of the volume change and imposes much less mechanical fatigue.
 
 The relationship between DOD and cycle life is often expressed empirically as:
 
-$$N_\text{f}(\text{DOD}) = N_\text{f,100\%} \times \left(\frac{1}{\text{DOD}}\right)^\kappa \tag{7.16}$$
-
+\begin{equation}
+N_\text{f}(\text{DOD}) = N_\text{f,100\%} \times \left(\frac{1}{\text{DOD}}\right)^\kappa \tag{7.16}
+\end{equation}
 where $N_\text{f,100\%}$ is the cycle life at 100% DOD and $\kappa \approx 1.0$–2.0. For $\kappa = 1.5$ and a cell with 500 cycle life at 100% DOD:
 
 $N_\text{f}(50\%\,\text{DOD}) = 500 \times (1/0.5)^{1.5} = 500 \times 2^{1.5} \approx 500 \times 2.83 \approx 1{,}410$ cycles.
@@ -3810,7 +4301,8 @@ $N_\text{f}(20\%\,\text{DOD}) = 500 \times (1/0.2)^{1.5} = 500 \times 5^{1.5} \a
 
 The payoff for shallow cycling is dramatic. This is the quantitative basis for BMS strategies that intentionally limit the SOC operating window — not fully charging to 100% and not fully discharging to 0% — to extend pack life significantly.
 
-### C-Rate
+\subsection{C-Rate}
+
 
 **High C-rate charging** is the primary trigger for lithium and sodium plating (Section 7.3). It also increases the magnitude of diffusion-induced stress in electrode particles (larger concentration gradients → larger stress → faster crack propagation). High C-rate discharging is somewhat less harmful: during discharge, the direction of lithium flux in the graphite is from the particle interior toward the surface, which generates compressive rather than tensile stress at the surface (cracks initiate under tension, so compressive surface stress is less damaging).
 
@@ -3818,7 +4310,8 @@ The payoff for shallow cycling is dramatic. This is the quantitative basis for B
 
 **Low C-rate cycling** (C/20, C/50) minimises all kinetically-driven degradation and is the closest approach to equilibrium cycling. Very slow cycling can be slightly more damaging for calendar-type mechanisms (the cell spends more time at each SOC), but the tradeoff is almost always favourable for long-life cycle testing.
 
-### Voltage Limits
+\subsection{Voltage Limits}
+
 
 The upper and lower voltage cutoffs of the cell directly determine which degradation mechanisms are active.
 
@@ -3828,7 +4321,8 @@ The upper and lower voltage cutoffs of the cell directly determine which degrada
 
 For hard-carbon SIBs the copper dissolution concern does not apply, because SIBs use aluminium current collectors on both sides. Aluminium is stable across the full anodic window the hard-carbon anode can reach — this is, incidentally, one of the structural cost advantages of SIB construction we noted in Chapter 4, and it makes SIB cells inherently tolerant of deeper discharge than graphite/Cu LIBs. The lower voltage limit in an SIB is instead set by a combination of (1) maintaining hard-carbon SEI stability (very low cell voltage pushes the anode to potentials where the SEI can destabilise), (2) avoiding irreversible phase transitions in some cathode chemistries at low SOC (particularly relevant for certain P2-type layered oxides that undergo slab gliding when fully sodiated), and (3) preventing over-oxidation of the hard carbon surface at very positive anode potentials.
 
-### Stressor Summary
+\subsection{Stressor Summary}
+
 
 |Stressor|Primary mechanisms driven|Relative impact|
 |---|---|---|
@@ -3844,13 +4338,16 @@ This table is the reference card for the rest of this chapter: if someone shows 
 
 ---
 
-## Worked Interpretation Exercise: Reading Birkl et al. (2017)
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading Birkl et al. (2017)}
+
+\specialsectionstyle
+
 
 This section provides a guided reading of the key diagnostic framework from **Birkl, Roberts, McTurk, Bruce, and Howey, "Degradation diagnostics for lithium ion cells," *Journal of Power Sources* 341, 373–386 (2017)** — the primary source for this chapter's deliverable.
 
 The paper's central contribution is a systematic framework connecting each degradation mechanism to specific signatures observable in non-invasive external measurements — exactly what you need to diagnose degradation without opening the cell. Here is a guided reading of the paper's key sections.
 
-**Section 2 of Birkl et al. — the three degradation modes**: The paper defines the same three modes we have established in Section 7.1 (LLI, LAMpe, LAMne, CL). They call conductivity loss "conductivity loss" and distinguish positive electrode (PE) from negative electrode (NE) sources of LAM. Notice that they are explicit about what "loss of active material" means: it is not loss of the physical material from the cell but loss of its electrochemical participation — isolation from the electronic or ionic pathway.
+**Section 2 of Birkl et al. — the capacity-fade modes**: The paper focuses on three capacity-fade modes: LLI, LAMpe, and LAMne. That is slightly narrower than the framework used in this chapter, where we add conductivity loss as a separate engineering axis because power fade matters operationally even when low-rate capacity is preserved. Birkl are explicit about what "loss of active material" means: it is not loss of the physical material from the cell but loss of its electrochemical participation — isolation from the electronic or ionic pathway.
 
 **Section 3 — Half-cell model and simulated signatures**: This is the most valuable methodological section for your research. Birkl et al. use a half-cell model: they represent the full cell OCV as the superposition of the cathode OCV curve and the anode OCV curve, parameterised by the electrode stoichiometric windows. By mathematically shifting these windows to simulate LLI, LAMpe, and LAMne, they show how each mode distorts the full-cell OCV curve and $dQ/dV$ curve in a distinct and identifiable way.
 
@@ -3862,9 +4359,9 @@ The signatures are:
 
 *LAMne* (anode active material loss): The peaks associated with anode staging transitions (the graphite staging peaks at ~3.6–3.7 V in an NMC/graphite cell) decrease in height and shift. The cell's capacity becomes limited by the anode. The lower portion of the discharge curve changes shape.
 
-*CL*: Conductivity loss (impedance growth) does not affect the OCV curve or $dQ/dV$ curve measured under quasi-equilibrium conditions (very slow rate). However, it shows up as: increased voltage gap between charge and discharge curves at any non-zero current; increased DCIR in HPPC tests; enlarged semicircle(s) in EIS; reduced power capability and increased heat generation under load.
+*CL*: Conductivity loss (impedance growth) sits mostly **outside** Birkl's OCV-fitting framework. It does not affect the OCV curve or $dQ/dV$ curve measured under quasi-equilibrium conditions (very slow rate). However, it shows up as: increased voltage gap between charge and discharge curves at any non-zero current; increased DCIR in HPPC tests; enlarged semicircle(s) in EIS; reduced power capability and increased heat generation under load.
 
-**The key diagnostic insight from Birkl et al.**: LLI and LAM are distinguishable from $dQ/dV$ analysis at low rate; CL is distinguishable from impedance measurements. All three can coexist and must be disentangled systematically. A cell with 20% capacity fade might have 15% LLI, 3% LAMne, 2% LAMpe, and significant CL — and the appropriate corrective strategy (electrolyte formulation change to reduce SEI, particle size reduction to reduce cracking, upper voltage limit reduction to reduce metal dissolution) depends on correctly identifying which component dominates.
+**The key diagnostic insight from Birkl et al.**: LLI, LAMpe, and LAMne are distinguishable from low-rate OCV or $dQ/dV$ analysis. Conductivity loss must then be diagnosed by complementary impedance or pulse-power measurements. All four can coexist in a real cell and must be disentangled systematically. A cell with 20% apparent performance fade might have 15% LLI, 3% LAMne, 2% LAMpe, and significant CL — and the appropriate corrective strategy (electrolyte formulation change to reduce SEI, particle size reduction to reduce cracking, upper voltage limit reduction to reduce metal dissolution) depends on correctly identifying which component dominates.
 
 **Which mechanisms are diagnosable from external measurements alone (answering the deliverable question)**:
 
@@ -3874,7 +4371,12 @@ The signatures are:
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The three-mode framework (LLI, LAM, CL) applies equally to SIBs. The mechanisms within each mode are largely the same as for LIBs, but their relative importance and some specific features differ.
 
@@ -3890,7 +4392,12 @@ The three-mode framework (LLI, LAM, CL) applies equally to SIBs. The mechanisms 
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -3905,31 +4412,41 @@ The three-mode framework (LLI, LAM, CL) applies equally to SIBs. The mechanisms 
 
 **Key equations:**
 
-$$L_\text{SEI}(t) = L_0 + k_\text{SEI}\sqrt{t} \quad \text{(parabolic SEI growth law)} \tag{7.1}$$
-
-$$k_\text{SEI}(T) = A\exp\!\left(-\frac{E_a}{RT}\right) \quad \text{(Arrhenius temperature dependence)} \tag{7.3}$$
-
-$$\sigma_\text{max} \sim \frac{E\,\Omega\,\Delta c_\text{max}}{1-\nu} \quad \text{(diffusion-induced stress, scaling)} \tag{7.6}$$
-
-$$Q_\text{loss,cal}(t,T) = B(T,\text{SOC})\sqrt{t}, \quad B(T) = B_0\exp\!\left(-\frac{E_a}{RT}\right) \quad \text{(calendar aging model)} \tag{7.12}$$
-
-$$N_\text{f}(\text{DOD}) = N_\text{f,100\%} \left(\frac{1}{\text{DOD}}\right)^{\!\kappa} \quad \text{(cycle life vs.\ DOD)} \tag{7.16}$$
-
+\begin{equation}
+L_\text{SEI}(t) = \sqrt{L_0^2 + k_\text{SEI} t} \quad \text{(parabolic SEI growth law)} \tag{7.1}
+\end{equation}
+\begin{equation}
+k_\text{SEI}(T) = A\exp\!\left(-\frac{E_a}{RT}\right) \quad \text{(Arrhenius temperature dependence)} \tag{7.3}
+\end{equation}
+\begin{equation}
+\sigma_\text{max} \sim \frac{E\,\Omega\,\Delta c_\text{max}}{1-\nu} \quad \text{(diffusion-induced stress, scaling)} \tag{7.6}
+\end{equation}
+\begin{equation}
+Q_\text{loss,cal}(t,T) = B(T,\text{SOC})\sqrt{t}, \quad B(T) = B_0\exp\!\left(-\frac{E_a}{RT}\right) \quad \text{(calendar aging model)} \tag{7.12}
+\end{equation}
+\begin{equation}
+N_\text{f}(\text{DOD}) = N_\text{f,100\%} \left(\frac{1}{\text{DOD}}\right)^{\!\kappa} \quad \text{(cycle life vs.\ DOD)} \tag{7.16}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Loss of lithium/sodium inventory (LLI), loss of active material (LAM), conductivity loss (CL), N/P ratio, electrode slippage, lithium inventory drift, incremental capacity analysis (ICA), parabolic SEI growth law, Arrhenius activation energy for SEI, dead lithium/dead sodium, dendrite, diffusion-induced stress (DIS), intergranular cracking, single-crystal NMC, cathode–electrolyte interphase (CEI), transition metal dissolution, HF attack, Hunter mechanism, Mn³⁺ disproportionation, crosstalk, zeolitic water, gas generation, current interrupt device (CID), knee point, Wang model, rainflow counting, stressor, DOD–cycle life relationship, P2 ↔ O2 phase transition.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Read Birkl et al. (2017) "Degradation diagnostics for lithium ion cells" (*Journal of Power Sources* 341, 373–386) twice. Write a one-page summary in your own words identifying which mechanisms are diagnosable from external measurements alone.
 
-**Guidance:** The paper is freely available via DOI: 10.1016/j.jpowsour.2016.09.105. On your first reading, focus on the overall framework (Sections 1–3) and absorb the three-mode classification and the concept of the half-cell model. On your second reading, go through Section 4 carefully: this is where specific diagnostic signatures are described for each mechanism.
+**Guidance:** The paper is freely available via DOI: 10.1016/j.jpowsour.2016.12.011. On your first reading, focus on the overall framework (Sections 1–3) and absorb the capacity-fade classification (LLI, LAMpe, LAMne) and the concept of the half-cell model. On your second reading, go through Section 4 carefully: this is where specific diagnostic signatures are described for each mechanism.
 
 Your one-page summary should be structured around the diagnostic question: for each mechanism listed in the paper, answer:
 
-1. Which degradation mode does it primarily drive (LLI, LAMpe, LAMne, CL)?
+1. Which degradation mode does it primarily drive (LLI, LAMpe, LAMne)? If the mechanism primarily appears as impedance rise rather than capacity fade, note that separately.
 2. What external measurement reveals it (OCV curve shape, $dQ/dV$, EIS, DCIR, Coulombic efficiency, visual inspection)?
 3. What is the specific signature (e.g., "LLI shifts $dQ/dV$ peaks toward lower voltage on discharge and reduces peak area proportionally")?
 4. Is the mechanism distinguishable from other mechanisms using only non-invasive measurements, or does disambiguation require post-mortem analysis?
@@ -3942,7 +4459,12 @@ LLI drives capacity fade by reducing the amount of cyclable lithium. In the $dQ/
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Birkl, C. R. et al., "Degradation diagnostics for lithium ion cells," *Journal of Power Sources* 341, 373–386 (2017).** The primary source for this chapter's framework. The systematic connection of mechanisms to diagnostic signatures is the most practically useful degradation reference for researchers and engineers. Read this paper carefully as part of the chapter deliverable; it will reward re-reading several times.
 
@@ -3953,13 +4475,17 @@ LLI drives capacity fade by reducing the amount of cyclable lithium. In the $dQ/
 4. **Dubarry, M. and Liaw, B. Y., "Identify capacity fading mechanism in a commercial LiFePO₄ cell," *Journal of Power Sources* 194 (1), 541–549 (2009).** The paper that took $dQ/dV$ analysis out of the academic lab and demonstrated it on a real commercial LFP/graphite cell, cleanly separating LLI, LAMpe, and LAMne as the cell aged. Read it immediately after Birkl — it will show you what applying the Birkl framework looks like in practice.
 
 5. **Hein, S. et al., "Influence of Conductive Additives and Binder on the Impedance of Lithium-Ion Battery Cathodes: Theory and Experiment," *Journal of the Electrochemical Society* 167 (1), 013546 (2020).** A rigorous treatment of how electrode microstructure changes — specifically, the formation and evolution of the conductive carbon network during cycling — contribute to the CL degradation mode. Relevant for understanding impedance growth mechanisms that go beyond simple SEI resistance modelling.
+\bodytextstyle
+
 
 
 \newpage
 
-# Heat in Batteries
+\chapter{Heat in Batteries}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Of all the ways a battery can fail, thermal failure is the most spectacular and the most feared. A lithium-ion cell in thermal runaway is not simply a dead battery — it is a self-sustaining exothermic reaction that can reach temperatures above 700°C, eject flaming electrolyte, and, in a pack environment, propagate from cell to cell in a cascade that is extremely difficult to arrest. The Boeing 787 grounding in 2013, the Samsung Galaxy Note 7 recall in 2016, the recurring fires in electric vehicle battery packs — all of these trace, at some level, to the thermal physics we are going to study in this chapter.
 
@@ -3996,11 +4522,15 @@ By the end of this chapter, you will be able to take a cell datasheet, a duty cy
 
 ---
 
-## Sources of Heat Generation: Ohmic, Polarisation, and Entropic
+\bodytextstyle
+
+\section{Sources of Heat Generation: Ohmic, Polarisation, and Entropic}
+
 
 A battery generates heat during both charge and discharge. If your instinct from circuit design says "charging puts energy *in*, so the cell should cool down," you are thinking of the battery as a lossless energy store — a perfect capacitor. But a real battery is a lossy device: every current path has resistance, every electrode reaction has kinetic barriers, and every concentration gradient dissipates energy. These irreversible losses generate heat regardless of the direction of current, just as a resistor heats up whether current flows left-to-right or right-to-left. On top of these irreversible losses, there is a reversible entropic contribution that *can* make one direction (charge or discharge) slightly endothermic at certain states of charge — but the irreversible losses are always present. Understanding the three distinct sources of heat generation is the prerequisite for deriving the Bernardi equation in Section 8.2.
 
-### Source 1: Irreversible Ohmic Heating
+\subsection{Source 1: Irreversible Ohmic Heating}
+
 
 Every real current path has resistance. When current flows through a resistance, electrical energy is dissipated as heat at a rate $\dot{Q}_\text{ohm} = I^2 R_\Omega$, where $I$ is the current and $R_\Omega$ is the ohmic resistance. In a battery, the ohmic resistance includes the electrolyte ionic resistance, the electronic resistances of the electrode matrices and current collectors, and contact resistances at interfaces.
 
@@ -4008,36 +4538,42 @@ Ohmic heating has two important properties. First, it is always positive — $I^
 
 This is directly analogous to resistive heating in any electrical circuit — the same $I^2 R$ physics you use to calculate power dissipation in a power transistor applies inside a battery cell, just with the unusual feature that the "resistor" is distributed throughout the volume of the cell rather than being a discrete component.
 
-### Source 2: Irreversible Polarisation Heating
+\subsection{Source 2: Irreversible Polarisation Heating}
+
 
 Beyond the purely resistive ohmic component, there is additional irreversible heat generated by the overpotentials at the electrode surfaces — the activation and concentration polarisations we established in Chapter 2. These arise from the kinetic resistance of the electrode reactions (Butler-Volmer activation overpotential $\eta_\text{act}$) and from the concentration gradients that develop in the electrolyte and within electrode particles ($\eta_\text{conc}$).
 
 The heat generated by polarisation is:
 
-$$\dot{Q}_\text{pol} = I \cdot (\eta_\text{act} + \eta_\text{conc}) = I \cdot (V_\text{OCV} - V_\text{terminal} - IR_\Omega) \tag{8.1}$$
-
+\begin{equation}
+\dot{Q}_\text{pol} = I \cdot (\eta_\text{act} + \eta_\text{conc}) = I \cdot (V_\text{OCV} - V_\text{terminal} - IR_\Omega) \tag{8.1}
+\end{equation}
 where we have subtracted the ohmic drop $IR_\Omega$ from the total voltage deviation $(V_\text{OCV} - V_\text{terminal})$ to isolate the non-ohmic contributions. Like ohmic heating, polarisation heating is always positive for both charge and discharge. The reason is the same as for a diode's forward voltage drop: the overpotential always opposes the current that drives it. During discharge, the current flows in the spontaneous direction, and the overpotential acts as a "voltage tax" that reduces the terminal voltage below OCV. During charge, the current is forced in the non-spontaneous direction, and the overpotential acts as an additional voltage burden that raises the required charging voltage above OCV. In both cases, the overpotential and the current have the same sign (both are defined relative to the direction that opposes equilibrium), so their product — the power dissipated as heat — is always positive. If you have seen the Butler-Volmer equation from Chapter 2, you can verify this: $\eta_\text{act}$ is positive when $I > 0$ (anodic) and negative when $I < 0$ (cathodic), so $I \cdot \eta_\text{act} > 0$ always.
 
 At low-to-moderate C-rates, polarisation heating is comparable to or larger than ohmic heating, because the charge-transfer resistance $R_\text{ct}$ (which governs $\eta_\text{act}$) is typically comparable to or larger than $R_\Omega$ in a fresh cell, as we noted in Chapter 3. At very high C-rates, ohmic heating dominates because it scales as $I^2$ while polarisation heating grows more slowly (logarithmically in the Tafel regime of Butler-Volmer). At low temperatures, polarisation heating dominates because $R_\text{ct}$ increases exponentially with decreasing temperature while $R_\Omega$ increases much more modestly.
 
 In practice, many engineering models combine ohmic and polarisation heating into a single irreversible term:
 
-$$\dot{Q}_\text{irrev} = I \cdot (V_\text{OCV} - V_\text{terminal}) = I^2 R_\text{total} \tag{8.2}$$
-
+\begin{equation}
+\dot{Q}_\text{irrev} = I \cdot (V_\text{OCV} - V_\text{terminal}) = I^2 R_\text{total} \tag{8.2}
+\end{equation}
 where $R_\text{total} = (V_\text{OCV} - V_\text{terminal})/I$ is the apparent total internal resistance *at the operating current, SOC, and temperature*. A critical caveat for the EE reader: $R_\text{total}$ is not a fixed value like a resistor in your circuit schematic. It changes with current (because the activation overpotential is nonlinear — recall the Butler-Volmer equation), with SOC (because both OCV and kinetic parameters vary along the discharge curve), and with temperature (because $R_\text{ct}$ is strongly Arrhenius-dependent). Think of $R_\text{total}$ as a small-signal operating-point parameter, analogous to the dynamic resistance $r_d = dV/dI$ you would extract from the I-V curve of a diode at a specific bias point. This lumped approach is accurate for heat generation calculations at a given operating point, even though it loses the mechanistic separation between ohmic and polarisation components.
 
-### Source 3: Reversible Entropic Heating
+\subsection{Source 3: Reversible Entropic Heating}
+
 
 This is the heat source that surprises most engineers encountering battery thermal analysis for the first time. In Chapter 1 (Section 1.8), we derived the temperature coefficient of cell voltage:
 
-$$\left(\frac{\partial E_\text{OCV}}{\partial T}\right)_P = \frac{\Delta S}{nF} \tag{8.3}$$
-
+\begin{equation}
+\left(\frac{\partial E_\text{OCV}}{\partial T}\right)_P = \frac{\Delta S}{nF} \tag{8.3}
+\end{equation}
 where $\Delta S$ is the entropy change of the cell reaction. This coefficient is not zero for most battery chemistries — the cell reaction involves entropy changes (ions moving from one crystal lattice environment to another, with different local order), and these entropy changes couple the cell's electrochemistry to heat exchange with the environment.
 
 The reversible heat generation rate — the **entropic heat** — is:
 
-$$\dot{Q}_\text{rev} = -I \cdot T \cdot \frac{\partial E_\text{OCV}}{\partial T} = -I \cdot T \cdot \frac{\Delta S}{nF} \tag{8.4}$$
-
+\begin{equation}
+\dot{Q}_\text{rev} = -I \cdot T \cdot \frac{\partial E_\text{OCV}}{\partial T} = -I \cdot T \cdot \frac{\Delta S}{nF} \tag{8.4}
+\end{equation}
 where $T$ is the absolute temperature in Kelvin and $I$ is the current (positive for discharge by convention in many battery engineering texts). A positive $\dot{Q}_\text{rev}$ means the reversible component generates heat (releases it to the surroundings), and a negative $\dot{Q}_\text{rev}$ means the reversible component absorbs heat from the surroundings. The critical feature of this term is its sign: unlike the irreversible ohmic and polarisation terms (which are always positive heat sources), the entropic term can be positive or negative depending on the sign of $\partial E_\text{OCV}/\partial T$.
 
 If $\partial E_\text{OCV}/\partial T > 0$ (the OCV increases with temperature), then $\Delta S > 0$ and $\dot{Q}_\text{rev} < 0$ — during discharge the cell absorbs heat from the environment. The reaction is endothermic with respect to the surroundings. For LFP/graphite full cells, the full-cell entropic coefficient $\partial E_\text{OCV}/\partial T$ — which is the difference between the cathode and anode half-cell coefficients — is positive over significant SOC ranges (roughly $+0.1$ to $+0.5$ mV/K, depending on SOC). In these ranges, the entropic term in the Bernardi equation is negative (the reaction absorbs heat), and at low C-rates the entropic cooling can be large enough to make the net heat generation during discharge nearly zero or even negative — the cell genuinely cools itself. This counterintuitive effect has been confirmed by calorimetric measurements and is one reason that LFP cells run cooler than their internal resistance alone would predict.
@@ -4058,54 +4594,64 @@ At 1C, all three contributions are comparable in magnitude — none is negligibl
 
 ---
 
-## The Bernardi Equation for Heat Generation
+\section{The Bernardi Equation for Heat Generation}
+
 
 With the three heat sources established, we can now derive the **Bernardi equation** — the foundational quantitative model for total heat generation in a battery cell. This equation was published by Doris Bernardi, Erasmo Pawlikowski, and John Newman in 1985 in the *Journal of the Electrochemical Society* and remains the standard framework for battery thermal analysis.
 
-### Derivation
+\subsection{Derivation}
+
 
 We begin from the first law of thermodynamics applied to the battery as a thermodynamic system. For a system exchanging heat with the environment and doing electrical work:
 
-$$\frac{dU}{dt} = \dot{Q}_\text{in} - \dot{W}_\text{elec} \tag{8.5}$$
-
+\begin{equation}
+\frac{dU}{dt} = \dot{Q}_\text{in} - \dot{W}_\text{elec} \tag{8.5}
+\end{equation}
 where $U$ is the internal energy of the system, $\dot{Q}_\text{in}$ is the rate of heat flow into the system from the surroundings (positive = heat enters cell from environment), and $\dot{W}_\text{elec}$ is the rate of electrical work done by the system on the external circuit.
 
 For a battery at constant pressure, the relevant thermodynamic potential is the **enthalpy** $H = U + PV$. Why switch from internal energy to enthalpy? Because at constant pressure, any volume change in the cell (from gas generation, electrode expansion, etc.) does $PdV$ work against the atmosphere, and the enthalpy automatically accounts for this. Taking the time derivative of $H = U + PV$ at constant $P$ gives $dH/dt = dU/dt + P\,dV/dt$. Substituting $dU/dt$ from Equation 8.5 and recognising that $P\,dV/dt$ is a small mechanical work term that we absorb into $\dot{W}_\text{elec}$, we get:
 
-$$\frac{dH}{dt} = \dot{Q}_\text{in} - \dot{W}_\text{elec} \tag{8.6}$$
-
+\begin{equation}
+\frac{dH}{dt} = \dot{Q}_\text{in} - \dot{W}_\text{elec} \tag{8.6}
+\end{equation}
 In practice, the $PdV$ contribution is negligible for rigid cylindrical and prismatic cells, so this is effectively the same as Equation 8.5 — but the enthalpy form is the thermodynamically clean starting point and will connect directly to the enthalpy of reaction in the next step.
 
 The enthalpy change of the cell reaction is related to the standard cell enthalpy $\Delta H_\text{rxn}$ by the reaction rate. For a galvanic cell operating at current $I$ discharging at voltage $E$ (positive by convention), the system enthalpy changes as reactants convert to products:
 
-$$\frac{dH}{dt} = \frac{I}{nF} \cdot \Delta H_\text{rxn} \tag{8.7}$$
-
+\begin{equation}
+\frac{dH}{dt} = \frac{I}{nF} \cdot \Delta H_\text{rxn} \tag{8.7}
+\end{equation}
 where $I/nF$ gives the molar rate of reaction (mol/s) from Faraday's law, and $\Delta H_\text{rxn} = H_\text{products} - H_\text{reactants}$ for the cell reaction as written. Since the discharge reaction is exothermic for most batteries ($\Delta H_\text{rxn} < 0$), $dH/dt < 0$ — the system loses enthalpy during discharge, as expected.
 
 The electrical work done per unit time is:
 
-$$\dot{W}_\text{elec} = I \cdot E \tag{8.8}$$
-
+\begin{equation}
+\dot{W}_\text{elec} = I \cdot E \tag{8.8}
+\end{equation}
 where $E$ is the actual terminal voltage of the cell.
 
 From thermodynamics, the enthalpy of reaction is related to Gibbs free energy and entropy by:
 
-$$\Delta H_\text{rxn} = \Delta G_\text{rxn} + T \Delta S_\text{rxn} \tag{8.9}$$
-
+\begin{equation}
+\Delta H_\text{rxn} = \Delta G_\text{rxn} + T \Delta S_\text{rxn} \tag{8.9}
+\end{equation}
 Think of this as an energy accounting identity. The enthalpy change $\Delta H_\text{rxn}$ is the *total* energy released (or absorbed) by the reaction. Of this total, $\Delta G_\text{rxn}$ is the portion available to do useful work — in a battery, this is the electrical energy delivered to the external circuit. The remaining portion $T\Delta S_\text{rxn}$ is the energy exchanged with the thermal environment due to the entropy change of the reaction. If $\Delta S > 0$ (the products are more disordered than the reactants), the reaction absorbs heat from the surroundings to "pay" for the increased disorder. If $\Delta S < 0$, the reaction releases extra heat. This is exactly the entropic heat term we identified in Section 8.1 — we are now seeing where it comes from in the derivation.
 
 And the Gibbs free energy is related to the open-circuit voltage:
 
-$$\Delta G_\text{rxn} = -nF E_\text{OCV} \tag{8.10}$$
-
+\begin{equation}
+\Delta G_\text{rxn} = -nF E_\text{OCV} \tag{8.10}
+\end{equation}
 Substituting Equations (8.9) and (8.10) into Equation (8.7):
 
-$$\frac{dH}{dt} = \frac{I}{nF}(-nF E_\text{OCV} + T\Delta S_\text{rxn}) = -I \cdot E_\text{OCV} + \frac{I \cdot T \cdot \Delta S_\text{rxn}}{nF} \tag{8.11}$$
-
+\begin{equation}
+\frac{dH}{dt} = \frac{I}{nF}(-nF E_\text{OCV} + T\Delta S_\text{rxn}) = -I \cdot E_\text{OCV} + \frac{I \cdot T \cdot \Delta S_\text{rxn}}{nF} \tag{8.11}
+\end{equation}
 Substituting into equation (8.6) and rearranging for $\dot{Q}_\text{in}$ (the heat flowing from environment into the cell, with sign convention that $\dot{Q}_\text{gen} = -\dot{Q}_\text{in}$ is the heat generated by the cell and released to the environment):
 
-$$\dot{Q}_\text{gen} = I(E_\text{OCV} - E) - I \cdot T \cdot \frac{\partial E_\text{OCV}}{\partial T} \tag{8.12}$$
-
+\begin{equation}
+\dot{Q}_\text{gen} = I(E_\text{OCV} - E) - I \cdot T \cdot \frac{\partial E_\text{OCV}}{\partial T} \tag{8.12}
+\end{equation}
 This is the **Bernardi equation**, in its most compact form. Let us parse each term:
 
 The first term $I(E_\text{OCV} - E)$ is the **irreversible heat generation** — the product of current and the total voltage deviation from equilibrium. Since $E_\text{OCV} > E$ during discharge (the terminal voltage is below OCV) and $I > 0$ during discharge, this term is always positive. It encompasses both the ohmic ($I^2 R_\Omega$) and polarisation ($I\eta_\text{pol}$) contributions.
@@ -4114,13 +4660,16 @@ The second term $-IT(\partial E_\text{OCV}/\partial T)$ is the **reversible entr
 
 We can expand the irreversible term explicitly:
 
-$$I(E_\text{OCV} - E) = I^2 R_\Omega + I\eta_\text{act} + I\eta_\text{conc} \tag{8.13}$$
-
+\begin{equation}
+I(E_\text{OCV} - E) = I^2 R_\Omega + I\eta_\text{act} + I\eta_\text{conc} \tag{8.13}
+\end{equation}
 giving the fully expanded Bernardi equation:
 
-$$\boxed{\dot{Q}_\text{gen} = I^2 R_\Omega + I\eta_\text{act} + I\eta_\text{conc} - IT\frac{\partial E_\text{OCV}}{\partial T}} \tag{8.14}$$
+\begin{equation}
+\boxed{\dot{Q}_\text{gen} = I^2 R_\Omega + I\eta_\text{act} + I\eta_\text{conc} - IT\frac{\partial E_\text{OCV}}{\partial T}} \tag{8.14}
+\end{equation}
+\subsection{Physical Interpretation of Each Term}
 
-### Physical Interpretation of Each Term
 
 **$I^2 R_\Omega$**: Joule heating from ohmic resistance. Always positive. Scales quadratically with current. Dominant at high C-rates. Instantaneous — heat appears as soon as current flows, dissipated uniformly throughout the resistive elements.
 
@@ -4130,38 +4679,45 @@ $$\boxed{\dot{Q}_\text{gen} = I^2 R_\Omega + I\eta_\text{act} + I\eta_\text{conc
 
 **$-IT(\partial E_\text{OCV}/\partial T)$**: Entropic heat. Can be positive or negative depending on the sign of $\partial E_\text{OCV}/\partial T$. Spatially distributed throughout the electrode materials (it is a bulk thermodynamic property of the intercalation reactions, not an interface phenomenon). When $\partial E_\text{OCV}/\partial T > 0$ ($\Delta S > 0$), the entropic term is negative — the reaction absorbs heat from the environment, acting as a genuine heat sink that partially offsets the irreversible terms. This is the case for LFP/graphite cells over significant SOC ranges during discharge. When $\partial E_\text{OCV}/\partial T < 0$ ($\Delta S < 0$), the entropic term is positive — the reaction releases additional heat beyond the irreversible losses. For NMC/graphite cells, $\partial E_\text{OCV}/\partial T$ changes sign with SOC, and the entropic contribution can either add to or subtract from the total depending on the operating point.
 
-### A Simplified Engineering Form
+\subsection{A Simplified Engineering Form}
+
 
 For most engineering calculations, the activation and concentration overpotentials are lumped into an effective resistance $R_\text{pol} = (E_\text{OCV} - E - IR_\Omega)/I$, and the Bernardi equation is written as:
 
-$$\dot{Q}_\text{gen} = I^2 R_\text{int} - IT\frac{\partial E_\text{OCV}}{\partial T} \tag{8.15}$$
-
+\begin{equation}
+\dot{Q}_\text{gen} = I^2 R_\text{int} - IT\frac{\partial E_\text{OCV}}{\partial T} \tag{8.15}
+\end{equation}
 where $R_\text{int}$ is the total apparent internal resistance at the operating current. This form is directly usable with HPPC test data (which gives $R_\text{int}$ as a function of SOC and temperature) and is the standard form used in BMS thermal models and in the thermal management literature.
 
 ---
 
-## Heat Transfer Out of a Cell: Thermal Resistance and Time Constants
+\section{Heat Transfer Out of a Cell: Thermal Resistance and Time Constants}
+
 
 Generating heat is one side of the thermal problem. The other side is removing it. A cell's temperature rise is determined not just by how fast heat is generated but by how fast heat can escape to the environment through the thermal resistance of the cell and its surroundings.
 
-### The Thermal Resistance Network
+\subsection{The Thermal Resistance Network}
+
 
 The analogy between thermal and electrical circuits is exact for linear steady-state problems, and you can exploit everything you know about resistor networks. The mapping is: temperature $T$ plays the role of voltage $V$; heat flow rate $\dot{Q}$ (watts) plays the role of current $I$ (amps); thermal resistance $R_\text{th}$ (K/W) plays the role of electrical resistance $R$ (Ω); and thermal capacitance $C_\text{th} = mc_p$ (J/K) plays the role of electrical capacitance $C$ (farads). Ohm's law becomes:
 
-$$\Delta T_\text{ss} = \dot{Q}_\text{gen} \cdot R_\text{th} \tag{8.16}$$
-
+\begin{equation}
+\Delta T_\text{ss} = \dot{Q}_\text{gen} \cdot R_\text{th} \tag{8.16}
+\end{equation}
 where $\dot{Q}_\text{gen}$ is the heat generation rate (watts) and $R_\text{th}$ is the thermal resistance (K/W or °C/W) between the heat source and the heat sink (ambient temperature). Series and parallel combinations work identically: two thermal resistances in series (e.g., conduction through the jelly roll *then* convection from the surface) add directly, just as series resistors do. Two thermal resistances in parallel (e.g., convection from the cylindrical surface *and* conduction through the tabs) combine as $1/R_\text{parallel} = 1/R_1 + 1/R_2$, just as parallel resistors do. And when we add the thermal capacitance below, we will get an RC time constant that governs transient response — exactly as you would expect.
 
 For a cylindrical cell, the thermal resistance from cell centre to cell surface is dominated by conduction through the jelly roll. The thermal conductivity of the wound electrode stack is anisotropic: in the radial direction (perpendicular to the wound layers), heat must cross many layer interfaces, and the effective radial thermal conductivity $k_r$ is approximately 0.2–0.5 W/m·K — dominated by the separator and electrolyte, which are poor thermal conductors. In the axial direction (along the winding axis), heat can conduct along the current collector foils, giving an effective axial conductivity $k_z$ of approximately 20–40 W/m·K.
 
 For a hollow cylinder conducting heat from the inner surface to the outer surface (no internal heat generation), the radial thermal resistance is:
 
-$$R_\text{th,radial,hollow} = \frac{\ln(r/r_0)}{2\pi k_r h} \tag{8.17}$$
-
+\begin{equation}
+R_\text{th,radial,hollow} = \frac{\ln(r/r_0)}{2\pi k_r h} \tag{8.17}
+\end{equation}
 where $r_0$ is the inner radius and $r$ is the outer radius. But Equation 8.17 is *not* what we need here. A jelly roll does not have a hot inner surface and a cold outer surface with no heat sources in between — it generates heat *throughout its volume* (every layer of electrode and electrolyte contributes ohmic and polarisation heat). The correct model is a solid cylinder with uniform volumetric heat generation, for which the thermal resistance from the peak temperature (at the centre) to the outer surface is:
 
-$$R_\text{th,radial} \approx \frac{1}{4\pi k_r h} \tag{8.18}$$
-
+\begin{equation}
+R_\text{th,radial} \approx \frac{1}{4\pi k_r h} \tag{8.18}
+\end{equation}
 This can be derived by solving the radial heat equation $k_r \nabla^2 T + q''' = 0$ in cylindrical coordinates with uniform volumetric source $q'''$ and a fixed surface temperature — the result is $\Delta T_\text{max} = q''' r^2/(4k_r)$, which, after dividing by the total heat generation $\dot{Q} = q''' \pi r^2 h$, gives Equation 8.18. Notice that this result is independent of $r$ — the thermal resistance depends only on the thermal conductivity and the cylinder height. We mentioned Equation 8.17 so you can recognise it in the literature (it appears in some thermal models that treat the jelly roll as a hollow annulus), but Equation 8.18 is the correct starting point for uniform-heat-generation problems.
 
 For an 18650 cell ($r = 9$ mm, $h = 65$ mm, $k_r = 0.3$ W/m·K):
@@ -4170,8 +4726,9 @@ $$R_\text{th,radial} \approx \frac{1}{4\pi \times 0.3 \times 0.065} = \frac{1}{0
 
 From the cell surface to the ambient, there is a convective thermal resistance:
 
-$$R_\text{th,conv} = \frac{1}{h_c A_\text{surface}} \tag{8.19}$$
-
+\begin{equation}
+R_\text{th,conv} = \frac{1}{h_c A_\text{surface}} \tag{8.19}
+\end{equation}
 where $h_c$ is the convective heat transfer coefficient (W/m²·K) and $A_\text{surface}$ is the external surface area. For natural convection in air, $h_c \approx 5$–20 W/m²·K; for forced air cooling, $h_c \approx 20$–100 W/m²·K; for liquid cooling (direct contact or via a cooling plate), $h_c \approx 200$–2000 W/m²·K.
 
 For the 18650 cell with natural convection ($h_c = 10$ W/m²·K, $A = 2\pi r h + 2\pi r^2 = 2\pi(0.9)(6.5) + 2\pi(0.9)^2 \approx 36.8 + 5.1 = 41.9 \text{ cm}^2 = 4.19 \times 10^{-3} \text{ m}^2$):
@@ -4184,12 +4741,14 @@ $$R_\text{th,total} = R_\text{th,radial} + R_\text{th,conv} \approx 4.1 + 23.9 =
 
 In this case, the convective resistance dominates — the cell surface temperature is a poor indicator of the cell's internal core temperature, and improving the convective cooling (increasing $h_c$ with forced air or liquid cooling) has a larger impact than trying to improve the jelly roll's internal thermal conductivity.
 
-### Thermal Time Constants
+\subsection{Thermal Time Constants}
+
 
 Just as an RC circuit has a time constant $\tau = RC$ that governs how quickly it responds to perturbations, a battery cell has a **thermal time constant**:
 
-$$\tau_\text{th} = m c_p R_\text{th} \tag{8.20}$$
-
+\begin{equation}
+\tau_\text{th} = m c_p R_\text{th} \tag{8.20}
+\end{equation}
 where $m$ is the cell mass (kg), $c_p$ is the specific heat capacity of the cell (J/kg·K, typically 800–1100 J/kg·K for lithium-ion cells), and $R_\text{th}$ is the thermal resistance. For our 18650 cell ($m \approx 46$ g $= 0.046$ kg, $c_p = 900$ J/kg·K, $R_\text{th} = 28.0$ K/W):
 
 $$\tau_\text{th} = 0.046 \times 900 \times 28.0 \approx 1{,}159 \text{ s} \approx 19 \text{ min}$$
@@ -4200,19 +4759,22 @@ The thermal time constant is also critical for safety analysis: a cell with a lo
 
 **The transient temperature response.** The RC analogy gives us the full transient solution directly. For a cell initially at ambient temperature $T_\text{amb}$ that begins generating heat at a constant rate $\dot{Q}_\text{gen}$ at $t = 0$:
 
-$$T(t) = T_\text{amb} + \dot{Q}_\text{gen} \cdot R_\text{th} \left(1 - e^{-t/\tau_\text{th}}\right) \tag{8.20b}$$
-
+\begin{equation}
+T(t) = T_\text{amb} + \dot{Q}_\text{gen} \cdot R_\text{th} \left(1 - e^{-t/\tau_\text{th}}\right) \tag{8.20b}
+\end{equation}
 This is exactly the voltage across a capacitor being charged through a resistor by a constant current source — you have seen this waveform hundreds of times. At $t = \tau_\text{th}$, the cell has reached 63% of its steady-state temperature rise. At $t = 3\tau_\text{th}$ (~57 minutes for our 18650 example), the cell is within 5% of steady state.
 
 This transient matters for real duty cycles. Consider an EV acceleration event lasting 30 seconds at 5C (well below $\tau_\text{th} \approx 19$ min): the temperature rise is only $\Delta T \approx \dot{Q}_\text{gen} \cdot R_\text{th} \cdot (30/1159) \approx 2.6\%$ of the steady-state value — negligible. But a 1-hour grid storage discharge at 1C ($t \gg \tau_\text{th}$) reaches full steady-state temperature. The thermal time constant is what separates "power events" (short, thermally benign) from "energy events" (long, thermally significant).
 
 ---
 
-## Safe Operating Windows and Why They Exist
+\section{Safe Operating Windows and Why They Exist}
+
 
 Every commercial cell has a specified safe operating temperature range: typically −20°C to +60°C for discharge and 0°C to +45°C for charge (with variations by chemistry). These are not arbitrary marketing specifications — they are boundary conditions enforced by specific physical processes that become dangerous or irreversible outside the specified limits.
 
-### Upper Temperature Limit: Onset of Dangerous Reactions
+\subsection{Upper Temperature Limit: Onset of Dangerous Reactions}
+
 
 As cell temperature rises above the normal operating range, a sequence of thermally activated side reactions begins. These reactions are exothermic — they generate heat — creating the possibility of positive feedback: heat generates more heat, temperatures rise, and the cell enters thermal runaway. The upper safe operating limit is set to maintain a sufficient margin below the onset temperatures of these reactions.
 
@@ -4230,7 +4792,8 @@ The key reactions, in order of onset temperature for a typical lithium-ion cell,
 
 The upper temperature limit of 60°C in discharge is set to provide a margin below the SEI decomposition onset (~80–100°C), accounting for the temperature rise from the cell's internal heat generation at maximum C-rate. The lower the cell's internal resistance and the better the cooling, the smaller this margin needs to be — well-cooled automotive cells with liquid cooling can safely sustain operation up to ambient temperatures of 45–50°C.
 
-### Lower Temperature Limit: Plating and Kinetic Failure
+\subsection{Lower Temperature Limit: Plating and Kinetic Failure}
+
 
 As temperature decreases, the primary risk (during charging) is **lithium plating**, as established in Chapter 7. The lower charging temperature limit of 0°C is set because, below this temperature, the charge-transfer kinetics are sufficiently sluggish that even at moderate C-rates, the overpotential during charging is large enough to drive the graphite anode potential to 0 V vs. Li/Li⁺. Why does 0 V matter? Because 0 V vs. Li/Li⁺ is, by definition, the potential at which metallic lithium is thermodynamically stable. If the graphite anode potential drops *below* this threshold during charging (which is possible when large overpotentials are present), it becomes energetically favourable for lithium ions to deposit as metallic lithium on the graphite surface rather than intercalating into the graphite lattice. This metallic lithium deposition is **lithium plating** — the process we discussed in Chapter 7 (Section 7.3) as a major safety and degradation hazard.
 
@@ -4242,24 +4805,28 @@ The lower discharge temperature limit (typically −20°C for most LIBs) is set 
 
 ---
 
-## Thermal Runaway: Triggers, Stages, and Propagation
+\section{Thermal Runaway: Triggers, Stages, and Propagation}
+
 
 **Thermal runaway** is the most consequential failure mode in battery systems and the one that drives the strictest safety design requirements. It is defined as a self-sustaining, accelerating exothermic process in which heat generation exceeds heat dissipation, causing temperature to rise without bound until the cell is destroyed.
 
-### The Thermal Stability Analysis
+\subsection{The Thermal Stability Analysis}
+
 
 The condition for thermal runaway can be stated precisely using a stability argument analogous to the analysis of unstable operating points in control theory. Consider the energy balance for a cell at temperature $T$ in an environment at temperature $T_\text{amb}$:
 
-$$mc_p \frac{dT}{dt} = \dot{Q}_\text{gen}(T) - \dot{Q}_\text{cool}(T) \tag{8.21}$$
-
+\begin{equation}
+mc_p \frac{dT}{dt} = \dot{Q}_\text{gen}(T) - \dot{Q}_\text{cool}(T) \tag{8.21}
+\end{equation}
 where $\dot{Q}_\text{gen}(T)$ is the total heat generation rate at temperature $T$ (including all electrochemical and chemical reactions) and $\dot{Q}_\text{cool}(T) = (T - T_\text{amb})/R_\text{th}$ is the rate of heat removal by the cooling system.
 
 A stable thermal equilibrium exists when $\dot{Q}_\text{gen} = \dot{Q}_\text{cool}$ and the slope condition $d\dot{Q}_\text{gen}/dT < d\dot{Q}_\text{cool}/dT$ is satisfied. In other words: the cooling curve must be steeper than the heat generation curve at the equilibrium point. If the heat generation rate increases faster with temperature than the cooling can compensate, the equilibrium is unstable — the operating point is on the wrong side of the stability threshold.
 
 The critical insight is the exponential temperature dependence of the exothermic chemical reactions (Arrhenius). The electrochemical heat generation ($\dot{Q}_\text{irrev} = I^2 R_\text{int}$) grows only linearly with temperature (through the mild temperature dependence of $R_\text{int}$). But the chemical heat generation from SEI decomposition, electrolyte combustion, and cathode oxygen release grows exponentially:
 
-$$\dot{Q}_\text{chem}(T) \sim A_k \exp\!\left(-\frac{E_{a,k}}{RT}\right) \tag{8.22}$$
-
+\begin{equation}
+\dot{Q}_\text{chem}(T) \sim A_k \exp\!\left(-\frac{E_{a,k}}{RT}\right) \tag{8.22}
+\end{equation}
 At temperatures below the onset of dangerous reactions, $\dot{Q}_\text{chem}$ is negligible, the total heat generation is dominated by the electrochemical component, and the cell operates in the stable regime. As temperature rises toward the onset of SEI decomposition, $\dot{Q}_\text{chem}$ begins to grow exponentially. If $\dot{Q}_\text{chem}$ grows faster than the cooling can remove heat, the equilibrium becomes unstable — thermal runaway has been triggered.
 
 Graphically, this is the classic **Semenov diagram** from combustion theory, and it is worth sketching:
@@ -4278,15 +4845,17 @@ Graphically, this is the classic **Semenov diagram** from combustion theory, and
 
 **The loop-gain formulation.** If you prefer control-theory language, thermal runaway is simply the condition where the thermal feedback loop gain exceeds unity. Define the incremental thermal gain as:
 
-$$G_\text{th} = R_\text{th} \cdot \frac{d\dot{Q}_\text{gen}}{dT} \tag{8.22b}$$
-
+\begin{equation}
+G_\text{th} = R_\text{th} \cdot \frac{d\dot{Q}_\text{gen}}{dT} \tag{8.22b}
+\end{equation}
 The cooling system provides a "restoring force" with slope $d\dot{Q}_\text{cool}/dT = 1/R_\text{th}$. At the stable operating point, $d\dot{Q}_\text{gen}/dT < 1/R_\text{th}$, which means $G_\text{th} < 1$ — the loop is stable, and perturbations are damped. At the critical temperature $T_c$, $d\dot{Q}_\text{gen}/dT = 1/R_\text{th}$, giving $G_\text{th} = 1$ — the system is marginally stable. Above $T_c$, $G_\text{th} > 1$, and the positive feedback drives temperature upward without bound.
 
 This formulation makes the design levers obvious: you can prevent thermal runaway by reducing $R_\text{th}$ (better cooling, which raises the threshold for $G_\text{th} = 1$) or by reducing $d\dot{Q}_\text{gen}/dT$ (choosing a chemistry with higher-temperature onset of exothermic reactions, which pushes the exponential upturn to higher $T$). LFP and NVPF cathodes achieve the latter; liquid cooling achieves the former. The safest designs do both.
 
 The thermal runaway onset temperature (also called the **self-heating onset temperature** $T_\text{onset}$) depends strongly on chemistry and SOC. For a fully charged NMC811/graphite cell, $T_\text{onset}$ can be as low as 55–65°C (in an adiabatic calorimeter measuring only the self-heating component at a 0.02°C/min detection threshold). For LFP/graphite, $T_\text{onset}$ is typically >150–170°C. This 90–110°C difference in self-heating onset temperature is why LFP cells can sometimes survive conditions (external fires, crush) that destroy NMC cells.
 
-### The Three Stages of Thermal Runaway
+\subsection{The Three Stages of Thermal Runaway}
+
 
 Thermal runaway in a lithium-ion cell proceeds through a recognisable sequence of stages, well documented through accelerating rate calorimetry (ARC) studies. The three stages are not independent events that happen to occur in sequence — they form a causal cascade in which each stage creates the conditions that trigger the next. Understanding this cascade is essential for designing intervention strategies: if you can interrupt the chain at Stage 1, Stage 3 never occurs. Here is the sequence:
 
@@ -4298,7 +4867,8 @@ Thermal runaway in a lithium-ion cell proceeds through a recognisable sequence o
 
 The total heat released during thermal runaway for an NMC811/graphite 18650 cell is approximately 25–40 kJ — comparable to the stored electrical energy in the cell (~11–14 Wh = 40–50 kJ for a 3 Ah cell at 3.7 V). This is why a battery fire is so energetic: the total heat release comes not only from electrolyte combustion (which contributes perhaps 10–15 kJ for an 18650 cell) but also from cathode decomposition releasing oxygen (which then reacts with electrolyte and solvents), anode-electrolyte reactions, and SEI decomposition. The total chemical enthalpy available from these decomposition pathways happens to be comparable to the stored electrochemical energy of the cell, but the two are not the same — the heat released during thermal runaway comes from *decomposition chemistry*, not from the normal cell reaction running uncontrolled.
 
-### Thermal Runaway Propagation
+\subsection{Thermal Runaway Propagation}
+
 
 In a battery pack, thermal runaway in one cell can spread to neighbouring cells through three pathways:
 
@@ -4312,16 +4882,19 @@ Preventing thermal propagation — ensuring that runaway in one cell does not ca
 
 ---
 
-## Why Low Temperature Hurts Performance and High Temperature Accelerates Aging
+\section{Why Low Temperature Hurts Performance and High Temperature Accelerates Aging}
+
 
 We have now covered the extremes — thermal runaway at high temperature and plating at low temperature. But the thermal effects on normal battery performance and aging are equally important for everyday engineering, and they connect directly to the physical models established in Chapters 2, 3, and 7.
 
-### Low Temperature: The Kinetic Trap
+\subsection{Low Temperature: The Kinetic Trap}
+
 
 At low temperatures, the primary effect is the exponential increase in charge-transfer resistance $R_\text{ct}$. Recall from Chapter 2 that $R_\text{ct}$ is inversely proportional to the exchange current density $i_0$, which governs the rate of the electrode reaction at equilibrium. Like any chemical reaction rate, $i_0$ follows Arrhenius behaviour: it depends exponentially on temperature because the ions must overcome an energy barrier (the **activation energy** $E_{a,\text{ct}}$) to transfer between the electrolyte and the electrode lattice. The rate-limiting step is typically the desolvation of the ion — stripping the solvent molecules that surround the Li⁺ or Na⁺ ion before it can enter the electrode. Since $R_\text{ct} \propto 1/i_0$, a decrease in $i_0$ at low temperature translates directly to an increase in $R_\text{ct}$:
 
-$$R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{8.23}$$
-
+\begin{equation}
+R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{8.23}
+\end{equation}
 where $R = 8.314$ J/(mol·K) is the universal gas constant (not to be confused with resistance — an unfortunate notational collision), $T_0$ is a reference temperature (typically 298 K), and $E_{a,\text{ct}}$ is the activation energy for the charge-transfer process.
 
 For typical graphite/LiPF₆ cells, the activation energy for charge transfer $E_{a,\text{ct}} \approx 30$–60 kJ/mol. Let us walk through the arithmetic step by step at $T = 253$ K (−20°C) versus $T_0 = 298$ K (25°C), since this type of Arrhenius calculation will recur throughout your battery career:
@@ -4344,7 +4917,8 @@ The engineering consequence is that the **effective internal resistance** of a c
 
 For SIBs, the low-temperature situation is more favourable than for most LIBs. Hard carbon anodes in sodium-ion cells have lower desolvation energy barriers in ether electrolytes compared to graphite in carbonate electrolytes, giving a lower activation energy for the rate-limiting interfacial step. HiNa BC-1 cells (Chapter 6) retain approximately 88% of room-temperature capacity at −20°C and approximately 70% at −40°C — dramatically better than most NMC/graphite LIBs at the same conditions. The physical origin is the combination of a lower activation energy for Na⁺ desolvation at the hard carbon surface and the PC-containing electrolytes commonly used in SIBs (which maintain low viscosity at low temperature better than EC-only electrolytes).
 
-### High Temperature: The Degradation Multiplier
+\subsection{High Temperature: The Degradation Multiplier}
+
 
 At high temperatures (above ~35–40°C), the primary effect is the Arrhenius acceleration of all degradation mechanisms. As established in Chapter 7, every 10°C increase in temperature approximately doubles the calendar aging rate. In addition:
 
@@ -4360,11 +4934,13 @@ The optimal operating temperature for longevity is typically 20–30°C — warm
 
 ---
 
-## Why SIB Is Safer Than LIB — A Quantitative Accounting
+\section{Why SIB Is Safer Than LIB — A Quantitative Accounting}
+
 
 The statement "sodium-ion batteries are safer than lithium-ion batteries" appears in almost every SIB review paper and press release, but it is rarely made quantitative. Let us do the quantitative accounting here.
 
-### Cathode Oxygen Release: The Primary Difference
+\subsection{Cathode Oxygen Release: The Primary Difference}
+
 
 The dominant heat source in a lithium-ion thermal runaway event is the exothermic reaction between oxygen released from the delithiated cathode and the flammable organic electrolyte. As noted in Section 8.4, the onset temperature for oxygen release varies dramatically by cathode chemistry. The following table summarises oxygen release onset temperatures for the major cathode families:
 
@@ -4384,29 +4960,34 @@ The higher oxygen release temperature for SIB layered oxide cathodes compared to
 
 A note on PBAs: the cyanide framework decomposes rather than releasing molecular oxygen, generating HCN (hydrogen cyanide) and CO. This is a critically different hazard profile: while the absence of free oxygen makes PBA thermal events less likely to produce sustained fire, the release of HCN — an acutely toxic gas with an immediately dangerous concentration of only 50 ppm — creates a serious inhalation hazard in enclosed spaces (buildings, submarines, aircraft cargo holds). PBA-based SIB packs intended for indoor stationary storage will require gas venting and detection systems designed for HCN, not just the smoke and heat detectors used for conventional LIB packs.
 
-### Lower Energy Content: Less Fuel
+\subsection{Lower Energy Content: Less Fuel}
+
 
 SIB cells currently store approximately 130–160 Wh/kg at the cell level, compared to 240–300 Wh/kg for high-energy NMC cells. A lower-energy-density cell generally has a lower total inventory of thermally reactive material — less highly-oxidized cathode (and therefore less releasable oxygen), less electrolyte, and lower anode energy content. These material inventories, rather than the stored electrochemical energy directly, determine the total heat release during thermal runaway. However, the correlation is strong: cells designed for high energy density pack more reactive material per unit mass, and so a 160 Wh/kg SIB cell will typically release substantially less heat during runaway than a 260 Wh/kg NMC cell of the same format. This directly reduces the severity and propagation potential of a runaway event.
 
-### Anode Potential and Sodium Metal Hazard
+\subsection{Anode Potential and Sodium Metal Hazard}
+
 
 The standard potential of sodium metal ($-2.71$ V vs. SHE) is higher than lithium metal ($-3.04$ V vs. SHE). While this is a disadvantage for energy density (as discussed throughout the book), it has a thermal safety advantage: sodium metal is a slightly less reactive reducing agent than lithium metal. The reaction of sodium metal with water or with electrolyte solvent, while exothermic, releases somewhat less energy per mole than the analogous lithium reaction.
 
 More importantly, as noted in Section 7.3, sodium does not form sharp dendrites as readily as lithium under typical cell operating conditions. The reduced dendrite formation tendency means that the risk of a hard internal short circuit (separator piercing by a metallic dendrite) is lower for SIBs than for LIBs under fast-charging abuse conditions.
 
-### Hard Carbon vs. Graphite: Less Stored Energy in the Anode
+\subsection{Hard Carbon vs. Graphite: Less Stored Energy in the Anode}
+
 
 Graphite in a lithium-ion cell, when fully lithiated (LiC₆), stores approximately 372 mAh/g at 0.05–0.1 V vs. Li/Li⁺. At this low potential, the lithiated graphite is a powerful reducing agent that reacts vigorously with electrolyte when the SEI is compromised.
 
 Hard carbon in a sodium-ion cell, when fully sodiated, stores approximately 250–350 mAh/g at 0.05–0.2 V vs. Na/Na⁺. The slightly higher average anode potential (hard carbon vs. graphite) and the somewhat lower specific capacity mean that the fully charged SIB anode has a modestly lower driving force for exothermic reaction with the electrolyte than the fully charged LIB graphite anode.
 
-### Electrolyte Differences: A Mixed Picture
+\subsection{Electrolyte Differences: A Mixed Picture}
+
 
 The electrolyte contributes to thermal runaway both as a fuel (organic solvents are flammable) and through decomposition reactions that generate gas and heat. SIB electrolytes are typically based on NaPF₆ salt in PC-rich or glyme-based solvents, whereas LIB electrolytes use LiPF₆ in EC/DMC or EC/EMC mixtures. The thermal stability comparison is mixed. NaPF₆ is somewhat less thermally stable than LiPF₆ (decomposition onset ~200°C vs. ~230°C for the pure salts), which could slightly worsen the gas generation profile during the early stages of a thermal event. However, PC-based solvents have a higher boiling point (242°C) and flash point (132°C) than DMC (90°C boiling, 18°C flash) or EMC (110°C boiling, 24°C flash), which can reduce the flammability risk during venting. The net effect on overall safety is modest compared to the cathode oxygen release advantage, but it is worth noting that SIB electrolyte safety is not uniformly better — it is a tradeoff between salt stability and solvent flammability.
 
-### Quantifying the Safety Advantage: Accelerating Rate Calorimetry Data
+\subsection{Quantifying the Safety Advantage: Accelerating Rate Calorimetry Data}
 
-Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares representative cells:
+
+Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares **representative literature-scale values** for cells near full charge; exact onset temperatures and total heat release vary substantially with SOC, format, electrolyte, and the calorimetry protocol:
 
 | ARC Parameter | NMC811/graphite 18650 (3 Ah) | SIB O3/hard carbon 26650 (1.33 Ah) | SIB Advantage |
 | --- | --- | --- | --- |
@@ -4422,17 +5003,24 @@ This safety advantage is one of the genuine, material-level strengths of sodium-
 
 ---
 
-## Worked Interpretation Exercise: Hand-Calculating Cell Heat Generation and Temperature Rise
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Hand-Calculating Cell Heat Generation and Temperature Rise}
+
+\specialsectionstyle
+
 
 Let us work through the deliverable calculation for this chapter: steady-state heat generation for a commercial cell at 1C discharge, compared to a rough convective cooling estimate.
 
 We will use the **Samsung INR18650-30Q** (NMC/graphite, 3.0 Ah, DCIR ≈ 45 mΩ at 50% SOC, 25°C) as our reference cell, consistent with earlier worked examples.
 
-### Step 1: Calculate the 1C Current
+\bodytextstyle
+
+\subsection{Step 1: Calculate the 1C Current}
+
 
 $$I_{1C} = 3.0 \text{ Ah} / 1 \text{ h} = 3.0 \text{ A}$$
 
-### Step 2: Calculate Irreversible Heat Generation
+\subsection{Step 2: Calculate Irreversible Heat Generation}
+
 
 Using the simplified Bernardi equation (Equation 8.15) with $R_\text{int}$ in place of separate ohmic and polarisation terms:
 
@@ -4440,7 +5028,8 @@ $$\dot{Q}_\text{irrev} = I^2 R_\text{int} = (3.0)^2 \times 0.045 = 9 \times 0.04
 
 This is 0.405 watts of irreversible heat at 1C discharge.
 
-### Step 3: Estimate the Entropic Contribution
+\subsection{Step 3: Estimate the Entropic Contribution}
+
 
 For NMC/graphite cells, the entropic coefficient $\partial E_\text{OCV}/\partial T$ is approximately $-0.1$ to $-0.3$ mV/K at mid-SOC. At this SOC, $\Delta S < 0$, so the entropic term *adds* to the irreversible heat (per the Bernardi equation, Equation 8.15). At 298 K:
 
@@ -4453,7 +5042,8 @@ $$\dot{Q}_\text{total} = \dot{Q}_\text{irrev} + \dot{Q}_\text{rev} = 0.405 + 0.1
 
 The entropic contribution increases the net heat generation by about 44% at this SOC — a significant effect in the opposite direction from what you might naively expect. At other SOC values where $\partial E_\text{OCV}/\partial T > 0$ (as occurs for NMC/graphite near the bottom of discharge), the entropic term would instead subtract from the total, partially cooling the cell. The SOC-dependence of the entropic coefficient means the cell's heat generation profile is not constant during discharge — it changes as the SOC traverses regions where the sign of $\partial E_\text{OCV}/\partial T$ flips.
 
-### Step 4: Calculate Steady-State Temperature Rise
+\subsection{Step 4: Calculate Steady-State Temperature Rise}
+
 
 For natural convection cooling of an 18650 cell in still air at 25°C ambient:
 
@@ -4479,7 +5069,8 @@ $$\Delta T_\text{surface,ss} = \dot{Q}_\text{total} \times R_\text{th,conv} = 0.
 Temperature gradient (core to surface):
 $$\Delta T_\text{core-surface} = \dot{Q}_\text{total} \times R_\text{th,radial} = 0.584 \times 4.08 = 2.4 \text{ K}$$
 
-### Step 5: Interpret the Results
+\subsection{Step 5: Interpret the Results}
+
 
 At 1C discharge in natural convection air cooling at 25°C ambient, the Samsung 30Q cell reaches a steady-state core temperature of approximately **44.8°C** (25 + 19.8). This is within the safe operating range but above the optimal longevity window (20–30°C) — a reminder that even 1C in still air produces meaningful heating. The core-to-surface gradient is about 2.4°C — small enough that the cell is nearly isothermal internally, which is typical for small cylindrical cells at moderate C-rates.
 
@@ -4501,7 +5092,10 @@ This also explains why the datasheet for the Samsung 30Q specifies a maximum con
 
 ---
 
-## What Changes for Sodium-Ion?
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The thermal physics of Sections 8.1–8.3 — the Bernardi equation, thermal resistance networks, time constants — apply identically to SIBs. The numbers change, but the framework is the same.
 
@@ -4521,7 +5115,12 @@ The lower temperature coefficient of safety onset means that SIB cells designed 
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -4535,29 +5134,40 @@ The lower temperature coefficient of safety onset means that SIB cells designed 
 
 **Key equations:**
 
-$$\dot{Q}_\text{gen} = I(E_\text{OCV} - E) - IT\frac{\partial E_\text{OCV}}{\partial T} \quad \text{(Bernardi equation)} \tag{8.12}$$
-
-$$\dot{Q}_\text{gen} = I^2 R_\text{int} - IT\frac{\partial E_\text{OCV}}{\partial T} \quad \text{(engineering form)} \tag{8.15}$$
-
-$$\Delta T_\text{ss} = \dot{Q}_\text{gen} \cdot R_\text{th} \quad \text{(steady-state temperature rise)} \tag{8.16}$$
-
-$$R_\text{th,conv} = \frac{1}{h_c A} \quad \text{(convective thermal resistance)} \tag{8.19}$$
-
-$$\tau_\text{th} = mc_p R_\text{th} \quad \text{(thermal time constant)} \tag{8.20}$$
-
-$$\left(\frac{\partial E_\text{OCV}}{\partial T}\right)_P = \frac{\Delta S}{nF} \quad \text{(entropic coefficient, from Chapter 1)} \tag{8.3}$$
-
+\begin{equation}
+\dot{Q}_\text{gen} = I(E_\text{OCV} - E) - IT\frac{\partial E_\text{OCV}}{\partial T} \quad \text{(Bernardi equation)} \tag{8.12}
+\end{equation}
+\begin{equation}
+\dot{Q}_\text{gen} = I^2 R_\text{int} - IT\frac{\partial E_\text{OCV}}{\partial T} \quad \text{(engineering form)} \tag{8.15}
+\end{equation}
+\begin{equation}
+\Delta T_\text{ss} = \dot{Q}_\text{gen} \cdot R_\text{th} \quad \text{(steady-state temperature rise)} \tag{8.16}
+\end{equation}
+\begin{equation}
+R_\text{th,conv} = \frac{1}{h_c A} \quad \text{(convective thermal resistance)} \tag{8.19}
+\end{equation}
+\begin{equation}
+\tau_\text{th} = mc_p R_\text{th} \quad \text{(thermal time constant)} \tag{8.20}
+\end{equation}
+\begin{equation}
+\left(\frac{\partial E_\text{OCV}}{\partial T}\right)_P = \frac{\Delta S}{nF} \quad \text{(entropic coefficient, from Chapter 1)} \tag{8.3}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Bernardi equation, irreversible heat, reversible heat, entropic heat, ohmic heating, polarisation heating, entropic coefficient ($\partial E/\partial T$), thermal resistance, radial thermal conductivity ($k_r$), axial thermal conductivity ($k_z$), convective heat transfer coefficient ($h_c$), thermal time constant, safe operating temperature window, SEI decomposition onset, separator shutdown, thermal runaway, critical temperature ($T_c$), self-heating onset temperature ($T_\text{onset}$), Semenov diagram, accelerating rate calorimetry (ARC), thermal propagation, entropic heat measurement.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 **Task:** Hand-calculate steady-state heat generation for a commercial cell at 1C discharge using datasheet internal resistance. Compare to a rough convective cooling estimate.
 
-**Guidance:** We worked through this calculation for the Samsung 30Q (NMC, 18650) in Section 8.7. Your task is to repeat the calculation for a different cell — specifically, for a SIB cell — and compare the results.
+**Guidance:** We worked through this calculation for the Samsung 30Q (NMC, 18650) in the **Worked Interpretation Exercise** above. Your task is to repeat the calculation for a different cell — specifically, for a SIB cell — and compare the results.
 
 Use the **HiNa BC-1** (SIB, 26650 format, 1.33 Ah, DCIR ≈ 100 mΩ, nominal voltage 3.2 V) for the SIB calculation.
 
@@ -4581,11 +5191,16 @@ Step through the following:
 
 **8. Repeat at 3C**: Does the BC-1 cell overheat in natural convection at 3C?
 
-Compare your SIB results to the LIB results from the worked example in Section 8.7. Which cell runs hotter at 1C? At 3C? Which is safer in a natural-convection environment at high ambient temperature (say, 40°C)?
+Compare your SIB results to the LIB results from the **Worked Interpretation Exercise** above. Which cell runs hotter at 1C? At 3C? Which is safer in a natural-convection environment at high ambient temperature (say, 40°C)?
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Bernardi, D., Pawlikowski, E., and Newman, J., "A General Energy Balance for Battery Systems," *Journal of the Electrochemical Society* 132 (1), 5–12 (1985).** The original Bernardi equation paper. Readable and rigorous — the derivation is elegant and uses only classical thermodynamics. Worth reading in full both for the result and as a model of clean electrochemical engineering analysis.
 
@@ -4596,13 +5211,17 @@ Compare your SIB results to the LIB results from the worked example in Section 8
 4. **Bandhauer, T. M., Garimella, S., and Fuller, T. F., "A Critical Review of Thermal Issues in Lithium-Ion Batteries," *Journal of the Electrochemical Society* 158 (3), R1–R25 (2011).** A systematic review of thermal generation, transport, and management in lithium-ion cells. Excellent tables of thermal property values ($k_r$, $k_z$, $c_p$) for various cell formats and chemistries, which are directly usable in simulation models.
 
 5. **Hu, X. et al., "Battery warm-up methodologies at subzero temperatures for automotive applications: Recent advances and perspectives," *Progress in Energy* 2 (2), 022001 (2020).** The most thorough review of low-temperature battery performance and preheating strategies. Particularly relevant to the low-temperature section (8.6) and to understanding how SIBs' low-temperature advantage can be exploited in practice.
+\bodytextstyle
+
 
 
 \newpage
 
-# Pack Architecture
+\chapter{Pack Architecture}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 A single lithium-ion 18650 cell contains about 11 watt-hours of energy and delivers current at 3.6 volts. A Tesla Model Y Long Range battery pack contains about 82 kilowatt-hours of energy and operates at 400 volts. The path from one to the other is not simply "add more cells" — it is a carefully engineered system in which hundreds or thousands of cells are interconnected in precise geometric and electrical arrangements, monitored by distributed electronics, protected by safety devices, managed by a sophisticated software system, and housed in a structural enclosure designed to survive vehicle crashes. Understanding how a pack is put together, and why it is put together that way, is the bridge between the single-cell physics we have developed in Chapters 1 through 8 and the system-level engineering that Chapters 10 through 12 will address.
 
@@ -4634,20 +5253,27 @@ Pack architecture is the layer of engineering that converts electrochemistry int
 
 ---
 
-## Series and Parallel Configurations: Nomenclature and Analysis
+\bodytextstyle
+
+\section{Series and Parallel Configurations: Nomenclature and Analysis}
+
 
 A battery pack is built by connecting individual cells in series, in parallel, or in series-parallel combinations. The choice of configuration determines the pack's terminal voltage, current capability, capacity, energy content, and internal resistance — and it does so in ways that are direct electrical engineering consequences of how series and parallel circuits behave.
 
-### Series Connections: Voltage Addition
+\subsection{Series Connections: Voltage Addition}
+
 
 When cells are connected in **series** — positive terminal of one cell to the negative terminal of the next — the voltages add while the capacity (in Ah) remains equal to the capacity of a single cell:
 
-$$V_\text{pack} = \sum_{i=1}^{n_s} V_i \approx n_s \cdot V_\text{cell} \tag{9.1}$$
-
-$$Q_\text{pack} = Q_\text{cell} \tag{9.2}$$
-
-$$R_\text{pack,int} = \sum_{i=1}^{n_s} R_{\text{int},i} \approx n_s \cdot R_\text{cell} \tag{9.3}$$
-
+\begin{equation}
+V_\text{pack} = \sum_{i=1}^{n_s} V_i \approx n_s \cdot V_\text{cell} \tag{9.1}
+\end{equation}
+\begin{equation}
+Q_\text{pack} = Q_\text{cell} \tag{9.2}
+\end{equation}
+\begin{equation}
+R_\text{pack,int} = \sum_{i=1}^{n_s} R_{\text{int},i} \approx n_s \cdot R_\text{cell} \tag{9.3}
+\end{equation}
 where $n_s$ is the number of cells in series. The approximate equalities assume all cells are identical — which they are not, as we will examine in Section 9.2.
 
 The energy stored in a series string is $E_\text{string} = V_\text{pack} \times Q_\text{pack} = n_s V_\text{cell} \times Q_\text{cell}$, which equals $n_s$ times the energy of a single cell. This is consistent with the expectation that adding cells in series adds energy proportionally.
@@ -4656,23 +5282,28 @@ The critical property of a series string is that **the same current flows throug
 
 This constraint is the fundamental motivation for cell balancing (Chapter 11) and for the careful cell-matching requirements in pack manufacturing. The weakest cell determines pack performance, which is why matching cells by capacity, internal resistance, and OCV before assembly is so important.
 
-### Parallel Connections: Capacity Addition
+\subsection{Parallel Connections: Capacity Addition}
+
 
 When cells are connected in **parallel** — all positive terminals joined, all negative terminals joined — the capacities add while the voltage remains equal to the voltage of a single cell:
 
-$$V_\text{pack} = V_\text{cell} \tag{9.4}$$
-
-$$Q_\text{pack} = \sum_{i=1}^{n_p} Q_i \approx n_p \cdot Q_\text{cell} \tag{9.5}$$
-
-$$R_\text{pack,int} = \frac{R_\text{cell}}{n_p} \tag{9.6}$$
-
+\begin{equation}
+V_\text{pack} = V_\text{cell} \tag{9.4}
+\end{equation}
+\begin{equation}
+Q_\text{pack} = \sum_{i=1}^{n_p} Q_i \approx n_p \cdot Q_\text{cell} \tag{9.5}
+\end{equation}
+\begin{equation}
+R_\text{pack,int} = \frac{R_\text{cell}}{n_p} \tag{9.6}
+\end{equation}
 where $n_p$ is the number of cells in parallel. Parallel connection reduces the internal resistance (more current paths) and increases the capacity, but keeps the voltage constant.
 
 In a parallel group, the current distributes among the cells inversely proportional to their internal resistance. If cells are matched (equal $R_\text{int}$), current distributes equally. If they are mismatched, the cell with the lowest $R_\text{int}$ carries more current and the cell with the highest $R_\text{int}$ carries less. This current sharing imbalance means that in a mismatched parallel group, some cells are more heavily stressed than others — the low-resistance cell works harder, heats more, and ages faster, which progressively increases the imbalance.
 
 There is also a subtle interaction in parallel groups involving the open-circuit voltage (OCV) of the cells. At the moment of connecting cells in parallel, if their OCVs differ, a circulating current flows to equalise them — limited only by the sum of their internal resistances. For large OCV mismatches, this inrush current can be substantial. Consider connecting a 50% SOC NMC cell ($V_\text{OCV} \approx 3.65$ V) in parallel with a 90% SOC cell ($V_\text{OCV} \approx 4.10$ V), each with $R_\text{int} = 35$ mΩ. The voltage difference is 0.45 V, and the total resistance in the equalisation loop is $35 + 35 = 70$ mΩ, giving an initial current of $0.45/0.070 = 6.4$ A. For a 5 Ah cell, that is a 1.3C equalisation current — not catastrophic, but sustained for minutes as the SOCs converge, generating significant heat in both cells and potentially stressing the SEI. The equalisation current decays as the OCVs converge, following a time course set by the cells' differential capacitance and internal resistance — conceptually identical to charging a capacitor through a resistance, which is a familiar EE picture. This is why cells connected in parallel must be matched in SOC (and ideally in capacity and OCV) before connection.
 
-### Series-Parallel Combinations
+\subsection{Series-Parallel Combinations}
+
 
 Most real battery packs use a combination of series and parallel connections to achieve both the desired voltage and the desired capacity. The two basic topologies are:
 
@@ -4686,7 +5317,8 @@ In **series-first** architectures, cells are first wired into full series string
 
 This difference in fault isolation behaviour is the primary reason parallel-first topologies are preferred in safety-critical applications: faults are contained locally within a parallel group rather than propagating across the full voltage stack.
 
-### The Pack Nomenclature
+\subsection{The Pack Nomenclature}
+
 
 The industry standard notation for pack configuration is $n_s\text{s}n_p\text{p}$, where $n_s$ is the series count and $n_p$ is the parallel count. Reading this notation immediately gives you the pack's key parameters. The pack voltage is $V_\text{pack} = n_s \times V_\text{cell,nominal}$, the pack capacity is $Q_\text{pack} = n_p \times Q_\text{cell}$, the total energy is $E_\text{pack} = V_\text{pack} \times Q_\text{pack} = n_s n_p \, V_\text{cell} \, Q_\text{cell}$, and the total cell count is simply $N_\text{total} = n_s \times n_p$. Once you internalise these four relationships, you can reconstruct any pack's electrical characteristics from its $n_s\text{s}n_p\text{p}$ label and a single-cell datasheet.
 
@@ -4708,7 +5340,8 @@ The second configuration stores twice the energy but operates at a much lower vo
 
 The choice between these topologies is driven by the target application's power requirements and system voltage constraints. For the same power delivery, a high-voltage/low-current pack ($96\text{s}2\text{p}$) produces lower $I^2R$ losses in the wiring and power electronics, allowing thinner cables and smaller MOSFETs or IGBTs — but requires more series cells and more BMS monitoring channels ($n_s$ voltage measurements). A low-voltage/high-current pack ($16\text{s}24\text{p}$) needs fewer monitoring channels and has better fault tolerance in series (fewer series elements to fail), but the higher currents demand heavier cabling, larger contactors, and more expensive power semiconductors rated for hundreds of amperes. In EV applications, the trend toward 400V and 800V architectures reflects the industry's preference for the high-voltage side of this tradeoff — at the power levels required to drive a vehicle (50–300 kW), keeping currents below 400–500 A is essential for practical cable sizing and connector design. In stationary storage, where weight and connector size matter less, lower-voltage/higher-parallel architectures (48V or 96V systems) are common because they simplify safety requirements and reduce the need for HV-qualified personnel during installation.
 
-### Practical Worked Example: Reconstructing a Real Pack
+\subsection{Practical Worked Example: Reconstructing a Real Pack}
+
 
 The **Tesla Model 3 Long Range** (as of 2019–2022) uses **2170-format NCA/graphite cells** (Panasonic, ~4.8 Ah per cell, 3.6 V nominal) in a $96\text{s}46\text{p}$ configuration. Let us verify this:
 
@@ -4721,11 +5354,13 @@ The rated pack energy of approximately 76 kWh (gross) with about 70–72 kWh usa
 
 ---
 
-## Cell-to-Cell Variation and Its Consequences
+\section{Cell-to-Cell Variation and Its Consequences}
+
 
 No two cells are identical, even from the same production lot of the same manufacturer. Manufacturing tolerances in electrode coating weight, calendering pressure, electrolyte fill volume, separator thickness, and formation cycling all create cell-to-cell differences in capacity, internal resistance, and OCV at a given SOC. Cells also age differently depending on their position in the pack (temperature gradients, current distribution), and the aging differences compound over time. Understanding the sources and consequences of cell-to-cell variation is essential to understanding why pack performance degrades over life in ways that cannot be predicted from single-cell testing alone.
 
-### Sources of Cell-to-Cell Variation
+\subsection{Sources of Cell-to-Cell Variation}
+
 
 At beginning-of-life (BOL), the primary sources of cell-to-cell variation in a commercial pack are:
 
@@ -4737,19 +5372,22 @@ At beginning-of-life (BOL), the primary sources of cell-to-cell variation in a c
 
 **Self-discharge rate spread**: Cells do not all self-discharge at identical rates. Even small differences in leakage current through the separator or in SEI stability accumulate over days to weeks to produce SOC divergence during storage. In a pack that sits idle for months, self-discharge spread can build up to 2–5% SOC divergence, enough to affect performance significantly.
 
-### How Variation Propagates During Operation
+\subsection{How Variation Propagates During Operation}
+
 
 In a series string, the capacity imbalance between cells leads to **state-of-charge divergence** during cycling. Consider a string of $n_s$ cells where one cell ("the weak cell") has capacity $Q_\text{weak} < Q_\text{cell}$. During discharge, the string current is the same for all cells. Each cell discharges at the same rate in amperes — but since the weak cell has less capacity, it completes a larger fraction of its available discharge per unit of charge drawn. The weak cell reaches its lower voltage cutoff first, at which point the entire string must stop discharging, even though all other cells still have charge to give.
 
 The lost capacity from this early cutoff is:
 
-$$\Delta Q_\text{lost} \approx (Q_\text{cell} - Q_\text{weak}) \tag{9.7}$$
-
+\begin{equation}
+\Delta Q_\text{lost} \approx (Q_\text{cell} - Q_\text{weak}) \tag{9.7}
+\end{equation}
 This is direct pack capacity loss caused by the weakest cell — the "weak link" effect in a series chain. And it compounds over time. Consider a concrete scenario: a series string of 96 cells at 5.0 Ah nominal, where one cell starts at 4.85 Ah (3% below nominal). After 500 full-pack cycles, the normal cells have degraded to 4.75 Ah (5% fade), but the weak cell — having cycled at a 3% higher effective DOD each cycle — has degraded to 4.55 Ah (6.2% fade from its already lower starting point). The capacity gap has widened from 0.15 Ah to 0.20 Ah. After another 500 cycles, the gap widens further. This is the self-reinforcing mechanism of capacity fade in a series string: the weak cell's disadvantage grows with every cycle, and the pack's accessible capacity falls at a rate determined not by the average cell but by the weakest one. In control engineering terms, this is a positive feedback loop with no inherent saturation — it runs until the BMS declares the pack end-of-life.
 
 In a parallel group, the analogous problem is **current imbalance**. The cell with the lowest internal resistance carries a disproportionately large share of the current. Over thousands of cycles, this cell ages faster (higher heat generation, higher effective C-rate, more severe mechanical stress), its resistance increases, and the current imbalance slowly shifts — a gradual equalisation driven by differential aging rather than by deliberate balancing. In well-matched parallel groups this imbalance is small, but in aged packs where cell-to-cell resistance divergence has grown, it can be significant.
 
-### Temperature Non-uniformity as a Variation Amplifier
+\subsection{Temperature Non-uniformity as a Variation Amplifier}
+
 
 Cells in different locations within a pack module experience different temperatures. Cells near the centre of a module (farther from the cooling channels) run hotter than cells at the edges. As established in Chapter 7, higher temperature accelerates all thermally activated degradation mechanisms. Cells that run 5°C hotter than their neighbours age approximately 1.5× faster (from the Arrhenius analysis of Section 7.2 — the rule of thumb is roughly a doubling of degradation rate per 10°C increase). Over the lifetime of the pack, thermally hotter cells develop lower capacity and higher resistance than their cooler neighbours — even if they started identical.
 
@@ -4757,7 +5395,8 @@ This temperature-driven aging heterogeneity compounds the initial manufacturing 
 
 The engineering lesson is that thermal management system design and state estimation accuracy are not independent problems — they are coupled. A pack with poor thermal uniformity requires more sophisticated balancing and state estimation, and the balancing losses (energy dissipated in passive balancing, Section 11.2) are higher. This coupling motivates the thermal management system (TMS) targets in modern BEV design: cell-to-cell temperature gradients of less than 3–5°C across the module, over the full range of operating conditions.
 
-### Degradation-Induced Variation
+\subsection{Degradation-Induced Variation}
+
 
 Even in a pack with perfect initial matching and perfect thermal uniformity, cells at different positions in a series string can develop different amounts of degradation due to variation in **local electrochemical conditions**. The current distribution in a parallel-connected electrode stack is not perfectly uniform — edges and corners of large-format prismatic or pouch cells experience different local current densities than the centre, leading to faster local SEI growth and different local capacity fade rates. This within-cell non-uniformity is distinct from cell-to-cell variation but has similar consequences for pack management.
 
@@ -4767,17 +5406,20 @@ The manufacturing response to initial cell-to-cell variation is **cell grading**
 
 ---
 
-## Contactors, Precharge, Fuses, and Current Sensing
+\section{Contactors, Precharge, Fuses, and Current Sensing}
+
 
 The electrical architecture of a battery pack contains several components that have no equivalent in a simple electrochemical cell analysis. These components exist to manage the large energies and currents involved in pack-level systems, to protect against fault conditions, and to allow the pack to be safely connected and disconnected from the load. As an electrical engineer, you will recognise all of these concepts — the battery-specific aspects are primarily about scale and the unusual behaviour of batteries as non-ideal voltage sources.
 
-### The High-Voltage Bus and Its Hazards
+\subsection{The High-Voltage Bus and Its Hazards}
+
 
 A modern EV battery pack operates at 300–800V. At these voltages, arc flash energy during a fault is enormous — a short circuit across a 400V, 200 Ah pack can deliver hundreds of kilojoules in milliseconds, enough to vaporise copper busbars, cause severe arc burns, and destroy the pack electronics. The high-voltage (HV) bus must be treated with the same caution as industrial power distribution equipment, not as a larger version of a 12V automotive battery.
 
 The additional hazard unique to battery systems is that the pack is a **stiff voltage source with low impedance** — unlike a generator or transformer that can be de-energised by disconnecting the prime mover, the electrochemical energy in a battery pack is always present at the terminals as long as the cells are intact. There is no "off switch" that eliminates the voltage without physically disconnecting the cells. This is why the contactor system described below is so important: it provides the controlled connection and disconnection pathway between the stored energy and the external system.
 
-### Contactors: The High-Voltage Switches
+\subsection{Contactors: The High-Voltage Switches}
+
 
 **Contactors** are electromechanical switches — essentially large relays — that connect and disconnect the HV bus. They are the primary means of electrically isolating the battery pack from the vehicle's drivetrain and auxiliary systems. A typical pack has at minimum two contactors: a **positive contactor** in series with the positive terminal of the pack, and a **negative contactor** in series with the negative terminal. Opening both contactors isolates the pack from the rest of the system.
 
@@ -4785,12 +5427,14 @@ Contactors for automotive applications are rated for the full pack voltage (typi
 
 The contactor closing sequence is not simply "close positive, close negative." A critical intermediate step — precharge — must occur first, and its purpose is one of the most EE-relevant concepts in this chapter.
 
-### Precharge: Managing Inrush Current
+\subsection{Precharge: Managing Inrush Current}
+
 
 When a charged battery pack is connected to an inverter or motor controller that has input capacitors (all modern power electronics do, to filter the DC bus voltage), the connection of the HV bus to the discharged input capacitor creates a momentary short circuit through the battery's internal resistance. The inrush current at the instant of connection is:
 
-$$I_\text{inrush} = \frac{V_\text{pack}}{R_\text{pack,int}} \tag{9.8}$$
-
+\begin{equation}
+I_\text{inrush} = \frac{V_\text{pack}}{R_\text{pack,int}} \tag{9.8}
+\end{equation}
 For a 400V pack built from large-format prismatic NMC cells with $R_\text{pack,int} = 100$ mΩ (representative of a $96\text{s}1\text{p}$ pack using ~100 Ah prismatic cells with individual DCIR of ~1 mΩ each), the initial inrush current without precharge would be $400/0.1 = 4{,}000$ A — far exceeding the contactor's rated current and sufficient to weld the contactor contacts together (contact welding is the dominant failure mode for improperly precharging contactors).
 
 The solution is a **precharge circuit**: a small **precharge contactor** in series with a **precharge resistor** (typically 10–100 Ω), with this series combination connected in parallel across the main positive contactor. Before the main positive contactor closes, the precharge contactor closes, allowing current to flow through the precharge resistor and charge the input capacitors slowly. Once the capacitor voltage has risen to within a few percent of the pack voltage (monitored by the BMS through the pack and capacitor voltage measurements), the main positive contactor closes, and the precharge contactor opens.
@@ -4818,8 +5462,9 @@ The closing sequence is: close K3 → close K2 → wait for $C_\text{bus}$ to ch
 
 The precharge time constant is:
 
-$$\tau_\text{precharge} = R_\text{precharge} \times C_\text{bus} \tag{9.9}$$
-
+\begin{equation}
+\tau_\text{precharge} = R_\text{precharge} \times C_\text{bus} \tag{9.9}
+\end{equation}
 where $C_\text{bus}$ is the total input capacitance of the inverter. For a typical 1 mF inverter input capacitance and a 50 Ω precharge resistor:
 
 $$\tau_\text{precharge} = 50 \times 10^{-3} = 0.05 \text{ s} = 50 \text{ ms}$$
@@ -4828,8 +5473,9 @@ Allowing 5τ for the capacitor to charge to >99% of pack voltage: 250 ms — fas
 
 The precharge resistor dissipates energy during each precharge event:
 
-$$E_\text{precharge} = \frac{1}{2} C_\text{bus} V_\text{pack}^2 = \frac{1}{2} \times 10^{-3} \times 400^2 = 80 \text{ J} \tag{9.10}$$
-
+\begin{equation}
+E_\text{precharge} = \frac{1}{2} C_\text{bus} V_\text{pack}^2 = \frac{1}{2} \times 10^{-3} \times 400^2 = 80 \text{ J} \tag{9.10}
+\end{equation}
 This 80 J must be dissipated in the precharge resistor — it must be rated for this energy per event, and if precharge events happen frequently (vehicle cycling on/off multiple times per day), the average power dissipation must also be acceptable. The precharge resistor is therefore not trivially sized; it requires proper thermal engineering.
 
 The full contactor closing sequence is: (1) confirm pack isolation via insulation resistance check — this verifies no ground fault exists before energising anything; (2) close negative main contactor — this connects one side of the pack to the load but no current flows yet because the positive path is still open; (3) close precharge contactor — current now flows from the pack's positive terminal, through the precharge resistor, through the load's input capacitors, and returns through the already-closed negative contactor, charging the capacitors slowly; (4) wait for capacitor to charge, monitoring $|V_\text{pack} - V_\text{bus}| < V_\text{threshold}$ (typically 5–10 V); (5) close positive main contactor — the capacitors are now nearly fully charged, so the voltage across the main contactor at the instant of closing is only a few volts, and the inrush current is negligible; (6) open precharge contactor — all current now flows through the low-resistance main path; (7) confirm current balance (both main contactors carrying equal current, precharge path open). The ordering matters: if you close the positive main contactor before precharge is complete, you get the full 4,000 A inrush. If you close the positive contactor before the negative, you energise the bus through the precharge path but with no return path through the main contactor — the precharge resistor sees the full load current indefinitely. This sequence is governed by the BMS state machine and typically completes in 200–500 ms.
@@ -4838,7 +5484,8 @@ The opening sequence deserves equal attention. When the BMS commands the contact
 
 The countermeasures are familiar from power electronics: **magnetic blowout coils** that deflect the arc into an arc chute where it is cooled and extinguished, **snubber capacitors** across the contacts that absorb the inductive energy spike at current interruption, and — most importantly — BMS coordination with the motor controller to reduce the load current to near-zero before commanding the contactors open during normal shutdown. Emergency disconnects, where the contactors must open under full load, are the most stressful events for the contactor hardware and are tested to a defined number of operations (typically 1,000–5,000 emergency breaks over the contactor's lifetime). This is why BMS fault response strategies try to reduce current before opening contactors whenever the fault allows even a few hundred milliseconds of reaction time.
 
-### Fuses and Overcurrent Protection
+\subsection{Fuses and Overcurrent Protection}
+
 
 Each series string in the pack — and the pack as a whole — is protected by fuses or circuit breakers. The primary fuse, typically a **high-voltage pyrotechnic fuse** (a chemically actuated fuse that can interrupt fault currents of tens of kiloamperes in milliseconds), is located in series with the main HV bus. It provides the last line of protection against catastrophic fault currents that exceed the contactors' interruption capability.
 
@@ -4846,7 +5493,8 @@ In addition to the main HV fuse, individual cell strings or modules may be fused
 
 **Current interruption devices (CIDs)** on individual cylindrical cells (discussed in Chapter 8) provide another layer of protection at the cell level, disconnecting cells that have developed excessive internal pressure from gas generation.
 
-### Current Sensing: Hall Effect and Shunt Methods
+\subsection{Current Sensing: Hall Effect and Shunt Methods}
+
 
 Accurate current measurement is the foundation of coulomb counting (SOC estimation), power calculation, and fault detection in a BMS. Two measurement approaches dominate:
 
@@ -4860,7 +5508,8 @@ A third sensing technology is gaining traction in automotive BMS: **magnetoresis
 
 The accuracy of current measurement directly limits the accuracy of SOC estimation by coulomb counting. A 0.5% current measurement error means that over a 1C discharge (3600 seconds), the integrated charge error grows to approximately 0.5% of capacity — seemingly small, but equivalent to 15 mAh error in a 3 Ah cell. Over multiple cycles, if the error is systematic (biased high or low rather than random), the accumulated error can drift significantly. This is why battery management algorithms incorporate periodic SOC recalibration events (rest periods where OCV is measured and used to reset the coulomb count) — the coulomb counting integral is accurate for short-term dynamics but needs anchor points from voltage measurements.
 
-### Isolation Monitoring
+\subsection{Isolation Monitoring}
+
 
 At high voltage, the insulation between the HV bus and the vehicle chassis (which is at chassis ground, typically connected to the 12V system negative) must be maintained to prevent electric shock hazard. **Isolation resistance** between the HV bus and chassis ground must remain above a minimum value — typically 100–500 Ω/V of bus voltage, or 40–200 kΩ for a 400V system — to comply with automotive safety standards (ISO 6469, FMVSS 305). The Ω/V unit reflects the underlying safety requirement: the leakage current through the insulation (equal to $V_\text{bus}/R_\text{insulation}$) must stay below a safe threshold regardless of bus voltage. Specifying isolation resistance in Ω/V ensures that a 400V system requires proportionally higher insulation resistance than a 48V system to achieve the same maximum leakage current. Think of it as a minimum impedance normalised to voltage — analogous to how per-unit impedance in power systems normalises to base voltage.
 
@@ -4868,15 +5517,18 @@ An **isolation monitoring device (IMD)** continuously measures the insulation re
 
 ---
 
-## CAN Bus and BMS Communication Basics
+\section{CAN Bus and BMS Communication Basics}
+
 
 A battery management system is not a monolithic device — it is a distributed system of sensors, processors, and actuators that must exchange information in real time. The communication architecture that connects these components is as important as the hardware itself, and the dominant standard in automotive applications is the **Controller Area Network (CAN) bus** — a protocol you may know from automotive electronics that we will now see applied specifically to battery management.
 
-### Why a Dedicated Communication Network?
+\subsection{Why a Dedicated Communication Network?}
+
 
 A battery pack in an EV contains, at minimum, the following subsystems that must communicate: a **master BMS** (the central controller that makes system-level decisions), multiple **cell monitoring ICs (CMICs)** measuring individual cell voltages and temperatures across the pack, a **current sensor module** measuring pack current, **contactor drivers and feedback circuits** controlling and monitoring the HV contactors, **balancing circuits** (active or passive, covered in Chapter 11), an **isolation monitoring device (IMD)**, and **thermal management actuators** (coolant pump, cooling fans, heaters). These components may be physically distributed across a large pack (up to 2 metres long in an EV floor-mounted pack) and must exchange data reliably in real time, in the presence of electrical noise from the inverter and motor. A robust communication protocol is essential.
 
-### CAN Bus Fundamentals
+\subsection{CAN Bus Fundamentals}
+
 
 The **CAN bus** (ISO 11898) is a two-wire, differential serial protocol originally developed by Bosch in the 1980s for automotive control systems. Its key properties make it well-suited to battery management:
 
@@ -4890,7 +5542,8 @@ The **CAN bus** (ISO 11898) is a two-wire, differential serial protocol original
 
 For automotive battery systems, two CAN variants are common: **CAN 2.0B** (classical CAN, 1 Mbit/s maximum) for most BMS communication; and **CAN FD** (CAN with Flexible Data rate, up to 8 Mbit/s) for higher-bandwidth applications like physics-based model data transfer or high-frequency thermal monitoring in advanced BMS designs.
 
-### BMS Communication Architecture
+\subsection{BMS Communication Architecture}
+
 
 A typical EV BMS has two communication layers:
 
@@ -4900,7 +5553,8 @@ A typical EV BMS has two communication layers:
 
 The specific messages broadcast by a BMS on the vehicle CAN bus are standardised to varying degrees. The **Open Vehicle Monitoring System (OVMS)** and **CANDB++ DBC** file formats are widely used to document and decode BMS CAN messages. For EV fleet management and research, the ability to parse BMS CAN data is an essential skill — it provides real-time access to all the metrics we defined in Chapter 3 (SOC, SOH, temperature, current, voltage) directly from the running vehicle.
 
-### BMS Message Content and Timing
+\subsection{BMS Message Content and Timing}
+
 
 A master BMS typically broadcasts the following data on the vehicle CAN bus, at various update rates:
 
@@ -4914,7 +5568,8 @@ A master BMS typically broadcasts the following data on the vehicle CAN bus, at 
 
 The volume of data from a large pack is substantial. A $96\text{s}2\text{p}$ pack in the parallel-first topology requires 96 cell-group voltage readings per update cycle (each parallel group shares a common terminal voltage that is monitored as a single channel). At 10 ms cycle time and 16-bit resolution per voltage, the raw data rate is $96 \times 2 / 0.01 = 19.2$ kByte/s — well within CAN's 1 Mbit/s bandwidth, but requiring careful message scheduling to avoid bus congestion during peak measurement periods. For larger packs (e.g., $96\text{s}48\text{p}$ with 4,608 cells), the number of monitored channels is still 96; it is the series count $n_s$, not the total cell count, that determines the CMIC channel count in a parallel-first architecture.
 
-### The BMS State Machine
+\subsection{The BMS State Machine}
+
 
 The BMS's core logic is a state machine that governs pack operation. The states and transitions are defined by IEC 62619 (for stationary storage) and by OEM-specific specifications for vehicles. A minimal BMS state machine includes:
 
@@ -4934,7 +5589,10 @@ The state machine is implemented in the master BMS controller's firmware and is 
 
 ---
 
-## Worked Interpretation Exercise: Reconstructing Pack Parameters from CAN Bus Data
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reconstructing Pack Parameters from CAN Bus Data}
+
+\specialsectionstyle
+
 
 Let us apply the chapter's content to a practical scenario that you will encounter in real research: extracting and interpreting CAN bus data from a commercial EV battery system.
 
@@ -4950,16 +5608,18 @@ Now let us interpret these values against the pack architecture we know.
 
 **Pack configuration**: The second-generation 40 kWh Leaf pack uses $96\text{s}2\text{p}$ with Leaf-specific NMC/graphite pouch cells (nominal ~56 Ah per cell, 3.75 V nominal). Check: $E_\text{pack} = 96 \times 3.75 \times 2 \times 56 = 40{,}320$ Wh $\approx 40$ kWh — consistent with the rated capacity. The nominal pack voltage is $V_\text{pack} = 96 \times 3.75 = 360$ V. The 371.2 V reading is consistent with a nominal 360V pack at approximately 75% SOC (above the 360V nominal, indicating the OCV at 75% SOC is above nominal voltage — consistent with a sloped NMC OCV curve above mid-SOC). Verified.
 
-**Current interpretation**: $-42.5$ A with both contactors closed means the pack is accepting 42.5 A of charge current. At 371.2 V, the charging power is $371.2 \times 42.5 = 15{,}776$ W $\approx 15.8$ kW. This is well above the Leaf's standard 6.6 kW Level 2 onboard charger but below its 50 kW CHAdeMO DC fast charging peak. The 15.8 kW DC-side power is most likely a CHAdeMO session at a reduced rate (the charger or BMS may have limited power due to SOC, temperature, or grid constraints), or it could correspond to AC charging through the optional 22 kW three-phase onboard charger available in European markets. Notice how the CAN data alone does not tell you the charging source — it tells you the DC-side power being delivered to the pack, and you must infer the source from the power level and context.
+**Current interpretation**: $-42.5$ A with both contactors closed means the pack is accepting 42.5 A of charge current. At 371.2 V, the charging power is $371.2 \times 42.5 = 15{,}776$ W $\approx 15.8$ kW. This is well above the Leaf's 3.6–6.6 kW onboard AC charger range but below its 40–50 kW CHAdeMO DC fast charging peak. So the most plausible interpretation is a **DC fast-charging session operating below peak power** — perhaps because the charger or BMS has already begun tapering current due to SOC, temperature, or grid constraints. Notice how the CAN data alone does not tell you the charging source directly — it tells you the DC-side power being delivered to the pack, and you must infer the source from the power level and vehicle context.
 
 **SOC discrepancy**: The display SOC (73%) and internal SOC (75.2%) differ by 2.2 percentage points. This is deliberate — the Leaf (like most BEVs) displays a protected SOC that has safety margins applied at both ends: the display reads 0% before the pack is actually empty (protecting against deep discharge), and reads 100% before the pack is actually full (protecting against overcharge). The 2.2% gap at 75% display SOC suggests the protection buffer is larger at the bottom of the range (0% display = ~2% actual SOC) and smaller or zero at top of range for this particular state.
 
 **Available power**: 95.4 kW is the BMS's estimated maximum discharge power available at this SOC and temperature. This is computed from the HPPC-derived $R_\text{int}(\text{SOC}, T)$ map and the minimum allowed cell voltage, using the power-limiting equations:
 
-$$I_\text{max,discharge} = \frac{V_\text{OCV,pack} - n_s \cdot V_\text{min,cell}}{R_\text{int,pack}} \tag{9.11a}$$
-
-$$P_\text{max,discharge} = I_\text{max,discharge} \times n_s \cdot V_\text{min,cell} \tag{9.11b}$$
-
+\begin{equation}
+I_\text{max,discharge} = \frac{V_\text{OCV,pack} - n_s \cdot V_\text{min,cell}}{R_\text{int,pack}} \tag{9.11a}
+\end{equation}
+\begin{equation}
+P_\text{max,discharge} = I_\text{max,discharge} \times n_s \cdot V_\text{min,cell} \tag{9.11b}
+\end{equation}
 Here $V_\text{OCV,pack}$ is the present open-circuit voltage of the pack (a function of SOC and temperature) and $n_s \cdot V_\text{min,cell}$ is the pack terminal voltage at which discharge must stop. The BMS uses the HPPC-derived $R_\text{int}(\text{SOC}, T)$ map to evaluate this limit in real time. Notice that the deliverable power at maximum current is $I_\text{max} \times V_\text{min}$, not $I_\text{max} \times V_\text{OCV}$, because at the maximum current the terminal voltage has dropped to its lower limit.
 
 At 75% SOC and 24°C, the internal resistance is moderate and the OCV is comfortably above the minimum cell voltage, allowing full power delivery. This value would decrease as the pack cools, as SOC decreases, or as the pack ages.
@@ -4968,7 +5628,12 @@ This kind of CAN bus analysis — taking raw decoded frames and reconstructing t
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 Pack architecture for sodium-ion batteries follows the same series-parallel topology, contactor/precharge/fuse design, and CAN communication framework as lithium-ion packs. The engineering changes are in the specific parameters, not the structural approach.
 
@@ -4986,7 +5651,12 @@ Pack architecture for sodium-ion batteries follows the same series-parallel topo
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -5001,29 +5671,41 @@ Pack architecture for sodium-ion batteries follows the same series-parallel topo
 
 **Key equations:**
 
-$$V_\text{pack} = n_s V_\text{cell} \tag{9.1}$$
-
-$$Q_\text{pack} = n_p Q_\text{cell} \tag{9.5}$$
-
+\begin{equation}
+V_\text{pack} = n_s V_\text{cell} \tag{9.1}
+\end{equation}
+\begin{equation}
+Q_\text{pack} = n_p Q_\text{cell} \tag{9.5}
+\end{equation}
 $$E_\text{pack} = n_s n_p \, V_\text{cell} \, Q_\text{cell}$$
 
-$$R_\text{pack,series} = n_s R_\text{cell};\quad R_\text{pack,parallel} = R_\text{cell}/n_p \tag{9.3, 9.6}$$
-
-$$I_\text{inrush} = V_\text{pack}/R_\text{pack,int} \quad \text{(without precharge)} \tag{9.8}$$
-
-$$\tau_\text{precharge} = R_\text{precharge} \times C_\text{bus} \tag{9.9}$$
-
-$$E_\text{precharge} = \tfrac{1}{2}C_\text{bus}V_\text{pack}^2 \tag{9.10}$$
-
-$$I_\text{max,discharge} = \frac{V_\text{OCV,pack} - n_s \, V_\text{min,cell}}{R_\text{int,pack}};\quad P_\text{max,discharge} = I_\text{max,discharge} \times n_s \, V_\text{min,cell} \tag{9.11}$$
-
+\begin{equation}
+R_\text{pack,series} = n_s R_\text{cell};\quad R_\text{pack,parallel} = R_\text{cell}/n_p \tag{9.3, 9.6}
+\end{equation}
+\begin{equation}
+I_\text{inrush} = V_\text{pack}/R_\text{pack,int} \quad \text{(without precharge)} \tag{9.8}
+\end{equation}
+\begin{equation}
+\tau_\text{precharge} = R_\text{precharge} \times C_\text{bus} \tag{9.9}
+\end{equation}
+\begin{equation}
+E_\text{precharge} = \tfrac{1}{2}C_\text{bus}V_\text{pack}^2 \tag{9.10}
+\end{equation}
+\begin{equation}
+I_\text{max,discharge} = \frac{V_\text{OCV,pack} - n_s \, V_\text{min,cell}}{R_\text{int,pack}};\quad P_\text{max,discharge} = I_\text{max,discharge} \times n_s \, V_\text{min,cell} \tag{9.11}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Series string, parallel group, $n_s\text{s}n_p\text{p}$ notation, pack voltage, pack capacity, pack energy, cell count, series-first topology, parallel-first topology, cell-to-cell variation, capacity spread, resistance spread, OCV spread, self-discharge spread, weak link effect, SOC divergence, current imbalance, temperature non-uniformity, aging heterogeneity, cell grading, cell binning, contactor, precharge circuit, precharge resistor, precharge time constant, main positive contactor, negative contactor, inrush current, contact welding, magnetic blowout coil, snubber capacitor, pyrotechnic fuse, current interrupt device (CID), Hall-effect current sensor, shunt resistor, magnetoresistive (xMR) sensor, isolation monitoring device (IMD), insulation resistance, CAN bus (ISO 11898), CANH/CANL, differential signaling, multi-master arbitration, wired-AND arbitration, cell monitoring IC (CMIC), daisy-chain topology, BMS state machine, IDLE, PRECHARGING, ACTIVE, FAULT, BALANCING.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The deliverable for Chapters 9–12 is the same unified exercise from the chapter plan: completing Plett's Coursera specialisation "Algorithms for Battery Management Systems," Courses 1 and 2, and working through the MATLAB assignments. This chapter is the architectural foundation for that work.
 
@@ -5043,7 +5725,12 @@ Precharge energy: $E = \frac{1}{2} \times 2 \times 10^{-3} \times 518.4^2 = 268.
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Plett, G. L., *Battery Management Systems, Vol. 1: Battery Modeling*, Artech House (2015), Chapter 1.** Plett's first chapter covers cell and pack electrical models including the series/parallel topology analysis in a form directly compatible with the MATLAB/Simulink modelling work in his Coursera course. Chapters 1–2 are the direct preparatory reading for Part VI of this book.
 
@@ -5054,13 +5741,17 @@ Precharge energy: $E = \frac{1}{2} \times 2 \times 10^{-3} \times 518.4^2 = 268.
 4. **Xiong, R. et al., *Battery Management Algorithm for Electric Vehicles*, Springer (2020), Chapter 2.** A detailed treatment of BMS hardware architecture including contactor circuits, precharge design, current sensing selection, and isolation monitoring — with automotive-specific design examples. Chapter 2 is the most directly relevant to Section 9.3.
 
 5. **Bosch, *CAN Specification Version 2.0*, Robert Bosch GmbH (1991), available at <https://www.bosch-semiconductors.com/>.** The original CAN specification, still the authoritative reference. Remarkably readable for a hardware protocol spec. Section 3 (bit timing, arbitration, error handling) is directly relevant to understanding the robustness properties described in Section 9.4.
+\bodytextstyle
+
 
 
 \newpage
 
-# State Estimation
+\chapter{State Estimation}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Imagine you are driving an electric vehicle. The instrument cluster shows 47% battery remaining. You are 80 kilometres from home, and the navigation system estimates 75 kilometres of range. You decide to take a detour. How much can you trust that 47%?
 
@@ -5102,16 +5793,21 @@ By the end of this chapter, you will be able to describe the ECM + Kalman filter
 
 ---
 
-## Coulomb Counting and Its Drift Problem
+\bodytextstyle
+
+\section{Coulomb Counting and Its Drift Problem}
+
 
 The most direct approach to estimating state of charge is also the oldest: integrate the current. If you know how much charge has entered or left the battery since it was last at a known reference state, you know the current charge level.
 
-### The Basic Algorithm
+\subsection{The Basic Algorithm}
+
 
 Coulomb counting (also called **current integration** or **ampere-hour integration**) implements the following discrete-time recursion:
 
-$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k) \cdot \Delta t}{Q_\text{max}} \tag{10.1}$$
-
+\begin{equation}
+\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k) \cdot \Delta t}{Q_\text{max}} \tag{10.1}
+\end{equation}
 where $\text{SOC}(k)$ is the estimated SOC at time step $k$, $i(k)$ is the measured current at time step $k$ (positive for discharge, negative for charge by the convention used here), $\Delta t$ is the sampling interval, $\eta_i$ is the **Coulombic efficiency**, and $Q_\text{max}$ is the current maximum capacity of the battery in amp-hours.
 
 The Coulombic efficiency $\eta_i$ deserves a moment of attention. During discharge, essentially all the charge that leaves the battery corresponds to lithium (or sodium) ions actually de-intercalating from the anode — $\eta_i \approx 1$. During charge, however, a small fraction of the applied current drives parasitic side reactions (primarily SEI growth on the anode, as we established in Chapters 2 and 7) rather than intercalating ions. This fraction is "lost" in the sense that it consumes charge without increasing SOC. For a well-aged lithium-ion cell, $\eta_i$ during charge is typically 0.998–0.999; for a fresh cell still forming its SEI, it can be 0.99 or lower. For sodium-ion hard carbon anodes, the initial Coulombic efficiency is significantly lower (70–85%), which we will revisit in the SIB section.
@@ -5126,12 +5822,14 @@ After 30 minutes at 1C, the SOC estimate is 30%. This is correct by construction
 
 The problem is that none of those three "exactlys" hold in practice. Each one is an approximation, and their combined errors accumulate over time in a way that makes the estimate increasingly unreliable.
 
-### The Three Sources of Drift
+\subsection{The Three Sources of Drift}
+
 
 **Source 1 — Current sensor error**: Every current sensor has a combination of gain error, offset error, and noise. The offset error is the most damaging for coulomb counting because it is systematic — a constant offset integrates linearly with time. For a Hall-effect sensor with a 50 mA offset error and a 3.0 Ah cell, the SOC error after one hour of continuous operation at any current is:
 
-$$\Delta \text{SOC}_\text{offset} = \frac{I_\text{offset} \times t}{Q_\text{max} \times 3600} = \frac{0.05 \times 3600}{3.0 \times 3600} = \frac{0.05}{3.0} \approx 1.7\% \text{ SOC per hour} \tag{10.1a}$$
-
+\begin{equation}
+\Delta \text{SOC}_\text{offset} = \frac{I_\text{offset} \times t}{Q_\text{max} \times 3600} = \frac{0.05 \times 3600}{3.0 \times 3600} = \frac{0.05}{3.0} \approx 1.7\% \text{ SOC per hour} \tag{10.1a}
+\end{equation}
 where the factor of 3600 in the denominator converts $Q_\text{max}$ from amp-hours to coulombs for dimensional consistency with $I_\text{offset}$ (in amps) and $t$ (in seconds).
 
 After 8 hours of operation, a 50 mA offset accumulates a 13.5% SOC error — enough to be practically significant. Hall sensors can have offsets of 50–200 mA; precision shunt sensors have lower offsets (5–20 mA) but are not immune.
@@ -5148,7 +5846,8 @@ Noise error is manageable with filtering and is much smaller than offset or gain
 
 **Source 3 — Unknown initial SOC**: Equation (10.1) requires a known starting SOC. If the battery has been resting for an unknown time (the car was parked, the grid storage system was offline for maintenance), the initial SOC must either be assumed or measured from OCV. Any error in the initial SOC is not a drift — it is a fixed offset bias that persists forever until corrected.
 
-### The Compounding Problem
+\subsection{The Compounding Problem}
+
 
 These three error sources compound. After a day of driving with a 50 mA offset error, a 0.5% gain error, and an initial SOC uncertainty of 2%, the SOC estimate can be off by 5–10% or more. In a 60 kWh EV pack, a 5% SOC error corresponds to 3 kWh of misattributed energy — the difference between "I have enough range to reach my destination" and "I do not." This is not a theoretical concern; early BMS implementations with inadequate current sensor calibration and no correction mechanisms produced exactly these kinds of errors, manifest as range anxiety and unexpected low-battery warnings.
 
@@ -5156,23 +5855,27 @@ The obvious engineering response is to periodically recalibrate. When the batter
 
 ---
 
-## OCV-Based SOC Lookup and Why Flat OCV Curves Break It
+\section{OCV-Based SOC Lookup and Why Flat OCV Curves Break It}
+
 
 The second pillar of SOC estimation is the relationship between open-circuit voltage and state of charge. If you know the OCV curve — $E_\text{OCV}(\text{SOC})$ — and you can measure the OCV, you can invert the relationship to get the SOC:
 
-$$\hat{\text{SOC}} = f^{-1}(E_\text{OCV}) \tag{10.2}$$
-
+\begin{equation}
+\hat{\text{SOC}} = f^{-1}(E_\text{OCV}) \tag{10.2}
+\end{equation}
 where $f^{-1}$ denotes the inverse of the OCV-SOC function.
 
 In principle, this provides a recalibration anchor for coulomb counting: whenever the battery has been at rest long enough for the terminal voltage to relax to true OCV, you can read off the SOC from the OCV-SOC curve and reset the coulomb counting estimate. In practice, several complications limit this approach.
 
-### The Rest Time Problem
+\subsection{The Rest Time Problem}
+
 
 As we established in Chapters 2 and 3, the terminal voltage after current stops is not immediately equal to the OCV. The concentration overpotentials and activation overpotentials take time to relax — on the order of minutes to hours for diffusion-limited polarisation in thick electrodes. A BMS that reads voltage 30 seconds after the current stops and looks up the result on the OCV curve will get a wrong answer: the voltage is still above OCV for charging (or below OCV for discharging) by the residual overpotential, and the SOC estimate will be biased.
 
 For automotive applications, rest periods are irregular and often short. A driver who parks for 5 minutes and then drives again does not give the battery time to reach true OCV equilibrium. Some BMS algorithms use a **relaxation model** — estimating how much of the overpotential has decayed after a given rest time, and correcting the voltage measurement accordingly — but this requires an accurate model of the overpotential decay dynamics, which is itself temperature- and SOC-dependent.
 
-### The OCV Curve Sensitivity
+\subsection{The OCV Curve Sensitivity}
+
 
 Assuming the battery has rested long enough for the terminal voltage to approximate the true OCV, we face a second question: how precisely can we convert that OCV reading into an SOC value? This depends entirely on the shape of the OCV-SOC curve, and the key quantity is its slope.
 
@@ -5180,8 +5883,9 @@ The intuition is straightforward. Think of the OCV-SOC curve as a ruler that map
 
 Let us make this quantitative. If the voltage measurement has an uncertainty of $\sigma_V$ (from sensor noise and residual relaxation error), the resulting SOC uncertainty is:
 
-$$\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \tag{10.3}$$
-
+\begin{equation}
+\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \tag{10.3}
+\end{equation}
 A steep OCV curve (large $|dE_\text{OCV}/d\text{SOC}|$) gives small SOC uncertainty from a given voltage uncertainty. A flat OCV curve (small $|dE_\text{OCV}/d\text{SOC}|$) gives large SOC uncertainty. In the limit of a perfectly flat plateau, $dE_\text{OCV}/d\text{SOC} = 0$ and equation (10.3) gives infinite SOC uncertainty — voltage provides literally no information about SOC.
 
 For a practical NMC/graphite cell, $dE_\text{OCV}/d\text{SOC}$ varies significantly with SOC. In the steepest regions (below 15% and above 85% SOC), the slope can exceed 2000 mV per unit SOC. In the flattest mid-SOC region — near the graphite Stage 2/Stage 2L transition around 40–55% SOC — it can dip to roughly 300–600 mV per unit SOC. Taking a conservatively flat mid-range value of 500 mV per unit SOC (i.e., a 500 mV OCV change per 100% SOC change), with a voltage measurement uncertainty of $\sigma_V = 5$ mV (a realistic value for a well-calibrated cell voltage monitor with 16-bit ADC resolution over a 4 V range):
@@ -5196,7 +5900,8 @@ $$\sigma_\text{SOC,LFP} = \frac{0.005}{0.025} = 0.20 = 20\%$$
 
 A 20% SOC uncertainty from a 5 mV voltage error renders the OCV measurement essentially useless for SOC estimation in the LFP plateau. Only at the top and bottom of the SOC range, where the curve steepens dramatically (slopes exceeding 1000 mV per unit SOC), does OCV become informative. For the majority of the LFP cell's operating range, a BMS must rely entirely on coulomb counting — with all the drift problems that implies.
 
-### The SIB Hard Carbon Flat Plateau: A More Severe Version of the LFP Problem
+\subsection{The SIB Hard Carbon Flat Plateau: A More Severe Version of the LFP Problem}
+
 
 For a sodium-ion cell with a hard carbon anode, the full-cell OCV during the plateau region of hard carbon sodiation (approximately 20–50% of the total cell capacity, as established in Chapter 6) is nearly constant. The full cell voltage in this region is approximately the cathode OCV (which itself may be relatively flat for some cathode chemistries) minus the nearly-zero anode potential — producing a doubly-flat region in the full cell OCV.
 
@@ -5216,13 +5921,15 @@ This is compounded by the **hysteresis** in the hard carbon OCV curve. The slope
 
 ---
 
-## Model-Based Estimation: The ECM + Kalman Filter
+\section{Model-Based Estimation: The ECM + Kalman Filter}
+
 
 The limitations of coulomb counting (drift without correction) and OCV lookup (works poorly on flat curves) motivate a more principled approach: a dynamic model that describes how the battery's terminal voltage responds to the current profile, combined with an optimal filter that continuously fuses the model prediction with the voltage measurement to correct the SOC estimate.
 
 The dominant framework for this approach in commercial BMS applications is the **equivalent circuit model (ECM)** paired with an **extended Kalman filter (EKF)**. This pairing was systematised and popularised by Gregory Plett in a series of papers beginning in 2004 and subsequently in his textbook *Battery Management Systems* — the primary source recommended in the chapter plan.
 
-### The Equivalent Circuit Model
+\subsection{The Equivalent Circuit Model}
+
 
 An equivalent circuit model represents the battery's electrical behaviour using a circuit consisting of an ideal voltage source (the OCV), a series resistance (the ohmic resistance $R_0$), and one or more parallel RC networks (representing the dynamic polarisation response). The most commonly used form is the **second-order RC model** (also called the **two-RC model** or **Dual Polarization model**):
 
@@ -5245,50 +5952,63 @@ The second RC pair ($R_2$, $C_2$) represents the **concentration polarisation** 
 
 The terminal voltage predicted by this model is:
 
-$$V_\text{terminal}(t) = E_\text{OCV}(\text{SOC}) - R_0 \cdot i(t) - V_{C_1}(t) - V_{C_2}(t) \tag{10.4}$$
-
+\begin{equation}
+V_\text{terminal}(t) = E_\text{OCV}(\text{SOC}) - R_0 \cdot i(t) - V_{C_1}(t) - V_{C_2}(t) \tag{10.4}
+\end{equation}
 where $V_{C_1}$ and $V_{C_2}$ are the voltages across the two capacitors, governed by:
 
-$$\dot{V}_{C_1} = -\frac{V_{C_1}}{R_1 C_1} + \frac{i}{C_1} = -\frac{V_{C_1}}{\tau_1} + \frac{i}{C_1} \tag{10.5}$$
-
-$$\dot{V}_{C_2} = -\frac{V_{C_2}}{R_2 C_2} + \frac{i}{C_2} = -\frac{V_{C_2}}{\tau_2} + \frac{i}{C_2} \tag{10.6}$$
-
+\begin{equation}
+\dot{V}_{C_1} = -\frac{V_{C_1}}{R_1 C_1} + \frac{i}{C_1} = -\frac{V_{C_1}}{\tau_1} + \frac{i}{C_1} \tag{10.5}
+\end{equation}
+\begin{equation}
+\dot{V}_{C_2} = -\frac{V_{C_2}}{R_2 C_2} + \frac{i}{C_2} = -\frac{V_{C_2}}{\tau_2} + \frac{i}{C_2} \tag{10.6}
+\end{equation}
 These two differential equations describe the charge/discharge of the polarisation capacitors in response to the applied current. At steady state (constant current for $t \gg \tau_1, \tau_2$), $V_{C_j} = R_j \cdot i$, and the total steady-state voltage drop across the RC networks is $R_1 i + R_2 i$, consistent with the DC polarisation overpotential.
 
-### The State-Space Formulation
+\subsection{The State-Space Formulation}
+
 
 To apply the Kalman filter, we need the ECM in discrete-time state-space form. Recall from your controls coursework that a state-space model describes a dynamic system by choosing a set of internal variables — the **state vector** $\mathbf{x}$ — that fully characterise the system's memory (everything the system "remembers" from the past that affects its future behaviour). The state evolves according to a transition equation ($\mathbf{x}(k) = f(\mathbf{x}(k-1), u(k-1))$), and the measurable output is a function of the state ($y(k) = h(\mathbf{x}(k), u(k))$). For our ECM, the "input" $u$ is the current $i$, the "output" $y$ is the terminal voltage, and the internal states are the quantities that carry memory from one time step to the next.
 
 What are those quantities? The SOC itself is one — it tracks the accumulated charge and determines the OCV. The voltages across the polarisation capacitors ($V_{C_1}$ and $V_{C_2}$) are the others — they carry the memory of recent current history and determine the dynamic voltage drops. Together, these three quantities fully characterise the battery's electrical state at any instant. Define the state vector:
 
-$$\mathbf{x}(k) = \begin{bmatrix} \text{SOC}(k) \\ V_{C_1}(k) \\ V_{C_2}(k) \end{bmatrix} \tag{10.7}$$
-
+\begin{equation}
+\mathbf{x}(k) = \begin{bmatrix} \text{SOC}(k) \\ V_{C_1}(k) \\ V_{C_2}(k) \end{bmatrix} \tag{10.7}
+\end{equation}
 The state transition equations (using first-order Euler discretisation with sampling interval $\Delta t$, or the exact zero-order hold for the RC equations) are:
 
-$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k-1) \cdot \Delta t}{Q_\text{max}} \tag{10.8}$$
-
-$$V_{C_1}(k) = e^{-\Delta t/\tau_1} V_{C_1}(k-1) + R_1(1 - e^{-\Delta t/\tau_1}) i(k-1) \tag{10.9}$$
-
-$$V_{C_2}(k) = e^{-\Delta t/\tau_2} V_{C_2}(k-1) + R_2(1 - e^{-\Delta t/\tau_2}) i(k-1) \tag{10.10}$$
-
+\begin{equation}
+\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k-1) \cdot \Delta t}{Q_\text{max}} \tag{10.8}
+\end{equation}
+\begin{equation}
+V_{C_1}(k) = e^{-\Delta t/\tau_1} V_{C_1}(k-1) + R_1(1 - e^{-\Delta t/\tau_1}) i(k-1) \tag{10.9}
+\end{equation}
+\begin{equation}
+V_{C_2}(k) = e^{-\Delta t/\tau_2} V_{C_2}(k-1) + R_2(1 - e^{-\Delta t/\tau_2}) i(k-1) \tag{10.10}
+\end{equation}
 The output (measurement) equation is:
 
-$$V_\text{terminal}(k) = E_\text{OCV}(\text{SOC}(k)) - R_0 \cdot i(k) - V_{C_1}(k) - V_{C_2}(k) + w(k) \tag{10.11}$$
-
+\begin{equation}
+V_\text{terminal}(k) = E_\text{OCV}(\text{SOC}(k)) - R_0 \cdot i(k) - V_{C_1}(k) - V_{C_2}(k) + w(k) \tag{10.11}
+\end{equation}
 where $w(k)$ is the measurement noise (voltage sensor noise).
 
 In compact form, this is a nonlinear state-space system:
 
-$$\mathbf{x}(k) = \mathbf{A}\mathbf{x}(k-1) + \mathbf{B}i(k-1) + \mathbf{q}(k-1) \tag{10.12}$$
-$$y(k) = h(\mathbf{x}(k), i(k)) + w(k) \tag{10.13}$$
-
+\begin{equation}
+\mathbf{x}(k) = \mathbf{A}\mathbf{x}(k-1) + \mathbf{B}i(k-1) + \mathbf{q}(k-1) \tag{10.12}
+\end{equation}
+\begin{equation}
+y(k) = h(\mathbf{x}(k), i(k)) + w(k) \tag{10.13}
+\end{equation}
 where $\mathbf{A}$ and $\mathbf{B}$ are the state transition and input matrices encoding equations (10.8)–(10.10), $h(\cdot)$ is the nonlinear measurement function in equation (10.11), $\mathbf{q}$ is the process noise (modelling uncertainty in the state equations, including current sensor error), and $w$ is the measurement noise.
 
 The system is nonlinear because $E_\text{OCV}(\text{SOC})$ is a nonlinear function of SOC. This is what requires the **Extended** Kalman filter rather than the standard (linear) Kalman filter.
 
 If your controls coursework covered observability, you may recognise the flat-OCV problem as a loss of observability. A system is observable if its internal state can be uniquely determined from a finite history of output measurements. For the ECM state-space model, the observability matrix depends on the Jacobian $\mathbf{C}$, which contains $dE_\text{OCV}/d\text{SOC}$ as its first element. When this derivative approaches zero, the system loses observability for the SOC state — the voltage output becomes insensitive to SOC, and no amount of voltage data can determine where the cell is within the plateau. The RC polarisation states $V_{C_1}$ and $V_{C_2}$ remain observable (their effect on voltage is always present through the $-1$ entries in $\mathbf{C}$), but SOC becomes a "hidden" state that the output cannot see. This is not a limitation of the EKF algorithm — it is a property of the physical system, and no algorithm can extract information that the physics does not provide.
 
-### The Extended Kalman Filter
+\subsection{The Extended Kalman Filter}
+
 
 The standard Kalman filter is an optimal recursive estimator for linear systems with Gaussian noise. A common misconception deserves attention here. The Kalman filter is "optimal" in a very specific sense: it minimises the mean-squared estimation error among all linear estimators, given a linear system with Gaussian noise and perfectly known model parameters. Three caveats follow immediately. First, the ECM is not linear — the OCV function is nonlinear — so we use the *Extended* KF, which linearises at each step and is therefore *not* guaranteed to be optimal. It is a good approximation when the nonlinearity is mild (which it usually is, except in the plateau region where the OCV curve has a sharp slope change). Second, the noise is not truly Gaussian — current sensor errors have systematic components (bias, temperature drift) that violate the Gaussian assumption. Third, and most importantly, the filter is only as good as its model: if the ECM parameters are wrong (because the cell has aged, or the temperature has changed, or the OCV table is inaccurate), the "optimal" filter produces suboptimal results. In practice, the EKF works well not because it is optimal in the mathematical sense, but because it is robust — it degrades gracefully when assumptions are violated, and it can be augmented with adaptive parameter estimation (Section 10.4) to track slow model changes.
 
@@ -5296,37 +6016,44 @@ For the nonlinear ECM, we use the Extended Kalman Filter (EKF), which linearises
 
 **Prediction step** (propagate the state forward using the model):
 
-$$\hat{\mathbf{x}}^-(k) = \mathbf{A}\hat{\mathbf{x}}(k-1) + \mathbf{B}i(k-1) \tag{10.14}$$
-
-$$\mathbf{P}^-(k) = \mathbf{A}\mathbf{P}(k-1)\mathbf{A}^T + \mathbf{Q} \tag{10.15}$$
-
+\begin{equation}
+\hat{\mathbf{x}}^-(k) = \mathbf{A}\hat{\mathbf{x}}(k-1) + \mathbf{B}i(k-1) \tag{10.14}
+\end{equation}
+\begin{equation}
+\mathbf{P}^-(k) = \mathbf{A}\mathbf{P}(k-1)\mathbf{A}^T + \mathbf{Q} \tag{10.15}
+\end{equation}
 where $\hat{\mathbf{x}}^-$ is the a priori (before measurement) state estimate, $\mathbf{P}^-$ is the a priori error covariance matrix (a $3 \times 3$ matrix for the two-RC model), and $\mathbf{Q}$ is the process noise covariance matrix (encoding our uncertainty in the state equations themselves).
 
 **Update step** (correct the prediction using the new voltage measurement):
 
 First, compute the linearised measurement matrix $\mathbf{C}(k)$ — the Jacobian of the measurement function $h$ with respect to the state, evaluated at the current estimate:
 
-$$\mathbf{C}(k) = \frac{\partial h}{\partial \mathbf{x}}\bigg|_{\hat{\mathbf{x}}^-(k)} = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}}\bigg|_{\hat{\text{SOC}}^-} & -1 & -1 \end{bmatrix} \tag{10.16}$$
-
+\begin{equation}
+\mathbf{C}(k) = \frac{\partial h}{\partial \mathbf{x}}\bigg|_{\hat{\mathbf{x}}^-(k)} = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}}\bigg|_{\hat{\text{SOC}}^-} & -1 & -1 \end{bmatrix} \tag{10.16}
+\end{equation}
 The first element of $\mathbf{C}$ is the slope of the OCV curve evaluated at the current SOC estimate — and this is exactly where the flat-OCV problem enters the Kalman filter. If $dE_\text{OCV}/d\text{SOC} \approx 0$, the measurement matrix has near-zero first element, meaning the voltage measurement carries almost no information about SOC. The filter correctly "ignores" the voltage for SOC correction in this region and relies on the prediction (coulomb counting) instead.
 
 Then compute the Kalman gain $\mathbf{K}(k)$:
 
-$$\mathbf{K}(k) = \mathbf{P}^-(k)\mathbf{C}^T(k)\left[\mathbf{C}(k)\mathbf{P}^-(k)\mathbf{C}^T(k) + R\right]^{-1} \tag{10.17}$$
-
+\begin{equation}
+\mathbf{K}(k) = \mathbf{P}^-(k)\mathbf{C}^T(k)\left[\mathbf{C}(k)\mathbf{P}^-(k)\mathbf{C}^T(k) + R\right]^{-1} \tag{10.17}
+\end{equation}
 where $R$ is the measurement noise variance (the variance of the voltage sensor noise $w$). Note the notational overload: this $R$ is the scalar noise variance in the Kalman filter equations — not the resistance parameters $R_0$, $R_1$, $R_2$ of the ECM. Some textbooks use $\sigma_v^2$ or $R_w$ to avoid this collision; we follow Plett's convention and use $R$ for the measurement noise, relying on context to distinguish it from the circuit resistances.
 
 The Kalman gain $\mathbf{K}$ determines how much the state estimate should be corrected based on the measurement residual (the discrepancy between the measured voltage and the predicted voltage). It is the optimal trade-off between trusting the model prediction and trusting the measurement: when $\mathbf{P}^-$ is large (the state estimate is uncertain) relative to $R$ (the measurement noise), the gain is high and the measurement correction is large. When $\mathbf{P}^-$ is small (the estimate is confident) or $R$ is large (the sensor is noisy), the gain is low and the estimate barely moves.
 
 Finally, update the state estimate and covariance:
 
-$$\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)\left[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))\right] \tag{10.18}$$
-
-$$\mathbf{P}(k) = [\mathbf{I} - \mathbf{K}(k)\mathbf{C}(k)]\mathbf{P}^-(k) \tag{10.19}$$
-
+\begin{equation}
+\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)\left[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))\right] \tag{10.18}
+\end{equation}
+\begin{equation}
+\mathbf{P}(k) = [\mathbf{I} - \mathbf{K}(k)\mathbf{C}(k)]\mathbf{P}^-(k) \tag{10.19}
+\end{equation}
 The term $y(k) - h(\hat{\mathbf{x}}^-(k), i(k))$ is the **innovation** — the difference between what was measured and what the model predicted. If the innovation is consistently non-zero in a systematic direction (always positive, always increasing), it signals that the model is biased — either the OCV curve is wrong, the resistance parameters are wrong, or the $Q_\text{max}$ is wrong. The innovation signal is a rich diagnostic tool for identifying model parameter errors.
 
-### Intuition for the Kalman Filter
+\subsection{Intuition for the Kalman Filter}
+
 
 Let me offer the intuitive framing that makes the EKF feel natural rather than mechanical.
 
@@ -5344,7 +6071,8 @@ Sensor B is the voltage measurement, interpreted through the OCV curve. It provi
 
 The EKF is the optimal way to combine a drifting integrator with a noisy absolute reference — exactly the problem of fusing an inertial measurement unit (high-bandwidth, drifting) with a GPS receiver (low-bandwidth, absolute). If you have studied complementary filters in signal processing, the EKF is their principled, adaptive, model-based generalisation. The Kalman gain $\mathbf{K}$ adjusts the fusion weights at every time step based on how informative each "sensor" is at that moment — and in the flat-OCV region, Sensor B's SNR drops to near zero, leaving the estimator to coast on Sensor A alone.
 
-### ECM Parameter Identification
+\subsection{ECM Parameter Identification}
+
 
 The ECM parameters — $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ (or equivalently $R_1$, $\tau_1$, $R_2$, $\tau_2$), and the OCV-SOC curve — must be identified from experimental data. The standard approach is:
 
@@ -5354,15 +6082,17 @@ The ECM parameters — $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ (or equivalently $R_1$,
 
 **$R_1, \tau_1, R_2, \tau_2$**: Extracted from the voltage relaxation after HPPC pulses, fitting the exponential decay:
 
-$$V(t) = V_\infty + A_1 e^{-t/\tau_1} + A_2 e^{-t/\tau_2} \tag{10.20}$$
-
+\begin{equation}
+V(t) = V_\infty + A_1 e^{-t/\tau_1} + A_2 e^{-t/\tau_2} \tag{10.20}
+\end{equation}
 where $A_j = R_j \cdot I$ and $V_\infty$ is the final rested OCV value.
 
 All parameters are functions of SOC and temperature, so the identification is performed at multiple SOC setpoints (typically 10%, 20%, ..., 90%) and multiple temperatures (typically −20°C, 0°C, 10°C, 25°C, 40°C). The resulting parameter tables are stored in BMS memory and interpolated during runtime.
 
 For a full ECM characterisation of a single cell chemistry, the experimental effort is substantial: GITT at 5 temperatures × 9 SOC points (45 conditions) plus HPPC at the same 45 conditions, giving 90 individual test events in total — each requiring careful setup, equilibration, and post-processing. This is the hidden cost of deploying a model-based BMS — the upfront characterisation work is significant.
 
-### Comparing SOC Estimation Approaches
+\subsection{Comparing SOC Estimation Approaches}
+
 
 Before examining how the EKF performs specifically for SIBs, it is worth pausing to compare the three SOC estimation approaches we have developed. The table below summarises their key characteristics.
 
@@ -5379,7 +6109,8 @@ Before examining how the EKF performs specifically for SIBs, it is worth pausing
 
 The EKF's strength is clear: it inherits the short-term precision of coulomb counting and the long-term stability of OCV-based correction, at the cost of computational complexity and upfront parameterisation effort. Its weakness — the flat-OCV region — is inherited directly from the OCV lookup and is fundamental, not algorithmic.
 
-### The EKF for SIBs: What Changes
+\subsection{The EKF for SIBs: What Changes}
+
 
 The EKF framework applies identically to SIBs. The state vector is the same (SOC, $V_{C_1}$, $V_{C_2}$), the filter equations are the same, and the OCV-SOC curve is simply replaced with the SIB cell's OCV-SOC curve. The difference is in the performance of the filter during the flat OCV region.
 
@@ -5393,13 +6124,14 @@ The **particle filter** takes a different approach entirely: it represents the s
 
 A more physics-informed approach uses **online electrochemical impedance spectroscopy (EIS)** to extract SOC-dependent information beyond the DC voltage. The Warburg impedance component — which reflects solid-state diffusion within the electrode particles — changes with the local ion concentration and therefore with SOC, even in the plateau region where the DC voltage is flat. If the BMS hardware can inject a small AC perturbation and measure the impedance at specific frequencies, this provides an additional "sensor channel" for SOC that is independent of the OCV slope. The approach is promising but requires EIS measurement hardware beyond what most commercial BMS systems include today.
 
-Finally, **dual-model frameworks** take a pragmatic engineering approach: they run separate state estimators for the slope and plateau regions, with transition logic to switch between them based on the observed OCV dynamics. The slope-region estimator uses the standard EKF with full voltage correction; the plateau-region estimator relies on a carefully calibrated coulomb counter with temperature-dependent and ageing-dependent corrections applied to $Q_\text{max}$ and $\eta_i$. This approach sacrifices elegance for robustness and is the closest to what current commercial SIB BMS implementations use.
+Finally, **dual-model frameworks** take a pragmatic engineering approach: they run separate state estimators for the slope and plateau regions, with transition logic to switch between them based on the observed OCV dynamics. The slope-region estimator uses the standard EKF with full voltage correction; the plateau-region estimator relies on a carefully calibrated coulomb counter with temperature-dependent and ageing-dependent corrections applied to $Q_\text{max}$ and $\eta_i$. This approach sacrifices elegance for robustness and is a plausible engineering direction for early commercial SIB BMS implementations, though vendor-specific implementations are rarely disclosed in detail.
 
 The SOC estimation challenge for SIBs is one of the most practically important open problems in SIB systems engineering, and it is a legitimate target for EE-focused simulation research. We will return to it in Chapter 13.
 
 ---
 
-## SOH Estimation: Capacity-Based and Resistance-Based
+\section{SOH Estimation: Capacity-Based and Resistance-Based}
+
 
 SOC estimation tells you where the battery is right now. **State-of-health (SOH) estimation** tells you how the battery has changed from its original specification — the long-term degradation state that determines remaining useful life and future performance limits.
 
@@ -5407,13 +6139,16 @@ SOH estimation is harder than SOC estimation for a fundamental reason: SOC chang
 
 As defined in Chapter 3, there are two primary SOH metrics:
 
-$$\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{rated}} \times 100\% \quad \text{(capacity-based)} \tag{10.21}$$
-
-$$\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \times 100\% \quad \text{(resistance-based)} \tag{10.22}$$
-
+\begin{equation}
+\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{rated}} \times 100\% \quad \text{(capacity-based)} \tag{10.21}
+\end{equation}
+\begin{equation}
+\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \times 100\% \quad \text{(resistance-based)} \tag{10.22}
+\end{equation}
 Both must be estimated because they track different degradation modes (as we established in Chapter 7): LLI primarily drives capacity fade, while impedance growth (from SEI growth and particle cracking) drives resistance rise. A cell can have high SOH$_Q$ and low SOH$_R$ (or vice versa), and the correct operational response differs.
 
-### Capacity-Based SOH Estimation
+\subsection{Capacity-Based SOH Estimation}
+
 
 The maximum capacity $Q_\text{max}$ can be measured directly by performing a slow full charge-discharge cycle at C/20 and integrating the current. This gives the most accurate value but requires a full charge-discharge sequence — not always practical during normal operation.
 
@@ -5421,8 +6156,9 @@ For online SOH estimation (without dedicated reference tests), the BMS must esti
 
 **Direct integration between known reference points**: If the BMS observes the battery go from a rest-state OCV reading of $V_1$ (corresponding to SOC$_1$ from the OCV curve) to rest-state OCV reading of $V_2$ (corresponding to SOC$_2$), with total coulombs $\Delta Q$ flowing between the two rest events:
 
-$$Q_\text{max} = \frac{|\Delta Q| \cdot \eta_i}{|\text{SOC}_2 - \text{SOC}_1|} \tag{10.23}$$
-
+\begin{equation}
+Q_\text{max} = \frac{|\Delta Q| \cdot \eta_i}{|\text{SOC}_2 - \text{SOC}_1|} \tag{10.23}
+\end{equation}
 where $\Delta Q$ is the total charge throughput (in Ah) measured between the two rest events, and $\eta_i$ accounts for the fraction of charge that actually changes the SOC (versus charge consumed by side reactions). For discharge events where $\eta_i \approx 1$, this simplifies to $Q_\text{max} = |\Delta Q| / |\Delta\text{SOC}|$. The absolute value signs avoid sign confusion across different current conventions.
 
 This is accurate when the two OCV reference points are well separated in SOC (otherwise the denominator is small and the estimate is noisy), and when the OCV measurements are accurate (the flat-OCV problem applies here too — if both reference points are in the plateau region, the denominator $\text{SOC}_2 - \text{SOC}_1$ cannot be determined from OCV alone).
@@ -5431,21 +6167,24 @@ This is accurate when the two OCV reference points are well separated in SOC (ot
 
 **Incremental capacity analysis (ICA)**: As discussed in Chapter 7, the $dQ/dV$ curve is a diagnostic fingerprint for degradation. The area under specific peaks corresponds to specific portions of capacity, and as capacity fades, the peak areas decrease proportionally. An online ICA algorithm that tracks peak areas over cycles provides both capacity estimation and degradation mode identification — a rich but computationally demanding approach.
 
-### Resistance-Based SOH Estimation
+\subsection{Resistance-Based SOH Estimation}
+
 
 The ohmic resistance $R_0$ and the charge-transfer resistance $R_\text{ct}$ can be estimated from HPPC-style current pulses that occur naturally in a normal operating cycle. Every time the current changes significantly (an acceleration event in an EV, a step change in grid power demand), a short pulse is effectively applied to the battery and the voltage response can be used to extract impedance information.
 
 For real-time $R_0$ estimation:
 
-$$\hat{R}_0(k) = \frac{|V(k^+) - V(k^-)|}{\Delta I} \tag{10.24}$$
-
+\begin{equation}
+\hat{R}_0(k) = \frac{|V(k^+) - V(k^-)|}{\Delta I} \tag{10.24}
+\end{equation}
 where $V(k^+)$ is the voltage immediately after a current step of magnitude $\Delta I$ at time $k$, and $V(k^-)$ is the voltage immediately before. This is the instantaneous ohmic resistance extracted from the voltage jump at current steps — a technique that works whenever the current changes abruptly, which happens constantly during real drive cycles or variable-power grid operation.
 
 The estimated $R_0$ sequence is noisy at any single event but can be filtered with a **recursive least squares (RLS)** estimator or an EKF to produce a slowly-evolving estimate that tracks the true $R_0$ through aging. RLS is a classic adaptive filtering algorithm — it maintains a running estimate of a parameter (here, $R_0$) by incorporating each new observation with a weight that diminishes as the estimate becomes more confident. If you studied the Wiener filter or LMS adaptive filter in a signals course, RLS is their faster-converging, deterministic cousin: it uses the full inverse correlation matrix rather than a stochastic gradient, giving optimal convergence at each step at the cost of slightly more computation. For resistance tracking, RLS is well-suited because $R_0$ changes slowly (over weeks to months) and each new current-step event provides one fresh data point. The increase in estimated $R_0$ over the pack's life is a direct measure of resistance-based SOH degradation.
 
 For $R_\text{ct}$ and the RC time constants, online estimation is harder because it requires observing the full polarisation dynamics over time windows of 30–600 seconds — longer than many operational events. Dedicated periodic test pulses (inserted by the BMS during rest periods, for example during stationary charging with a deliberate current interruption) can provide cleaner estimates, but at the cost of small energy losses from the test pulses.
 
-### SOH Fusion: Combining Capacity and Resistance
+\subsection{SOH Fusion: Combining Capacity and Resistance}
+
 
 The most complete SOH assessment combines capacity-based and resistance-based estimates. A simple but effective approach is the **SOH map**: a two-dimensional space with SOH$_Q$ on one axis and SOH$_R$ on the other, in which different regions correspond to different dominant degradation modes (following the Birkl et al. framework from Chapter 7). As the pack ages, the SOH trajectory through this space reveals which degradation mechanisms are active and how their relative contributions evolve.
 
@@ -5455,33 +6194,39 @@ The SOH map approach is used in sophisticated fleet management systems where tra
 
 ---
 
-## Remaining Useful Life (RUL) Prediction
+\section{Remaining Useful Life (RUL) Prediction}
+
 
 If SOH tells you where the battery is on the degradation curve, **remaining useful life (RUL)** tells you how far it is from the end of that curve. RUL prediction is the forward projection of SOH estimation: given where the battery is today and how fast it has been degrading, when will it reach the end-of-life criterion (typically SOH$_Q$ = 80%)?
 
 RUL is the metric that connects battery management to system-level planning: when to schedule battery replacement in a fleet vehicle, when the warranty obligation expires, whether the pack has enough life remaining to justify an expensive repair, or whether to continue operating a grid storage system or retire it.
 
-### Model-Based RUL: Extrapolating the Degradation Trajectory
+\subsection{Model-Based RUL: Extrapolating the Degradation Trajectory}
+
 
 The simplest RUL prediction extrapolates the current degradation trajectory forward in time. If the capacity-based SOH has been decreasing at an average rate of $\dot{s}$ (SOH units per cycle), and the current SOH is $s$, then the remaining life in cycles is:
 
-$$\text{RUL}_\text{cycles} = \frac{s - s_\text{EOL}}{|\dot{s}|} \tag{10.25}$$
-
+\begin{equation}
+\text{RUL}_\text{cycles} = \frac{s - s_\text{EOL}}{|\dot{s}|} \tag{10.25}
+\end{equation}
 where $s_\text{EOL} = 0.80$ (80% SOH for the end-of-life criterion). If SOH = 0.92 and the average rate is $\dot{s} = -0.0001$ SOH per cycle, then $\text{RUL} = (0.92 - 0.80)/0.0001 = 1200$ cycles remaining.
 
 The critical limitation is that degradation is not constant-rate. As established in Chapter 7, the degradation rate typically accelerates in late life (the "knee" of the capacity-fade curve), as mechanical degradation exposes more fresh surface for SEI formation and creates a positive feedback loop. A linear extrapolation underestimates end-of-life time when the cell is in early life (before the knee) and overestimates it once the cell is past the knee.
 
 Better models use the physics-based degradation laws from Chapter 7 to project the trajectory more accurately. For calendar aging, the square-root-time model gives:
 
-$$Q_\text{max}(t) = Q_\text{rated} - B \exp(-E_a/RT) \sqrt{t} \tag{10.26}$$
-
+\begin{equation}
+Q_\text{max}(t) = Q_\text{rated} - B \exp(-E_a/RT) \sqrt{t} \tag{10.26}
+\end{equation}
 which can be extrapolated forward in time given the current temperature and SOC profile. For cycle aging:
 
-$$Q_\text{max}(N) = Q_\text{rated} - C \cdot N^z \cdot f(\text{DOD}) \cdot g(T) \tag{10.27}$$
-
+\begin{equation}
+Q_\text{max}(N) = Q_\text{rated} - C \cdot N^z \cdot f(\text{DOD}) \cdot g(T) \tag{10.27}
+\end{equation}
 where $N$ is the number of equivalent full cycles and the functions $f$, $g$ encode the DOD and temperature stressors as established in Chapter 7. By fitting these models to the historical SOH trajectory and projecting forward under an assumed future operating profile, the BMS can produce a distribution of RUL estimates rather than a single point estimate.
 
-### Probabilistic RUL and Confidence Intervals
+\subsection{Probabilistic RUL and Confidence Intervals}
+
 
 Deterministic RUL prediction is useful but misleading — it implies a precision that does not exist. All degradation models have parameter uncertainty, the future operating profile is unknown, and there are stochastic elements in the degradation process itself (random particle cracking events, variable ambient temperature). A more honest representation gives a probability distribution over remaining useful life rather than a single number.
 
@@ -5489,7 +6234,8 @@ The standard tools for probabilistic RUL estimation are **Bayesian approaches** 
 
 This probabilistic framing is particularly important for fleet management. Rather than asking "when will this cell reach EOL?", the fleet manager asks "what is the probability that this cell survives to the next scheduled maintenance interval?" This probability can be computed from the RUL distribution and used to schedule predictive maintenance — replacing cells before they fail rather than after, at minimum total cost.
 
-### Data-Driven RUL: Machine Learning Approaches
+\subsection{Data-Driven RUL: Machine Learning Approaches}
+
 
 The alternatives to physics-based RUL prediction are data-driven approaches — machine learning models trained on large datasets of battery aging cycles. The most successful approaches include:
 
@@ -5503,7 +6249,10 @@ For SIB RUL estimation, the data-driven approaches face the specific challenge t
 
 ---
 
-## Worked Interpretation Exercise: Simulating an EKF for a Simple Cell Model
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Simulating an EKF for a Simple Cell Model}
+
+\specialsectionstyle
+
 
 Let us work through a simplified EKF simulation to make the algorithm concrete. We use a one-RC ECM (simplified from the two-RC model, to keep the matrices manageable) with the following parameters for a representative NMC/graphite cell at 25°C:
 
@@ -5556,7 +6305,12 @@ This convergence — the ability to correct a large initial SOC error within sec
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The state estimation architecture — ECM + EKF, with SOH tracking via adaptive parameters and RUL projection from degradation models — applies directly to SIBs. The algorithms are the same; the parameters and performance differ.
 
@@ -5570,7 +6324,12 @@ The state estimation architecture — ECM + EKF, with SOH tracking via adaptive 
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -5583,25 +6342,36 @@ The state estimation architecture — ECM + EKF, with SOH tracking via adaptive 
 
 **Key equations:**
 
-$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i i(k) \Delta t}{Q_\text{max}} \quad \text{(coulomb counting)} \tag{10.1}$$
-
-$$\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \quad \text{(OCV-based SOC uncertainty)} \tag{10.3}$$
-
-$$V_\text{terminal} = E_\text{OCV}(\text{SOC}) - R_0 i - V_{C_1} - V_{C_2} \quad \text{(ECM output equation)} \tag{10.4}$$
-
-$$\mathbf{K}(k) = \mathbf{P}^-\mathbf{C}^T[\mathbf{C}\mathbf{P}^-\mathbf{C}^T + R]^{-1} \quad \text{(Kalman gain)} \tag{10.17}$$
-
-$$\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))] \quad \text{(EKF update)} \tag{10.18}$$
-
-$$\mathbf{C}(k) = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}} & -1 & -1 \end{bmatrix} \quad \text{(linearised measurement matrix; first element drives SOC correction)} \tag{10.16}$$
-
+\begin{equation}
+\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i i(k) \Delta t}{Q_\text{max}} \quad \text{(coulomb counting)} \tag{10.1}
+\end{equation}
+\begin{equation}
+\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \quad \text{(OCV-based SOC uncertainty)} \tag{10.3}
+\end{equation}
+\begin{equation}
+V_\text{terminal} = E_\text{OCV}(\text{SOC}) - R_0 i - V_{C_1} - V_{C_2} \quad \text{(ECM output equation)} \tag{10.4}
+\end{equation}
+\begin{equation}
+\mathbf{K}(k) = \mathbf{P}^-\mathbf{C}^T[\mathbf{C}\mathbf{P}^-\mathbf{C}^T + R]^{-1} \quad \text{(Kalman gain)} \tag{10.17}
+\end{equation}
+\begin{equation}
+\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))] \quad \text{(EKF update)} \tag{10.18}
+\end{equation}
+\begin{equation}
+\mathbf{C}(k) = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}} & -1 & -1 \end{bmatrix} \quad \text{(linearised measurement matrix; first element drives SOC correction)} \tag{10.16}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 Coulomb counting, current integration, ampere-hour integration, Coulombic efficiency, sensor offset error, sensor gain error, initial SOC uncertainty, OCV-SOC lookup, OCV curve sensitivity, rest time relaxation, flat OCV problem, equivalent circuit model (ECM), one-RC / two-RC model, ohmic resistance $R_0$, activation polarisation, concentration polarisation, RC time constant, state-space formulation, state vector, observability, state transition matrix, extended Kalman filter (EKF), prediction step, update step, a priori estimate, error covariance matrix $\mathbf{P}$, process noise $\mathbf{Q}$, measurement noise $R$, measurement matrix $\mathbf{C}$, Kalman gain $\mathbf{K}$, innovation, adaptive EKF, SOH estimation, capacity tracking, resistance tracking, recursive least squares (RLS), degradation trajectory, remaining useful life (RUL), physics-based RUL, data-driven RUL, Gaussian process regression, LSTM, OCV hysteresis state, dual-model framework, particle filter.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The primary deliverable for this part of the book (Chapters 9–12) is completing Plett's Coursera specialisation "Algorithms for Battery Management Systems," Courses 1 and 2. This chapter is the direct preparation for that work.
 
@@ -5615,9 +6385,14 @@ For an LFP/graphite cell at 50% SOC (in the flat plateau, $dE/d\text{SOC} = 25$ 
 
 ---
 
-## Further Reading
+\bodytextstyle
 
-1. **Plett, G. L., "Extended Kalman filtering for battery management systems of LiPB-based HEV battery packs. Parts 1, 2, and 3," *Journal of Power Sources* 134 (2), 252–292 (2004).** The three-part paper that established the ECM + EKF framework for BMS estimation. Part 1 covers the dynamic models; Part 2 the parameter identification; Part 3 the filter implementation and validation. This is the foundational reference for the entire field of model-based BMS estimation. Read all three parts.
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
+
+1. **Plett, G. L., "Extended Kalman filtering for battery management systems of LiPB-based HEV battery packs: Part 1. Background," *Journal of Power Sources* 134 (2), 252-261 (2004), doi:10.1016/j.jpowsour.2004.02.031; "Part 2. Modeling and identification," *Journal of Power Sources* 134 (2), 262-276 (2004), doi:10.1016/j.jpowsour.2004.02.032; "Part 3. State and parameter estimation," *Journal of Power Sources* 134 (2), 277-292 (2004), doi:10.1016/j.jpowsour.2004.02.033.** This three-part series established the ECM + EKF framework for BMS estimation. Part 1 gives the background and estimation problem setup; Part 2 develops the model structure and identification procedure; Part 3 presents the EKF-based state and parameter estimation results. This is the foundational reference for the entire field of model-based BMS estimation. Read all three parts.
 
 2. **Plett, G. L., *Battery Management Systems, Vol. 2: Equivalent-Circuit Methods*, Artech House (2015).** The comprehensive textbook treatment of everything in this chapter, with full MATLAB code examples and worked problems. Chapters 4–6 on the EKF, sigma-point Kalman filter (SPKF), and adaptive estimation are the direct reading for this chapter's material. This is the primary Plett reference for the BMS Coursera course.
 
@@ -5626,13 +6401,17 @@ For an LFP/graphite cell at 50% SOC (in the flat plateau, $dE/d\text{SOC} = 25$ 
 4. **Severson, K. A. et al., "Data-driven prediction of battery cycle life before capacity degradation," *Nature Energy* 4, 383–391 (2019).** The influential paper showing that early-cycle charge-voltage curve features predict long-term cycle life with high accuracy. Read this for the data-driven RUL perspective and to understand what battery degradation information is encoded in early-life data.
 
 5. **Zheng, Y. et al., "State of charge estimation for lithium battery systems using an adaptive extended Kalman filter considering temperature dependence," *IEEE Transactions on Control Systems Technology* 22 (2), 589–600 (2014).** A careful treatment of temperature-dependent ECM parameterisation and adaptive EKF implementation, including a discussion of how parameter uncertainty propagates into SOC estimation error. The most practically useful reference for implementing the temperature-dependent ECM tabulation described in Section 10.3.
+\bodytextstyle
+
 
 
 \newpage
 
-# Cell Balancing
+\chapter{Cell Balancing}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 In Chapter 9 we established the uncomfortable truth about series strings: the weakest cell wins. The cell with the least capacity, or the highest internal resistance, or the most degraded state, dictates when the entire string must stop charging and when it must stop discharging — even if every other cell still has capacity to give or headroom to receive. The efficiency penalty from this mismatch is real, the degradation consequence is compounding, and the problem grows worse every cycle as the cells diverge further. Left uncorrected, a pack that starts with a ±1% capacity spread can develop ±10% divergence after a few hundred cycles, and the effective pack capacity shrinks to the capacity of the worst cell multiplied by the number of series cells — a fraction of the original rating.
 
@@ -5669,11 +6448,15 @@ By the end of this chapter, you will be able to evaluate a balancing circuit sch
 
 ---
 
-## Why Cells Drift: The Physical Origins of Imbalance
+\bodytextstyle
+
+\section{Why Cells Drift: The Physical Origins of Imbalance}
+
 
 Before designing a balancing system, we need a precise understanding of what is being balanced. The word "imbalance" in a battery pack can refer to at least three distinct conditions, each with a different physical origin and a different appropriate response. Conflating them leads to balancing strategies that address the symptom rather than the cause.
 
-### Type 1: SOC Imbalance
+\subsection{Type 1: SOC Imbalance}
+
 
 **SOC imbalance** means that cells in the same series string are at different states of charge — some have more energy stored than others. This is the most directly actionable type of imbalance: it can be corrected by balancing circuits without permanently removing capacity from the system. The energy moved from a high-SOC cell to a low-SOC cell (or dissipated from the high-SOC cell in passive balancing) brings them closer to alignment. Once balanced, all cells can participate equally in the next charge or discharge.
 
@@ -5685,7 +6468,8 @@ SOC imbalance accumulates from several sources. **Self-discharge rate difference
 
 **Parasitic reaction rate heterogeneity**: self-discharge in lithium-ion and sodium-ion cells is dominated not by electron leakage through the separator (which would indicate a defect) but by parasitic electrochemical reactions — ongoing SEI growth that consumes cyclable lithium or sodium inventory, low-level electrolyte oxidation at the cathode surface, and, in some chemistries, redox shuttle mechanisms that transfer charge internally. These reactions proceed at rates that depend on temperature, electrode surface area, and electrolyte composition — all of which vary slightly from cell to cell. Over time, small differences in parasitic reaction rates accumulate into measurable SOC divergence. In aged cells, where increased surface area from particle cracking accelerates side reactions, this effect can become significant even between cells from the same manufacturing batch.
 
-### Type 2: Capacity Imbalance
+\subsection{Type 2: Capacity Imbalance}
+
 
 **Capacity imbalance** means that cells have different maximum capacities $Q_{\text{max},i}$ — one cell can store more charge than another. This is a more fundamental type of imbalance because it cannot be fixed by moving charge between cells. No matter how perfectly the SOC is balanced, a string containing one 2.4 Ah cell and eleven 3.0 Ah cells will always be limited by that 2.4 Ah cell — the pack capacity is determined by the lowest-capacity cell in the string.
 
@@ -5693,7 +6477,8 @@ Capacity imbalance accumulates primarily from differential degradation. Cells th
 
 Capacity imbalance cannot be corrected by balancing — balancing can only equalise the current SOC, not the maximum capacity. The long-term strategy for managing capacity imbalance is to slow the divergence (through good thermal management and preventing individual cells from cycling at extreme DOD) and to account for it in SOH estimation and RUL prediction. When the pack is retired, the imbalance is why: one cell has reached EOL while the majority still have usable life remaining.
 
-### Type 3: Internal Resistance Imbalance
+\subsection{Type 3: Internal Resistance Imbalance}
+
 
 **Resistance imbalance** means that cells have different internal resistances, causing them to produce different terminal voltages under the same current load. The highest-resistance cell in the string has the largest voltage excursion for a given current: it hits its upper voltage cutoff soonest during charging, and its lower voltage cutoff soonest during discharging. The pack is limited by this worst-case cell.
 
@@ -5709,7 +6494,8 @@ The table below summarizes the three imbalance types and their key characteristi
 | Capacity imbalance | Different maximum capacities ($Q_{\text{max},i} \neq Q_{\text{max},j}$) | Differential degradation (temperature, cycling depth, plating) | No — the capacity is physically lost | Thermal management, SOC window limits, cell replacement |
 | Resistance imbalance | Different internal resistances ($R_i \neq R_j$) | Differential degradation (SEI growth, contact degradation) | No — the resistance is a physical property | Cell-specific power limits, SOH tracking |
 
-### Why Both SOC and Capacity Imbalance Matter Simultaneously
+\subsection{Why Both SOC and Capacity Imbalance Matter Simultaneously}
+
 
 In a real pack, all three types of imbalance coexist and interact. The practical consequence is that balancing addresses only Type 1 (SOC imbalance) while Types 2 and 3 accumulate over life. A pack with good balancing but poor thermal management will develop capacity and resistance imbalance that no balancing algorithm can fix — the balancing buys time and efficiency, but it does not halt the underlying divergence.
 
@@ -5717,11 +6503,13 @@ This is why battery engineers sometimes distinguish between **active state manag
 
 ---
 
-## Passive Balancing: Resistive Bleed
+\section{Passive Balancing: Resistive Bleed}
+
 
 **Passive balancing** is the simplest and most widely deployed balancing architecture. It works by dissipating excess energy from the higher-SOC cells as heat, using a switchable resistor connected across each cell in the series string. The basic principle: if cell $i$ has a higher voltage than the pack average (indicating it is at higher SOC), close the switch to connect the bleed resistor across it; the resistor discharges the cell until its voltage falls to the target level.
 
-### Circuit Architecture
+\subsection{Circuit Architecture}
+
 
 The passive balancing circuit for each cell consists of three components: a **bypass resistor** $R_b$ (typically 10–100 Ω, chosen to limit dissipation), a **bypass switch** $S_b$ (typically a MOSFET or relay, controlled by the CMIC), and a **temperature sensor** monitoring the resistor temperature to prevent overheating. The resistor and switch are in series, forming a switchable discharge path across the cell terminals. The temperature sensor provides a safety interlock — if the resistor temperature exceeds a threshold, the CMIC opens the switch.
 
@@ -5729,8 +6517,9 @@ The **CMIC** (cell monitoring IC — the dedicated chip that monitors individual
 
 The balancing current through the bypass resistor is simply Ohm's law applied to the cell-resistor loop:
 
-$$I_b = \frac{V_\text{cell}}{R_b} \tag{11.1}$$
-
+\begin{equation}
+I_b = \frac{V_\text{cell}}{R_b} \tag{11.1}
+\end{equation}
 This looks trivial, but notice what it implies: the balancing current depends on the cell voltage, not on the SOC difference. For a chemistry like NMC, where the cell voltage varies significantly with SOC (from ~3.0 V at empty to ~4.2 V at full), the balancing current at the top of charge is about 40% higher than at the bottom — a natural acceleration of balancing when the cell is fullest and the voltage is highest. For flat-OCV chemistries like LFP or SIB hard carbon, where the cell voltage varies by only 50–100 mV across most of the SOC range, the balancing current is essentially constant regardless of SOC. We will revisit this observation in Section 11.7, where it creates a specific complication for SIB balancing strategy.
 
 For a cell at 4.15 V with $R_b = 33$ Ω:
@@ -5742,21 +6531,24 @@ $$\dot{Q}_b = I_b^2 R_b = \frac{V_\text{cell}^2}{R_b} = \frac{4.15^2}{33} = 522 
 
 And the time required to balance a SOC difference of $\Delta\text{SOC}$ for a cell of capacity $Q_\text{max}$ follows directly from Equation (11.1):
 
-$$t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \tag{11.2}$$
-
+\begin{equation}
+t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \tag{11.2}
+\end{equation}
 For $\Delta\text{SOC} = 5\%$ and $Q_\text{max} = 3.0$ Ah:
 $$t_\text{bal} = \frac{0.05 \times 3.0 \, \text{Ah}}{0.1258 \, \text{A}} = \frac{0.15 \, \text{Ah}}{0.1258 \, \text{A}} = 1.19 \, \text{h} \approx 72 \, \text{minutes}$$
 
 Passive balancing is slow. At typical balancing currents of 50–200 mA, correcting a 5% SOC imbalance in a 3 Ah cell takes 45–180 minutes. This is why balancing is most effective when performed continuously (especially during charging, as we will see in Section 11.4) rather than only at the end of a cycle.
 
-### Energy Efficiency of Passive Balancing
+\subsection{Energy Efficiency of Passive Balancing}
+
 
 All the energy removed from the high-SOC cells in passive balancing is dissipated as heat in the bypass resistors. The round-trip energy efficiency of passive balancing is therefore always less than 100% — the excess charge is not transferred to the low-SOC cells; it is simply discarded.
 
 The energy wasted per balancing event on one cell follows from Equations (11.1) and (11.2):
 
-$$E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \tag{11.3}$$
-
+\begin{equation}
+E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \tag{11.3}
+\end{equation}
 For the 5% imbalance example above:
 $$E_\text{wasted} = 0.05 \times 3.0 \times 4.15 = 0.623 \, \text{Wh}$$
 
@@ -5764,13 +6556,15 @@ In a 96-cell string, if ten cells each require 5% SOC reduction at each charge c
 
 Despite its energy inefficiency, passive balancing dominates commercial applications because of its simplicity and low cost. The bypass resistor and MOSFET required per cell add perhaps \$0.50–\$2.00 to the bill of materials and a few square millimetres to the PCB. The control logic is simple: compare cell voltage to threshold, set a bit. The reliability is excellent: a passive balancing circuit fails only if the resistor burns open or the MOSFET fails — rare events with well-designed circuits. For most consumer and automotive applications where the energy waste is small relative to pack energy, these advantages outweigh the thermodynamic inefficiency.
 
-### Thermal Management of Bypass Resistors
+\subsection{Thermal Management of Bypass Resistors}
+
 
 The 522 mW dissipated per active bypass resistor in the example above is concentrated in a small component on the CMIC PCB. With many cells balancing simultaneously (as during top-of-charge equalisation), the total heat generated on the CMIC PCB can be 5–10 W per module — enough to require thermal management of the electronics, not just the cells. CMIC datasheets specify a maximum duty cycle for bypass operation, typically 50–70%, to prevent thermal overload of the resistor and the IC package. The BMS firmware must respect these limits and schedule bypass cycles accordingly, distributing the heat generation over time.
 
 In very large packs (automotive, grid) where the bypass resistors are physically separate from the CMIC electronics — a configuration called the **remote bypass topology** — the thermal management is simpler. The heat-generating resistors are mounted on the busbar structure or on the cell holders, where the pack cooling system can remove the heat directly. Remote bypass topology also allows higher balancing currents (since the resistors can be larger and better cooled), reducing balancing time.
 
-### When Is Passive Balancing Enough?
+\subsection{When Is Passive Balancing Enough?}
+
 
 Before we survey the more complex active balancing architectures, it is worth asking: when does passive balancing fail to meet the system requirement? The answer depends on three factors — cell capacity, imbalance magnitude, and available balancing time — and their interplay determines whether the simplicity and cost advantage of passive balancing is worth its energy and time penalty.
 
@@ -5786,13 +6580,15 @@ The pattern is clear: passive balancing is well-suited to small cells where the 
 
 ---
 
-## Active Balancing Topologies
+\section{Active Balancing Topologies}
+
 
 **Active balancing** transfers charge between cells rather than dissipating it — the excess energy in the high-SOC cell is delivered to the low-SOC cell through a power-conversion stage, rather than being burned in a resistor. If you have worked with DC-DC converters (buck, boost, flyback), you already have the right mental model: active balancing circuits are miniature, bidirectional DC-DC converters whose input and output happen to be individual cells in a series string. The conversion efficiency is never truly 100% (every real converter has switching losses, conduction losses, and magnetics losses), but practical active balancing circuits achieve 80–95% round-trip efficiency — meaning most of the redistributed energy ends up in the target cell rather than as heat. Active balancing is more complex, more expensive, and larger than passive balancing, but it becomes attractive in applications where balancing energy is large relative to the conversion circuit costs, or where the heat from passive balancing is a problem.
 
 The design space for active balancing is rich — many topologies have been proposed — and we will survey the main families here. When evaluating any active balancing topology, five questions discriminate between the options: what is the energy transfer pathway (cell-to-cell, cell-to-pack, pack-to-cell, or bidirectional); what conversion efficiency does the topology achieve; how complex is the control algorithm required to operate it; what is the worst-case balancing time for a given imbalance magnitude; and what happens when one cell fails open-circuit or short-circuit? We will address each of these for the three main topology families below.
 
-### Switched Capacitor (Flying Capacitor) Topology
+\subsection{Switched Capacitor (Flying Capacitor) Topology}
+
 
 The simplest active balancing topology uses a capacitor that is switched alternately between adjacent cells in the string, transferring charge from the higher-voltage cell to the lower-voltage cell.
 
@@ -5804,7 +6600,8 @@ The simplest active balancing topology uses a capacitor that is switched alterna
 
 **Efficiency**: The energy dissipated per switching cycle is $\frac{1}{2}C_f(\Delta V)^2$, regardless of the switch resistance (you may recall from circuits class that charging a capacitor through any resistance dissipates exactly half the energy — the same physics applies here). However, the useful energy transferred per cycle is approximately $C_f \cdot \Delta V \cdot V_{\text{avg}}$, where $V_{\text{avg}}$ is the mean cell voltage. The ratio of loss to useful transfer is therefore $\Delta V / (2V_{\text{avg}})$, which is small when the cells are closely matched — for example, $\Delta V = 20 \, \text{mV}$ at $V_{\text{avg}} = 3.7 \, \text{V}$ gives a theoretical loss fraction of 0.27%. In practice, resistive losses in the switches and capacitor ESR dominate, reducing real-world efficiency to 70–90%.
 
-### Inductor-Based (Buck-Boost) Topology
+\subsection{Inductor-Based (Buck-Boost) Topology}
+
 
 A more versatile active balancing approach uses an inductor to transfer energy between any two cells in the string, not just adjacent ones. The inductor temporarily stores energy from the source cell and releases it to the target cell, functioning as a two-way DC-DC converter.
 
@@ -5816,7 +6613,8 @@ A more versatile active balancing approach uses an inductor to transfer energy b
 
 To put the cost in perspective: consider a 96s1p EV pack. Passive balancing adds roughly \$0.50–\$2.00 per cell × 96 cells = \$48–\$192 to the BMS bill of materials. Inductor-based active balancing at \$10–\$20 per cell adds \$960–\$1,920 — an order of magnitude more. The energy savings from active balancing (avoiding the ~0.6 Wh per cell per cycle wasted by passive balancing) amount to roughly $96 \times 0.6 = 58 \, \text{Wh}$ per cycle. At a residential electricity cost of \$0.15/kWh, this saves \$0.0087 per cycle, requiring over 100,000 cycles to break even on hardware cost alone — far beyond the pack's cycle life. The economic case for active balancing in automotive applications therefore rests not on energy savings but on lifetime extension: by keeping cells more tightly balanced, active balancing can delay the point at which capacity imbalance forces early pack retirement, potentially recovering thousands of dollars in avoided pack replacement. In grid storage with 10,000+ cycle expectations, the calculus can shift further toward active balancing.
 
-### Transformer-Based (Flyback) Topology
+\subsection{Transformer-Based (Flyback) Topology}
+
 
 For packs where the individual cell voltages are small (3.6 V) but the pack voltage is large (350 V), a flyback transformer can transfer energy from any individual cell to the full pack bus, or from the pack bus to any individual cell. This "cell-to-pack" or "pack-to-cell" topology has a significant architectural advantage: it does not need to identify a matching pair of cells to balance between. Energy is simply taken from high-SOC cells and injected into the pack bus (where it supplements the total energy available), or drawn from the pack bus to charge low-SOC cells.
 
@@ -5826,7 +6624,8 @@ For packs where the individual cell voltages are small (3.6 V) but the pack volt
 
 **Disadvantages**: The transformer structure (even in its modular form) is physically complex and expensive. Electromagnetic coupling between windings must be carefully managed to prevent cross-cell interference. Efficiency is typically 85–92%.
 
-### Modular Multilevel Converter (MMC) Architecture
+\subsection{Modular Multilevel Converter (MMC) Architecture}
+
 
 In the most sophisticated active balancing architectures — increasingly used in high-performance automotive and grid-scale applications — each cell in the string is equipped with its own small bidirectional DC-DC converter, allowing fully individual control of each cell's charge and discharge rate. The pack operates as a modular multilevel converter where the individual cell converters can vary their effective voltage contribution to the string in real time.
 
@@ -5836,11 +6635,13 @@ MMC architectures are beginning to appear in high-end EV platforms and in grid s
 
 ---
 
-## When to Balance: Top, Bottom, and Throughout
+\section{When to Balance: Top, Bottom, and Throughout}
+
 
 The decision of *when* to run the balancing algorithm is as important as the choice of *how* to implement it. There are three primary strategies, each suited to different OCV curve shapes and pack designs.
 
-### Top Balancing
+\subsection{Top Balancing}
+
 
 **Top balancing** aligns cells at the top of charge — the balancing algorithm runs during or at the end of a charging session, driving all cells to the same upper voltage limit simultaneously. The BMS continues charging until the first cell reaches $V_\text{max}$, then holds $V_\text{max}$ on that cell (CV phase for a CC-CV charger) while continuing to charge the other cells. Simultaneously, if passive balancing is active, bypass resistors pull down the first cell's voltage, preventing it from being overcharged while the others catch up.
 
@@ -5850,7 +6651,8 @@ Top balancing is also operationally natural because of how CC-CV charging works 
 
 The limitation of top balancing alone appears on discharge: cells that were balanced at the top of charge will experience SOC divergence during the discharge (due to capacity differences), and by the end of discharge, the lowest-capacity cell will hit its lower cutoff first, cutting off the pack before the higher-capacity cells are depleted. The cumulative energy left stranded in the higher-capacity cells (because the lowest-capacity cell triggered the cutoff) is the **discharge energy loss due to capacity imbalance** — and top balancing cannot prevent this, because it only addresses the SOC alignment at the start of discharge, not the differential discharge rate during it.
 
-### Bottom Balancing
+\subsection{Bottom Balancing}
+
 
 **Bottom balancing** aligns cells at the bottom of discharge — the balancing algorithm runs during or at the end of a discharge, ensuring all cells reach their lower voltage cutoff simultaneously. This ensures the maximum possible capacity is extracted from every cell on every discharge. The cost is that at the top of charge, cells will be at different SOCs (the higher-capacity cells will be fuller than the lower-capacity cells after the same total charge is applied).
 
@@ -5858,7 +6660,8 @@ Bottom balancing requires the BMS to discharge high-capacity cells at the end of
 
 Bottom balancing is effective when the priority is maximum discharge energy extraction (for applications like grid storage where the full capacity must be utilised). However, the engineering complexity is higher for two reasons. First, the BMS must track which cells need to be drained at the end of discharge and selectively activate their bypass resistors — adding bookkeeping that is unnecessary in top balancing. Second, and more subtly, the battery system must remain powered after the pack has nominally reached its lower voltage limit: the contactors must stay closed, the CMIC must remain active, and the bypass resistors must continue operating, all while the pack is at its lowest energy state. The BMS must manage this "empty but not dead" condition carefully — if it draws too much standby power from the nearly depleted pack, it risks driving the weakest cell into deep discharge and damaging it. In practice, bottom balancing is often performed not during normal use but during a dedicated maintenance session where an external power supply can keep the BMS electronics alive while the cells are drained to alignment.
 
-### Continuous Balancing (Throughout Operation)
+\subsection{Continuous Balancing (Throughout Operation)}
+
 
 **Continuous balancing** runs the balancing algorithm at all times — during charge, during discharge, and during rest. It does not wait for a defined top or bottom reference point but continuously compares cell voltages and applies corrections whenever the spread exceeds the trigger threshold.
 
@@ -5876,22 +6679,26 @@ A note on parallel groups: everything in this section applies to cells connected
 
 ---
 
-## Quantitative Analysis: Balancing Time, Energy, and Optimal Strategy
+\section{Quantitative Analysis: Balancing Time, Energy, and Optimal Strategy}
+
 
 Let us put numbers on the competing choices through a worked analysis that draws together the hardware characteristics and the pack behaviour.
 
-### Problem Setup
+\subsection{Problem Setup}
 
-Consider a 16s1p LFP pack (16 cells in series, 1 cell in parallel — a small pack for a residential storage system) using **CATL LFP prismatic cells** (100 Ah capacity per cell, $R_\text{int} \approx 0.5$ mΩ per cell, nominal 3.2 V). The pack has been operating for 18 months, and cell-to-cell capacity spread has developed to a distribution with the following characteristics (based on post-aging measurements): cells 1–13 retain 97–99 Ah; cells 14–15 retain 92–94 Ah; cell 16 retains 87 Ah. The mean capacity is 96.3 Ah; cell 16 is 9.3 Ah below the mean.
+
+Consider a 16s1p LFP pack (16 cells in series, 1 cell in parallel — a small pack for a residential storage system) using **representative 100 Ah LFP prismatic cells** ($R_\text{int} \approx 0.5$ mΩ per cell, nominal 3.2 V). The pack has been operating for 18 months, and cell-to-cell capacity spread has developed to a distribution with the following characteristics (based on post-aging measurements): cells 1–13 retain 97–99 Ah; cells 14–15 retain 92–94 Ah; cell 16 retains 87 Ah. The mean capacity is 96.3 Ah; cell 16 is 9.3 Ah below the mean.
 
 After a full charge session with top balancing (to the upper voltage limit), every cell is at 100% SOC — each has been charged to its own individual maximum capacity and held at $V_\text{max} \approx 3.65 \, \text{V}$. The pack appears perfectly balanced, because all cell voltages are equal. But recall that "100% SOC" means something different for each cell: 100% of 98 Ah for a healthy cell, versus 100% of 87 Ah for cell 16. The voltage alignment at the top masks the capacity disparity underneath.
 
-### The Discharge Trajectory Without Mid-Discharge Balancing
+\subsection{The Discharge Trajectory Without Mid-Discharge Balancing}
+
 
 Now the pack begins a demand-response discharge at $I = 50$ A (0.5C for cell 16, 0.52C for the mean cell). Since all cells carry the same current, after $t$ seconds of discharge, each cell has discharged the same charge $q = It$. The SOC of each cell at time $t$ is given by Equation (11.4):
 
-$$\text{SOC}_i(t) = 1 - \frac{q(t)}{Q_{\text{max},i}} = 1 - \frac{It}{Q_{\text{max},i}} \tag{11.4}$$
-
+\begin{equation}
+\text{SOC}_i(t) = 1 - \frac{q(t)}{Q_{\text{max},i}} = 1 - \frac{It}{Q_{\text{max},i}} \tag{11.4}
+\end{equation}
 Cell 16 (87 Ah) depletes faster because it has less capacity:
 
 $$\text{SOC}_{16}(t) = 1 - \frac{50t}{87 \times 3600}$$
@@ -5916,7 +6723,8 @@ Plus cells 14 and 15 each have approximately 8–9% remaining, contributing anot
 
 This is the quantitative cost of capacity imbalance. No amount of balancing can recover this energy — the cell simply does not have it. The only solution is to replace cell 16.
 
-### The SOC Imbalance Scenario: Where Balancing Helps
+\subsection{The SOC Imbalance Scenario: Where Balancing Helps}
+
 
 Now consider a different scenario: the pack is new (all cells at 100 Ah), but due to different self-discharge rates over a two-week idle period, the cells enter a charge cycle at the following initial SOCs: cells 1–13 at 48% SOC, cell 14 at 44%, cell 15 at 46%, and cell 16 at 41%.
 
@@ -5938,71 +6746,75 @@ That is far too slow for a single charge session. This illustrates a key limitat
 
 ---
 
-## Worked Interpretation Exercise: Evaluating a Commercial BMS Balancing Specification
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Evaluating a Commercial BMS Balancing Specification}
+
+\specialsectionstyle
+
 
 Let us apply the chapter's framework to a real commercial BMS. The **Texas Instruments BQ76952** is a 3–16 series cell monitor IC commonly used in automotive and industrial battery packs. It includes integrated passive balancing functionality. Here is an abbreviated version of its balancing-related specifications:
 
 | Parameter | BQ76952 Specification | Notes |
 | --- | --- | --- |
-| Voltage measurement resolution | ~0.19 mV | See ADC architecture discussion below |
-| Balancing switch type | Internal N-channel MOSFET | Cells 1–15 only; cell 16 requires external component |
-| Max balancing current | 200 mA | Limited by internal MOSFET path resistance (~18 Ω) |
-| Balancing trigger threshold | Configurable, default 10 mV | Above minimum cell voltage in the string |
-| Thermal protection | Auto-inhibit above 60°C | Applies to cell temperature, not resistor temperature |
+| Cell voltage measurement accuracy | <10 mV typical | TI product-page accuracy figure; quantization is finer than this |
+| Balancing implementation | Autonomous or host-controlled passive balancing | Top-of-stack behavior in 16s designs needs special care in the external circuitry and measurement path |
+| Internal balancing current | Typically on the order of 50–65 mA with recommended internal-balancing resistor choices | Higher balancing currents generally use external balancing circuitry |
+| Automatic balancing start threshold | Configurable; TI TRM defaults are 40 mV start delta and 20 mV stop delta in charge/relax modes | Threshold is measured relative to the minimum cell voltage in the string |
+| Thermal protection | Automatic inhibit above 60°C cell temperature by default | Applies to cell temperature configuration; resistor self-heating still needs board-level thermal design |
 
 Now let us interpret each of these specifications and understand what they mean for balancing performance.
 
-**0.19 mV voltage resolution**: The usefulness of this resolution depends entirely on the OCV curve slope at the operating SOC. For an NMC/graphite cell near the top of charge (90–100% SOC), the OCV curve is steep — a typical local slope is $dV_{\text{OC}}/d\text{SOC} \approx 1000 \, \text{mV per unit SOC}$ (meaning the OCV changes by roughly 100 mV over the last 10% of SOC). At this slope, the minimum detectable SOC difference is:
+**Voltage measurement versus balancing threshold**: For balancing, the crucial practical limit is usually not the raw ADC granularity but the balancing start/stop thresholds and the chemistry's OCV slope. Consider an LFP cell in the flattest part of its plateau (approximately 30–70% SOC). Here the OCV curve slope can drop to $dV_{\text{OC}}/d\text{SOC} \approx 30\text{–}80 \, \text{mV per unit SOC}$. Taking the worst case of 30 mV/unit, the BQ76952 TRM default automatic balancing start threshold of 40 mV corresponds to:
 
-$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{1000 \, \text{mV/unit}} = 1.9 \times 10^{-4} = 0.019\%$$
+$$\Delta\text{SOC}_\text{trigger} = \frac{40 \, \text{mV}}{30 \, \text{mV/unit}} \approx 1.33 = 133\%$$
 
-Excellent resolution — the ADC is not the bottleneck; noise and thermal drift dominate at this level.
+That number is physically absurd as a required SOC difference, and that is exactly the point: in the flattest part of the plateau, a voltage-threshold-based autonomous trigger is effectively blind to realistic SOC imbalance. Even the 20 mV stop threshold still corresponds to about 67% SOC at this slope. In practice, balancing of LFP (and SIB) cells must rely on the steeper OCV regions at the extremes of the SOC range, or switch to SOC-based triggers from the state estimator. For SIB cells with hard carbon anodes, where the plateau can be even flatter than LFP, the situation is worse still.
 
-Now consider an LFP cell in the flattest part of its plateau (approximately 30–70% SOC). Here the OCV curve slope can drop to $dV_{\text{OC}}/d\text{SOC} \approx 30\text{–}80 \, \text{mV per unit SOC}$. Taking the worst case of 30 mV/unit:
-
-$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{30 \, \text{mV/unit}} = 0.0063 = 0.63\%$$
-
-The ADC can still resolve sub-1% SOC differences — but the 10 mV default balancing trigger threshold now corresponds to a SOC difference of:
-
-$$\Delta\text{SOC}_\text{trigger} = \frac{10 \, \text{mV}}{30 \, \text{mV/unit}} = 0.33 = 33\%$$
-
-This is the key problem: the trigger threshold, not the ADC resolution, is the practical limit for flat-OCV chemistries. With a 10 mV trigger, the CMIC will not initiate balancing until cells differ by 33% SOC in the flattest part of the LFP plateau — effectively blind in this region. In practice, balancing of LFP (and SIB) cells must rely on the steeper OCV regions at the extremes of the SOC range, or switch to SOC-based triggers from the state estimator. For SIB cells with hard carbon anodes, where the plateau can be even flatter than LFP, the situation is worse still.
-
-**200 mA maximum balancing current**: For a 100 Ah cell (residential storage scale), a 1% SOC imbalance requires correcting:
+**Internal balancing current**: For a 100 Ah cell (residential storage scale), a 1% SOC imbalance requires correcting:
 
 $$\Delta Q = 0.01 \times 100 \, \text{Ah} = 1 \, \text{Ah}$$
 
-At 200 mA, this takes $1/0.2 = 5$ hours. Passive balancing at the BQ76952's maximum current is very slow for large cells. This is why BQ76952-based systems are more appropriate for smaller cells (3–10 Ah consumer or light automotive cells) where 200 mA represents a more reasonable fraction of the cell capacity (C/15–C/50).
+At 65 mA, this takes $1/0.065 \approx 15.4$ hours. Internal passive balancing at this current is very slow for large cells. This is why BQ76952-based systems that need faster equalisation typically add external balancing circuitry rather than relying only on the internal path.
 
-**Cell 16 external requirement**: The asymmetry in CMIC design (cell 16 requires an external component) is a genuine engineering nuisance in 16s packs. It arises because the highest cell in a bottom-referenced stack requires its balancing switch to be driven from a gate voltage that is higher than the pack voltage — requiring either an isolated gate driver or an external high-side MOSFET with a bootstrap circuit. Most CMIC designs handle up to 15 cells internally and leave the top cell as an external requirement. Engineers designing 16s packs with BQ76952 must add this external circuit, and its omission is a common rookie mistake that leaves the highest cell unbalanced.
+**Top-of-stack implementation detail**: In 16s packs, the highest cell deserves extra care. TI's balancing notes and support discussions repeatedly point out that the VC16 path and the external balancing implementation for the top cell need special attention, because the top-of-stack measurement path is also involved in supplying balancing-drive current. In practice, engineers often need a modified resistor choice and careful external circuitry around the top cell to make balancing and measurement behave well.
 
 **Thermal inhibit at 60°C**: The BMS automatically stops balancing if any cell temperature exceeds 60°C. This is a safety feature to prevent balancing from adding heat to an already overtemperature situation — but it also means that in a hot pack (summer storage in an uncooled space), balancing may be frequently inhibited, allowing imbalance to accumulate without correction. Thermal management and balancing are not independent system concerns.
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The balancing architectures (passive resistive, switched capacitor, inductor-based, transformer-based) and the balancing control strategies (top, bottom, continuous) all apply directly to SIB packs. The hardware is identical in concept. The complications arise specifically from the flat OCV curve of hard carbon anodes, and they manifest at three levels.
 
-### Detection: The Flat OCV Makes Voltage-Triggered Balancing Unreliable
+\bodytextstyle
+
+\subsection{Detection: The Flat OCV Makes Voltage-Triggered Balancing Unreliable}
+
 
 In the plateau region of the hard carbon OCV (approximately 20–55% SOC for a typical SIB cell, as established in Chapter 6), voltage-based balancing triggers — the standard approach for NMC and most commercial BMS ICs — become unreliable. A 5% SOC imbalance between two cells in the plateau produces a voltage difference of perhaps 7–15 mV, depending on the precise slope. With typical CMIC measurement noise of 0.5–2 mV, the signal-to-noise ratio for detecting 5% imbalance in the plateau is poor. Many commercially available CMIC ICs designed for LIB use will simply not trigger balancing in this region because the voltage differences are below their balancing thresholds.
 
 The engineering response requires one of three approaches. First, increase the trigger threshold sensitivity (reduce the minimum balancing voltage trigger), which requires more accurate voltage measurement and may trigger spurious balancing from noise. Second, use SOC-based balancing triggers from the EKF estimator (Chapter 10) rather than raw voltage triggers — but this requires accurate SOC estimation in the plateau, which is itself difficult (Section 10.2). Third, perform balancing primarily outside the plateau region (at the extremes of SOC where the OCV curve is steeper), accepting that the plateau region is not actively balanced and relying on good initial cell matching to keep divergence small in this range.
 
-### Correction: Passive Balancing Still Works, But Slowly
+\subsection{Correction: Passive Balancing Still Works, But Slowly}
+
 
 Once the decision to balance is made, passive balancing operates identically for SIBs as for LIBs. The bypass resistor does not know what chemistry the cell is. The complication is that the small voltage differences in the plateau mean the balancing current (from Equation (11.1), $I_b = V_\text{cell}/R_b$) is essentially the same regardless of the SOC difference — the cell voltage varies by only ~50 mV across the whole plateau, so the balancing current is nearly constant throughout. This means passive balancing in the SIB plateau is blind to the magnitude of the imbalance — it drains at a fixed rate regardless of whether the true SOC difference is 1% or 15%.
 
 One additional quantitative difference is worth noting: SIB cells typically operate at lower nominal voltages than NMC cells — approximately 3.0–3.3 V versus 3.6–3.7 V for NMC. From Equation (11.1), this means the passive balancing current is roughly 15–20% lower for the same bypass resistance, and the balancing time from Equation (11.2) is correspondingly longer. For a bypass resistor of 33 Ω, an SIB cell at 3.1 V produces $I_b = 94 \, \text{mA}$ versus 126 mA for an NMC cell at 4.15 V. This modest difference compounds with the already-slow balancing characteristic of flat-OCV chemistries, further motivating higher balancing currents or active balancing for SIB packs.
 
-### Strategy: The Bottom-Balancing Advantage for SIBs
+\subsection{Strategy: The Bottom-Balancing Advantage for SIBs}
+
 
 Given the unreliability of top balancing in the plateau region (where the cells all look the same voltage), **bottom balancing** has a specific advantage for SIBs. At the bottom of discharge (low SOC end of the hard carbon slope region, approximately 5–15% full-cell SOC), the OCV curve steepens considerably as the cathode contribution increases and the hard carbon exits its slope region. Voltage differences between cells become more detectable in this region. Bottom-balancing algorithms that align cells at the end of discharge — where the OCV curve has more slope — can detect and correct imbalance more reliably than top-balancing algorithms that operate at the top of charge where the hard carbon may still be in its relatively flat region.
 
 This is an active area of research in SIB BMS design: designing bottom-balancing algorithms that leverage the OCV curve features at the extremes of the SIB SOC range, combined with accurate coulomb counting throughout the plateau, to provide effective balancing despite the flat OCV challenge.
 
-### Impact of OCV Hysteresis on Balancing
+\subsection{Impact of OCV Hysteresis on Balancing}
+
 
 Hard carbon's OCV hysteresis (discussed in Chapters 6 and 10) adds another complication for balancing. If cells A and B are at the same true SOC but cell A recently charged while cell B recently discharged, they will have different OCV values — perhaps by 30–60 mV — due to hysteresis. A balancing algorithm that triggers based on voltage difference will incorrectly identify this as a SOC imbalance and attempt to balance cells that are actually at the same SOC, wasting energy.
 
@@ -6010,7 +6822,10 @@ Correcting for hysteresis in the balancing trigger requires the BMS to track the
 
 ---
 
-## Chapter Summary
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -6023,21 +6838,30 @@ Correcting for hysteresis in the balancing trigger requires the BMS to track the
 
 **Key equations:**
 
-$$I_b = V_\text{cell} / R_b \quad \text{(passive balancing current)} \tag{11.1}$$
-
-$$t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \quad \text{(passive balancing time for one cell)} \tag{11.2}$$
-
-$$E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \quad \text{(energy dissipated per passive balancing event)} \tag{11.3}$$
-
-$$\text{SOC}_i(t) = 1 - \frac{I \cdot t}{Q_{\text{max},i}} \quad \text{(SOC trajectory of cell } i \text{ under constant current } I\text{)} \tag{11.4}$$
-
+\begin{equation}
+I_b = V_\text{cell} / R_b \quad \text{(passive balancing current)} \tag{11.1}
+\end{equation}
+\begin{equation}
+t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \quad \text{(passive balancing time for one cell)} \tag{11.2}
+\end{equation}
+\begin{equation}
+E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \quad \text{(energy dissipated per passive balancing event)} \tag{11.3}
+\end{equation}
+\begin{equation}
+\text{SOC}_i(t) = 1 - \frac{I \cdot t}{Q_{\text{max},i}} \quad \text{(SOC trajectory of cell } i \text{ under constant current } I\text{)} \tag{11.4}
+\end{equation}
 **Key vocabulary (in order of appearance):**
 
 SOC imbalance, capacity imbalance, resistance imbalance, self-discharge rate spread, thermal gradient aging, Coulombic efficiency heterogeneity, parasitic reaction rate heterogeneity, weak-link effect, passive balancing, bypass resistor, bypass switch, CMIC (cell monitoring IC), balancing current, balancing time, remote bypass topology, active balancing, switched capacitor (flying capacitor), inductor-based (buck-boost) balancing, transformer-based (flyback) balancing, cell-to-cell balancing, cell-to-pack balancing, modular multilevel converter (MMC), top balancing, bottom balancing, continuous balancing, voltage-based balancing trigger, SOC-based balancing trigger, IR-corrected balancing, maintenance charge, stranded energy, bottom-balancing advantage for SIBs, OCV hysteresis and balancing.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The deliverable for Chapters 9–12 remains the Plett Coursera specialisation (Courses 1 and 2) with MATLAB assignments. Chapter 11 provides the physical context for the balancing material that appears in Plett's Volume 1 and in the advanced topics of Course 2.
 
@@ -6047,7 +6871,7 @@ As a targeted exercise for this chapter, implement the following calculation in 
 
 **Part 1 — No balancing**: Simulate a constant-current discharge at $I = 5$ A (approximately 1C for the mean cell). For each time step, compute the SOC of each cell. Identify when the first cell reaches 0% SOC and compute the SOC remaining in every other cell at that moment. Calculate the total stranded energy.
 
-**Part 2 — With continuous passive balancing**: Add a 100 Ω bypass resistor to each cell. During discharge, if any cell's SOC falls more than 2% below the mean SOC, activate its bypass to slow its discharge rate. Recompute the discharge trajectory and compare the stranded energy to Part 1.
+**Part 2 — With continuous passive balancing**: Add a 100 Ω bypass resistor to each cell. During discharge, if any cell's SOC rises more than 2% above the mean SOC, activate its bypass to accelerate its discharge rate and pull it back toward the mean. Recompute the discharge trajectory and compare the stranded energy to Part 1.
 
 **Worked partial solution for Part 1**: Cell 12 (4.30 Ah) reaches 0% SOC at time $t = 4.30 \times 3600 / 5 = 3096$ s = 51.6 min. At this moment, cell 11 (4.60 Ah) is at SOC = $1 - 5 \times 3096 / (4.60 \times 3600) = 1 - 0.935 = 6.5\%$. Cells 1–10 (4.85 Ah) are at SOC = $1 - 5 \times 3096 / (4.85 \times 3600) = 1 - 0.887 = 11.3\%$. Stranded energy: $(10 \times 0.113 \times 4.85 + 1 \times 0.065 \times 4.60) \times 3.7 \approx (5.48 + 0.299) \times 3.7 \approx 21.4$ Wh, or about 9.6% of the 12-cell pack's nominal energy of $12 \times 5 \times 3.7 = 222$ Wh.
 
@@ -6055,9 +6879,14 @@ Notice that with a 12.8% spread between the lowest and highest cell capacities, 
 
 ---
 
-## Further Reading
+\bodytextstyle
 
-1. **Hoque, M. M., Hannan, M. A., and Mohamed, A., "Charging and discharging model of lithium-ion battery for charge equalization control using particle swarm optimisation algorithm," *PLOS ONE* 11 (9), e0161630 (2016).** A balanced treatment of passive and active balancing algorithms with simulation results showing the time-to-balance and energy efficiency for each approach. Particularly useful for the quantitative comparisons of topology performance.
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
+
+1. **Hoque, M. M., Hannan, M. A., and Mohamed, A., "Charging and discharging model of lithium-ion battery for charge equalization control using particle swarm optimization algorithm," *Journal of Renewable and Sustainable Energy* 8 (6), 065701 (2016), doi:10.1063/1.4967972.** A flyback-converter-based charge equalization study that is useful for understanding active balancing control structure and converter-level trade-offs.
 
 2. **Daowd, M. et al., "Passive and active battery balancing comparison based on MATLAB simulation," *Proceedings of the 2011 IEEE Vehicle Power and Propulsion Conference*, 1–7 (2011).** A straightforward comparative simulation study of passive vs. active balancing for EV packs, showing how the balancing time and energy waste compare under realistic cell spread conditions. Good entry point for understanding the trade-offs in practice.
 
@@ -6066,13 +6895,17 @@ Notice that with a 12.8% spread between the lowest and highest cell capacities, 
 4. **Plett, G. L., *Battery Management Systems, Vol. 1: Battery Modeling*, Artech House (2015), Chapter 5.** Plett's treatment of cell balancing focuses on the interaction between balancing control and state estimation — specifically, how the balancing current affects the coulomb counting accuracy and how to compensate. This is the connection between Chapter 10 and Chapter 11 of this book, and it is treated with the rigour appropriate to a BMS implementation.
 
 5. **Zhong, L. et al., "A method for the estimation of the battery pack state of charge based on in-pack cells uniformity analysis," *Applied Energy* 113, 558–564 (2014).** An analysis of how cell-to-cell variation statistics (mean, variance, and their evolution with cycle number) can be used to diagnose imbalance and predict future pack performance. Directly relevant to the SOH fusion and prognostics discussion in Chapter 10, and to understanding the long-term trajectory of balancing requirements as a pack ages.
+\bodytextstyle
+
 
 
 \newpage
 
-# Functional Safety
+\chapter{Functional Safety}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 Every algorithm we have developed in the preceding three chapters — the state estimator of Chapter 10, the balancing controller of Chapter 11, the pack architecture of Chapter 9 — must ultimately run on firmware in a microcontroller that is expected to function correctly in the same vehicle that carries human passengers, operates in rain and extreme temperature, and must not cause injury even when its own hardware or software fails. Batteries are not simply an energy source to be optimised for performance; they are a hazard-containing system that must be managed safely. And "safely" in the automotive context has a precise, legally enforceable meaning defined by the ISO 26262 standard for functional safety.
 
@@ -6098,11 +6931,15 @@ By the end of this chapter, you will be able to read a BMS functional safety con
 
 ---
 
-## The Need for a Safety Standard: What Can Go Wrong
+\bodytextstyle
+
+\section{The Need for a Safety Standard: What Can Go Wrong}
+
 
 Before ISO 26262 and its requirements make sense, it helps to concretise the failure scenarios that motivate them. A battery system can cause harm through several distinct pathways, each with different likelihood and severity.
 
-### The Hazard Catalogue
+\subsection{The Hazard Catalogue}
+
 
 **Thermal runaway from overcharge**: If the BMS fails to stop charging when cells reach their upper voltage limit — whether because the voltage measurement circuitry fails, the contactor fails to open, or the software logic has an undetected bug — cells can be overcharged beyond their safe voltage. Overcharge drives the cathode into deep delithiation and the electrolyte into oxidative decomposition, eventually triggering the thermal runaway cascade described in Chapter 8. For NMC/graphite cells, the margin between the rated upper cutoff (4.2 V) and the onset of dangerous cathode reactions is only 100–200 mV. A measurement error of that magnitude, sustained through a full charging session, can initiate the hazard.
 
@@ -6120,7 +6957,8 @@ These hazards have different probabilities and different severities. Some (overc
 
 ---
 
-## ISO 26262: Structure and Scope
+\section{ISO 26262: Structure and Scope}
+
 
 **ISO 26262** is the international standard for functional safety of electrical and electronic systems in road vehicles. It was first published in 2011 and significantly revised in 2018. It is titled "Road Vehicles — Functional Safety" and its full scope is broad — covering all E/E (electrical and electronic) systems in passenger cars and some categories of trucks. Battery management systems fall squarely within its scope for any vehicle application.
 
@@ -6130,19 +6968,22 @@ For a BMS developer, Parts 3, 4, 5, 6, and 9 are the most directly relevant. Par
 
 If you have encountered the V-model of systems development in your EE coursework — requirements on the left descending arm, verification on the right ascending arm — ISO 26262 maps directly onto that shape. Part 3 sits at the top of the V: it defines the safety requirements through hazard analysis. Parts 4 through 6 descend the left arm, progressively translating those requirements into system-level, hardware-level, and software-level designs. Each level on the left arm has a corresponding verification level on the right arm (system integration testing, hardware testing, software unit testing). Part 9 provides the analysis methods — FMEA, FTA, and others — that feed into every level. You do not need to memorise the part numbers, but understanding the V-shaped flow from hazard analysis down to detailed design and back up through verification will help you read any BMS safety document with orientation.
 
-### Functional Safety vs. Other Safety Concerns
+\subsection{Functional Safety vs. Other Safety Concerns}
 
-ISO 26262 addresses **functional safety** — the absence of unreasonable risk due to hazards caused by malfunctioning behaviour of E/E systems. It does not cover all safety aspects of a battery system. **Chemical safety** — such as hydrogen fluoride release from electrolyte decomposition and CO generation during thermal runaway — is covered by UNECE Global Technical Regulation No. 20 and related standards. **Electrical safety** (shock protection, wiring protection) is covered by ISO 6469 and FMVSS 305. **Abuse resistance** — performance under crash, fire, and water immersion — is covered by cell-level standards such as IEC 62660 and UL 2580.
+
+ISO 26262 addresses **functional safety** — the absence of unreasonable risk due to hazards caused by malfunctioning behaviour of E/E systems. It does not cover all safety aspects of a battery system. Vehicle-level **electric vehicle safety** requirements are also addressed by UNECE Global Technical Regulation No. 20. **Electrical safety** (shock protection, post-crash electrical protection, and related HV requirements) is addressed by standards and regulations such as ISO 6469 and FMVSS 305. **Battery abuse and product safety** are addressed by battery-specific standards such as IEC 62660-3 for traction cells and UL 2580 for EV battery packs, modules, and related assemblies.
 
 A fully safety-compliant BMS must satisfy all of these standards, not just ISO 26262. In practice, a BMS development programme runs parallel workstreams addressing all applicable standards simultaneously.
 
 ---
 
-## ASIL: The Risk Classification System
+\section{ASIL: The Risk Classification System}
+
 
 The centrepiece of ISO 26262 for a practitioner is the **Automotive Safety Integrity Level (ASIL)** classification system. ASIL is a risk classification assigned to each safety goal (a high-level requirement that must be satisfied to prevent a specific hazard from causing harm). The ASIL determines the rigour of the development process — the required analysis methods, the code review practices, the testing coverage, the documentation — needed to give confidence that the safety goal will be met in the final product.
 
-### The Three Risk Parameters
+\subsection{The Three Risk Parameters}
+
 
 ASIL is determined by three parameters that together describe the risk associated with a hazard:
 
@@ -6158,7 +6999,8 @@ A BMS overcharge hazard has high exposure (E4) because charging occurs in nearly
 
 An incorrect range estimate that leads to a stranded vehicle is controllable (C1 — the driver can stop the vehicle safely).
 
-### The ASIL Matrix
+\subsection{The ASIL Matrix}
+
 
 The full ASIL determination table has three dimensions (S × E × C). The slice at C3 — the most relevant for BMS hazards, since thermal runaway is uncontrollable — is shown below:
 
@@ -6166,9 +7008,9 @@ The full ASIL determination table has three dimensions (S × E × C). The slice 
 
 | Severity | E1 | E2 | E3 | E4 |
 | --- | --- | --- | --- | --- |
-| **S1** | QM | QM | QM | ASIL A |
-| **S2** | QM | QM | ASIL A | ASIL B |
-| **S3** | QM | ASIL A | ASIL B | ASIL C |
+| **S1** | QM | QM | ASIL A | ASIL B |
+| **S2** | QM | ASIL A | ASIL B | ASIL C |
+| **S3** | ASIL A | ASIL B | ASIL C | ASIL D |
 
 For the most critical battery hazards — S3 severity with C3 controllability and E4 exposure (such as overcharge during routine charging) — the ASIL matrix yields **ASIL D**, the most stringent level. At lower exposure (E3), the same S3/C3 combination gives ASIL C; at E2, ASIL B.
 
@@ -6178,37 +7020,42 @@ Note that the standard also defines separate table slices for C1 and C2, which y
 
 **ASIL A** through **ASIL D**: Increasing levels of rigor, with ASIL D being the most stringent and corresponding to the most severe, likely, and uncontrollable hazards.
 
-### Applying ASIL to BMS Hazards
+\subsection{Applying ASIL to BMS Hazards}
+
 
 Let us work through the ASIL classification for the overcharge hazard. The severity is S3, because thermal runaway can lead to vehicle fire and potentially fatal injuries. The exposure is E4, because charging occurs in nearly every operational cycle. The controllability is C3, because thermal runaway is difficult to control once initiated. From the ASIL matrix: S3, E4, C3 → **ASIL D**.
 
-ASIL D is the highest ASIL level. It requires the most stringent development processes: formal verification methods for software, extensive hardware redundancy analysis (using techniques like FMEA — Failure Mode and Effects Analysis — and FTA — Fault Tree Analysis), 100% MC/DC code coverage in testing, strict configuration management, and independent safety assessments at multiple development stages. An ASIL D safety requirement applied to a BMS function means that the engineering team must demonstrate, with quantitative evidence, that the probability of the function failing to prevent overcharge is below a specified threshold — typically less than $10^{-8}$ failures per hour of operation.
+ASIL D is the highest ASIL level. It drives the most stringent development and verification rigor: extensive safety analysis (using techniques like FMEA — Failure Mode and Effects Analysis — and FTA — Fault Tree Analysis), strong independence requirements, demanding verification practices, strict configuration management, and confirmation measures at multiple development stages. In hardware safety arguments, ASIL D items are commonly associated with very stringent probabilistic targets such as a PMHF below $10^{-8}$/hour, but that metric applies specifically to random hardware failures at the item level rather than serving as a universal one-line requirement for every software function.
 
 For comparison, let us classify the isolation fault hazard. The severity is S3 — electric shock to occupants or first responders can be fatal. The exposure is E2, since isolation faults are relatively rare in a well-designed system but possible. The controllability is C3, because once in contact with an energised chassis, the victim may be unable to release. From the ASIL matrix: S3, E2, C3 → **ASIL B**.
 
 ASIL B still requires significant rigour, but less than ASIL D. The BMS isolation monitoring function (Section 9.3) must be designed and verified to ASIL B standards — which means, among other things, that the IMD circuit must be shown to have a sufficiently low probability of both failing to detect a genuine isolation fault and of generating false alarms that would unnecessarily open the contactors.
 
-### What ASIL Levels Mean in Practice
+\subsection{What ASIL Levels Mean in Practice}
 
-The difference between ASIL levels is not merely a label — it translates directly into development cost, time, and engineering constraints. At QM (quality management), the standard imposes no requirements beyond the organisation's normal development process. At ASIL A, the standard requires structured documentation, basic safety analysis (FMEA at the system level), and defined testing processes — roughly what a well-run engineering team would do anyway. At ASIL B, the requirements tighten: more rigorous analysis methods, higher test coverage targets, and independent review of safety-critical design decisions. At ASIL C, formal methods begin to appear: code coverage must include branch coverage, safety analyses must include quantitative fault tree analysis (FTA), and hardware random failure rates must be demonstrated through calculation. At ASIL D, the most stringent level, the standard requires MC/DC (modified condition/decision coverage) for software testing — a coverage criterion that ensures every Boolean sub-expression in every safety-critical decision has been independently exercised — along with formal verification techniques, quantitative PMHF (probabilistic metric for random hardware failure) demonstration, and independent safety assessment by an external assessor.
+
+The difference between ASIL levels is not merely a label — it translates directly into development cost, time, and engineering constraints. At QM (quality management), the standard imposes no safety-specific requirements beyond the organisation's normal development process. As you move from ASIL A through D, the expected rigor rises: more structured requirements traceability, more demanding safety analysis, stronger independence of review and verification, tighter control of tools and configuration, and more stringent software and hardware verification practices. In practice, ASIL D projects often use techniques such as MC/DC coverage for safety-critical software and quantitative hardware metrics such as PMHF, SPFM, and LFM, while lower ASILs may justify less demanding measures.
 
 The practical consequence: an ASIL D function might require 3–5× the development effort of the same function at ASIL A, and the verification artefacts alone can exceed the volume of the design documentation. This is why ASIL decomposition (splitting a high-ASIL requirement across two independent paths at lower ASIL levels) is not just a theoretical trick but a significant cost-saving strategy — one that directly shapes BMS hardware architecture.
 
-### ASIL Decomposition
+\subsection{ASIL Decomposition}
+
 
 An ASIL D requirement does not mean every individual hardware component and every line of code must be developed to ASIL D rigor. ISO 26262 permits **ASIL decomposition**: splitting a safety requirement between two independent channels such that each channel only needs to meet a lower ASIL level, provided the two channels are truly independent and the failure of both simultaneously is extremely unlikely.
 
-For example, an ASIL D overcharge protection requirement can be decomposed as ASIL C + ASIL A if two independent protection mechanisms are implemented: a primary software-based overvoltage protection (ASIL C) and a secondary hardware-based voltage comparator that directly opens the contactor if the cell voltage exceeds a hardwired threshold (ASIL A). Because the two channels are independent — a software bug that disables the primary protection does not affect the hardware comparator — the combined system meets the ASIL D requirement. The logic is identical to redundancy in fault-tolerant circuit design: if two independent paths each have a failure probability $p_1$ and $p_2$, the probability that *both* fail simultaneously is $p_1 \times p_2$ (assuming independence). An ASIL C path with failure probability on the order of $10^{-7}$/hr and an ASIL A path with failure probability on the order of $10^{-6}$/hr combine to give $10^{-13}$/hr — far below the ASIL D target of $10^{-8}$/hr. The arithmetic works only because the two paths share no common failure modes. If both paths used the same voltage measurement IC, a single IC failure could disable both protections, and the decomposition would be invalid.
+For example, an ASIL D overcharge protection requirement can be decomposed into two independent protection mechanisms such as a primary software-based overvoltage protection path and a secondary hardware-based voltage comparator path. The logic is the same as in fault-tolerant design generally: independence allows a higher-level safety goal to be allocated across multiple channels without requiring each single channel to carry the full burden alone. The key condition is genuine independence. If both paths used the same voltage measurement IC, a single IC failure could disable both protections, and the decomposition would be invalid.
 
 This decomposition principle explains why BMS designs always include both software-based protection (the BMS algorithm) and hardware-based protection (dedicated safety ICs with hardwired thresholds), even when the software protection is more sophisticated and more flexible.
 
 ---
 
-## BMS Failure Modes and Protective Functions
+\section{BMS Failure Modes and Protective Functions}
+
 
 With the ASIL framework established, we can systematically survey the protective functions that a BMS must implement and the failure modes they guard against. This section does not derive algorithms — those belong to the chapters covering each function in detail — but maps the safety requirements to the specific hardware and software mechanisms that implement them.
 
-### Cell Overvoltage Protection
+\subsection{Cell Overvoltage Protection}
+
 
 **Hazard**: Cell voltage exceeds upper cutoff ($V_\text{max}$), leading to cathode degradation and eventual thermal runaway.
 
@@ -6224,7 +7071,8 @@ With the ASIL framework established, we can systematically survey the protective
 
 **Detection and diagnostic coverage**: ISO 26262 requires quantification of **diagnostic coverage** — the fraction of all possible failure modes in a safety-relevant component that are detected by the protective function. For the cell voltage measurement path, this means: what fraction of all possible CMIC faults (stuck-at-zero output, stuck-at-full-scale output, intermittent open circuit, gain error, offset drift) result in the cell voltage being measured as lower than actual (allowing overcharge to continue)? Each fault mode must be identified and its probability of occurrence and detectability quantified through FMEA.
 
-### Cell Undervoltage Protection
+\subsection{Cell Undervoltage Protection}
+
 
 **Hazard**: Cell voltage falls below lower cutoff ($V_\text{min}$), leading to copper dissolution (LIB) or deep structural damage to the cathode, followed by internal short circuit on subsequent charging.
 
@@ -6236,7 +7084,8 @@ With the ASIL framework established, we can systematically survey the protective
 
 *Note on SIBs*: For sodium-ion cells, the lower cutoff voltage is typically 1.5–2.0 V (depending on cathode chemistry), and the hazard of going below this limit is somewhat less severe than for LIBs (no copper current collector to dissolve — recall from Chapter 4 that SIBs use aluminium on both sides). However, deep discharge of SIB cathodes can still cause irreversible structural damage, so undervoltage protection remains important, though potentially at a lower ASIL level.
 
-### Overcurrent Protection
+\subsection{Overcurrent Protection}
+
 
 **Hazard**: Current exceeds the cell's or pack's maximum rated current, causing excessive heat generation, lithium/sodium plating, or mechanical damage to the cell.
 
@@ -6250,7 +7099,8 @@ With the ASIL framework established, we can systematically survey the protective
 
 **Plating protection**: As a sub-case of overcurrent protection, the BMS must enforce charging current limits that prevent lithium or sodium plating (Chapter 7, Section 7.3). The limit is a function of temperature and SOC, derived from the charge-transfer kinetics described by the Butler-Volmer equation (Chapter 2, Section 2.8). The critical constraint is this: if the charging current drives the anode's electrochemical potential below 0 V versus the Li/Li⁺ reference (the equilibrium potential of metallic lithium, introduced in Chapter 1), lithium metal will plate out on the anode surface instead of intercalating. At low temperatures, the charge-transfer resistance rises and the anode potential drops more sharply for a given current, so the safe charging current limit must be severely derated. At high SOC, the anode is nearly full and its equilibrium potential is already close to 0 V vs. Li/Li⁺, providing less margin. The combination of low temperature and high SOC is the most restrictive operating point for the plating prevention function.
 
-### Overtemperature Protection
+\subsection{Overtemperature Protection}
+
 
 **Hazard**: Cell temperature exceeds safe operating limits, accelerating degradation (at moderate overtemperature) or initiating thermal runaway (at severe overtemperature).
 
@@ -6262,7 +7112,8 @@ With the ASIL framework established, we can systematically survey the protective
 
 *Thermal runaway detection*: A more demanding safety function distinct from overtemperature protection. Thermal runaway can initiate faster than the normal temperature monitoring loop can detect, particularly if it starts in a cell interior that is thermally insulated from the temperature sensors. Some BMS designs supplement temperature monitoring with **gas detection** (a sensor that detects the characteristic gas products of SEI decomposition and electrolyte combustion — CO, hydrogen, hydrocarbons) and with **voltage collapse detection** (a cell undergoing thermal runaway will show a sudden voltage drop as the cell is effectively shorted internally, even before the temperature rises to detectable levels). These secondary detection methods can provide earlier warning of runaway initiation than temperature alone.
 
-### Isolation Loss Detection
+\subsection{Isolation Loss Detection}
+
 
 **Hazard**: Loss of HV-to-chassis isolation exposes occupants or first responders to shock hazard.
 
@@ -6272,7 +7123,8 @@ With the ASIL framework established, we can systematically survey the protective
 
 The IMD itself must be monitored for failure — a failed IMD that always reports "isolation good" would disable this protective function. Self-diagnostic features (the IMD periodically tests its own measurement path by applying a known test impedance) are required by ISO 26262 for this reason.
 
-### Contactor Welding Detection
+\subsection{Contactor Welding Detection}
+
 
 **Hazard**: A contactor whose contacts have welded shut — this occurs when the contacts are opened or closed while carrying high current, causing an electrical arc that locally melts and fuses the contact surfaces — cannot be opened by the BMS, leaving the HV bus permanently energised even when the BMS commands isolation.
 
@@ -6282,7 +7134,8 @@ The BMS must perform a **contactor weld detection test** during each power cycle
 
 This detection must happen before the vehicle is considered safe to work on (e.g., during the end-of-session shutdown sequence) and must be reported to the driver and service technicians as a fault code. A vehicle with a welded contactor must not be operated until the contactor is replaced.
 
-### Software Integrity: Watchdog Timers and Execution Monitoring
+\subsection{Software Integrity: Watchdog Timers and Execution Monitoring}
+
 
 Beyond the individual protective functions, the software itself must be protected against its own failure modes. An embedded microcontroller running BMS firmware can fail in several ways. The main execution loop may stall due to an infinite loop or a deadlock in a semaphore. A stack overflow can corrupt the execution state, or a pointer error can cause the firmware to execute arbitrary memory contents. A bit-flip in SRAM — caused by high-energy neutrons from cosmic ray showers striking the silicon substrate — can corrupt a safety-critical variable. For automotive-grade SRAM, the soft error rate (SER) is on the order of 100–1000 FIT per megabit (where 1 FIT = 1 failure in $10^9$ device-hours), corresponding to roughly one upset per 1–10 million hours per megabit. At first glance this seems negligibly rare, but a modern BMS microcontroller with several megabits of SRAM running for millions of cumulative fleet-hours makes this a realistic — not hypothetical — failure mode.
 
@@ -6300,7 +7153,8 @@ Additional software integrity measures required by ISO 26262 for ASIL C and D sy
 
 ---
 
-## The Relationship Between Functional Safety and Battery Research
+\section{The Relationship Between Functional Safety and Battery Research}
+
 
 A researcher who develops a new BMS algorithm — a better SOC estimator, a novel degradation model, an improved balancing strategy — must understand where their work sits in the functional safety framework. Not because the researcher is responsible for writing the FMEA and developing the ASIL decomposition (that is the safety engineer's job), but because the research will eventually need to be translated into a product, and the translation requirements shape what the research must prove.
 
@@ -6312,7 +7166,10 @@ The functional safety framework is not an obstacle to innovation; it is a specif
 
 ---
 
-## Worked Interpretation Exercise: Reading a BMS Safety Concept Document
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Reading a BMS Safety Concept Document}
+
+\specialsectionstyle
+
 
 A **functional safety concept** document is one of the required deliverables in the ISO 26262 concept phase (Part 3). It describes, for each identified hazard and its associated safety goal, the top-level functional safety requirements that the system must implement. Let us work through a representative excerpt from a fictional but realistic BMS safety concept document.
 
@@ -6330,7 +7187,7 @@ A **functional safety concept** document is one of the required deliverables in 
 
 **Functional Safety Requirements (FSR)**:
 
-FSR-003-A (ASIL D after decomposition: ASIL C from this path + ASIL A from FSR-003-B): The BMS shall monitor all cell voltages at a minimum rate of 20 Hz during charging. If any cell voltage exceeds 4.20 V for more than 100 ms, the BMS shall command the main positive contactor open within 50 ms.
+FSR-003-A (part of an ASIL D safety goal after decomposition): The BMS shall monitor all cell voltages at a minimum rate of 20 Hz during charging. If any cell voltage exceeds 4.20 V for more than 100 ms, the BMS shall command the main positive contactor open within 50 ms.
 
 FSR-003-B (ASIL A): A hardware voltage monitoring circuit, independent of the BMS microcontroller, shall compare each cell voltage to a hardwired reference of 4.25 V and directly open the main positive contactor if any cell voltage exceeds this reference, independent of BMS software state.
 
@@ -6340,21 +7197,22 @@ FSR-003-C (ASIL B): The BMS shall perform a cell voltage measurement chain diagn
 
 Let us interpret this excerpt using the chapter's framework.
 
-**The ASIL D classification**: Consistent with the S3/E4/C3 combination we worked through in Section 12.3. The safety goal is stated as a quantitative failure rate — $10^{-8}$/hour — which aligns with the ASIL D quantitative target for the probabilistic metric for random hardware failure (PMHF), defined in ISO 26262 Part 5. ISO 26262 descended from the process-industry standard IEC 61508 and shares its general approach to quantitative safety targets, though the specific values and their application to automotive systems are defined independently in ISO 26262.
+**The ASIL D classification**: Consistent with the S3/E4/C3 combination we worked through in Section 12.3. The quoted $10^{-8}$/hour figure should be read as a representative hardware-safety target often associated with ASIL D PMHF reasoning, not as a universal literal threshold that every safety requirement sentence in a concept document must contain. ISO 26262 descended from the process-industry standard IEC 61508 and shares its general approach to quantitative safety targets, though the specific values and their application to automotive systems are defined within ISO 26262 itself.
 
 **The 50 mV margin design**: This is a classic safety engineering pattern called **protection layer separation**. The operational protection (4.20 V, software) and the safety protection (4.25 V, hardware) are intentionally offset so they never compete. The safety layer only activates when the operational layer has failed — ensuring that the safety layer's activation is always a reliable fault indicator rather than an ambiguous event.
 
 **FSR-003-A (ASIL C)**: The 20 Hz measurement rate and 100 ms response time define the worst-case overcharge duration before protection acts. Consider a DC fast charger supplying 3C charge current to a 5 Ah NMC cell near the end of charge. The voltage rise rate at this point is dominated by the steep tail of the OCV curve. We can estimate it as:
 
-$$\frac{dV}{dt} \approx \frac{dOCV}{dSOC} \times \frac{I}{Q_\text{nom}} \tag{12.1}$$
-
+\begin{equation}
+\frac{dV}{dt} \approx \frac{dOCV}{dSOC} \times \frac{I}{Q_\text{nom}} \tag{12.1}
+\end{equation}
 Near full charge ($\text{SOC} > 0.95$), $dOCV/dSOC$ for NMC is steep — on the order of 2–5 V per unit SOC. For a 5 Ah cell at 3C (15 A), $dSOC/dt = 15/5 = 3 \; \text{hr}^{-1} \approx 8.3 \times 10^{-4} \; \text{s}^{-1}$. Taking $dOCV/dSOC \approx 3 \; \text{V}$, the voltage rise rate is roughly $3 \times 8.3 \times 10^{-4} \approx 2.5$ mV/s. At this rate, the cell would traverse the 50 mV gap from 4.20 V to 4.25 V in approximately 20 seconds — far slower than the 100 ms detection and the 50 ms contactor response time, confirming that the software protection has ample margin to prevent overshoot into the hardware protection threshold.
 
 Note: this estimate ignores the additional IR overpotential that is present during charging (which would shift the measured terminal voltage above OCV by $I \times R_\text{int} \approx 15 \times 0.045 = 0.675 \; \text{V}$), but that overpotential is approximately constant during the final moments of CC charging and does not affect the *rate* of voltage rise. When the charger transitions to CV mode and begins reducing current, the terminal voltage is held constant by definition — so the hazardous overshoot scenario applies specifically to a fault where the CC-to-CV transition fails and the charger continues at full current past the voltage limit.
 
 Notice that the response time requirement (50 ms to command contactor open after detecting overvoltage) is a real-time performance specification for the BMS firmware, not just a logical correctness requirement.
 
-**FSR-003-B (ASIL A)**: The hardware path. Because it is the ASIL A half of an ASIL D decomposition, it "only" needs to meet ASIL A requirements — but it must be genuinely independent of the software path. The requirement that the hardware comparator "directly opens the main positive contactor" means there is a hardwired signal path from the comparator output to the contactor coil drive circuit that bypasses the BMS microcontroller entirely. A software deadlock cannot prevent this protection from activating.
+**FSR-003-B**: The hardware path. The requirement that the hardware comparator "directly opens the main positive contactor" means there is a hardwired signal path from the comparator output to the contactor coil drive circuit that bypasses the BMS microcontroller entirely. A software deadlock cannot prevent this protection from activating.
 
 **A common pitfall in ASIL decomposition**: Suppose a cost-conscious design routes both the BMS software voltage measurement and the "independent" hardware comparator through the same cell monitoring IC (CMIC), reasoning that the CMIC has separate digital and analog outputs. This violates the independence requirement — a single CMIC failure (power supply dropout, die crack, solder joint fracture) would disable both paths simultaneously. The ASIL decomposition would be invalid, and the system would not meet the ASIL D safety goal. In practice, achieving genuine independence often requires physically separate measurement ICs with separate power supplies and separate signal routing — an architectural constraint that adds cost and board area, but is non-negotiable for ASIL D decomposition. When you see a BMS design with what appears to be "redundant" measurement hardware, this independence requirement is almost always the reason.
 
@@ -6364,11 +7222,16 @@ This kind of document analysis — tracing from hazard to ASIL to functional req
 
 ---
 
-## What Changes for Sodium-Ion?
+\bodytextstyle
+
+\specialsectionplain{What Changes for Sodium-Ion?}
+
+\specialsectionstyle
+
 
 The functional safety framework (ISO 26262) applies identically to SIB packs as to LIB packs. The ASIL classification process is the same; the protective functions are structurally the same. The differences are in the specific numbers and in some hazard severity assessments.
 
-**Lower thermal runaway severity may reduce some ASIL levels**: As established in Chapter 8, SIB cells have higher thermal runaway onset temperatures and lower total heat release than NMC LIB cells. If this difference is sufficient to change the severity classification of the overcharge hazard — from S3 to S2, for example, in a well-engineered pack design that contains the runaway within the pack without causing vehicle fire — then the resulting ASIL classification could drop from ASIL D to ASIL B for the overvoltage protection function. This potential ASIL reduction is commercially significant: ASIL B development requires substantially less engineering overhead than ASIL D. Whether the thermal characteristics of a specific SIB chemistry actually justify a severity downgrade requires a formal hazard analysis and evidence from abuse testing (nail penetration, overcharge, external fire tests) — it is not assumed.
+**Lower thermal runaway severity may reduce some ASIL levels**: As established in Chapter 8, SIB cells have higher thermal runaway onset temperatures and lower total heat release than NMC LIB cells. If this difference is sufficient to change the severity classification of the overcharge hazard — from S3 to S2, for example, in a well-engineered pack design that contains the runaway within the pack without causing vehicle fire — then the resulting ASIL classification could drop from ASIL D to ASIL C for the overvoltage protection function under the same E4/C3 assumptions. This potential ASIL reduction is commercially significant: even a one-level reduction can materially reduce development overhead. Whether the thermal characteristics of a specific SIB chemistry actually justify a severity downgrade requires a formal hazard analysis and evidence from abuse testing (nail penetration, overcharge, external fire tests) — it is not assumed.
 
 **The flat OCV problem creates new diagnostic coverage challenges**: As discussed in Section 12.4, the BMS overcharge protection function relying on SOC estimation faces reduced diagnostic coverage when the cell is in the OCV plateau region (where SOC estimation uncertainty is high). A full FMEA of a SIB BMS must quantify this reduced coverage and demonstrate that the hardware protection path (which is voltage-based and unaffected by the SOC estimation uncertainty) provides sufficient independent protection. The specific failure mode — "SOC estimator reports 50% when true SOC is 95% because the cell has been in the plateau region and coulomb counting has drifted" — must appear in the FMEA and must be shown to be caught by the hardware comparator. This is a concrete safety engineering consequence of the estimation challenge first identified in Chapter 10.
 
@@ -6378,13 +7241,18 @@ The functional safety framework (ISO 26262) applies identically to SIB packs as 
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
 - ISO 26262 is the international functional safety standard for automotive E/E systems, applicable to all BMS functions in road vehicles. It provides a structured methodology for classifying hazard risk and specifying the development rigor required to reduce that risk to an acceptable level.
 - ASIL (Automotive Safety Integrity Level) is determined by three factors: Severity (S0–S3, consequences to persons if the hazard occurs), Exposure (E0–E4, frequency of the hazardous operating situation), and Controllability (C0–C3, ability to avoid harm once the hazard occurs). The combination yields QM (no specific requirements) through ASIL A–D (increasing rigor).
-- BMS overcharge protection (potential to cause thermal runaway → fire → fatalities) is typically classified ASIL D under standard operating conditions (S3, E4, C3). This is the highest level and requires the most rigorous development processes, quantitative demonstration of failure probability below $10^{-8}$/hour, and full FMEA with diagnostic coverage quantification.
+- BMS overcharge protection (potential to cause thermal runaway → fire → fatalities) is typically classified ASIL D under standard operating conditions (S3, E4, C3). This is the highest level and requires the most rigorous development processes, strong independence arguments for decomposed architectures, and demanding verification and safety-analysis evidence.
 - ASIL decomposition allows an ASIL D requirement to be split into two independent paths (e.g., ASIL C software + ASIL A hardware), each meeting a lower level, provided the two paths are genuinely independent. This is why every safety-critical BMS function has both a software layer and a hardware-independent backup layer.
 - Core BMS protective functions include: cell overvoltage protection (primary software cutoff + hardware comparator + cell CID), undervoltage protection, overcurrent protection (current limits + main fuse + cell fuses), overtemperature protection (temperature monitoring + active cooling), isolation loss detection (IMD with self-diagnostic), and contactor weld detection.
 - Software integrity is addressed through watchdog timers, memory protection units, stack monitoring, CRC verification of safety-critical tables, and redundant calculation paths for ASIL C/D functions.
@@ -6396,7 +7264,12 @@ ISO 26262, functional safety, E/E system, ASIL (Automotive Safety Integrity Leve
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The deliverable for Chapters 9–12 remains the Plett Coursera specialisation (Courses 1 and 2) with MATLAB assignments. Chapter 12 provides the safety context within which all the algorithms in Plett's courses must eventually operate in a commercial system.
 
@@ -6426,7 +7299,12 @@ Response: On detection of a failed temperature sensor, the BMS should apply a co
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **ISO 26262:2018, *Road Vehicles — Functional Safety* (all parts).** The standard itself is the authoritative source. Parts 3, 4, and 9 are the most directly relevant to BMS design. The standard is available for purchase through ISO and national standards bodies. For educational access, many universities subscribe to standards databases (e.g., IEC Webstore, BSI) that provide access without individual purchase.
 
@@ -6434,16 +7312,20 @@ Response: On detection of a failed temperature sensor, the BMS should apply a co
 
 3. **Ebert, C. and Parro, R., "Automotive Software," *IEEE Software* 31 (2), 10–13 (2014).** A concise overview of ISO 26262 as it applies to automotive software development, written for a software engineering audience. Explains ASIL, the V-model development process, and the software-specific requirements (MC/DC coverage, tool qualification) in accessible terms.
 
-4. **Thaler, D. et al., "Safety Concept for BMS in Electric Vehicles Using ISO 26262," *Proceedings of IEEE Transportation Electrification Conference and Expo (ITEC)*, 2014.** One of the more accessible published worked examples of applying ISO 26262 to a BMS development programme, showing how hazard analysis, ASIL classification, and functional safety requirements are derived for real BMS functions. Directly applicable to the deliverable exercise.
+4. **Taylor, W. and Nelson, J. J., "High-Voltage Battery System Concepts for ISO 26262 Compliance," SAE Technical Paper 2013-01-0181 (2013), doi:10.4271/2013-01-0181.** A directly relevant published BMS-oriented example of applying ISO 26262 concepts to high-voltage battery system design, including hazards, risk classification, and architectural trade-offs.
 
 5. **Xiong, R. et al., *Battery Management Algorithm for Electric Vehicles*, Springer (2020), Chapter 7.** Covers the integration of functional safety requirements with BMS algorithm design — specifically, how to design SOC and SOH estimators that meet ASIL requirements through redundancy and plausibility monitoring. The most direct connection between the estimation algorithms of Chapter 10 and the safety requirements of Chapter 12.
+\bodytextstyle
+
 
 
 \newpage
 
-# What's Different About Sodium
+\chapter{What's Different About Sodium}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 You have now read twelve chapters of battery science, and sodium-ion batteries have appeared in every one of them — in the "What Changes for Sodium-Ion?" sections that have closed each chapter since Chapter 1, in the detailed treatment of hard carbon and layered oxide cathodes in Chapter 6, in the thermal safety comparison in Chapter 8, in the balancing and estimation complications in Chapters 10 and 11, and in the safety concept implications in Chapter 12. The picture has been assembled incrementally, one piece per chapter, in the context of whichever concept was being introduced. Now it is time to hold all the pieces together simultaneously and examine them as a system.
 
@@ -6472,13 +7354,17 @@ Read this chapter with a notebook open. By the end, you should have a list of sp
 
 ---
 
-## Na⁺ vs. Li⁺: The Fundamental Physical Differences and Their Cascading Consequences
+\bodytextstyle
+
+\section{Na\textsuperscript{+} vs. Li\textsuperscript{+}: The Fundamental Physical Differences and Their Cascading Consequences}
+
 
 We established the basic physical differences between sodium and lithium ions in Chapter 6, Section 6.1. Here we systematise those differences and trace each one through the full chain of consequences — from atomic physics to cell design to BMS algorithm to safety classification.
 
 When you sit down to build your first SIB simulation model — whether in PyBaMM, COMSOL, or your own MATLAB code — the temptation will be to take a working LIB model and replace every lithium-related parameter with its sodium counterpart. The ionic radius difference we are about to examine explains why this "find-and-replace" approach will fail in subtle ways. The 34% size increase does not merely change numerical parameter values; it changes which crystal structures are viable, which transport mechanisms dominate, and in some cases which governing equations are even appropriate. Understanding this cascade from one physical fact to many engineering consequences is the organising theme of this entire chapter.
 
-### Ionic Radius: The Root of Almost Everything
+\subsection{Ionic Radius: The Root of Almost Everything}
+
 
 The sodium ion Na⁺ has an ionic radius of **1.02 Å** in octahedral coordination; Li⁺ has **0.76 Å**. The ratio is 1.34 — sodium is 34% larger. This single physical fact propagates through the entire SIB system in ways that affect every level of the engineering hierarchy.
 
@@ -6494,7 +7380,8 @@ At the **simulation model level**, the larger ionic radius affects which paramet
 
 None of these can be assumed equal to their LIB counterparts. All require either direct experimental measurement (GITT for $D_s$, EIS for $k_0$, specific characterisation experiments for $\Omega$) or careful extrapolation from density functional theory (DFT) calculations.
 
-### Standard Electrode Potential: The Voltage Penalty
+\subsection{Standard Electrode Potential: The Voltage Penalty}
+
 
 The Na⁺/Na reduction potential of −2.71 V vs. SHE is 0.33 V higher (less negative) than the Li⁺/Li potential of −3.04 V. This is a thermodynamic fact that cannot be altered by any material engineering choice. It means that a sodium-ion cell built with cathode and anode materials structurally analogous to their lithium counterparts will have a cell voltage 0.33 V lower than the LIB — all else being equal.
 
@@ -6502,21 +7389,25 @@ In practice, the voltage penalty for commercial SIB cells relative to comparable
 
 For simulation modelling: the OCV curves used in DFN models and ECMs for SIBs are referenced to the Na/Na⁺ scale. When converting to the SHE scale (necessary for comparing thermodynamic data across chemistries), the conversion is $E_\text{SHE} = E_\text{Na/Na⁺} - 2.71 \; \text{V}$. Note that electrolyte transport properties — ionic conductivity $\kappa$, diffusion coefficient $D_e$, transference number $t_+$ — are intrinsic material properties measured in SI units and do not change when you switch between reference electrode scales. The reference electrode choice affects only how you report potentials.
 
-### Ionic Mass: The Capacity Penalty
+\subsection{Ionic Mass: The Capacity Penalty}
+
 
 Sodium is 22.99 g/mol; lithium is 6.94 g/mol — a ratio of 3.31. For every equivalent of charge stored (1 mol of ions cycled), a sodium-ion electrode stores 3.31 times more mass in the ion species itself compared to a lithium electrode. This directly reduces the gravimetric specific capacity of any material that stores sodium compared to a structurally analogous lithium storage material.
 
 The theoretical specific capacity formula from Chapter 1 makes this explicit:
 
-$$C_\text{th} = \frac{nF}{3.6 \, M_\text{host+ion}} \tag{13.1}$$
+\begin{equation}
+C_\text{th} = \frac{xF}{3.6 \, M_\text{host}} \tag{13.1}
+\end{equation}
+where $x$ is the number of moles of working ion stored per mole of host formula unit, and $M_\text{host}$ is the molar mass of the host active material. For a given host structure, storing fewer Na per host formula unit generally reduces the achievable specific capacity compared with an analogous Li host.
 
-where $M_\text{host+ion}$ includes the mass of the host material and the stored ion. For a given host structure with molar mass $M_\text{host}$, storing Na gives a lower specific capacity than storing Li because $M_\text{Na} > M_\text{Li}$.
+For hard carbon vs. graphite: graphite stores Li in LiC₆, so with host mass $M_{C_6} = 72$ g/mol and $x = 1$, the theoretical capacity is $C_\text{th} = 96{,}485/(3.6 \times 72) \approx 372$ mAh/g. If hard carbon is approximated by a limiting sodium loading near $\text{Na}_{0.8}\text{C}_6$, then using the same carbon-host mass basis with $x = 0.8$ gives $C_\text{th} \approx 0.8 \times 372 \approx 298$ mAh/g. Reported reversible capacities for practical hard carbons commonly fall around 250–320 mAh/g, with the exact value depending strongly on precursor, pyrolysis conditions, pore structure, electrolyte, and how irreversible loss is treated in the comparison. The ionic mass penalty is real at the full-cell level, but for hard carbon the storage mechanism and accessible site population are more constraining than ion mass alone.
 
-For hard carbon vs. graphite: Graphite stores Li in LiC₆ ($M = 79$ g/mol, $C_\text{th} = 372$ mAh/g). Hard carbon stores Na at a maximum loading of approximately $\text{Na}_{0.8}\text{C}_6$ (that is, about 0.13 Na per C atom — far lower than a 1:1 ratio). The molar mass per carbon atom is then $M \approx 12 + (0.8/6) \times 22.99 \approx 15.1$ g/mol, which gives a theoretical specific capacity of $C_\text{th} = (0.8/6) \times 96{,}485 / (3.6 \times 15.1) \approx 237$ mAh/g. Practical values for well-optimised hard carbons range from 250 to 350 mAh/g, with the upper end exceeding this simple stoichiometric estimate because the nanopore-filling mechanism provides additional capacity beyond what interlayer intercalation alone contributes. The ionic mass penalty is real but is not the dominant limiter for hard carbon specific capacity — the mechanism (nanopore filling has limited sites, not limited mass) is more constraining than the mass calculation alone.
+\subsection{Summary Table: Na\textsuperscript{+} vs. Li\textsuperscript{+} at a Glance}
 
-### Summary Table: Na⁺ vs. Li⁺ at a Glance
 
-#### Table 13.1: Fundamental Physical Properties of Na⁺ vs. Li⁺
+\subsubsection{Table 13.1: Fundamental Physical Properties of Na\textsuperscript{+} vs. Li\textsuperscript{+}}
+
 
 | Property | Li⁺ | Na⁺ | Ratio (Na/Li) | Primary Consequence |
 | --- | --- | --- | --- | --- |
@@ -6531,15 +7422,17 @@ For hard carbon vs. graphite: Graphite stores Li in LiC₆ ($M = 79$ g/mol, $C_\
 
 ---
 
-## Hard Carbon Anode Behaviour: The Slope and Plateau in Depth
+\section{Hard Carbon Anode Behaviour: The Slope and Plateau in Depth}
+
 
 We described hard carbon's slope and plateau OCV mechanism in Chapter 6, Section 6.5. Here we go deeper — examining the quantitative parameters that matter for simulation, the unresolved physical questions about the mechanism, and the practical consequences for model choice.
 
-### The Two-Mechanism Model Revisited
+\subsection{The Two-Mechanism Model Revisited}
+
 
 The Stevens-Dahn "house of cards" model (Chapter 6) attributes slope-region capacity to sodium intercalation into the turbostratic interlayer spaces and plateau-region capacity to nanopore filling with quasi-metallic sodium. This model has been the consensus view for over two decades, supported by SAXS (pore volume change at the plateau), ²³Na NMR (distinct sodium environments in slope vs. plateau), and synchrotron PDF analysis (local structural changes).
 
-However, the model is not without controversy. An alternative interpretation — the "adsorption-intercalation" model — reverses the assignment: the slope region reflects surface and defect adsorption of sodium, and the plateau region reflects intercalation into the graphene layer stacks. Recent high-resolution studies using in-operando synchrotron diffraction have shown that the graphene interlayer spacing of hard carbon does expand slightly during the plateau, consistent with intercalation into the turbostratic stacks at that potential. The current scientific consensus (as of 2024–2025) is that both mechanisms contribute to both regions, with nanopore filling dominating the plateau and turbostratic intercalation dominating part of the slope — but the detailed mechanistic assignment is still an active research topic.
+However, the model is not without controversy. An alternative interpretation — the "adsorption-intercalation" model — reverses the assignment: the slope region reflects surface and defect adsorption of sodium, and the plateau region reflects intercalation into the graphene layer stacks. Recent high-resolution studies using operando diffraction, NMR, and EPR-based analyses suggest that multiple mechanisms contribute across the voltage profile, with nanopore filling strongly associated with the low-voltage plateau and adsorption/intercalation both contributing in the sloping region. The detailed mechanistic partition is still an active research topic rather than a fully settled question.
 
 **Why this matters for simulation**: If the dominant mechanism switches during cycling (slope = intercalation, plateau = pore filling), then the appropriate physical model for each region is different. Intercalation into a layered host is well described by solid-state diffusion with Fick's second law and the DFN model's treatment of spherical particles with concentration-dependent diffusion. Nanopore filling, however, is better described as an adsorption process — possibly following a Langmuir or Freundlich isotherm for the nanopore sites — with different mathematical structure.
 
@@ -6547,7 +7440,8 @@ An EE analogy may help clarify the distinction. Solid-state diffusion through a 
 
 A DFN model that applies the same single-particle diffusion equation throughout the hard carbon electrode may be adequate for engineering purposes but physically incorrect in detail. This creates a genuine research opportunity: developing a two-mechanism model for hard carbon that correctly represents the slope region with solid-state diffusion physics and the plateau region with a pore-filling (adsorption) model, and validating this model against GITT and EIS data from hard carbon half-cells. Such a model would provide more physically faithful predictions of rate capability, temperature dependence, and ageing behaviour for hard carbon anodes.
 
-### The Diffusion Coefficient in Hard Carbon
+\subsection{The Diffusion Coefficient in Hard Carbon}
+
 
 Solid-state diffusion of sodium in hard carbon is fundamentally different from solid-state diffusion of lithium in graphite, because hard carbon is amorphous rather than crystalline. The diffusion coefficient $D_s$ cannot be defined in the same way as for a crystal lattice (where diffusion proceeds along specific crystallographic directions). Instead, $D_s$ in hard carbon is an effective apparent diffusivity that represents the combination of tortuous paths through the disordered carbon matrix.
 
@@ -6559,15 +7453,22 @@ In the **plateau region** (SOC 70–100% approximately, where nanopore filling o
 
 The strong $D_s$ variation with SOC means that any simulation model using a single, fixed $D_s$ value for the hard carbon electrode will be quantitatively inaccurate in at least one SOC region. A concentration-dependent $D_s$ is required, analogous to the concentration-dependent diffusion coefficient used for some LIB electrode materials but with a more dramatic variation for hard carbon.
 
-The temperature dependence of $D_s$ in hard carbon follows the Arrhenius law. Reported activation energies span a range of 25–55 kJ/mol depending on the hard carbon source and processing conditions — comparable to graphite's activation energy for lithium diffusion (20–50 kJ/mol). This means that the solid-state diffusion limitation worsens at low temperatures for hard carbon at approximately the same rate as for graphite — the low-temperature advantage of SIBs over LIBs does not come from better solid-state diffusion, but from the faster interfacial kinetics (lower desolvation energy in ether electrolytes, or the different hard carbon surface chemistry).
+\subsection{Modelling Hard Carbon in the DFN Framework}
 
-### Modelling Hard Carbon in the DFN Framework
 
 The standard DFN model assumes each electrode consists of spherical particles of uniform radius $r_p$, with sodium (or lithium) diffusing through the solid particle according to Fick's second law in spherical coordinates:
 
-$$\frac{\partial c_s}{\partial t} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 D_s \frac{\partial c_s}{\partial r}\right) \tag{13.2}$$
-
+\begin{equation}
+\frac{\partial c_s}{\partial t} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 D_s \frac{\partial c_s}{\partial r}\right) \tag{13.2}
+\end{equation}
 with boundary conditions at the particle centre (zero flux by symmetry) and at the surface (flux equal to the pore-wall flux $j_n$ from the Butler-Volmer equation).
+
+The temperature dependence of $D_s$ in hard carbon follows the Arrhenius law:
+
+\begin{equation}
+D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \tag{13.3}
+\end{equation}
+where $D_{s,0}(c_s)$ captures the strong concentration dependence and $E_{a,D}$ is the activation energy for solid-state transport. Reported activation energies span a range of 25–55 kJ/mol depending on the hard carbon source and processing conditions — comparable to graphite's activation energy for lithium diffusion (20–50 kJ/mol). This means that the solid-state diffusion limitation worsens at low temperatures for hard carbon at approximately the same rate as for graphite — the low-temperature advantage of SIBs over LIBs does not come from better solid-state diffusion, but from the faster interfacial kinetics (lower desolvation energy in ether electrolytes, or the different hard carbon surface chemistry).
 
 For hard carbon, applying this equation directly requires addressing three complications:
 
@@ -6579,11 +7480,13 @@ For hard carbon, applying this equation directly requires addressing three compl
 
 ---
 
-## Why the Plateau Breaks OCV-Based SOC Estimation: The Estimation Problem in Full
+\section{Why the Plateau Breaks OCV-Based SOC Estimation: The Estimation Problem in Full}
+
 
 We have examined the flat-OCV SOC estimation problem from multiple angles throughout the book — in Chapter 3 (OCV curve sensitivity), Chapter 6 (hard carbon mechanism), Chapter 10 (EKF Kalman gain drops to zero), and Chapter 12 (diagnostic coverage gap). Here we synthesise all of this into a complete, quantitative statement of the problem and a survey of the proposed solutions.
 
-### The Complete Problem Statement
+\subsection{The Complete Problem Statement}
+
 
 A sodium-ion cell with a hard carbon anode has the following OCV characteristics at 25°C (representative of a commercial O3 layered oxide / hard carbon cell):
 
@@ -6595,16 +7498,23 @@ The OCV hysteresis between charge and discharge in the plateau region is approxi
 
 With a cell voltage measurement noise of $\sigma_V = 5$ mV (from a 16-bit CMIC over a 4V range), the SOC uncertainty in each region is: In the steep slope region ($dE/d\text{SOC} \approx 150$ mV), $\sigma_\text{SOC} = 5/150 \approx 3.3\%$ — acceptable. In the plateau ($dE/d\text{SOC} \approx 25$–50 mV), $\sigma_\text{SOC}$ ranges from $5/50 = 10\%$ to $5/25 = 20\%$, with a midpoint estimate of $5/37 \approx 13.5\%$ — poor by any BMS standard. In the upper slope region ($dE/d\text{SOC} \approx 80$ mV), $\sigma_\text{SOC} = 5/80 \approx 6.3\%$ — marginal.
 
+This plateau-region sensitivity limit can be written compactly as:
+
+\begin{equation}
+\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \tag{13.4}
+\end{equation}
 The plateau spans 45% of the SOC range. During normal operation (charging from 20% to 90% SOC to protect longevity), approximately 56% of the operational SOC range falls within or near the plateau — the majority of normal operation is in the regime where voltage-based SOC correction is poor. This is not the same as LFP, where the plateau is even flatter (~3 mV/unit SOC) but the non-plateau regions at the extremes are routinely accessed by the BMS for recalibration. For SIBs, the combination of a larger plateau, higher hysteresis, and a more gradual slope-to-plateau transition creates a worse-case estimation environment than LFP.
 
-### Proposed Solutions and Their Status
+\subsection{Proposed Solutions and Their Status}
+
 
 **Solution 1 — Improved coulomb counting with temperature and ageing compensation**: The simplest approach is to accept the flat-OCV regime and improve coulomb counting accuracy to minimise drift during the plateau. This requires: (a) a high-accuracy current sensor (shunt-based with <10 mA offset and <0.1% gain error); (b) careful temperature compensation of both the current sensor and the $Q_\text{max}$ parameter; (c) frequent rest-state OCV recalibration at the extremes of SOC (when the cell exits the plateau into the steep slope regions). This approach is pragmatic and implementable with existing BMS hardware, but its accuracy is bounded by the coulomb counting drift rate — for a cell operating continuously in the plateau for 10 hours (a common grid storage duty cycle), the uncorrected SOC drift from current sensor errors alone can reach 5–10%.
 
 **Solution 2 — Extended EKF with hysteresis state variable**: The EKF can be augmented with a hysteresis state variable $h$ that tracks the cell's OCV correction due to the history-dependent memory effect in hard carbon. The augmented model uses separate charge-direction and discharge-direction OCV curves, with the hysteresis state providing a continuous transition between them based on recent current direction. Plett's group developed this approach for LFP cells and demonstrated improved SOC accuracy compared to single-curve EKF. The approach requires an additional model for hysteresis dynamics:
 
-$$\dot{h} = \gamma |i| (\text{sgn}(i) \, M(\text{SOC}) - h) \tag{13.3}$$
-
+\begin{equation}
+\dot{h} = \gamma |i| (\text{sgn}(i) \, M(\text{SOC}) - h) \tag{13.5}
+\end{equation}
 where $\gamma$ is the hysteresis rate constant, $i$ is the current, and $M(\text{SOC})$ is the maximum hysteresis magnitude at each SOC (a function that peaks in the slope region where hysteresis is largest). The augmented EKF with hysteresis has been implemented in SIB simulation environments and shows improvement in SOC accuracy during mixed charge/discharge operation, but it requires fitting an additional three or four parameters from characterisation data.
 
 **Solution 3 — EIS-based impedance fingerprinting**: The impedance spectrum of a hard carbon electrode changes in detectable ways between the slope and plateau regions, particularly in the mid-frequency range (0.1–10 Hz) where the Warburg behaviour (related to solid-state diffusion) and the charge-transfer arc are both sensitive to the local sodium concentration. If the BMS has the ability to perform abbreviated EIS measurements (a sinusoidal current perturbation at one or two selected frequencies, rather than a full frequency sweep), it can extract impedance-derived SOC indicators that remain sensitive even in the OCV plateau.
@@ -6613,13 +7523,14 @@ Recall from Chapter 3 (Section 3.10) that the Warburg impedance appears as a 45�
 
 **Solution 4 — Physics-based model with full two-mechanism hard carbon**: A full DFN model that explicitly represents both the intercalation and nanopore-filling mechanisms in hard carbon can predict SOC more accurately than an ECM because it tracks the internal state variables (concentration profiles in slope sites vs. nanopore fill fraction) that are the true determinants of the cell's electrochemical state. The model-based estimator (using an extended Luenberger observer or an EKF operating on the full DFN state vector) can maintain SOC accuracy in the plateau by leveraging the model's physics, even when the terminal voltage provides little information. The computational cost of running a full DFN model in real time on a BMS microcontroller is high but not prohibitive with modern embedded processors (32-bit ARM Cortex-M4 or M7) and reduced-order model techniques (Padé approximations, proper orthogonal decomposition). This represents the frontier of SIB BMS research.
 
-### Worked Interpretation: Reading a Hard Carbon GITT Curve
+\subsection{Worked Interpretation: Reading a Hard Carbon GITT Curve}
+
 
 Imagine you have performed a GITT (Galvanic Intermittent Titration Technique) experiment on a hard carbon half-cell (hard carbon vs. Na metal, NaPF₆/EC:DMC electrolyte) during sodiation (discharge of the half-cell). The experiment applies a constant current pulse of $C/20$ for 30 minutes, then rests for 4 hours, repeatedly, from 2.0 V down to 0.01 V vs. Na/Na⁺.
 
 What you would see, reading the voltage-vs.-capacity curve from left to right:
 
-**Region 1 (2.0 V → ~0.10 V, slope region):** Each current pulse produces a voltage drop of approximately 15–30 mV from the OCV, and the relaxation during rest is rapid — the voltage recovers to within 2 mV of steady state within 30–60 minutes. The quasi-equilibrium OCV after each rest step decreases steeply and smoothly. From the GITT formula (Chapter 3, Equation 3.18), you extract $D_s$ values in the range $10^{-12}$–$10^{-11}$ m²/s. The high $D_s$ means sodium redistributes quickly inside the hard carbon particles after each pulse, producing fast voltage relaxation.
+**Region 1 (2.0 V → ~0.10 V, slope region):** Each current pulse produces a voltage drop of approximately 15–30 mV from the OCV, and the relaxation during rest is rapid — the voltage recovers to within 2 mV of steady state within 30–60 minutes. The quasi-equilibrium OCV after each rest step decreases steeply and smoothly. From the GITT formula (Chapter 3, Equation 3.16), you extract $D_s$ values in the range $10^{-12}$–$10^{-11}$ m²/s. The high $D_s$ means sodium redistributes quickly inside the hard carbon particles after each pulse, producing fast voltage relaxation.
 
 **Region 2 (~0.10 V → ~0.05 V, transition zone):** The voltage drop per pulse begins to increase (now 30–60 mV at the same current), and the relaxation slows — full equilibration now requires 2–3 hours. The extracted $D_s$ drops by one to two orders of magnitude within a narrow capacity window. This is the slope-to-plateau transition, and the dramatic slowdown in diffusion is one of the clearest experimental signatures of the mechanism change from interlayer intercalation to nanopore filling.
 
@@ -6629,17 +7540,20 @@ The takeaway: a single GITT experiment on a hard carbon half-cell gives you the 
 
 ---
 
-## Aluminium Current Collectors on Both Sides: Cost, Implications, and Modelling
+\section{Aluminium Current Collectors on Both Sides: Cost, Implications, and Modelling}
+
 
 We established the thermodynamic basis for aluminium current collectors on both SIB electrodes in Chapter 4, Section 4.4. Here we consolidate the full picture — not just why it works, but what it changes for cell design, pack architecture, and simulation modelling.
 
-### Manufacturing Simplification
+\subsection{Manufacturing Simplification}
+
 
 Using a single current collector material (aluminium, 12–20 µm foil) for both electrodes eliminates the procurement, inventory management, and process qualification required for two different foil materials (copper and aluminium). In a manufacturing environment that processes millions of cells, simplifying from two material suppliers and two process lines to one is not a trivial advantage. The reduction in bimetallic joint interfaces (places where copper and aluminium busbars must be welded or bolted together, creating galvanic corrosion risks and mechanical joint reliability concerns) also simplifies pack assembly.
 
 The areal cost of aluminium foil is approximately \$0.08–0.12/m², compared to \$0.25–0.40/m² for copper foil of the same thickness. For an 18650-equivalent cell with approximately 0.4 m² of anode current collector area (both sides, one roll), the raw material saving from switching to aluminium is approximately \$0.07–0.12 per cell — modest per cell but significant at gigawatt-hour scale manufacturing volumes.
 
-### Electronic Resistance Increase
+\subsection{Electronic Resistance Increase}
+
 
 Aluminium has a higher bulk resistivity than copper: $\rho_\text{Al} = 2.65 \times 10^{-8}$ Ω·m vs. $\rho_\text{Cu} = 1.72 \times 10^{-8}$ Ω·m — aluminium is approximately 54% more resistive per unit volume. For the same foil thickness (12 µm), the **sheet resistance** of the anode current collector increases from:
 
@@ -6655,7 +7569,8 @@ For a jelly-roll electrode with a current path of approximately 50 cm from the a
 
 One advantage of the aluminium-for-copper substitution that is easy to overlook: weight. Aluminium's density is 2.70 g/cm³, compared to copper's 8.96 g/cm³. For the same foil thickness, the aluminium anode current collector is 3.3× lighter than the copper it replaces. In an 18650-format cell where the anode current collector contributes roughly 5–8 g of copper mass, switching to aluminium saves approximately 3.5–5.5 g per cell. This mass saving partially offsets the gravimetric energy density penalty of SIBs at the cell level — a small but non-negligible contribution to closing the Wh/kg gap with LIBs.
 
-### Implications for the Tabless and Large-Format Cell Design
+\subsection{Implications for the Tabless and Large-Format Cell Design}
+
 
 For large-format cells (4680-type cylindrical, large prismatic), current collector resistance becomes a more significant fraction of total cell resistance because the current path length is longer. The **tabless design** used in 4680-type cells (Chapter 4, Section 4.1) that reduces current collector resistance by creating distributed contact points along the electrode length is equally applicable to SIB large-format cells — and becomes more important for SIBs precisely because the base $R_0$ from Al is higher and the benefit of reducing the current path length is proportionally greater.
 
@@ -6663,17 +7578,20 @@ For SIB simulation models, the current collector resistance is included as part 
 
 ---
 
-## The Low-Temperature Advantage: Physical Origin and Quantification
+\section{The Low-Temperature Advantage: Physical Origin and Quantification}
+
 
 SIB cells are consistently better than LIB cells at low temperatures — not slightly better, but substantially better in some chemistries. The HiNa BC-1 retains approximately 88% of room-temperature capacity at −20°C and 70% at −40°C (Chapter 6, Section 6.8), while a typical NMC/graphite LIB retains 50–60% at −20°C and often cannot discharge at all at −40°C. This section provides the physical explanation and quantifies the mechanism.
 
-### The Activation Energy Story
+\subsection{The Activation Energy Story}
 
-From Chapter 10, Section 10.3 (Equation 10.23), the charge-transfer resistance at temperature $T$ is:
 
-$$R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{13.5}$$
+From Chapter 8, Section 8.6 (Equation 8.23), the charge-transfer resistance at temperature $T$ is:
 
-This is the Arrhenius resistance scaling first introduced as Equation 10.23; we reproduce it here as Equation 13.5 for convenience and because it is the central equation of this section.
+\begin{equation}
+R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{13.6}
+\end{equation}
+This is the Arrhenius resistance scaling first introduced as Equation 8.23; we reproduce it here as Equation 13.6 for convenience and because it is the central equation of this section.
 
 The variable $E_{a,\text{ct}}$ is the activation energy for the rate-limiting interfacial step. The low-temperature performance is almost entirely determined by this activation energy: a lower $E_{a,\text{ct}}$ means $R_\text{ct}$ grows less severely as temperature decreases, and the cell maintains better rate capability at low temperature.
 
@@ -6693,7 +7611,8 @@ The carbonate LIB's $R_\text{ct}$ grows 52.5× at −20°C, while the ether SIB'
 
 This also explains why the low-temperature advantage of SIBs is electrolyte-dependent: an SIB using carbonate electrolyte does not have a significant low-temperature advantage over LIBs, because the charge-transfer activation energy for Na⁺ in carbonates is similar to that for Li⁺. The advantage is specific to ether electrolytes.
 
-### Implications for Pack and BMS Design
+\subsection{Implications for Pack and BMS Design}
+
 
 The low-temperature advantage means that SIB packs may not need cell preheating systems in climates where temperatures drop to −20°C — a system simplification that reduces pack cost and complexity. For LIB packs designed for Nordic, Canadian, or high-altitude deployments, preheating is typically mandatory (adding 500–1500 W of heating power and the associated thermal management hardware). An SIB pack that can start charging and discharging at −20°C without preheating eliminates this cost.
 
@@ -6701,11 +7620,13 @@ For BMS algorithms, the lower temperature sensitivity of $R_\text{ct}$ means the
 
 ---
 
-## The Safety Advantage: Physical Origin at Depth
+\section{The Safety Advantage: Physical Origin at Depth}
+
 
 Chapter 8 (Section 8.7) quantified the SIB thermal safety advantage. Here we examine the physical mechanism more deeply, connecting the cathode crystal chemistry established in Chapter 6 to the calorimetric measurements that validate the safety claim.
 
-### Oxygen Release: The Dominant Heat Source
+\subsection{Oxygen Release: The Dominant Heat Source}
+
 
 As established in Chapter 8, the dominant exothermic event in LIB thermal runaway is the reaction between oxygen released from the delithiated cathode and the organic electrolyte. The oxygen release temperature is set by the thermodynamics of the transition metal oxide decomposition:
 
@@ -6721,7 +7642,8 @@ For polyanionic SIB cathodes — NVPF, NFPP, and NASICON-type structures (Na Sup
 
 For PBA cathodes (Prussian white, Na₂Fe[Fe(CN)₆]): Decomposition begins at approximately 300–350°C, but the product is not molecular oxygen — it is HCN (hydrogen cyanide) and CO from cyanide bridge cleavage, plus the metal oxide residue. HCN is toxic but not as rapidly combustion-supporting as O₂. The hazard profile of PBA cathode failure is different from layered oxide failure — less fire risk, but toxic gas generation. This difference must be addressed in the SIB safety concept.
 
-### Implications for ARC Test Interpretation
+\subsection{Implications for ARC Test Interpretation}
+
 
 ARC (accelerating rate calorimetry) tests performed on commercial SIB cells confirm the theoretical prediction. The self-heating onset temperature $T_\text{onset}$ — defined as the temperature at which the cell's self-heating rate exceeds the ARC detection threshold (typically 0.02°C/min) — is approximately 110–140°C for O3-type SIB cells, compared to 80–120°C for NMC811 at high SOC (depending on ARC sensitivity) and above 150°C for LFP. The peak temperature during runaway $T_\text{max}$ reaches approximately 400–500°C for O3 SIB, compared to 750–850°C for NMC811. The total heat released $Q_\text{total}$ is approximately 8–12 kJ for a 1.33 Ah 26650 SIB cell, compared to 28–38 kJ for a 3 Ah 18650 NMC811 cell. Note the capacity difference: on a per-ampere-hour basis, the comparison is approximately 8 kJ/Ah for SIB vs. 10 kJ/Ah for NMC811 — less dramatic than the raw cell-level numbers suggest.
 
@@ -6733,11 +7655,13 @@ In practical safety testing, the difference is visible in the nail penetration t
 
 ---
 
-## SEI Differences in SIBs
+\section{SEI Differences in SIBs}
+
 
 The SEI on hard carbon anodes in sodium-ion electrolytes differs from the graphite SEI in LIBs in composition, thickness, stability, and formation kinetics. These differences propagate into cell performance, calendar aging, and the accuracy of any physics-based degradation model.
 
-### Composition Differences
+\subsection{Composition Differences}
+
 
 The SEI on hard carbon in carbonate electrolytes (NaPF₆ or NaClO₄ in EC:DMC) contains different species than the LIB graphite SEI. The inorganic inner layer is dominated by NaF (from NaPF₆ → NaF + PF₅) and Na₂CO₃ (from carbonate solvent reduction), with $\text{Na}_2\text{O}$ (sodium oxide) contributing a smaller fraction than $\text{Li}_2\text{O}$ does in LIB SEIs. The organic outer layer contains sodium alkyl carbonates (analogous to lithium alkyl carbonates in LIBs), but with different chain structures reflecting different radical intermediates in the Na⁺-mediated reduction pathway.
 
@@ -6745,7 +7669,8 @@ The ionic conductivity of NaF is lower than that of LiF (the dominant inorganic 
 
 In ether electrolytes (NaPF₆ or NaFSI in DEGDME), the SEI composition is dramatically different: the carbonate-derived organic species are absent, replaced by ether decomposition products (primarily sodium ethylene glycolate and related oligomers) and a higher fraction of inorganic NaF. The ether-derived SEI is generally thinner (5–15 nm vs. 20–50 nm for carbonate-derived SEI), more mechanically stable, and more ionically conductive — explaining the higher ICE (85–92%) and better cycling stability observed with ether electrolytes on hard carbon.
 
-### Formation and Evolution
+\subsection{Formation and Evolution}
+
 
 The formation of the hard carbon SEI during the first cycles shares the same general mechanism as graphite SEI formation: electrolyte reduction at the electrode surface below the electrolyte's reduction stability potential. For hard carbon in NaPF₆/EC:DMC, the SEI formation onset is at approximately 1.0–1.5 V vs. Na/Na⁺ (during the first charge). For comparison, the graphite SEI onset in LiPF₆/EC:DMC is ~0.8 V vs. Li/Li⁺, which on the SHE scale corresponds to −2.24 V — equivalent to about 0.47 V vs. Na/Na⁺. The hard carbon SEI onset is therefore at a substantially more positive potential than the graphite onset, even after accounting for the different reference scales. This difference reflects the catalytic activity of hard carbon's abundant surface functional groups (ether, carboxyl, hydroxyl residues from pyrolysis), which initiate electrolyte reduction reactions at more positive potentials than the relatively inert basal-plane surface of crystalline graphite.
 
@@ -6755,11 +7680,13 @@ For simulation models of SIB calendar aging, the SEI growth kinetics should foll
 
 ---
 
-## Degradation Modes Unique to or Amplified in SIBs
+\section{Degradation Modes Unique to or Amplified in SIBs}
+
 
 Chapter 7 established the three-mode degradation framework (LLI, LAM, CL) and the specific mechanisms that drive each mode. For SIBs, all three modes are present, but the relative importance of mechanisms differs, and a small number of failure modes are unique to the sodium chemistry.
 
-### O3→P3 Phase Transition Fatigue in Layered Oxide Cathodes
+\subsection{O3→P3 Phase Transition Fatigue in Layered Oxide Cathodes}
+
 
 O3-type layered oxide SIB cathodes (the most commercially prevalent cathode type) undergo the O3→P3 phase transition during deep desodiation (Chapter 6, Section 6.2). This transition involves gliding of the MO₂ oxide layers relative to each other — a crystallographic shear deformation that creates structural disorder and, in polycrystalline cathode particles, stress concentrations at grain boundaries.
 
@@ -6769,7 +7696,8 @@ The O3→P3 phase transition can be suppressed or mitigated by several strategie
 
 For simulation models of SIB cathode degradation, the O3→P3 transition must be represented either explicitly (through a phase-transition model that switches between the O3 and P3 free-energy curves at the transition composition) or implicitly (through an empirical strain/stress model that captures the accumulated damage as a function of the depth of desodiation past the transition point). Neither approach has been as thoroughly developed for SIB cathodes as the analogous NMC degradation models for LIBs.
 
-### PBA Cathode-Specific Degradation: Water and Vacancy Evolution
+\subsection{PBA Cathode-Specific Degradation: Water and Vacancy Evolution}
+
 
 For PBA-based SIB cells (Chapter 6, Section 6.4), degradation mechanisms unique to the open framework structure are present.
 
@@ -6777,7 +7705,8 @@ For PBA-based SIB cells (Chapter 6, Section 6.4), degradation mechanisms unique 
 
 **Hexacyanometalate vacancy growth**: PBAs are synthesised with a fraction of vacancies (missing [M(CN)₆] units) that is controlled by synthesis conditions. During cycling, the electrochemical stress can cause additional vacancy formation — the crystal framework is locally disrupted as sodium ions enter and leave rapidly. Growing vacancy density reduces the capacity (fewer sites for sodium) and increases impedance (vacancies disrupt the electronic conductivity of the framework). This mechanism has no LIB analogue; it is unique to the open-framework PBA structure.
 
-### Sodium Plating: Less Dendrite-Prone but Still Damaging
+\subsection{Sodium Plating: Less Dendrite-Prone but Still Damaging}
+
 
 As established in Section 7.3 and Section 13.5, sodium metal deposits are less prone to sharp dendrite formation than lithium metal deposits. The difference arises from the different surface energy and diffusion kinetics of sodium metal: sodium's higher surface diffusion coefficient (at room temperature) promotes lateral spreading of deposits rather than needle growth, producing more equiaxed and less penetrating metallic sodium deposits.
 
@@ -6785,7 +7714,8 @@ However, sodium metal deposits are not completely benign. Dead sodium (electroch
 
 For simulation models of SIB cycle aging: the plating contribution to LLI should follow the same framework as for LIBs (conditional on the local anode potential reaching 0 V vs. Na/Na⁺), but with modified parameters for the plating rate constant (lower overpotential required to trigger measurable plating), the dead sodium fraction (likely higher than dead lithium fraction because sodium metal is less reactive with the SEI after plating), and the re-intercalation efficiency (how much plated sodium re-inserts on the subsequent discharge).
 
-### Hard Carbon Structural Evolution Over Cycling
+\subsection{Hard Carbon Structural Evolution Over Cycling}
+
 
 Hard carbon microstructure is not static over thousands of cycles. The repeated expansion and contraction of the turbostratic interlayer spacings during slope-region cycling causes gradual ordering — the hard carbon slowly evolves toward a more graphitic local structure — meaning the turbostratic carbon layers, which start out randomly oriented and irregularly spaced, gradually become more parallel and more uniformly spaced, approaching (though never reaching) the crystalline order of graphite. Think of it as a messy stack of papers that, after being repeatedly pressed and released, settles into a neater pile. This structural ordering is slow (thousands of cycles) but directional and irreversible, and occurs particularly in regions of the electrode that cycle most intensively.
 
@@ -6795,7 +7725,10 @@ This structural evolution has no precise LIB analogue (graphite's crystal struct
 
 ---
 
-## What Changes for SIB Simulation Research: A Research Agenda
+\specialsectionwithsubtitle{What Changes for SIB Simulation Research}{A Research Agenda}
+
+\specialsectionstyle
+
 
 We have now systematically identified every place in the battery physics framework where sodium differs from lithium. Let us consolidate this into an explicit research agenda — the list of open problems that a simulation-focused EE researcher can meaningfully address.
 
@@ -6817,7 +7750,12 @@ Each of these problems is tractable for a simulation-focused researcher with acc
 
 ---
 
-## Chapter Summary
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
 
 **Key ideas:**
 
@@ -6833,13 +7771,13 @@ Each of these problems is tractable for a simulation-focused researcher with acc
 
 All key equations from earlier chapters apply. New or emphasised equations in this chapter:
 
-$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \quad \text{(concentration- and temperature-dependent } D_s \text{ for hard carbon)} \tag{13.4}$$
+$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \quad \text{(same relation as Eq. 13.3)}$$
 
-$$\frac{R_\text{ct}(T)}{R_\text{ct}(T_0)} = \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \quad \text{(Arrhenius resistance ratio)} \tag{13.5}$$
+$$\frac{R_\text{ct}(T)}{R_\text{ct}(T_0)} = \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \quad \text{(same relation as Eq. 13.6)}$$
 
 At $T = -20°\text{C}$ (253 K) relative to $T_0 = 25°\text{C}$ (298 K), this gives growth factors of $\approx 12\times$ for ether SIBs ($E_{a,\text{ct}} = 35$ kJ/mol) vs. $\approx 52\times$ for carbonate LIBs ($E_{a,\text{ct}} = 55$ kJ/mol).
 
-$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \quad \text{(SOC uncertainty in plateau region)} \tag{13.6}$$
+$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \quad \text{(same relation as Eq. 13.4)}$$
 
 **Key open research problems identified:**
 
@@ -6847,7 +7785,12 @@ DFN parameterisation for hard carbon; two-mechanism hard carbon model; hysteresi
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The primary deliverable for Chapter 13 in the context of your research preparation is a personal document we will call the **SIB Simulation Parameter Table** — a structured reference that you will maintain and update throughout your research career.
 
@@ -6859,30 +7802,37 @@ Electrolyte conductivity $\kappa$ (mS/cm at 25°C), electrolyte diffusion coeffi
 
 For any SIB parameter that you cannot find in the literature, note it explicitly as "not characterised" — this is your research gap map. The gaps in your table are the highest-priority experimental and computational needs for SIB simulation research.
 
-Excellent starting points for SIB DFN parameters: Bhatt et al. (*Journal of Power Sources*, 2020) for hard carbon; Gonzalez-Robles et al. (*Advanced Energy Materials*, 2021) for NVPF cathodes; Kim et al. (*ACS Applied Materials and Interfaces*, 2022) for O3-type layered oxide cathodes. Note: as I cannot verify whether these specific citations are correct without database access, treat these as directional search terms rather than guaranteed sources, and verify each reference independently.
+Verified starting points for building this table are the review articles in the Further Reading section below — especially Pan et al. for broad SIB materials context, Bommier and Ji for hard carbon and other anodes, Nayak et al. for the LIB-to-SIB comparison framework, and Muñoz-Márquez et al. for anode and SEI issues in large-scale applications. Use those reviews to identify the primary GITT, EIS, and half-cell studies that report parameter values for the specific chemistry you want to model.
 
 ---
 
-## Further Reading
+\bodytextstyle
 
-1. **Deng, J. et al., "Interplay between Solid Electrolyte Interface (SEI) and Dendrite Formation on the Anode of Sodium Ion Batteries," *Advanced Energy Materials* 11 (6), 2003987 (2021).** The most comprehensive recent review of SEI formation on hard carbon in sodium electrolytes, covering both carbonate and ether electrolyte systems. Includes quantitative comparison of SEI composition, thickness, and ionic conductivity across electrolyte types.
+\chapterendstyle
 
-2. **Bommier, C. and Ji, X., "Recent development on anodes for Na-ion batteries," *Israel Journal of Chemistry* 55 (5), 486–507 (2015).** A systematic review of hard carbon anode behaviour including the slope/plateau mechanism, the two-mechanism debate, GITT-derived diffusion coefficients, and rate capability data across multiple hard carbon types. The most thorough survey of the hard carbon electrochemistry that underlies Sections 13.2 and 13.3.
+\chapterendsection{Further Reading}
 
-3. **Nayak, P. K. et al., "From lithium-ion to sodium-ion batteries: advantages, challenges and surprises," *Angewandte Chemie International Edition* 57 (1), 102–120 (2018).** A comprehensive comparison of LIB and SIB across all relevant dimensions — materials, performance, cost, and safety — written specifically to highlight what is different and why. Well-organised around the "what changes" theme of this chapter.
 
-4. **Zhao, L. et al., "A Comprehensive Review on the Thermal Behavior of Lithium-ion Batteries and the Evaluation of Functional Safety," *Energy Storage Materials* 35, 313–333 (2021).** While focused primarily on LIBs, this review's framework for thermal characterisation (ARC methodology, onset temperature determination, heat generation separation) is the methodology directly applied to SIBs in the comparative studies referenced in Section 13.6. Reading this alongside the SIB ARC literature gives the methodological context for interpreting the safety comparison.
+1. **Bommier, C. and Ji, X., "Recent development on anodes for Na-ion batteries," *Israel Journal of Chemistry* 55 (5), 486–507 (2015), doi:10.1002/ijch.201400118.** A foundational review of Na-ion anodes, including hard carbon storage behavior and the early mechanism debate.
 
-5. **Muñoz-Márquez, M. A. et al., "Na-Ion Batteries for Large Scale Stationary Energy Storage," *Advanced Energy Materials* 7 (20), 1700470 (2017).** A review that situates SIB technology in the context of grid-scale stationary storage deployment — the application where the balance of SIB properties (cost, safety, longevity) most clearly outweigh its energy density limitations. Useful for understanding the commercial endpoint toward which the SIB simulation research in Chapter 14 is directed.
+2. **Nayak, P. K., Yang, L., Brehm, W., and Adelhelm, P., "From lithium-ion to sodium-ion batteries: advantages, challenges, and surprises," *Angewandte Chemie International Edition* 57 (1), 102–120 (2018), doi:10.1002/anie.201703772.** A comprehensive LIB-versus-SIB comparison that is directly aligned with the purpose of this chapter.
 
-*Note: As with all citations in this book, I cannot verify these references against a live database. Please confirm each title, volume, and page range independently before citing them in your own work.*
+3. **Pan, H., Hu, Y.-S., and Chen, L., "Room-temperature stationary sodium-ion batteries for large-scale electric energy storage," *Energy & Environmental Science* 6 (8), 2338–2360 (2013), doi:10.1039/C3EE40847G.** A classic review that frames why sodium-ion chemistry is especially relevant for stationary storage and summarizes electrode/electrolyte choices.
+
+4. **Muñoz-Márquez, M. Á., Saurel, D., Gómez-Cámer, J. L., Casas-Cabanas, M., Castillo-Martínez, E., and Rojo, T., "Na-Ion Batteries for Large Scale Applications: A Review on Anode Materials and Solid Electrolyte Interphase Formation," *Advanced Energy Materials* 7 (20), 1700463 (2017), doi:10.1002/aenm.201700463.** Particularly useful for connecting anode selection, large-scale applications, and SEI issues.
+
+5. **Wang, Y., Li, M., Zhang, Y. et al., "Hard carbon for sodium storage: Mechanism and performance optimization," *Nano Research* 17 (7), 6038–6057 (2024), doi:10.1007/s12274-024-6546-0.** A recent review focused specifically on hard-carbon mechanism and performance optimization, helpful for Sections 13.2, 13.3, and 13.7.
+\bodytextstyle
+
 
 
 \newpage
 
-# The SIB Research Landscape
+\chapter{The SIB Research Landscape}
 
-## Chapter Opening
+
+\chapteropeningstyle
+
 
 You have now spent thirteen chapters building a complete physical, chemical, and engineering understanding of battery technology, with sodium-ion batteries as a recurring thread that became the explicit focus in Chapters 6 and 13, and received dedicated SIB-adaptation sections in Chapters 8, 11, and 12. You understand what sodium-ion batteries are, why they exist, how they work physically, how they fail, how they are managed, and exactly where they differ from lithium-ion at every level of the engineering hierarchy. That understanding is the foundation. This chapter is the map of where to go next.
 
@@ -6904,35 +7854,41 @@ By the end of this chapter you will have a concrete, actionable research plan. Y
 
 ---
 
-## The SIB Modelling Literature: What Has Been Accomplished
+\bodytextstyle
 
-### The Scale of the Gap
+\section{The SIB Modelling Literature: What Has Been Accomplished}
 
-To understand the research opportunity, you first need to understand the scale of what is missing. A scientometric analysis of the SIB literature through 2025 identified approximately 15,682 peer-reviewed SIB papers in total — but the overwhelming majority of these are materials science papers: cathode synthesis, anode processing, electrolyte composition, structural characterisation. The sub-literature specifically addressing the engineering modelling concerns that fill this book — equivalent circuit models, electrochemical models, thermal models, BMS algorithms, state estimation, degradation prediction, system-level optimisation — is perhaps 50–100 times smaller than the equivalent LIB engineering modelling literature. To give you a concrete sense of scale: a Google Scholar search for "lithium-ion equivalent circuit model" returns tens of thousands of results; "sodium-ion equivalent circuit model" returns fewer than fifty. The asymmetry holds across every topic in Chapters 9 through 12. In practical terms: for every topic in Chapters 9 through 12 of this book, there are hundreds or thousands of Li-ion papers and perhaps three to eight SIB papers. Most of those SIB papers were published after 2022.
+
+\subsection{The Scale of the Gap}
+
+
+To understand the research opportunity, you first need to understand the scale of what is missing. A 2025 scientometric review counted 15,682 peer-reviewed SIB papers published from 2000 to 2024 — but the overwhelming majority are materials-science papers: cathode synthesis, anode processing, electrolyte composition, and structural characterisation. The engineering-modelling literature that matches the focus of this book — equivalent circuit models, electrochemical models, thermal models, BMS algorithms, state estimation, degradation prediction, and system-level optimisation — remains much smaller. In practical terms, validated SIB ECM, DFN, and state-estimation papers still number in the dozens rather than the thousands familiar in the Li-ion literature. Most of that engineering-focused SIB work has appeared only since 2021–2022.
 
 This is not a gap that will close quickly by itself. The Chinese research institutions that dominate SIB publication output (Section 14.3) are overwhelmingly focused on materials: cathode synthesis at Hu Yong-Sheng's IOP-CAS group, hard carbon precursor development at Wuhan University and Central South University, PBA chemistry at multiple institutions. The engineering simulation work — ECM parameterisation, state estimation, degradation modelling, pack-level simulation — is what the materials community does not typically produce and what an electrical engineering researcher is specifically positioned to contribute.
 
-### The Foundational Papers: An Annotated History
+\subsection{The Foundational Papers: An Annotated History}
+
 
 **2018 — Baseline reviews.** Chayambuka et al. published "Sodium-Ion Battery Materials and Electrochemical Properties Reviewed" in *Advanced Energy Materials*, establishing the first comprehensive survey of SIB electrode materials properties from a modelling-relevant perspective — cataloguing the range of specific capacities, diffusion coefficients, and exchange current densities needed to parameterise any physics-based model.
 
 **2021 — First ECM papers.** Xiang et al. published "Equivalent circuit modeling of sodium-ion batteries" in the *Journal of Energy Storage*, systematically comparing 1RC, 2RC, and 3RC topologies for a 1 Ah pouch SIB cell using Bayesian Information Criterion model selection, finding 3RC optimal. This established the ECM baseline for SIBs, analogous to Chen and Rincón-Mora's 2006 paper for lithium-ion.
 
-**2022 — First validated DFN model.** Chayambuka, Mulder, Danilov, and Notten published "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination" and "Part II: Model and validation" in *Electrochimica Acta*. These two papers represent the inflection point in SIB simulation research. Part I systematically characterised a Tiamat NVPF/hard carbon cell to extract the full set of DFN parameters: solid-state diffusion coefficients for both electrodes, electrolyte transport parameters, exchange current densities, and OCV-SOC curves. Part II assembled these into a working P2D model validated against discharge curves at 0.1C to 1.4C with less than 2% voltage error. This parameter set was subsequently adopted by PyBaMM (v24.11) as `Chayambuka2022` — the standard SIB DFN parameter set that any researcher can use today without additional characterisation work.
+**2022 — First validated DFN model.** Chayambuka, Mulder, Danilov, and Notten published "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination" and "Part II: Model and validation" in *Electrochimica Acta*. These two papers represent the inflection point in SIB simulation research. Part I systematically characterised an NVPF/hard-carbon SIB cell to extract the full set of DFN parameters: solid-state diffusion coefficients for both electrodes, electrolyte transport parameters, exchange current densities, and OCV-SOC curves. Part II assembled these into a working P2D model validated against discharge curves at 0.1C to 1.4C with less than 2% voltage error. The resulting parameterisation is now the standard starting point for PyBaMM's sodium-ion DFN example.
 
 **2023 — First IEEE conference paper on SIB ECM.** Rabab et al. published "Equivalent Circuit Model For Sodium-Ion Batteries With Physical-Based Representations Of Their Non-Linearities" at IEEE VPPC 2023 in Milan — the first identifiable SIB simulation paper in any IEEE venue. It presented a modified ECM for the Tiamat NVPF/HC 18650 cell that separated charge transfer, SEI, and diffusion phenomena with Arrhenius temperature dependence for each component. This paper's existence confirms that IEEE conference venues are receptive to SIB simulation work. The following year, Sandri et al. published "Electrical Circuit Model for Sodium-Ion Batteries" at IECON 2024 Chicago, comparing 1RC through 4RC models for SIB accuracy-complexity trade-offs.
 
 **2023 — First SOC estimation paper.** Xiang et al. in the *Journal of Energy Storage* published "A comprehensive study on state-of-charge and state-of-health estimation of sodium-ion batteries," using a PSO-optimised third-order RC model with EKF, UKF, and particle filter comparison. The field of SIB state estimation began with this single paper.
 
-**2024 — Commercial cell characterisation becomes available.** Laufen et al. published "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell" in *Cell Reports Physical Science* with supplementary data — providing EIS at 21 SOC levels, C-rate tests, cyclic ageing with micro-CT, and validated ECM parameters for a real commercial 18650 SIB cell. Bischof et al. at KIT published "Evaluation of commercial 18650 and 26700 sodium-ion cells" in their institutional repository. These papers transformed SIB simulation from a purely theoretical exercise into one grounded in real commercial cell data.
+**2024 — Commercial cell characterisation becomes available.** Laufen et al. published "Multi-method characterization of a commercial 1.2 Ah sodium-ion battery cell indicates drop-in potential" in *Cell Reports Physical Science*, with extensive supplementary information including EIS at 21 SOC levels, C-rate testing, and cyclic-aging diagnostics. In the same year, Bischof et al. published "Evaluation of commercial 18650 and 26700 sodium-ion cells and comparison with well-established lithium-ion cells" in *Journal of Power Sources Advances*. These papers transformed SIB simulation from a largely chemistry-level discussion into one grounded in real commercial cell data.
 
-**2024 — PyBaMM and COMSOL integration.** The PyBaMM development team integrated the Chayambuka2022 parameter set (named after the paper's 2022 publication year) into PyBaMM v24.11, released in November 2024, creating `pybamm.sodium_ion.BasicDFN()` — the first ready-to-run, open-source, validated physics-based SIB model. Simultaneously, COMSOL added an official "1D Isothermal Sodium-Ion Battery" model (Application Library ID: 117341) using the same parameter set. These two events together made it possible for any engineer with a laptop to simulate an SIB cell without any experimental work.
+**2024 — PyBaMM and COMSOL make sodium-ion continuum simulation easier to access.** By late 2024, the PyBaMM documentation included a sodium-ion DFN example based on `pybamm.sodium_ion.BasicDFN()` and the Chayambuka/COMSOL parameterisation, while COMSOL provided an official "1D Isothermal Sodium-Ion Battery" application example (Application Library ID: 117341). Together, these two resources made ready-to-run sodium-ion continuum simulation substantially more accessible.
 
-**2025 — The first SIB DFN comparison paper.** Garapati et al. published "Perspective and comparative analysis of physics-based models for sodium-ion batteries" in *Electrochimica Acta* — a purely simulation-based comparison of DFN, SPMe, and SPM for SIBs. This paper's existence is important for two reasons: it demonstrates that simulation-only SIB modelling work is publishable at a Q1 Elsevier journal, and it establishes SPM/SPMe for SIBs as a research topic. The first physics-based SIB degradation model appeared the same year, alongside the first electrochemical-thermal coupling models, the first microstructure-resolved SIB model (Cardenas-Sierra et al., ChemRxiv preprint), and the first ML-enhanced P2D hybrid (Liu et al.).
+**2025 — The first dedicated SIB DFN/SPMe/SPM comparison paper.** Garapati et al. published "Perspective and comparative analysis of physics-based models for sodium-ion batteries" in *Electrochimica Acta* — a simulation-based comparison of DFN, SPMe, and SPM for SIBs. This paper is important because it shows that simulation-focused SIB modelling work is publishable in a mainstream battery journal and because it frames reduced-order electrochemical modelling for SIBs as a research topic in its own right.
 
 **2025 — Wang et al. open dataset.** The first substantive open SIB cycling dataset was deposited on Zenodo (ID: 13836819), containing pulse characterisation at multiple C-rates and six temperatures (−5°C to 45°C) plus driving cycle validation data for both a 3.2 Ah Transimage cell and a 10 Ah HiNa cell. This dataset is the foundation upon which most current and near-future SIB BMS algorithm papers will be built.
 
-### The Current State in Numbers
+\subsection{The Current State in Numbers}
+
 
 As of early 2026, the complete SIB engineering simulation literature can be enumerated in a single table — an exercise that would be absurd for Li-ion, where each row would contain thousands of entries:
 
@@ -6959,25 +7915,22 @@ Compare this to the Li-ion simulation literature, which contains tens of thousan
 **Timeline of SIB Simulation Milestones.** The following diagram summarises the chronological development of SIB engineering simulation. Sketch or recreate this timeline and pin it above your desk — it tells you at a glance which sub-fields have prior art and which are empty.
 
 ```text
-2018  Chayambuka — first modelling-relevant SIB property review (Adv. Energy Mater.)
+2018  Chayambuka — modelling-relevant SIB property review (Adv. Energy Mater.)
   |
-2021  Xiang — first SIB ECM (J. Energy Storage), 1RC/2RC/3RC comparison
+2021  Xiang — early SIB ECM benchmark (J. Energy Storage), 1RC/2RC/3RC comparison
   |
-2022  Chayambuka — first validated DFN parameter set, NVPF/HC (Electrochim. Acta)
+2022  Chayambuka — validated DFN parameter set, NVPF/HC (Electrochim. Acta)
   |
-2023  Rabab — first IEEE SIB simulation paper, ECM @ VPPC
-      Xiang — first SIB SOC estimation paper (J. Energy Storage)
+2023  Rabab — IEEE SIB ECM paper @ VPPC
+      Xiang — early SIB SOC/SOH estimation paper (J. Energy Storage)
   |
-2024  Laufen — first full commercial SIB cell characterisation (Cell Rep. Phys. Sci.)
+2024  Laufen — commercial 1.2 Ah 18650 SIB characterisation (Cell Rep. Phys. Sci.)
       Sandri — SIB ECM comparison @ IECON
-      PyBaMM v24.11 — pybamm.sodium_ion.BasicDFN() released
-      COMSOL — official 1D Na-ion model added
-      Wang — first open SIB cycling dataset (Zenodo)
+      PyBaMM docs — sodium-ion DFN example documented
+      COMSOL — official 1D Na-ion model example available
+      Wang — open SIB pulse/driving-cycle dataset (Zenodo)
   |
 2025  Garapati — DFN vs SPMe vs SPM comparison (Electrochim. Acta)
-      First physics-based SIB degradation model (calendar SEI)
-      First electrochemical-thermal coupling models
-      First ML-enhanced P2D hybrid
   |
 2026  ← YOU ARE HERE
       Every row with "0 papers" in the table above is an open door.
@@ -6985,77 +7938,86 @@ Compare this to the Li-ion simulation literature, which contains tens of thousan
 
 ---
 
-## The Commercial Landscape: What Exists to Model
+\section{The Commercial Landscape: What Exists to Model}
+
 
 Modelling and simulation research is only valuable if it models something real. The commercial landscape of sodium-ion batteries as of early-to-mid 2026 provides a growing set of real cells, real packs, and real deployment scenarios to anchor simulation work.
 
-### The Dominant Player: CATL and the Naxtra
+\subsection{The Dominant Player: CATL and the Naxtra}
+
 
 CATL's market position in SIB is analogous to their position in LIB: dominant, accelerating, and setting the performance and cost benchmarks against which everything else is measured.
 
-Their first-generation SIB (Prussian white / hard carbon, prismatic, ~160 Wh/kg) began shipping in 2023 for the Chery iCar EV. Their second-generation product, the **Naxtra**, launched in April 2025, represents a step change: 175 Wh/kg gravimetric energy density, >10,000 cycle life (claimed, pending independent verification), 5C fast charging (80% SOC in 15 minutes), and operation from −40°C to +70°C. The Naxtra achieves 93% capacity retention at −30°C and maintains highway-speed driving capability at −40°C — numbers that exceed any published LFP performance at low temperature. The first mass-production passenger vehicle using the Naxtra pack is the Changan Nevo A06 (45 kWh SIB pack, >400 km range), expected in mid-2026.
+CATL announced its first-generation sodium-ion battery for Chery models in April 2023. On April 21, 2025, CATL unveiled the second-generation **Naxtra**, describing it as the world's first mass-produced sodium-ion battery. CATL's published figures for the passenger-car cell include 175 Wh/kg gravimetric energy density and a claimed cycle life of over 10,000 cycles; for low-temperature performance, CATL emphasises operation from −40°C to +70°C and strong retained power in extreme cold. On February 5, 2026, CATL and CHANGAN announced the world's first mass-production sodium-ion passenger vehicle and said it was scheduled to reach the market in mid-2026.
 
-CATL's "Freevoy Dual-Power Battery" concept — mixing SIB and LFP cells in a single hybrid pack — is a direct simulation research opportunity. A heterogeneous pack containing cells of different chemistry, different OCV curve shapes, different temperature characteristics, and different ageing rates creates state estimation and balancing challenges that are genuinely novel and commercially relevant. Think of it as a series string of resistors where each resistor has a different temperature coefficient and a different aging law — your balancing and estimation algorithms must track each component's individual state, not just the string aggregate. Every BMS technique from Chapters 10–12 must be re-derived for the two-chemistry case. This specific application has no Li-ion analogue.
+CATL's "Freevoy Dual-Power Battery" architecture is a direct simulation research opportunity. CATL has explicitly described dual-chemistry pack configurations, including sodium-ion plus LFP. A heterogeneous pack containing cells of different chemistry, different OCV curve shapes, different temperature characteristics, and different ageing rates creates state-estimation and balancing challenges that are genuinely novel and commercially relevant. Think of it as a series string of resistors where each resistor has a different temperature coefficient and a different ageing law — your balancing and estimation algorithms must track each component's individual state, not just the string aggregate. Every BMS technique from Chapters 10–12 must be re-derived for the two-chemistry case.
 
 **For the simulation researcher**: CATL has not released open characterisation data for Naxtra cells. However, the cell's Chinese market specifications (available through Chinese battery industry databases and published technical reports) provide enough boundary conditions for model-building: nominal voltage, capacity, DCIR at multiple temperatures, and cycle life under stated conditions.
 
-### HiNa Battery Technology
+\subsection{HiNa Battery Technology}
 
-HiNa (中科海钠, or China Science Sodium Battery Technology) is the direct academic-to-industry pipeline from IOP-CAS, co-founded by Prof. Hu Yong-Sheng and Academician Chen Liquan, widely regarded as a founding figure of Chinese lithium battery research. HiNa operates a GWh-scale production line in Fuyang, Anhui Province, since late 2022, and has delivered cells to multiple commercial applications including a 100 MWh grid storage system in Hubei Province (42 battery containers, 185 Ah cells, operational July 2024) — the world's largest sodium-ion energy storage installation at its commissioning.
 
-HiNa's commercial cell portfolio spans 12 Ah, 80 Ah, 240 Ah, and their latest "Haixing" commercial vehicle cell at >165 Wh/kg with >8,000 cycle life. Their O3-type cathode (NaCuFeMnO₂ family, cobalt-free and nickel-free) paired with anthracite-derived hard carbon represents the most well-characterised commercial SIB chemistry for which published simulation data exists. The Laufen et al. (2024) characterisation paper, the Wang et al. (2025) Zenodo dataset (which includes a HiNa 10 Ah cell alongside a Transimage 3.2 Ah cell), and multiple Chinese-language publications from HiNa's technical partners provide the richest available data for SIB simulation validation.
+HiNa (中科海钠, or China Science Sodium Battery Technology) is the direct academic-to-industry pipeline from IOP-CAS, co-founded by Prof. Hu Yong-Sheng and Academician Chen Liquan. HiNa's GWh-class production line in Fuyang, Anhui Province, began rolling out products in late 2022. The company has also supplied cells to grid-storage demonstrations, including an officially announced 10 MWh project in Guangxi in May 2024 and the 50 MW/100 MWh Datang Hubei installation reported in July 2024.
 
-HiNa's heavy truck applications — where their packs show 15% lower energy consumption per kilometre compared to LIB packs, attributed to deeper permissible discharge — represent a compelling system-level simulation case study for efficiency modelling.
+HiNa publicly lists several commercial sodium-ion formats, including 185 Ah prismatic cells, and reports product-level energy densities roughly spanning 120–165 Wh/kg depending on application. Their copper-containing layered-oxide / hard-carbon chemistry is especially relevant because the Wang Zenodo dataset includes a commercial 10 Ah HiNa cell, giving simulation researchers at least one openly accessible data source anchored to this ecosystem.
 
-### Tiamat Energy
+HiNa's heavy-truck and grid-storage applications represent compelling system-level case studies for efficiency and dispatch modelling.
 
-Tiamat occupies a unique niche in the SIB landscape: the **highest-voltage commercial SIB** (3.7 V nominal — matching NMC-type Li-ion cells, and exceeding LFP's 3.2 V) using NVPF (Na₃V₂(PO₄)₂F₃) cathodes, with the **highest power density** (up to 35C peak discharge, 2–5 kW/kg). Their 18650 format cell (1.0 Ah, 3.5 Wh, 15 mΩ internal resistance at 1 kHz) is the cell characterised by Chayambuka et al. and whose parameter set anchors the PyBaMM sodium-ion DFN implementation.
+\subsection{Tiamat Energy}
 
-For the simulation researcher, Tiamat's cell is uniquely attractive: it is the most comprehensively documented commercial SIB cell, the Chayambuka2022 DFN parameter set gives a starting point for physics-based modelling, and published datasheets (available through Tiamat's website and through the Rabab et al. ECM paper) provide boundary conditions. The cell's 3,200-cycle life at 2C/5C cycling and >90% capacity retention at 20C discharge also make it the best SIB candidate for high-power application modelling (fast-charging infrastructure, frequency regulation, power tools).
 
-### The Western Landscape: Setbacks and Survivors
+Tiamat occupies a unique niche in the SIB landscape: a high-power, high-voltage commercial sodium-ion platform based on NVPF (Na₃V₂(PO₄)₂F₃) cathodes and hard-carbon anodes. Tiamat's current cylindrical datasheet reports a 3.7 V nominal, 1 Ah, 3.5 Wh 18650 cell with 15 mΩ AC internal resistance at 1 kHz and peak discharge current up to 35 A. In the peer-reviewed literature, related Tiamat NVPF/HC cells have demonstrated very strong high-rate behaviour and multi-thousand-cycle life.
 
-The Western commercial SIB landscape has experienced significant turbulence. **Natron Energy**, which had delivered sodium-ion batteries for data centre UPS applications at commercial scale, ceased all operations on September 3, 2025, unable to obtain UL certification in time to fulfil $25 million in orders — a reminder that technical performance alone does not guarantee commercial survival. **Northvolt** filed for Chapter 11 in November 2024 and Swedish bankruptcy in March 2025; its SIB intellectual property was acquired by Lyten (a lithium-sulphur company) in August 2025. **Bedrock Materials** (a Stanford spinout) wound down due to cost competition from falling lithium prices.
+For the simulation researcher, Tiamat's ecosystem is uniquely attractive: the Chayambuka NVPF/HC parameterisation gives a starting point for physics-based modelling, the Tiamat datasheets provide commercial boundary conditions, and later peer-reviewed Tiamat work reports high-power performance up to 20C discharge with improved cycle life in newer generations. This makes Tiamat an especially good candidate for high-power application modelling such as frequency regulation, power tools, and fast-charge studies.
+
+\subsection{The Western Landscape: Setbacks and Survivors}
+
+
+The Western commercial SIB landscape has experienced significant turbulence. **Natron Energy** reached commercial-scale sodium-ion production in the U.S. in 2024 and marketed UL-listed products, but by September 2025 the company had announced that it had ceased operations. **Northvolt** filed for Chapter 11 protection in the U.S. in November 2024 and entered Swedish bankruptcy in March 2025; Lyten announced in August 2025 that it would acquire Northvolt's remaining assets and IP. **Bedrock Materials**, a Stanford spinout working on sodium-ion cathode materials, halted development in April 2025.
 
 **Peak Energy** is the sole remaining major US SIB commercial player, having secured a $500 million deployment deal with Jupiter Power for 4.75 GWh of grid storage through 2030 — the first large-scale US grid-scale SIB deployment. Their NFPP (Na₄Fe₃(PO₄)₂(P₂O₇)) cathode chemistry claims 30% less degradation than LFP in grid storage applications. In Europe, **Tiamat** and **Altris** (Sweden, developing Prussian white cathode with bio-derived hard carbon in a partnership with Clarios) continue to advance toward commercialisation. **Faradion** (now part of Reliance Industries India) is targeting the Indian two- and three-wheeler EV market and residential storage, with a Jamnagar gigafactory planned.
 
-### Commercial Status Summary Table
+\subsection{Commercial Status Summary Table}
+
 
 | Company | Country | Cathode | Anode | Wh/kg | Cycle Life | Form Factor | Primary Application | Status (early 2026) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| CATL (Naxtra) | China | Multi-element layered oxide | Hard carbon | 175 | >10,000 (claimed) | Prismatic | EV, grid storage | Mass production |
-| HiNa | China | O3 NaCuFeMnO₂ | Hard carbon | 140–166 | 4,500–13,000+ (best reported) | Prismatic | Grid storage, heavy trucks | GWh production |
-| BYD | China | Layered oxide (est.) | Hard carbon | 160 (target) | 10,000 (target) | Prismatic (est.) | EV | Pilot (30 GWh line) |
-| Tiamat | France | NVPF | Hard carbon | 105 | 3,200 | 18650 cylindrical | High-power (freq. reg., power tools) | Pilot, 5 GWh planned |
-| Peak Energy | USA | NFPP | Undisclosed | Undisclosed | Competitive | Prismatic (est.) | Grid storage | Early commercial |
-| Altris | Sweden | Prussian white | Hard carbon | >160 | Undisclosed | Prismatic | Grid storage | Pilot production |
-| Faradion | UK/India | O3 NaNiMnMgTiO₂ | Hard carbon | 150–160 | >1,000 | Pouch | Two/three-wheelers, residential | Pre-production |
+| CATL (Naxtra) | China | Layered oxide family | Hard carbon | 175 | >10,000 (claimed) | Automotive cells / packs | EV, grid storage | Mass-production launch announced |
+| HiNa | China | Cu-containing layered oxide | Hard carbon | 120–165 (company-stated range) | Product-dependent; 185 Ah ESS cell listed at >=6000 | Prismatic | Grid storage, vehicles | GWh-scale production and deployments |
+| Tiamat | France | NVPF | Hard carbon | 105 | Multi-thousand-cycle, product-dependent | 18650 cylindrical, prismatic | High-power applications | Commercialized cells, gigafactory planned |
+| Peak Energy | USA | NFPP | Undisclosed | Not publicly disclosed | Not publicly disclosed | Grid-scale ESS format | Grid storage | Early commercial agreements announced |
+| Altris | Sweden | Prussian white | Hard carbon | 160 | Not publicly disclosed | Commercial-sized cell | Grid storage, low-voltage mobility partnerships | Pilot / partnership stage |
+| Faradion / Reliance | UK/India | Layered oxide family | Hard carbon | Not publicly fixed | Not publicly fixed | Technology platform | Storage, two/three-wheelers, mobility | Reliance-owned, Jamnagar manufacturing plans announced |
 
 ---
 
-## The Research Ecosystem: Groups, Institutions, and the Chinese Factor
+\section{The Research Ecosystem: Groups, Institutions, and the Chinese Factor}
 
-### Chinese Research Dominance: Understanding the Context
 
-No serious engagement with the SIB research literature is possible without confronting the scale of Chinese research dominance. Scientometric analysis of 2000–2024 SIB publications identifies approximately 15,682 peer-reviewed papers, with China as the overwhelmingly dominant contributor. By early 2026, 16 of 20 planned SIB factories worldwide are located in China, and China accounts for an estimated 95% of global SIB manufacturing capacity. As of 2025, the Chinese government's 14th Five-Year Plan for Scientific and Technological Innovation explicitly lists SIB as a funded priority, and the National Key Technologies R&D Programme directly funds IOP-CAS SIB research (grant 2022YFB3807800). Provincial governments have signed production agreements for hundreds of GWh of capacity.
+\subsection{Chinese Research Dominance: Understanding the Context}
+
+
+No serious engagement with the SIB research literature is possible without confronting the scale of Chinese research dominance. Scientometric work through 2024 shows China as the dominant contributor to SIB publications, and the present commercial build-out of sodium-ion manufacturing is also heavily China-centred. For an EE researcher in India or elsewhere, the practical implication is twofold: the literature you must engage with is predominantly Chinese in origin, and the industrial momentum is also concentrated there.
 
 For an EE researcher in India or elsewhere, the practical implication is twofold. First, the literature you must engage with is predominantly Chinese in origin. Many of the most important recent results are published in Chinese-language journals (particularly *Energy Storage Science and Technology*, 储能科学与技术) or in English-language journals with Chinese first authors and Chinese institutional affiliations. Second, and more strategically important: Chinese research dominance in SIB is concentrated in materials science. The system-level engineering simulation work — ECM parameterisation, BMS algorithm development, pack-level degradation modelling, grid integration — is not where Chinese groups are primarily publishing. This is exactly the gap that an EE researcher is positioned to fill, and it is a gap that will remain open for several years even as materials research saturates.
 
-### The Key Groups
+\subsection{The Key Groups}
 
-**IOP-CAS, Beijing (Prof. Hu Yong-Sheng)**: The single most influential SIB research group globally. Hu's group bridges fundamental materials discovery with commercialisation through HiNa Battery. His publication record includes a landmark *Science* (2020) paper using machine learning to predict layered oxide compositions, multiple *Nature Energy* papers (2024 on interfacial engineering achieving >200 Wh/kg at the cell level; 2026 on a polymerisable non-flammable electrolyte achieving zero thermal runaway in 3.5 Ah cells), and extensive work on hard carbon anodes (416 mAh/g with P-O-C cross-linking, *Energy Storage Materials* 2024). Core group members Lu Yaxiang, Rong Xiaohui, and Qi Xingguo co-author nearly all major publications. Their HiNa cells are among the best-characterised commercial SIB cells and the best candidates for simulation validation work.
 
-**ICCAS, Beijing (Prof. Guo Yuguo)**: Electrolyte innovations and interface engineering. Published a comprehensive review in *Chemical Society Reviews* (2024) covering gel polymer and quasi-solid electrolytes for SIBs — directly relevant to any simulation study that includes electrolyte transport physics.
+**IOP-CAS, Beijing (Prof. Hu Yong-Sheng)**: The single most influential SIB research group globally. Hu's group bridges fundamental materials discovery with commercialisation through HiNa Battery and is central to the modern Chinese sodium-ion ecosystem.
 
-**Wuhan University (Prof. Cao Yuliang)**: Polyanionic cathodes, tunnel-type oxides, and hard carbon anodes. Has published foundational work on hard carbon electrochemistry (>1,000 citations for the hollow carbon nanowire study, *Nano Letters* 2012). Also founded Jiana Energy for SIB cathode and anode production, providing a direct commercial application context.
+**ICCAS, Beijing (Prof. Guo Yuguo)**: Electrolyte innovations and interface engineering, especially relevant to studies that include electrolyte transport and interphase physics.
 
-**USTC, Hefei (Prof. Yu Yan)**: A prolific group spanning PBA cathodes, high-entropy alloy nanolayers for anode-free sodium metal batteries, and ML-assisted materials screening. Published the most comprehensive PBA modification study (Ni/Cu co-doping, *Advanced Materials* 2024).
+**Wuhan University (Prof. Cao Yuliang)**: Polyanionic cathodes, tunnel-type oxides, and hard-carbon anodes, with strong links between academic work and commercial cathode/anode development.
 
-**Tsinghua University (Prof. Zhang Qiang)**: Solid-state electrolytes and battery safety. Published a fluorinated polyether electrolyte enabling room-temperature solid-state SIB operation in *Nature* (2025) — directly relevant to thermal safety modelling.
+**USTC, Hefei (Prof. Yu Yan)**: A prolific group spanning PBA cathodes, sodium-metal concepts, and data-assisted materials screening.
+
+**Tsinghua University (Prof. Zhang Qiang)**: Solid-state electrolytes and battery safety, directly relevant to future thermal and abuse-modelling work.
 
 **Key non-Chinese groups**: The **Dahn group** at Dalhousie University (Canada) brings its systematic multi-cell cycling methodology to SIBs, particularly for P2-type layered oxides. The **Grey group** at Cambridge contributes operando NMR characterisation that clarifies hard carbon storage mechanisms. The **Tapia-Ruiz group** (Lancaster/Imperial, UK) focuses on layered oxide structure-property relationships. The **Chayambuka group** (formerly TU/Eindhoven) produced the foundational DFN model that anchors the simulation literature. **Tiamat Energy** itself has published extensively through Rabab et al. on NVPF ECM characterisation.
 
-### Navigating the Chinese Research Literature: A Practical Guide
+\subsection{Navigating the Chinese Research Literature: A Practical Guide}
+
 
 If you have never searched a Chinese academic database, the prospect can feel daunting. Here is a minimal practical toolkit. **CNKI** (cnki.net, also accessible via oversea.cnki.net for non-Chinese institutions) is the dominant Chinese academic database, analogous to Web of Science for Chinese-language publications. Search in English — CNKI indexes English titles and abstracts for most papers, even those published in Chinese-language journals. For papers published only in Chinese, Google Translate and DeepL produce readable translations of abstracts and figure captions, which is usually sufficient to determine whether a paper's data or methodology is relevant to your simulation work.
 
@@ -7067,13 +8029,15 @@ The key message: do not avoid Chinese-authored literature because of the languag
 
 ---
 
-## Simulation Tools: The Complete Arsenal
+\section{Simulation Tools: The Complete Arsenal}
+
 
 Every tool you need for publishable SIB simulation research is available right now, most of it open-source. This section describes each tool, its SIB readiness, and what it is good for.
 
-### PyBaMM: The Primary Tool
+\subsection{PyBaMM: The Primary Tool}
 
-**PyBaMM** (Python Battery Mathematical Modelling) is an open-source Python framework developed primarily at Oxford and now maintained by the PyBaMM team. It implements DFN, SPM, SPMe, and multiple degradation models for battery simulation. As of v24.11 (November 2024), it includes a working SIB DFN model via `pybamm.sodium_ion.BasicDFN()`, the `Chayambuka2022` parameter set (NVPF/HC, NaPF₆ in EC:PC electrolyte), an official example notebook demonstrating discharge simulation, OCV curves, concentration profiles, and overpotential decomposition (`pybamm.docs.sodium-ion`), support for electrochemical-thermal coupling using the same framework as Li-ion (requiring new SIB-specific parameter values), and PyBOP integration for parameter optimisation.
+
+**PyBaMM** (Python Battery Mathematical Modelling) is an open-source Python framework developed primarily at Oxford and now maintained by the PyBaMM team. It implements DFN, SPM, SPMe, and multiple degradation models for battery simulation. Current PyBaMM documentation includes a working sodium-ion DFN model via `pybamm.sodium_ion.BasicDFN()`, an official sodium-ion example notebook, and parameter values derived from the Chayambuka/COMSOL sodium-ion implementation. The same framework also supports electrochemical-thermal coupling, with SIB-specific parameterisation left to the user when the literature provides the needed values. PyBOP integrates naturally with this workflow for parameter optimisation.
 
 PyBaMM is the right tool for DFN and SPMe simulation, sensitivity analysis, model order reduction comparisons, and degradation model development. Its Python ecosystem makes it compatible with machine learning libraries (scikit-learn, PyTorch, TensorFlow) for hybrid physics-ML approaches. The PyBaMM Discourse forum and GitHub repository are active, and sodium-ion questions receive responses.
 
@@ -7082,7 +8046,6 @@ A minimal script to run the SIB DFN model. Verify the exact API against the curr
 ```python
 import pybamm
 
-# Verify current API at docs.pybamm.org — module paths may differ by version
 model = pybamm.sodium_ion.BasicDFN()
 param = pybamm.ParameterValues("Chayambuka2022")
 sim = pybamm.Simulation(model, parameter_values=param)
@@ -7090,29 +8053,33 @@ sol = sim.solve([0, 3600])  # 1-hour discharge
 sim.plot()
 ```
 
-This runs on a laptop in under 30 seconds and produces terminal voltage, electrolyte concentration profiles, solid-phase concentrations, and overpotential decompositions. It is the starting point for essentially all physics-based SIB simulation research.
+On a typical laptop this can run in seconds to tens of seconds and produces terminal voltage, electrolyte concentration profiles, solid-phase concentrations, and overpotential decompositions. It is the starting point for essentially all physics-based SIB simulation research.
 
-### COMSOL Multiphysics
+\subsection{COMSOL Multiphysics}
+
 
 COMSOL's Battery Design Module provides a downloadable "1D Isothermal Sodium-Ion Battery" model (Application Library path: `Battery_Design_Module/Batteries,_SodiumIon/sodium_ion_battery_1d`) using the same Chayambuka2022 parameters. COMSOL's advantage over PyBaMM is multi-physics coupling: 3D geometry, mechanical stress, complex thermal boundary conditions, and full Navier-Stokes electrolyte flow (for flow battery extensions). For 2D or 3D mechanical abuse simulations, nail penetration modelling, or thermal runaway propagation in three-dimensional pack geometries, COMSOL is the appropriate tool.
 
 A COMSOL webinar series specifically addressing sodium-ion batteries and "emerging battery technologies" is available through COMSOL's learning centre. Contact resistance modelling was added in COMSOL 6.2.
 
-### MATLAB/Simulink with Simscape Battery
+\subsection{MATLAB/Simulink with Simscape Battery}
+
 
 MATLAB remains the dominant tool for BMS algorithm development — Kalman filters, extended Kalman filters, sigma-point Kalman filters, recursive least squares parameter identification, and equivalent circuit model simulation are all most naturally implemented in MATLAB. Plett's three-volume *Battery Management Systems* textbook (specifically Volumes I and II for ECM methods, Volume III for physics-based methods) provides MATLAB code for every algorithm developed in Chapters 10–12 of this textbook. The Coursera specialisation "Algorithms for Battery Management Systems" by Plett delivers hands-on MATLAB implementations of these algorithms.
 
 MATLAB's Simscape Battery module provides a physics-based battery simulation environment suitable for pack-level electro-thermal simulation. It is chemistry-agnostic at the systems level and can be parameterised for SIBs using published characterisation data. The primary limitation is that it does not have a native SIB parameter set — parameterisation requires extracting values from the published literature and entering them manually.
 
-### Other Tools
+\subsection{Other Tools}
+
 
 **LIONSIMBA** (Lithium-Ion Simulation BAttery toolbox) is an open-source MATLAB P2D finite-volume implementation whose clean numerical structure makes it a useful benchmark and algorithmic reference, even though it was developed for Li-ion. The equations are structurally identical for SIBs; parameter substitution is the only change required.
 
-**BattMo** (Battery Modelling Toolbox) is an MRST-based open-source continuum modelling stack supporting 1D through 3D electrochemical-thermal models with automatic differentiation for sensitivity analysis and optimisation. It is actively developed and accepts contributions. The recent 2025 arXiv paper describes its capabilities for multi-physics battery simulation.
+**BattMo** (Battery Modelling Toolbox) is an MRST-based open-source continuum modelling stack supporting 1D through 3D electrochemical-thermal models with automatic differentiation for sensitivity analysis and optimisation. It is actively developed and accepts contributions. Its public material is still centred mainly on Li-ion workflows, but it is a promising extensible framework for researchers who want more direct control over continuum-model implementations.
 
 **PyBOP** (Python Battery Optimisation) is an open-source Python package for battery model parameter identification using deterministic and stochastic optimisation methods, including Bayesian parameter estimation. It interfaces directly with PyBaMM and enables publishable parameterisation pipelines with full uncertainty quantification.
 
-### The Simulation Workflow
+\subsection{The Simulation Workflow}
+
 
 The recommended workflow for a simulation-first SIB paper follows a natural progression that mirrors the structure of the eventual paper itself. You begin by identifying a published SIB dataset from Section 14.5, or by using PyBaMM's synthetic data generation capability if no suitable experimental data exists. If your parameterisation requires data from published figures rather than raw numerical files, you digitise those curves using **WebPlotDigitizer** (automeris.io) — a step that many simulation researchers overlook but that is standard practice and methodologically accepted.
 
@@ -7122,11 +8089,13 @@ With a validated model, you generate the publishable result: SOC estimation accu
 
 ---
 
-## Open Datasets: What Is Available and How to Use It
+\section{Open Datasets: What Is Available and How to Use It}
 
-SIB datasets are scarce compared to Li-ion. Only five substantive open SIB experimental datasets existed as of early 2026, compared to fifteen or more major open Li-ion datasets. This scarcity is both a challenge and an opportunity: the scarcity is itself a publishable observation, and strategies for working around it constitute part of any simulation paper's methodological contribution.
 
-### SIB-Specific Datasets
+SIB datasets are scarce compared to Li-ion. By early 2026, only a small number of openly accessible SIB experimental datasets were easy to identify, compared with the much larger open Li-ion ecosystem. This scarcity is both a challenge and an opportunity: the scarcity is itself a publishable observation, and strategies for working around it constitute part of any simulation paper's methodological contribution.
+
+\subsection{SIB-Specific Datasets}
+
 
 **Wang et al. 2024 — Zenodo 13836819**: The single most valuable open SIB dataset, deposited in late 2024. Contains pulse characterisation at 0.25C–3C current rates and six temperatures (−5°C to 45°C) covering the full SOC range (0%–100% in 10% increments), plus FUDS, UDDS, and DST driving cycle data, for two commercial SIB cells: a **Transimage 3.2 Ah** layered oxide/hard carbon cell and a **HiNa 10 Ah** layered oxide/hard carbon cell. Six cell samples per type. Total data size approximately 256 MB. Licence: CC BY 4.0. This dataset is the primary target for any SIB SOC estimation paper, ECM parameterisation study, or temperature-dependent modelling work. If you do one thing before your first SIB simulation paper, download and explore this dataset.
 
@@ -7134,11 +8103,12 @@ SIB datasets are scarce compared to Li-ion. Only five substantive open SIB exper
 
 **Iontech SIB Characterisation — GitHub**: An open-source comparative characterisation dataset containing two commercial layered oxide/HC SIB cells alongside an LFP reference cell. Includes OCV curves, galvanostatic EIS at multiple SOC levels, DC resistance tests, and rate capability curves. Well-suited for ECM parameterisation and impedance modelling, and for the SIB-vs-LIB comparison that gives any SIB paper its context.
 
-**Laufen et al. 2024 — Cell Reports Physical Science (OA)**: A detailed characterisation of a commercial 1.2 Ah 18650 sodium-ion cell (NaFeMnCu oxide/HC, likely from a Chinese manufacturer), including EIS at 21 SOC levels, C-rate tests (0.1C to 5C), cyclic ageing with micro-CT imaging, and electrode porosity/thickness measurements from post-mortem physical analysis. The supplementary data PDF provides the numbers directly usable for DFN parameterisation. Licence: CC BY 4.0.
+**Laufen et al. 2024 — Cell Reports Physical Science (OA)**: A detailed characterisation of a commercial 1.2 Ah 18650 sodium-ion cell, including EIS at 21 SOC levels, C-rate tests (0.1C to 5C), cyclic ageing with micro-CT imaging, and electrode porosity/thickness measurements from post-mortem physical analysis. The supplementary files provide numbers directly usable for ECM and DFN parameterisation. Licence: CC BY 4.0.
 
 **Droese et al. 2025 — depositonce.tu-berlin.de**: A recent dataset that includes HPPC tests, OCV measurements, and checkup capacity measurements across multiple temperatures for a commercial SIB cell alongside LIB baselines. This is particularly well-suited for ECM fitting (extracting $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ as functions of SOC and temperature) and for temperature-dependent thermal modelling.
 
-### Li-Ion Datasets for Methodology Transfer
+\subsection{Li-Ion Datasets for Methodology Transfer}
+
 
 Because SIB datasets are scarce, a common and methodologically defensible approach is to develop and validate algorithms on well-characterised Li-ion datasets first, then demonstrate transferability to SIBs using the available SIB data. This "develop on Li-ion, transfer to Na-ion" approach has been explicitly validated: PyBaMM confirms that the DFN model structure — the coupled PDE system for solid-phase diffusion, electrolyte transport, and Butler-Volmer kinetics — is mathematically identical for Li-ion and Na-ion, with different parameter values. The important caveat is that the standard DFN assumes a single intercalation mechanism in each electrode, which is a good approximation for graphite but only partially captures hard carbon's two-mechanism storage (intercalation in the slope region and pore-filling in the plateau region, as discussed in Chapter 13). For the purposes of methodology transfer — developing algorithms, testing estimation frameworks, benchmarking model-order reduction — the structural identity holds. For precision parameterisation of the hard carbon anode, more detailed models may eventually be needed. The Laufen et al. paper explicitly states that LIB characterisation methods transfer to SIBs.
 
@@ -7152,42 +8122,45 @@ The most valuable Li-ion datasets for this transfer learning approach:
 
 **NASA PCoE** — NASA data portal: ~34 Li-ion 18650 cells at 4/24/43°C, with EIS. Classic RUL prediction benchmark; ECM structure transfers directly to SIBs.
 
-### Synthetic Data from PyBaMM
+\subsection{Synthetic Data from PyBaMM}
 
-When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can generate physically consistent synthetic SIB data for any C-rate, temperature profile, or ageing scenario. This approach — using a validated physics-based model to generate synthetic training and validation data — is accepted in JES, Electrochimica Acta, Batteries, and Journal of Energy Storage when the synthetic data generation process is transparent and the model is properly cited. The Garapati et al. (2025) *Electrochimica Acta* paper demonstrates this approach for a Q1 journal publication.
+
+When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can generate physically consistent synthetic SIB data for any C-rate, temperature profile, or ageing scenario. This approach — using a validated physics-based model to generate synthetic training and validation data — is accepted in JES, Electrochimica Acta, Batteries, and Journal of Energy Storage when the synthetic data generation process is transparent and the model is properly cited. The Garapati et al. paper shows how this style of simulation-only comparison can be positioned in a mainstream battery journal.
 
 ---
 
-## Publication Venues: Where to Publish SIB Simulation Work
+\section{Publication Venues: Where to Publish SIB Simulation Work}
 
-Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their simulation policies, and their SIB track records. *This is the single most practically important table in this chapter.*
 
-| Venue | Impact Factor | Sim-Only? | SIB Papers Found? | Best EE Angle |
-| --- | --- | --- | --- | --- |
-| IEEE Trans. Smart Grid | 8.6 | ✅ Yes | BESS papers, no SIB yet | Microgrid integration, dispatch optimisation |
-| IEEE Access | 3.6 | ✅ Yes (most lenient) | Li-ion SOC reviews | ECM/SOC algorithms for SIB |
-| IEEE Trans. Transport. Electrif. | 7.0 | ⚠ Possible | Related BMS papers | SIB BMS for EVs |
-| IEEE Trans. Industrial Electronics | 7.2 | ⚠ Very limited | Li-ion SOC/SOH | Strongly prefers experimental validation |
-| J. Energy Storage (Elsevier) | 8.1 | ✅ Yes | **Multiple SIB ECM/SOC** | ECM, SOC/SOH, BMS |
-| Applied Energy (Elsevier) | 11.2 | ✅ Yes | SIB techno-economic | Grid integration, system-level |
-| eTransportation (Elsevier) | 16.6 | ✅ Yes | Li-ion BMS, growing SIB | EV thermal/BMS modelling |
-| J. Power Sources (Elsevier) | 7.9 | ⚠ Conditional | SIB modelling refs | Validated P2D/ECM |
-| J. Electrochem. Society (ECS) | 3.3 | ✅ Yes | **SIB P2D papers** | P2D, SPM, electrochemical modelling |
-| Electrochimica Acta (Elsevier) | 5.5 | ✅ Yes | **SIB DFN/SPMe comparison** | Physics-based model comparison |
-| Batteries (MDPI) | 4.8 | ✅ Yes | **SIB SOC (LSTM+UKF)** | BMS, SOC, thermal, any modelling |
-| Energies (MDPI) | 3.0 | ✅ Yes | SIB safety/characterisation | System-level, grid, power engineering |
+Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their practical fit, and the kinds of SIB-oriented papers they are most likely to welcome. Because journal metrics and editorial priorities change, always re-check current aims, scope, and recent articles before submission.
 
-The most simulation-friendly Tier 1 venues for EE SIB work are **Journal of Energy Storage** (IF 8.1, proven SIB ECM home, 40–50% acceptance for well-executed simulation), **Applied Energy** (IF 11.2, system-level simulation standard, SIB grid integration papers appearing since 2024), and **Electrochimica Acta** (IF 5.5, simulation-only explicitly accepted, DFN comparison paper published 2025). **IEEE Transactions on Smart Grid** (IF 8.6) has no SIB papers yet — which means the first SIB simulation papers here will face zero competition and benefit from first-mover citation advantage.
+| Venue | Simulation-Only Work? | SIB-Relevant Track Record | Best EE Angle |
+| --- | --- | --- | --- |
+| IEEE Trans. Smart Grid | Yes | Battery-storage and dispatch papers; little visible SIB-specific history | Microgrid integration, dispatch optimisation |
+| IEEE Access | Yes | Broad battery-management coverage | ECM/SOC algorithms for SIB |
+| IEEE Trans. Transportation Electrification | Possible | EV BMS and electrified transport | SIB BMS for EVs |
+| IEEE Trans. Industrial Electronics | Limited | Strong BMS tradition, but often prefers stronger validation | Estimation/control with solid validation |
+| Journal of Energy Storage | Yes | Multiple SIB ECM/SOC papers | ECM, SOC/SOH, BMS |
+| Applied Energy | Yes | Techno-economic and system-level battery work | Grid integration, system-level simulation |
+| eTransportation | Yes | EV thermal/BMS modelling, emerging SIB relevance | EV thermal/BMS modelling |
+| Journal of Power Sources | Conditional | Battery modelling papers including SIB references | Validated P2D/ECM |
+| Journal of The Electrochemical Society | Yes | Electrochemical-model and parameterisation papers | P2D, SPM, electrochemical modelling |
+| Electrochimica Acta | Yes | SIB DFN/SPMe comparison already published | Physics-based model comparison |
+| Batteries | Yes | SIB BMS/SOC papers already present | BMS, SOC, thermal, general modelling |
+| Energies | Yes | Power-engineering and storage-system papers | System-level, grid, power engineering |
 
-For conference publications to build a track record: **IEEE VPPC** (Rabab et al. 2023 first SIB IEEE paper, ~50% acceptance), **IECON** (Sandri et al. 2024, ~45–55% acceptance), and **ITEC** (SOC estimation papers, ~50–60% acceptance). These IEEE conferences accept simulation papers and provide peer-reviewed publication credit comparable to journal papers for conference proceedings.
+The most simulation-friendly venues for EE SIB work are **Journal of Energy Storage**, **Applied Energy**, and **Electrochimica Acta**. **IEEE Transactions on Smart Grid** is especially attractive for grid-integration work because the SIB literature there still appears sparse.
 
-**MDPI Batteries** deserves special mention for early-career researchers: IF 4.8, dedicated BMS simulation section, ~19-day median first decision, 50–65% acceptance rate, and it has already published SIB SOC estimation papers. It is the fastest legitimate path to a first SIB journal publication.
+For conference publications to build a track record, **IEEE VPPC**, **IECON**, and **ITEC** are reasonable targets because they already accept simulation-heavy battery papers and at least some SIB-related work has appeared in adjacent themes.
 
-**Journals to avoid for EE simulation work**: Journal of Energy Chemistry (IF 14.9, materials only), Energy Storage Materials (IF 18–20, materials only), Nano Energy (IF 17.9, materials only), eScience (IF 42.9 — inflated by a small article base in its early years; materials-focused despite the name). The high impact factors of these venues are irrelevant — they will desk-reject simulation-only engineering papers.
+**Batteries** deserves special mention for early-career researchers because it has already published SIB BMS papers and is structurally friendly to modelling papers that are carefully validated.
 
-### Practical Submission Advice for Simulation-Only Papers
+**Journals to avoid for EE simulation work**: materials-dominant venues such as *Journal of Energy Chemistry*, *Energy Storage Materials*, and *Nano Energy* are usually a poor fit for simulation-only engineering papers unless the modelling is tightly integrated with new experimental electrochemistry.
 
-Three mistakes sink simulation-only battery papers at the review stage, and all three are avoidable. First, failing to validate against experimental data. Even if your entire simulation uses synthetic data from PyBaMM, you must demonstrate that the underlying model (which generated the synthetic data) has been validated against real experimental measurements — cite the Chayambuka2022 validation or the Garapati et al. comparison. A simulation paper with no connection to experimental reality will be desk-rejected at every venue except MDPI.
+\subsection{Practical Submission Advice for Simulation-Only Papers}
+
+
+Three mistakes sink simulation-only battery papers at the review stage, and all three are avoidable. First, failing to validate against experimental data. Even if your entire simulation uses synthetic data from PyBaMM, you must demonstrate that the underlying model (which generated the synthetic data) has been validated against real experimental measurements — cite the Chayambuka validation or closely related commercial-cell validation papers. A simulation paper with no connection to experimental reality will struggle at most venues.
 
 Second, omitting sensitivity analysis. Reviewers of simulation papers invariably ask "how sensitive are your results to parameter uncertainty?" If you have not performed at least a local sensitivity analysis (and ideally a global one using Sobol indices — see Proposal 6), you will receive a major revision request. Build sensitivity analysis into your methodology from the start.
 
@@ -7195,73 +8168,89 @@ Third, framing the paper as a Li-ion methods paper that happens to use SIB param
 
 ---
 
-## The Research Gaps: Thirteen Areas Where SIB Simulation Is Empty
+\section{The Research Gaps: Thirteen Areas Where SIB Simulation Is Empty}
 
-This section maps the thirteen most important research gaps in SIB simulation, ordered roughly from most-urgent to most-ambitious. Each gap description establishes the current state of the literature, identifies the Li-ion analogue that has not been ported, and characterises the contribution an EE simulation researcher can make. These gaps were identified through systematic analysis of the SIB simulation literature through early 2026 and form the basis of the 25 concrete proposals in Section 14.8.
 
-### Gap 1: SOC/SOH Estimation — Algorithm Breadth Is Missing
+This section maps the thirteen most important research gaps in SIB simulation, ordered roughly from most-urgent to most-ambitious. Each gap description establishes the current state of the literature, identifies the Li-ion analogue that has not been ported, and characterises the contribution an EE simulation researcher can make. These gaps are a practical synthesis of the literature reviewed through April 2026; read statements such as "no paper" or "no framework" as meaning that I did not identify a clearly established SIB literature base in that area, not as a proof that every possible paper worldwide has been exhausted.
+
+\subsection{Gap 1: SOC/SOH Estimation — Algorithm Breadth Is Missing}
+
 
 Only six to eight papers address SIB SOC estimation as of early 2026, covering EKF, UKF, adaptive UKF, particle filter, LSTM+UKF hybrid, GRU+AUKF, and one fractional-order variant. Methods that have never been applied to SIBs include: sliding mode observer, H-infinity filter, cubature Kalman filter, moving horizon estimation, physics-based Luenberger observer, formal observability analysis (observability Gramian computation), and Transformer-based deep learning architectures for SOC.
 
 A crucial positive fact for SIB SOC estimation — noted explicitly in published commercial cell characterisation studies (e.g., Laufen et al. 2024; Bischof et al. 2024, KIT) — is that SIB layered oxide/hard carbon cells exhibit a **more monotonic and sloped** OCV curve than LFP. These studies confirm that the steepness of the quasi-OCV curve enables conventional diagnostic methods that rely on mapping OCV to SOC, an essential advantage over LFP/C cells. Higher $dE_\text{OCV}/d\text{SOC}$ means better Kalman filter observability (larger $\mathbf{C}_{11}$ element, as derived in Chapter 10), faster convergence, and less SOC uncertainty from voltage measurement. The one caveat — hard carbon's plateau region near 0 V vs. Na/Na⁺, typically responsible for 20–40% of total capacity — creates a band of reduced observability exactly as analysed in Chapters 10 and 13. This means SIB SOC estimation is easier than LFP estimation (for most of the SOC range) but harder in the plateau region. This duality is a natural research framing: demonstrate the advantage, characterise the limitation, propose and evaluate a solution.
 
-### Gap 2: ECM Parameter Database — No Open Repository Exists
+\subsection{Gap 2: ECM Parameter Database — No Open Repository Exists}
+
 
 The Li-ion community has extensive open ECM parameter databases: LG M50 on Zenodo, Panasonic 18650 via CALCE, Samsung INR through multiple published papers. The SIB community has none. Every SIB modelling group must start from scratch with parameterisation.
 
 The existing SIB ECM literature (Xiang 2021, Rabab 2023, Jiao 2025) has not produced publicly deposited parameter tables in machine-readable format. No hysteresis ECM exists for SIB (despite hard carbon exhibiting well-documented OCV hysteresis in the plateau region). No coupled electro-thermal ECM exists. No calendar-ageing-dependent ECM exists. No systematic comparison across chemistries (layered oxide vs PBA vs NVPF) has been published.
 
-### Gap 3: DFN Parameter Sets — Only One Validated Set Exists
+\subsection{Gap 3: DFN Parameter Sets — Only One Validated Set Exists}
+
 
 The Chayambuka2022 NVPF/HC parameter set is the only fully validated DFN parameter set for SIBs in PyBaMM. There is no validated parameter set for the more commercially important O3 layered oxide/HC chemistry (which accounts for the majority of commercial SIB cells from CATL, HiNa, and Faradion). There is no validated parameter set for PBA/HC chemistry. There is no standalone validated SPMe. There is no global sensitivity analysis. There are no systematic model-order reduction studies.
 
-### Gap 4: Thermal Modelling and Runaway Kinetics
+\subsection{Gap 4: Thermal Modelling and Runaway Kinetics}
+
 
 Experimental SIB thermal safety data is now substantial (Section 14.1), but no computational thermal model has been built to match it. No Arrhenius-based thermal runaway kinetics model has been parameterised for SIB materials (comparable to Hatchard 2001, Spotnitz & Franklin 2003, or Feng 2018 for Li-ion). No validated numerical thermal runaway propagation model exists for SIB packs. The Bernardi heat generation equation has been adapted for SIBs conceptually (Chapter 8) but no paper has published SIB-specific entropy coefficient $\partial E/\partial T$ measurements across the full SOC range. Overcharge simulation and external short-circuit thermal modelling are absent.
 
-### Gap 5: Physics-Based Degradation Modelling
+\subsection{Gap 5: Physics-Based Degradation Modelling}
+
 
 The first physics-based SIB degradation model appeared only in 2025 (calendar ageing, SEI growth), and it modelled only the SEI contribution. No cycle-ageing physics-based model exists. No multi-mechanism model addresses the O3→P3 phase transition fatigue identified in Chapter 13. No PBA-specific degradation mechanisms (water release, vacancy evolution) have been modelled. No particle-cracking model for hard carbon exists. The hard carbon structural evolution with cycling — the gradual graphitisation that changes OCV shape and $D_s$ over thousands of cycles — has not been modelled at all.
 
-### Gap 6: System-Level BMS — Balancing, Power Limits, Diagnostics
+\subsection{Gap 6: System-Level BMS — Balancing, Power Limits, Diagnostics}
 
-No paper has addressed SIB cell balancing simulation (passive or active). No paper has implemented incremental capacity analysis (ICA, $dQ/dV$ diagnostics) for SIB cells. No formal SIB FMEA exists in the published literature. No power limit calculation framework adapted to SIB's higher DCIR and different temperature characteristics exists. The CATL "Freevoy" hybrid SIB+LFP pack concept — which requires a BMS that manages two chemistries with different OCV curves, different temperature responses, and different ageing rates simultaneously — has received no simulation treatment whatsoever.
 
-### Gap 7: Grid Integration and Energy Management
+I did not identify an established SIB literature on cell balancing simulation (passive or active), incremental-capacity diagnostics, or formal SIB-focused FMEA. Likewise, I did not find a widely cited power-limit framework adapted to SIB's higher DCIR and different temperature characteristics. The CATL "Freevoy" hybrid SIB+LFP pack concept — which requires a BMS that manages two chemistries with different OCV curves, different temperature responses, and different ageing rates simultaneously — still appears essentially untouched in the open simulation literature.
 
-SIB cost and performance advantages (lower material cost, better low-temperature performance, wide operating temperature range, potential for 0 V discharge for transport) create distinct grid storage use cases that have never been quantitatively modelled. No SIB-specific grid dispatch optimisation study exists. No degradation-aware energy management system for SIB BESS has been published. No SIB frequency regulation study exists (despite Tiamat's cells being specifically marketed for this application). No lifetime cost modelling that properly accounts for SIB's cycle life advantage relative to LFP has appeared.
+\subsection{Gap 7: Grid Integration and Energy Management}
 
-### Gap 8: Fast Charging Optimisation
 
-CATL claims 5C charging for Naxtra (80% SOC in 15 minutes). Tiamat claims 35C capability. Fast charging is one of SIB's differentiating advantages over LFP, but no model predictive control (MPC) or optimised charging protocol has been developed for SIB. The constraint structure for SIB fast charging differs from Li-ion: the primary hard constraint is the sodium plating onset (anode potential approaching 0 V vs. Na/Na⁺), which depends on temperature, SOC, and the hard carbon's two-mechanism storage. An MPC framework that explicitly uses the DFN model to enforce the plating constraint while maximising charging speed represents a novel and commercially relevant contribution.
+SIB cost and performance advantages (lower material cost, better low-temperature performance, wide operating temperature range, potential for 0 V discharge for transport) create distinct grid-storage use cases that still appear thinly modelled. I did not identify a mature SIB-specific literature on dispatch optimisation, degradation-aware energy management, or lifetime cost modelling that properly accounts for SIB's cycle-life advantage relative to LFP.
 
-### Gap 9: Low-Temperature Performance Modelling
+\subsection{Gap 8: Fast Charging Optimisation}
 
-SIB's low-temperature advantage is real and well-documented experimentally (CATL Naxtra at 93% at −30°C; HiNa at 70% at −40°C) but has not been modelled computationally. No simulation study has quantified the physical origin of the low-temperature advantage through the Butler-Volmer framework (as Chapter 13 established qualitatively). The activation energy difference between carbonate-electrolyte SIBs (no significant advantage) and ether-electrolyte SIBs (4–5× smaller $R_\text{ct}$ growth factor at −20°C) has not been parameterised in a DFN or ECM simulation context.
 
-### Gap 10: Hybrid and Second-Life Applications
+Commercial announcements from CATL and Tiamat both emphasise fast charging or high-power operation. Fast charging is therefore one of SIB's differentiating advantages over LFP, but I did not identify a mature literature on SIB-specific model-predictive charging. The constraint structure for SIB fast charging differs from Li-ion: the primary hard constraint is the sodium-plating onset (anode potential approaching 0 V vs. Na/Na+), which depends on temperature, SOC, and the hard carbon's two-mechanism storage. An MPC framework that explicitly uses the DFN model to enforce the plating constraint while maximising charging speed would therefore be both novel and commercially relevant.
 
-CATL's hybrid SIB+LFP pack is commercially deployed but completely unmodelled in simulation. No energy management strategy for a heterogeneous chemistry pack has been published. Second-life SIB battery applications (repurposing end-of-life SIB packs, which will begin appearing in volume around 2028–2030 from early deployments) have received no techno-economic or simulation treatment. SIB second-life analysis would be one of the first papers in this area globally.
+\subsection{Gap 9: Low-Temperature Performance Modelling}
 
-### Gap 11: Machine Learning and Data-Driven Approaches
 
-No Transformer-based SOH estimation has been applied to SIBs. No transfer learning study has demonstrated the Li→Na chemistry transfer for degradation modelling (despite PyBaMM confirming structural model identity). No physics-informed neural network (PINN) has been developed for SIB state estimation, despite PINN being an active frontier for Li-ion. No Gaussian process regression-based RUL prediction exists for SIBs.
+SIB's low-temperature advantage is real and well-documented experimentally, but I did not identify a mature computational literature that explains it systematically through the Butler-Volmer framework. The activation-energy difference between carbonate-electrolyte SIBs (little advantage) and ether-electrolyte SIBs (substantially smaller low-temperature charge-transfer penalty) also appears under-parameterised in DFN and ECM studies.
 
-### Gap 12: Digital Twins
+\subsection{Gap 10: Hybrid and Second-Life Applications}
 
-No SIB digital twin framework exists. A digital twin — a continuously updated simulation model whose parameters evolve with measured cell behaviour in real time — requires the combination of ECM or DFN modelling, Kalman filter-based parameter identification, and connection to real-time sensor data. For Li-ion, digital twins are now commercially deployed in several EV platforms. For SIB, the first paper to propose and demonstrate a digital twin architecture (even using synthetic data from PyBaMM to represent the "real" cell) will be the defining reference in this space.
 
-### Gap 13: Sodium Plating — Onset Prediction and Prevention
+CATL has publicly described hybrid SIB+LFP pack architectures, but this heterogeneous-chemistry problem still appears essentially unmodelled in the open simulation literature. I also did not identify a clear techno-economic or simulation literature on second-life SIB applications. A careful second-life SIB analysis would therefore be among the first papers in this area.
+
+\subsection{Gap 11: Machine Learning and Data-Driven Approaches}
+
+
+I did not identify established SIB papers using Transformer-based SOH estimation, chemistry-transfer learning for degradation modelling, PINN-based state estimation, or Gaussian-process RUL prediction. That makes this entire family of methods unusually open compared with Li-ion.
+
+\subsection{Gap 12: Digital Twins}
+
+
+I did not identify a mature, openly documented SIB digital-twin framework. A digital twin — a continuously updated simulation model whose parameters evolve with measured cell behaviour in real time — requires the combination of ECM or DFN modelling, Kalman filter-based parameter identification, and connection to real-time sensor data. For Li-ion, digital twins are already a live industrial topic. For SIB, an early paper that clearly proposes and demonstrates a digital-twin architecture (even using synthetic data from PyBaMM to represent the "real" cell) could become a defining reference in this space.
+
+\subsection{Gap 13: Sodium Plating — Onset Prediction and Prevention}
+
 
 The threshold conditions for sodium plating on hard carbon anodes — as a function of C-rate, temperature, and SOC — have not been characterised in a simulation model. Chapter 13 established that the driving force for plating (anode potential near 0 V vs. Na/Na⁺) is always present near the top of charge in SIB cells, and that the margin against plating is smaller than for graphite in LIBs. A simulation model that predicts the onset of sodium plating using DFN or SPMe with Butler-Volmer kinetics, calibrated against published experimental observations of plating (voltage plateau on discharge, CE reduction), and used to derive safe fast-charging limits — this is both technically achievable and commercially important.
 
 ---
 
-## Twenty-Five Research Proposals
+\section{Twenty-Five Research Proposals}
+
 
 The following proposals translate the thirteen gap areas into concrete, actionable research projects. They are classified by difficulty, estimated time to first submission, target venue tier, and hardware requirement. The Tier definitions are: Tier 1 = high-impact (Applied Energy, eTransportation, J. Power Sources, IEEE Trans. Smart Grid, JES, Electrochimica Acta); Tier 2 = solid mid-range (J. Energy Storage, IEEE TTE); Tier 3 = accessible (IEEE Access, Batteries MDPI, Energies MDPI).
 
-### Fast Track (3–6 months, Tier 2–3, no hardware needed)
+\subsection{Fast Track (3–6 months, Tier 2–3, no hardware needed)}
+
 
 **Proposal 1: Kalman Filter Benchmark for SIB SOC Estimation**
 Implement and compare EKF, UKF, SRUKF, and AEKF (Adaptive EKF) on the same two-RC ECM parameterised from the Wang et al. 2024 Zenodo SIB dataset. Evaluate SOC accuracy (RMSE, MAE) at three temperatures (−5°C, 25°C, 45°C) and three driving profiles (FUDS, UDDS, DST). The SIB-specific contribution: quantify the observability improvement relative to LFP cells using the observability Gramian framework. Target: **IEEE Access** or **Batteries**. This is the most straightforward first SIB paper for an EE with MATLAB skills.
@@ -7275,7 +8264,8 @@ Build and publicly deposit a structured ECM parameter database for 2–3 commerc
 **Proposal 4: Fractional-Order ECM vs Integer-Order Comparison for SIB**
 Implement a fractional-order impedance element (constant phase element, CPE) alongside standard integer-order RC models and compare accuracy-complexity trade-offs for the SIB cell characterised in the Laufen et al. (2024) dataset (which includes full EIS at 21 SOC levels, making it ideal for fractional-order model identification). Jiao et al. (2025) published the first fractional-order SIB ECM — your contribution is the systematic comparison and the explicit connection to the EIS-derived parameters. Target: **Energies MDPI** or **Batteries MDPI**.
 
-### Medium Track (5–8 months, Tier 1–2, no hardware needed)
+\subsection{Medium Track (5–8 months, Tier 1–2, no hardware needed)}
+
 
 **Proposal 5: Formal Observability Analysis of SIB vs LFP vs NMC**
 Derive the analytical expression for the observability Gramian of the two-RC ECM as a function of the OCV slope $dE_\text{OCV}/d\text{SOC}$. Compute and plot the observability Gramian eigenvalue as a function of SOC for three cell chemistries (SIB layered oxide/HC, LFP/graphite, NMC/graphite) using published OCV curves. Quantify the observability advantage of SIB over LFP throughout most of the SOC range, and the observability reduction in the SIB plateau. Propose the optimal SOC windows for voltage-based recalibration in each chemistry. Pure analytical work — no datasets required. Target: **IEEE Trans. Transportation Electrification**.
@@ -7305,9 +8295,10 @@ This is one of the three highest-priority proposals for first-mover advantage. N
 Project forward: when will SIB cells from the first major commercial deployments (2023–2025) reach end-of-life (80% capacity retention)? At CATL's claimed 10,000 cycles, for cells cycled daily at 1C, this is approximately 27 years — almost certainly exceeding the cell's calendar life, which means calendar ageing would likely determine end-of-life rather than cycle count. (This inference assumes calendar ageing rates comparable to Li-ion; SIB-specific calendar ageing data is still sparse — see Gap 5.) At HiNa's more conservative 4,500 cycles at 1C daily, end-of-life is approximately 12 years. Model the second-life residual value of these cells for residential storage applications, using a coupled degradation model and a techno-economic framework. Compare against LFP second-life economics. Target: **Journal of Energy Storage** or **Energies MDPI**.
 
 **Proposal 25: SIB Frequency Regulation Simulation**
-Simulate an SIB BESS (10 MW/20 MWh) responding to a real frequency regulation signal (PJM RegD signal, publicly available) and compare performance, revenue, and degradation cost against an LFP BESS with equivalent energy capacity. SIB's 5C sustained rate capability (vs LFP's 1–2C) should produce substantially higher frequency regulation performance scores under PJM's pay-for-performance framework. This is the first SIB frequency regulation simulation anywhere. Target: **IEEE Transactions on Smart Grid** or **Applied Energy**.
+Simulate an SIB BESS (10 MW/20 MWh) responding to a real frequency regulation signal (PJM RegD signal, publicly available) and compare performance, revenue, and degradation cost against an LFP BESS with equivalent energy capacity. The modelling hypothesis is that SIB's strong power capability and cold-weather behaviour should make it especially attractive for frequency-regulation duty. This appears to be a very open problem in the SIB literature. Target: **IEEE Transactions on Smart Grid** or **Applied Energy**.
 
-### Ambitious Track (6–12 months, Tier 1, no hardware)
+\subsection{Ambitious Track (6–12 months, Tier 1, no hardware)}
+
 
 **Proposal 11: Multi-Mechanism Degradation Model for SIB**
 Build the first comprehensive physics-based degradation model for SIBs, incorporating: SEI growth on hard carbon (parabolic $\sqrt{t}$ law, Arrhenius temperature dependence); O3→P3 phase transition fatigue in the cathode (damage accumulation as a function of desodiation depth); sodium plating on hard carbon (onset criterion based on local anode potential, plating rate from Butler-Volmer); hard carbon structural evolution (gradual change in $D_s$ and OCV shape over cycling). Implement in PyBaMM using the existing degradation framework. Validate each mechanism independently against published experimental data. Target: **Journal of Power Sources**.
@@ -7319,16 +8310,16 @@ Pre-train a capacity fade prediction model on the 228-cell NMC ageing dataset (N
 Implement a PINN for SIB state estimation: the neural network predicts terminal voltage, with the DFN governing equations enforced as physics constraints in the training loss. This approach combines the flexibility of data-driven methods with the physical validity guarantees of physics-based models — particularly valuable for SIBs where data is scarce and the physics constraints prevent overfitting. Validate against the Wang et al. Zenodo dataset. Target: **Applied Energy** (where PINN for batteries papers are beginning to appear).
 
 **Proposal 15: MPC Optimal Fast Charging Protocol for SIB**
-Formulate a model predictive control (MPC) problem for SIB fast charging: maximise charging speed (minimise time to target SOC) subject to hard constraints on cell temperature ($T < 50°C$), terminal voltage ($V < V_\text{max}$), and anode potential remaining above the sodium plating threshold (the local anode overpotential $\eta_\text{anode} = \phi_s - \phi_e - U_\text{eq,anode} > 0$, ensuring sodium metal deposition does not become thermodynamically favourable). Implement in MATLAB using the SPMe as the prediction model (Proposal 7 provides the SPMe). Demonstrate 15–30% reduction in charging time compared to CC-CV at the same safety constraints, across temperatures from 0°C to 45°C. Target: **eTransportation**.
+Formulate a model predictive control (MPC) problem for SIB fast charging: maximise charging speed (minimise time to target SOC) subject to hard constraints on cell temperature ($T < 50°C$), terminal voltage ($V < V_\text{max}$), and negative-electrode potential remaining above the sodium-plating threshold (i.e. the local negative-electrode potential versus Na/Na+ should stay positive). Implement in MATLAB using the SPMe as the prediction model (Proposal 7 provides the SPMe). Demonstrate 15–30% reduction in charging time compared to CC-CV at the same safety constraints, across temperatures from 0°C to 45°C. Target: **eTransportation**.
 
 **Proposal 19: SIB Digital Twin Framework**
-Design and implement the first SIB digital twin: an architecture that continuously updates an ECM or reduced-order electrochemical model from streaming current-voltage data using a dual EKF (one filter for state estimation, one for parameter identification). Demonstrate the framework on synthetic data generated from PyBaMM (with deliberately introduced parameter drift to represent ageing), tracking capacity fade and resistance rise over simulated years of operation. Define the software architecture, data flow, and computational requirements. Target: **Applied Energy** or **eTransportation**.
+Design and implement an early SIB digital twin: an architecture that continuously updates an ECM or reduced-order electrochemical model from streaming current-voltage data using a dual EKF (one filter for state estimation, one for parameter identification). Demonstrate the framework on synthetic data generated from PyBaMM (with deliberately introduced parameter drift to represent ageing), tracking capacity fade and resistance rise over simulated years of operation. Define the software architecture, data flow, and computational requirements. Target: **Applied Energy** or **eTransportation**.
 
 **Proposal 20: Grid Dispatch Optimisation for SIB BESS**
 Formulate a stochastic optimal dispatch problem for a grid-scale SIB BESS (100 MW/400 MWh, representative of the Jupiter Power/Peak Energy deployment): maximise revenue from energy arbitrage and ancillary services subject to degradation constraints, temperature-dependent power limits, and SIB-specific cycling constraints. Compare the optimal dispatch strategy for SIB vs LFP under real electricity price and ancillary service price data (ISO-NE or PJM market data, publicly available). Target: **IEEE Transactions on Smart Grid**.
 
 **Proposal 21: Hybrid Li/Na Pack Energy Management**
-Model CATL's "Freevoy" hybrid SIB+LFP pack: cells of two different chemistries in the same series string, with different OCV curves, different DCIR, different temperature characteristics, and different ageing rates. Develop a state estimation framework that maintains separate SOC estimates for SIB and LFP cells simultaneously, a balancing strategy that accounts for their different OCV shapes, and an energy management strategy that dispatches the SIB cells preferentially in conditions where they have the performance advantage (low temperature, high power demand) and the LFP cells preferentially where they have the advantage (high energy demand, moderate temperature). Target: **eTransportation**.
+Model CATL's "Freevoy" hybrid SIB+LFP pack concept: cells of two different chemistries in the same series string, with different OCV curves, different DCIR, different temperature characteristics, and different ageing rates. Develop a state-estimation framework that maintains separate SOC estimates for SIB and LFP cells simultaneously, a balancing strategy that accounts for their different OCV shapes, and an energy-management strategy that dispatches the SIB cells preferentially in conditions where they have the performance advantage (low temperature, high power demand) and the LFP cells preferentially where they have the advantage (high energy demand, moderate temperature). Target: **eTransportation**.
 
 **Proposal 22: Sodium Plating Onset Prediction Model**
 Build the first computational model for sodium plating onset in hard carbon anodes: derive the plating onset criterion (local anode potential $\leq$ 0 V vs. Na/Na⁺) from the DFN model, compute the onset C-rate as a function of temperature and SOC, and validate against published experimental observations of plating signatures (CE reduction, voltage plateau on discharge, post-mortem sodium metal observation) in hard carbon half-cells and full cells. Parameterise the model from published half-cell data. Derive safe charging current limits as a function of temperature. Target: **Journal of the Electrochemical Society**.
@@ -7336,7 +8327,8 @@ Build the first computational model for sodium plating onset in hard carbon anod
 **Proposal 24: Transformer-Based SOH Estimation for SIB**
 Implement a Transformer architecture for SIB SOH estimation, exploiting the self-attention mechanism to identify the most informative time segments in the charging/discharging voltage-current profile. Pre-train on the 228-cell NMC dataset and fine-tune on SIB ageing data. Compare against LSTM-based methods from the Li-ion literature. The novelty framing: Transformers applied to SIB degradation prediction, with explicit transfer learning methodology for chemistry-to-chemistry transfer. Target: **Applied Energy**.
 
-### Summary Table of All 25 Proposals
+\subsection{Summary Table of All 25 Proposals}
+
 
 | # | Topic | Difficulty | Time (months) | Target Venue | Hardware? |
 | --- | --- | --- | --- | --- | --- |
@@ -7366,7 +8358,8 @@ Implement a Transformer architecture for SIB SOH estimation, exploiting the self
 | 24 | Transformer-based SOH for SIB | Med-High | 7–10 | Applied Energy | No |
 | 25 | SIB frequency regulation simulation | Medium | 5–7 | IEEE Trans. Smart Grid | No |
 
-### Proposal Dependencies: What Enables What
+\subsection{Proposal Dependencies: What Enables What}
+
 
 Not all 25 proposals are independent. Several share datasets, models, or intermediate results, and completing one makes subsequent proposals faster. The most important dependency chains are:
 
@@ -7382,11 +8375,13 @@ If you plan to pursue more than three proposals, map these dependencies before c
 
 ---
 
-## Strategic Sequencing: Building a Research Portfolio
+\section{Strategic Sequencing: Building a Research Portfolio}
+
 
 The proposals above are not equally urgent or equally strategic. Here is a recommended approach to sequencing them for maximum impact and minimum wasted effort.
 
-### The First Paper: Build Credibility Quickly
+\subsection{The First Paper: Build Credibility Quickly}
+
 
 Your first SIB simulation paper should be one that (a) uses established methodology, (b) requires no hardware, (c) has available data, and (d) addresses a topic with no existing SIB competition. Proposals 1, 3, 17, and 23 all satisfy these criteria.
 
@@ -7394,7 +8389,8 @@ Your first SIB simulation paper should be one that (a) uses established methodol
 
 **Proposal 3** (ECM parameter database) is the highest-utility first paper if your goal is to enable your own subsequent work. The parameter database becomes the foundation for Proposals 1, 2, 7, 8, 11, 12, and 16 — it pays dividends across your entire research trajectory while also being a citable contribution in its own right.
 
-### The Three-Paper Arc
+\subsection{The Three-Paper Arc}
+
 
 The most impactful structured approach is a connected three-paper arc:
 
@@ -7406,17 +8402,19 @@ The most impactful structured approach is a connected three-paper arc:
 
 This arc produces three publications in approximately 12–15 months, each building on the previous, forming a coherent research narrative around "validated SIB modelling from parameter identification through BMS algorithm to application." The coherent narrative increases citation cross-linking: Paper 2 cites Paper 1, Paper 3 cites both, and external papers that discover any one will discover the others through the citation trail.
 
-### Landmark Papers: The High-Impact Opportunities
+\subsection{Landmark Papers: The High-Impact Opportunities}
+
 
 Three proposals stand out as potentially high-citation landmark papers that will be extensively cited as the SIB engineering simulation field matures:
 
-**Proposal 19** (SIB Digital Twin) — the first digital twin framework for SIBs will be the reference paper for all subsequent digital twin implementations in SIB systems. Even a conceptual framework demonstration on synthetic PyBaMM data establishes the architecture that later papers will build on. Applied Energy or eTransportation.
+**Proposal 19** (SIB Digital Twin) — an early digital-twin framework for SIBs could become the reference paper for subsequent SIB digital-twin implementations. Even a conceptual framework demonstration on synthetic PyBaMM data establishes the architecture that later papers can build on. Applied Energy or eTransportation.
 
-**Proposal 21** (Hybrid SIB+LFP Pack) — CATL's Freevoy is deployed in real vehicles. The first energy management paper for a heterogeneous chemistry pack addresses a commercially deployed product and will be cited by every subsequent Freevoy modelling paper. eTransportation.
+**Proposal 21** (Hybrid SIB+LFP Pack) — CATL's Freevoy architecture has already been publicly announced with a sodium-LFP configuration. An early energy-management paper for a heterogeneous-chemistry pack would therefore address a concrete industrial target and is likely to be cited by later Freevoy-style modelling papers. eTransportation.
 
 **Proposal 20** (Grid Dispatch with SIB) — as SIB grid storage installations scale up (Peak Energy's 4.75 GWh Jupiter Power contract, HiNa's Chinese grid deployments), the demand for grid-level SIB modelling will grow. The first grid dispatch optimisation paper for SIB will anchor that literature. IEEE Transactions on Smart Grid.
 
-### The Timing Advantage
+\subsection{The Timing Advantage}
+
 
 The single most important strategic insight is this: the SIB simulation field is approximately where lithium-ion simulation was in 2010–2012. The researchers who entered Li-ion simulation in that period and produced systematic, well-parameterised, open-source-committed work became the most-cited contributors to the field. The papers that established ECM parameter databases, validated DFN models for commercial cells, and first applied EKF/Kalman frameworks to Li-ion BMS now accumulate hundreds or thousands of citations annually.
 
@@ -7424,7 +8422,10 @@ The same window is open for SIBs today. Every systematic, well-executed, publicl
 
 ---
 
-## Worked Interpretation Exercise: Planning Your First Research Paper
+\specialsectionwithsubtitle{Worked Interpretation Exercise}{Planning Your First Research Paper}
+
+\specialsectionstyle
+
 
 Let us apply the chapter's framework to a concrete planning exercise that will take you from this page to a submitted manuscript.
 
@@ -7442,18 +8443,28 @@ Let us apply the chapter's framework to a concrete planning exercise that will t
 
 ---
 
-## Chapter Summary
+\bodytextstyle
 
-- **The landscape in brief:** The SIB commercial ecosystem has crossed the threshold from research to commercial reality: CATL Naxtra at 175 Wh/kg and >10,000 claimed cycles, HiNa at GWh-scale production with 100 MWh grid deployments, Tiamat offering the highest-power commercial SIB at 35C discharge. The Chinese research and industrial ecosystem dominates production (95% of manufacturing capacity) but is focused primarily on materials science. The engineering simulation literature — ECM parameterisation, state estimation, degradation modelling, thermal simulation, pack management, grid integration — is almost entirely absent.
-- **The open-source toolkit is ready:** PyBaMM `pybamm.sodium_ion.BasicDFN()` with `Chayambuka2022` parameters, COMSOL's 1D Na-ion model, MATLAB/Simulink for BMS algorithms, PyBOP for parameter identification, and WebPlotDigitizer for data extraction from published curves.
-- **Five open SIB datasets** are available: Wang et al. Zenodo 13836819 (primary), BatteryLife NaIon subset, Iontech characterisation, Laufen et al. (2024), and Droese et al. (2025) with supplementary data. These datasets, combined with the 228-cell NMC and Severson et al. LFP datasets for methodology development, are sufficient to support a full research portfolio.
+\chapterendstyle
+
+\chapterendsection{Chapter Summary}
+
+
+- **The landscape in brief:** The SIB commercial ecosystem has crossed the threshold from research to commercial reality: CATL has publicly launched Naxtra at 175 Wh/kg with >10,000 claimed cycles, HiNa has GWh-scale production and grid-storage deployments, and Tiamat offers a high-power commercial NVPF platform. The Chinese research and industrial ecosystem remains dominant and is focused primarily on materials science. The engineering simulation literature — ECM parameterisation, state estimation, degradation modelling, thermal simulation, pack management, grid integration — is still comparatively sparse.
+- **The open-source toolkit is ready:** PyBaMM `pybamm.sodium_ion.BasicDFN()`, COMSOL's 1D Na-ion example, MATLAB/Simulink for BMS algorithms, PyBOP for parameter identification, and WebPlotDigitizer for data extraction from published curves.
+- **A small but usable open SIB dataset stack** is available: Wang et al. Zenodo 13836819 (primary), the BatteryLife NaIon subset, Iontech characterisation data, Laufen et al. (2024), and Droese et al. (2025). These datasets, combined with the 228-cell NMC and Severson et al. LFP datasets for methodology development, are enough to support a serious research portfolio.
 - **The publication route is proven:** Batteries MDPI for fast early papers; Journal of Energy Storage for first journal papers in ECM/SOC; Applied Energy for system-level work; IEEE Transactions on Smart Grid for grid integration; eTransportation for EV-framed high-impact papers; Electrochimica Acta and JES for physics-based modelling. IEEE conferences (VPPC, IECON, ITEC) as proven SIB conference venues.
 - **Thirteen gap areas and 25 concrete proposals** span from straightforward replications (3–6 months, Tier 3) to landmark contributions (8–12 months, Tier 1). The three highest first-mover-advantage proposals are Proposal 17 (cell balancing), Proposal 19 (digital twin), and Proposal 20 (grid dispatch). The three-paper arc of Proposals 3 → 1 → 16 provides the fastest path to a coherent three-publication research portfolio.
 - **The strategic insight:** SIBs are where Li-ion was in 2010–2012. The researchers who built the Li-ion simulation infrastructure in that window became the field's most-cited contributors. That window is open for SIBs today. Enter it now.
 
 ---
 
-## Deliverable
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Deliverable}
+
 
 The chapter plan originally asked you to read three recent SIB review papers and produce a tagged "open questions" document — materials problems versus systems/modelling problems. That exercise is now subsumed by the more comprehensive deliverable below, which integrates the open-questions analysis into a full research plan. If you have not yet read three recent SIB review papers, do so before attempting this deliverable; the Garapati et al. (2025) and Chayambuka et al. (2022) papers from the Further Reading list count as two.
 
@@ -7471,15 +8482,20 @@ This research plan is the product of everything in this book. It integrates the 
 
 ---
 
-## Further Reading
+\bodytextstyle
+
+\chapterendstyle
+
+\chapterendsection{Further Reading}
+
 
 1. **Chayambuka, K. et al., "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination; Part II: Model and validation," *Electrochimica Acta* (2022).** The foundational DFN parameter set that underlies `pybamm.sodium_ion.BasicDFN()`. The two-part series is the most important single reference in SIB simulation, establishing both the parameterisation methodology and the model validation approach. Reading both parts carefully before beginning any DFN simulation work will save months of uncertainty about model assumptions.
 
 2. **Garapati, M. et al., "Perspective and comparative analysis of physics-based models for sodium-ion batteries," *Electrochimica Acta* 514, 145573 (2025).** The most recent and most complete comparison of DFN, SPMe, and SPM for SIBs, published open-access. This paper defines the current state of the art in SIB electrochemical modelling and is the reference against which any Proposal 5, 6, or 7 paper will be compared.
 
-3. **Wang, Y. et al., SIB SOC Estimation Dataset, Zenodo ID: 13836819 (2024–2025).** The primary experimental dataset for SIB BMS algorithm development. Download and explore this dataset before beginning any SOC estimation paper. The README describes the measurement protocol, the cell specifications, and the data format. The dataset's existence means that Proposals 1, 2, 12, and 16 can begin immediately without purchasing cells.
+3. **Wang, Y. et al., "Data for: Accurate state-of-charge estimation for sodium-ion batteries based on a low-complexity model with hierarchical learning," Zenodo ID: 13836819 (2024).** The primary experimental dataset for SIB BMS algorithm development. Download and explore this dataset before beginning any SOC estimation paper. The README describes the measurement protocol, the cell specifications, and the data format. The dataset's existence means that Proposals 1, 2, 12, and 16 can begin immediately without purchasing cells.
 
-4. **Laufen, T. et al., "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell," *Cell Reports Physical Science* (2024).** The most comprehensive published characterisation of a commercial SIB cell, including EIS at 21 SOC levels, micro-CT imaging, and post-mortem physical analysis. Supplementary data provides numbers directly usable for ECM and DFN parameterisation. This paper is the experimental reference for Proposals 3, 4, 8, and 9.
+4. **Laufen, T. et al., "Multi-method characterization of a commercial 1.2 Ah sodium-ion battery cell indicates drop-in potential," *Cell Reports Physical Science* (2024).** One of the most comprehensive published characterisations of a commercial SIB cell, including EIS at 21 SOC levels, micro-CT imaging, and post-mortem physical analysis. Supplementary data provides numbers directly usable for ECM and DFN parameterisation. This paper is the experimental reference for Proposals 3, 4, 8, and 9.
 
 5. **Sulzer, V. et al., "Python Battery Mathematical Modelling (PyBaMM)," *Journal of Open Research Software* 9 (1), 14 (2021).** The PyBaMM software paper — cite this alongside the `Chayambuka2022` parameter set whenever using PyBaMM's sodium-ion DFN. The paper describes the software architecture, the model library, and the validation approach. The PyBaMM GitHub repository (github.com/pybamm-team/PyBaMM) and Discourse forum (pybamm.discourse.group) are the primary technical support resources for anyone building SIB simulations with PyBaMM.
 
@@ -7488,4 +8504,6 @@ This research plan is the product of everything in this book. It integrates the 
 ---
 
 *This is the final chapter of the book. You now have the physics, the chemistry, the engineering, and the research roadmap. The battery technology field — and specifically the sodium-ion simulation sub-field — is ready for exactly the kind of rigorous, open, simulation-based research that a well-trained electrical engineer can produce. Begin.*
+\bodytextstyle
+
 

@@ -36,9 +36,9 @@ By the end of this chapter, you will be able to read a set of capacity-fade and 
 
 ## 7.1 The Three Degradation Modes: A Unifying Framework
 
-The degradation literature contains dozens of named mechanisms. This abundance can be overwhelming. The key to navigating it is a hierarchical classification that separates *how a cell fails* (the mode) from *why it fails* (the mechanism). This framework was systematised by Birkl, Roberts, McTurk, Bruce, and Howey in their landmark 2017 review paper, and it has become the standard language for discussing battery degradation.
+The degradation literature contains dozens of named mechanisms. This abundance can be overwhelming. The key to navigating it is a hierarchical classification that separates *how a cell fails* (the mode) from *why it fails* (the mechanism). Birkl, Roberts, McTurk, Bruce, and Howey's 2017 paper systematised the **capacity-fade** side of this picture using LLI, LAMpe, and LAMne. In this chapter we extend that diagnostic language slightly by treating **conductivity loss (CL)** as a third engineering axis, because resistance rise matters just as much as capacity fade in real cells.
 
-At the top level, there are exactly three degradation modes. Every mechanism we will discuss — SEI growth, lithium plating, particle cracking, transition metal dissolution, electrolyte decomposition — feeds into one or more of these three modes.
+At the practical engineering level used in this chapter, there are three top-level degradation modes. Every mechanism we will discuss — SEI growth, lithium plating, particle cracking, transition metal dissolution, electrolyte decomposition — feeds into one or more of these three modes.
 
 ### Mode 1: Loss of Lithium (or Sodium) Inventory (LLI)
 
@@ -110,9 +110,9 @@ This is a separable ODE. Rearranging gives $L\,dL = v D c_0\,dt$, and integratin
 $$L^2 - L_0^2 = 2 v D c_0\, t.$$
 For $L \gg L_0$ (well past the formation cycles), the constant drops out and we recover
 $$L(t) \approx \sqrt{2 v D c_0}\,\sqrt{t},$$
-which is the parabolic growth law in its cleanest form. The expression under the outer square root is the rate constant $k_\text{SEI}$. Writing this with the initial offset restored gives equation (7.1):
+which is the parabolic growth law in its cleanest form. Writing this with the initial offset restored gives equation (7.1):
 
-$$L_\text{SEI}(t) = L_0 + k_\text{SEI} \sqrt{t} \tag{7.1}$$
+$$L_\text{SEI}(t) = \sqrt{L_0^2 + k_\text{SEI}\, t} \tag{7.1}$$
 
 If this structure looks familiar, it should: it is the same math that governs the growth of an oxide layer on silicon during thermal oxidation (the Deal–Grove model), the depletion of a diffusing species into a semi-infinite medium, and — the EE version — the spreading of a voltage disturbance down a diffusive RC transmission line, whose penetration depth grows as $\sqrt{t}$. Whenever the rate of a process is throttled by diffusion through its own product, $\sqrt{t}$ is the signature.
 
@@ -539,7 +539,7 @@ This section provides a guided reading of the key diagnostic framework from **Bi
 
 The paper's central contribution is a systematic framework connecting each degradation mechanism to specific signatures observable in non-invasive external measurements — exactly what you need to diagnose degradation without opening the cell. Here is a guided reading of the paper's key sections.
 
-**Section 2 of Birkl et al. — the three degradation modes**: The paper defines the same three modes we have established in Section 7.1 (LLI, LAMpe, LAMne, CL). They call conductivity loss "conductivity loss" and distinguish positive electrode (PE) from negative electrode (NE) sources of LAM. Notice that they are explicit about what "loss of active material" means: it is not loss of the physical material from the cell but loss of its electrochemical participation — isolation from the electronic or ionic pathway.
+**Section 2 of Birkl et al. — the capacity-fade modes**: The paper focuses on three capacity-fade modes: LLI, LAMpe, and LAMne. That is slightly narrower than the framework used in this chapter, where we add conductivity loss as a separate engineering axis because power fade matters operationally even when low-rate capacity is preserved. Birkl are explicit about what "loss of active material" means: it is not loss of the physical material from the cell but loss of its electrochemical participation — isolation from the electronic or ionic pathway.
 
 **Section 3 — Half-cell model and simulated signatures**: This is the most valuable methodological section for your research. Birkl et al. use a half-cell model: they represent the full cell OCV as the superposition of the cathode OCV curve and the anode OCV curve, parameterised by the electrode stoichiometric windows. By mathematically shifting these windows to simulate LLI, LAMpe, and LAMne, they show how each mode distorts the full-cell OCV curve and $dQ/dV$ curve in a distinct and identifiable way.
 
@@ -551,9 +551,9 @@ The signatures are:
 
 *LAMne* (anode active material loss): The peaks associated with anode staging transitions (the graphite staging peaks at ~3.6–3.7 V in an NMC/graphite cell) decrease in height and shift. The cell's capacity becomes limited by the anode. The lower portion of the discharge curve changes shape.
 
-*CL*: Conductivity loss (impedance growth) does not affect the OCV curve or $dQ/dV$ curve measured under quasi-equilibrium conditions (very slow rate). However, it shows up as: increased voltage gap between charge and discharge curves at any non-zero current; increased DCIR in HPPC tests; enlarged semicircle(s) in EIS; reduced power capability and increased heat generation under load.
+*CL*: Conductivity loss (impedance growth) sits mostly **outside** Birkl's OCV-fitting framework. It does not affect the OCV curve or $dQ/dV$ curve measured under quasi-equilibrium conditions (very slow rate). However, it shows up as: increased voltage gap between charge and discharge curves at any non-zero current; increased DCIR in HPPC tests; enlarged semicircle(s) in EIS; reduced power capability and increased heat generation under load.
 
-**The key diagnostic insight from Birkl et al.**: LLI and LAM are distinguishable from $dQ/dV$ analysis at low rate; CL is distinguishable from impedance measurements. All three can coexist and must be disentangled systematically. A cell with 20% capacity fade might have 15% LLI, 3% LAMne, 2% LAMpe, and significant CL — and the appropriate corrective strategy (electrolyte formulation change to reduce SEI, particle size reduction to reduce cracking, upper voltage limit reduction to reduce metal dissolution) depends on correctly identifying which component dominates.
+**The key diagnostic insight from Birkl et al.**: LLI, LAMpe, and LAMne are distinguishable from low-rate OCV or $dQ/dV$ analysis. Conductivity loss must then be diagnosed by complementary impedance or pulse-power measurements. All four can coexist in a real cell and must be disentangled systematically. A cell with 20% apparent performance fade might have 15% LLI, 3% LAMne, 2% LAMpe, and significant CL — and the appropriate corrective strategy (electrolyte formulation change to reduce SEI, particle size reduction to reduce cracking, upper voltage limit reduction to reduce metal dissolution) depends on correctly identifying which component dominates.
 
 **Which mechanisms are diagnosable from external measurements alone (answering the deliverable question)**:
 
@@ -594,7 +594,7 @@ The three-mode framework (LLI, LAM, CL) applies equally to SIBs. The mechanisms 
 
 **Key equations:**
 
-$$L_\text{SEI}(t) = L_0 + k_\text{SEI}\sqrt{t} \quad \text{(parabolic SEI growth law)} \tag{7.1}$$
+$$L_\text{SEI}(t) = \sqrt{L_0^2 + k_\text{SEI} t} \quad \text{(parabolic SEI growth law)} \tag{7.1}$$
 
 $$k_\text{SEI}(T) = A\exp\!\left(-\frac{E_a}{RT}\right) \quad \text{(Arrhenius temperature dependence)} \tag{7.3}$$
 
@@ -614,11 +614,11 @@ Loss of lithium/sodium inventory (LLI), loss of active material (LAM), conductiv
 
 **Task:** Read Birkl et al. (2017) "Degradation diagnostics for lithium ion cells" (*Journal of Power Sources* 341, 373–386) twice. Write a one-page summary in your own words identifying which mechanisms are diagnosable from external measurements alone.
 
-**Guidance:** The paper is freely available via DOI: 10.1016/j.jpowsour.2016.09.105. On your first reading, focus on the overall framework (Sections 1–3) and absorb the three-mode classification and the concept of the half-cell model. On your second reading, go through Section 4 carefully: this is where specific diagnostic signatures are described for each mechanism.
+**Guidance:** The paper is freely available via DOI: 10.1016/j.jpowsour.2016.12.011. On your first reading, focus on the overall framework (Sections 1–3) and absorb the capacity-fade classification (LLI, LAMpe, LAMne) and the concept of the half-cell model. On your second reading, go through Section 4 carefully: this is where specific diagnostic signatures are described for each mechanism.
 
 Your one-page summary should be structured around the diagnostic question: for each mechanism listed in the paper, answer:
 
-1. Which degradation mode does it primarily drive (LLI, LAMpe, LAMne, CL)?
+1. Which degradation mode does it primarily drive (LLI, LAMpe, LAMne)? If the mechanism primarily appears as impedance rise rather than capacity fade, note that separately.
 2. What external measurement reveals it (OCV curve shape, $dQ/dV$, EIS, DCIR, Coulombic efficiency, visual inspection)?
 3. What is the specific signature (e.g., "LLI shifts $dQ/dV$ peaks toward lower voltage on discharge and reduces peak area proportionally")?
 4. Is the mechanism distinguishable from other mechanisms using only non-invasive measurements, or does disambiguation require post-mortem analysis?

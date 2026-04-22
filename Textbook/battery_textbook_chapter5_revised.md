@@ -85,7 +85,7 @@ where the potential ranges from approximately 3.7 V (near full lithiation, $x \t
 
 The theoretical specific capacity follows from Faraday's first law:
 
-$$C_\text{th} = \frac{nF}{3.6\,M}, \tag{5.A}$$
+$$C_\text{th} = \frac{nF}{3.6\,M}$$
 
 where $n$ is the number of electrons transferred per formula unit, $F = 96485$ C/mol is the Faraday constant, $M$ is the molar mass in g/mol, and the factor of 3.6 converts coulombs to milliamp-hours ($1~\text{mAh} = 3.6~\text{C}$). For LCO with $n = 1$ and $M = 97.87$ g/mol, this gives $C_\text{th} = 96485 / (3.6 \times 97.87) = 274$ mAh/g, as we calculated in Chapter 1.
 
@@ -143,7 +143,7 @@ The practical consequence of the two-phase mechanism for SOC estimation bears re
 
 **A common misconception — the flat plateau is about OCV, not V(t).** Students new to LFP often assume that the flat voltage plateau means an LFP cell under load also holds its terminal voltage constant. It does not. Under any non-zero current, the terminal voltage is displaced from the OCV by ohmic and polarisation overpotentials, both of which are SOC-dependent (especially at the ends of the plateau and at extreme DOD). So the terminal-voltage curve of a loaded LFP cell is *not* flat — it has a clear SOC dependence through the IR drop. The flat part is the open-circuit voltage, measured at rest. What this means in practice is that you can sometimes squeeze a little SOC information out of an LFP cell during dynamic operation by observing how the terminal voltage responds to current pulses, even though the OCV-based lookup is useless. Chapter 10 will make this precise when we discuss model-based SOC estimation.
 
-The theoretical specific capacity of LFP follows from equation (5.A) with $n = 1$ and $M_\text{LFP} = 157.76$ g/mol: $C_\text{th} = 96485/(3.6 \times 157.76) = 169.9$ mAh/g. The practical capacity is close to this theoretical value — approximately **155–170 mAh/g** — because LFP can be nearly fully cycled without structural degradation, unlike LCO which can only use half its theoretical range.
+The theoretical specific capacity of LFP follows from Faraday's first law with $n = 1$ and $M_\text{LFP} = 157.76$ g/mol: $C_\text{th} = 96485/(3.6 \times 157.76) = 169.9$ mAh/g. The practical capacity is close to this theoretical value — approximately **155–170 mAh/g** — because LFP can be nearly fully cycled without structural degradation, unlike LCO which can only use half its theoretical range.
 
 ### The Electronic Conductivity Problem and Carbon Coating
 
@@ -241,7 +241,7 @@ Application: **high-energy-density EVs and premium consumer electronics.** NCA i
 
 **LMO** — **lithium manganese oxide**, formula LiMn₂O₄ — was one of the earliest alternative cathode materials explored for lithium-ion batteries. Unlike LCO, NMC, and NCA with their layered structures, LMO has the **spinel** crystal structure: manganese ions occupy octahedral 16d sites in a cubic close-packed oxygen framework, with lithium occupying tetrahedral 8a sites. The 8a tetrahedral sites are connected through vacant 16c octahedral sites to form a three-dimensional network of equivalent diffusion pathways — in effect, a full grid in all three spatial directions, to return to the street-network analogy. Compared to LCO's 2D planes and LFP's 1D tunnels, a 3D network has many more parallel paths for lithium to take, and a blockage anywhere can be routed around. This structural choice is why LMO has intrinsically excellent rate capability (it can deliver and accept very high currents) and why it is immune to the anti-site-defect sensitivity that plagues LFP: no single defect can isolate a region of the crystal.
 
-The theoretical specific capacity follows from equation (5.A) with $n = 1$ and $M_\text{LMO} = 180.81$ g/mol: $C_\text{th} = 96485/(3.6 \times 180.81) = 148.3$ mAh/g. Practical specific capacity is lower at **100–120 mAh/g**, reflecting the difficulty of fully cycling LMO without structural degradation. The nominal voltage is approximately 4.0 V vs. Li/Li⁺ — higher than LCO's 3.7 V, which is thermodynamically attractive.
+The theoretical specific capacity follows from Faraday's first law with $n = 1$ and $M_\text{LMO} = 180.81$ g/mol: $C_\text{th} = 96485/(3.6 \times 180.81) = 148.3$ mAh/g. Practical specific capacity is lower at **100–120 mAh/g**, reflecting the difficulty of fully cycling LMO without structural degradation. The nominal voltage is approximately 4.0 V vs. Li/Li⁺ — higher than LCO's 3.7 V, which is thermodynamically attractive.
 
 LMO's safety profile is excellent: manganese oxides are thermally stable to high temperature, there is no cobalt dissolution, and the three-dimensional structure is robust. The cost is very low — manganese is among the cheapest transition metals.
 

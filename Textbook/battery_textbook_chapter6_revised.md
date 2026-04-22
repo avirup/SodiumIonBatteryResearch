@@ -234,7 +234,7 @@ The general formula for battery-relevant PBAs is $\text{Na}_x\text{M}'[\text{M}(
 
 The redox activity in PBAs comes from the transition metal ions in both the M′ and M positions. For iron-based PBAs (the most studied), both Fe²⁺/Fe³⁺ at the M site and Fe²⁺/Fe³⁺ at the M′ site are electrochemically active, though at different voltages (due to different crystal field splitting in the two environments). This can give two distinct plateaux — one at approximately 3.0 V and one at 3.4 V vs. Na/Na⁺ for iron-based PBAs — and a combined theoretical specific capacity of approximately 170 mAh/g. In practice, the presence of vacancies ($\square$) and water reduces the accessible capacity to approximately 100–150 mAh/g for state-of-the-art PBA cathodes.
 
-**Natron Energy** (formerly Alveo Energy) has commercialised PBA-based SIB cells using Na₂MnFe(CN)₆ (manganese iron PBA) in aqueous electrolyte for ultra-high-rate, ultra-long-life applications (grid frequency regulation, data centre backup power). Their cells achieve cycle lives of tens of thousands of cycles at very high C-rates (10C–40C) — exceeding even LTO in lifetime and rate capability — though with lower energy density.
+**Natron Energy** (formerly Alveo Energy) has commercialised sodium-ion systems based on **Prussian-blue-family electrodes** for ultra-high-rate, ultra-long-life applications (grid frequency regulation, data centre backup power). Natron's own technical materials describe a non-aqueous sodium-ion architecture built around a family of Prussian blue electrodes rather than the hard-carbon or layered-oxide pairings used elsewhere in this chapter. Their products achieve cycle lives of tens of thousands of deep cycles and very high rate capability, but are optimised for power rather than energy density.
 
 ### The Water Problem
 
@@ -285,7 +285,7 @@ The electrochemical storage of sodium in hard carbon produces a distinctive OCV 
 
 Recall the Nernst equation for the half-reaction Na⁺ + e⁻ → Na (in some host environment):
 
-$$E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}} \tag{6.4}$$
+$$E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}} \tag{6.3}$$
 
 where $a_\text{Na(host)}$ is the activity of stored sodium inside the host — a dimensionless measure of how "free" the sodium behaves, equal to 1 for sodium metal and less than 1 for sodium bound in an intercalation site. $a_{\text{Na}^+}$ is the activity of sodium ion in the electrolyte, effectively constant during a slow measurement.
 
@@ -307,7 +307,7 @@ The mechanistic distinction matters practically in another way too: the slope re
 
 The plateau region of hard carbon — occupying anywhere from 20% to 50% of total capacity depending on material and processing — sits very close to 0 V vs. Na/Na⁺. In a full SIB cell (hard carbon anode paired with a layered oxide or polyanionic cathode), the full cell OCV is:
 
-$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC}) \tag{6.3}$$
+$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC}) \tag{6.4}$$
 
 The cathode voltage typically slopes from about 3.5 V to about 2.5 V vs. Na/Na⁺ during discharge. The anode voltage during the plateau region is nearly constant at ~0.05 V vs. Na/Na⁺. Therefore, during the fraction of discharge that corresponds to the anode plateau, the cell OCV is nearly flat at whatever the cathode voltage is at that point in discharge. For a layered oxide cathode that is itself relatively flat at intermediate SOC, both curves conspire to create a nearly flat full-cell OCV region that can span 30–50% of total capacity.
 
@@ -416,7 +416,7 @@ Faradion (UK, acquired by Reliance Industries India in 2022) was among the first
 
 ### Natron Energy (USA)
 
-Natron uses **Na₂MnFe(CN)₆ Prussian blue analogue** cathode with a **NaTi₂(PO₄)₃ NASICON anode** in aqueous sodium electrolyte — a fully aqueous cell chemistry. The aqueous chemistry eliminates flammability concerns (water-based electrolyte) but limits cell voltage to approximately 1.4 V (the electrochemical stability window of water). Natron targets data centre UPS, fast-charging bus depots, and grid frequency regulation with extremely high cycle counts (>50,000 cycles claimed) and ultra-high rate capability (60C charge/discharge). This is a niche but real commercial market.
+Natron targets data centre UPS, EV fast-charging support, and grid-frequency-regulation markets with sodium-ion systems built around **Prussian-blue-family electrodes**. Natron's public materials emphasise non-flammability, full recharge in 15 minutes or less, and **>50,000 deep discharge cycles**, which makes the chemistry a credible commercial option for very high-power, short-duration duty rather than for high-energy mobile applications. Because Natron sells integrated power products rather than commodity cylindrical cells, direct one-to-one comparison with 18650-class LIB cells should be treated cautiously.
 
 ### Altris AB (Sweden)
 
@@ -440,12 +440,14 @@ The following table provides representative cell-level values for five major SIB
 | CATL 1st Gen SIB | PBA / HC | 26650 | ~3.1 | ~3.0 | ~160 | ~290 | >3000 | ~80 | Flat-heavy |
 | Faradion 18650 | O3 LO / HC | 18650 | 3.2 | ~2.0 | ~150 | ~350 | >1000 | ~90 | Mixed |
 | Tiamat 18650 | NVPF / HC | 18650 | ~3.7 | ~1.0 | ~130 | ~300 | >4000 | ~60 | Stepped plateau |
-| Natron (aqueous) | PBA / NTP | Cylindrical | 1.4 | Varies | ~40–50 | ~80 | >50000 | Low | Flat |
+| Natron (power platform) | PBA-family / PBA-family | Rack/module | Varies | Varies | ~40–50 | ~80 | >50000 | Low | Flat |
 | Samsung 30Q | NMC622/Gr | 18650 | 3.6 | 3.0 | 243 | 650 | ~500 | 45 | Moderate slope |
 | Panasonic NCR18650B | NCA/Gr | 18650 | 3.6 | 3.4 | 248 | 700 | ~400 | 40 | Moderate slope |
 | LG INR21700-M50 | NMC811/Gr | 21700 | 3.6 | 5.0 | 260 | 730 | ~500 | 35 | Moderate slope |
 | BYD Blade (LFP) | LFP/Gr | Prismatic | 3.2 | ~135 | ~150–160 | ~330–350 | >3000 | ~80 | Flat |
 | Toshiba SCiB | LTO/LMO | 20700 | 2.4 | 10 | 67 | 177 | >20000 | ~20 | Flat |
+
+Natron is the outlier in this table: the quoted values correspond to a commercial high-power battery platform rather than a commodity single cell, so nominal voltage and amp-hour capacity depend on the configured module or cabinet rather than on a standard cylindrical cell.
 
 Several patterns emerge immediately from this table. Current SIB cells cluster at 130–160 Wh/kg — below the 230–260 Wh/kg range of premium NMC cells but competitive with LFP (~150–180 Wh/kg) and well above LTO (~50–90 Wh/kg). The cycle life of SIB cells is already competitive with LFP for the cells designed for long-life applications (HiNa BC-1 at >4,000 cycles is comparable to commercial LFP). The DCIR of SIB cells is notably higher than equivalent-format LIB cells — reflecting the higher charge-transfer resistance and thicker SEI discussed in earlier sections. The OCV shape of SIB cells is flat-heavy, consistently more challenging for SOC estimation than NMC/NCA cells.
 
@@ -463,7 +465,7 @@ The OCV curve during sodiation (from the empty state at ~2.0 V vs. Na/Na⁺ down
 
 **At approximately 0.1 V**: The OCV curve reaches a kink — the potential levels off and the slope suddenly decreases. This marks the onset of nanopore filling.
 
-**From ~0.1 V to ~0.01 V (plateau region)**: The OCV is nearly constant at approximately 0.05–0.08 V vs. Na/Na⁺ for the remainder of the capacity, approximately 80 mAh/g of additional charge. The plateau confirms quasi-metallic sodium storage in the nanopores — the activity of sodium in the pores has become nearly constant (≈1), so the equilibrium potential is nearly constant at close to 0 V vs. Na/Na⁺, exactly as equation 6.4 predicts.
+**From ~0.1 V to ~0.01 V (plateau region)**: The OCV is nearly constant at approximately 0.05–0.08 V vs. Na/Na⁺ for the remainder of the capacity, approximately 80 mAh/g of additional charge. The plateau confirms quasi-metallic sodium storage in the nanopores — the activity of sodium in the pores has become nearly constant (≈1), so the equilibrium potential is nearly constant at close to 0 V vs. Na/Na⁺, exactly as equation 6.3 predicts.
 
 **Total capacity**: 190 + 80 = 270 mAh/g. **ICE**: The measurement reports 81%, meaning that 270/0.81 ≈ 333 mAh/g was charged during the first sodiation, and only 270 mAh/g was recovered on the first desodiation — about 63 mAh/g was consumed irreversibly by SEI formation. This is consistent with the ~15–25 m²/g surface area typical of this precursor and carbonisation temperature.
 
@@ -517,21 +519,21 @@ The following table makes the mapping from cell-level performance metric to unde
 - SIB cathode families: O3 layered oxides (NaMO₂, direct analogue of LCO/NMC, phase transitions during cycling are the main challenge); P2 layered oxides (prismatic Na coordination, unique to SIB, better structural stability during cycling, starts Na-deficient); polyanionic NVPF (highest voltage SIB cathode at ~3.95 V average, excellent rate capability, vanadium toxicity concern) and NFPP (iron-based, no critical materials); Prussian blue analogues (open framework, excellent rate capability and cycle life, water contamination challenge).
 - Hard carbon dominates SIB anodes: turbostratic disordered carbon with slope region (intercalation, 0.1–2 V vs. Na/Na⁺) and plateau region (nanopore filling, ~0.01–0.1 V vs. Na/Na⁺). The plateau produces a near-flat OCV close to 0 V vs. Na/Na⁺ — the most practically important performance challenge for SIB BMS. The flat-OCV region is best thought of as an observability failure: terminal voltage carries almost no information about SOC, and coulomb counting becomes the dominant estimator.
 - ICE of hard carbon is 75–90%, lower than graphite (85–95%), due to higher surface area and less mature SEI chemistry. Ether electrolytes improve ICE vs. carbonate electrolytes. Pre-sodiation is the additional manufacturing-stage fix that buys back some of the ICE loss.
-- Commercial SIB landscape (2024–2025): CATL (PBA/HC, ~160 Wh/kg), HiNa (O3/HC, ~146 Wh/kg, >4000 cycles), Faradion/Reliance (O3/HC), Tiamat (NVPF/HC, ultra-high rate), Natron (aqueous PBA, >50,000 cycles), Altris (Prussian white/HC).
+- Commercial SIB landscape (2024–2025): CATL (PBA/HC, ~160 Wh/kg), HiNa (O3/HC, ~146 Wh/kg, >4000 cycles), Faradion/Reliance (O3/HC), Tiamat (NVPF/HC, ultra-high rate), Natron (Prussian-blue-family power systems, >50,000 cycles), Altris (Prussian white/HC).
 - SIB cell-level specific energy (130–160 Wh/kg) is competitive with LFP, well below NMC. SIB advantages: lower raw material cost and supply chain risk; no cobalt/nickel required; aluminium current collectors on both sides; better low-temperature performance than most LIBs; lower thermal runaway risk; competitive cycle life.
 
 **Key equations:**
-
-Full-cell open-circuit voltage decomposed into electrode half-cell potentials (equation 6.3):
-$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC})$$
 
 Theoretical gravimetric capacity of an intercalation material, with $n$ electrons per formula unit, Faraday constant $F$, and molar mass $M$ in g/mol (equation 6.2):
 $$C_\text{th} = \frac{nF}{3.6\,M}$$
 
 For NVPF ($n = 2$, $M = 417.8$ g/mol): $C_\text{th} \approx 128$ mAh/g. For Prussian white $\text{Na}_2\text{Fe}[\text{Fe}(\text{CN})_6]$ ($n = 2$, $M = 314$ g/mol): $C_\text{th} \approx 171$ mAh/g.
 
-Nernst equation applied to a sodium-storage half-cell (equation 6.4):
+Nernst equation applied to a sodium-storage half-cell (equation 6.3):
 $$E = E^\circ - \frac{RT}{F}\ln \frac{a_\text{Na(host)}}{a_{\text{Na}^+}}$$
+
+Full-cell open-circuit voltage decomposed into electrode half-cell potentials (equation 6.4):
+$$E_\text{OCV,cell} = E_\text{cathode}(\text{SOC}) - E_\text{anode}(\text{SOC})$$
 
 Reference potentials:
 $$E^\circ(\text{Na}^+/\text{Na}) = -2.71\ \text{V vs. SHE}, \qquad E^\circ(\text{Li}^+/\text{Li}) = -3.04\ \text{V vs. SHE}$$

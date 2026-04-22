@@ -142,9 +142,9 @@ Three state variables appear constantly in battery management systems and in the
 
 ### State of Charge
 
-**State of charge (SOC)** is the fraction of the cell's usable charge capacity that is currently stored, expressed as a percentage or decimal:
+**State of charge (SOC)** is the fraction of the cell's usable charge capacity that is currently stored, expressed either as a decimal fraction or, after multiplying by 100, as a percentage:
 
-$$\text{SOC} = \frac{Q_\text{remaining}}{Q_\text{max}} \times 100\% \tag{3.6}$$
+$$\text{SOC} = \frac{Q_\text{remaining}}{Q_\text{max}} \tag{3.6}$$
 
 where $Q_\text{remaining}$ is the charge currently available for discharge (under the same conditions used to measure $Q_\text{max}$) and $Q_\text{max}$ is the maximum deliverable capacity of the cell in its current state of health.
 
@@ -168,9 +168,9 @@ The relationship between cycle life and DOD is a key degradation parameter. We w
 
 The two most common definitions are **capacity-based SOH** and **resistance-based SOH**:
 
-$$\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{max}(t=0)} \times 100\% \tag{3.8}$$
+$$\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{max}(t=0)} \tag{3.8}$$
 
-$$\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \times 100\% \tag{3.9}$$
+$$\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \tag{3.9}$$
 
 where $Q_\text{max}(t)$ is the current maximum capacity and $Q_\text{max}(t=0)$ is the beginning-of-life capacity; $R_0(t)$ is the current internal resistance and $R_0(t=0)$ is the beginning-of-life resistance.
 
@@ -274,9 +274,9 @@ Efficiency metrics quantify how much of the energy you put into a cell during ch
 
 ### Coulombic Efficiency
 
-**Coulombic efficiency** (CE, also called **faradaic efficiency**) is the ratio of charge discharged to charge charged over one complete cycle:
+**Coulombic efficiency** (CE, also called **faradaic efficiency**) is the ratio of charge discharged to charge charged over one complete cycle, usually reported either as a decimal or multiplied by 100 as a percent:
 
-$$\text{CE} = \frac{Q_\text{discharge}}{Q_\text{charge}} \times 100\% \tag{3.13}$$
+$$\text{CE} = \frac{Q_\text{discharge}}{Q_\text{charge}} \tag{3.13}$$
 
 For a perfectly reversible cell with no side reactions, CE would be 100% — every coulomb put in during charge comes out during discharge. In real cells, CE is always less than 100% because some charge goes into side reactions: SEI growth, electrolyte decomposition, lithium plating. For a fresh lithium-ion cell in a stable state (not its first few cycles), CE is typically 99.8–99.95% per cycle.
 
@@ -496,7 +496,7 @@ Let us apply the full vocabulary of this chapter to a real commercial datasheet.
 **Header information:**
 
 - **Nominal voltage: 3.6 V.** This is the average discharge voltage at a standard (low) C-rate. It is not the OCV at any specific SOC — it is a weighted average across the full discharge curve.
-- **Minimum voltage: 2.5 V.** This is the lower cutoff voltage $V_\text{cutoff}$. Discharging below this risks deep lithiation of the cathode and potential structural damage.
+- **Minimum voltage: 2.5 V.** This is the lower cutoff voltage $V_\text{cutoff}$. Discharging below this risks over-delithiation of the graphite anode, copper current-collector dissolution at very low anode potentials during severe overdischarge, and broader cell damage.
 - **Charge voltage: 4.2 V.** This is $V_\text{max}$ for CC-CV charging. Exceeding this accelerates cathode degradation and electrolyte oxidation.
 - **Standard charge: CC-CV at 1.625 A (≈ C/2) to 4.2 V, cutoff at 50 mA.** This defines the standard charging protocol: CC at roughly 0.5C until 4.2 V, then CV at 4.2 V until the current tapers to 50 mA (about C/70 — a very conservative CV termination criterion).
 
@@ -589,7 +589,7 @@ For SIB: The **HiNa BC-1** cell (1.33 Ah, hard carbon / O3-type layered oxide, 2
 
 When writing your interpretation, address each of the following explicitly for both cells:
 
-The nominal voltage and what chemistry it implies. The rated capacity and at which C-rate it was measured. The shape of the discharge curves at multiple C-rates — is the OCV shape sloped or flat, and what does that imply for SOC estimation? The temperature performance — at what temperature does the cell retain 80% of room-temperature capacity, and is this consistent with Arrhenius-type kinetic limitations? The cycle life specification — is the EOL criterion 80% capacity retention, and over what DOD? The internal resistance (if provided) and how it compares between the two cells.
+The nominal voltage and what chemistry it implies. The rated capacity and at which C-rate it was measured. The shape of the discharge curves at multiple C-rates — and what that, together with any OCV information provided, implies for SOC estimation. The temperature performance — at what temperature does the cell retain 80% of room-temperature capacity, and is this consistent with Arrhenius-type kinetic limitations? The cycle life specification — is the EOL criterion 80% capacity retention, and over what DOD? The internal resistance (if provided) and how it compares between the two cells.
 
 A **partial worked example for the Samsung INR21700-50E** based on published data (Sturm et al., *Journal of Power Sources*, 2021):
 

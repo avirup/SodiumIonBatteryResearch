@@ -1,4 +1,6 @@
 \usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{ucharclasses}
 \usepackage{microtype}
 \usepackage{newunicodechar}
 \usepackage{ragged2e}
@@ -10,54 +12,232 @@
 \usepackage{fancyhdr}
 \usepackage{tocloft}
 \usepackage{fvextra}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+\definecolor{accent}{HTML}{3F5D79}
+\definecolor{ink}{HTML}{1B1F24}
+\definecolor{mutedink}{HTML}{505761}
+\definecolor{codebg}{HTML}{F4F6F8}
+\definecolor{rulegray}{HTML}{D6DCE2}
 
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setmonofont{DejaVu Sans Mono}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
-  breaklines,
-  breakanywhere,
-  commandchars=\\\{\},
-  fontsize=\small
-}
-
-\AtBeginDocument{\justifying}
-\setstretch{1.12}
-\setlength{\parindent}{1.5em}
-\setlength{\parskip}{0.35em}
-\clubpenalty=10000
-\widowpenalty=10000
-\displaywidowpenalty=10000
+\setmainfont{Libertinus Serif}
+\setsansfont{TeX Gyre Adventor}[Scale=MatchLowercase]
+\setmonofont{DejaVu Sans Mono}[Scale=0.92]
+\setmathfont{Libertinus Math}
+\newfontfamily\cjkseriffont{Noto Serif CJK SC}[Scale=MatchUppercase]
+\setTransitionTo{CJKUnifiedIdeographs}{\begingroup\cjkseriffont}
+\setTransitionFrom{CJKUnifiedIdeographs}{\endgroup}
+\setTransitionTo{CJKUnifiedIdeographsExtensionA}{\begingroup\cjkseriffont}
+\setTransitionFrom{CJKUnifiedIdeographsExtensionA}{\endgroup}
+\setTransitionTo{CJKCompatibilityIdeographs}{\begingroup\cjkseriffont}
+\setTransitionFrom{CJKCompatibilityIdeographs}{\endgroup}
 
 \newunicodechar{≪}{\ensuremath{\ll}}
+
+\AtBeginDocument{
+  \fontsize{11.5pt}{14.03pt}\selectfont
+  \color{ink}
+  \justifying
+  \bodytextstyle
+}
+\setstretch{1.22}
+\setlength{\parindent}{1.35em}
+\setlength{\parskip}{0pt}
+\clubpenalty=9000
+\widowpenalty=9000
+\displaywidowpenalty=9000
+\hyphenpenalty=350
+\exhyphenpenalty=250
+\emergencystretch=1em
+\tolerance=1800
+\hfuzz=0.3pt
+\vfuzz=0.3pt
+\urlstyle{same}
 
 \AtBeginDocument{
   \let\frontmatter\relax
   \let\mainmatter\relax
   \let\maketitle\relax
 }
-\hypersetup{
-  hidelinks,
-  pdfauthor={Pandoc},
-  pdftitle={Battery Research Notes}
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=ink,
+    citecolor=ink,
+    urlcolor=accent,
+    pdfauthor={Avirup Kundu},
+    pdftitle={Battery Technology for Electrical Engineers: A Self-Study Text}
+  }%
 }
 
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>0.9\linewidth
+    0.9\linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\def\maxheight{%
+  \ifdim\Gin@nat@height>0.78\textheight
+    0.78\textheight
+  \else
+    \Gin@nat@height
+  \fi
+}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\definecolor{shadecolor}{HTML}{F4F6F8}
+\renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  breaklines,
+  breakanywhere,
+  commandchars=\\\{\},
+  fontsize=\footnotesize
+}
+
+\captionsetup{
+  font=small,
+  labelfont={bf},
+  textfont={color=mutedink},
+  justification=raggedright,
+  singlelinecheck=false,
+  skip=0.6\baselineskip
+}
+\setlength{\LTpre}{0.9\baselineskip}
+\setlength{\LTpost}{0.4\baselineskip}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.16}
+
+\setlist[itemize]{topsep=0.35\baselineskip,itemsep=0.15\baselineskip,parsep=0pt,partopsep=0pt,leftmargin=1.4em}
+\setlist[enumerate]{topsep=0.35\baselineskip,itemsep=0.15\baselineskip,parsep=0pt,partopsep=0pt,leftmargin=1.6em}
+
 \fancyhf{}
-\fancyhead[LE]{\thepage}
-\fancyhead[RO]{\thepage}
+\fancyfoot[LE]{\thepage}
+\fancyfoot[RO]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \pagestyle{fancy}
 
-% Reserve enough room for double-digit section and subsection numbers in the TOC.
-\setlength{\cftsecnumwidth}{3.8em}
-\setlength{\cftsubsecnumwidth}{4.8em}
-
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyhead[LE]{\thepage}
-  \fancyhead[RO]{\thepage}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
+}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\setlength{\cftbeforechapskip}{0.55\baselineskip}
+\setlength{\cftbeforesecskip}{0.05\baselineskip}
+\setlength{\cftchapindent}{0pt}
+\setlength{\cftsecindent}{1.7em}
+\setlength{\cftchapnumwidth}{2.2em}
+\setlength{\cftsecnumwidth}{3.2em}
+\renewcommand{\cfttoctitlefont}{\sffamily\bfseries\Large\color{ink}}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftchapfont}{\sffamily\bfseries\color{ink}}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\color{ink}}
+\renewcommand{\cftsecfont}{\normalfont\color{mutedink}}
+\renewcommand{\cftsecpagefont}{\normalfont\color{mutedink}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \begingroup
+  \hypersetup{linkcolor=ink,citecolor=ink,urlcolor=accent}%
+  \oldtableofcontents
+  \endgroup
+}
+\renewcommand{\contentsname}{Contents}
+
+\titleformat{\chapter}[display]
+  {\thispagestyle{plain}\normalfont}
+  {\sffamily\bfseries\fontsize{20pt}{22pt}\selectfont\color{accent}\thechapter}
+  {0.65\baselineskip}
+  {\sffamily\bfseries\fontsize{26pt}{29pt}\selectfont\color{ink}}
+  [{\vspace{0.65\baselineskip}\color{accent}\rule{0.24\linewidth}{0.8pt}}]
+\titlespacing*{\chapter}{0pt}{0.14\textheight}{1.5\baselineskip}
+
+\titleformat{\section}
+  {\sffamily\bfseries\fontsize{15.5pt}{18pt}\selectfont\color{ink}}
+  {\makebox[2.4em][l]{\sffamily\bfseries\color{ink}\thesection}}
+  {0.25em}
+  {}
+\titlespacing*{\section}{0pt}{1.45\baselineskip}{0.45\baselineskip}
+
+\titleformat{\subsection}
+  {\sffamily\fontseries{sb}\selectfont\fontsize{12.7pt}{15pt}\selectfont\color{ink}}
+  {\makebox[2.7em][l]{\sffamily\fontseries{sb}\selectfont\color{ink}\thesubsection}}
+  {0.2em}
+  {}
+\titlespacing*{\subsection}{0pt}{1.05\baselineskip}{0.28\baselineskip}
+
+\titleformat{\subsubsection}
+  {\sffamily\bfseries\fontsize{11.3pt}{13.4pt}\selectfont\color{mutedink}}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsubsection}{0pt}{0.8\baselineskip}{0.18\baselineskip}
+
+\newcommand{\bodytextstyle}{%
+  \setlength{\parindent}{1.35em}%
+  \setlength{\parskip}{0pt}%
+  \normalfont
+  \color{ink}%
+}
+
+\newcommand{\chapteropeningstyle}{%
+  \par
+  \bodytextstyle
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.55em}%
+}
+
+\newcommand{\specialsectionstyle}{%
+  \par
+  \bodytextstyle
+  \raggedright
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.45em}%
+}
+
+\newcommand{\chapterendstyle}{%
+  \par
+  \bodytextstyle
+  \raggedright
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.45em}%
+}
+
+\newcommand{\specialsectionrule}{%
+  {\color{rulegray}\rule{\linewidth}{0.55pt}}%
+}
+
+\newcommand{\specialsectionplain}[1]{%
+  \par\vspace{1.35\baselineskip}%
+  {\raggedright\sffamily\bfseries\fontsize{13.4pt}{15.6pt}\selectfont\color{accent}#1\par}%
+  \vspace{0.35\baselineskip}%
+}
+
+\newcommand{\specialsectionwithsubtitle}[2]{%
+  \par\vspace{1.35\baselineskip}%
+  {\raggedright\sffamily\bfseries\fontsize{12.2pt}{14.2pt}\selectfont\color{accent}#1\par}%
+  \vspace{0.18\baselineskip}%
+  {\raggedright\sffamily\bfseries\fontsize{14.6pt}{17pt}\selectfont\color{ink}#2\par}%
+  \vspace{0.35\baselineskip}%
+}
+
+\newcommand{\chapterendsection}[1]{%
+  \par\vspace{1.05\baselineskip}%
+  {\raggedright\sffamily\bfseries\fontsize{13.4pt}{15.6pt}\selectfont\color{accent}#1\par}%
+  \vspace{0.3\baselineskip}%
 }

@@ -26,7 +26,7 @@ By the end of this chapter you will have a concrete, actionable research plan. Y
 
 ### The Scale of the Gap
 
-To understand the research opportunity, you first need to understand the scale of what is missing. A scientometric analysis of the SIB literature through 2025 identified approximately 15,682 peer-reviewed SIB papers in total — but the overwhelming majority of these are materials science papers: cathode synthesis, anode processing, electrolyte composition, structural characterisation. The sub-literature specifically addressing the engineering modelling concerns that fill this book — equivalent circuit models, electrochemical models, thermal models, BMS algorithms, state estimation, degradation prediction, system-level optimisation — is perhaps 50–100 times smaller than the equivalent LIB engineering modelling literature. To give you a concrete sense of scale: a Google Scholar search for "lithium-ion equivalent circuit model" returns tens of thousands of results; "sodium-ion equivalent circuit model" returns fewer than fifty. The asymmetry holds across every topic in Chapters 9 through 12. In practical terms: for every topic in Chapters 9 through 12 of this book, there are hundreds or thousands of Li-ion papers and perhaps three to eight SIB papers. Most of those SIB papers were published after 2022.
+To understand the research opportunity, you first need to understand the scale of what is missing. A 2025 scientometric review counted 15,682 peer-reviewed SIB papers published from 2000 to 2024 — but the overwhelming majority are materials-science papers: cathode synthesis, anode processing, electrolyte composition, and structural characterisation. The engineering-modelling literature that matches the focus of this book — equivalent circuit models, electrochemical models, thermal models, BMS algorithms, state estimation, degradation prediction, and system-level optimisation — remains much smaller. In practical terms, validated SIB ECM, DFN, and state-estimation papers still number in the dozens rather than the thousands familiar in the Li-ion literature. Most of that engineering-focused SIB work has appeared only since 2021–2022.
 
 This is not a gap that will close quickly by itself. The Chinese research institutions that dominate SIB publication output (Section 14.3) are overwhelmingly focused on materials: cathode synthesis at Hu Yong-Sheng's IOP-CAS group, hard carbon precursor development at Wuhan University and Central South University, PBA chemistry at multiple institutions. The engineering simulation work — ECM parameterisation, state estimation, degradation modelling, pack-level simulation — is what the materials community does not typically produce and what an electrical engineering researcher is specifically positioned to contribute.
 
@@ -36,17 +36,17 @@ This is not a gap that will close quickly by itself. The Chinese research instit
 
 **2021 — First ECM papers.** Xiang et al. published "Equivalent circuit modeling of sodium-ion batteries" in the *Journal of Energy Storage*, systematically comparing 1RC, 2RC, and 3RC topologies for a 1 Ah pouch SIB cell using Bayesian Information Criterion model selection, finding 3RC optimal. This established the ECM baseline for SIBs, analogous to Chen and Rincón-Mora's 2006 paper for lithium-ion.
 
-**2022 — First validated DFN model.** Chayambuka, Mulder, Danilov, and Notten published "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination" and "Part II: Model and validation" in *Electrochimica Acta*. These two papers represent the inflection point in SIB simulation research. Part I systematically characterised a Tiamat NVPF/hard carbon cell to extract the full set of DFN parameters: solid-state diffusion coefficients for both electrodes, electrolyte transport parameters, exchange current densities, and OCV-SOC curves. Part II assembled these into a working P2D model validated against discharge curves at 0.1C to 1.4C with less than 2% voltage error. This parameter set was subsequently adopted by PyBaMM (v24.11) as `Chayambuka2022` — the standard SIB DFN parameter set that any researcher can use today without additional characterisation work.
+**2022 — First validated DFN model.** Chayambuka, Mulder, Danilov, and Notten published "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination" and "Part II: Model and validation" in *Electrochimica Acta*. These two papers represent the inflection point in SIB simulation research. Part I systematically characterised an NVPF/hard-carbon SIB cell to extract the full set of DFN parameters: solid-state diffusion coefficients for both electrodes, electrolyte transport parameters, exchange current densities, and OCV-SOC curves. Part II assembled these into a working P2D model validated against discharge curves at 0.1C to 1.4C with less than 2% voltage error. The resulting parameterisation is now the standard starting point for PyBaMM's sodium-ion DFN example.
 
 **2023 — First IEEE conference paper on SIB ECM.** Rabab et al. published "Equivalent Circuit Model For Sodium-Ion Batteries With Physical-Based Representations Of Their Non-Linearities" at IEEE VPPC 2023 in Milan — the first identifiable SIB simulation paper in any IEEE venue. It presented a modified ECM for the Tiamat NVPF/HC 18650 cell that separated charge transfer, SEI, and diffusion phenomena with Arrhenius temperature dependence for each component. This paper's existence confirms that IEEE conference venues are receptive to SIB simulation work. The following year, Sandri et al. published "Electrical Circuit Model for Sodium-Ion Batteries" at IECON 2024 Chicago, comparing 1RC through 4RC models for SIB accuracy-complexity trade-offs.
 
 **2023 — First SOC estimation paper.** Xiang et al. in the *Journal of Energy Storage* published "A comprehensive study on state-of-charge and state-of-health estimation of sodium-ion batteries," using a PSO-optimised third-order RC model with EKF, UKF, and particle filter comparison. The field of SIB state estimation began with this single paper.
 
-**2024 — Commercial cell characterisation becomes available.** Laufen et al. published "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell" in *Cell Reports Physical Science* with supplementary data — providing EIS at 21 SOC levels, C-rate tests, cyclic ageing with micro-CT, and validated ECM parameters for a real commercial 18650 SIB cell. Bischof et al. at KIT published "Evaluation of commercial 18650 and 26700 sodium-ion cells" in their institutional repository. These papers transformed SIB simulation from a purely theoretical exercise into one grounded in real commercial cell data.
+**2024 — Commercial cell characterisation becomes available.** Laufen et al. published "Multi-method characterization of a commercial 1.2 Ah sodium-ion battery cell indicates drop-in potential" in *Cell Reports Physical Science*, with extensive supplementary information including EIS at 21 SOC levels, C-rate testing, and cyclic-aging diagnostics. In the same year, Bischof et al. published "Evaluation of commercial 18650 and 26700 sodium-ion cells and comparison with well-established lithium-ion cells" in *Journal of Power Sources Advances*. These papers transformed SIB simulation from a largely chemistry-level discussion into one grounded in real commercial cell data.
 
-**2024 — PyBaMM and COMSOL integration.** The PyBaMM development team integrated the Chayambuka2022 parameter set (named after the paper's 2022 publication year) into PyBaMM v24.11, released in November 2024, creating `pybamm.sodium_ion.BasicDFN()` — the first ready-to-run, open-source, validated physics-based SIB model. Simultaneously, COMSOL added an official "1D Isothermal Sodium-Ion Battery" model (Application Library ID: 117341) using the same parameter set. These two events together made it possible for any engineer with a laptop to simulate an SIB cell without any experimental work.
+**2024 — PyBaMM and COMSOL make sodium-ion continuum simulation easier to access.** By late 2024, the PyBaMM documentation included a sodium-ion DFN example based on `pybamm.sodium_ion.BasicDFN()` and the Chayambuka/COMSOL parameterisation, while COMSOL provided an official "1D Isothermal Sodium-Ion Battery" application example (Application Library ID: 117341). Together, these two resources made ready-to-run sodium-ion continuum simulation substantially more accessible.
 
-**2025 — The first SIB DFN comparison paper.** Garapati et al. published "Perspective and comparative analysis of physics-based models for sodium-ion batteries" in *Electrochimica Acta* — a purely simulation-based comparison of DFN, SPMe, and SPM for SIBs. This paper's existence is important for two reasons: it demonstrates that simulation-only SIB modelling work is publishable at a Q1 Elsevier journal, and it establishes SPM/SPMe for SIBs as a research topic. The first physics-based SIB degradation model appeared the same year, alongside the first electrochemical-thermal coupling models, the first microstructure-resolved SIB model (Cardenas-Sierra et al., ChemRxiv preprint), and the first ML-enhanced P2D hybrid (Liu et al.).
+**2025 — The first dedicated SIB DFN/SPMe/SPM comparison paper.** Garapati et al. published "Perspective and comparative analysis of physics-based models for sodium-ion batteries" in *Electrochimica Acta* — a simulation-based comparison of DFN, SPMe, and SPM for SIBs. This paper is important because it shows that simulation-focused SIB modelling work is publishable in a mainstream battery journal and because it frames reduced-order electrochemical modelling for SIBs as a research topic in its own right.
 
 **2025 — Wang et al. open dataset.** The first substantive open SIB cycling dataset was deposited on Zenodo (ID: 13836819), containing pulse characterisation at multiple C-rates and six temperatures (−5°C to 45°C) plus driving cycle validation data for both a 3.2 Ah Transimage cell and a 10 Ah HiNa cell. This dataset is the foundation upon which most current and near-future SIB BMS algorithm papers will be built.
 
@@ -77,25 +77,22 @@ Compare this to the Li-ion simulation literature, which contains tens of thousan
 **Timeline of SIB Simulation Milestones.** The following diagram summarises the chronological development of SIB engineering simulation. Sketch or recreate this timeline and pin it above your desk — it tells you at a glance which sub-fields have prior art and which are empty.
 
 ```text
-2018  Chayambuka — first modelling-relevant SIB property review (Adv. Energy Mater.)
+2018  Chayambuka — modelling-relevant SIB property review (Adv. Energy Mater.)
   |
-2021  Xiang — first SIB ECM (J. Energy Storage), 1RC/2RC/3RC comparison
+2021  Xiang — early SIB ECM benchmark (J. Energy Storage), 1RC/2RC/3RC comparison
   |
-2022  Chayambuka — first validated DFN parameter set, NVPF/HC (Electrochim. Acta)
+2022  Chayambuka — validated DFN parameter set, NVPF/HC (Electrochim. Acta)
   |
-2023  Rabab — first IEEE SIB simulation paper, ECM @ VPPC
-      Xiang — first SIB SOC estimation paper (J. Energy Storage)
+2023  Rabab — IEEE SIB ECM paper @ VPPC
+      Xiang — early SIB SOC/SOH estimation paper (J. Energy Storage)
   |
-2024  Laufen — first full commercial SIB cell characterisation (Cell Rep. Phys. Sci.)
+2024  Laufen — commercial 1.2 Ah 18650 SIB characterisation (Cell Rep. Phys. Sci.)
       Sandri — SIB ECM comparison @ IECON
-      PyBaMM v24.11 — pybamm.sodium_ion.BasicDFN() released
-      COMSOL — official 1D Na-ion model added
-      Wang — first open SIB cycling dataset (Zenodo)
+      PyBaMM docs — sodium-ion DFN example documented
+      COMSOL — official 1D Na-ion model example available
+      Wang — open SIB pulse/driving-cycle dataset (Zenodo)
   |
 2025  Garapati — DFN vs SPMe vs SPM comparison (Electrochim. Acta)
-      First physics-based SIB degradation model (calendar SEI)
-      First electrochemical-thermal coupling models
-      First ML-enhanced P2D hybrid
   |
 2026  ← YOU ARE HERE
       Every row with "0 papers" in the table above is an open door.
@@ -111,29 +108,29 @@ Modelling and simulation research is only valuable if it models something real. 
 
 CATL's market position in SIB is analogous to their position in LIB: dominant, accelerating, and setting the performance and cost benchmarks against which everything else is measured.
 
-Their first-generation SIB (Prussian white / hard carbon, prismatic, ~160 Wh/kg) began shipping in 2023 for the Chery iCar EV. Their second-generation product, the **Naxtra**, launched in April 2025, represents a step change: 175 Wh/kg gravimetric energy density, >10,000 cycle life (claimed, pending independent verification), 5C fast charging (80% SOC in 15 minutes), and operation from −40°C to +70°C. The Naxtra achieves 93% capacity retention at −30°C and maintains highway-speed driving capability at −40°C — numbers that exceed any published LFP performance at low temperature. The first mass-production passenger vehicle using the Naxtra pack is the Changan Nevo A06 (45 kWh SIB pack, >400 km range), expected in mid-2026.
+CATL announced its first-generation sodium-ion battery for Chery models in April 2023. On April 21, 2025, CATL unveiled the second-generation **Naxtra**, describing it as the world's first mass-produced sodium-ion battery. CATL's published figures for the passenger-car cell include 175 Wh/kg gravimetric energy density and a claimed cycle life of over 10,000 cycles; for low-temperature performance, CATL emphasises operation from −40°C to +70°C and strong retained power in extreme cold. On February 5, 2026, CATL and CHANGAN announced the world's first mass-production sodium-ion passenger vehicle and said it was scheduled to reach the market in mid-2026.
 
-CATL's "Freevoy Dual-Power Battery" concept — mixing SIB and LFP cells in a single hybrid pack — is a direct simulation research opportunity. A heterogeneous pack containing cells of different chemistry, different OCV curve shapes, different temperature characteristics, and different ageing rates creates state estimation and balancing challenges that are genuinely novel and commercially relevant. Think of it as a series string of resistors where each resistor has a different temperature coefficient and a different aging law — your balancing and estimation algorithms must track each component's individual state, not just the string aggregate. Every BMS technique from Chapters 10–12 must be re-derived for the two-chemistry case. This specific application has no Li-ion analogue.
+CATL's "Freevoy Dual-Power Battery" architecture is a direct simulation research opportunity. CATL has explicitly described dual-chemistry pack configurations, including sodium-ion plus LFP. A heterogeneous pack containing cells of different chemistry, different OCV curve shapes, different temperature characteristics, and different ageing rates creates state-estimation and balancing challenges that are genuinely novel and commercially relevant. Think of it as a series string of resistors where each resistor has a different temperature coefficient and a different ageing law — your balancing and estimation algorithms must track each component's individual state, not just the string aggregate. Every BMS technique from Chapters 10–12 must be re-derived for the two-chemistry case.
 
 **For the simulation researcher**: CATL has not released open characterisation data for Naxtra cells. However, the cell's Chinese market specifications (available through Chinese battery industry databases and published technical reports) provide enough boundary conditions for model-building: nominal voltage, capacity, DCIR at multiple temperatures, and cycle life under stated conditions.
 
 ### HiNa Battery Technology
 
-HiNa (中科海钠, or China Science Sodium Battery Technology) is the direct academic-to-industry pipeline from IOP-CAS, co-founded by Prof. Hu Yong-Sheng and Academician Chen Liquan, widely regarded as a founding figure of Chinese lithium battery research. HiNa operates a GWh-scale production line in Fuyang, Anhui Province, since late 2022, and has delivered cells to multiple commercial applications including a 100 MWh grid storage system in Hubei Province (42 battery containers, 185 Ah cells, operational July 2024) — the world's largest sodium-ion energy storage installation at its commissioning.
+HiNa (中科海钠, or China Science Sodium Battery Technology) is the direct academic-to-industry pipeline from IOP-CAS, co-founded by Prof. Hu Yong-Sheng and Academician Chen Liquan. HiNa's GWh-class production line in Fuyang, Anhui Province, began rolling out products in late 2022. The company has also supplied cells to grid-storage demonstrations, including an officially announced 10 MWh project in Guangxi in May 2024 and the 50 MW/100 MWh Datang Hubei installation reported in July 2024.
 
-HiNa's commercial cell portfolio spans 12 Ah, 80 Ah, 240 Ah, and their latest "Haixing" commercial vehicle cell at >165 Wh/kg with >8,000 cycle life. Their O3-type cathode (NaCuFeMnO₂ family, cobalt-free and nickel-free) paired with anthracite-derived hard carbon represents the most well-characterised commercial SIB chemistry for which published simulation data exists. The Laufen et al. (2024) characterisation paper, the Wang et al. (2025) Zenodo dataset (which includes a HiNa 10 Ah cell alongside a Transimage 3.2 Ah cell), and multiple Chinese-language publications from HiNa's technical partners provide the richest available data for SIB simulation validation.
+HiNa publicly lists several commercial sodium-ion formats, including 185 Ah prismatic cells, and reports product-level energy densities roughly spanning 120–165 Wh/kg depending on application. Their copper-containing layered-oxide / hard-carbon chemistry is especially relevant because the Wang Zenodo dataset includes a commercial 10 Ah HiNa cell, giving simulation researchers at least one openly accessible data source anchored to this ecosystem.
 
-HiNa's heavy truck applications — where their packs show 15% lower energy consumption per kilometre compared to LIB packs, attributed to deeper permissible discharge — represent a compelling system-level simulation case study for efficiency modelling.
+HiNa's heavy-truck and grid-storage applications represent compelling system-level case studies for efficiency and dispatch modelling.
 
 ### Tiamat Energy
 
-Tiamat occupies a unique niche in the SIB landscape: the **highest-voltage commercial SIB** (3.7 V nominal — matching NMC-type Li-ion cells, and exceeding LFP's 3.2 V) using NVPF (Na₃V₂(PO₄)₂F₃) cathodes, with the **highest power density** (up to 35C peak discharge, 2–5 kW/kg). Their 18650 format cell (1.0 Ah, 3.5 Wh, 15 mΩ internal resistance at 1 kHz) is the cell characterised by Chayambuka et al. and whose parameter set anchors the PyBaMM sodium-ion DFN implementation.
+Tiamat occupies a unique niche in the SIB landscape: a high-power, high-voltage commercial sodium-ion platform based on NVPF (Na₃V₂(PO₄)₂F₃) cathodes and hard-carbon anodes. Tiamat's current cylindrical datasheet reports a 3.7 V nominal, 1 Ah, 3.5 Wh 18650 cell with 15 mΩ AC internal resistance at 1 kHz and peak discharge current up to 35 A. In the peer-reviewed literature, related Tiamat NVPF/HC cells have demonstrated very strong high-rate behaviour and multi-thousand-cycle life.
 
-For the simulation researcher, Tiamat's cell is uniquely attractive: it is the most comprehensively documented commercial SIB cell, the Chayambuka2022 DFN parameter set gives a starting point for physics-based modelling, and published datasheets (available through Tiamat's website and through the Rabab et al. ECM paper) provide boundary conditions. The cell's 3,200-cycle life at 2C/5C cycling and >90% capacity retention at 20C discharge also make it the best SIB candidate for high-power application modelling (fast-charging infrastructure, frequency regulation, power tools).
+For the simulation researcher, Tiamat's ecosystem is uniquely attractive: the Chayambuka NVPF/HC parameterisation gives a starting point for physics-based modelling, the Tiamat datasheets provide commercial boundary conditions, and later peer-reviewed Tiamat work reports high-power performance up to 20C discharge with improved cycle life in newer generations. This makes Tiamat an especially good candidate for high-power application modelling such as frequency regulation, power tools, and fast-charge studies.
 
 ### The Western Landscape: Setbacks and Survivors
 
-The Western commercial SIB landscape has experienced significant turbulence. **Natron Energy**, which had delivered sodium-ion batteries for data centre UPS applications at commercial scale, ceased all operations on September 3, 2025, unable to obtain UL certification in time to fulfil $25 million in orders — a reminder that technical performance alone does not guarantee commercial survival. **Northvolt** filed for Chapter 11 in November 2024 and Swedish bankruptcy in March 2025; its SIB intellectual property was acquired by Lyten (a lithium-sulphur company) in August 2025. **Bedrock Materials** (a Stanford spinout) wound down due to cost competition from falling lithium prices.
+The Western commercial SIB landscape has experienced significant turbulence. **Natron Energy** reached commercial-scale sodium-ion production in the U.S. in 2024 and marketed UL-listed products, but by September 2025 the company had announced that it had ceased operations. **Northvolt** filed for Chapter 11 protection in the U.S. in November 2024 and entered Swedish bankruptcy in March 2025; Lyten announced in August 2025 that it would acquire Northvolt's remaining assets and IP. **Bedrock Materials**, a Stanford spinout working on sodium-ion cathode materials, halted development in April 2025.
 
 **Peak Energy** is the sole remaining major US SIB commercial player, having secured a $500 million deployment deal with Jupiter Power for 4.75 GWh of grid storage through 2030 — the first large-scale US grid-scale SIB deployment. Their NFPP (Na₄Fe₃(PO₄)₂(P₂O₇)) cathode chemistry claims 30% less degradation than LFP in grid storage applications. In Europe, **Tiamat** and **Altris** (Sweden, developing Prussian white cathode with bio-derived hard carbon in a partnership with Clarios) continue to advance toward commercialisation. **Faradion** (now part of Reliance Industries India) is targeting the Indian two- and three-wheeler EV market and residential storage, with a Jamnagar gigafactory planned.
 
@@ -141,13 +138,12 @@ The Western commercial SIB landscape has experienced significant turbulence. **N
 
 | Company | Country | Cathode | Anode | Wh/kg | Cycle Life | Form Factor | Primary Application | Status (early 2026) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| CATL (Naxtra) | China | Multi-element layered oxide | Hard carbon | 175 | >10,000 (claimed) | Prismatic | EV, grid storage | Mass production |
-| HiNa | China | O3 NaCuFeMnO₂ | Hard carbon | 140–166 | 4,500–13,000+ (best reported) | Prismatic | Grid storage, heavy trucks | GWh production |
-| BYD | China | Layered oxide (est.) | Hard carbon | 160 (target) | 10,000 (target) | Prismatic (est.) | EV | Pilot (30 GWh line) |
-| Tiamat | France | NVPF | Hard carbon | 105 | 3,200 | 18650 cylindrical | High-power (freq. reg., power tools) | Pilot, 5 GWh planned |
-| Peak Energy | USA | NFPP | Undisclosed | Undisclosed | Competitive | Prismatic (est.) | Grid storage | Early commercial |
-| Altris | Sweden | Prussian white | Hard carbon | >160 | Undisclosed | Prismatic | Grid storage | Pilot production |
-| Faradion | UK/India | O3 NaNiMnMgTiO₂ | Hard carbon | 150–160 | >1,000 | Pouch | Two/three-wheelers, residential | Pre-production |
+| CATL (Naxtra) | China | Layered oxide family | Hard carbon | 175 | >10,000 (claimed) | Automotive cells / packs | EV, grid storage | Mass-production launch announced |
+| HiNa | China | Cu-containing layered oxide | Hard carbon | 120–165 (company-stated range) | Product-dependent; 185 Ah ESS cell listed at >=6000 | Prismatic | Grid storage, vehicles | GWh-scale production and deployments |
+| Tiamat | France | NVPF | Hard carbon | 105 | Multi-thousand-cycle, product-dependent | 18650 cylindrical, prismatic | High-power applications | Commercialized cells, gigafactory planned |
+| Peak Energy | USA | NFPP | Undisclosed | Not publicly disclosed | Not publicly disclosed | Grid-scale ESS format | Grid storage | Early commercial agreements announced |
+| Altris | Sweden | Prussian white | Hard carbon | 160 | Not publicly disclosed | Commercial-sized cell | Grid storage, low-voltage mobility partnerships | Pilot / partnership stage |
+| Faradion / Reliance | UK/India | Layered oxide family | Hard carbon | Not publicly fixed | Not publicly fixed | Technology platform | Storage, two/three-wheelers, mobility | Reliance-owned, Jamnagar manufacturing plans announced |
 
 ---
 
@@ -155,21 +151,21 @@ The Western commercial SIB landscape has experienced significant turbulence. **N
 
 ### Chinese Research Dominance: Understanding the Context
 
-No serious engagement with the SIB research literature is possible without confronting the scale of Chinese research dominance. Scientometric analysis of 2000–2024 SIB publications identifies approximately 15,682 peer-reviewed papers, with China as the overwhelmingly dominant contributor. By early 2026, 16 of 20 planned SIB factories worldwide are located in China, and China accounts for an estimated 95% of global SIB manufacturing capacity. As of 2025, the Chinese government's 14th Five-Year Plan for Scientific and Technological Innovation explicitly lists SIB as a funded priority, and the National Key Technologies R&D Programme directly funds IOP-CAS SIB research (grant 2022YFB3807800). Provincial governments have signed production agreements for hundreds of GWh of capacity.
+No serious engagement with the SIB research literature is possible without confronting the scale of Chinese research dominance. Scientometric work through 2024 shows China as the dominant contributor to SIB publications, and the present commercial build-out of sodium-ion manufacturing is also heavily China-centred. For an EE researcher in India or elsewhere, the practical implication is twofold: the literature you must engage with is predominantly Chinese in origin, and the industrial momentum is also concentrated there.
 
 For an EE researcher in India or elsewhere, the practical implication is twofold. First, the literature you must engage with is predominantly Chinese in origin. Many of the most important recent results are published in Chinese-language journals (particularly *Energy Storage Science and Technology*, 储能科学与技术) or in English-language journals with Chinese first authors and Chinese institutional affiliations. Second, and more strategically important: Chinese research dominance in SIB is concentrated in materials science. The system-level engineering simulation work — ECM parameterisation, BMS algorithm development, pack-level degradation modelling, grid integration — is not where Chinese groups are primarily publishing. This is exactly the gap that an EE researcher is positioned to fill, and it is a gap that will remain open for several years even as materials research saturates.
 
 ### The Key Groups
 
-**IOP-CAS, Beijing (Prof. Hu Yong-Sheng)**: The single most influential SIB research group globally. Hu's group bridges fundamental materials discovery with commercialisation through HiNa Battery. His publication record includes a landmark *Science* (2020) paper using machine learning to predict layered oxide compositions, multiple *Nature Energy* papers (2024 on interfacial engineering achieving >200 Wh/kg at the cell level; 2026 on a polymerisable non-flammable electrolyte achieving zero thermal runaway in 3.5 Ah cells), and extensive work on hard carbon anodes (416 mAh/g with P-O-C cross-linking, *Energy Storage Materials* 2024). Core group members Lu Yaxiang, Rong Xiaohui, and Qi Xingguo co-author nearly all major publications. Their HiNa cells are among the best-characterised commercial SIB cells and the best candidates for simulation validation work.
+**IOP-CAS, Beijing (Prof. Hu Yong-Sheng)**: The single most influential SIB research group globally. Hu's group bridges fundamental materials discovery with commercialisation through HiNa Battery and is central to the modern Chinese sodium-ion ecosystem.
 
-**ICCAS, Beijing (Prof. Guo Yuguo)**: Electrolyte innovations and interface engineering. Published a comprehensive review in *Chemical Society Reviews* (2024) covering gel polymer and quasi-solid electrolytes for SIBs — directly relevant to any simulation study that includes electrolyte transport physics.
+**ICCAS, Beijing (Prof. Guo Yuguo)**: Electrolyte innovations and interface engineering, especially relevant to studies that include electrolyte transport and interphase physics.
 
-**Wuhan University (Prof. Cao Yuliang)**: Polyanionic cathodes, tunnel-type oxides, and hard carbon anodes. Has published foundational work on hard carbon electrochemistry (>1,000 citations for the hollow carbon nanowire study, *Nano Letters* 2012). Also founded Jiana Energy for SIB cathode and anode production, providing a direct commercial application context.
+**Wuhan University (Prof. Cao Yuliang)**: Polyanionic cathodes, tunnel-type oxides, and hard-carbon anodes, with strong links between academic work and commercial cathode/anode development.
 
-**USTC, Hefei (Prof. Yu Yan)**: A prolific group spanning PBA cathodes, high-entropy alloy nanolayers for anode-free sodium metal batteries, and ML-assisted materials screening. Published the most comprehensive PBA modification study (Ni/Cu co-doping, *Advanced Materials* 2024).
+**USTC, Hefei (Prof. Yu Yan)**: A prolific group spanning PBA cathodes, sodium-metal concepts, and data-assisted materials screening.
 
-**Tsinghua University (Prof. Zhang Qiang)**: Solid-state electrolytes and battery safety. Published a fluorinated polyether electrolyte enabling room-temperature solid-state SIB operation in *Nature* (2025) — directly relevant to thermal safety modelling.
+**Tsinghua University (Prof. Zhang Qiang)**: Solid-state electrolytes and battery safety, directly relevant to future thermal and abuse-modelling work.
 
 **Key non-Chinese groups**: The **Dahn group** at Dalhousie University (Canada) brings its systematic multi-cell cycling methodology to SIBs, particularly for P2-type layered oxides. The **Grey group** at Cambridge contributes operando NMR characterisation that clarifies hard carbon storage mechanisms. The **Tapia-Ruiz group** (Lancaster/Imperial, UK) focuses on layered oxide structure-property relationships. The **Chayambuka group** (formerly TU/Eindhoven) produced the foundational DFN model that anchors the simulation literature. **Tiamat Energy** itself has published extensively through Rabab et al. on NVPF ECM characterisation.
 
@@ -191,7 +187,7 @@ Every tool you need for publishable SIB simulation research is available right n
 
 ### PyBaMM: The Primary Tool
 
-**PyBaMM** (Python Battery Mathematical Modelling) is an open-source Python framework developed primarily at Oxford and now maintained by the PyBaMM team. It implements DFN, SPM, SPMe, and multiple degradation models for battery simulation. As of v24.11 (November 2024), it includes a working SIB DFN model via `pybamm.sodium_ion.BasicDFN()`, the `Chayambuka2022` parameter set (NVPF/HC, NaPF₆ in EC:PC electrolyte), an official example notebook demonstrating discharge simulation, OCV curves, concentration profiles, and overpotential decomposition (`pybamm.docs.sodium-ion`), support for electrochemical-thermal coupling using the same framework as Li-ion (requiring new SIB-specific parameter values), and PyBOP integration for parameter optimisation.
+**PyBaMM** (Python Battery Mathematical Modelling) is an open-source Python framework developed primarily at Oxford and now maintained by the PyBaMM team. It implements DFN, SPM, SPMe, and multiple degradation models for battery simulation. Current PyBaMM documentation includes a working sodium-ion DFN model via `pybamm.sodium_ion.BasicDFN()`, an official sodium-ion example notebook, and parameter values derived from the Chayambuka/COMSOL sodium-ion implementation. The same framework also supports electrochemical-thermal coupling, with SIB-specific parameterisation left to the user when the literature provides the needed values. PyBOP integrates naturally with this workflow for parameter optimisation.
 
 PyBaMM is the right tool for DFN and SPMe simulation, sensitivity analysis, model order reduction comparisons, and degradation model development. Its Python ecosystem makes it compatible with machine learning libraries (scikit-learn, PyTorch, TensorFlow) for hybrid physics-ML approaches. The PyBaMM Discourse forum and GitHub repository are active, and sodium-ion questions receive responses.
 
@@ -200,7 +196,6 @@ A minimal script to run the SIB DFN model. Verify the exact API against the curr
 ```python
 import pybamm
 
-# Verify current API at docs.pybamm.org — module paths may differ by version
 model = pybamm.sodium_ion.BasicDFN()
 param = pybamm.ParameterValues("Chayambuka2022")
 sim = pybamm.Simulation(model, parameter_values=param)
@@ -208,7 +203,7 @@ sol = sim.solve([0, 3600])  # 1-hour discharge
 sim.plot()
 ```
 
-This runs on a laptop in under 30 seconds and produces terminal voltage, electrolyte concentration profiles, solid-phase concentrations, and overpotential decompositions. It is the starting point for essentially all physics-based SIB simulation research.
+On a typical laptop this can run in seconds to tens of seconds and produces terminal voltage, electrolyte concentration profiles, solid-phase concentrations, and overpotential decompositions. It is the starting point for essentially all physics-based SIB simulation research.
 
 ### COMSOL Multiphysics
 
@@ -226,7 +221,7 @@ MATLAB's Simscape Battery module provides a physics-based battery simulation env
 
 **LIONSIMBA** (Lithium-Ion Simulation BAttery toolbox) is an open-source MATLAB P2D finite-volume implementation whose clean numerical structure makes it a useful benchmark and algorithmic reference, even though it was developed for Li-ion. The equations are structurally identical for SIBs; parameter substitution is the only change required.
 
-**BattMo** (Battery Modelling Toolbox) is an MRST-based open-source continuum modelling stack supporting 1D through 3D electrochemical-thermal models with automatic differentiation for sensitivity analysis and optimisation. It is actively developed and accepts contributions. The recent 2025 arXiv paper describes its capabilities for multi-physics battery simulation.
+**BattMo** (Battery Modelling Toolbox) is an MRST-based open-source continuum modelling stack supporting 1D through 3D electrochemical-thermal models with automatic differentiation for sensitivity analysis and optimisation. It is actively developed and accepts contributions. Its public material is still centred mainly on Li-ion workflows, but it is a promising extensible framework for researchers who want more direct control over continuum-model implementations.
 
 **PyBOP** (Python Battery Optimisation) is an open-source Python package for battery model parameter identification using deterministic and stochastic optimisation methods, including Bayesian parameter estimation. It interfaces directly with PyBaMM and enables publishable parameterisation pipelines with full uncertainty quantification.
 
@@ -242,7 +237,7 @@ With a validated model, you generate the publishable result: SOC estimation accu
 
 ## 14.5 Open Datasets: What Is Available and How to Use It
 
-SIB datasets are scarce compared to Li-ion. Only five substantive open SIB experimental datasets existed as of early 2026, compared to fifteen or more major open Li-ion datasets. This scarcity is both a challenge and an opportunity: the scarcity is itself a publishable observation, and strategies for working around it constitute part of any simulation paper's methodological contribution.
+SIB datasets are scarce compared to Li-ion. By early 2026, only a small number of openly accessible SIB experimental datasets were easy to identify, compared with the much larger open Li-ion ecosystem. This scarcity is both a challenge and an opportunity: the scarcity is itself a publishable observation, and strategies for working around it constitute part of any simulation paper's methodological contribution.
 
 ### SIB-Specific Datasets
 
@@ -252,7 +247,7 @@ SIB datasets are scarce compared to Li-ion. Only five substantive open SIB exper
 
 **Iontech SIB Characterisation — GitHub**: An open-source comparative characterisation dataset containing two commercial layered oxide/HC SIB cells alongside an LFP reference cell. Includes OCV curves, galvanostatic EIS at multiple SOC levels, DC resistance tests, and rate capability curves. Well-suited for ECM parameterisation and impedance modelling, and for the SIB-vs-LIB comparison that gives any SIB paper its context.
 
-**Laufen et al. 2024 — Cell Reports Physical Science (OA)**: A detailed characterisation of a commercial 1.2 Ah 18650 sodium-ion cell (NaFeMnCu oxide/HC, likely from a Chinese manufacturer), including EIS at 21 SOC levels, C-rate tests (0.1C to 5C), cyclic ageing with micro-CT imaging, and electrode porosity/thickness measurements from post-mortem physical analysis. The supplementary data PDF provides the numbers directly usable for DFN parameterisation. Licence: CC BY 4.0.
+**Laufen et al. 2024 — Cell Reports Physical Science (OA)**: A detailed characterisation of a commercial 1.2 Ah 18650 sodium-ion cell, including EIS at 21 SOC levels, C-rate tests (0.1C to 5C), cyclic ageing with micro-CT imaging, and electrode porosity/thickness measurements from post-mortem physical analysis. The supplementary files provide numbers directly usable for ECM and DFN parameterisation. Licence: CC BY 4.0.
 
 **Droese et al. 2025 — depositonce.tu-berlin.de**: A recent dataset that includes HPPC tests, OCV measurements, and checkup capacity measurements across multiple temperatures for a commercial SIB cell alongside LIB baselines. This is particularly well-suited for ECM fitting (extracting $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ as functions of SOC and temperature) and for temperature-dependent thermal modelling.
 
@@ -272,40 +267,40 @@ The most valuable Li-ion datasets for this transfer learning approach:
 
 ### Synthetic Data from PyBaMM
 
-When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can generate physically consistent synthetic SIB data for any C-rate, temperature profile, or ageing scenario. This approach — using a validated physics-based model to generate synthetic training and validation data — is accepted in JES, Electrochimica Acta, Batteries, and Journal of Energy Storage when the synthetic data generation process is transparent and the model is properly cited. The Garapati et al. (2025) *Electrochimica Acta* paper demonstrates this approach for a Q1 journal publication.
+When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can generate physically consistent synthetic SIB data for any C-rate, temperature profile, or ageing scenario. This approach — using a validated physics-based model to generate synthetic training and validation data — is accepted in JES, Electrochimica Acta, Batteries, and Journal of Energy Storage when the synthetic data generation process is transparent and the model is properly cited. The Garapati et al. paper shows how this style of simulation-only comparison can be positioned in a mainstream battery journal.
 
 ---
 
 ## 14.6 Publication Venues: Where to Publish SIB Simulation Work
 
-Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their simulation policies, and their SIB track records. *This is the single most practically important table in this chapter.*
+Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their practical fit, and the kinds of SIB-oriented papers they are most likely to welcome. Because journal metrics and editorial priorities change, always re-check current aims, scope, and recent articles before submission.
 
-| Venue | Impact Factor | Sim-Only? | SIB Papers Found? | Best EE Angle |
-| --- | --- | --- | --- | --- |
-| IEEE Trans. Smart Grid | 8.6 | ✅ Yes | BESS papers, no SIB yet | Microgrid integration, dispatch optimisation |
-| IEEE Access | 3.6 | ✅ Yes (most lenient) | Li-ion SOC reviews | ECM/SOC algorithms for SIB |
-| IEEE Trans. Transport. Electrif. | 7.0 | ⚠ Possible | Related BMS papers | SIB BMS for EVs |
-| IEEE Trans. Industrial Electronics | 7.2 | ⚠ Very limited | Li-ion SOC/SOH | Strongly prefers experimental validation |
-| J. Energy Storage (Elsevier) | 8.1 | ✅ Yes | **Multiple SIB ECM/SOC** | ECM, SOC/SOH, BMS |
-| Applied Energy (Elsevier) | 11.2 | ✅ Yes | SIB techno-economic | Grid integration, system-level |
-| eTransportation (Elsevier) | 16.6 | ✅ Yes | Li-ion BMS, growing SIB | EV thermal/BMS modelling |
-| J. Power Sources (Elsevier) | 7.9 | ⚠ Conditional | SIB modelling refs | Validated P2D/ECM |
-| J. Electrochem. Society (ECS) | 3.3 | ✅ Yes | **SIB P2D papers** | P2D, SPM, electrochemical modelling |
-| Electrochimica Acta (Elsevier) | 5.5 | ✅ Yes | **SIB DFN/SPMe comparison** | Physics-based model comparison |
-| Batteries (MDPI) | 4.8 | ✅ Yes | **SIB SOC (LSTM+UKF)** | BMS, SOC, thermal, any modelling |
-| Energies (MDPI) | 3.0 | ✅ Yes | SIB safety/characterisation | System-level, grid, power engineering |
+| Venue | Simulation-Only Work? | SIB-Relevant Track Record | Best EE Angle |
+| --- | --- | --- | --- |
+| IEEE Trans. Smart Grid | Yes | Battery-storage and dispatch papers; little visible SIB-specific history | Microgrid integration, dispatch optimisation |
+| IEEE Access | Yes | Broad battery-management coverage | ECM/SOC algorithms for SIB |
+| IEEE Trans. Transportation Electrification | Possible | EV BMS and electrified transport | SIB BMS for EVs |
+| IEEE Trans. Industrial Electronics | Limited | Strong BMS tradition, but often prefers stronger validation | Estimation/control with solid validation |
+| Journal of Energy Storage | Yes | Multiple SIB ECM/SOC papers | ECM, SOC/SOH, BMS |
+| Applied Energy | Yes | Techno-economic and system-level battery work | Grid integration, system-level simulation |
+| eTransportation | Yes | EV thermal/BMS modelling, emerging SIB relevance | EV thermal/BMS modelling |
+| Journal of Power Sources | Conditional | Battery modelling papers including SIB references | Validated P2D/ECM |
+| Journal of The Electrochemical Society | Yes | Electrochemical-model and parameterisation papers | P2D, SPM, electrochemical modelling |
+| Electrochimica Acta | Yes | SIB DFN/SPMe comparison already published | Physics-based model comparison |
+| Batteries | Yes | SIB BMS/SOC papers already present | BMS, SOC, thermal, general modelling |
+| Energies | Yes | Power-engineering and storage-system papers | System-level, grid, power engineering |
 
-The most simulation-friendly Tier 1 venues for EE SIB work are **Journal of Energy Storage** (IF 8.1, proven SIB ECM home, 40–50% acceptance for well-executed simulation), **Applied Energy** (IF 11.2, system-level simulation standard, SIB grid integration papers appearing since 2024), and **Electrochimica Acta** (IF 5.5, simulation-only explicitly accepted, DFN comparison paper published 2025). **IEEE Transactions on Smart Grid** (IF 8.6) has no SIB papers yet — which means the first SIB simulation papers here will face zero competition and benefit from first-mover citation advantage.
+The most simulation-friendly venues for EE SIB work are **Journal of Energy Storage**, **Applied Energy**, and **Electrochimica Acta**. **IEEE Transactions on Smart Grid** is especially attractive for grid-integration work because the SIB literature there still appears sparse.
 
-For conference publications to build a track record: **IEEE VPPC** (Rabab et al. 2023 first SIB IEEE paper, ~50% acceptance), **IECON** (Sandri et al. 2024, ~45–55% acceptance), and **ITEC** (SOC estimation papers, ~50–60% acceptance). These IEEE conferences accept simulation papers and provide peer-reviewed publication credit comparable to journal papers for conference proceedings.
+For conference publications to build a track record, **IEEE VPPC**, **IECON**, and **ITEC** are reasonable targets because they already accept simulation-heavy battery papers and at least some SIB-related work has appeared in adjacent themes.
 
-**MDPI Batteries** deserves special mention for early-career researchers: IF 4.8, dedicated BMS simulation section, ~19-day median first decision, 50–65% acceptance rate, and it has already published SIB SOC estimation papers. It is the fastest legitimate path to a first SIB journal publication.
+**Batteries** deserves special mention for early-career researchers because it has already published SIB BMS papers and is structurally friendly to modelling papers that are carefully validated.
 
-**Journals to avoid for EE simulation work**: Journal of Energy Chemistry (IF 14.9, materials only), Energy Storage Materials (IF 18–20, materials only), Nano Energy (IF 17.9, materials only), eScience (IF 42.9 — inflated by a small article base in its early years; materials-focused despite the name). The high impact factors of these venues are irrelevant — they will desk-reject simulation-only engineering papers.
+**Journals to avoid for EE simulation work**: materials-dominant venues such as *Journal of Energy Chemistry*, *Energy Storage Materials*, and *Nano Energy* are usually a poor fit for simulation-only engineering papers unless the modelling is tightly integrated with new experimental electrochemistry.
 
 ### Practical Submission Advice for Simulation-Only Papers
 
-Three mistakes sink simulation-only battery papers at the review stage, and all three are avoidable. First, failing to validate against experimental data. Even if your entire simulation uses synthetic data from PyBaMM, you must demonstrate that the underlying model (which generated the synthetic data) has been validated against real experimental measurements — cite the Chayambuka2022 validation or the Garapati et al. comparison. A simulation paper with no connection to experimental reality will be desk-rejected at every venue except MDPI.
+Three mistakes sink simulation-only battery papers at the review stage, and all three are avoidable. First, failing to validate against experimental data. Even if your entire simulation uses synthetic data from PyBaMM, you must demonstrate that the underlying model (which generated the synthetic data) has been validated against real experimental measurements — cite the Chayambuka validation or closely related commercial-cell validation papers. A simulation paper with no connection to experimental reality will struggle at most venues.
 
 Second, omitting sensitivity analysis. Reviewers of simulation papers invariably ask "how sensitive are your results to parameter uncertainty?" If you have not performed at least a local sensitivity analysis (and ideally a global one using Sobol indices — see Proposal 6), you will receive a major revision request. Build sensitivity analysis into your methodology from the start.
 
@@ -315,7 +310,7 @@ Third, framing the paper as a Li-ion methods paper that happens to use SIB param
 
 ## 14.7 The Research Gaps: Thirteen Areas Where SIB Simulation Is Empty
 
-This section maps the thirteen most important research gaps in SIB simulation, ordered roughly from most-urgent to most-ambitious. Each gap description establishes the current state of the literature, identifies the Li-ion analogue that has not been ported, and characterises the contribution an EE simulation researcher can make. These gaps were identified through systematic analysis of the SIB simulation literature through early 2026 and form the basis of the 25 concrete proposals in Section 14.8.
+This section maps the thirteen most important research gaps in SIB simulation, ordered roughly from most-urgent to most-ambitious. Each gap description establishes the current state of the literature, identifies the Li-ion analogue that has not been ported, and characterises the contribution an EE simulation researcher can make. These gaps are a practical synthesis of the literature reviewed through April 2026; read statements such as "no paper" or "no framework" as meaning that I did not identify a clearly established SIB literature base in that area, not as a proof that every possible paper worldwide has been exhausted.
 
 ### Gap 1: SOC/SOH Estimation — Algorithm Breadth Is Missing
 
@@ -343,31 +338,31 @@ The first physics-based SIB degradation model appeared only in 2025 (calendar ag
 
 ### Gap 6: System-Level BMS — Balancing, Power Limits, Diagnostics
 
-No paper has addressed SIB cell balancing simulation (passive or active). No paper has implemented incremental capacity analysis (ICA, $dQ/dV$ diagnostics) for SIB cells. No formal SIB FMEA exists in the published literature. No power limit calculation framework adapted to SIB's higher DCIR and different temperature characteristics exists. The CATL "Freevoy" hybrid SIB+LFP pack concept — which requires a BMS that manages two chemistries with different OCV curves, different temperature responses, and different ageing rates simultaneously — has received no simulation treatment whatsoever.
+I did not identify an established SIB literature on cell balancing simulation (passive or active), incremental-capacity diagnostics, or formal SIB-focused FMEA. Likewise, I did not find a widely cited power-limit framework adapted to SIB's higher DCIR and different temperature characteristics. The CATL "Freevoy" hybrid SIB+LFP pack concept — which requires a BMS that manages two chemistries with different OCV curves, different temperature responses, and different ageing rates simultaneously — still appears essentially untouched in the open simulation literature.
 
 ### Gap 7: Grid Integration and Energy Management
 
-SIB cost and performance advantages (lower material cost, better low-temperature performance, wide operating temperature range, potential for 0 V discharge for transport) create distinct grid storage use cases that have never been quantitatively modelled. No SIB-specific grid dispatch optimisation study exists. No degradation-aware energy management system for SIB BESS has been published. No SIB frequency regulation study exists (despite Tiamat's cells being specifically marketed for this application). No lifetime cost modelling that properly accounts for SIB's cycle life advantage relative to LFP has appeared.
+SIB cost and performance advantages (lower material cost, better low-temperature performance, wide operating temperature range, potential for 0 V discharge for transport) create distinct grid-storage use cases that still appear thinly modelled. I did not identify a mature SIB-specific literature on dispatch optimisation, degradation-aware energy management, or lifetime cost modelling that properly accounts for SIB's cycle-life advantage relative to LFP.
 
 ### Gap 8: Fast Charging Optimisation
 
-CATL claims 5C charging for Naxtra (80% SOC in 15 minutes). Tiamat claims 35C capability. Fast charging is one of SIB's differentiating advantages over LFP, but no model predictive control (MPC) or optimised charging protocol has been developed for SIB. The constraint structure for SIB fast charging differs from Li-ion: the primary hard constraint is the sodium plating onset (anode potential approaching 0 V vs. Na/Na⁺), which depends on temperature, SOC, and the hard carbon's two-mechanism storage. An MPC framework that explicitly uses the DFN model to enforce the plating constraint while maximising charging speed represents a novel and commercially relevant contribution.
+Commercial announcements from CATL and Tiamat both emphasise fast charging or high-power operation. Fast charging is therefore one of SIB's differentiating advantages over LFP, but I did not identify a mature literature on SIB-specific model-predictive charging. The constraint structure for SIB fast charging differs from Li-ion: the primary hard constraint is the sodium-plating onset (anode potential approaching 0 V vs. Na/Na+), which depends on temperature, SOC, and the hard carbon's two-mechanism storage. An MPC framework that explicitly uses the DFN model to enforce the plating constraint while maximising charging speed would therefore be both novel and commercially relevant.
 
 ### Gap 9: Low-Temperature Performance Modelling
 
-SIB's low-temperature advantage is real and well-documented experimentally (CATL Naxtra at 93% at −30°C; HiNa at 70% at −40°C) but has not been modelled computationally. No simulation study has quantified the physical origin of the low-temperature advantage through the Butler-Volmer framework (as Chapter 13 established qualitatively). The activation energy difference between carbonate-electrolyte SIBs (no significant advantage) and ether-electrolyte SIBs (4–5× smaller $R_\text{ct}$ growth factor at −20°C) has not been parameterised in a DFN or ECM simulation context.
+SIB's low-temperature advantage is real and well-documented experimentally, but I did not identify a mature computational literature that explains it systematically through the Butler-Volmer framework. The activation-energy difference between carbonate-electrolyte SIBs (little advantage) and ether-electrolyte SIBs (substantially smaller low-temperature charge-transfer penalty) also appears under-parameterised in DFN and ECM studies.
 
 ### Gap 10: Hybrid and Second-Life Applications
 
-CATL's hybrid SIB+LFP pack is commercially deployed but completely unmodelled in simulation. No energy management strategy for a heterogeneous chemistry pack has been published. Second-life SIB battery applications (repurposing end-of-life SIB packs, which will begin appearing in volume around 2028–2030 from early deployments) have received no techno-economic or simulation treatment. SIB second-life analysis would be one of the first papers in this area globally.
+CATL has publicly described hybrid SIB+LFP pack architectures, but this heterogeneous-chemistry problem still appears essentially unmodelled in the open simulation literature. I also did not identify a clear techno-economic or simulation literature on second-life SIB applications. A careful second-life SIB analysis would therefore be among the first papers in this area.
 
 ### Gap 11: Machine Learning and Data-Driven Approaches
 
-No Transformer-based SOH estimation has been applied to SIBs. No transfer learning study has demonstrated the Li→Na chemistry transfer for degradation modelling (despite PyBaMM confirming structural model identity). No physics-informed neural network (PINN) has been developed for SIB state estimation, despite PINN being an active frontier for Li-ion. No Gaussian process regression-based RUL prediction exists for SIBs.
+I did not identify established SIB papers using Transformer-based SOH estimation, chemistry-transfer learning for degradation modelling, PINN-based state estimation, or Gaussian-process RUL prediction. That makes this entire family of methods unusually open compared with Li-ion.
 
 ### Gap 12: Digital Twins
 
-No SIB digital twin framework exists. A digital twin — a continuously updated simulation model whose parameters evolve with measured cell behaviour in real time — requires the combination of ECM or DFN modelling, Kalman filter-based parameter identification, and connection to real-time sensor data. For Li-ion, digital twins are now commercially deployed in several EV platforms. For SIB, the first paper to propose and demonstrate a digital twin architecture (even using synthetic data from PyBaMM to represent the "real" cell) will be the defining reference in this space.
+I did not identify a mature, openly documented SIB digital-twin framework. A digital twin — a continuously updated simulation model whose parameters evolve with measured cell behaviour in real time — requires the combination of ECM or DFN modelling, Kalman filter-based parameter identification, and connection to real-time sensor data. For Li-ion, digital twins are already a live industrial topic. For SIB, an early paper that clearly proposes and demonstrates a digital-twin architecture (even using synthetic data from PyBaMM to represent the "real" cell) could become a defining reference in this space.
 
 ### Gap 13: Sodium Plating — Onset Prediction and Prevention
 
@@ -423,7 +418,7 @@ This is one of the three highest-priority proposals for first-mover advantage. N
 Project forward: when will SIB cells from the first major commercial deployments (2023–2025) reach end-of-life (80% capacity retention)? At CATL's claimed 10,000 cycles, for cells cycled daily at 1C, this is approximately 27 years — almost certainly exceeding the cell's calendar life, which means calendar ageing would likely determine end-of-life rather than cycle count. (This inference assumes calendar ageing rates comparable to Li-ion; SIB-specific calendar ageing data is still sparse — see Gap 5.) At HiNa's more conservative 4,500 cycles at 1C daily, end-of-life is approximately 12 years. Model the second-life residual value of these cells for residential storage applications, using a coupled degradation model and a techno-economic framework. Compare against LFP second-life economics. Target: **Journal of Energy Storage** or **Energies MDPI**.
 
 **Proposal 25: SIB Frequency Regulation Simulation**
-Simulate an SIB BESS (10 MW/20 MWh) responding to a real frequency regulation signal (PJM RegD signal, publicly available) and compare performance, revenue, and degradation cost against an LFP BESS with equivalent energy capacity. SIB's 5C sustained rate capability (vs LFP's 1–2C) should produce substantially higher frequency regulation performance scores under PJM's pay-for-performance framework. This is the first SIB frequency regulation simulation anywhere. Target: **IEEE Transactions on Smart Grid** or **Applied Energy**.
+Simulate an SIB BESS (10 MW/20 MWh) responding to a real frequency regulation signal (PJM RegD signal, publicly available) and compare performance, revenue, and degradation cost against an LFP BESS with equivalent energy capacity. The modelling hypothesis is that SIB's strong power capability and cold-weather behaviour should make it especially attractive for frequency-regulation duty. This appears to be a very open problem in the SIB literature. Target: **IEEE Transactions on Smart Grid** or **Applied Energy**.
 
 ### Ambitious Track (6–12 months, Tier 1, no hardware)
 
@@ -437,16 +432,16 @@ Pre-train a capacity fade prediction model on the 228-cell NMC ageing dataset (N
 Implement a PINN for SIB state estimation: the neural network predicts terminal voltage, with the DFN governing equations enforced as physics constraints in the training loss. This approach combines the flexibility of data-driven methods with the physical validity guarantees of physics-based models — particularly valuable for SIBs where data is scarce and the physics constraints prevent overfitting. Validate against the Wang et al. Zenodo dataset. Target: **Applied Energy** (where PINN for batteries papers are beginning to appear).
 
 **Proposal 15: MPC Optimal Fast Charging Protocol for SIB**
-Formulate a model predictive control (MPC) problem for SIB fast charging: maximise charging speed (minimise time to target SOC) subject to hard constraints on cell temperature ($T < 50°C$), terminal voltage ($V < V_\text{max}$), and anode potential remaining above the sodium plating threshold (the local anode overpotential $\eta_\text{anode} = \phi_s - \phi_e - U_\text{eq,anode} > 0$, ensuring sodium metal deposition does not become thermodynamically favourable). Implement in MATLAB using the SPMe as the prediction model (Proposal 7 provides the SPMe). Demonstrate 15–30% reduction in charging time compared to CC-CV at the same safety constraints, across temperatures from 0°C to 45°C. Target: **eTransportation**.
+Formulate a model predictive control (MPC) problem for SIB fast charging: maximise charging speed (minimise time to target SOC) subject to hard constraints on cell temperature ($T < 50°C$), terminal voltage ($V < V_\text{max}$), and negative-electrode potential remaining above the sodium-plating threshold (i.e. the local negative-electrode potential versus Na/Na+ should stay positive). Implement in MATLAB using the SPMe as the prediction model (Proposal 7 provides the SPMe). Demonstrate 15–30% reduction in charging time compared to CC-CV at the same safety constraints, across temperatures from 0°C to 45°C. Target: **eTransportation**.
 
 **Proposal 19: SIB Digital Twin Framework**
-Design and implement the first SIB digital twin: an architecture that continuously updates an ECM or reduced-order electrochemical model from streaming current-voltage data using a dual EKF (one filter for state estimation, one for parameter identification). Demonstrate the framework on synthetic data generated from PyBaMM (with deliberately introduced parameter drift to represent ageing), tracking capacity fade and resistance rise over simulated years of operation. Define the software architecture, data flow, and computational requirements. Target: **Applied Energy** or **eTransportation**.
+Design and implement an early SIB digital twin: an architecture that continuously updates an ECM or reduced-order electrochemical model from streaming current-voltage data using a dual EKF (one filter for state estimation, one for parameter identification). Demonstrate the framework on synthetic data generated from PyBaMM (with deliberately introduced parameter drift to represent ageing), tracking capacity fade and resistance rise over simulated years of operation. Define the software architecture, data flow, and computational requirements. Target: **Applied Energy** or **eTransportation**.
 
 **Proposal 20: Grid Dispatch Optimisation for SIB BESS**
 Formulate a stochastic optimal dispatch problem for a grid-scale SIB BESS (100 MW/400 MWh, representative of the Jupiter Power/Peak Energy deployment): maximise revenue from energy arbitrage and ancillary services subject to degradation constraints, temperature-dependent power limits, and SIB-specific cycling constraints. Compare the optimal dispatch strategy for SIB vs LFP under real electricity price and ancillary service price data (ISO-NE or PJM market data, publicly available). Target: **IEEE Transactions on Smart Grid**.
 
 **Proposal 21: Hybrid Li/Na Pack Energy Management**
-Model CATL's "Freevoy" hybrid SIB+LFP pack: cells of two different chemistries in the same series string, with different OCV curves, different DCIR, different temperature characteristics, and different ageing rates. Develop a state estimation framework that maintains separate SOC estimates for SIB and LFP cells simultaneously, a balancing strategy that accounts for their different OCV shapes, and an energy management strategy that dispatches the SIB cells preferentially in conditions where they have the performance advantage (low temperature, high power demand) and the LFP cells preferentially where they have the advantage (high energy demand, moderate temperature). Target: **eTransportation**.
+Model CATL's "Freevoy" hybrid SIB+LFP pack concept: cells of two different chemistries in the same series string, with different OCV curves, different DCIR, different temperature characteristics, and different ageing rates. Develop a state-estimation framework that maintains separate SOC estimates for SIB and LFP cells simultaneously, a balancing strategy that accounts for their different OCV shapes, and an energy-management strategy that dispatches the SIB cells preferentially in conditions where they have the performance advantage (low temperature, high power demand) and the LFP cells preferentially where they have the advantage (high energy demand, moderate temperature). Target: **eTransportation**.
 
 **Proposal 22: Sodium Plating Onset Prediction Model**
 Build the first computational model for sodium plating onset in hard carbon anodes: derive the plating onset criterion (local anode potential $\leq$ 0 V vs. Na/Na⁺) from the DFN model, compute the onset C-rate as a function of temperature and SOC, and validate against published experimental observations of plating signatures (CE reduction, voltage plateau on discharge, post-mortem sodium metal observation) in hard carbon half-cells and full cells. Parameterise the model from published half-cell data. Derive safe charging current limits as a function of temperature. Target: **Journal of the Electrochemical Society**.
@@ -528,9 +523,9 @@ This arc produces three publications in approximately 12–15 months, each build
 
 Three proposals stand out as potentially high-citation landmark papers that will be extensively cited as the SIB engineering simulation field matures:
 
-**Proposal 19** (SIB Digital Twin) — the first digital twin framework for SIBs will be the reference paper for all subsequent digital twin implementations in SIB systems. Even a conceptual framework demonstration on synthetic PyBaMM data establishes the architecture that later papers will build on. Applied Energy or eTransportation.
+**Proposal 19** (SIB Digital Twin) — an early digital-twin framework for SIBs could become the reference paper for subsequent SIB digital-twin implementations. Even a conceptual framework demonstration on synthetic PyBaMM data establishes the architecture that later papers can build on. Applied Energy or eTransportation.
 
-**Proposal 21** (Hybrid SIB+LFP Pack) — CATL's Freevoy is deployed in real vehicles. The first energy management paper for a heterogeneous chemistry pack addresses a commercially deployed product and will be cited by every subsequent Freevoy modelling paper. eTransportation.
+**Proposal 21** (Hybrid SIB+LFP Pack) — CATL's Freevoy architecture has already been publicly announced with a sodium-LFP configuration. An early energy-management paper for a heterogeneous-chemistry pack would therefore address a concrete industrial target and is likely to be cited by later Freevoy-style modelling papers. eTransportation.
 
 **Proposal 20** (Grid Dispatch with SIB) — as SIB grid storage installations scale up (Peak Energy's 4.75 GWh Jupiter Power contract, HiNa's Chinese grid deployments), the demand for grid-level SIB modelling will grow. The first grid dispatch optimisation paper for SIB will anchor that literature. IEEE Transactions on Smart Grid.
 
@@ -562,9 +557,9 @@ Let us apply the chapter's framework to a concrete planning exercise that will t
 
 ## Chapter Summary
 
-- **The landscape in brief:** The SIB commercial ecosystem has crossed the threshold from research to commercial reality: CATL Naxtra at 175 Wh/kg and >10,000 claimed cycles, HiNa at GWh-scale production with 100 MWh grid deployments, Tiamat offering the highest-power commercial SIB at 35C discharge. The Chinese research and industrial ecosystem dominates production (95% of manufacturing capacity) but is focused primarily on materials science. The engineering simulation literature — ECM parameterisation, state estimation, degradation modelling, thermal simulation, pack management, grid integration — is almost entirely absent.
-- **The open-source toolkit is ready:** PyBaMM `pybamm.sodium_ion.BasicDFN()` with `Chayambuka2022` parameters, COMSOL's 1D Na-ion model, MATLAB/Simulink for BMS algorithms, PyBOP for parameter identification, and WebPlotDigitizer for data extraction from published curves.
-- **Five open SIB datasets** are available: Wang et al. Zenodo 13836819 (primary), BatteryLife NaIon subset, Iontech characterisation, Laufen et al. (2024), and Droese et al. (2025) with supplementary data. These datasets, combined with the 228-cell NMC and Severson et al. LFP datasets for methodology development, are sufficient to support a full research portfolio.
+- **The landscape in brief:** The SIB commercial ecosystem has crossed the threshold from research to commercial reality: CATL has publicly launched Naxtra at 175 Wh/kg with >10,000 claimed cycles, HiNa has GWh-scale production and grid-storage deployments, and Tiamat offers a high-power commercial NVPF platform. The Chinese research and industrial ecosystem remains dominant and is focused primarily on materials science. The engineering simulation literature — ECM parameterisation, state estimation, degradation modelling, thermal simulation, pack management, grid integration — is still comparatively sparse.
+- **The open-source toolkit is ready:** PyBaMM `pybamm.sodium_ion.BasicDFN()`, COMSOL's 1D Na-ion example, MATLAB/Simulink for BMS algorithms, PyBOP for parameter identification, and WebPlotDigitizer for data extraction from published curves.
+- **A small but usable open SIB dataset stack** is available: Wang et al. Zenodo 13836819 (primary), the BatteryLife NaIon subset, Iontech characterisation data, Laufen et al. (2024), and Droese et al. (2025). These datasets, combined with the 228-cell NMC and Severson et al. LFP datasets for methodology development, are enough to support a serious research portfolio.
 - **The publication route is proven:** Batteries MDPI for fast early papers; Journal of Energy Storage for first journal papers in ECM/SOC; Applied Energy for system-level work; IEEE Transactions on Smart Grid for grid integration; eTransportation for EV-framed high-impact papers; Electrochimica Acta and JES for physics-based modelling. IEEE conferences (VPPC, IECON, ITEC) as proven SIB conference venues.
 - **Thirteen gap areas and 25 concrete proposals** span from straightforward replications (3–6 months, Tier 3) to landmark contributions (8–12 months, Tier 1). The three highest first-mover-advantage proposals are Proposal 17 (cell balancing), Proposal 19 (digital twin), and Proposal 20 (grid dispatch). The three-paper arc of Proposals 3 → 1 → 16 provides the fastest path to a coherent three-publication research portfolio.
 - **The strategic insight:** SIBs are where Li-ion was in 2010–2012. The researchers who built the Li-ion simulation infrastructure in that window became the field's most-cited contributors. That window is open for SIBs today. Enter it now.
@@ -595,9 +590,9 @@ This research plan is the product of everything in this book. It integrates the 
 
 2. **Garapati, M. et al., "Perspective and comparative analysis of physics-based models for sodium-ion batteries," *Electrochimica Acta* 514, 145573 (2025).** The most recent and most complete comparison of DFN, SPMe, and SPM for SIBs, published open-access. This paper defines the current state of the art in SIB electrochemical modelling and is the reference against which any Proposal 5, 6, or 7 paper will be compared.
 
-3. **Wang, Y. et al., SIB SOC Estimation Dataset, Zenodo ID: 13836819 (2024–2025).** The primary experimental dataset for SIB BMS algorithm development. Download and explore this dataset before beginning any SOC estimation paper. The README describes the measurement protocol, the cell specifications, and the data format. The dataset's existence means that Proposals 1, 2, 12, and 16 can begin immediately without purchasing cells.
+3. **Wang, Y. et al., "Data for: Accurate state-of-charge estimation for sodium-ion batteries based on a low-complexity model with hierarchical learning," Zenodo ID: 13836819 (2024).** The primary experimental dataset for SIB BMS algorithm development. Download and explore this dataset before beginning any SOC estimation paper. The README describes the measurement protocol, the cell specifications, and the data format. The dataset's existence means that Proposals 1, 2, 12, and 16 can begin immediately without purchasing cells.
 
-4. **Laufen, T. et al., "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell," *Cell Reports Physical Science* (2024).** The most comprehensive published characterisation of a commercial SIB cell, including EIS at 21 SOC levels, micro-CT imaging, and post-mortem physical analysis. Supplementary data provides numbers directly usable for ECM and DFN parameterisation. This paper is the experimental reference for Proposals 3, 4, 8, and 9.
+4. **Laufen, T. et al., "Multi-method characterization of a commercial 1.2 Ah sodium-ion battery cell indicates drop-in potential," *Cell Reports Physical Science* (2024).** One of the most comprehensive published characterisations of a commercial SIB cell, including EIS at 21 SOC levels, micro-CT imaging, and post-mortem physical analysis. Supplementary data provides numbers directly usable for ECM and DFN parameterisation. This paper is the experimental reference for Proposals 3, 4, 8, and 9.
 
 5. **Sulzer, V. et al., "Python Battery Mathematical Modelling (PyBaMM)," *Journal of Open Research Software* 9 (1), 14 (2021).** The PyBaMM software paper — cite this alongside the `Chayambuka2022` parameter set whenever using PyBaMM's sodium-ion DFN. The paper describes the software architecture, the model library, and the validation approach. The PyBaMM GitHub repository (github.com/pybamm-team/PyBaMM) and Discourse forum (pybamm.discourse.group) are the primary technical support resources for anyone building SIB simulations with PyBaMM.
 

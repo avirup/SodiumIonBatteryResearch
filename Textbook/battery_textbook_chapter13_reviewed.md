@@ -65,11 +65,11 @@ Sodium is 22.99 g/mol; lithium is 6.94 g/mol — a ratio of 3.31. For every equi
 
 The theoretical specific capacity formula from Chapter 1 makes this explicit:
 
-$$C_\text{th} = \frac{nF}{3.6 \, M_\text{host+ion}} \tag{13.1}$$
+$$C_\text{th} = \frac{xF}{3.6 \, M_\text{host}} \tag{13.1}$$
 
-where $M_\text{host+ion}$ includes the mass of the host material and the stored ion. For a given host structure with molar mass $M_\text{host}$, storing Na gives a lower specific capacity than storing Li because $M_\text{Na} > M_\text{Li}$.
+where $x$ is the number of moles of working ion stored per mole of host formula unit, and $M_\text{host}$ is the molar mass of the host active material. For a given host structure, storing fewer Na per host formula unit generally reduces the achievable specific capacity compared with an analogous Li host.
 
-For hard carbon vs. graphite: Graphite stores Li in LiC₆ ($M = 79$ g/mol, $C_\text{th} = 372$ mAh/g). Hard carbon stores Na at a maximum loading of approximately $\text{Na}_{0.8}\text{C}_6$ (that is, about 0.13 Na per C atom — far lower than a 1:1 ratio). The molar mass per carbon atom is then $M \approx 12 + (0.8/6) \times 22.99 \approx 15.1$ g/mol, which gives a theoretical specific capacity of $C_\text{th} = (0.8/6) \times 96{,}485 / (3.6 \times 15.1) \approx 237$ mAh/g. Practical values for well-optimised hard carbons range from 250 to 350 mAh/g, with the upper end exceeding this simple stoichiometric estimate because the nanopore-filling mechanism provides additional capacity beyond what interlayer intercalation alone contributes. The ionic mass penalty is real but is not the dominant limiter for hard carbon specific capacity — the mechanism (nanopore filling has limited sites, not limited mass) is more constraining than the mass calculation alone.
+For hard carbon vs. graphite: graphite stores Li in LiC₆, so with host mass $M_{C_6} = 72$ g/mol and $x = 1$, the theoretical capacity is $C_\text{th} = 96{,}485/(3.6 \times 72) \approx 372$ mAh/g. If hard carbon is approximated by a limiting sodium loading near $\text{Na}_{0.8}\text{C}_6$, then using the same carbon-host mass basis with $x = 0.8$ gives $C_\text{th} \approx 0.8 \times 372 \approx 298$ mAh/g. Reported reversible capacities for practical hard carbons commonly fall around 250–320 mAh/g, with the exact value depending strongly on precursor, pyrolysis conditions, pore structure, electrolyte, and how irreversible loss is treated in the comparison. The ionic mass penalty is real at the full-cell level, but for hard carbon the storage mechanism and accessible site population are more constraining than ion mass alone.
 
 ### Summary Table: Na⁺ vs. Li⁺ at a Glance
 
@@ -96,7 +96,7 @@ We described hard carbon's slope and plateau OCV mechanism in Chapter 6, Section
 
 The Stevens-Dahn "house of cards" model (Chapter 6) attributes slope-region capacity to sodium intercalation into the turbostratic interlayer spaces and plateau-region capacity to nanopore filling with quasi-metallic sodium. This model has been the consensus view for over two decades, supported by SAXS (pore volume change at the plateau), ²³Na NMR (distinct sodium environments in slope vs. plateau), and synchrotron PDF analysis (local structural changes).
 
-However, the model is not without controversy. An alternative interpretation — the "adsorption-intercalation" model — reverses the assignment: the slope region reflects surface and defect adsorption of sodium, and the plateau region reflects intercalation into the graphene layer stacks. Recent high-resolution studies using in-operando synchrotron diffraction have shown that the graphene interlayer spacing of hard carbon does expand slightly during the plateau, consistent with intercalation into the turbostratic stacks at that potential. The current scientific consensus (as of 2024–2025) is that both mechanisms contribute to both regions, with nanopore filling dominating the plateau and turbostratic intercalation dominating part of the slope — but the detailed mechanistic assignment is still an active research topic.
+However, the model is not without controversy. An alternative interpretation — the "adsorption-intercalation" model — reverses the assignment: the slope region reflects surface and defect adsorption of sodium, and the plateau region reflects intercalation into the graphene layer stacks. Recent high-resolution studies using operando diffraction, NMR, and EPR-based analyses suggest that multiple mechanisms contribute across the voltage profile, with nanopore filling strongly associated with the low-voltage plateau and adsorption/intercalation both contributing in the sloping region. The detailed mechanistic partition is still an active research topic rather than a fully settled question.
 
 **Why this matters for simulation**: If the dominant mechanism switches during cycling (slope = intercalation, plateau = pore filling), then the appropriate physical model for each region is different. Intercalation into a layered host is well described by solid-state diffusion with Fick's second law and the DFN model's treatment of spherical particles with concentration-dependent diffusion. Nanopore filling, however, is better described as an adsorption process — possibly following a Langmuir or Freundlich isotherm for the nanopore sites — with different mathematical structure.
 
@@ -116,8 +116,6 @@ In the **plateau region** (SOC 70–100% approximately, where nanopore filling o
 
 The strong $D_s$ variation with SOC means that any simulation model using a single, fixed $D_s$ value for the hard carbon electrode will be quantitatively inaccurate in at least one SOC region. A concentration-dependent $D_s$ is required, analogous to the concentration-dependent diffusion coefficient used for some LIB electrode materials but with a more dramatic variation for hard carbon.
 
-The temperature dependence of $D_s$ in hard carbon follows the Arrhenius law. Reported activation energies span a range of 25–55 kJ/mol depending on the hard carbon source and processing conditions — comparable to graphite's activation energy for lithium diffusion (20–50 kJ/mol). This means that the solid-state diffusion limitation worsens at low temperatures for hard carbon at approximately the same rate as for graphite — the low-temperature advantage of SIBs over LIBs does not come from better solid-state diffusion, but from the faster interfacial kinetics (lower desolvation energy in ether electrolytes, or the different hard carbon surface chemistry).
-
 ### Modelling Hard Carbon in the DFN Framework
 
 The standard DFN model assumes each electrode consists of spherical particles of uniform radius $r_p$, with sodium (or lithium) diffusing through the solid particle according to Fick's second law in spherical coordinates:
@@ -125,6 +123,12 @@ The standard DFN model assumes each electrode consists of spherical particles of
 $$\frac{\partial c_s}{\partial t} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 D_s \frac{\partial c_s}{\partial r}\right) \tag{13.2}$$
 
 with boundary conditions at the particle centre (zero flux by symmetry) and at the surface (flux equal to the pore-wall flux $j_n$ from the Butler-Volmer equation).
+
+The temperature dependence of $D_s$ in hard carbon follows the Arrhenius law:
+
+$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \tag{13.3}$$
+
+where $D_{s,0}(c_s)$ captures the strong concentration dependence and $E_{a,D}$ is the activation energy for solid-state transport. Reported activation energies span a range of 25–55 kJ/mol depending on the hard carbon source and processing conditions — comparable to graphite's activation energy for lithium diffusion (20–50 kJ/mol). This means that the solid-state diffusion limitation worsens at low temperatures for hard carbon at approximately the same rate as for graphite — the low-temperature advantage of SIBs over LIBs does not come from better solid-state diffusion, but from the faster interfacial kinetics (lower desolvation energy in ether electrolytes, or the different hard carbon surface chemistry).
 
 For hard carbon, applying this equation directly requires addressing three complications:
 
@@ -152,6 +156,10 @@ The OCV hysteresis between charge and discharge in the plateau region is approxi
 
 With a cell voltage measurement noise of $\sigma_V = 5$ mV (from a 16-bit CMIC over a 4V range), the SOC uncertainty in each region is: In the steep slope region ($dE/d\text{SOC} \approx 150$ mV), $\sigma_\text{SOC} = 5/150 \approx 3.3\%$ — acceptable. In the plateau ($dE/d\text{SOC} \approx 25$–50 mV), $\sigma_\text{SOC}$ ranges from $5/50 = 10\%$ to $5/25 = 20\%$, with a midpoint estimate of $5/37 \approx 13.5\%$ — poor by any BMS standard. In the upper slope region ($dE/d\text{SOC} \approx 80$ mV), $\sigma_\text{SOC} = 5/80 \approx 6.3\%$ — marginal.
 
+This plateau-region sensitivity limit can be written compactly as:
+
+$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \tag{13.4}$$
+
 The plateau spans 45% of the SOC range. During normal operation (charging from 20% to 90% SOC to protect longevity), approximately 56% of the operational SOC range falls within or near the plateau — the majority of normal operation is in the regime where voltage-based SOC correction is poor. This is not the same as LFP, where the plateau is even flatter (~3 mV/unit SOC) but the non-plateau regions at the extremes are routinely accessed by the BMS for recalibration. For SIBs, the combination of a larger plateau, higher hysteresis, and a more gradual slope-to-plateau transition creates a worse-case estimation environment than LFP.
 
 ### Proposed Solutions and Their Status
@@ -160,7 +168,7 @@ The plateau spans 45% of the SOC range. During normal operation (charging from 2
 
 **Solution 2 — Extended EKF with hysteresis state variable**: The EKF can be augmented with a hysteresis state variable $h$ that tracks the cell's OCV correction due to the history-dependent memory effect in hard carbon. The augmented model uses separate charge-direction and discharge-direction OCV curves, with the hysteresis state providing a continuous transition between them based on recent current direction. Plett's group developed this approach for LFP cells and demonstrated improved SOC accuracy compared to single-curve EKF. The approach requires an additional model for hysteresis dynamics:
 
-$$\dot{h} = \gamma |i| (\text{sgn}(i) \, M(\text{SOC}) - h) \tag{13.3}$$
+$$\dot{h} = \gamma |i| (\text{sgn}(i) \, M(\text{SOC}) - h) \tag{13.5}$$
 
 where $\gamma$ is the hysteresis rate constant, $i$ is the current, and $M(\text{SOC})$ is the maximum hysteresis magnitude at each SOC (a function that peaks in the slope region where hysteresis is largest). The augmented EKF with hysteresis has been implemented in SIB simulation environments and shows improvement in SOC accuracy during mixed charge/discharge operation, but it requires fitting an additional three or four parameters from characterisation data.
 
@@ -176,7 +184,7 @@ Imagine you have performed a GITT (Galvanic Intermittent Titration Technique) ex
 
 What you would see, reading the voltage-vs.-capacity curve from left to right:
 
-**Region 1 (2.0 V → ~0.10 V, slope region):** Each current pulse produces a voltage drop of approximately 15–30 mV from the OCV, and the relaxation during rest is rapid — the voltage recovers to within 2 mV of steady state within 30–60 minutes. The quasi-equilibrium OCV after each rest step decreases steeply and smoothly. From the GITT formula (Chapter 3, Equation 3.18), you extract $D_s$ values in the range $10^{-12}$–$10^{-11}$ m²/s. The high $D_s$ means sodium redistributes quickly inside the hard carbon particles after each pulse, producing fast voltage relaxation.
+**Region 1 (2.0 V → ~0.10 V, slope region):** Each current pulse produces a voltage drop of approximately 15–30 mV from the OCV, and the relaxation during rest is rapid — the voltage recovers to within 2 mV of steady state within 30–60 minutes. The quasi-equilibrium OCV after each rest step decreases steeply and smoothly. From the GITT formula (Chapter 3, Equation 3.16), you extract $D_s$ values in the range $10^{-12}$–$10^{-11}$ m²/s. The high $D_s$ means sodium redistributes quickly inside the hard carbon particles after each pulse, producing fast voltage relaxation.
 
 **Region 2 (~0.10 V → ~0.05 V, transition zone):** The voltage drop per pulse begins to increase (now 30–60 mV at the same current), and the relaxation slows — full equilibration now requires 2–3 hours. The extracted $D_s$ drops by one to two orders of magnitude within a narrow capacity window. This is the slope-to-plateau transition, and the dramatic slowdown in diffusion is one of the clearest experimental signatures of the mechanism change from interlayer intercalation to nanopore filling.
 
@@ -226,11 +234,11 @@ SIB cells are consistently better than LIB cells at low temperatures — not sli
 
 ### The Activation Energy Story
 
-From Chapter 10, Section 10.3 (Equation 10.23), the charge-transfer resistance at temperature $T$ is:
+From Chapter 8, Section 8.6 (Equation 8.23), the charge-transfer resistance at temperature $T$ is:
 
-$$R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{13.5}$$
+$$R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{13.6}$$
 
-This is the Arrhenius resistance scaling first introduced as Equation 10.23; we reproduce it here as Equation 13.5 for convenience and because it is the central equation of this section.
+This is the Arrhenius resistance scaling first introduced as Equation 8.23; we reproduce it here as Equation 13.6 for convenience and because it is the central equation of this section.
 
 The variable $E_{a,\text{ct}}$ is the activation energy for the rate-limiting interfacial step. The low-temperature performance is almost entirely determined by this activation energy: a lower $E_{a,\text{ct}}$ means $R_\text{ct}$ grows less severely as temperature decreases, and the cell maintains better rate capability at low temperature.
 
@@ -390,13 +398,13 @@ Each of these problems is tractable for a simulation-focused researcher with acc
 
 All key equations from earlier chapters apply. New or emphasised equations in this chapter:
 
-$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \quad \text{(concentration- and temperature-dependent } D_s \text{ for hard carbon)} \tag{13.4}$$
+$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \quad \text{(same relation as Eq. 13.3)}$$
 
-$$\frac{R_\text{ct}(T)}{R_\text{ct}(T_0)} = \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \quad \text{(Arrhenius resistance ratio)} \tag{13.5}$$
+$$\frac{R_\text{ct}(T)}{R_\text{ct}(T_0)} = \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \quad \text{(same relation as Eq. 13.6)}$$
 
 At $T = -20°\text{C}$ (253 K) relative to $T_0 = 25°\text{C}$ (298 K), this gives growth factors of $\approx 12\times$ for ether SIBs ($E_{a,\text{ct}} = 35$ kJ/mol) vs. $\approx 52\times$ for carbonate LIBs ($E_{a,\text{ct}} = 55$ kJ/mol).
 
-$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \quad \text{(SOC uncertainty in plateau region)} \tag{13.6}$$
+$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \quad \text{(same relation as Eq. 13.4)}$$
 
 **Key open research problems identified:**
 
@@ -416,23 +424,21 @@ Electrolyte conductivity $\kappa$ (mS/cm at 25°C), electrolyte diffusion coeffi
 
 For any SIB parameter that you cannot find in the literature, note it explicitly as "not characterised" — this is your research gap map. The gaps in your table are the highest-priority experimental and computational needs for SIB simulation research.
 
-Excellent starting points for SIB DFN parameters: Bhatt et al. (*Journal of Power Sources*, 2020) for hard carbon; Gonzalez-Robles et al. (*Advanced Energy Materials*, 2021) for NVPF cathodes; Kim et al. (*ACS Applied Materials and Interfaces*, 2022) for O3-type layered oxide cathodes. Note: as I cannot verify whether these specific citations are correct without database access, treat these as directional search terms rather than guaranteed sources, and verify each reference independently.
+Verified starting points for building this table are the review articles in the Further Reading section below — especially Pan et al. for broad SIB materials context, Bommier and Ji for hard carbon and other anodes, Nayak et al. for the LIB-to-SIB comparison framework, and Muñoz-Márquez et al. for anode and SEI issues in large-scale applications. Use those reviews to identify the primary GITT, EIS, and half-cell studies that report parameter values for the specific chemistry you want to model.
 
 ---
 
 ## Further Reading
 
-1. **Deng, J. et al., "Interplay between Solid Electrolyte Interface (SEI) and Dendrite Formation on the Anode of Sodium Ion Batteries," *Advanced Energy Materials* 11 (6), 2003987 (2021).** The most comprehensive recent review of SEI formation on hard carbon in sodium electrolytes, covering both carbonate and ether electrolyte systems. Includes quantitative comparison of SEI composition, thickness, and ionic conductivity across electrolyte types.
+1. **Bommier, C. and Ji, X., "Recent development on anodes for Na-ion batteries," *Israel Journal of Chemistry* 55 (5), 486–507 (2015), doi:10.1002/ijch.201400118.** A foundational review of Na-ion anodes, including hard carbon storage behavior and the early mechanism debate.
 
-2. **Bommier, C. and Ji, X., "Recent development on anodes for Na-ion batteries," *Israel Journal of Chemistry* 55 (5), 486–507 (2015).** A systematic review of hard carbon anode behaviour including the slope/plateau mechanism, the two-mechanism debate, GITT-derived diffusion coefficients, and rate capability data across multiple hard carbon types. The most thorough survey of the hard carbon electrochemistry that underlies Sections 13.2 and 13.3.
+2. **Nayak, P. K., Yang, L., Brehm, W., and Adelhelm, P., "From lithium-ion to sodium-ion batteries: advantages, challenges, and surprises," *Angewandte Chemie International Edition* 57 (1), 102–120 (2018), doi:10.1002/anie.201703772.** A comprehensive LIB-versus-SIB comparison that is directly aligned with the purpose of this chapter.
 
-3. **Nayak, P. K. et al., "From lithium-ion to sodium-ion batteries: advantages, challenges and surprises," *Angewandte Chemie International Edition* 57 (1), 102–120 (2018).** A comprehensive comparison of LIB and SIB across all relevant dimensions — materials, performance, cost, and safety — written specifically to highlight what is different and why. Well-organised around the "what changes" theme of this chapter.
+3. **Pan, H., Hu, Y.-S., and Chen, L., "Room-temperature stationary sodium-ion batteries for large-scale electric energy storage," *Energy & Environmental Science* 6 (8), 2338–2360 (2013), doi:10.1039/C3EE40847G.** A classic review that frames why sodium-ion chemistry is especially relevant for stationary storage and summarizes electrode/electrolyte choices.
 
-4. **Zhao, L. et al., "A Comprehensive Review on the Thermal Behavior of Lithium-ion Batteries and the Evaluation of Functional Safety," *Energy Storage Materials* 35, 313–333 (2021).** While focused primarily on LIBs, this review's framework for thermal characterisation (ARC methodology, onset temperature determination, heat generation separation) is the methodology directly applied to SIBs in the comparative studies referenced in Section 13.6. Reading this alongside the SIB ARC literature gives the methodological context for interpreting the safety comparison.
+4. **Muñoz-Márquez, M. Á., Saurel, D., Gómez-Cámer, J. L., Casas-Cabanas, M., Castillo-Martínez, E., and Rojo, T., "Na-Ion Batteries for Large Scale Applications: A Review on Anode Materials and Solid Electrolyte Interphase Formation," *Advanced Energy Materials* 7 (20), 1700463 (2017), doi:10.1002/aenm.201700463.** Particularly useful for connecting anode selection, large-scale applications, and SEI issues.
 
-5. **Muñoz-Márquez, M. A. et al., "Na-Ion Batteries for Large Scale Stationary Energy Storage," *Advanced Energy Materials* 7 (20), 1700470 (2017).** A review that situates SIB technology in the context of grid-scale stationary storage deployment — the application where the balance of SIB properties (cost, safety, longevity) most clearly outweigh its energy density limitations. Useful for understanding the commercial endpoint toward which the SIB simulation research in Chapter 14 is directed.
-
-*Note: As with all citations in this book, I cannot verify these references against a live database. Please confirm each title, volume, and page range independently before citing them in your own work.*
+5. **Wang, Y., Li, M., Zhang, Y. et al., "Hard carbon for sodium storage: Mechanism and performance optimization," *Nano Research* 17 (7), 6038–6057 (2024), doi:10.1007/s12274-024-6546-0.** A recent review focused specifically on hard-carbon mechanism and performance optimization, helpful for Sections 13.2, 13.3, and 13.7.
 
 ---
 
