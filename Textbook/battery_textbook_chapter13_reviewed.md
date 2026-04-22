@@ -15,6 +15,7 @@ Read this chapter with a notebook open. By the end, you should have a list of sp
 > **Prerequisites Check**
 >
 > This chapter synthesises the entire book. All chapters are prerequisite reading. Specific sections most directly drawn upon:
+>
 > - Chapter 1 (Sections 1.4, 1.7, 1.8): standard potentials, Faraday's laws, Gibbs free energy
 > - Chapter 2 (Sections 2.1–2.3, 2.5–2.8): intercalation, SEI, Butler-Volmer, diffusion
 > - Chapter 3 (Sections 3.4, 3.10): OCV curves, GITT, EIS
@@ -72,10 +73,10 @@ For hard carbon vs. graphite: Graphite stores Li in LiC₆ ($M = 79$ g/mol, $C_\
 
 ### Summary Table: Na⁺ vs. Li⁺ at a Glance
 
-**Table 13.1: Fundamental Physical Properties of Na⁺ vs. Li⁺**
+#### Table 13.1: Fundamental Physical Properties of Na⁺ vs. Li⁺
 
 | Property | Li⁺ | Na⁺ | Ratio (Na/Li) | Primary Consequence |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Ionic radius (octahedral, Å) | 0.76 | 1.02 | 1.34 | Different host structures; graphite excluded |
 | Atomic mass (g/mol) | 6.94 | 22.99 | 3.31 | Lower gravimetric capacity |
 | Standard potential vs. SHE (V) | −3.04 | −2.71 | — | 0.33 V lower cell voltage |

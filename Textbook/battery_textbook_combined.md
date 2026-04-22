@@ -1,31 +1,56 @@
----
-title: "Battery Technology for Electrical Engineers: A Self-Study Text"
-documentclass: book
----
-
 \pagenumbering{gobble}
-\newgeometry{margin=0pt}
 \thispagestyle{empty}
-\noindent
-\includegraphics[width=\paperwidth,height=\paperheight]{/home/avirup/SodiumIonBatteryResearch/Textbook/Book_Cover.png}
+\AddToShipoutPictureBG*{%
+  \AtPageLowerLeft{%
+    \includegraphics[width=\paperwidth,height=\paperheight]{/home/avirup/SodiumIonBatteryResearch/Textbook/Book_Cover.png}%
+  }%
+}
+\mbox{}
+\ClearShipoutPictureBG
 \clearpage
-\restoregeometry
 
 \pagestyle{empty}
 \thispagestyle{empty}
+\null
 \vspace*{\fill}
-\noindent\textbf{Copyright \textcopyright{} 2026 Avirup}\
-This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).\
-You are free to share and adapt this material for noncommercial purposes, provided you give appropriate attribution and indicate if changes were made.\
-License text: \url{https://creativecommons.org/licenses/by-nc/4.0/}\
+\begingroup
+\small
+\setlength{\parindent}{0pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=1000
+\emergencystretch=1.5em
+\begin{minipage}{0.76\textwidth}
+\raggedright
+\textbf{Copyright \textcopyright{} 2026 Avirup Kundu}\par
 
-\vspace{1.5em}
-\noindent\textbf{ISBN:} TBD\
-\textbf{Library of Congress Control Number:} TBD\
+\vspace{1.25\baselineskip}
+First edition\par
+Published May 2026\par
 
-\vspace{1.5em}
-\noindent\textbf{Publisher:} Independent publication\
-Publisher details to be confirmed.
+\vspace{1.25\baselineskip}
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).\par
+
+\vspace{0.75\baselineskip}
+You are free to share and adapt the material for noncommercial purposes, provided that appropriate credit is given, a link to the license is included, and any changes made are indicated.\par
+
+\vspace{0.75\baselineskip}
+License:\par
+\url{https://creativecommons.org/licenses/by-nc/4.0/}\par
+
+\vspace{1.25\baselineskip}
+\textbf{ISBN:} 978-0-00000-000-0\par
+
+\vspace{1.25\baselineskip}
+\textbf{Author:} Avirup Kundu\par
+\textbf{Website:} www.avirup.net\par
+\textbf{Cover design:} AI-generated artwork\par
+
+\vspace{1.25\baselineskip}
+\textbf{Companion volume:}\par
+Modelling and Simulation Companion to Battery Technology for Electrical Engineers\par
+\end{minipage}
+\endgroup
 \vspace*{\fill}
 \clearpage
 
@@ -3949,19 +3974,23 @@ By the end of this chapter, you will be able to take a cell datasheet, a duty cy
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Thermal resistance networks (analogous to electrical resistance networks — if you can calculate voltage across a resistor divider, you can calculate temperature rise in a thermal network)
 > - Basic control system stability concepts (Section 8.5 uses a stability argument; familiarity with positive/negative feedback will help)
 > - Power dissipation calculations ($P = I^2 R$, $P = IV$)
 >
 > From Chapter 1:
+>
 > - The Gibbs free energy–voltage relationship $\Delta G = -nFE$ (Section 1.8)
 > - The temperature coefficient of cell voltage $(\partial E_\text{OCV}/\partial T)_P = \Delta S/(nF)$ (Section 1.8) — central to Section 8.2
 >
 > From Chapters 2 and 3:
+>
 > - The three overpotentials: ohmic, activation, concentration (Chapter 2, Section 2.7)
 > - Internal resistance: ohmic and charge-transfer components (Chapter 3, Section 3.5)
 >
 > From Chapter 7:
+>
 > - The Arrhenius temperature dependence of degradation rates (Section 7.2) — directly relevant to Section 8.6
 > - Thermal runaway as an endpoint of degradation (Section 7.3)
 
@@ -4340,7 +4369,7 @@ The statement "sodium-ion batteries are safer than lithium-ion batteries" appear
 The dominant heat source in a lithium-ion thermal runaway event is the exothermic reaction between oxygen released from the delithiated cathode and the flammable organic electrolyte. As noted in Section 8.4, the onset temperature for oxygen release varies dramatically by cathode chemistry. The following table summarises oxygen release onset temperatures for the major cathode families:
 
 | Chemistry Family | Type | Oxygen Release Onset (°C) | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | LCO | LIB | ~170–200 | Lower at extreme delithiation |
 | NMC811 | LIB | ~180–200 | Dominant EV cathode; lowest margin |
 | NMC622 | LIB | ~200–220 | Intermediate stability |
@@ -4380,7 +4409,7 @@ The electrolyte contributes to thermal runaway both as a fuel (organic solvents 
 Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares representative cells:
 
 | ARC Parameter | NMC811/graphite 18650 (3 Ah) | SIB O3/hard carbon 26650 (1.33 Ah) | SIB Advantage |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Self-heating onset $T_\text{onset}$ | 55–65°C | 110–130°C | +55–65°C margin |
 | Peak temperature $T_\text{max}$ | 750–850°C | 400–500°C | ~300°C lower |
 | Total heat released | 28–38 kJ | 8–12 kJ | 3–4× lower |
@@ -4588,16 +4617,19 @@ Pack architecture is the layer of engineering that converts electrochemistry int
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Series and parallel circuit analysis — essential for Section 9.1; if you can calculate the equivalent resistance of a network, you can calculate the equivalent capacity of a cell configuration
 > - Fuse and relay/contactor circuit operation — needed for Section 9.3
 > - Basic CAN bus or other serial communication protocol awareness — helpful for Section 9.4
 > - Inrush current and capacitor precharge — directly relevant to Section 9.3
 >
 > From Chapters 3 and 7:
+>
 > - Internal resistance, SOC, SOH definitions (Chapter 3, Sections 3.3, 3.5)
 > - Degradation mechanisms and why individual cells age differently (Chapter 7) — motivation for Section 9.2
 >
 > From Chapter 8:
+>
 > - Thermal runaway and propagation (Section 8.5) — motivates the safety design choices in Section 9.3
 
 ---
@@ -4765,7 +4797,7 @@ The solution is a **precharge circuit**: a small **precharge contactor** in seri
 
 The precharge circuit topology is simple enough to sketch. Imagine the following schematic (draw this in your notebook):
 
-```
+```text
        ┌──── Main Positive Contactor (K1) ────┐
        │          (normally open)               │
  PACK  │                                        │  LOAD
@@ -5021,5 +5053,2439 @@ Precharge energy: $E = \frac{1}{2} \times 2 \times 10^{-3} \times 518.4^2 = 268.
 
 4. **Xiong, R. et al., *Battery Management Algorithm for Electric Vehicles*, Springer (2020), Chapter 2.** A detailed treatment of BMS hardware architecture including contactor circuits, precharge design, current sensing selection, and isolation monitoring — with automotive-specific design examples. Chapter 2 is the most directly relevant to Section 9.3.
 
-5. **Bosch, *CAN Specification Version 2.0*, Robert Bosch GmbH (1991), available at www.bosch-semiconductors.com.** The original CAN specification, still the authoritative reference. Remarkably readable for a hardware protocol spec. Section 3 (bit timing, arbitration, error handling) is directly relevant to understanding the robustness properties described in Section 9.4.
+5. **Bosch, *CAN Specification Version 2.0*, Robert Bosch GmbH (1991), available at <https://www.bosch-semiconductors.com/>.** The original CAN specification, still the authoritative reference. Remarkably readable for a hardware protocol spec. Section 3 (bit timing, arbitration, error handling) is directly relevant to understanding the robustness properties described in Section 9.4.
+
+
+\newpage
+
+# State Estimation
+
+## Chapter Opening
+
+Imagine you are driving an electric vehicle. The instrument cluster shows 47% battery remaining. You are 80 kilometres from home, and the navigation system estimates 75 kilometres of range. You decide to take a detour. How much can you trust that 47%?
+
+The answer depends entirely on the quality of the state estimation algorithm running in your BMS. That algorithm is, in a precise engineering sense, solving a problem that has no perfect solution: it is trying to determine the internal electrochemical state of a battery — a quantity that cannot be measured directly from the outside — from a stream of terminal measurements that are noisy, drift over time, and are related to the hidden state through a nonlinear function that itself changes as the battery ages. The 47% on your dashboard is not a reading from a gauge. It is the output of a recursive estimator, continuously reconciling accumulated charge counts against voltage observations, and it is only as good as the model, the sensors, and the algorithm behind it.
+
+State estimation is where battery science meets control theory, and it is one of the most intellectually satisfying problems in the field precisely because it requires fluency in both. The physics from Chapters 1 through 8 defines what the cell is. Chapter 9 showed how cells are assembled into packs — series and parallel strings, contactors, current sensors, the CAN bus data stream that a BMS reads every few milliseconds. This chapter defines how the BMS uses that data stream to answer the question every system ultimately cares about: how much energy is left, and how long will the pack last?
+
+We will build the treatment from the ground up. We start with the simplest possible estimator — integrating the measured current — and examine exactly how and why it fails. We then add voltage measurements through the OCV-SOC lookup approach, and examine the fundamental limitation imposed by the OCV curve's shape — the flat-curve problem that has appeared repeatedly in this book and that will occupy us at length for the SIB case. We then develop the modern solution: a parameterised equivalent circuit model (ECM) combined with a Kalman filter that fuses current and voltage information optimally. Finally, we extend the framework from state-of-charge estimation to state-of-health estimation and remaining useful life prediction.
+
+By the end of this chapter, you will be able to describe the ECM + Kalman filter BMS architecture at the level of a practicing engineer: you will know the model structure, the estimator equations, the tuning procedure, and the failure modes. You will also understand precisely where and why this architecture struggles for sodium-ion batteries — and what algorithmic modifications have been proposed to address it.
+
+---
+
+> **Prerequisites Check**
+>
+> From your EE/math background:
+>
+> - Linear algebra: matrix multiplication, matrix inverse, covariance matrices — essential for Sections 10.3 and beyond
+> - Probability and statistics: Gaussian distributions, variance, conditional probability — needed for the Kalman filter derivation
+> - State-space representations of dynamic systems ($\dot{x} = Ax + Bu$, $y = Cx + Du$) — the ECM is described in this form
+> - Recursive least squares or Wiener filter intuition — helpful but not required
+>
+> From Chapters 3–5:
+>
+> - OCV-SOC curves and their shapes (Chapter 3, Section 3.4; Chapter 5) — central to Section 10.2
+> - DCIR and the three resistance components (Chapter 3, Section 3.5) — needed for ECM parameterisation
+> - Coulombic efficiency and SOH definitions (Chapter 3, Sections 3.6, 3.7) — needed for Section 10.4
+>
+> From Chapter 6:
+>
+> - Hard carbon OCV flat plateau (Section 6.5) — the central motivation for Section 10.2's flat-curve analysis
+>
+> From Chapter 9:
+>
+> - Current sensing accuracy and its limits (Section 9.3) — motivates the drift analysis in Section 10.1
+> - CAN bus data availability (Section 9.4) — the measurement stream that feeds the estimator
+>
+> If your linear algebra is rusty — particularly matrix inverses and the concept of a covariance matrix — spend thirty minutes reviewing before Section 10.3. The Kalman filter derivation is the most mathematically demanding section in this book, and it will not make sense without that foundation.
+
+---
+
+## Coulomb Counting and Its Drift Problem
+
+The most direct approach to estimating state of charge is also the oldest: integrate the current. If you know how much charge has entered or left the battery since it was last at a known reference state, you know the current charge level.
+
+### The Basic Algorithm
+
+Coulomb counting (also called **current integration** or **ampere-hour integration**) implements the following discrete-time recursion:
+
+$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k) \cdot \Delta t}{Q_\text{max}} \tag{10.1}$$
+
+where $\text{SOC}(k)$ is the estimated SOC at time step $k$, $i(k)$ is the measured current at time step $k$ (positive for discharge, negative for charge by the convention used here), $\Delta t$ is the sampling interval, $\eta_i$ is the **Coulombic efficiency**, and $Q_\text{max}$ is the current maximum capacity of the battery in amp-hours.
+
+The Coulombic efficiency $\eta_i$ deserves a moment of attention. During discharge, essentially all the charge that leaves the battery corresponds to lithium (or sodium) ions actually de-intercalating from the anode — $\eta_i \approx 1$. During charge, however, a small fraction of the applied current drives parasitic side reactions (primarily SEI growth on the anode, as we established in Chapters 2 and 7) rather than intercalating ions. This fraction is "lost" in the sense that it consumes charge without increasing SOC. For a well-aged lithium-ion cell, $\eta_i$ during charge is typically 0.998–0.999; for a fresh cell still forming its SEI, it can be 0.99 or lower. For sodium-ion hard carbon anodes, the initial Coulombic efficiency is significantly lower (70–85%), which we will revisit in the SIB section.
+
+The practical consequence for coulomb counting is straightforward: if the BMS uses $\eta_i = 1$ during charging, it will systematically *overestimate* the SOC gain from each charge event. Over many cycles, this overestimate accumulates — another source of drift, distinct from sensor error.
+
+This is conceptually straightforward. For a 3.0 Ah cell ($Q_\text{max} = 3.0$ Ah) starting at SOC = 80%, discharging at $i = 3.0$ A (1C) for 30 minutes ($\Delta t = 1800$ s), and assuming $\eta_i = 1$:
+
+$$\text{SOC}(\text{after 30 min}) = 0.80 - \frac{1 \times 3.0 \times 1800/3600}{3.0} = 0.80 - \frac{1.5}{3.0} = 0.80 - 0.50 = 0.30$$
+
+After 30 minutes at 1C, the SOC estimate is 30%. This is correct by construction — if the current was exactly 3.0 A, the initial SOC was exactly 80%, and the capacity is exactly 3.0 Ah, the estimate is exact.
+
+The problem is that none of those three "exactlys" hold in practice. Each one is an approximation, and their combined errors accumulate over time in a way that makes the estimate increasingly unreliable.
+
+### The Three Sources of Drift
+
+**Source 1 — Current sensor error**: Every current sensor has a combination of gain error, offset error, and noise. The offset error is the most damaging for coulomb counting because it is systematic — a constant offset integrates linearly with time. For a Hall-effect sensor with a 50 mA offset error and a 3.0 Ah cell, the SOC error after one hour of continuous operation at any current is:
+
+$$\Delta \text{SOC}_\text{offset} = \frac{I_\text{offset} \times t}{Q_\text{max} \times 3600} = \frac{0.05 \times 3600}{3.0 \times 3600} = \frac{0.05}{3.0} \approx 1.7\% \text{ SOC per hour} \tag{10.1a}$$
+
+where the factor of 3600 in the denominator converts $Q_\text{max}$ from amp-hours to coulombs for dimensional consistency with $I_\text{offset}$ (in amps) and $t$ (in seconds).
+
+After 8 hours of operation, a 50 mA offset accumulates a 13.5% SOC error — enough to be practically significant. Hall sensors can have offsets of 50–200 mA; precision shunt sensors have lower offsets (5–20 mA) but are not immune.
+
+Gain error (proportional to the measured current) causes an error that scales with total charge throughput. A 0.5% gain error on a cell cycled twice per day at 100% DOD accumulates a SOC error of approximately 0.5% per cycle — about 0.5 × 2 = 1% per day, or 180% per year if no recalibration is performed. This illustrates that gain error is equivalent to having the wrong value of $Q_\text{max}$ in equation (10.1).
+
+Random noise, by contrast, produces a random walk error that grows as $\sqrt{N}$ with the number of samples rather than linearly. For typical current sensor noise levels (10–30 mA RMS), the SOC error from noise alone after 3600 samples (one hour at 1-second intervals) is:
+
+$$\Delta \text{SOC}_\text{noise} = \frac{\sigma_I \sqrt{N} \Delta t}{Q_\text{max} \times 3600} = \frac{0.02 \times \sqrt{3600} \times 1}{3.0 \times 3600} = \frac{0.02 \times 60}{10800} \approx 0.011\% $$
+
+Noise error is manageable with filtering and is much smaller than offset or gain error — but it is non-zero and accumulates over extended operation.
+
+**Source 2 — Incorrect $Q_\text{max}$**: The Coulombic efficiency $\eta_i$ and the maximum capacity $Q_\text{max}$ in equation (10.1) must be correct for the algorithm to work. Both change as the battery ages. If $Q_\text{max}$ has decreased from 3.0 Ah to 2.7 Ah due to degradation (SOH = 90%) but the BMS is still using the original 3.0 Ah value, every charge and discharge operation is miscounted by 10% — a systematic error that persists until $Q_\text{max}$ is recalibrated.
+
+**Source 3 — Unknown initial SOC**: Equation (10.1) requires a known starting SOC. If the battery has been resting for an unknown time (the car was parked, the grid storage system was offline for maintenance), the initial SOC must either be assumed or measured from OCV. Any error in the initial SOC is not a drift — it is a fixed offset bias that persists forever until corrected.
+
+### The Compounding Problem
+
+These three error sources compound. After a day of driving with a 50 mA offset error, a 0.5% gain error, and an initial SOC uncertainty of 2%, the SOC estimate can be off by 5–10% or more. In a 60 kWh EV pack, a 5% SOC error corresponds to 3 kWh of misattributed energy — the difference between "I have enough range to reach my destination" and "I do not." This is not a theoretical concern; early BMS implementations with inadequate current sensor calibration and no correction mechanisms produced exactly these kinds of errors, manifest as range anxiety and unexpected low-battery warnings.
+
+The obvious engineering response is to periodically recalibrate. When the battery reaches a known reference state — fully charged (SOC = 100%) or fully discharged (SOC = 0%) — the accumulated error can be reset. This is why some EV BMS systems use a "balancing charge" to a fixed upper voltage on a regular cycle: it recalibrates the SOC estimate by driving the pack to a known endpoint. But this requires the vehicle to be fully charged (or fully discharged) periodically, which is not always practical or desirable (deep discharge accelerates degradation, as we established in Chapter 7). A better approach is to recalibrate continuously during normal operation, using OCV measurements during rest periods — which leads to the voltage-based approach of Section 10.2, and ultimately to the model-based fusion approach of Section 10.3.
+
+---
+
+## OCV-Based SOC Lookup and Why Flat OCV Curves Break It
+
+The second pillar of SOC estimation is the relationship between open-circuit voltage and state of charge. If you know the OCV curve — $E_\text{OCV}(\text{SOC})$ — and you can measure the OCV, you can invert the relationship to get the SOC:
+
+$$\hat{\text{SOC}} = f^{-1}(E_\text{OCV}) \tag{10.2}$$
+
+where $f^{-1}$ denotes the inverse of the OCV-SOC function.
+
+In principle, this provides a recalibration anchor for coulomb counting: whenever the battery has been at rest long enough for the terminal voltage to relax to true OCV, you can read off the SOC from the OCV-SOC curve and reset the coulomb counting estimate. In practice, several complications limit this approach.
+
+### The Rest Time Problem
+
+As we established in Chapters 2 and 3, the terminal voltage after current stops is not immediately equal to the OCV. The concentration overpotentials and activation overpotentials take time to relax — on the order of minutes to hours for diffusion-limited polarisation in thick electrodes. A BMS that reads voltage 30 seconds after the current stops and looks up the result on the OCV curve will get a wrong answer: the voltage is still above OCV for charging (or below OCV for discharging) by the residual overpotential, and the SOC estimate will be biased.
+
+For automotive applications, rest periods are irregular and often short. A driver who parks for 5 minutes and then drives again does not give the battery time to reach true OCV equilibrium. Some BMS algorithms use a **relaxation model** — estimating how much of the overpotential has decayed after a given rest time, and correcting the voltage measurement accordingly — but this requires an accurate model of the overpotential decay dynamics, which is itself temperature- and SOC-dependent.
+
+### The OCV Curve Sensitivity
+
+Assuming the battery has rested long enough for the terminal voltage to approximate the true OCV, we face a second question: how precisely can we convert that OCV reading into an SOC value? This depends entirely on the shape of the OCV-SOC curve, and the key quantity is its slope.
+
+The intuition is straightforward. Think of the OCV-SOC curve as a ruler that maps voltage readings to SOC values. A steep curve is like a ruler with closely-spaced, clearly distinguishable markings — a small change in SOC produces a large, easily measurable change in voltage, so even a slightly noisy voltage reading still maps to a narrow range of SOC. A flat curve is like a ruler with markings so far apart that you cannot tell where you are between them — many different SOC values all produce essentially the same voltage, and the voltage measurement tells you almost nothing.
+
+Let us make this quantitative. If the voltage measurement has an uncertainty of $\sigma_V$ (from sensor noise and residual relaxation error), the resulting SOC uncertainty is:
+
+$$\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \tag{10.3}$$
+
+A steep OCV curve (large $|dE_\text{OCV}/d\text{SOC}|$) gives small SOC uncertainty from a given voltage uncertainty. A flat OCV curve (small $|dE_\text{OCV}/d\text{SOC}|$) gives large SOC uncertainty. In the limit of a perfectly flat plateau, $dE_\text{OCV}/d\text{SOC} = 0$ and equation (10.3) gives infinite SOC uncertainty — voltage provides literally no information about SOC.
+
+For a practical NMC/graphite cell, $dE_\text{OCV}/d\text{SOC}$ varies significantly with SOC. In the steepest regions (below 15% and above 85% SOC), the slope can exceed 2000 mV per unit SOC. In the flattest mid-SOC region — near the graphite Stage 2/Stage 2L transition around 40–55% SOC — it can dip to roughly 300–600 mV per unit SOC. Taking a conservatively flat mid-range value of 500 mV per unit SOC (i.e., a 500 mV OCV change per 100% SOC change), with a voltage measurement uncertainty of $\sigma_V = 5$ mV (a realistic value for a well-calibrated cell voltage monitor with 16-bit ADC resolution over a 4 V range):
+
+$$\sigma_\text{SOC,NMC} = \frac{0.005}{0.5} = 0.01 = 1\%$$
+
+A 1% SOC uncertainty from OCV measurement alone is quite good — this is why OCV-based recalibration works well for NMC cells across most of the SOC range, and why NMC is considered "BMS-friendly." Even in the flattest mid-range region, the OCV measurement provides a useful correction to coulomb counting.
+
+For LFP/graphite, the flat plateau region (spanning roughly 20–80% SOC) has $dE_\text{OCV}/d\text{SOC} \approx 15$–50 mV per unit SOC — the Fe²⁺/Fe³⁺ two-phase reaction produces an extremely flat voltage characteristic near 3.3 V:
+
+$$\sigma_\text{SOC,LFP} = \frac{0.005}{0.025} = 0.20 = 20\%$$
+
+A 20% SOC uncertainty from a 5 mV voltage error renders the OCV measurement essentially useless for SOC estimation in the LFP plateau. Only at the top and bottom of the SOC range, where the curve steepens dramatically (slopes exceeding 1000 mV per unit SOC), does OCV become informative. For the majority of the LFP cell's operating range, a BMS must rely entirely on coulomb counting — with all the drift problems that implies.
+
+### The SIB Hard Carbon Flat Plateau: A More Severe Version of the LFP Problem
+
+For a sodium-ion cell with a hard carbon anode, the full-cell OCV during the plateau region of hard carbon sodiation (approximately 20–50% of the total cell capacity, as established in Chapter 6) is nearly constant. The full cell voltage in this region is approximately the cathode OCV (which itself may be relatively flat for some cathode chemistries) minus the nearly-zero anode potential — producing a doubly-flat region in the full cell OCV.
+
+The numbers are stark. For a representative HiNa BC-1 cell (O3 layered oxide cathode / hard carbon anode), published GITT data show the full-cell OCV varying by approximately 30–50 mV over the SOC range corresponding to the plateau region — spanning roughly 25–30% of total capacity. This gives:
+
+$$\frac{dE_\text{OCV}}{d\text{SOC}} \approx \frac{40 \times 10^{-3}}{0.27} \approx 148 \text{ mV per unit SOC}$$
+
+At first glance, 148 mV per unit SOC is only 2–4× lower than NMC's flattest mid-range region — not the order-of-magnitude deficit we might have expected. So where is the problem? The answer is that the average slope across the entire plateau masks the local behaviour within it. Let us be more careful.
+
+The deeper problem for SIBs is not the average slope per se but that the plateau **anchors** the voltage to a narrow range near 3.1–3.15 V cell OCV regardless of where within the plateau the cell is. When the cell is in the plateau region, the BMS cannot distinguish between 30% SOC and 55% SOC from voltage alone — both produce approximately the same OCV. The 148 mV/unit SOC slope means a 5 mV voltage measurement error gives a 3.4% SOC uncertainty in that region, which sounds acceptable until you realise that the critical uncertainty is not the slope within the region but the ability to determine which plateau the cell is on — slope region or plateau region — and where within the plateau the cell is.
+
+The real challenge is the shape discontinuity. When transitioning between the slope region (large $dE/d\text{SOC}$) and the plateau region (small $dE/d\text{SOC}$), the OCV drops steeply and then flattens. A BMS observing the transition into the plateau from the slope region knows the cell has entered the plateau, but from that moment forward loses the ability to track progress through the plateau using voltage. The cell has essentially disappeared into a voltage dead zone that may last through 25–50% of its remaining capacity.
+
+This is compounded by the **hysteresis** in the hard carbon OCV curve. The slope region and plateau region both exhibit hysteresis between charge and discharge (as discussed in Chapter 6) — the cell OCV at a given SOC during charging is noticeably different from the OCV at the same SOC during discharging. A BMS using a single OCV-SOC table without distinguishing charge from discharge direction introduces a systematic SOC error that can reach 5–10% in the hard carbon plateau region. For SIB BMS algorithms, maintaining separate OCV curves for charge and discharge, and tracking the recent current direction to select the appropriate curve, is necessary but not sufficient — the hysteresis itself is a continuous function of the most recent cycling history, not a simple two-state switch.
+
+**The practical conclusion**: For SIB cells, OCV-based SOC correction is available and useful at the extremes of the SOC range (below ~15% and above ~85% SOC, where both the hard carbon slope region and the cathode OCV are changing significantly). Over the middle 70% of the SOC range — dominated by the hard carbon plateau — the BMS must rely almost entirely on coulomb counting. The consequences for algorithm design are significant and will be discussed further in Section 10.3 and in Chapter 13.
+
+---
+
+## Model-Based Estimation: The ECM + Kalman Filter
+
+The limitations of coulomb counting (drift without correction) and OCV lookup (works poorly on flat curves) motivate a more principled approach: a dynamic model that describes how the battery's terminal voltage responds to the current profile, combined with an optimal filter that continuously fuses the model prediction with the voltage measurement to correct the SOC estimate.
+
+The dominant framework for this approach in commercial BMS applications is the **equivalent circuit model (ECM)** paired with an **extended Kalman filter (EKF)**. This pairing was systematised and popularised by Gregory Plett in a series of papers beginning in 2004 and subsequently in his textbook *Battery Management Systems* — the primary source recommended in the chapter plan.
+
+### The Equivalent Circuit Model
+
+An equivalent circuit model represents the battery's electrical behaviour using a circuit consisting of an ideal voltage source (the OCV), a series resistance (the ohmic resistance $R_0$), and one or more parallel RC networks (representing the dynamic polarisation response). The most commonly used form is the **second-order RC model** (also called the **two-RC model** or **Dual Polarization model**):
+
+```text
+      R0         R1          R2
+  +--/\/\/---+--/\/\---+--/\/\---+
+  |          |         |         |
+ OCV(SOC)   C1        C2       Terminal
+  |          |         |         |
+  +----------+---------+---------+
+```
+
+Each element in this circuit has a clear physical counterpart. The voltage source $E_\text{OCV}(\text{SOC})$ represents the thermodynamic equilibrium voltage — a nonlinear function of SOC determined by the OCV-SOC curve from Chapter 3. It is the voltage you would measure at the terminals after infinite rest.
+
+The series resistance $R_0$ is the **ohmic resistance**: the sum of the ionic resistance of the electrolyte, the electronic resistance of the current collectors and electrode particles, and the contact resistances at interfaces. When current begins to flow, $R_0$ produces an instantaneous voltage drop — no time constant, just Ohm's law.
+
+The first RC pair ($R_1$, $C_1$) represents the **activation polarisation** — the charge-transfer dynamics at the electrode-electrolyte interface that we described with the Butler-Volmer equation in Chapter 2. Why does a charge-transfer process look like an RC circuit? Because the electrode-electrolyte interface has a double-layer capacitance $C_\text{dl}$ (the capacitor formed by the charge separation at the interface), and the charge-transfer reaction has a finite resistance $R_\text{ct}$ (the linearised Butler-Volmer slope). Together they form a parallel RC with a time constant $\tau_1 = R_1 C_1$, typically 1–30 seconds for lithium-ion cells. This is the same double-layer model you encounter in EIS analysis (Chapter 3, Section 3.10).
+
+The second RC pair ($R_2$, $C_2$) represents the **concentration polarisation** — the slow buildup and relaxation of ion concentration gradients inside the electrode particles and the electrolyte. This process is fundamentally diffusive (governed by Fick's law, as discussed in Chapter 2), and a diffusion process is not truly an RC circuit — it is more accurately modeled as a transmission line, with an infinite number of infinitesimal RC elements in cascade. The single RC pair is an approximation that captures the dominant time constant of the diffusion response, typically $\tau_2 = R_2 C_2 = 30$–600 seconds. It is a useful engineering approximation that sacrifices the fine structure of the diffusion impedance (the Warburg tail visible in EIS data) for computational tractability.
+
+The terminal voltage predicted by this model is:
+
+$$V_\text{terminal}(t) = E_\text{OCV}(\text{SOC}) - R_0 \cdot i(t) - V_{C_1}(t) - V_{C_2}(t) \tag{10.4}$$
+
+where $V_{C_1}$ and $V_{C_2}$ are the voltages across the two capacitors, governed by:
+
+$$\dot{V}_{C_1} = -\frac{V_{C_1}}{R_1 C_1} + \frac{i}{C_1} = -\frac{V_{C_1}}{\tau_1} + \frac{i}{C_1} \tag{10.5}$$
+
+$$\dot{V}_{C_2} = -\frac{V_{C_2}}{R_2 C_2} + \frac{i}{C_2} = -\frac{V_{C_2}}{\tau_2} + \frac{i}{C_2} \tag{10.6}$$
+
+These two differential equations describe the charge/discharge of the polarisation capacitors in response to the applied current. At steady state (constant current for $t \gg \tau_1, \tau_2$), $V_{C_j} = R_j \cdot i$, and the total steady-state voltage drop across the RC networks is $R_1 i + R_2 i$, consistent with the DC polarisation overpotential.
+
+### The State-Space Formulation
+
+To apply the Kalman filter, we need the ECM in discrete-time state-space form. Recall from your controls coursework that a state-space model describes a dynamic system by choosing a set of internal variables — the **state vector** $\mathbf{x}$ — that fully characterise the system's memory (everything the system "remembers" from the past that affects its future behaviour). The state evolves according to a transition equation ($\mathbf{x}(k) = f(\mathbf{x}(k-1), u(k-1))$), and the measurable output is a function of the state ($y(k) = h(\mathbf{x}(k), u(k))$). For our ECM, the "input" $u$ is the current $i$, the "output" $y$ is the terminal voltage, and the internal states are the quantities that carry memory from one time step to the next.
+
+What are those quantities? The SOC itself is one — it tracks the accumulated charge and determines the OCV. The voltages across the polarisation capacitors ($V_{C_1}$ and $V_{C_2}$) are the others — they carry the memory of recent current history and determine the dynamic voltage drops. Together, these three quantities fully characterise the battery's electrical state at any instant. Define the state vector:
+
+$$\mathbf{x}(k) = \begin{bmatrix} \text{SOC}(k) \\ V_{C_1}(k) \\ V_{C_2}(k) \end{bmatrix} \tag{10.7}$$
+
+The state transition equations (using first-order Euler discretisation with sampling interval $\Delta t$, or the exact zero-order hold for the RC equations) are:
+
+$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i \cdot i(k-1) \cdot \Delta t}{Q_\text{max}} \tag{10.8}$$
+
+$$V_{C_1}(k) = e^{-\Delta t/\tau_1} V_{C_1}(k-1) + R_1(1 - e^{-\Delta t/\tau_1}) i(k-1) \tag{10.9}$$
+
+$$V_{C_2}(k) = e^{-\Delta t/\tau_2} V_{C_2}(k-1) + R_2(1 - e^{-\Delta t/\tau_2}) i(k-1) \tag{10.10}$$
+
+The output (measurement) equation is:
+
+$$V_\text{terminal}(k) = E_\text{OCV}(\text{SOC}(k)) - R_0 \cdot i(k) - V_{C_1}(k) - V_{C_2}(k) + w(k) \tag{10.11}$$
+
+where $w(k)$ is the measurement noise (voltage sensor noise).
+
+In compact form, this is a nonlinear state-space system:
+
+$$\mathbf{x}(k) = \mathbf{A}\mathbf{x}(k-1) + \mathbf{B}i(k-1) + \mathbf{q}(k-1) \tag{10.12}$$
+$$y(k) = h(\mathbf{x}(k), i(k)) + w(k) \tag{10.13}$$
+
+where $\mathbf{A}$ and $\mathbf{B}$ are the state transition and input matrices encoding equations (10.8)–(10.10), $h(\cdot)$ is the nonlinear measurement function in equation (10.11), $\mathbf{q}$ is the process noise (modelling uncertainty in the state equations, including current sensor error), and $w$ is the measurement noise.
+
+The system is nonlinear because $E_\text{OCV}(\text{SOC})$ is a nonlinear function of SOC. This is what requires the **Extended** Kalman filter rather than the standard (linear) Kalman filter.
+
+If your controls coursework covered observability, you may recognise the flat-OCV problem as a loss of observability. A system is observable if its internal state can be uniquely determined from a finite history of output measurements. For the ECM state-space model, the observability matrix depends on the Jacobian $\mathbf{C}$, which contains $dE_\text{OCV}/d\text{SOC}$ as its first element. When this derivative approaches zero, the system loses observability for the SOC state — the voltage output becomes insensitive to SOC, and no amount of voltage data can determine where the cell is within the plateau. The RC polarisation states $V_{C_1}$ and $V_{C_2}$ remain observable (their effect on voltage is always present through the $-1$ entries in $\mathbf{C}$), but SOC becomes a "hidden" state that the output cannot see. This is not a limitation of the EKF algorithm — it is a property of the physical system, and no algorithm can extract information that the physics does not provide.
+
+### The Extended Kalman Filter
+
+The standard Kalman filter is an optimal recursive estimator for linear systems with Gaussian noise. A common misconception deserves attention here. The Kalman filter is "optimal" in a very specific sense: it minimises the mean-squared estimation error among all linear estimators, given a linear system with Gaussian noise and perfectly known model parameters. Three caveats follow immediately. First, the ECM is not linear — the OCV function is nonlinear — so we use the *Extended* KF, which linearises at each step and is therefore *not* guaranteed to be optimal. It is a good approximation when the nonlinearity is mild (which it usually is, except in the plateau region where the OCV curve has a sharp slope change). Second, the noise is not truly Gaussian — current sensor errors have systematic components (bias, temperature drift) that violate the Gaussian assumption. Third, and most importantly, the filter is only as good as its model: if the ECM parameters are wrong (because the cell has aged, or the temperature has changed, or the OCV table is inaccurate), the "optimal" filter produces suboptimal results. In practice, the EKF works well not because it is optimal in the mathematical sense, but because it is robust — it degrades gracefully when assumptions are violated, and it can be augmented with adaptive parameter estimation (Section 10.4) to track slow model changes.
+
+For the nonlinear ECM, we use the Extended Kalman Filter (EKF), which linearises the nonlinear measurement function around the current state estimate at each time step. The EKF proceeds in two alternating steps:
+
+**Prediction step** (propagate the state forward using the model):
+
+$$\hat{\mathbf{x}}^-(k) = \mathbf{A}\hat{\mathbf{x}}(k-1) + \mathbf{B}i(k-1) \tag{10.14}$$
+
+$$\mathbf{P}^-(k) = \mathbf{A}\mathbf{P}(k-1)\mathbf{A}^T + \mathbf{Q} \tag{10.15}$$
+
+where $\hat{\mathbf{x}}^-$ is the a priori (before measurement) state estimate, $\mathbf{P}^-$ is the a priori error covariance matrix (a $3 \times 3$ matrix for the two-RC model), and $\mathbf{Q}$ is the process noise covariance matrix (encoding our uncertainty in the state equations themselves).
+
+**Update step** (correct the prediction using the new voltage measurement):
+
+First, compute the linearised measurement matrix $\mathbf{C}(k)$ — the Jacobian of the measurement function $h$ with respect to the state, evaluated at the current estimate:
+
+$$\mathbf{C}(k) = \frac{\partial h}{\partial \mathbf{x}}\bigg|_{\hat{\mathbf{x}}^-(k)} = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}}\bigg|_{\hat{\text{SOC}}^-} & -1 & -1 \end{bmatrix} \tag{10.16}$$
+
+The first element of $\mathbf{C}$ is the slope of the OCV curve evaluated at the current SOC estimate — and this is exactly where the flat-OCV problem enters the Kalman filter. If $dE_\text{OCV}/d\text{SOC} \approx 0$, the measurement matrix has near-zero first element, meaning the voltage measurement carries almost no information about SOC. The filter correctly "ignores" the voltage for SOC correction in this region and relies on the prediction (coulomb counting) instead.
+
+Then compute the Kalman gain $\mathbf{K}(k)$:
+
+$$\mathbf{K}(k) = \mathbf{P}^-(k)\mathbf{C}^T(k)\left[\mathbf{C}(k)\mathbf{P}^-(k)\mathbf{C}^T(k) + R\right]^{-1} \tag{10.17}$$
+
+where $R$ is the measurement noise variance (the variance of the voltage sensor noise $w$). Note the notational overload: this $R$ is the scalar noise variance in the Kalman filter equations — not the resistance parameters $R_0$, $R_1$, $R_2$ of the ECM. Some textbooks use $\sigma_v^2$ or $R_w$ to avoid this collision; we follow Plett's convention and use $R$ for the measurement noise, relying on context to distinguish it from the circuit resistances.
+
+The Kalman gain $\mathbf{K}$ determines how much the state estimate should be corrected based on the measurement residual (the discrepancy between the measured voltage and the predicted voltage). It is the optimal trade-off between trusting the model prediction and trusting the measurement: when $\mathbf{P}^-$ is large (the state estimate is uncertain) relative to $R$ (the measurement noise), the gain is high and the measurement correction is large. When $\mathbf{P}^-$ is small (the estimate is confident) or $R$ is large (the sensor is noisy), the gain is low and the estimate barely moves.
+
+Finally, update the state estimate and covariance:
+
+$$\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)\left[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))\right] \tag{10.18}$$
+
+$$\mathbf{P}(k) = [\mathbf{I} - \mathbf{K}(k)\mathbf{C}(k)]\mathbf{P}^-(k) \tag{10.19}$$
+
+The term $y(k) - h(\hat{\mathbf{x}}^-(k), i(k))$ is the **innovation** — the difference between what was measured and what the model predicted. If the innovation is consistently non-zero in a systematic direction (always positive, always increasing), it signals that the model is biased — either the OCV curve is wrong, the resistance parameters are wrong, or the $Q_\text{max}$ is wrong. The innovation signal is a rich diagnostic tool for identifying model parameter errors.
+
+### Intuition for the Kalman Filter
+
+Let me offer the intuitive framing that makes the EKF feel natural rather than mechanical.
+
+Think of the EKF as a person trying to navigate in a fog using two sources of information: a map and a compass. The map (the ECM state equations) says "if you were at position $x$ and walked in direction $\theta$ for time $t$, you should now be at position $x'$." The compass (the voltage measurement) says "your current direction to the lighthouse is $\phi$." Neither is perfectly reliable — the map might be slightly wrong (process noise), and the compass might jitter (measurement noise). The optimal navigator takes both pieces of information and forms a weighted average: if the map is more trustworthy at this moment, rely more on the prediction; if the compass is giving a clear signal and the map is uncertain, trust the compass more.
+
+The Kalman gain $\mathbf{K}$ is precisely this trust weighting, computed optimally at each step. The error covariance $\mathbf{P}$ tracks how uncertain the current estimate is — a large diagonal element in $\mathbf{P}$ corresponding to SOC means the SOC estimate is uncertain, which increases the Kalman gain for SOC, which means the next voltage measurement will move the SOC estimate more aggressively.
+
+The flat OCV curve (small $dE/d\text{SOC}$ in equation 10.16) is equivalent to a navigator in fog whose compass is giving nearly identical readings regardless of which direction the lighthouse is in — the compass is still measuring something, but the information about position is nearly zero. The EKF correctly concludes that the lighthouse measurement is nearly uninformative about position and relies more heavily on dead reckoning (the model). The SOC uncertainty $\mathbf{P}_{11}$ grows throughout the flat-curve region because no good correction mechanism is available.
+
+If the navigator analogy does not resonate, here is a signal-processing framing that may feel more natural. The EKF is a sensor-fusion algorithm — the same class of algorithm used in IMU/GPS fusion for navigation, or in combining accelerometer and gyroscope data in a smartphone. You have two "sensors" that both report on the same hidden quantity (SOC):
+
+Sensor A is the current integral (coulomb counting). It has excellent short-term precision — over a few seconds, the accumulated charge tells you how much SOC has changed with high accuracy. But it has unbounded long-term drift, like an open-loop integrator with a DC offset at its input.
+
+Sensor B is the voltage measurement, interpreted through the OCV curve. It provides an absolute reference (no drift), but its precision depends on the OCV slope and is contaminated by polarisation transients. It is like a position sensor with bounded noise but a signal-to-noise ratio that varies with operating point.
+
+The EKF is the optimal way to combine a drifting integrator with a noisy absolute reference — exactly the problem of fusing an inertial measurement unit (high-bandwidth, drifting) with a GPS receiver (low-bandwidth, absolute). If you have studied complementary filters in signal processing, the EKF is their principled, adaptive, model-based generalisation. The Kalman gain $\mathbf{K}$ adjusts the fusion weights at every time step based on how informative each "sensor" is at that moment — and in the flat-OCV region, Sensor B's SNR drops to near zero, leaving the estimator to coast on Sensor A alone.
+
+### ECM Parameter Identification
+
+The ECM parameters — $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ (or equivalently $R_1$, $\tau_1$, $R_2$, $\tau_2$), and the OCV-SOC curve — must be identified from experimental data. The standard approach is:
+
+**OCV-SOC curve**: Measured by GITT (Chapter 3, Section 3.10) at multiple temperatures. The table $E_\text{OCV}$ vs. SOC is stored in BMS memory as a lookup table, typically sampled at 1% SOC intervals. A polynomial or spline fit allows interpolation and differentiation (to compute $dE_\text{OCV}/d\text{SOC}$ needed for the EKF linearisation).
+
+**$R_0$**: Extracted from the instantaneous voltage drop at the onset of HPPC current pulses (Section 3.10). $R_0 = |\Delta V_\text{instant}| / I$.
+
+**$R_1, \tau_1, R_2, \tau_2$**: Extracted from the voltage relaxation after HPPC pulses, fitting the exponential decay:
+
+$$V(t) = V_\infty + A_1 e^{-t/\tau_1} + A_2 e^{-t/\tau_2} \tag{10.20}$$
+
+where $A_j = R_j \cdot I$ and $V_\infty$ is the final rested OCV value.
+
+All parameters are functions of SOC and temperature, so the identification is performed at multiple SOC setpoints (typically 10%, 20%, ..., 90%) and multiple temperatures (typically −20°C, 0°C, 10°C, 25°C, 40°C). The resulting parameter tables are stored in BMS memory and interpolated during runtime.
+
+For a full ECM characterisation of a single cell chemistry, the experimental effort is substantial: GITT at 5 temperatures × 9 SOC points (45 conditions) plus HPPC at the same 45 conditions, giving 90 individual test events in total — each requiring careful setup, equilibration, and post-processing. This is the hidden cost of deploying a model-based BMS — the upfront characterisation work is significant.
+
+### Comparing SOC Estimation Approaches
+
+Before examining how the EKF performs specifically for SIBs, it is worth pausing to compare the three SOC estimation approaches we have developed. The table below summarises their key characteristics.
+
+| Property | Coulomb Counting | OCV Lookup | ECM + EKF |
+| --- | --- | --- | --- |
+| Information source | Current sensor | Voltage sensor + OCV curve | Both, fused optimally |
+| Accuracy over short intervals | Excellent | N/A (requires rest) | Excellent |
+| Accuracy over long intervals | Poor (unbounded drift) | Good (absolute reference) | Good (drift corrected) |
+| Requires rest period? | No | Yes (minutes to hours) | No |
+| Sensitivity to flat OCV curves | None | Fatal (no information) | Degraded (reverts to coulomb counting) |
+| Computational cost | Trivial (one multiply-add) | Trivial (table lookup) | Moderate (matrix operations per time step) |
+| Requires model parameterisation? | Only $Q_\text{max}$, $\eta_i$ | OCV-SOC table | Full ECM parameters at multiple SOC/T |
+| Initial SOC error correction | None | Yes (if OCV informative) | Yes (converges within seconds to minutes) |
+
+The EKF's strength is clear: it inherits the short-term precision of coulomb counting and the long-term stability of OCV-based correction, at the cost of computational complexity and upfront parameterisation effort. Its weakness — the flat-OCV region — is inherited directly from the OCV lookup and is fundamental, not algorithmic.
+
+### The EKF for SIBs: What Changes
+
+The EKF framework applies identically to SIBs. The state vector is the same (SOC, $V_{C_1}$, $V_{C_2}$), the filter equations are the same, and the OCV-SOC curve is simply replaced with the SIB cell's OCV-SOC curve. The difference is in the performance of the filter during the flat OCV region.
+
+As we showed in Section 10.2, when $dE_\text{OCV}/d\text{SOC} \approx 0$, the measurement matrix $\mathbf{C}$ has near-zero first element. The Kalman gain for SOC drops to near zero, and the SOC uncertainty $\mathbf{P}_{11}$ grows unboundedly during the plateau. Simulations of EKF performance on SIB cells with hard carbon anodes consistently show that SOC error grows during the plateau region and is only corrected when the cell exits the plateau into the slope region (at either end of the SOC range).
+
+Several algorithmic modifications have been proposed in the research literature to improve EKF performance for flat-OCV batteries, and it is worth surveying the landscape briefly.
+
+The **sigma-point (unscented) Kalman filter (UKF)** more accurately propagates non-Gaussian uncertainty through the nonlinear OCV function by using carefully chosen sample points rather than the EKF's first-order Taylor linearisation. This can reduce divergence during the flat region compared to the EKF, but it is an incremental improvement — the fundamental information deficit remains, because no amount of statistical sophistication can extract SOC information from a voltage that genuinely does not depend on SOC.
+
+The **particle filter** takes a different approach entirely: it represents the state distribution with a cloud of weighted "particles" (Monte Carlo samples) rather than a single Gaussian. This allows the filter to represent multimodal distributions — useful when the cell might plausibly be anywhere within a 30-percentage-point-wide plateau. The cost is computational: a particle filter with enough particles for good performance (typically 100–1000) requires far more computation per time step than the EKF, which is challenging for real-time BMS implementation on the low-power microcontrollers that dominate automotive BMS hardware.
+
+A more physics-informed approach uses **online electrochemical impedance spectroscopy (EIS)** to extract SOC-dependent information beyond the DC voltage. The Warburg impedance component — which reflects solid-state diffusion within the electrode particles — changes with the local ion concentration and therefore with SOC, even in the plateau region where the DC voltage is flat. If the BMS hardware can inject a small AC perturbation and measure the impedance at specific frequencies, this provides an additional "sensor channel" for SOC that is independent of the OCV slope. The approach is promising but requires EIS measurement hardware beyond what most commercial BMS systems include today.
+
+Finally, **dual-model frameworks** take a pragmatic engineering approach: they run separate state estimators for the slope and plateau regions, with transition logic to switch between them based on the observed OCV dynamics. The slope-region estimator uses the standard EKF with full voltage correction; the plateau-region estimator relies on a carefully calibrated coulomb counter with temperature-dependent and ageing-dependent corrections applied to $Q_\text{max}$ and $\eta_i$. This approach sacrifices elegance for robustness and is the closest to what current commercial SIB BMS implementations use.
+
+The SOC estimation challenge for SIBs is one of the most practically important open problems in SIB systems engineering, and it is a legitimate target for EE-focused simulation research. We will return to it in Chapter 13.
+
+---
+
+## SOH Estimation: Capacity-Based and Resistance-Based
+
+SOC estimation tells you where the battery is right now. **State-of-health (SOH) estimation** tells you how the battery has changed from its original specification — the long-term degradation state that determines remaining useful life and future performance limits.
+
+SOH estimation is harder than SOC estimation for a fundamental reason: SOC changes on the timescale of minutes to hours (a single charge/discharge cycle), while SOH changes on the timescale of months to years (hundreds to thousands of cycles). This temporal separation means that SOH cannot be estimated from a single measurement event — it must be tracked over many cycles.
+
+As defined in Chapter 3, there are two primary SOH metrics:
+
+$$\text{SOH}_Q = \frac{Q_\text{max}(t)}{Q_\text{rated}} \times 100\% \quad \text{(capacity-based)} \tag{10.21}$$
+
+$$\text{SOH}_R = \frac{R_0(t=0)}{R_0(t)} \times 100\% \quad \text{(resistance-based)} \tag{10.22}$$
+
+Both must be estimated because they track different degradation modes (as we established in Chapter 7): LLI primarily drives capacity fade, while impedance growth (from SEI growth and particle cracking) drives resistance rise. A cell can have high SOH$_Q$ and low SOH$_R$ (or vice versa), and the correct operational response differs.
+
+### Capacity-Based SOH Estimation
+
+The maximum capacity $Q_\text{max}$ can be measured directly by performing a slow full charge-discharge cycle at C/20 and integrating the current. This gives the most accurate value but requires a full charge-discharge sequence — not always practical during normal operation.
+
+For online SOH estimation (without dedicated reference tests), the BMS must estimate $Q_\text{max}$ from partial charge and discharge data seen during normal operation. The standard approach is:
+
+**Direct integration between known reference points**: If the BMS observes the battery go from a rest-state OCV reading of $V_1$ (corresponding to SOC$_1$ from the OCV curve) to rest-state OCV reading of $V_2$ (corresponding to SOC$_2$), with total coulombs $\Delta Q$ flowing between the two rest events:
+
+$$Q_\text{max} = \frac{|\Delta Q| \cdot \eta_i}{|\text{SOC}_2 - \text{SOC}_1|} \tag{10.23}$$
+
+where $\Delta Q$ is the total charge throughput (in Ah) measured between the two rest events, and $\eta_i$ accounts for the fraction of charge that actually changes the SOC (versus charge consumed by side reactions). For discharge events where $\eta_i \approx 1$, this simplifies to $Q_\text{max} = |\Delta Q| / |\Delta\text{SOC}|$. The absolute value signs avoid sign confusion across different current conventions.
+
+This is accurate when the two OCV reference points are well separated in SOC (otherwise the denominator is small and the estimate is noisy), and when the OCV measurements are accurate (the flat-OCV problem applies here too — if both reference points are in the plateau region, the denominator $\text{SOC}_2 - \text{SOC}_1$ cannot be determined from OCV alone).
+
+**Adaptive integration via EKF**: If $Q_\text{max}$ is included as an additional state variable in the EKF (turning the 3-state SOC estimator into a 4-state joint SOC/capacity estimator), the filter can update the capacity estimate online as new current-voltage data accumulates. The process noise for the $Q_\text{max}$ state is set to a very small value (capacity changes slowly), while the capacity update is driven by the accumulated innovation between measured and predicted voltage. This "adaptive EKF" or "joint EKF" approach is the state of the art for online capacity tracking.
+
+**Incremental capacity analysis (ICA)**: As discussed in Chapter 7, the $dQ/dV$ curve is a diagnostic fingerprint for degradation. The area under specific peaks corresponds to specific portions of capacity, and as capacity fades, the peak areas decrease proportionally. An online ICA algorithm that tracks peak areas over cycles provides both capacity estimation and degradation mode identification — a rich but computationally demanding approach.
+
+### Resistance-Based SOH Estimation
+
+The ohmic resistance $R_0$ and the charge-transfer resistance $R_\text{ct}$ can be estimated from HPPC-style current pulses that occur naturally in a normal operating cycle. Every time the current changes significantly (an acceleration event in an EV, a step change in grid power demand), a short pulse is effectively applied to the battery and the voltage response can be used to extract impedance information.
+
+For real-time $R_0$ estimation:
+
+$$\hat{R}_0(k) = \frac{|V(k^+) - V(k^-)|}{\Delta I} \tag{10.24}$$
+
+where $V(k^+)$ is the voltage immediately after a current step of magnitude $\Delta I$ at time $k$, and $V(k^-)$ is the voltage immediately before. This is the instantaneous ohmic resistance extracted from the voltage jump at current steps — a technique that works whenever the current changes abruptly, which happens constantly during real drive cycles or variable-power grid operation.
+
+The estimated $R_0$ sequence is noisy at any single event but can be filtered with a **recursive least squares (RLS)** estimator or an EKF to produce a slowly-evolving estimate that tracks the true $R_0$ through aging. RLS is a classic adaptive filtering algorithm — it maintains a running estimate of a parameter (here, $R_0$) by incorporating each new observation with a weight that diminishes as the estimate becomes more confident. If you studied the Wiener filter or LMS adaptive filter in a signals course, RLS is their faster-converging, deterministic cousin: it uses the full inverse correlation matrix rather than a stochastic gradient, giving optimal convergence at each step at the cost of slightly more computation. For resistance tracking, RLS is well-suited because $R_0$ changes slowly (over weeks to months) and each new current-step event provides one fresh data point. The increase in estimated $R_0$ over the pack's life is a direct measure of resistance-based SOH degradation.
+
+For $R_\text{ct}$ and the RC time constants, online estimation is harder because it requires observing the full polarisation dynamics over time windows of 30–600 seconds — longer than many operational events. Dedicated periodic test pulses (inserted by the BMS during rest periods, for example during stationary charging with a deliberate current interruption) can provide cleaner estimates, but at the cost of small energy losses from the test pulses.
+
+### SOH Fusion: Combining Capacity and Resistance
+
+The most complete SOH assessment combines capacity-based and resistance-based estimates. A simple but effective approach is the **SOH map**: a two-dimensional space with SOH$_Q$ on one axis and SOH$_R$ on the other, in which different regions correspond to different dominant degradation modes (following the Birkl et al. framework from Chapter 7). As the pack ages, the SOH trajectory through this space reveals which degradation mechanisms are active and how their relative contributions evolve.
+
+For example, a cell whose SOH trajectory moves primarily along the SOH$_Q$ axis (large capacity loss, small resistance increase) is dominated by LLI — likely SEI growth on the anode. A cell moving primarily along the SOH$_R$ axis (large resistance increase, modest capacity loss) may be dominated by cathode surface reconstruction or electrolyte oxidation. A cell moving diagonally (both capacity and resistance degrading proportionally) may have particle cracking driving both LAM and increased impedance from new SEI formation.
+
+The SOH map approach is used in sophisticated fleet management systems where tracking the degradation trajectory of individual cells helps predict maintenance needs and remaining service life. It connects directly to the degradation physics of Chapter 7 and the diagnostic tools of Chapter 3.
+
+---
+
+## Remaining Useful Life (RUL) Prediction
+
+If SOH tells you where the battery is on the degradation curve, **remaining useful life (RUL)** tells you how far it is from the end of that curve. RUL prediction is the forward projection of SOH estimation: given where the battery is today and how fast it has been degrading, when will it reach the end-of-life criterion (typically SOH$_Q$ = 80%)?
+
+RUL is the metric that connects battery management to system-level planning: when to schedule battery replacement in a fleet vehicle, when the warranty obligation expires, whether the pack has enough life remaining to justify an expensive repair, or whether to continue operating a grid storage system or retire it.
+
+### Model-Based RUL: Extrapolating the Degradation Trajectory
+
+The simplest RUL prediction extrapolates the current degradation trajectory forward in time. If the capacity-based SOH has been decreasing at an average rate of $\dot{s}$ (SOH units per cycle), and the current SOH is $s$, then the remaining life in cycles is:
+
+$$\text{RUL}_\text{cycles} = \frac{s - s_\text{EOL}}{|\dot{s}|} \tag{10.25}$$
+
+where $s_\text{EOL} = 0.80$ (80% SOH for the end-of-life criterion). If SOH = 0.92 and the average rate is $\dot{s} = -0.0001$ SOH per cycle, then $\text{RUL} = (0.92 - 0.80)/0.0001 = 1200$ cycles remaining.
+
+The critical limitation is that degradation is not constant-rate. As established in Chapter 7, the degradation rate typically accelerates in late life (the "knee" of the capacity-fade curve), as mechanical degradation exposes more fresh surface for SEI formation and creates a positive feedback loop. A linear extrapolation underestimates end-of-life time when the cell is in early life (before the knee) and overestimates it once the cell is past the knee.
+
+Better models use the physics-based degradation laws from Chapter 7 to project the trajectory more accurately. For calendar aging, the square-root-time model gives:
+
+$$Q_\text{max}(t) = Q_\text{rated} - B \exp(-E_a/RT) \sqrt{t} \tag{10.26}$$
+
+which can be extrapolated forward in time given the current temperature and SOC profile. For cycle aging:
+
+$$Q_\text{max}(N) = Q_\text{rated} - C \cdot N^z \cdot f(\text{DOD}) \cdot g(T) \tag{10.27}$$
+
+where $N$ is the number of equivalent full cycles and the functions $f$, $g$ encode the DOD and temperature stressors as established in Chapter 7. By fitting these models to the historical SOH trajectory and projecting forward under an assumed future operating profile, the BMS can produce a distribution of RUL estimates rather than a single point estimate.
+
+### Probabilistic RUL and Confidence Intervals
+
+Deterministic RUL prediction is useful but misleading — it implies a precision that does not exist. All degradation models have parameter uncertainty, the future operating profile is unknown, and there are stochastic elements in the degradation process itself (random particle cracking events, variable ambient temperature). A more honest representation gives a probability distribution over remaining useful life rather than a single number.
+
+The standard tools for probabilistic RUL estimation are **Bayesian approaches** (which update a prior distribution over degradation model parameters as new data accumulates) and **particle filters** (a Monte Carlo method well-suited to non-Gaussian distributions and nonlinear degradation models). Both produce a posterior distribution over SOH at each future time point, from which percentile RUL estimates (e.g., "80% probability that RUL > 200 cycles") can be extracted.
+
+This probabilistic framing is particularly important for fleet management. Rather than asking "when will this cell reach EOL?", the fleet manager asks "what is the probability that this cell survives to the next scheduled maintenance interval?" This probability can be computed from the RUL distribution and used to schedule predictive maintenance — replacing cells before they fail rather than after, at minimum total cost.
+
+### Data-Driven RUL: Machine Learning Approaches
+
+The alternatives to physics-based RUL prediction are data-driven approaches — machine learning models trained on large datasets of battery aging cycles. The most successful approaches include:
+
+**Gaussian process regression (GPR)**: A non-parametric Bayesian regression method — think of it as fitting an infinite ensemble of smooth curves to the data and averaging over them, weighted by how well each curve matches the observations. Unlike polynomial regression, GPR does not assume a fixed functional form for the capacity-fade trajectory; instead, it defines a prior distribution over possible curves through a kernel function that encodes smoothness assumptions. The result is a flexible curve fit to the capacity-fade history that extrapolates forward with explicit uncertainty quantification — at each future time point, GPR provides both a predicted capacity and a confidence interval.
+
+**Recurrent neural networks (RNN) and long short-term memory (LSTM) networks**: Deep learning models that process the sequence of voltage-current-temperature measurements over many cycles and learn to predict remaining capacity or RUL. These models can be remarkably accurate when trained on large datasets from the same cell chemistry, but they are opaque (no mechanistic interpretation), require large training datasets, and often fail to generalise to different operating conditions or chemistries not seen during training.
+
+**Early-cycle degradation features**: An influential result from Severson et al. (*Nature Energy*, 2019) showed that features extracted from the first 100 charge-discharge cycles (specifically, changes in the capacity vs. voltage curves) predict cycle life with surprisingly high accuracy — comparable to physics-based models that use data from hundreds of cycles. This suggests that early-life degradation patterns contain enough information to predict long-term fate, at least for a given cell chemistry and operating protocol.
+
+For SIB RUL estimation, the data-driven approaches face the specific challenge that large training datasets for SIB cells are not yet available — the technology is too new. Physics-based models, parameterised from the degradation mechanisms established in Chapter 7, are therefore the primary RUL estimation approach for SIB research in the near term. Building those physics-based degradation models for SIBs — and validating them against the limited experimental data available — is one of the open research problems we will identify in Chapter 14.
+
+---
+
+## Worked Interpretation Exercise: Simulating an EKF for a Simple Cell Model
+
+Let us work through a simplified EKF simulation to make the algorithm concrete. We use a one-RC ECM (simplified from the two-RC model, to keep the matrices manageable) with the following parameters for a representative NMC/graphite cell at 25°C:
+
+$Q_\text{max} = 3.0$ Ah; $R_0 = 40$ mΩ; $R_1 = 20$ mΩ; $\tau_1 = R_1 C_1 = 30$ s (so $C_1 = 30/0.020 = 1500$ F).
+
+OCV curve: approximately linear over 20–90% SOC as $E_\text{OCV}(\text{SOC}) = 3.0 + 1.2 \times \text{SOC}$ V (a crude linearisation that captures the general slope; real curves are more complex).
+
+Initial true SOC: 70%; initial estimated SOC: 60% (a 10% initial error, simulating poor calibration at startup).
+
+**Step 0 — Initialise**:
+
+$$\hat{\mathbf{x}}(0) = \begin{bmatrix} 0.60 \\ 0 \end{bmatrix}, \quad \mathbf{P}(0) = \begin{bmatrix} 0.01 & 0 \\ 0 & 10^{-4} \end{bmatrix}$$
+
+The $(1,1)$ element of $\mathbf{P}(0)$ is 0.01 (SOC variance = $0.1^2$, corresponding to ±10% uncertainty). The $(2,2)$ element is small (we are fairly confident the initial RC voltage is near zero since the cell is assumed to have been at rest).
+
+Process noise: $\mathbf{Q} = \text{diag}(10^{-8}, 10^{-6})$ — small, reflecting that our model is fairly accurate.
+Measurement noise: $R = (5 \times 10^{-3})^2 = 2.5 \times 10^{-5}$ V² (5 mV RMS sensor noise).
+
+**Step 1 — Prediction** (cell is being discharged at $i = 1.5$ A, $\Delta t = 1$ s):
+
+State transition matrices:
+
+$$A = \begin{bmatrix} 1 & 0 \\ 0 & e^{-1/30} \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 0.9672 \end{bmatrix}$$
+
+$$B = \begin{bmatrix} -\eta_i \Delta t / (Q_\text{max} \times 3600) \\ R_1(1 - e^{-1/30}) \end{bmatrix} = \begin{bmatrix} -1 \times 1/(3.0 \times 3600) \\ 0.020 \times 0.0328 \end{bmatrix} = \begin{bmatrix} -9.26 \times 10^{-5} \\ 6.56 \times 10^{-4} \end{bmatrix}$$
+
+Predicted state:
+$$\hat{\mathbf{x}}^-(1) = \begin{bmatrix} 1 & 0 \\ 0 & 0.9672 \end{bmatrix}\begin{bmatrix} 0.60 \\ 0 \end{bmatrix} + \begin{bmatrix} -9.26 \times 10^{-5} \\ 6.56 \times 10^{-4} \end{bmatrix}(1.5) = \begin{bmatrix} 0.5999 \\ 9.84 \times 10^{-4} \end{bmatrix}$$
+
+Predicted covariance: $\mathbf{P}^-(1) = \mathbf{A}\mathbf{P}(0)\mathbf{A}^T + \mathbf{Q}$ — computed similarly, grows slightly due to process noise addition.
+
+**Step 1 — Update** (assume measured terminal voltage is $y(1) = 3.779$ V — this is the true terminal voltage at 70% SOC with the given ECM parameters, plus a small noise draw):
+
+Linearised measurement matrix (slope of OCV at estimated SOC = 0.5999):
+$$C(1) = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}}\bigg|_{0.5999} & -1 \end{bmatrix} = \begin{bmatrix} 1.2 & -1 \end{bmatrix}$$
+
+Predicted output:
+$$\hat{y}^-(1) = E_\text{OCV}(0.5999) - R_0 \cdot 1.5 - V_{C_1}^-(1) = (3.0 + 1.2 \times 0.5999) - 0.040 \times 1.5 - 9.84 \times 10^{-4}$$
+$$= 3.7199 - 0.0600 - 0.00098 = 3.6589 \text{ V}$$
+
+Innovation: $3.779 - 3.659 = 0.120$ V. This large innovation reflects the 10% initial SOC error — the model predicts a voltage consistent with 60% SOC, but the true cell (at 70% SOC) produces a higher voltage. Even after only 1 second of operation, the voltage mismatch is 120 mV — far larger than the 5 mV sensor noise — giving the filter a strong correction signal.
+
+Kalman gain: $K = P^- C^T / (C P^- C^T + R)$ — at this point the $P^-_{11} = 0.01$ is much larger than $R/C_{11}^2 = 2.5 \times 10^{-5}/1.44 \approx 1.7 \times 10^{-5}$, so the gain is high — the filter trusts the measurement correction.
+
+The state update pushes the SOC estimate significantly toward its true value of 70%. Over approximately 10–30 time steps (10–30 seconds of operation), the EKF converges: the SOC error shrinks from 10% to well below 2%, and the error covariance $\mathbf{P}_{11}$ shrinks to a small value reflecting the converged estimate.
+
+This convergence — the ability to correct a large initial SOC error within seconds to minutes of operation using only terminal current and voltage measurements — is the most important practical property of the EKF-based BMS. It means the BMS does not need to start from a precisely known SOC (which would require a full charge to a reference state); it can self-correct from any reasonable initial estimate.
+
+**What changes in the plateau region**: If this same cell were an SIB with a flat OCV curve, the $C_{11}$ element in the measurement matrix would be small (say, 0.04 instead of 1.2). The Kalman gain for SOC would drop by a factor of 30, and the convergence time would lengthen from 10–30 seconds to 300–900 seconds. With typical SIB operating profiles (rest periods of minutes, not hours), the EKF may never fully converge during the plateau region, and the 10% initial error persists through the plateau — exactly the SIB-specific challenge we identified in Section 10.2.
+
+---
+
+## What Changes for Sodium-Ion?
+
+The state estimation architecture — ECM + EKF, with SOH tracking via adaptive parameters and RUL projection from degradation models — applies directly to SIBs. The algorithms are the same; the parameters and performance differ.
+
+**The flat OCV problem (Sections 10.2 and 10.3)**: This is the central challenge. The EKF Kalman gain for SOC drops near zero during the hard carbon plateau, causing SOC uncertainty to grow. All proposed solutions (UKF, particle filter, EIS-based correction, dual-model frameworks) are active research topics. For a simulation researcher, this is a concrete and tractable problem: implementing an EKF on a simulated SIB cell model and demonstrating the SOC uncertainty growth in the plateau region — and then proposing and evaluating a modification — is a publishable contribution.
+
+**Higher $R_0$ and $R_\text{ct}$**: The ECM parameters for SIB cells are larger than for comparable LIB cells (Section 6.5). This means the voltage excursions during current pulses are larger, which actually helps current-step-based $R_0$ estimation (larger signal-to-noise ratio for the impedance estimate). It is, unexpectedly, one area where the SIB's high internal resistance is an advantage for BMS estimation.
+
+**SOH and capacity tracking**: The lower ICE of hard carbon (typically 70–85%, versus 90–95% for graphite in LIBs) and the possibility of more volatile per-cycle LLI (from less stable SEI) mean that capacity tracking algorithms may need higher process noise on the $Q_\text{max}$ state and more frequent OCV recalibration events to maintain accuracy. The degradation rate parameters for SIBs are not yet as well characterised as for LIBs, which means that physics-based degradation models (for RUL) have higher parameter uncertainty for SIBs in the near term.
+
+**Hysteresis in the OCV curve**: Hard carbon exhibits stronger OCV hysteresis than graphite — the charge and discharge OCV curves differ by 50–100 mV in the slope region and somewhat less in the plateau. Standard EKF implementations use a single OCV curve; BMS algorithms for SIBs must account for hysteresis either through separate charge/discharge OCV tables (with logic to select the appropriate one based on recent current direction) or through a **hysteresis state variable** $h(k)$ added to the state vector. The idea is to augment the state from $[\text{SOC}, V_{C_1}, V_{C_2}]^T$ to $[\text{SOC}, V_{C_1}, V_{C_2}, h]^T$, where $h$ is a scalar that tracks the hysteresis voltage — the gap between the charge-path and discharge-path OCV at the current SOC. The hysteresis state evolves according to a first-order model: $h(k) = \gamma \cdot h(k-1) + (1-\gamma) \cdot M(\text{SOC})$, where $\gamma$ is a rate constant and $M(\text{SOC})$ is the maximum hysteresis at the current SOC. The terminal voltage equation (10.4) is then modified to include $h$ as an additional term: $V_\text{terminal} = E_\text{OCV}(\text{SOC}) + h - R_0 i - V_{C_1} - V_{C_2}$. Plett's group published this framework for LFP cells (which also exhibit significant OCV hysteresis), and it can be adapted for SIB hard carbon anodes — representing another concrete research opportunity for EE-focused simulation work.
+
+---
+
+## Chapter Summary
+
+**Key ideas:**
+
+- Coulomb counting integrates current to track SOC but drifts due to sensor offset error (linear in time), sensor gain error (proportional to charge throughput), incorrect $Q_\text{max}$, and unknown initial SOC. Offset errors of 50–200 mA produce SOC errors of 1–7% per hour; gain errors compound over cycles.
+- OCV-based SOC lookup provides absolute reference points but requires sufficient rest time for voltage relaxation and a steep OCV curve. SOC uncertainty from voltage measurement $\sigma_V$ is $\sigma_\text{SOC} = \sigma_V / |dE/d\text{SOC}|$. On flat OCV curves (LFP, SIB hard carbon plateau), $|dE/d\text{SOC}| \approx 0$ and OCV provides negligible information about SOC — the fundamental SIB estimation challenge.
+- The ECM (OCV source + $R_0$ + RC network) is the standard model for BMS estimation. The two-RC model captures ohmic, activation, and diffusion dynamics with parameters identified from HPPC and GITT data, tabulated as functions of SOC and temperature.
+- The Extended Kalman Filter fuses current integration (model prediction) with voltage measurement (update step) optimally. The Kalman gain $\mathbf{K}$ balances trust between model and measurement. The OCV slope $dE/d\text{SOC}$ appears in the linearised measurement matrix; when the slope is near zero (flat OCV region), the gain drops to zero and the voltage provides no SOC correction — the filter degrades to pure coulomb counting with growing uncertainty.
+- SOH is estimated online via: capacity tracking using partial charge integrals between OCV reference points, adaptive EKF with $Q_\text{max}$ as an additional state, or ICA peak area tracking. Resistance-based SOH tracks $R_0$ from step-current voltage jumps using RLS or EKF filtering.
+- RUL prediction extrapolates the SOH trajectory forward using physics-based degradation models (calendar: $\sqrt{t}$ Arrhenius; cycle: power-law in cycle count, DOD, temperature) or data-driven models (GPR, LSTM). Probabilistic RUL gives a distribution rather than a point estimate, enabling cost-optimal predictive maintenance.
+
+**Key equations:**
+
+$$\text{SOC}(k) = \text{SOC}(k-1) - \frac{\eta_i i(k) \Delta t}{Q_\text{max}} \quad \text{(coulomb counting)} \tag{10.1}$$
+
+$$\sigma_\text{SOC} = \frac{\sigma_V}{|dE_\text{OCV}/d\text{SOC}|} \quad \text{(OCV-based SOC uncertainty)} \tag{10.3}$$
+
+$$V_\text{terminal} = E_\text{OCV}(\text{SOC}) - R_0 i - V_{C_1} - V_{C_2} \quad \text{(ECM output equation)} \tag{10.4}$$
+
+$$\mathbf{K}(k) = \mathbf{P}^-\mathbf{C}^T[\mathbf{C}\mathbf{P}^-\mathbf{C}^T + R]^{-1} \quad \text{(Kalman gain)} \tag{10.17}$$
+
+$$\hat{\mathbf{x}}(k) = \hat{\mathbf{x}}^-(k) + \mathbf{K}(k)[y(k) - h(\hat{\mathbf{x}}^-(k), i(k))] \quad \text{(EKF update)} \tag{10.18}$$
+
+$$\mathbf{C}(k) = \begin{bmatrix} \frac{dE_\text{OCV}}{d\text{SOC}} & -1 & -1 \end{bmatrix} \quad \text{(linearised measurement matrix; first element drives SOC correction)} \tag{10.16}$$
+
+**Key vocabulary (in order of appearance):**
+
+Coulomb counting, current integration, ampere-hour integration, Coulombic efficiency, sensor offset error, sensor gain error, initial SOC uncertainty, OCV-SOC lookup, OCV curve sensitivity, rest time relaxation, flat OCV problem, equivalent circuit model (ECM), one-RC / two-RC model, ohmic resistance $R_0$, activation polarisation, concentration polarisation, RC time constant, state-space formulation, state vector, observability, state transition matrix, extended Kalman filter (EKF), prediction step, update step, a priori estimate, error covariance matrix $\mathbf{P}$, process noise $\mathbf{Q}$, measurement noise $R$, measurement matrix $\mathbf{C}$, Kalman gain $\mathbf{K}$, innovation, adaptive EKF, SOH estimation, capacity tracking, resistance tracking, recursive least squares (RLS), degradation trajectory, remaining useful life (RUL), physics-based RUL, data-driven RUL, Gaussian process regression, LSTM, OCV hysteresis state, dual-model framework, particle filter.
+
+---
+
+## Deliverable
+
+The primary deliverable for this part of the book (Chapters 9–12) is completing Plett's Coursera specialisation "Algorithms for Battery Management Systems," Courses 1 and 2. This chapter is the direct preparation for that work.
+
+Before starting Course 2 (which covers the SPKF/EKF algorithms), ensure you can answer the following from this chapter without looking up the answers:
+
+Write the discrete-time state equations for the one-RC ECM (equations 10.8 and 10.9). What is the physical meaning of the time constant $\tau_1$? Why is the exponential form ($e^{-\Delta t/\tau}$) used instead of the Euler approximation? (Answer: the exponential form is the exact zero-order-hold solution for a first-order ODE; Euler integration introduces error proportional to $\Delta t/\tau$ which can be significant if $\Delta t$ is not much smaller than $\tau_1$.)
+
+Write the EKF Kalman gain equation. Explain in words why the first element of the measurement matrix $\mathbf{C}$ is $dE_\text{OCV}/d\text{SOC}$ rather than, say, the full $E_\text{OCV}$ value. (Answer: because the gain equation uses the linearised system model — it needs how much the voltage changes for a small change in SOC, which is the derivative of the output with respect to the state, evaluated at the current estimate.)
+
+For an LFP/graphite cell at 50% SOC (in the flat plateau, $dE/d\text{SOC} = 25$ mV per unit SOC) with $\sigma_V = 5$ mV and $P_{11} = 0.04$, compute the Kalman gain for SOC (the $(1,1)$ element of $\mathbf{K}$). Compare to the same cell at 10% SOC where $dE/d\text{SOC} = 80$ mV per unit SOC. Interpret the difference.
+
+---
+
+## Further Reading
+
+1. **Plett, G. L., "Extended Kalman filtering for battery management systems of LiPB-based HEV battery packs. Parts 1, 2, and 3," *Journal of Power Sources* 134 (2), 252–292 (2004).** The three-part paper that established the ECM + EKF framework for BMS estimation. Part 1 covers the dynamic models; Part 2 the parameter identification; Part 3 the filter implementation and validation. This is the foundational reference for the entire field of model-based BMS estimation. Read all three parts.
+
+2. **Plett, G. L., *Battery Management Systems, Vol. 2: Equivalent-Circuit Methods*, Artech House (2015).** The comprehensive textbook treatment of everything in this chapter, with full MATLAB code examples and worked problems. Chapters 4–6 on the EKF, sigma-point Kalman filter (SPKF), and adaptive estimation are the direct reading for this chapter's material. This is the primary Plett reference for the BMS Coursera course.
+
+3. **Hu, X., Li, S., and Peng, H., "A comparative study of equivalent circuit models for Li-ion batteries," *Journal of Power Sources* 198, 359–367 (2012).** A systematic comparison of one-RC, two-RC, and more complex ECM structures against experimental data, showing the accuracy–complexity trade-off. Essential for understanding which model order is sufficient for a given application.
+
+4. **Severson, K. A. et al., "Data-driven prediction of battery cycle life before capacity degradation," *Nature Energy* 4, 383–391 (2019).** The influential paper showing that early-cycle charge-voltage curve features predict long-term cycle life with high accuracy. Read this for the data-driven RUL perspective and to understand what battery degradation information is encoded in early-life data.
+
+5. **Zheng, Y. et al., "State of charge estimation for lithium battery systems using an adaptive extended Kalman filter considering temperature dependence," *IEEE Transactions on Control Systems Technology* 22 (2), 589–600 (2014).** A careful treatment of temperature-dependent ECM parameterisation and adaptive EKF implementation, including a discussion of how parameter uncertainty propagates into SOC estimation error. The most practically useful reference for implementing the temperature-dependent ECM tabulation described in Section 10.3.
+
+
+\newpage
+
+# Cell Balancing
+
+## Chapter Opening
+
+In Chapter 9 we established the uncomfortable truth about series strings: the weakest cell wins. The cell with the least capacity, or the highest internal resistance, or the most degraded state, dictates when the entire string must stop charging and when it must stop discharging — even if every other cell still has capacity to give or headroom to receive. The efficiency penalty from this mismatch is real, the degradation consequence is compounding, and the problem grows worse every cycle as the cells diverge further. Left uncorrected, a pack that starts with a ±1% capacity spread can develop ±10% divergence after a few hundred cycles, and the effective pack capacity shrinks to the capacity of the worst cell multiplied by the number of series cells — a fraction of the original rating.
+
+Cell balancing is the engineering response to this problem. It is the set of techniques by which the BMS actively counteracts the divergence between cells in a series string, keeping them aligned so that all cells can be charged and discharged to the same extent without any cell hitting its voltage limits ahead of the others. Done well, balancing extends pack life, increases usable energy, and reduces the burden on the SOC estimation algorithms from Chapter 10. Done poorly — or not done at all — it accelerates exactly the degradation cascade described in Chapter 7.
+
+This chapter builds the complete picture of cell balancing: the physical origins of imbalance, its quantitative consequences, the two main hardware architectures for correction (passive and active), and the control strategies that govern when and how much to balance. We will pay particular attention to a subtlety that is often glossed over in treatments of balancing: there is not one kind of imbalance, but two — **SOC imbalance** (cells at different states of charge despite being in the same string) and **capacity imbalance** (cells with different maximum capacities) — and these two types require different strategies. We will also examine the interaction between balancing and the flat-OCV problem of SIB cells, which creates specific complications that have no direct analogue in lithium-ion systems.
+
+By the end of this chapter, you will be able to evaluate a balancing circuit schematic, compute its energy dissipation and balancing time, assess whether a given imbalance profile calls for top-balancing or bottom-balancing, and identify the architectural limitations that make passive balancing an approximation rather than a perfect solution. You will also understand why the choice of balancing strategy interacts non-trivially with the OCV curve shape — a connection that will matter deeply for SIB system design.
+
+---
+
+> **Prerequisites Check**
+>
+> From your EE background:
+>
+> - Basic circuit analysis: resistive voltage dividers, switched circuits, inductor/capacitor energy storage
+> - DC-DC converter topologies (buck, boost, flyback) at a conceptual level — helpful for active balancing topologies
+> - Power dissipation calculations — needed throughout
+>
+> From Chapter 3:
+>
+> - SOC, DOD, OCV definitions (Section 3.3, 3.4) — the quantities being balanced
+> - Cycle life vs. DOD relationship (Section 3.7) — motivates shallow cycling via balancing
+>
+> From Chapter 9:
+>
+> - Cell-to-cell variation and the weak-link effect in series strings (Section 9.2) — the problem being solved
+> - Series/parallel pack topology (Section 9.1) — the system context
+>
+> From Chapter 10:
+>
+> - OCV-SOC curve shape and its effect on voltage-based SOC estimation (Section 10.2) — interacts with voltage-based balancing triggers
+> - The flat-OCV problem for SIBs (Section 10.2) — creates specific complications for balancing control
+
+---
+
+## Why Cells Drift: The Physical Origins of Imbalance
+
+Before designing a balancing system, we need a precise understanding of what is being balanced. The word "imbalance" in a battery pack can refer to at least three distinct conditions, each with a different physical origin and a different appropriate response. Conflating them leads to balancing strategies that address the symptom rather than the cause.
+
+### Type 1: SOC Imbalance
+
+**SOC imbalance** means that cells in the same series string are at different states of charge — some have more energy stored than others. This is the most directly actionable type of imbalance: it can be corrected by balancing circuits without permanently removing capacity from the system. The energy moved from a high-SOC cell to a low-SOC cell (or dissipated from the high-SOC cell in passive balancing) brings them closer to alignment. Once balanced, all cells can participate equally in the next charge or discharge.
+
+SOC imbalance accumulates from several sources. **Self-discharge rate differences** between cells cause SOC to drift during rest. If cell A discharges itself at 0.1%/day and cell B at 0.3%/day, after 30 days of storage the two cells differ by 6% SOC — with no cycling having occurred at all. For automotive packs that may sit idle for weeks, self-discharge imbalance can be the dominant source of misalignment requiring correction.
+
+**Thermal gradients** within the pack cause position-dependent self-discharge and degradation rates. Cells near a warm section of the pack age faster, lose more capacity per cycle, and develop higher internal resistance — all of which contribute to differential SOC trajectories during cycling, even if the cells started perfectly matched.
+
+**Manufacturing variation** in initial Coulombic efficiency means that after formation cycling, cells that consumed more active ion inventory (lithium or sodium) to build their SEI have less remaining cyclable inventory and thus a slightly different SOC trajectory than more efficient cells, even under identical current profiles. This effect is small (a fraction of a percent of SOC per cycle) but accumulates over hundreds of cycles.
+
+**Parasitic reaction rate heterogeneity**: self-discharge in lithium-ion and sodium-ion cells is dominated not by electron leakage through the separator (which would indicate a defect) but by parasitic electrochemical reactions — ongoing SEI growth that consumes cyclable lithium or sodium inventory, low-level electrolyte oxidation at the cathode surface, and, in some chemistries, redox shuttle mechanisms that transfer charge internally. These reactions proceed at rates that depend on temperature, electrode surface area, and electrolyte composition — all of which vary slightly from cell to cell. Over time, small differences in parasitic reaction rates accumulate into measurable SOC divergence. In aged cells, where increased surface area from particle cracking accelerates side reactions, this effect can become significant even between cells from the same manufacturing batch.
+
+### Type 2: Capacity Imbalance
+
+**Capacity imbalance** means that cells have different maximum capacities $Q_{\text{max},i}$ — one cell can store more charge than another. This is a more fundamental type of imbalance because it cannot be fixed by moving charge between cells. No matter how perfectly the SOC is balanced, a string containing one 2.4 Ah cell and eleven 3.0 Ah cells will always be limited by that 2.4 Ah cell — the pack capacity is determined by the lowest-capacity cell in the string.
+
+Capacity imbalance accumulates primarily from differential degradation. Cells that run hotter, cycle at higher effective DOD, or experience more severe lithium plating lose capacity faster than their neighbours. The self-reinforcing mechanism from Chapter 9 applies: the lower-capacity cell cycles over a larger DOD fraction (because it must provide the same charge as the others from a smaller reservoir), which accelerates its degradation, which further reduces its capacity, which forces an even larger DOD fraction. Left unchecked, this feedback leads to one cell reaching its end-of-life criterion (80% capacity retention) long before the majority of the pack, triggering early pack retirement.
+
+Capacity imbalance cannot be corrected by balancing — balancing can only equalise the current SOC, not the maximum capacity. The long-term strategy for managing capacity imbalance is to slow the divergence (through good thermal management and preventing individual cells from cycling at extreme DOD) and to account for it in SOH estimation and RUL prediction. When the pack is retired, the imbalance is why: one cell has reached EOL while the majority still have usable life remaining.
+
+### Type 3: Internal Resistance Imbalance
+
+**Resistance imbalance** means that cells have different internal resistances, causing them to produce different terminal voltages under the same current load. The highest-resistance cell in the string has the largest voltage excursion for a given current: it hits its upper voltage cutoff soonest during charging, and its lower voltage cutoff soonest during discharging. The pack is limited by this worst-case cell.
+
+Resistance imbalance also causes unequal heat generation among cells (since $\dot{Q} = I^2 R$, the highest-resistance cell runs hottest), which compounds the thermal non-uniformity problem and accelerates differential degradation. A positive feedback loop develops analogous to the capacity imbalance case: high-resistance cells run hot, degrade faster, develop even higher resistance, run even hotter.
+
+Unlike SOC imbalance, resistance imbalance cannot be corrected by charge redistribution. The BMS can only manage its consequences: by computing cell-specific power limits (the most resistive cell has the tightest power limit), by using resistance-based SOH tracking to identify cells that are degrading fastest, and by setting pack-level current limits that protect the most resistant cell.
+
+The table below summarizes the three imbalance types and their key characteristics. Keep it in mind as we discuss balancing strategies — it clarifies which problems balancing can solve and which it cannot.
+
+| Imbalance type | Physical quantity | Primary causes | Correctable by balancing? | Management strategy |
+| --- | --- | --- | --- | --- |
+| SOC imbalance | Different states of charge ($\text{SOC}_i \neq \text{SOC}_j$) | Self-discharge variation, thermal gradients, Coulombic efficiency differences | Yes — redistribute or dissipate charge | Passive or active balancing |
+| Capacity imbalance | Different maximum capacities ($Q_{\text{max},i} \neq Q_{\text{max},j}$) | Differential degradation (temperature, cycling depth, plating) | No — the capacity is physically lost | Thermal management, SOC window limits, cell replacement |
+| Resistance imbalance | Different internal resistances ($R_i \neq R_j$) | Differential degradation (SEI growth, contact degradation) | No — the resistance is a physical property | Cell-specific power limits, SOH tracking |
+
+### Why Both SOC and Capacity Imbalance Matter Simultaneously
+
+In a real pack, all three types of imbalance coexist and interact. The practical consequence is that balancing addresses only Type 1 (SOC imbalance) while Types 2 and 3 accumulate over life. A pack with good balancing but poor thermal management will develop capacity and resistance imbalance that no balancing algorithm can fix — the balancing buys time and efficiency, but it does not halt the underlying divergence.
+
+This is why battery engineers sometimes distinguish between **active state management** (redistributing charge to equalise SOC, which balancing circuits do) and **degradation management** (slowing the divergence through thermal management, SOC window optimisation, and charge rate limits, which is the responsibility of the overall BMS strategy). If you think of this in control-system terms: balancing is a feedback controller that can reject a disturbance (SOC drift from differential self-discharge) and keep the state variable (SOC) aligned across cells. But it cannot change the plant parameters — the cells' maximum capacities and internal resistances are physical properties that evolve with degradation and are beyond the reach of any charge-redistribution circuit. The controller compensates; it does not heal. Balancing is one tool in the larger degradation management toolkit, not a substitute for it.
+
+---
+
+## Passive Balancing: Resistive Bleed
+
+**Passive balancing** is the simplest and most widely deployed balancing architecture. It works by dissipating excess energy from the higher-SOC cells as heat, using a switchable resistor connected across each cell in the series string. The basic principle: if cell $i$ has a higher voltage than the pack average (indicating it is at higher SOC), close the switch to connect the bleed resistor across it; the resistor discharges the cell until its voltage falls to the target level.
+
+### Circuit Architecture
+
+The passive balancing circuit for each cell consists of three components: a **bypass resistor** $R_b$ (typically 10–100 Ω, chosen to limit dissipation), a **bypass switch** $S_b$ (typically a MOSFET or relay, controlled by the CMIC), and a **temperature sensor** monitoring the resistor temperature to prevent overheating. The resistor and switch are in series, forming a switchable discharge path across the cell terminals. The temperature sensor provides a safety interlock — if the resistor temperature exceeds a threshold, the CMIC opens the switch.
+
+The **CMIC** (cell monitoring IC — the dedicated chip that monitors individual cell voltages and temperatures in a series string) measures each cell's voltage, compares it to the target voltage, and closes the bypass switch for cells that are above target. In the simplest implementation, the CMIC fires the bypass for any cell whose voltage exceeds the pack minimum by more than a threshold $\Delta V_\text{trig}$ (typically 10–30 mV). More sophisticated implementations close the bypass for a duty cycle proportional to the excess voltage, providing finer control over the balancing current.
+
+The balancing current through the bypass resistor is simply Ohm's law applied to the cell-resistor loop:
+
+$$I_b = \frac{V_\text{cell}}{R_b} \tag{11.1}$$
+
+This looks trivial, but notice what it implies: the balancing current depends on the cell voltage, not on the SOC difference. For a chemistry like NMC, where the cell voltage varies significantly with SOC (from ~3.0 V at empty to ~4.2 V at full), the balancing current at the top of charge is about 40% higher than at the bottom — a natural acceleration of balancing when the cell is fullest and the voltage is highest. For flat-OCV chemistries like LFP or SIB hard carbon, where the cell voltage varies by only 50–100 mV across most of the SOC range, the balancing current is essentially constant regardless of SOC. We will revisit this observation in Section 11.7, where it creates a specific complication for SIB balancing strategy.
+
+For a cell at 4.15 V with $R_b = 33$ Ω:
+$$I_b = \frac{4.15}{33} = 125.8 \, \text{mA}$$
+
+The heat dissipated in the bypass resistor is:
+
+$$\dot{Q}_b = I_b^2 R_b = \frac{V_\text{cell}^2}{R_b} = \frac{4.15^2}{33} = 522 \, \text{mW}$$
+
+And the time required to balance a SOC difference of $\Delta\text{SOC}$ for a cell of capacity $Q_\text{max}$ follows directly from Equation (11.1):
+
+$$t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \tag{11.2}$$
+
+For $\Delta\text{SOC} = 5\%$ and $Q_\text{max} = 3.0$ Ah:
+$$t_\text{bal} = \frac{0.05 \times 3.0 \, \text{Ah}}{0.1258 \, \text{A}} = \frac{0.15 \, \text{Ah}}{0.1258 \, \text{A}} = 1.19 \, \text{h} \approx 72 \, \text{minutes}$$
+
+Passive balancing is slow. At typical balancing currents of 50–200 mA, correcting a 5% SOC imbalance in a 3 Ah cell takes 45–180 minutes. This is why balancing is most effective when performed continuously (especially during charging, as we will see in Section 11.4) rather than only at the end of a cycle.
+
+### Energy Efficiency of Passive Balancing
+
+All the energy removed from the high-SOC cells in passive balancing is dissipated as heat in the bypass resistors. The round-trip energy efficiency of passive balancing is therefore always less than 100% — the excess charge is not transferred to the low-SOC cells; it is simply discarded.
+
+The energy wasted per balancing event on one cell follows from Equations (11.1) and (11.2):
+
+$$E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \tag{11.3}$$
+
+For the 5% imbalance example above:
+$$E_\text{wasted} = 0.05 \times 3.0 \times 4.15 = 0.623 \, \text{Wh}$$
+
+In a 96-cell string, if ten cells each require 5% SOC reduction at each charge cycle, the energy lost to passive balancing per cycle is approximately $10 \times 0.623 = 6.2$ Wh. For a 75 kWh pack that charges daily, this represents roughly 0.008% of pack energy per cycle — small per cycle, but over 1000 cycles it amounts to 6.2 kWh of wasted energy just from balancing. More significantly, the heat generated within the pack by balancing resistors must be managed by the thermal management system, adding to the cooling load.
+
+Despite its energy inefficiency, passive balancing dominates commercial applications because of its simplicity and low cost. The bypass resistor and MOSFET required per cell add perhaps \$0.50–\$2.00 to the bill of materials and a few square millimetres to the PCB. The control logic is simple: compare cell voltage to threshold, set a bit. The reliability is excellent: a passive balancing circuit fails only if the resistor burns open or the MOSFET fails — rare events with well-designed circuits. For most consumer and automotive applications where the energy waste is small relative to pack energy, these advantages outweigh the thermodynamic inefficiency.
+
+### Thermal Management of Bypass Resistors
+
+The 522 mW dissipated per active bypass resistor in the example above is concentrated in a small component on the CMIC PCB. With many cells balancing simultaneously (as during top-of-charge equalisation), the total heat generated on the CMIC PCB can be 5–10 W per module — enough to require thermal management of the electronics, not just the cells. CMIC datasheets specify a maximum duty cycle for bypass operation, typically 50–70%, to prevent thermal overload of the resistor and the IC package. The BMS firmware must respect these limits and schedule bypass cycles accordingly, distributing the heat generation over time.
+
+In very large packs (automotive, grid) where the bypass resistors are physically separate from the CMIC electronics — a configuration called the **remote bypass topology** — the thermal management is simpler. The heat-generating resistors are mounted on the busbar structure or on the cell holders, where the pack cooling system can remove the heat directly. Remote bypass topology also allows higher balancing currents (since the resistors can be larger and better cooled), reducing balancing time.
+
+### When Is Passive Balancing Enough?
+
+Before we survey the more complex active balancing architectures, it is worth asking: when does passive balancing fail to meet the system requirement? The answer depends on three factors — cell capacity, imbalance magnitude, and available balancing time — and their interplay determines whether the simplicity and cost advantage of passive balancing is worth its energy and time penalty.
+
+Consider three representative applications:
+
+| Application | Cell capacity | Typical imbalance | Balancing window | Passive $I_b$ at 33 Ω | Time to correct | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| Consumer electronics (laptop, phone) | 3–5 Ah | 1–3% SOC | 2–4 h charge session | 110 mA | 5–25 min | Passive is more than adequate |
+| EV automotive (NMC pouch) | 50–80 Ah | 2–5% SOC | 6–10 h overnight charge | 110 mA | 15–60 h | Passive struggles; multiple sessions needed |
+| Grid storage (LFP prismatic) | 100–280 Ah | 1–5% SOC | Continuous availability | 110 mA | 15–200+ h | Passive alone is impractical for large imbalances |
+
+The pattern is clear: passive balancing is well-suited to small cells where the balancing current is a meaningful fraction of cell capacity (C/30 to C/50 for a 3 Ah cell), but becomes impractically slow for large cells where the same 100 mA balancing current represents C/500 or less. For large-format cells, the options are to increase the passive balancing current (requiring larger resistors and more thermal management), to accept very long balancing windows (running continuous balancing over many cycles), or to move to active balancing. Most automotive BMS designs choose the first option — using higher-current passive balancing in the 200–500 mA range with remote bypass resistors — because the added cost is modest compared to the full active balancing alternative. Grid storage systems increasingly adopt active or semi-active balancing, where the energy savings over a 20-year deployment life can justify the higher upfront hardware cost.
+
+---
+
+## Active Balancing Topologies
+
+**Active balancing** transfers charge between cells rather than dissipating it — the excess energy in the high-SOC cell is delivered to the low-SOC cell through a power-conversion stage, rather than being burned in a resistor. If you have worked with DC-DC converters (buck, boost, flyback), you already have the right mental model: active balancing circuits are miniature, bidirectional DC-DC converters whose input and output happen to be individual cells in a series string. The conversion efficiency is never truly 100% (every real converter has switching losses, conduction losses, and magnetics losses), but practical active balancing circuits achieve 80–95% round-trip efficiency — meaning most of the redistributed energy ends up in the target cell rather than as heat. Active balancing is more complex, more expensive, and larger than passive balancing, but it becomes attractive in applications where balancing energy is large relative to the conversion circuit costs, or where the heat from passive balancing is a problem.
+
+The design space for active balancing is rich — many topologies have been proposed — and we will survey the main families here. When evaluating any active balancing topology, five questions discriminate between the options: what is the energy transfer pathway (cell-to-cell, cell-to-pack, pack-to-cell, or bidirectional); what conversion efficiency does the topology achieve; how complex is the control algorithm required to operate it; what is the worst-case balancing time for a given imbalance magnitude; and what happens when one cell fails open-circuit or short-circuit? We will address each of these for the three main topology families below.
+
+### Switched Capacitor (Flying Capacitor) Topology
+
+The simplest active balancing topology uses a capacitor that is switched alternately between adjacent cells in the string, transferring charge from the higher-voltage cell to the lower-voltage cell.
+
+**Operation**: A capacitor $C_f$ is connected across cell $i$ (the higher-voltage cell) via switches S1 and S2. The capacitor charges to $V_i$. The switches then reconfigure to connect the same capacitor across cell $i+1$ (the lower-voltage cell). The capacitor, now at $V_i > V_{i+1}$, discharges into cell $i+1$, transferring charge. The switches cycle at a frequency of 1–100 kHz.
+
+**Energy transferred per switching cycle**: The charge transferred per cycle is approximately $\Delta Q = C_f (V_i - V_{i+1})$, and the effective balancing current is therefore $I_{\text{bal}} \approx f \cdot C_f \cdot (V_i - V_{i+1})$, where $f$ is the switching frequency. The power delivered to the receiving cell is $P \approx I_{\text{bal}} \cdot V_{i+1}$. As the cells approach the same voltage, the driving force decreases and the transfer rate slows — an inherent self-limiting behaviour.
+
+**Limitations**: The switched capacitor topology can only transfer charge between adjacent cells. Balancing cell 1 against cell 96 in a 96-cell string requires 95 intermediate steps, each losing some efficiency, making long-range balancing slow. The balancing current is also limited by the capacitor size and switching frequency — achieving more than a few hundred milliamps of effective balancing current requires large capacitors or very high switching frequencies, both of which have cost and EMI implications.
+
+**Efficiency**: The energy dissipated per switching cycle is $\frac{1}{2}C_f(\Delta V)^2$, regardless of the switch resistance (you may recall from circuits class that charging a capacitor through any resistance dissipates exactly half the energy — the same physics applies here). However, the useful energy transferred per cycle is approximately $C_f \cdot \Delta V \cdot V_{\text{avg}}$, where $V_{\text{avg}}$ is the mean cell voltage. The ratio of loss to useful transfer is therefore $\Delta V / (2V_{\text{avg}})$, which is small when the cells are closely matched — for example, $\Delta V = 20 \, \text{mV}$ at $V_{\text{avg}} = 3.7 \, \text{V}$ gives a theoretical loss fraction of 0.27%. In practice, resistive losses in the switches and capacitor ESR dominate, reducing real-world efficiency to 70–90%.
+
+### Inductor-Based (Buck-Boost) Topology
+
+A more versatile active balancing approach uses an inductor to transfer energy between any two cells in the string, not just adjacent ones. The inductor temporarily stores energy from the source cell and releases it to the target cell, functioning as a two-way DC-DC converter.
+
+**Cell-to-cell inductor topology**: Two cells are selected by a multiplexer (one source, one destination). A buck-boost converter transfers energy from the source cell to the inductor and from the inductor to the destination cell. Any pair of cells in the string can be connected, regardless of their physical position — enabling direct cell-to-cell balancing across the full string.
+
+**Advantages**: Maximum flexibility in balancing strategy; can balance any pair in one step; typically achieves 80–92% efficiency; allows large balancing currents (1–5 A) with appropriately sized inductors.
+
+**Disadvantages**: Requires a multiplexer or switch matrix to select the cell pair, adding circuit complexity. The control algorithm must decide which pairs to balance and in what order — a combinatorial optimisation problem when many cells are simultaneously imbalanced. The inductor and its associated switches add significant cost (perhaps \$5–\$20 per cell-pair worth of inductor hardware, versus \$0.50 per cell for passive balancing).
+
+To put the cost in perspective: consider a 96s1p EV pack. Passive balancing adds roughly \$0.50–\$2.00 per cell × 96 cells = \$48–\$192 to the BMS bill of materials. Inductor-based active balancing at \$10–\$20 per cell adds \$960–\$1,920 — an order of magnitude more. The energy savings from active balancing (avoiding the ~0.6 Wh per cell per cycle wasted by passive balancing) amount to roughly $96 \times 0.6 = 58 \, \text{Wh}$ per cycle. At a residential electricity cost of \$0.15/kWh, this saves \$0.0087 per cycle, requiring over 100,000 cycles to break even on hardware cost alone — far beyond the pack's cycle life. The economic case for active balancing in automotive applications therefore rests not on energy savings but on lifetime extension: by keeping cells more tightly balanced, active balancing can delay the point at which capacity imbalance forces early pack retirement, potentially recovering thousands of dollars in avoided pack replacement. In grid storage with 10,000+ cycle expectations, the calculus can shift further toward active balancing.
+
+### Transformer-Based (Flyback) Topology
+
+For packs where the individual cell voltages are small (3.6 V) but the pack voltage is large (350 V), a flyback transformer can transfer energy from any individual cell to the full pack bus, or from the pack bus to any individual cell. This "cell-to-pack" or "pack-to-cell" topology has a significant architectural advantage: it does not need to identify a matching pair of cells to balance between. Energy is simply taken from high-SOC cells and injected into the pack bus (where it supplements the total energy available), or drawn from the pack bus to charge low-SOC cells.
+
+**Operation**: In the conceptual form, a flyback converter with one primary winding (connected to the pack bus) and one secondary winding per cell allows any cell to deliver energy to the pack bus or receive energy from it. In practice, building a single transformer with 96 secondary windings is impractical — the leakage inductance and coupling complexity would be unmanageable. Real implementations use either a shared multi-tap transformer covering a group of cells (e.g., one transformer per 8–16 cell module), or individual small transformers per cell with the primaries tied to a common bus. The control principle remains the same: energy flows from a high-SOC cell through its winding to the bus, and from the bus through another winding to the low-SOC cell. The converter's turns ratio determines the voltage step-up from cell-level (≈3.6 V) to pack-level (≈350 V).
+
+**Advantages**: No need to select a balancing pair; balancing one cell does not affect others; can balance at full-string voltage difference; suitable for very large packs.
+
+**Disadvantages**: The transformer structure (even in its modular form) is physically complex and expensive. Electromagnetic coupling between windings must be carefully managed to prevent cross-cell interference. Efficiency is typically 85–92%.
+
+### Modular Multilevel Converter (MMC) Architecture
+
+In the most sophisticated active balancing architectures — increasingly used in high-performance automotive and grid-scale applications — each cell in the string is equipped with its own small bidirectional DC-DC converter, allowing fully individual control of each cell's charge and discharge rate. The pack operates as a modular multilevel converter where the individual cell converters can vary their effective voltage contribution to the string in real time.
+
+This architecture blurs the distinction between "balancing" and "pack operation" — balancing is not a separate process but an inherent consequence of individually controlling each cell's power. The pack can continuously compensate for cell-to-cell differences without dedicated balancing hardware, by slightly adjusting each cell's duty cycle. The energy efficiency is excellent, but the hardware cost (a DC-DC converter per cell) is very high.
+
+MMC architectures are beginning to appear in high-end EV platforms and in grid storage systems where the converter infrastructure is already present. Some grid-scale systems from companies like Powin and Fluence already use modular power conversion stages that inherently provide per-module balancing capability. In automotive, research prototypes have demonstrated full per-cell MMC control, but cost remains a barrier to mass adoption. For cost-sensitive applications, passive balancing remains the standard.
+
+---
+
+## When to Balance: Top, Bottom, and Throughout
+
+The decision of *when* to run the balancing algorithm is as important as the choice of *how* to implement it. There are three primary strategies, each suited to different OCV curve shapes and pack designs.
+
+### Top Balancing
+
+**Top balancing** aligns cells at the top of charge — the balancing algorithm runs during or at the end of a charging session, driving all cells to the same upper voltage limit simultaneously. The BMS continues charging until the first cell reaches $V_\text{max}$, then holds $V_\text{max}$ on that cell (CV phase for a CC-CV charger) while continuing to charge the other cells. Simultaneously, if passive balancing is active, bypass resistors pull down the first cell's voltage, preventing it from being overcharged while the others catch up.
+
+Top balancing is effective for chemistries with a **steep OCV curve near the top of charge** — where small differences in SOC produce measurable voltage differences that the BMS can detect and correct. NMC/graphite cells are good candidates: the OCV curve near 90–100% SOC is steep enough that even a 2% SOC difference between cells produces a voltage difference of roughly 10–20 mV, easily within the resolution of a well-calibrated CMIC.
+
+Top balancing is also operationally natural because of how CC-CV charging works (recall Section 3.9). During the CC phase, the charger pushes the same current through all series cells, so they all gain charge at the same rate — no balancing is possible. The first cell to hit $V_\text{max}$ triggers the transition to the CV phase, during which the pack voltage is held constant and the current tapers. During this taper, the BMS can activate the bypass resistors on the highest-SOC cells, preventing them from overcharging while the lower-SOC cells continue to absorb current. The CV phase thus provides a natural window — often 30–90 minutes long — during which balancing and charging proceed simultaneously. This is why passive balancing and top balancing pair so well in practice: the hardware is simple, and the CV phase provides the time.
+
+The limitation of top balancing alone appears on discharge: cells that were balanced at the top of charge will experience SOC divergence during the discharge (due to capacity differences), and by the end of discharge, the lowest-capacity cell will hit its lower cutoff first, cutting off the pack before the higher-capacity cells are depleted. The cumulative energy left stranded in the higher-capacity cells (because the lowest-capacity cell triggered the cutoff) is the **discharge energy loss due to capacity imbalance** — and top balancing cannot prevent this, because it only addresses the SOC alignment at the start of discharge, not the differential discharge rate during it.
+
+### Bottom Balancing
+
+**Bottom balancing** aligns cells at the bottom of discharge — the balancing algorithm runs during or at the end of a discharge, ensuring all cells reach their lower voltage cutoff simultaneously. This ensures the maximum possible capacity is extracted from every cell on every discharge. The cost is that at the top of charge, cells will be at different SOCs (the higher-capacity cells will be fuller than the lower-capacity cells after the same total charge is applied).
+
+Bottom balancing requires the BMS to discharge high-capacity cells at the end of a discharge cycle to bring them to the same endpoint as the weakest cell. In a passive balancing architecture, this is done by applying bypass resistors to the higher-capacity cells after the string has reached its lower cutoff — draining their residual charge to align them with the weakest cell.
+
+Bottom balancing is effective when the priority is maximum discharge energy extraction (for applications like grid storage where the full capacity must be utilised). However, the engineering complexity is higher for two reasons. First, the BMS must track which cells need to be drained at the end of discharge and selectively activate their bypass resistors — adding bookkeeping that is unnecessary in top balancing. Second, and more subtly, the battery system must remain powered after the pack has nominally reached its lower voltage limit: the contactors must stay closed, the CMIC must remain active, and the bypass resistors must continue operating, all while the pack is at its lowest energy state. The BMS must manage this "empty but not dead" condition carefully — if it draws too much standby power from the nearly depleted pack, it risks driving the weakest cell into deep discharge and damaging it. In practice, bottom balancing is often performed not during normal use but during a dedicated maintenance session where an external power supply can keep the BMS electronics alive while the cells are drained to alignment.
+
+### Continuous Balancing (Throughout Operation)
+
+**Continuous balancing** runs the balancing algorithm at all times — during charge, during discharge, and during rest. It does not wait for a defined top or bottom reference point but continuously compares cell voltages and applies corrections whenever the spread exceeds the trigger threshold.
+
+Continuous balancing is the most robust strategy because it corrects imbalance as it develops rather than accumulating it. The energy dissipated by continuous balancing is proportional to the ongoing imbalance development rate — for a well-matched pack with slow divergence, continuous balancing dissipates very little. For a poorly matched or degraded pack with fast divergence, it dissipates proportionally more but also provides the most effective correction.
+
+The challenge with continuous balancing is detecting imbalance during operation. During discharge, the terminal voltage of a cell is below its OCV by the overpotential — and because the overpotential is different for each cell (due to different internal resistance), the terminal voltage difference between two cells may reflect resistance difference rather than SOC difference. Using terminal voltage as the balancing trigger during operation without correcting for the IR drop can lead to balancing in the wrong direction: draining a cell that appears to have high voltage because its resistance is low, rather than because its SOC is high.
+
+The correct approach for continuous balancing is to use **SOC-based balancing triggers** rather than **voltage-based triggers**. The BMS's EKF state estimator (Chapter 10) continuously estimates the SOC of each cell; the balancing algorithm compares these SOC estimates and applies corrections based on the SOC spread rather than the voltage spread. This requires accurate SOC estimates — and accurately estimated SOC requires the OCV curve to be informative, which brings us back to the flat-OCV challenge for LFP and SIB cells.
+
+For cells with flat OCV curves, the BMS cannot reliably distinguish between SOC differences and resistance differences from voltage measurements during operation. The balancing system must choose between two approaches. The first is to balance only during rest periods, when the terminal voltage closely approximates the true equilibrium OCV and the IR drop is zero — giving the most reliable voltage-based SOC comparison. The second is a hybrid strategy: apply conservative balancing based on estimated SOC (with acknowledged uncertainty) during operation, then apply corrective balancing during rest periods when OCV measurements are more reliable and the corrections can be validated.
+
+This hybrid strategy is the current best practice for LFP and SIB BMS implementations.
+
+A note on parallel groups: everything in this section applies to cells connected in *series*. Cells connected in *parallel* (as in a 96s2p pack, where each series position contains two cells in parallel) do not require explicit balancing — they self-balance automatically through direct current redistribution. Because parallel cells share the same terminal voltage, any SOC difference between them drives a circulating current through the connecting busbars that equalises their charge. The time constant for this self-balancing is typically seconds to minutes, governed by the busbar resistance and the cells' internal impedance. The BMS therefore treats each parallel group as a single equivalent cell and applies balancing only across the series string. This is why balancing hardware scales with the number of series cells, not the total number of cells in the pack.
+
+---
+
+## Quantitative Analysis: Balancing Time, Energy, and Optimal Strategy
+
+Let us put numbers on the competing choices through a worked analysis that draws together the hardware characteristics and the pack behaviour.
+
+### Problem Setup
+
+Consider a 16s1p LFP pack (16 cells in series, 1 cell in parallel — a small pack for a residential storage system) using **CATL LFP prismatic cells** (100 Ah capacity per cell, $R_\text{int} \approx 0.5$ mΩ per cell, nominal 3.2 V). The pack has been operating for 18 months, and cell-to-cell capacity spread has developed to a distribution with the following characteristics (based on post-aging measurements): cells 1–13 retain 97–99 Ah; cells 14–15 retain 92–94 Ah; cell 16 retains 87 Ah. The mean capacity is 96.3 Ah; cell 16 is 9.3 Ah below the mean.
+
+After a full charge session with top balancing (to the upper voltage limit), every cell is at 100% SOC — each has been charged to its own individual maximum capacity and held at $V_\text{max} \approx 3.65 \, \text{V}$. The pack appears perfectly balanced, because all cell voltages are equal. But recall that "100% SOC" means something different for each cell: 100% of 98 Ah for a healthy cell, versus 100% of 87 Ah for cell 16. The voltage alignment at the top masks the capacity disparity underneath.
+
+### The Discharge Trajectory Without Mid-Discharge Balancing
+
+Now the pack begins a demand-response discharge at $I = 50$ A (0.5C for cell 16, 0.52C for the mean cell). Since all cells carry the same current, after $t$ seconds of discharge, each cell has discharged the same charge $q = It$. The SOC of each cell at time $t$ is given by Equation (11.4):
+
+$$\text{SOC}_i(t) = 1 - \frac{q(t)}{Q_{\text{max},i}} = 1 - \frac{It}{Q_{\text{max},i}} \tag{11.4}$$
+
+Cell 16 (87 Ah) depletes faster because it has less capacity:
+
+$$\text{SOC}_{16}(t) = 1 - \frac{50t}{87 \times 3600}$$
+
+It reaches SOC = 0% (approximately — the BMS will cut off somewhat before this) when:
+
+$$t_{16} = \frac{87 \times 3600}{50} = 6{,}264 \, \text{s} = 1.74 \, \text{h}$$
+
+Meanwhile, a typical cell with 98 Ah depletes at:
+
+$$t_{98} = \frac{98 \times 3600}{50} = 7{,}056 \, \text{s} = 1.96 \, \text{h}$$
+
+The pack cutoff is triggered by cell 16 at $t = 1.74$ h, at which point the typical cell is at:
+
+$$\text{SOC}_\text{typical}(1.74\text{h}) = 1 - \frac{50 \times 6264}{98 \times 3600} = 1 - \frac{313{,}200}{352{,}800} = 1 - 0.888 = 11.2\%$$
+
+The typical cell still has **11.2% SOC remaining** when the pack is cut off by cell 16. For 13 cells at ~98 Ah, the **stranded energy** — the energy physically present in the cells but inaccessible because the pack cutoff has been triggered by the weakest cell — is:
+
+$$E_\text{stranded} = 13 \times 0.112 \times 98 \times 3.2 = 13 \times 35.2 \, \text{Wh} = 457 \, \text{Wh}$$
+
+Plus cells 14 and 15 each have approximately 8–9% remaining, contributing another ~80 Wh. Total stranded energy: approximately **537 Wh** on a nominal pack energy of $16 \times 100 \times 3.2 = 5{,}120$ Wh — a **10.5% reduction in usable discharge energy** due to one degraded cell.
+
+This is the quantitative cost of capacity imbalance. No amount of balancing can recover this energy — the cell simply does not have it. The only solution is to replace cell 16.
+
+### The SOC Imbalance Scenario: Where Balancing Helps
+
+Now consider a different scenario: the pack is new (all cells at 100 Ah), but due to different self-discharge rates over a two-week idle period, the cells enter a charge cycle at the following initial SOCs: cells 1–13 at 48% SOC, cell 14 at 44%, cell 15 at 46%, and cell 16 at 41%.
+
+This is pure SOC imbalance — all cells have the same capacity (100 Ah), but they are at different SOCs due to differential self-discharge during the idle period.
+
+Without balancing, the charge would terminate when cells 1–13 (the highest-SOC cells) reach $V_\text{max}$. At that point, the other cells would be at lower SOC: cell 14 started at 44% SOC and received the same 52 percentage points of charge as cells 1–13 (since all cells carry the same current and have the same capacity), ending at $44 + 52 = 96\%$ SOC — 4% below full, exactly matching its initial 4% deficit relative to cells 1–13. Cell 16 ends at $41 + 52 = 93\%$ SOC — 7% below full.
+
+The cells that started lower finish lower — the charge session does not equalise them (in the absence of balancing). On the subsequent discharge, cells 1–13 will reach their lower cutoff at SOC = 0% at time $t = 100 \times 3600/50 = 7200$ s, while cell 16 reaches 0% SOC at $t = 93/100 \times 7200 = 6696$ s — it triggers the cutoff 504 seconds early, wasting $50 \times 504 / 3600 = 7.0$ Ah, or about 7% of the cell's capacity.
+
+With passive balancing running during the charge session (bypass resistors on cells 1–13 during the CV phase, draining them slightly to allow cells 14–16 to catch up), all cells can be brought to 100% SOC by the end of the charge. The balancing current during the CV phase for cells 1–13 follows from Equation (11.1) with $R_b = 47$ Ω and $V_\text{cell} \approx 3.65$ V:
+
+$$I_b = 3.65/47 = 77.7 \, \text{mA}$$
+
+To drain cells 1–13 from 100% to 96% (to match cell 14): $\Delta Q = 0.04 \times 100 = 4$ Ah.
+
+$$t_\text{bal} = 4 / 0.0777 = 51.5 \, \text{h}$$
+
+That is far too slow for a single charge session. This illustrates a key limitation of passive balancing: it can correct small, continuous imbalances (the kind that develop over a few cycles), but large SOC divergences (from two weeks of differential self-discharge) require either much higher balancing currents, a dedicated equalisation charge, or switching to active balancing. In practice, residential storage systems avoid this problem by performing a **maintenance charge** — a slow, low-current charge to full SOC — periodically, with passive balancing running throughout.
+
+---
+
+## Worked Interpretation Exercise: Evaluating a Commercial BMS Balancing Specification
+
+Let us apply the chapter's framework to a real commercial BMS. The **Texas Instruments BQ76952** is a 3–16 series cell monitor IC commonly used in automotive and industrial battery packs. It includes integrated passive balancing functionality. Here is an abbreviated version of its balancing-related specifications:
+
+| Parameter | BQ76952 Specification | Notes |
+| --- | --- | --- |
+| Voltage measurement resolution | ~0.19 mV | See ADC architecture discussion below |
+| Balancing switch type | Internal N-channel MOSFET | Cells 1–15 only; cell 16 requires external component |
+| Max balancing current | 200 mA | Limited by internal MOSFET path resistance (~18 Ω) |
+| Balancing trigger threshold | Configurable, default 10 mV | Above minimum cell voltage in the string |
+| Thermal protection | Auto-inhibit above 60°C | Applies to cell temperature, not resistor temperature |
+
+Now let us interpret each of these specifications and understand what they mean for balancing performance.
+
+**0.19 mV voltage resolution**: The usefulness of this resolution depends entirely on the OCV curve slope at the operating SOC. For an NMC/graphite cell near the top of charge (90–100% SOC), the OCV curve is steep — a typical local slope is $dV_{\text{OC}}/d\text{SOC} \approx 1000 \, \text{mV per unit SOC}$ (meaning the OCV changes by roughly 100 mV over the last 10% of SOC). At this slope, the minimum detectable SOC difference is:
+
+$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{1000 \, \text{mV/unit}} = 1.9 \times 10^{-4} = 0.019\%$$
+
+Excellent resolution — the ADC is not the bottleneck; noise and thermal drift dominate at this level.
+
+Now consider an LFP cell in the flattest part of its plateau (approximately 30–70% SOC). Here the OCV curve slope can drop to $dV_{\text{OC}}/d\text{SOC} \approx 30\text{–}80 \, \text{mV per unit SOC}$. Taking the worst case of 30 mV/unit:
+
+$$\Delta\text{SOC}_\text{min} = \frac{0.19 \, \text{mV}}{30 \, \text{mV/unit}} = 0.0063 = 0.63\%$$
+
+The ADC can still resolve sub-1% SOC differences — but the 10 mV default balancing trigger threshold now corresponds to a SOC difference of:
+
+$$\Delta\text{SOC}_\text{trigger} = \frac{10 \, \text{mV}}{30 \, \text{mV/unit}} = 0.33 = 33\%$$
+
+This is the key problem: the trigger threshold, not the ADC resolution, is the practical limit for flat-OCV chemistries. With a 10 mV trigger, the CMIC will not initiate balancing until cells differ by 33% SOC in the flattest part of the LFP plateau — effectively blind in this region. In practice, balancing of LFP (and SIB) cells must rely on the steeper OCV regions at the extremes of the SOC range, or switch to SOC-based triggers from the state estimator. For SIB cells with hard carbon anodes, where the plateau can be even flatter than LFP, the situation is worse still.
+
+**200 mA maximum balancing current**: For a 100 Ah cell (residential storage scale), a 1% SOC imbalance requires correcting:
+
+$$\Delta Q = 0.01 \times 100 \, \text{Ah} = 1 \, \text{Ah}$$
+
+At 200 mA, this takes $1/0.2 = 5$ hours. Passive balancing at the BQ76952's maximum current is very slow for large cells. This is why BQ76952-based systems are more appropriate for smaller cells (3–10 Ah consumer or light automotive cells) where 200 mA represents a more reasonable fraction of the cell capacity (C/15–C/50).
+
+**Cell 16 external requirement**: The asymmetry in CMIC design (cell 16 requires an external component) is a genuine engineering nuisance in 16s packs. It arises because the highest cell in a bottom-referenced stack requires its balancing switch to be driven from a gate voltage that is higher than the pack voltage — requiring either an isolated gate driver or an external high-side MOSFET with a bootstrap circuit. Most CMIC designs handle up to 15 cells internally and leave the top cell as an external requirement. Engineers designing 16s packs with BQ76952 must add this external circuit, and its omission is a common rookie mistake that leaves the highest cell unbalanced.
+
+**Thermal inhibit at 60°C**: The BMS automatically stops balancing if any cell temperature exceeds 60°C. This is a safety feature to prevent balancing from adding heat to an already overtemperature situation — but it also means that in a hot pack (summer storage in an uncooled space), balancing may be frequently inhibited, allowing imbalance to accumulate without correction. Thermal management and balancing are not independent system concerns.
+
+---
+
+## What Changes for Sodium-Ion?
+
+The balancing architectures (passive resistive, switched capacitor, inductor-based, transformer-based) and the balancing control strategies (top, bottom, continuous) all apply directly to SIB packs. The hardware is identical in concept. The complications arise specifically from the flat OCV curve of hard carbon anodes, and they manifest at three levels.
+
+### Detection: The Flat OCV Makes Voltage-Triggered Balancing Unreliable
+
+In the plateau region of the hard carbon OCV (approximately 20–55% SOC for a typical SIB cell, as established in Chapter 6), voltage-based balancing triggers — the standard approach for NMC and most commercial BMS ICs — become unreliable. A 5% SOC imbalance between two cells in the plateau produces a voltage difference of perhaps 7–15 mV, depending on the precise slope. With typical CMIC measurement noise of 0.5–2 mV, the signal-to-noise ratio for detecting 5% imbalance in the plateau is poor. Many commercially available CMIC ICs designed for LIB use will simply not trigger balancing in this region because the voltage differences are below their balancing thresholds.
+
+The engineering response requires one of three approaches. First, increase the trigger threshold sensitivity (reduce the minimum balancing voltage trigger), which requires more accurate voltage measurement and may trigger spurious balancing from noise. Second, use SOC-based balancing triggers from the EKF estimator (Chapter 10) rather than raw voltage triggers — but this requires accurate SOC estimation in the plateau, which is itself difficult (Section 10.2). Third, perform balancing primarily outside the plateau region (at the extremes of SOC where the OCV curve is steeper), accepting that the plateau region is not actively balanced and relying on good initial cell matching to keep divergence small in this range.
+
+### Correction: Passive Balancing Still Works, But Slowly
+
+Once the decision to balance is made, passive balancing operates identically for SIBs as for LIBs. The bypass resistor does not know what chemistry the cell is. The complication is that the small voltage differences in the plateau mean the balancing current (from Equation (11.1), $I_b = V_\text{cell}/R_b$) is essentially the same regardless of the SOC difference — the cell voltage varies by only ~50 mV across the whole plateau, so the balancing current is nearly constant throughout. This means passive balancing in the SIB plateau is blind to the magnitude of the imbalance — it drains at a fixed rate regardless of whether the true SOC difference is 1% or 15%.
+
+One additional quantitative difference is worth noting: SIB cells typically operate at lower nominal voltages than NMC cells — approximately 3.0–3.3 V versus 3.6–3.7 V for NMC. From Equation (11.1), this means the passive balancing current is roughly 15–20% lower for the same bypass resistance, and the balancing time from Equation (11.2) is correspondingly longer. For a bypass resistor of 33 Ω, an SIB cell at 3.1 V produces $I_b = 94 \, \text{mA}$ versus 126 mA for an NMC cell at 4.15 V. This modest difference compounds with the already-slow balancing characteristic of flat-OCV chemistries, further motivating higher balancing currents or active balancing for SIB packs.
+
+### Strategy: The Bottom-Balancing Advantage for SIBs
+
+Given the unreliability of top balancing in the plateau region (where the cells all look the same voltage), **bottom balancing** has a specific advantage for SIBs. At the bottom of discharge (low SOC end of the hard carbon slope region, approximately 5–15% full-cell SOC), the OCV curve steepens considerably as the cathode contribution increases and the hard carbon exits its slope region. Voltage differences between cells become more detectable in this region. Bottom-balancing algorithms that align cells at the end of discharge — where the OCV curve has more slope — can detect and correct imbalance more reliably than top-balancing algorithms that operate at the top of charge where the hard carbon may still be in its relatively flat region.
+
+This is an active area of research in SIB BMS design: designing bottom-balancing algorithms that leverage the OCV curve features at the extremes of the SIB SOC range, combined with accurate coulomb counting throughout the plateau, to provide effective balancing despite the flat OCV challenge.
+
+### Impact of OCV Hysteresis on Balancing
+
+Hard carbon's OCV hysteresis (discussed in Chapters 6 and 10) adds another complication for balancing. If cells A and B are at the same true SOC but cell A recently charged while cell B recently discharged, they will have different OCV values — perhaps by 30–60 mV — due to hysteresis. A balancing algorithm that triggers based on voltage difference will incorrectly identify this as a SOC imbalance and attempt to balance cells that are actually at the same SOC, wasting energy.
+
+Correcting for hysteresis in the balancing trigger requires the BMS to track the recent cycling direction of each cell and use the appropriate OCV curve (charge vs. discharge) for the trigger comparison — a complication not present for most LIB chemistries (NMC has some hysteresis, but much smaller than hard carbon). For current SIB BMS designs, the practical approach is to trigger balancing only during extended rest periods (when OCV has relaxed and hysteresis has partially dissipated) and to use conservative voltage thresholds that avoid spurious triggers from hysteresis effects during active cycling.
+
+---
+
+## Chapter Summary
+
+**Key ideas:**
+
+- Cell imbalance has three types: SOC imbalance (correctable by balancing), capacity imbalance (not correctable by balancing — requires cell replacement), and resistance imbalance (managed by cell-specific power limits). Most commercial balancing systems address only SOC imbalance; the other two accumulate over the pack's life.
+- SOC imbalance accumulates from differential self-discharge, thermal gradients in the pack, manufacturing variation in initial Coulombic efficiency, and parasitic reaction rate heterogeneity. Differential degradation drives capacity and resistance imbalance over hundreds of cycles.
+- Passive (resistive bleed) balancing: all excess charge from high-SOC cells is dissipated as heat. Simple, cheap, reliable. Balancing current $I_b = V_\text{cell}/R_b$; balancing time $t_\text{bal} = \Delta\text{SOC} \times Q_\text{max}/I_b$. Typical balancing currents of 50–200 mA make it slow — correcting a 5% imbalance in a 3 Ah cell takes 45–90 minutes.
+- Active balancing transfers charge from high-SOC to low-SOC cells rather than dissipating it. Topologies include switched capacitor (adjacent-cell transfer, simple), inductor-based (any-pair transfer, flexible), and transformer-based (cell-to-pack, scalable). Efficiencies of 80–95%, higher cost and complexity than passive.
+- Top balancing aligns cells at full charge (good for steep-OCV chemistries with detectable voltage differences near 100% SOC). Bottom balancing aligns cells at the end of discharge (maximises discharge energy extraction). Continuous balancing corrects imbalance in real time using SOC estimates from the state estimator. SOC-based triggers are more reliable than voltage-based triggers during operation because they correct for IR drop.
+- For SIBs, the flat OCV plateau of hard carbon makes voltage-based balancing triggers unreliable in the 20–55% SOC range — voltage differences from imbalance are too small to distinguish from noise. Bottom-balancing strategies that leverage the steeper OCV at low SOC have a specific advantage. OCV hysteresis in hard carbon can cause spurious balancing triggers; rest-period-only balancing mitigates this. These challenges are active research areas in SIB BMS design.
+
+**Key equations:**
+
+$$I_b = V_\text{cell} / R_b \quad \text{(passive balancing current)} \tag{11.1}$$
+
+$$t_\text{bal} = \frac{\Delta\text{SOC} \times Q_\text{max}}{I_b} \quad \text{(passive balancing time for one cell)} \tag{11.2}$$
+
+$$E_\text{wasted} = \Delta\text{SOC} \times Q_\text{max} \times V_\text{cell} \quad \text{(energy dissipated per passive balancing event)} \tag{11.3}$$
+
+$$\text{SOC}_i(t) = 1 - \frac{I \cdot t}{Q_{\text{max},i}} \quad \text{(SOC trajectory of cell } i \text{ under constant current } I\text{)} \tag{11.4}$$
+
+**Key vocabulary (in order of appearance):**
+
+SOC imbalance, capacity imbalance, resistance imbalance, self-discharge rate spread, thermal gradient aging, Coulombic efficiency heterogeneity, parasitic reaction rate heterogeneity, weak-link effect, passive balancing, bypass resistor, bypass switch, CMIC (cell monitoring IC), balancing current, balancing time, remote bypass topology, active balancing, switched capacitor (flying capacitor), inductor-based (buck-boost) balancing, transformer-based (flyback) balancing, cell-to-cell balancing, cell-to-pack balancing, modular multilevel converter (MMC), top balancing, bottom balancing, continuous balancing, voltage-based balancing trigger, SOC-based balancing trigger, IR-corrected balancing, maintenance charge, stranded energy, bottom-balancing advantage for SIBs, OCV hysteresis and balancing.
+
+---
+
+## Deliverable
+
+The deliverable for Chapters 9–12 remains the Plett Coursera specialisation (Courses 1 and 2) with MATLAB assignments. Chapter 11 provides the physical context for the balancing material that appears in Plett's Volume 1 and in the advanced topics of Course 2.
+
+As a targeted exercise for this chapter, implement the following calculation in MATLAB or Python:
+
+**Setup**: A 12s1p NMC/graphite pack (12 cells in series) using cells with 5 Ah capacity and 50 mΩ internal resistance. After 200 cycles of operation, the cell capacities have drifted to: cells 1–10 at 4.85 Ah; cell 11 at 4.60 Ah; cell 12 at 4.30 Ah. All cells are at 100% SOC after a charge session with top balancing.
+
+**Part 1 — No balancing**: Simulate a constant-current discharge at $I = 5$ A (approximately 1C for the mean cell). For each time step, compute the SOC of each cell. Identify when the first cell reaches 0% SOC and compute the SOC remaining in every other cell at that moment. Calculate the total stranded energy.
+
+**Part 2 — With continuous passive balancing**: Add a 100 Ω bypass resistor to each cell. During discharge, if any cell's SOC falls more than 2% below the mean SOC, activate its bypass to slow its discharge rate. Recompute the discharge trajectory and compare the stranded energy to Part 1.
+
+**Worked partial solution for Part 1**: Cell 12 (4.30 Ah) reaches 0% SOC at time $t = 4.30 \times 3600 / 5 = 3096$ s = 51.6 min. At this moment, cell 11 (4.60 Ah) is at SOC = $1 - 5 \times 3096 / (4.60 \times 3600) = 1 - 0.935 = 6.5\%$. Cells 1–10 (4.85 Ah) are at SOC = $1 - 5 \times 3096 / (4.85 \times 3600) = 1 - 0.887 = 11.3\%$. Stranded energy: $(10 \times 0.113 \times 4.85 + 1 \times 0.065 \times 4.60) \times 3.7 \approx (5.48 + 0.299) \times 3.7 \approx 21.4$ Wh, or about 9.6% of the 12-cell pack's nominal energy of $12 \times 5 \times 3.7 = 222$ Wh.
+
+Notice that with a 12.8% spread between the lowest and highest cell capacities, about 9.6% of nominal pack energy is stranded — a meaningful performance penalty even at this moderate spread. The stranded fraction grows faster than linearly as the spread increases (because the cutoff is always triggered by the worst cell, and the distance between worst and average grows with spread). At 25% spread, the stranded energy can exceed 15% — motivating either cell replacement or active balancing strategies that can redistribute current during discharge.
+
+---
+
+## Further Reading
+
+1. **Hoque, M. M., Hannan, M. A., and Mohamed, A., "Charging and discharging model of lithium-ion battery for charge equalization control using particle swarm optimisation algorithm," *PLOS ONE* 11 (9), e0161630 (2016).** A balanced treatment of passive and active balancing algorithms with simulation results showing the time-to-balance and energy efficiency for each approach. Particularly useful for the quantitative comparisons of topology performance.
+
+2. **Daowd, M. et al., "Passive and active battery balancing comparison based on MATLAB simulation," *Proceedings of the 2011 IEEE Vehicle Power and Propulsion Conference*, 1–7 (2011).** A straightforward comparative simulation study of passive vs. active balancing for EV packs, showing how the balancing time and energy waste compare under realistic cell spread conditions. Good entry point for understanding the trade-offs in practice.
+
+3. **Stuart, T. A. and Zhu, W., "Fast equalization for large lithium ion batteries," *IEEE Aerospace and Electronic Systems Magazine* 24 (7), 27–31 (2009).** One of the clearer engineering expositions of inductor-based active balancing, with practical circuit design guidelines. The treatment of the current-steering and timing requirements is directly applicable to hardware design.
+
+4. **Plett, G. L., *Battery Management Systems, Vol. 1: Battery Modeling*, Artech House (2015), Chapter 5.** Plett's treatment of cell balancing focuses on the interaction between balancing control and state estimation — specifically, how the balancing current affects the coulomb counting accuracy and how to compensate. This is the connection between Chapter 10 and Chapter 11 of this book, and it is treated with the rigour appropriate to a BMS implementation.
+
+5. **Zhong, L. et al., "A method for the estimation of the battery pack state of charge based on in-pack cells uniformity analysis," *Applied Energy* 113, 558–564 (2014).** An analysis of how cell-to-cell variation statistics (mean, variance, and their evolution with cycle number) can be used to diagnose imbalance and predict future pack performance. Directly relevant to the SOH fusion and prognostics discussion in Chapter 10, and to understanding the long-term trajectory of balancing requirements as a pack ages.
+
+
+\newpage
+
+# Functional Safety
+
+## Chapter Opening
+
+Every algorithm we have developed in the preceding three chapters — the state estimator of Chapter 10, the balancing controller of Chapter 11, the pack architecture of Chapter 9 — must ultimately run on firmware in a microcontroller that is expected to function correctly in the same vehicle that carries human passengers, operates in rain and extreme temperature, and must not cause injury even when its own hardware or software fails. Batteries are not simply an energy source to be optimised for performance; they are a hazard-containing system that must be managed safely. And "safely" in the automotive context has a precise, legally enforceable meaning defined by the ISO 26262 standard for functional safety.
+
+This chapter is intentionally brief — the chapter plan designates it as an awareness-level treatment, not a deep implementation guide. Implementing a full ISO 26262-compliant BMS development process is the work of a team of safety engineers over months or years, and the details of that process are outside the scope of a battery technology textbook. What you need, as a researcher and engineer working with battery systems, is fluency in the vocabulary, an understanding of the classification system (ASIL ratings), and a clear picture of how functional safety requirements shape the architecture of the protective functions that the BMS must implement.
+
+By the end of this chapter, you will be able to read a BMS functional safety concept document and understand what it is asserting, evaluate a BMS protective function description and identify which hazard it addresses, and engage intelligently with safety engineers who specify the requirements that algorithm developers must satisfy. You will also understand why certain BMS design choices — redundant current sensors, hardware-independent voltage cutoffs, watchdog timers — that might seem like engineering over-engineering are in fact mandatory consequences of the safety standard.
+
+---
+
+> **Prerequisites Check**
+>
+> From your EE background:
+>
+> - Basic concept of system failure modes and fault analysis — helpful
+> - Familiarity with hardware reliability concepts (redundancy, fail-safe design) — helpful
+>
+> From Chapters 8–11:
+>
+> - Thermal runaway and its hazard profile (Chapter 8, Section 8.5) — the primary hazard being protected against
+> - BMS state machine and contactor control (Chapter 9, Section 9.4) — the protective functions that implement safety requirements
+> - SOC estimation and its uncertainty (Chapter 10) — relevant to safety-critical SOC limits
+> - The interaction between balancing and state estimation (Chapter 11) — safety implications of balancing failures
+
+---
+
+## The Need for a Safety Standard: What Can Go Wrong
+
+Before ISO 26262 and its requirements make sense, it helps to concretise the failure scenarios that motivate them. A battery system can cause harm through several distinct pathways, each with different likelihood and severity.
+
+### The Hazard Catalogue
+
+**Thermal runaway from overcharge**: If the BMS fails to stop charging when cells reach their upper voltage limit — whether because the voltage measurement circuitry fails, the contactor fails to open, or the software logic has an undetected bug — cells can be overcharged beyond their safe voltage. Overcharge drives the cathode into deep delithiation and the electrolyte into oxidative decomposition, eventually triggering the thermal runaway cascade described in Chapter 8. For NMC/graphite cells, the margin between the rated upper cutoff (4.2 V) and the onset of dangerous cathode reactions is only 100–200 mV. A measurement error of that magnitude, sustained through a full charging session, can initiate the hazard.
+
+**Thermal runaway from overdischarge followed by recharge**: If a cell is discharged below its lower voltage cutoff, the anode potential can rise high enough to oxidise the copper current collector — recall from Chapter 4 that LIB anodes use a copper foil. The dissolved Cu²⁺ ions migrate through the electrolyte during overdischarge. On subsequent charging, when the anode potential drops back to reducing conditions, these ions are electrodeposited as metallic copper on the anode surface and within the separator. These copper deposits can bridge the separator and create an internal short circuit. The hazard is not in the overdischarge itself (which causes capacity loss and impedance growth) but in the subsequent charge cycle that drives copper electrodeposition across the separator.
+
+**Electric shock from high-voltage exposure**: If the isolation between the HV bus and the vehicle chassis is lost — due to a cable insulation failure, water ingress, or a cell can short-circuiting to the chassis — vehicle occupants and first responders can be exposed to the full pack voltage (350–800 V). At these voltages, contact with the chassis constitutes a life-threatening electric shock hazard. The BMS must detect this loss of isolation and open the contactors before the vehicle is touched by anyone.
+
+**Fire from external short circuit**: If the HV bus terminals are short-circuited externally — through a crash that pinches a cable against a conductive body panel, or through improper handling — the fault current can reach thousands of amperes. Without rapid fuse interruption, the energy dissipated in the fault can ignite the vehicle structure. The protection must be both fast enough to prevent ignition and robust enough to interrupt the full prospective fault current.
+
+**Runaway from software fault in the BMS**: The BMS itself can fail. Firmware bugs, bit-flips from cosmic rays in embedded SRAM, stuck-at faults in hardware registers, and timing violations in interrupt-driven code are all real failure mechanisms. A BMS that calculates an incorrect SOC and permits charging beyond the true voltage limit — because its software model has accumulated error and believes the cell is at 85% when it is actually fully charged and the voltage is already at 4.20 V — can initiate the overcharge hazard without any hardware failure. The safety standard's requirement for software quality processes is a direct response to this category of failure.
+
+**Loss of propulsion from erroneous contactor opening**: The protective functions described above all terminate in the same action — opening the contactors to isolate the pack. But opening the contactors while the vehicle is in motion causes an immediate loss of drive torque, and with it the loss of electrically assisted power steering and vacuum-independent brake boost. At highway speed, a sudden loss of propulsion and steering assist is itself a safety hazard, potentially rated S3/E4/C2 or C3 depending on the traffic situation. This means the BMS faces a fundamental tension: it must open the contactors fast enough to prevent thermal runaway, but it must not open them spuriously due to a false alarm. Every protective function must therefore be designed with attention to both its *sensitivity* (probability of detecting a real fault) and its *specificity* (probability of not triggering on a non-fault). A BMS that is too aggressive in opening contactors trades one hazard for another.
+
+These hazards have different probabilities and different severities. Some (overcharge to thermal runaway) can result in fire, severe burns, or death. Others (copper dissolution) cause property damage and loss of the battery system but not immediate harm to persons. The ISO 26262 framework provides a structured methodology for classifying hazards by their risk level and for specifying the safety measures required to reduce that risk to an acceptable level.
+
+---
+
+## ISO 26262: Structure and Scope
+
+**ISO 26262** is the international standard for functional safety of electrical and electronic systems in road vehicles. It was first published in 2011 and significantly revised in 2018. It is titled "Road Vehicles — Functional Safety" and its full scope is broad — covering all E/E (electrical and electronic) systems in passenger cars and some categories of trucks. Battery management systems fall squarely within its scope for any vehicle application.
+
+The standard is structured as twelve parts. Parts 1 and 2 cover vocabulary and management of the functional safety process. Parts 3 through 6 trace the product development lifecycle from concept through implementation: Part 3 addresses the concept phase (hazard analysis, safety goals, and the functional safety concept), Part 4 covers system-level product development, Part 5 covers hardware-level product development, and Part 6 covers software-level product development and testing. Part 7 addresses production and operation. Part 8 covers supporting processes such as tool qualification and configuration management. Part 9 defines the ASIL-oriented analyses (FMEA, FTA, and related methods) that feed into every development stage. Parts 10 through 12 are supplementary: guidelines (informative, not normative), semiconductor-specific guidance, and adaptation for motorcycles, respectively.
+
+For a BMS developer, Parts 3, 4, 5, 6, and 9 are the most directly relevant. Part 3 is where the safety classification of each hazard is established; Parts 4–6 are where the specific technical and process requirements that result from that classification are defined.
+
+If you have encountered the V-model of systems development in your EE coursework — requirements on the left descending arm, verification on the right ascending arm — ISO 26262 maps directly onto that shape. Part 3 sits at the top of the V: it defines the safety requirements through hazard analysis. Parts 4 through 6 descend the left arm, progressively translating those requirements into system-level, hardware-level, and software-level designs. Each level on the left arm has a corresponding verification level on the right arm (system integration testing, hardware testing, software unit testing). Part 9 provides the analysis methods — FMEA, FTA, and others — that feed into every level. You do not need to memorise the part numbers, but understanding the V-shaped flow from hazard analysis down to detailed design and back up through verification will help you read any BMS safety document with orientation.
+
+### Functional Safety vs. Other Safety Concerns
+
+ISO 26262 addresses **functional safety** — the absence of unreasonable risk due to hazards caused by malfunctioning behaviour of E/E systems. It does not cover all safety aspects of a battery system. **Chemical safety** — such as hydrogen fluoride release from electrolyte decomposition and CO generation during thermal runaway — is covered by UNECE Global Technical Regulation No. 20 and related standards. **Electrical safety** (shock protection, wiring protection) is covered by ISO 6469 and FMVSS 305. **Abuse resistance** — performance under crash, fire, and water immersion — is covered by cell-level standards such as IEC 62660 and UL 2580.
+
+A fully safety-compliant BMS must satisfy all of these standards, not just ISO 26262. In practice, a BMS development programme runs parallel workstreams addressing all applicable standards simultaneously.
+
+---
+
+## ASIL: The Risk Classification System
+
+The centrepiece of ISO 26262 for a practitioner is the **Automotive Safety Integrity Level (ASIL)** classification system. ASIL is a risk classification assigned to each safety goal (a high-level requirement that must be satisfied to prevent a specific hazard from causing harm). The ASIL determines the rigour of the development process — the required analysis methods, the code review practices, the testing coverage, the documentation — needed to give confidence that the safety goal will be met in the final product.
+
+### The Three Risk Parameters
+
+ASIL is determined by three parameters that together describe the risk associated with a hazard:
+
+**Severity (S)** measures the worst-case consequence of the hazard manifesting, on a scale from S0 to S3. S0 means no injuries. S1 covers light to moderate injuries. S2 covers severe to life-threatening injuries where survival is likely. S3 covers life-threatening to fatal injuries — this is the rating assigned to any hazard that can result in vehicle fire or high-voltage electrocution.
+
+Thermal runaway leading to vehicle fire is typically assessed as S3. Loss of isolation leading to electric shock is also typically S3. Incorrect SOC display leading to range anxiety is S1 at most.
+
+**Exposure (E)** captures how frequently the vehicle is in the operating situation where the hazard could occur, rated E0 through E4. E0 means the situation is incredibly unlikely. E1 is very low probability. E2 is low probability — a few driving situations per year. E3 is medium probability, occurring in some drives. E4 is high probability, meaning the situation occurs in most drives or continuously during operation.
+
+A BMS overcharge hazard has high exposure (E4) because charging occurs in nearly every operational cycle. An isolation fault exposure depends on assumptions about fault occurrence rates — typically E2–E3 for a well-designed system.
+
+**Controllability (C)** rates the ability of the driver or other persons to avoid harm once the hazard has manifested, from C0 through C3. C0 means the situation is controllable in general. C1 is simply controllable. C2 is normally controllable. C3 means the situation is difficult to control or uncontrollable — once thermal runaway has initiated, for instance, there is nothing the driver can do to stop it.
+
+An incorrect range estimate that leads to a stranded vehicle is controllable (C1 — the driver can stop the vehicle safely).
+
+### The ASIL Matrix
+
+The full ASIL determination table has three dimensions (S × E × C). The slice at C3 — the most relevant for BMS hazards, since thermal runaway is uncontrollable — is shown below:
+
+**ASIL determination at C3 (difficult to control or uncontrollable):**
+
+| Severity | E1 | E2 | E3 | E4 |
+| --- | --- | --- | --- | --- |
+| **S1** | QM | QM | QM | ASIL A |
+| **S2** | QM | QM | ASIL A | ASIL B |
+| **S3** | QM | ASIL A | ASIL B | ASIL C |
+
+For the most critical battery hazards — S3 severity with C3 controllability and E4 exposure (such as overcharge during routine charging) — the ASIL matrix yields **ASIL D**, the most stringent level. At lower exposure (E3), the same S3/C3 combination gives ASIL C; at E2, ASIL B.
+
+Note that the standard also defines separate table slices for C1 and C2, which yield lower ASIL levels for the same S and E values. The full table is reproduced in ISO 26262 Part 3, Annex B. The reader should consult the standard directly when performing a formal HARA.
+
+**QM** (Quality Management): No specific ISO 26262 requirements beyond good engineering practice. The system's standard quality management process is sufficient.
+
+**ASIL A** through **ASIL D**: Increasing levels of rigor, with ASIL D being the most stringent and corresponding to the most severe, likely, and uncontrollable hazards.
+
+### Applying ASIL to BMS Hazards
+
+Let us work through the ASIL classification for the overcharge hazard. The severity is S3, because thermal runaway can lead to vehicle fire and potentially fatal injuries. The exposure is E4, because charging occurs in nearly every operational cycle. The controllability is C3, because thermal runaway is difficult to control once initiated. From the ASIL matrix: S3, E4, C3 → **ASIL D**.
+
+ASIL D is the highest ASIL level. It requires the most stringent development processes: formal verification methods for software, extensive hardware redundancy analysis (using techniques like FMEA — Failure Mode and Effects Analysis — and FTA — Fault Tree Analysis), 100% MC/DC code coverage in testing, strict configuration management, and independent safety assessments at multiple development stages. An ASIL D safety requirement applied to a BMS function means that the engineering team must demonstrate, with quantitative evidence, that the probability of the function failing to prevent overcharge is below a specified threshold — typically less than $10^{-8}$ failures per hour of operation.
+
+For comparison, let us classify the isolation fault hazard. The severity is S3 — electric shock to occupants or first responders can be fatal. The exposure is E2, since isolation faults are relatively rare in a well-designed system but possible. The controllability is C3, because once in contact with an energised chassis, the victim may be unable to release. From the ASIL matrix: S3, E2, C3 → **ASIL B**.
+
+ASIL B still requires significant rigour, but less than ASIL D. The BMS isolation monitoring function (Section 9.3) must be designed and verified to ASIL B standards — which means, among other things, that the IMD circuit must be shown to have a sufficiently low probability of both failing to detect a genuine isolation fault and of generating false alarms that would unnecessarily open the contactors.
+
+### What ASIL Levels Mean in Practice
+
+The difference between ASIL levels is not merely a label — it translates directly into development cost, time, and engineering constraints. At QM (quality management), the standard imposes no requirements beyond the organisation's normal development process. At ASIL A, the standard requires structured documentation, basic safety analysis (FMEA at the system level), and defined testing processes — roughly what a well-run engineering team would do anyway. At ASIL B, the requirements tighten: more rigorous analysis methods, higher test coverage targets, and independent review of safety-critical design decisions. At ASIL C, formal methods begin to appear: code coverage must include branch coverage, safety analyses must include quantitative fault tree analysis (FTA), and hardware random failure rates must be demonstrated through calculation. At ASIL D, the most stringent level, the standard requires MC/DC (modified condition/decision coverage) for software testing — a coverage criterion that ensures every Boolean sub-expression in every safety-critical decision has been independently exercised — along with formal verification techniques, quantitative PMHF (probabilistic metric for random hardware failure) demonstration, and independent safety assessment by an external assessor.
+
+The practical consequence: an ASIL D function might require 3–5× the development effort of the same function at ASIL A, and the verification artefacts alone can exceed the volume of the design documentation. This is why ASIL decomposition (splitting a high-ASIL requirement across two independent paths at lower ASIL levels) is not just a theoretical trick but a significant cost-saving strategy — one that directly shapes BMS hardware architecture.
+
+### ASIL Decomposition
+
+An ASIL D requirement does not mean every individual hardware component and every line of code must be developed to ASIL D rigor. ISO 26262 permits **ASIL decomposition**: splitting a safety requirement between two independent channels such that each channel only needs to meet a lower ASIL level, provided the two channels are truly independent and the failure of both simultaneously is extremely unlikely.
+
+For example, an ASIL D overcharge protection requirement can be decomposed as ASIL C + ASIL A if two independent protection mechanisms are implemented: a primary software-based overvoltage protection (ASIL C) and a secondary hardware-based voltage comparator that directly opens the contactor if the cell voltage exceeds a hardwired threshold (ASIL A). Because the two channels are independent — a software bug that disables the primary protection does not affect the hardware comparator — the combined system meets the ASIL D requirement. The logic is identical to redundancy in fault-tolerant circuit design: if two independent paths each have a failure probability $p_1$ and $p_2$, the probability that *both* fail simultaneously is $p_1 \times p_2$ (assuming independence). An ASIL C path with failure probability on the order of $10^{-7}$/hr and an ASIL A path with failure probability on the order of $10^{-6}$/hr combine to give $10^{-13}$/hr — far below the ASIL D target of $10^{-8}$/hr. The arithmetic works only because the two paths share no common failure modes. If both paths used the same voltage measurement IC, a single IC failure could disable both protections, and the decomposition would be invalid.
+
+This decomposition principle explains why BMS designs always include both software-based protection (the BMS algorithm) and hardware-based protection (dedicated safety ICs with hardwired thresholds), even when the software protection is more sophisticated and more flexible.
+
+---
+
+## BMS Failure Modes and Protective Functions
+
+With the ASIL framework established, we can systematically survey the protective functions that a BMS must implement and the failure modes they guard against. This section does not derive algorithms — those belong to the chapters covering each function in detail — but maps the safety requirements to the specific hardware and software mechanisms that implement them.
+
+### Cell Overvoltage Protection
+
+**Hazard**: Cell voltage exceeds upper cutoff ($V_\text{max}$), leading to cathode degradation and eventual thermal runaway.
+
+**Failure modes that could allow overvoltage**: The BMS can fail to detect or prevent overvoltage through several paths: cell voltage measurement circuit failure (CMIC input damaged, ADC offset, broken trace), software logic error in the CC-CV charge termination algorithm, contactor stuck closed (welded contact preventing pack isolation), or charger hardware fault delivering higher voltage than commanded.
+
+**Protective functions**:
+
+*Primary (ASIL C or D software)*: Cell voltage monitoring by the master BMS. Each cell's voltage is measured by the CMIC at a rate of at least 10 Hz during charging. If any cell voltage exceeds $V_\text{max}$ (e.g., 4.2 V for NMC), the BMS commands the contactors open. The software must be developed to the ASIL level corresponding to the hazard decomposition.
+
+*Secondary (ASIL A hardware)*: A dedicated analog voltage comparator on each cell — or on groups of cells — compares the cell voltage to a hardwired reference. If the voltage exceeds the reference, the comparator output directly drives the contactor open, bypassing the software entirely. This hardware path must be independent of the primary software path — it must not share power supply, signal ground, or logic gates with the software protection.
+
+*Cell-level safety device (ASIL A)*: The current interrupt device (CID) on individual cylindrical cells provides a last-resort mechanical protection — it permanently disconnects the cell if internal pressure (from gas generation during overcharge) exceeds a threshold. This is not resettable; a cell that has activated its CID must be replaced.
+
+**Detection and diagnostic coverage**: ISO 26262 requires quantification of **diagnostic coverage** — the fraction of all possible failure modes in a safety-relevant component that are detected by the protective function. For the cell voltage measurement path, this means: what fraction of all possible CMIC faults (stuck-at-zero output, stuck-at-full-scale output, intermittent open circuit, gain error, offset drift) result in the cell voltage being measured as lower than actual (allowing overcharge to continue)? Each fault mode must be identified and its probability of occurrence and detectability quantified through FMEA.
+
+### Cell Undervoltage Protection
+
+**Hazard**: Cell voltage falls below lower cutoff ($V_\text{min}$), leading to copper dissolution (LIB) or deep structural damage to the cathode, followed by internal short circuit on subsequent charging.
+
+**Protective functions**:
+
+*Primary*: Cell voltage monitoring with lower cutoff enforcement. If any cell falls below $V_\text{min}$ (typically 2.5–3.0 V for NMC), the BMS opens the contactors to terminate discharge.
+
+*Secondary*: Same hardware-independent comparator approach as for overvoltage, now monitoring for undervoltage. The comparator directly opens the contactor if the voltage falls below the hardwired reference.
+
+*Note on SIBs*: For sodium-ion cells, the lower cutoff voltage is typically 1.5–2.0 V (depending on cathode chemistry), and the hazard of going below this limit is somewhat less severe than for LIBs (no copper current collector to dissolve — recall from Chapter 4 that SIBs use aluminium on both sides). However, deep discharge of SIB cathodes can still cause irreversible structural damage, so undervoltage protection remains important, though potentially at a lower ASIL level.
+
+### Overcurrent Protection
+
+**Hazard**: Current exceeds the cell's or pack's maximum rated current, causing excessive heat generation, lithium/sodium plating, or mechanical damage to the cell.
+
+**Protective functions**:
+
+*Primary*: Pack current monitoring (Hall sensor or shunt, Section 9.3) with software-enforced current limits. The BMS sets maximum current limits based on SOC, temperature, and SOH, and commands the motor controller to reduce torque (in discharge) or the charger to reduce current (in charge) if the limit is approached. Soft limits are enforced by communication commands; hard limits trigger contactor opening.
+
+*Secondary*: The main HV fuse (Section 9.3) provides hardware-independent overcurrent protection. The fuse must be rated to interrupt the prospective short-circuit current of the pack without failing, and its time-current characteristic must be coordinated with the software limits so the fuse only blows in genuine fault conditions (not during legitimate high-current operation).
+
+*Cell-level overcurrent*: Individual cell string fuses protect against internal pack faults (one string shorting to another, or a cell developing an internal short). These are passive devices that require no software.
+
+**Plating protection**: As a sub-case of overcurrent protection, the BMS must enforce charging current limits that prevent lithium or sodium plating (Chapter 7, Section 7.3). The limit is a function of temperature and SOC, derived from the charge-transfer kinetics described by the Butler-Volmer equation (Chapter 2, Section 2.8). The critical constraint is this: if the charging current drives the anode's electrochemical potential below 0 V versus the Li/Li⁺ reference (the equilibrium potential of metallic lithium, introduced in Chapter 1), lithium metal will plate out on the anode surface instead of intercalating. At low temperatures, the charge-transfer resistance rises and the anode potential drops more sharply for a given current, so the safe charging current limit must be severely derated. At high SOC, the anode is nearly full and its equilibrium potential is already close to 0 V vs. Li/Li⁺, providing less margin. The combination of low temperature and high SOC is the most restrictive operating point for the plating prevention function.
+
+### Overtemperature Protection
+
+**Hazard**: Cell temperature exceeds safe operating limits, accelerating degradation (at moderate overtemperature) or initiating thermal runaway (at severe overtemperature).
+
+**Protective functions**:
+
+*Primary*: Cell and module temperature monitoring (thermistors or resistance temperature detectors distributed through the pack, measured by the BMS at 1–10 Hz). Software enforces temperature-dependent power limits and triggers contactor opening if temperature exceeds the emergency limit (typically 60°C for charging, 70°C for discharging for most LIB chemistries; higher for SIBs as noted in Chapter 8).
+
+*Cooling system activation*: The BMS commands the thermal management system (coolant pump, fans, heater) to maintain cells within the optimal temperature window. This is a performance function as well as a safety function — it prevents the temperature from approaching the emergency limit in the first place.
+
+*Thermal runaway detection*: A more demanding safety function distinct from overtemperature protection. Thermal runaway can initiate faster than the normal temperature monitoring loop can detect, particularly if it starts in a cell interior that is thermally insulated from the temperature sensors. Some BMS designs supplement temperature monitoring with **gas detection** (a sensor that detects the characteristic gas products of SEI decomposition and electrolyte combustion — CO, hydrogen, hydrocarbons) and with **voltage collapse detection** (a cell undergoing thermal runaway will show a sudden voltage drop as the cell is effectively shorted internally, even before the temperature rises to detectable levels). These secondary detection methods can provide earlier warning of runaway initiation than temperature alone.
+
+### Isolation Loss Detection
+
+**Hazard**: Loss of HV-to-chassis isolation exposes occupants or first responders to shock hazard.
+
+**Protective functions**:
+
+*Primary*: Continuous isolation monitoring by the IMD (Section 9.3). The IMD injects a test signal and measures the isolation resistance on both the positive and negative HV rails to chassis ground. The BMS opens the contactors if isolation resistance falls below the minimum threshold ($R_\text{iso} \geq 100 \; \Omega/\text{V}$ of pack voltage, or typically 40–200 kΩ for a 400 V system).
+
+The IMD itself must be monitored for failure — a failed IMD that always reports "isolation good" would disable this protective function. Self-diagnostic features (the IMD periodically tests its own measurement path by applying a known test impedance) are required by ISO 26262 for this reason.
+
+### Contactor Welding Detection
+
+**Hazard**: A contactor whose contacts have welded shut — this occurs when the contacts are opened or closed while carrying high current, causing an electrical arc that locally melts and fuses the contact surfaces — cannot be opened by the BMS, leaving the HV bus permanently energised even when the BMS commands isolation.
+
+**Protective functions**:
+
+The BMS must perform a **contactor weld detection test** during each power cycle. The standard test procedure: command the negative contactor closed; measure the voltage across the positive contactor (which should be approximately equal to the full pack voltage if the positive contactor is open). If the voltage is approximately zero, the positive contactor is welded shut. Similarly, command all contactors open; measure the bus voltage (which should collapse to zero if all contactors are truly open). If bus voltage remains at pack voltage, a contactor is welded.
+
+This detection must happen before the vehicle is considered safe to work on (e.g., during the end-of-session shutdown sequence) and must be reported to the driver and service technicians as a fault code. A vehicle with a welded contactor must not be operated until the contactor is replaced.
+
+### Software Integrity: Watchdog Timers and Execution Monitoring
+
+Beyond the individual protective functions, the software itself must be protected against its own failure modes. An embedded microcontroller running BMS firmware can fail in several ways. The main execution loop may stall due to an infinite loop or a deadlock in a semaphore. A stack overflow can corrupt the execution state, or a pointer error can cause the firmware to execute arbitrary memory contents. A bit-flip in SRAM — caused by high-energy neutrons from cosmic ray showers striking the silicon substrate — can corrupt a safety-critical variable. For automotive-grade SRAM, the soft error rate (SER) is on the order of 100–1000 FIT per megabit (where 1 FIT = 1 failure in $10^9$ device-hours), corresponding to roughly one upset per 1–10 million hours per megabit. At first glance this seems negligibly rare, but a modern BMS microcontroller with several megabits of SRAM running for millions of cumulative fleet-hours makes this a realistic — not hypothetical — failure mode.
+
+The primary hardware protection against software failure is the **watchdog timer**: a hardware timer that the firmware must periodically reset ("pet") during normal execution. If the firmware stalls and fails to pet the watchdog, the timer expires and the watchdog resets the microcontroller — triggering a transition to the **safe state**, which is defined for each safety function as the system condition that eliminates or minimises the hazard. For most BMS functions, the safe state is "contactors open, pack isolated" — a condition that prevents both overcharge and overcurrent but also renders the vehicle inoperable. The safe state is not necessarily a desirable operating condition; it is the condition the system defaults to when it cannot guarantee safe continued operation. This ensures that a software failure does not leave the pack in an unsafe state indefinitely.
+
+Additional software integrity measures required by ISO 26262 for ASIL C and D systems include:
+
+**Stack monitoring**: The BMS software must monitor its own stack usage and trigger a safe state if stack usage approaches the stack size limit — indicating that a recursive call or stack corruption event is occurring.
+
+**Memory protection**: A hardware memory protection unit (MPU) prevents one software task from writing to memory regions belonging to another task, preventing corruption of safety-critical variables by non-safety-critical code.
+
+**CRC checks on safety-critical data**: Safety-critical tables stored in non-volatile memory (the OCV-SOC lookup table, the ASIL-rated software constants) must be verified by CRC checksum at power-up and periodically during operation. A corrupted OCV table could cause the BMS to miscalculate SOC and fail to enforce voltage limits correctly.
+
+**Redundant SOC calculation paths**: For ASIL C/D SOC-dependent protective functions, the SOC estimate must be computed by two independent software paths or two independent hardware paths, and the results compared. Disagreement beyond a threshold triggers a fault. This is the software manifestation of the ASIL decomposition principle.
+
+---
+
+## The Relationship Between Functional Safety and Battery Research
+
+A researcher who develops a new BMS algorithm — a better SOC estimator, a novel degradation model, an improved balancing strategy — must understand where their work sits in the functional safety framework. Not because the researcher is responsible for writing the FMEA and developing the ASIL decomposition (that is the safety engineer's job), but because the research will eventually need to be translated into a product, and the translation requirements shape what the research must prove.
+
+Specifically: an algorithm that will be used in a safety function at ASIL C or D must be developed under a disciplined software development process, with full documentation of its requirements, design, and verification. The verification must demonstrate not just that the algorithm works correctly under nominal conditions but that it fails gracefully under all relevant fault conditions — sensor failure, model parameter error, computational overflow, communication loss. An SOC estimator that diverges badly when the current sensor develops a 100 mA offset is a safety concern, not just a performance concern, if that divergence could cause the BMS to permit overcharge.
+
+For sodium-ion batteries specifically, the interaction between functional safety requirements and the flat-OCV estimation challenge is a genuine open research problem. An ASIL D overcharge protection function that relies on accurate SOC estimation to enforce the upper voltage limit faces a specific challenge: if the SOC estimate is highly uncertain — recall from Chapter 10 that in the hard carbon plateau region, the OCV changes by less than 20 mV over a SOC range of 30–40%, so the EKF's correction gain from voltage measurements is near zero and the state uncertainty can grow to ±15–20% SOC within a few hours of steady-state operation — the safety function cannot confidently enforce the voltage limit based on SOC alone. The hardware-based voltage comparator (the secondary protection path described in Section 12.4) provides the safety backstop, but the software primary path has reduced diagnostic coverage in this region. Quantifying this reduced coverage, proposing algorithmic solutions (better SOC estimators for flat-OCV cells), and demonstrating their robustness to sensor faults and model errors — all of this constitutes valuable, publishable research that sits directly at the intersection of battery chemistry, estimation theory, and functional safety engineering.
+
+The functional safety framework is not an obstacle to innovation; it is a specification of what a good BMS algorithm must prove about itself. Understanding that specification makes you a better researcher.
+
+---
+
+## Worked Interpretation Exercise: Reading a BMS Safety Concept Document
+
+A **functional safety concept** document is one of the required deliverables in the ISO 26262 concept phase (Part 3). It describes, for each identified hazard and its associated safety goal, the top-level functional safety requirements that the system must implement. Let us work through a representative excerpt from a fictional but realistic BMS safety concept document.
+
+---
+
+*Document excerpt (fictional, representative of real BMS safety concept structure)*:
+
+**Hazard ID**: H-BMS-003
+**Hazard Description**: Cell overvoltage during fast charging
+**Operational Situation**: EV connected to DC fast charger, charging in CC-CV mode
+**Hazard Analysis Result**: S3 (potential thermal runaway → fire → fatalities), E4 (DC fast charging occurs on most long trips), C3 (thermal runaway is uncontrollable once initiated)
+**ASIL**: ASIL D
+**Safety Goal SG-003**: The BMS shall prevent any cell from exceeding 4.25 V during charging with a probability of failure less than $10^{-8}$ per hour.
+**Note**: The safety goal is set at 4.25 V rather than the nominal 4.20 V upper limit to provide a 50 mV margin above the operational limit. The operational limit of 4.20 V is enforced by the primary software protection; the safety goal of 4.25 V is enforced by the independent hardware protection. The 50 mV gap ensures that activation of the hardware protection always indicates a genuine failure of the primary protection, preventing nuisance trips.
+
+**Functional Safety Requirements (FSR)**:
+
+FSR-003-A (ASIL D after decomposition: ASIL C from this path + ASIL A from FSR-003-B): The BMS shall monitor all cell voltages at a minimum rate of 20 Hz during charging. If any cell voltage exceeds 4.20 V for more than 100 ms, the BMS shall command the main positive contactor open within 50 ms.
+
+FSR-003-B (ASIL A): A hardware voltage monitoring circuit, independent of the BMS microcontroller, shall compare each cell voltage to a hardwired reference of 4.25 V and directly open the main positive contactor if any cell voltage exceeds this reference, independent of BMS software state.
+
+FSR-003-C (ASIL B): The BMS shall perform a cell voltage measurement chain diagnostic at each power-up, verifying that each CMIC channel responds correctly to a known test stimulus. If any CMIC channel fails the diagnostic, the BMS shall inhibit charging and report the fault.
+
+---
+
+Let us interpret this excerpt using the chapter's framework.
+
+**The ASIL D classification**: Consistent with the S3/E4/C3 combination we worked through in Section 12.3. The safety goal is stated as a quantitative failure rate — $10^{-8}$/hour — which aligns with the ASIL D quantitative target for the probabilistic metric for random hardware failure (PMHF), defined in ISO 26262 Part 5. ISO 26262 descended from the process-industry standard IEC 61508 and shares its general approach to quantitative safety targets, though the specific values and their application to automotive systems are defined independently in ISO 26262.
+
+**The 50 mV margin design**: This is a classic safety engineering pattern called **protection layer separation**. The operational protection (4.20 V, software) and the safety protection (4.25 V, hardware) are intentionally offset so they never compete. The safety layer only activates when the operational layer has failed — ensuring that the safety layer's activation is always a reliable fault indicator rather than an ambiguous event.
+
+**FSR-003-A (ASIL C)**: The 20 Hz measurement rate and 100 ms response time define the worst-case overcharge duration before protection acts. Consider a DC fast charger supplying 3C charge current to a 5 Ah NMC cell near the end of charge. The voltage rise rate at this point is dominated by the steep tail of the OCV curve. We can estimate it as:
+
+$$\frac{dV}{dt} \approx \frac{dOCV}{dSOC} \times \frac{I}{Q_\text{nom}} \tag{12.1}$$
+
+Near full charge ($\text{SOC} > 0.95$), $dOCV/dSOC$ for NMC is steep — on the order of 2–5 V per unit SOC. For a 5 Ah cell at 3C (15 A), $dSOC/dt = 15/5 = 3 \; \text{hr}^{-1} \approx 8.3 \times 10^{-4} \; \text{s}^{-1}$. Taking $dOCV/dSOC \approx 3 \; \text{V}$, the voltage rise rate is roughly $3 \times 8.3 \times 10^{-4} \approx 2.5$ mV/s. At this rate, the cell would traverse the 50 mV gap from 4.20 V to 4.25 V in approximately 20 seconds — far slower than the 100 ms detection and the 50 ms contactor response time, confirming that the software protection has ample margin to prevent overshoot into the hardware protection threshold.
+
+Note: this estimate ignores the additional IR overpotential that is present during charging (which would shift the measured terminal voltage above OCV by $I \times R_\text{int} \approx 15 \times 0.045 = 0.675 \; \text{V}$), but that overpotential is approximately constant during the final moments of CC charging and does not affect the *rate* of voltage rise. When the charger transitions to CV mode and begins reducing current, the terminal voltage is held constant by definition — so the hazardous overshoot scenario applies specifically to a fault where the CC-to-CV transition fails and the charger continues at full current past the voltage limit.
+
+Notice that the response time requirement (50 ms to command contactor open after detecting overvoltage) is a real-time performance specification for the BMS firmware, not just a logical correctness requirement.
+
+**FSR-003-B (ASIL A)**: The hardware path. Because it is the ASIL A half of an ASIL D decomposition, it "only" needs to meet ASIL A requirements — but it must be genuinely independent of the software path. The requirement that the hardware comparator "directly opens the main positive contactor" means there is a hardwired signal path from the comparator output to the contactor coil drive circuit that bypasses the BMS microcontroller entirely. A software deadlock cannot prevent this protection from activating.
+
+**A common pitfall in ASIL decomposition**: Suppose a cost-conscious design routes both the BMS software voltage measurement and the "independent" hardware comparator through the same cell monitoring IC (CMIC), reasoning that the CMIC has separate digital and analog outputs. This violates the independence requirement — a single CMIC failure (power supply dropout, die crack, solder joint fracture) would disable both paths simultaneously. The ASIL decomposition would be invalid, and the system would not meet the ASIL D safety goal. In practice, achieving genuine independence often requires physically separate measurement ICs with separate power supplies and separate signal routing — an architectural constraint that adds cost and board area, but is non-negotiable for ASIL D decomposition. When you see a BMS design with what appears to be "redundant" measurement hardware, this independence requirement is almost always the reason.
+
+**FSR-003-C (ASIL B)**: The diagnostic coverage requirement. Every time the vehicle powers on, the CMIC measurement chain must be verified. This is how the system confirms that the primary protection path (FSR-003-A) is actually functional. Without this diagnostic, a stuck-at-zero fault in the CMIC (which would make every cell appear to be at 0 V) would disable the primary protection indefinitely — and the only remaining protection would be the hardware comparator, which by itself only meets ASIL A. The diagnostic keeps the system within its ASIL D decomposition validity.
+
+This kind of document analysis — tracing from hazard to ASIL to functional requirements to implementation details — is a skill you will need when working in a team developing commercially deployable BMS systems.
+
+---
+
+## What Changes for Sodium-Ion?
+
+The functional safety framework (ISO 26262) applies identically to SIB packs as to LIB packs. The ASIL classification process is the same; the protective functions are structurally the same. The differences are in the specific numbers and in some hazard severity assessments.
+
+**Lower thermal runaway severity may reduce some ASIL levels**: As established in Chapter 8, SIB cells have higher thermal runaway onset temperatures and lower total heat release than NMC LIB cells. If this difference is sufficient to change the severity classification of the overcharge hazard — from S3 to S2, for example, in a well-engineered pack design that contains the runaway within the pack without causing vehicle fire — then the resulting ASIL classification could drop from ASIL D to ASIL B for the overvoltage protection function. This potential ASIL reduction is commercially significant: ASIL B development requires substantially less engineering overhead than ASIL D. Whether the thermal characteristics of a specific SIB chemistry actually justify a severity downgrade requires a formal hazard analysis and evidence from abuse testing (nail penetration, overcharge, external fire tests) — it is not assumed.
+
+**The flat OCV problem creates new diagnostic coverage challenges**: As discussed in Section 12.4, the BMS overcharge protection function relying on SOC estimation faces reduced diagnostic coverage when the cell is in the OCV plateau region (where SOC estimation uncertainty is high). A full FMEA of a SIB BMS must quantify this reduced coverage and demonstrate that the hardware protection path (which is voltage-based and unaffected by the SOC estimation uncertainty) provides sufficient independent protection. The specific failure mode — "SOC estimator reports 50% when true SOC is 95% because the cell has been in the plateau region and coulomb counting has drifted" — must appear in the FMEA and must be shown to be caught by the hardware comparator. This is a concrete safety engineering consequence of the estimation challenge first identified in Chapter 10.
+
+**Voltage limits are different but the protection architecture is the same**: SIB upper voltage limits (3.9–4.2 V for layered oxide cathodes) and lower voltage limits (1.5–2.0 V) differ from LIB values, but the protection architecture — primary software monitoring, secondary hardware comparator, with independent paths — is identical in structure.
+
+**Sodium metal hazard differs from lithium metal hazard**: Sodium plating (Chapter 7, Section 7.3) is less prone to dendrite formation and catastrophic short circuits than lithium plating. This may affect the severity classification of the plating-related hazard — and therefore the ASIL requirement for the charge current derating function (the algorithm that prevents plating by limiting charge current at low temperatures). A lower S-rating for the plating hazard in SIBs could reduce the ASIL requirement for the current derating function, with corresponding reductions in development cost and rigour. Whether this reduction is justified requires formal analysis with specific severity and controllability evidence.
+
+---
+
+## Chapter Summary
+
+**Key ideas:**
+
+- ISO 26262 is the international functional safety standard for automotive E/E systems, applicable to all BMS functions in road vehicles. It provides a structured methodology for classifying hazard risk and specifying the development rigor required to reduce that risk to an acceptable level.
+- ASIL (Automotive Safety Integrity Level) is determined by three factors: Severity (S0–S3, consequences to persons if the hazard occurs), Exposure (E0–E4, frequency of the hazardous operating situation), and Controllability (C0–C3, ability to avoid harm once the hazard occurs). The combination yields QM (no specific requirements) through ASIL A–D (increasing rigor).
+- BMS overcharge protection (potential to cause thermal runaway → fire → fatalities) is typically classified ASIL D under standard operating conditions (S3, E4, C3). This is the highest level and requires the most rigorous development processes, quantitative demonstration of failure probability below $10^{-8}$/hour, and full FMEA with diagnostic coverage quantification.
+- ASIL decomposition allows an ASIL D requirement to be split into two independent paths (e.g., ASIL C software + ASIL A hardware), each meeting a lower level, provided the two paths are genuinely independent. This is why every safety-critical BMS function has both a software layer and a hardware-independent backup layer.
+- Core BMS protective functions include: cell overvoltage protection (primary software cutoff + hardware comparator + cell CID), undervoltage protection, overcurrent protection (current limits + main fuse + cell fuses), overtemperature protection (temperature monitoring + active cooling), isolation loss detection (IMD with self-diagnostic), and contactor weld detection.
+- Software integrity is addressed through watchdog timers, memory protection units, stack monitoring, CRC verification of safety-critical tables, and redundant calculation paths for ASIL C/D functions.
+- For SIBs, the same framework applies. Potential differences include: lower thermal runaway severity may reduce some ASIL levels (if formally demonstrated through abuse testing); the flat-OCV estimation uncertainty creates specific diagnostic coverage gaps that must be addressed in the FMEA; sodium plating is less dendrite-prone, potentially reducing the ASIL requirement for the plating-prevention current derating function.
+
+**Key vocabulary (in order of appearance):**
+
+ISO 26262, functional safety, E/E system, ASIL (Automotive Safety Integrity Level), severity (S), exposure (E), controllability (C), QM (quality management), safety goal, functional safety concept, ASIL decomposition, FMEA (Failure Mode and Effects Analysis), FTA (Fault Tree Analysis), diagnostic coverage, cell overvoltage protection, hardware comparator, protection layer separation, current interrupt device (CID), cell undervoltage protection, overcurrent protection, charge current derating, overtemperature protection, thermal runaway detection, isolation monitoring device (IMD), contactor weld detection, watchdog timer, memory protection unit (MPU), stack monitoring, CRC checksum, redundant calculation path, safe state.
+
+---
+
+## Deliverable
+
+The deliverable for Chapters 9–12 remains the Plett Coursera specialisation (Courses 1 and 2) with MATLAB assignments. Chapter 12 provides the safety context within which all the algorithms in Plett's courses must eventually operate in a commercial system.
+
+As a focused exercise for this chapter, identify one BMS protective function from Section 12.4 (your choice — for example, the overtemperature protection or the contactor weld detection) and write a short functional safety analysis covering the following:
+
+**Hazard identification**: State the hazard in the form "Hazard X can cause harm Y in operational situation Z." Be specific about the operational situation (driving, charging, storage, crash aftermath).
+
+**ASIL classification**: Assign S, E, and C ratings to the hazard, justify each rating with a brief argument (one or two sentences), and determine the resulting ASIL from the table in Section 12.3.
+
+**Functional safety requirements**: Write two functional safety requirements for this hazard — one for a software-based primary protection path and one for a hardware-based secondary protection path. Specify the ASIL level of each requirement after decomposition.
+
+**Failure mode analysis (one failure mode)**: Identify one specific hardware failure mode in the primary protection path (e.g., "CMIC temperature sensor open circuit causing measured temperature to read 0°C") and describe: (a) how this failure would affect the protective function; (b) how the failure would be detected (diagnostic coverage); (c) what the BMS should do upon detecting this failure.
+
+This exercise simulates a fragment of the hazard analysis and risk assessment (HARA) process defined in ISO 26262 Part 3, and is the kind of thinking you would need to do as part of a BMS development team.
+
+**Partial worked example — overtemperature protection, sensor open-circuit failure**:
+
+Hazard: Cell temperature exceeds upper safe limit during high-rate discharge, initiating thermal runaway. Operational situation: high-speed motorway driving at sustained high C-rate in ambient temperature of 40°C.
+
+ASIL: S3 (thermal runaway risk), E3 (sustained high-rate motorway driving is a common but not constant situation), C3 (thermal runaway is uncontrollable). From the table: S3, C3, E3 → ASIL C.
+
+Failure mode — NTC thermistor open circuit: If a temperature sensor develops an open circuit (broken wire, corroded connector, failed bead thermistor), the CMIC will read the maximum voltage on the measurement pin — which, for a typical voltage divider circuit, corresponds to approximately −40°C (the cold end of the calibration range). The BMS interprets this as "cell is very cold" and removes any temperature-based derating. At the true cell temperature of 50°C, the BMS would normally apply significant power derating — removing that derating at 50°C allows continued high-rate operation, potentially driving the cell toward thermal runaway.
+
+Detection: The BMS must detect open-circuit sensor faults. For an NTC thermistor in a voltage divider, an open circuit produces a reading at the extreme cold limit of the calibration range — a reading of −40°C in a pack that cannot possibly be −40°C during driving is a detectable anomaly. The BMS firmware should implement a plausibility check: if the temperature reading is more than 25°C colder than ambient temperature (measured by an external sensor or inferred from the pack's other sensors), flag the measurement as failed.
+
+Response: On detection of a failed temperature sensor, the BMS should apply a conservative fallback temperature (e.g., assume the cell is at 60°C, triggering the maximum derating), log the fault code for service attention, and illuminate a warning to the driver. The vehicle should complete its current trip safely under the conservative derating but should be serviced before the next trip.
+
+---
+
+## Further Reading
+
+1. **ISO 26262:2018, *Road Vehicles — Functional Safety* (all parts).** The standard itself is the authoritative source. Parts 3, 4, and 9 are the most directly relevant to BMS design. The standard is available for purchase through ISO and national standards bodies. For educational access, many universities subscribe to standards databases (e.g., IEC Webstore, BSI) that provide access without individual purchase.
+
+2. **Haberfellner, R. et al., *Systems Engineering: Fundamentals and Applications*, Birkhäuser (2019), Chapters on safety and dependability.** A comprehensive systems engineering text with strong coverage of safety analysis methods (FMEA, FTA, HAZOP) at the level of practical application. Provides the systems engineering context within which ISO 26262 functions.
+
+3. **Ebert, C. and Parro, R., "Automotive Software," *IEEE Software* 31 (2), 10–13 (2014).** A concise overview of ISO 26262 as it applies to automotive software development, written for a software engineering audience. Explains ASIL, the V-model development process, and the software-specific requirements (MC/DC coverage, tool qualification) in accessible terms.
+
+4. **Thaler, D. et al., "Safety Concept for BMS in Electric Vehicles Using ISO 26262," *Proceedings of IEEE Transportation Electrification Conference and Expo (ITEC)*, 2014.** One of the more accessible published worked examples of applying ISO 26262 to a BMS development programme, showing how hazard analysis, ASIL classification, and functional safety requirements are derived for real BMS functions. Directly applicable to the deliverable exercise.
+
+5. **Xiong, R. et al., *Battery Management Algorithm for Electric Vehicles*, Springer (2020), Chapter 7.** Covers the integration of functional safety requirements with BMS algorithm design — specifically, how to design SOC and SOH estimators that meet ASIL requirements through redundancy and plausibility monitoring. The most direct connection between the estimation algorithms of Chapter 10 and the safety requirements of Chapter 12.
+
+
+\newpage
+
+# What's Different About Sodium
+
+## Chapter Opening
+
+You have now read twelve chapters of battery science, and sodium-ion batteries have appeared in every one of them — in the "What Changes for Sodium-Ion?" sections that have closed each chapter since Chapter 1, in the detailed treatment of hard carbon and layered oxide cathodes in Chapter 6, in the thermal safety comparison in Chapter 8, in the balancing and estimation complications in Chapters 10 and 11, and in the safety concept implications in Chapter 12. The picture has been assembled incrementally, one piece per chapter, in the context of whichever concept was being introduced. Now it is time to hold all the pieces together simultaneously and examine them as a system.
+
+This chapter is the consolidation. Its purpose is to answer a single question with the full depth the book has been building toward: *What does an engineer — specifically a simulation-focused electrical engineer who wants to do research on sodium-ion batteries — need to know that is different from what they know about lithium-ion batteries?* Not different at the level of "sodium is cheaper" or "hard carbon instead of graphite" — those surface-level facts were established in Chapters 4 and 6. Different at the level of which model equations need to change, which parameters need new values, which physical mechanisms have different magnitudes or different signs, and which failure modes are amplified, suppressed, or entirely new.
+
+The answer to that question is the research agenda for SIB simulation. Every section of this chapter identifies a place where your LIB knowledge requires modification or extension when applied to sodium. Some modifications are straightforward substitutions — different standard potential, different ionic radius, different numerical values. Others are qualitative changes — mechanisms that work differently in kind, not just in degree. And a few are genuine open problems where the physics is not yet well-characterised and where careful, rigorous simulation work can make a real contribution.
+
+Read this chapter with a notebook open. By the end, you should have a list of specific, targeted research questions: "What is the solid-state diffusion coefficient of Na⁺ in NVPF as a function of temperature, and how does it compare to Li⁺ in LFP?" "How does the O3→P3 phase transition in NaMnO₂ manifest in a DFN model, and what parameter captures it?" "Is the Bruggeman exponent for hard carbon electrodes the same as for graphite?" These questions — questions that a physicist or chemist would not think to ask but that an engineer building simulation models must answer — are the entry points to your research career.
+
+---
+
+> **Prerequisites Check**
+>
+> This chapter synthesises the entire book. All chapters are prerequisite reading. Specific sections most directly drawn upon:
+>
+> - Chapter 1 (Sections 1.4, 1.7, 1.8): standard potentials, Faraday's laws, Gibbs free energy
+> - Chapter 2 (Sections 2.1–2.3, 2.5–2.8): intercalation, SEI, Butler-Volmer, diffusion
+> - Chapter 3 (Sections 3.4, 3.10): OCV curves, GITT, EIS
+> - Chapter 4 (Sections 4.3, 4.4): formation cycling, current collectors
+> - Chapter 6 (all sections): the primary SIB reference chapter
+> - Chapter 7 (all sections): degradation mechanisms and their signatures
+> - Chapter 8 (Sections 8.2, 8.7): Bernardi equation, thermal safety comparison
+> - Chapters 10–12: state estimation, balancing, functional safety
+>
+> Before reading, spend five minutes reviewing the table in Chapter 6 Section 6.9 (the quantitative comparison of SIB vs. LIB cells). That table is the numerical reference frame for most of the discussions in this chapter.
+
+---
+
+## Na⁺ vs. Li⁺: The Fundamental Physical Differences and Their Cascading Consequences
+
+We established the basic physical differences between sodium and lithium ions in Chapter 6, Section 6.1. Here we systematise those differences and trace each one through the full chain of consequences — from atomic physics to cell design to BMS algorithm to safety classification.
+
+When you sit down to build your first SIB simulation model — whether in PyBaMM, COMSOL, or your own MATLAB code — the temptation will be to take a working LIB model and replace every lithium-related parameter with its sodium counterpart. The ionic radius difference we are about to examine explains why this "find-and-replace" approach will fail in subtle ways. The 34% size increase does not merely change numerical parameter values; it changes which crystal structures are viable, which transport mechanisms dominate, and in some cases which governing equations are even appropriate. Understanding this cascade from one physical fact to many engineering consequences is the organising theme of this entire chapter.
+
+### Ionic Radius: The Root of Almost Everything
+
+The sodium ion Na⁺ has an ionic radius of **1.02 Å** in octahedral coordination; Li⁺ has **0.76 Å**. The ratio is 1.34 — sodium is 34% larger. This single physical fact propagates through the entire SIB system in ways that affect every level of the engineering hierarchy.
+
+At the **crystal structure level**, the larger Na⁺ requires larger interstitial sites in the host material. This has two consequences that run in opposite directions. First, it disqualifies graphite as an anode: the staging energy for NaC₆ is thermodynamically unfavourable at room temperature because expanding the graphite interlayer spacing to accommodate Na⁺ costs more energy than is recovered from the sodium-graphene interaction. The interplanar spacing of graphite (0.335 nm) is too small; hard carbon's turbostratic interlayer spacing (0.37–0.40 nm) and closed nanopores are more accommodating. Second, in oxide cathode materials, the larger Na⁺ actually fits more comfortably in the prismatic coordination environment of P2-type structures than in the octahedral sites preferred by Li⁺. This is why P2-type layered oxides — which have no stable lithium analogue — are commercially viable and scientifically important SIB cathodes (Chapter 6, Section 6.2).
+
+At the **electrolyte level**, the ionic radius affects solvation shell structure and desolvation kinetics. In carbonate electrolytes, Na⁺ has a primary solvation shell coordination number of approximately 5–6, compared to approximately 4 for Li⁺. Counterintuitively, the *desolvation energy* of Na⁺ is generally *lower* than that of Li⁺, because Na⁺'s lower charge density produces weaker individual ion-solvent bonds. Published computational and experimental studies typically place Na⁺ desolvation energies at 35–50 kJ/mol in carbonates, compared to 50–65 kJ/mol for Li⁺.
+
+Yet the overall charge-transfer activation energy $E_{a,\text{ct}}$ measured from EIS — which lumps desolvation, SEI ion transport, and the electrode-surface charge-transfer step — is often *higher* for SIB cells than for comparable LIB cells. This apparent contradiction reflects the fact that the SEI on hard carbon is generally thicker, less ionically conductive, and less well-optimised than the mature graphite SEI in LIBs. It is the *total interfacial process*, not desolvation alone, that produces the higher $R_\text{ct}$ observed for SIB cells. Reported $E_{a,\text{ct}}$ values for SIB hard carbon half-cells in carbonate electrolytes range from 50–75 kJ/mol, compared to 40–60 kJ/mol for graphite in LIB carbonate electrolytes — a modest but meaningful difference that translates to a factor of 2–4 in $R_\text{ct}$ at 25°C and a larger factor at low temperatures. For example, commercial SIB 26650-format cells show $R_\text{ct} \approx 80$–150 mΩ, while LIB 18650 cells typically show $R_\text{ct} \approx 20$–50 mΩ. (Caution: these are different cell formats with different electrode areas. An area-normalised comparison using $R_\text{ct} \cdot A_\text{electrode}$ [Ω·cm²] would be more rigorous, but the point that SIB interfacial kinetics are slower holds even after area normalisation.)
+
+In ether-based electrolytes (DEGDME, diglyme), the solvation structure of Na⁺ is fundamentally different: Na⁺ coordinates with the ether oxygen atoms in a configuration that is energetically more favourable and kinetically more labile than the carbonate coordination. Desolvation in ether electrolytes is faster, $R_\text{ct}$ is lower, and rate capability is better. This is why ether electrolytes have attracted so much attention for hard carbon SIB anodes and why the comparison between carbonate and ether electrolyte SIB performance data in the literature is not a fair apples-to-apples comparison — they represent different fundamental solvation physics.
+
+At the **simulation model level**, the larger ionic radius affects which parameters of the Doyle-Fuller-Newman (DFN) model require new values when adapting from LIB to SIB. The solid-state diffusion coefficient $D_s$ in all electrode materials takes different numerical values and has different temperature dependence for Na⁺ hosts compared to Li⁺ hosts. In a DFN simulation, $D_s$ controls how quickly concentration gradients relax inside the electrode particles — get it wrong, and the model will under- or over-predict the voltage sag at high C-rates. The charge-transfer rate constant $k_0$ at both electrodes is generally lower for SIB systems due to the slower interfacial kinetics discussed above; this parameter sets the activation overpotential in the Butler-Volmer equation and directly affects the model's prediction of power capability. The electrolyte thermodynamic factor $f_\pm$ and activity coefficient $\gamma_\pm$ are different because SIB electrolytes are different chemical systems (NaPF₆ or NaFSI in different solvent mixtures); these parameters govern the concentration-potential coupling in the electrolyte phase and affect the predicted concentration overpotential at high rates. Finally, the partial molar volume $\Omega$ of the sodium-host intercalation compound controls the predicted diffusion-induced stress in the electrode particles — a parameter critical for mechanical degradation modelling (Chapter 7), where the larger Na⁺ produces larger lattice strain per intercalated ion.
+
+None of these can be assumed equal to their LIB counterparts. All require either direct experimental measurement (GITT for $D_s$, EIS for $k_0$, specific characterisation experiments for $\Omega$) or careful extrapolation from density functional theory (DFT) calculations.
+
+### Standard Electrode Potential: The Voltage Penalty
+
+The Na⁺/Na reduction potential of −2.71 V vs. SHE is 0.33 V higher (less negative) than the Li⁺/Li potential of −3.04 V. This is a thermodynamic fact that cannot be altered by any material engineering choice. It means that a sodium-ion cell built with cathode and anode materials structurally analogous to their lithium counterparts will have a cell voltage 0.33 V lower than the LIB — all else being equal.
+
+In practice, the voltage penalty for commercial SIB cells relative to comparable LIB cells is slightly larger than 0.33 V because the specific cathode and anode materials used in SIBs are not identical in electrochemical character to their LIB counterparts. Commercial O3-type SIB cathodes operate at an average voltage of 3.0–3.3 V vs. Na/Na⁺, while commercial NMC cathodes operate at 3.6–3.8 V vs. Li/Li⁺ — a difference of 0.5–0.6 V that exceeds the fundamental thermodynamic difference, reflecting the currently limited cathode voltage performance of SIB materials.
+
+For simulation modelling: the OCV curves used in DFN models and ECMs for SIBs are referenced to the Na/Na⁺ scale. When converting to the SHE scale (necessary for comparing thermodynamic data across chemistries), the conversion is $E_\text{SHE} = E_\text{Na/Na⁺} - 2.71 \; \text{V}$. Note that electrolyte transport properties — ionic conductivity $\kappa$, diffusion coefficient $D_e$, transference number $t_+$ — are intrinsic material properties measured in SI units and do not change when you switch between reference electrode scales. The reference electrode choice affects only how you report potentials.
+
+### Ionic Mass: The Capacity Penalty
+
+Sodium is 22.99 g/mol; lithium is 6.94 g/mol — a ratio of 3.31. For every equivalent of charge stored (1 mol of ions cycled), a sodium-ion electrode stores 3.31 times more mass in the ion species itself compared to a lithium electrode. This directly reduces the gravimetric specific capacity of any material that stores sodium compared to a structurally analogous lithium storage material.
+
+The theoretical specific capacity formula from Chapter 1 makes this explicit:
+
+$$C_\text{th} = \frac{nF}{3.6 \, M_\text{host+ion}} \tag{13.1}$$
+
+where $M_\text{host+ion}$ includes the mass of the host material and the stored ion. For a given host structure with molar mass $M_\text{host}$, storing Na gives a lower specific capacity than storing Li because $M_\text{Na} > M_\text{Li}$.
+
+For hard carbon vs. graphite: Graphite stores Li in LiC₆ ($M = 79$ g/mol, $C_\text{th} = 372$ mAh/g). Hard carbon stores Na at a maximum loading of approximately $\text{Na}_{0.8}\text{C}_6$ (that is, about 0.13 Na per C atom — far lower than a 1:1 ratio). The molar mass per carbon atom is then $M \approx 12 + (0.8/6) \times 22.99 \approx 15.1$ g/mol, which gives a theoretical specific capacity of $C_\text{th} = (0.8/6) \times 96{,}485 / (3.6 \times 15.1) \approx 237$ mAh/g. Practical values for well-optimised hard carbons range from 250 to 350 mAh/g, with the upper end exceeding this simple stoichiometric estimate because the nanopore-filling mechanism provides additional capacity beyond what interlayer intercalation alone contributes. The ionic mass penalty is real but is not the dominant limiter for hard carbon specific capacity — the mechanism (nanopore filling has limited sites, not limited mass) is more constraining than the mass calculation alone.
+
+### Summary Table: Na⁺ vs. Li⁺ at a Glance
+
+#### Table 13.1: Fundamental Physical Properties of Na⁺ vs. Li⁺
+
+| Property | Li⁺ | Na⁺ | Ratio (Na/Li) | Primary Consequence |
+| --- | --- | --- | --- | --- |
+| Ionic radius (octahedral, Å) | 0.76 | 1.02 | 1.34 | Different host structures; graphite excluded |
+| Atomic mass (g/mol) | 6.94 | 22.99 | 3.31 | Lower gravimetric capacity |
+| Standard potential vs. SHE (V) | −3.04 | −2.71 | — | 0.33 V lower cell voltage |
+| Solvation coordination no. (carbonate) | ~4 | ~5–6 | — | Different desolvation kinetics |
+| Charge-transfer $E_{a,\text{ct}}$ in carbonate (kJ/mol) | 40–60 | 50–75 | — | Higher $R_\text{ct}$, worse rate capability |
+| Charge-transfer $E_{a,\text{ct}}$ in ether (kJ/mol) | — | 25–40 | — | Low-temperature advantage |
+| Bulk metal density (g/cm³) | 0.534 | 0.971 | 1.82 | Heavier plated deposits |
+| Crustal abundance (ppm) | 20 | 23,600 | ~1,180 | Cost advantage |
+
+---
+
+## Hard Carbon Anode Behaviour: The Slope and Plateau in Depth
+
+We described hard carbon's slope and plateau OCV mechanism in Chapter 6, Section 6.5. Here we go deeper — examining the quantitative parameters that matter for simulation, the unresolved physical questions about the mechanism, and the practical consequences for model choice.
+
+### The Two-Mechanism Model Revisited
+
+The Stevens-Dahn "house of cards" model (Chapter 6) attributes slope-region capacity to sodium intercalation into the turbostratic interlayer spaces and plateau-region capacity to nanopore filling with quasi-metallic sodium. This model has been the consensus view for over two decades, supported by SAXS (pore volume change at the plateau), ²³Na NMR (distinct sodium environments in slope vs. plateau), and synchrotron PDF analysis (local structural changes).
+
+However, the model is not without controversy. An alternative interpretation — the "adsorption-intercalation" model — reverses the assignment: the slope region reflects surface and defect adsorption of sodium, and the plateau region reflects intercalation into the graphene layer stacks. Recent high-resolution studies using in-operando synchrotron diffraction have shown that the graphene interlayer spacing of hard carbon does expand slightly during the plateau, consistent with intercalation into the turbostratic stacks at that potential. The current scientific consensus (as of 2024–2025) is that both mechanisms contribute to both regions, with nanopore filling dominating the plateau and turbostratic intercalation dominating part of the slope — but the detailed mechanistic assignment is still an active research topic.
+
+**Why this matters for simulation**: If the dominant mechanism switches during cycling (slope = intercalation, plateau = pore filling), then the appropriate physical model for each region is different. Intercalation into a layered host is well described by solid-state diffusion with Fick's second law and the DFN model's treatment of spherical particles with concentration-dependent diffusion. Nanopore filling, however, is better described as an adsorption process — possibly following a Langmuir or Freundlich isotherm for the nanopore sites — with different mathematical structure.
+
+An EE analogy may help clarify the distinction. Solid-state diffusion through a layered lattice is analogous to signal propagation along a distributed RC transmission line: the governing equation is a diffusion PDE, the "signal" (sodium concentration) propagates continuously, and the characteristic time scales with the square of the distance. Nanopore filling, by contrast, is more like charging a finite bank of discrete capacitors, each with its own access resistance: the process is governed by the number of available sites (capacitors) and the kinetics of accessing each one, not by continuous diffusion through a medium. A model that uses only the transmission-line equation to describe both processes will fit the data in one regime and fail in the other.
+
+A DFN model that applies the same single-particle diffusion equation throughout the hard carbon electrode may be adequate for engineering purposes but physically incorrect in detail. This creates a genuine research opportunity: developing a two-mechanism model for hard carbon that correctly represents the slope region with solid-state diffusion physics and the plateau region with a pore-filling (adsorption) model, and validating this model against GITT and EIS data from hard carbon half-cells. Such a model would provide more physically faithful predictions of rate capability, temperature dependence, and ageing behaviour for hard carbon anodes.
+
+### The Diffusion Coefficient in Hard Carbon
+
+Solid-state diffusion of sodium in hard carbon is fundamentally different from solid-state diffusion of lithium in graphite, because hard carbon is amorphous rather than crystalline. The diffusion coefficient $D_s$ cannot be defined in the same way as for a crystal lattice (where diffusion proceeds along specific crystallographic directions). Instead, $D_s$ in hard carbon is an effective apparent diffusivity that represents the combination of tortuous paths through the disordered carbon matrix.
+
+GITT measurements of hard carbon anodes in SIB half-cells consistently show that $D_s$ is strongly state-of-charge dependent:
+
+In the **slope region** (SOC 0–70% approximately, where sodium is occupying turbostratic interlayer sites), $D_s \approx 10^{-12}$–$10^{-11}$ m²/s at 25°C, with strong dependence on sodium content. These values are higher than lithium diffusion in graphite ($D_s \approx 10^{-14}$–$10^{-13}$ m²/s for LiC₆ → C₆), which seems counterintuitive for a larger ion but reflects the more open, disordered structure of hard carbon compared to the tight interlayer spacing of graphite.
+
+In the **plateau region** (SOC 70–100% approximately, where nanopore filling occurs), $D_s$ drops dramatically, often to $10^{-15}$–$10^{-14}$ m²/s. This drop is consistent with the interpretation that sodium in the plateau is entering increasingly confined nanopores with limited diffusion pathways. The abrupt transition in $D_s$ at the slope-plateau boundary is one of the clearest experimental signatures of the mechanism change.
+
+The strong $D_s$ variation with SOC means that any simulation model using a single, fixed $D_s$ value for the hard carbon electrode will be quantitatively inaccurate in at least one SOC region. A concentration-dependent $D_s$ is required, analogous to the concentration-dependent diffusion coefficient used for some LIB electrode materials but with a more dramatic variation for hard carbon.
+
+The temperature dependence of $D_s$ in hard carbon follows the Arrhenius law. Reported activation energies span a range of 25–55 kJ/mol depending on the hard carbon source and processing conditions — comparable to graphite's activation energy for lithium diffusion (20–50 kJ/mol). This means that the solid-state diffusion limitation worsens at low temperatures for hard carbon at approximately the same rate as for graphite — the low-temperature advantage of SIBs over LIBs does not come from better solid-state diffusion, but from the faster interfacial kinetics (lower desolvation energy in ether electrolytes, or the different hard carbon surface chemistry).
+
+### Modelling Hard Carbon in the DFN Framework
+
+The standard DFN model assumes each electrode consists of spherical particles of uniform radius $r_p$, with sodium (or lithium) diffusing through the solid particle according to Fick's second law in spherical coordinates:
+
+$$\frac{\partial c_s}{\partial t} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 D_s \frac{\partial c_s}{\partial r}\right) \tag{13.2}$$
+
+with boundary conditions at the particle centre (zero flux by symmetry) and at the surface (flux equal to the pore-wall flux $j_n$ from the Butler-Volmer equation).
+
+For hard carbon, applying this equation directly requires addressing three complications:
+
+**Complication 1 — Effective particle geometry**: Hard carbon is not composed of spherical particles in the traditional sense. Hard carbon particles are aggregates of disordered carbon with a complex internal pore structure. The "effective particle radius" used in a DFN model is an empirical parameter fitted to the electrode's rate behaviour, not a directly measurable geometric quantity. Typical values used in the literature range from 1 to 10 µm, depending on the particle size distribution of the specific hard carbon material and its processing.
+
+**Complication 2 — SOC-dependent $D_s$**: As described above, $D_s$ varies by 3–4 orders of magnitude between the slope and plateau regions. In the DFN model, $D_s$ must be expressed as a function of the local sodium concentration $c_s$: $D_s = D_s(c_s/c_{s,\text{max}})$. This function must be parameterised from GITT data, and its implementation in the DFN solver requires careful numerical treatment (concentration-dependent diffusion in spherical coordinates introduces nonlinearity that can cause convergence issues with naive finite difference discretisation).
+
+**Complication 3 — Two-mechanism storage**: If the slope-region intercalation and plateau-region nanopore filling are physically distinct mechanisms, the single-particle DFN model may need extension. One approach is a two-state model: each hard carbon "particle" contains both intercalation sites (accessed first, during slope charging) and nanopore sites (accessed last, during plateau charging), with different diffusion coefficients and different OCV characteristics for each site type. The total charge stored is the sum from both populations. This two-state approach has been implemented by several research groups and gives better agreement with experimental rate capability data than the single-mechanism DFN.
+
+---
+
+## Why the Plateau Breaks OCV-Based SOC Estimation: The Estimation Problem in Full
+
+We have examined the flat-OCV SOC estimation problem from multiple angles throughout the book — in Chapter 3 (OCV curve sensitivity), Chapter 6 (hard carbon mechanism), Chapter 10 (EKF Kalman gain drops to zero), and Chapter 12 (diagnostic coverage gap). Here we synthesise all of this into a complete, quantitative statement of the problem and a survey of the proposed solutions.
+
+### The Complete Problem Statement
+
+A sodium-ion cell with a hard carbon anode has the following OCV characteristics at 25°C (representative of a commercial O3 layered oxide / hard carbon cell):
+
+A brief but important note on SOC convention: in a half-cell (hard carbon vs. Na metal), SOC typically refers to the degree of sodiation of the anode — SOC = 100% means fully sodiated hard carbon. In the full cell, SOC = 100% means the cell is fully charged, which corresponds to the anode being fully sodiated and the cathode being fully desodiated. The anode's slope region (high $dV/d(\text{SOC})$, occurring at low sodiation in the half-cell) maps to the *high* full-cell SOC range (60–100%), because the anode is approaching empty (desodiated) as the full cell is "charged." Conversely, the anode's plateau (occurring at high sodiation in the half-cell) maps to the *low-to-mid* full-cell SOC range (15–60%). If the SOC mapping between Sections 13.2 and 13.3 seems backwards, this is why — the anode's state runs in the opposite direction to the full cell's state during charge.
+
+The full-cell OCV curve divides into three regions. From 0 to approximately 15% SOC, the hard carbon anode is in its steep slope region, and the full-cell OCV gradient is approximately 150 mV per unit SOC — steep enough for accurate voltage-based SOC estimation. From approximately 15% to 60% SOC, the hard carbon anode is in its plateau region, and the full-cell OCV gradient falls to approximately 25–50 mV per unit SOC, dominated by the soft OCV variation of the layered oxide cathode against a nearly constant anode potential near 0.05 V vs. Na/Na⁺. From approximately 60% to 100% SOC, the hard carbon returns to its upper slope region and the full-cell gradient recovers to approximately 80 mV per unit SOC, as both electrodes contribute to the voltage change.
+
+The OCV hysteresis between charge and discharge in the plateau region is approximately 50–80 mV — the charge-direction OCV is higher than the discharge-direction OCV at the same true SOC.
+
+With a cell voltage measurement noise of $\sigma_V = 5$ mV (from a 16-bit CMIC over a 4V range), the SOC uncertainty in each region is: In the steep slope region ($dE/d\text{SOC} \approx 150$ mV), $\sigma_\text{SOC} = 5/150 \approx 3.3\%$ — acceptable. In the plateau ($dE/d\text{SOC} \approx 25$–50 mV), $\sigma_\text{SOC}$ ranges from $5/50 = 10\%$ to $5/25 = 20\%$, with a midpoint estimate of $5/37 \approx 13.5\%$ — poor by any BMS standard. In the upper slope region ($dE/d\text{SOC} \approx 80$ mV), $\sigma_\text{SOC} = 5/80 \approx 6.3\%$ — marginal.
+
+The plateau spans 45% of the SOC range. During normal operation (charging from 20% to 90% SOC to protect longevity), approximately 56% of the operational SOC range falls within or near the plateau — the majority of normal operation is in the regime where voltage-based SOC correction is poor. This is not the same as LFP, where the plateau is even flatter (~3 mV/unit SOC) but the non-plateau regions at the extremes are routinely accessed by the BMS for recalibration. For SIBs, the combination of a larger plateau, higher hysteresis, and a more gradual slope-to-plateau transition creates a worse-case estimation environment than LFP.
+
+### Proposed Solutions and Their Status
+
+**Solution 1 — Improved coulomb counting with temperature and ageing compensation**: The simplest approach is to accept the flat-OCV regime and improve coulomb counting accuracy to minimise drift during the plateau. This requires: (a) a high-accuracy current sensor (shunt-based with <10 mA offset and <0.1% gain error); (b) careful temperature compensation of both the current sensor and the $Q_\text{max}$ parameter; (c) frequent rest-state OCV recalibration at the extremes of SOC (when the cell exits the plateau into the steep slope regions). This approach is pragmatic and implementable with existing BMS hardware, but its accuracy is bounded by the coulomb counting drift rate — for a cell operating continuously in the plateau for 10 hours (a common grid storage duty cycle), the uncorrected SOC drift from current sensor errors alone can reach 5–10%.
+
+**Solution 2 — Extended EKF with hysteresis state variable**: The EKF can be augmented with a hysteresis state variable $h$ that tracks the cell's OCV correction due to the history-dependent memory effect in hard carbon. The augmented model uses separate charge-direction and discharge-direction OCV curves, with the hysteresis state providing a continuous transition between them based on recent current direction. Plett's group developed this approach for LFP cells and demonstrated improved SOC accuracy compared to single-curve EKF. The approach requires an additional model for hysteresis dynamics:
+
+$$\dot{h} = \gamma |i| (\text{sgn}(i) \, M(\text{SOC}) - h) \tag{13.3}$$
+
+where $\gamma$ is the hysteresis rate constant, $i$ is the current, and $M(\text{SOC})$ is the maximum hysteresis magnitude at each SOC (a function that peaks in the slope region where hysteresis is largest). The augmented EKF with hysteresis has been implemented in SIB simulation environments and shows improvement in SOC accuracy during mixed charge/discharge operation, but it requires fitting an additional three or four parameters from characterisation data.
+
+**Solution 3 — EIS-based impedance fingerprinting**: The impedance spectrum of a hard carbon electrode changes in detectable ways between the slope and plateau regions, particularly in the mid-frequency range (0.1–10 Hz) where the Warburg behaviour (related to solid-state diffusion) and the charge-transfer arc are both sensitive to the local sodium concentration. If the BMS has the ability to perform abbreviated EIS measurements (a sinusoidal current perturbation at one or two selected frequencies, rather than a full frequency sweep), it can extract impedance-derived SOC indicators that remain sensitive even in the OCV plateau.
+
+Recall from Chapter 3 (Section 3.10) that the Warburg impedance appears as a 45° line on the Nyquist plot at low frequencies — the regime where the cell's response is dominated by solid-state diffusion rather than charge-transfer kinetics. The slope of that 45° line is the Warburg coefficient $\sigma_W$, and it encodes the diffusion rate. Specifically, the Warburg coefficient — the slope of $Z''$ vs. $\omega^{-1/2}$ in the Warburg region — is proportional to $(D_s c_{s,\text{max}})^{-1/2}$, which changes as $D_s$ drops dramatically entering the plateau. An impedance measurement at a single frequency in the Warburg region can therefore detect the slope-to-plateau transition and maintain some SOC sensitivity across the plateau. This approach is not yet in commercial BMS hardware but is an active research topic, and is feasible with existing embedded DSP hardware if the frequency injection capability is added to the CMIC.
+
+**Solution 4 — Physics-based model with full two-mechanism hard carbon**: A full DFN model that explicitly represents both the intercalation and nanopore-filling mechanisms in hard carbon can predict SOC more accurately than an ECM because it tracks the internal state variables (concentration profiles in slope sites vs. nanopore fill fraction) that are the true determinants of the cell's electrochemical state. The model-based estimator (using an extended Luenberger observer or an EKF operating on the full DFN state vector) can maintain SOC accuracy in the plateau by leveraging the model's physics, even when the terminal voltage provides little information. The computational cost of running a full DFN model in real time on a BMS microcontroller is high but not prohibitive with modern embedded processors (32-bit ARM Cortex-M4 or M7) and reduced-order model techniques (Padé approximations, proper orthogonal decomposition). This represents the frontier of SIB BMS research.
+
+### Worked Interpretation: Reading a Hard Carbon GITT Curve
+
+Imagine you have performed a GITT (Galvanic Intermittent Titration Technique) experiment on a hard carbon half-cell (hard carbon vs. Na metal, NaPF₆/EC:DMC electrolyte) during sodiation (discharge of the half-cell). The experiment applies a constant current pulse of $C/20$ for 30 minutes, then rests for 4 hours, repeatedly, from 2.0 V down to 0.01 V vs. Na/Na⁺.
+
+What you would see, reading the voltage-vs.-capacity curve from left to right:
+
+**Region 1 (2.0 V → ~0.10 V, slope region):** Each current pulse produces a voltage drop of approximately 15–30 mV from the OCV, and the relaxation during rest is rapid — the voltage recovers to within 2 mV of steady state within 30–60 minutes. The quasi-equilibrium OCV after each rest step decreases steeply and smoothly. From the GITT formula (Chapter 3, Equation 3.18), you extract $D_s$ values in the range $10^{-12}$–$10^{-11}$ m²/s. The high $D_s$ means sodium redistributes quickly inside the hard carbon particles after each pulse, producing fast voltage relaxation.
+
+**Region 2 (~0.10 V → ~0.05 V, transition zone):** The voltage drop per pulse begins to increase (now 30–60 mV at the same current), and the relaxation slows — full equilibration now requires 2–3 hours. The extracted $D_s$ drops by one to two orders of magnitude within a narrow capacity window. This is the slope-to-plateau transition, and the dramatic slowdown in diffusion is one of the clearest experimental signatures of the mechanism change from interlayer intercalation to nanopore filling.
+
+**Region 3 (~0.05 V → 0.01 V, plateau region):** The quasi-equilibrium OCV is nearly flat (the plateau), but each current pulse now produces a large voltage drop (50–100 mV), and the relaxation is very slow — 3–4 hours is often insufficient for full equilibration. The extracted $D_s$ is $10^{-15}$–$10^{-14}$ m²/s. If you truncate the rest period at 2 hours (as some experimenters do to save time), you will systematically underestimate the equilibrium OCV in this region and overestimate $D_s$ — a common experimental artefact in hard carbon GITT studies that you should watch for when reading the literature.
+
+The takeaway: a single GITT experiment on a hard carbon half-cell gives you the $D_s$ vs. SOC function that a DFN model requires — but only if the rest periods are long enough to reach true equilibrium at every point, which for the plateau region may mean 4–6 hour rests. Literature values extracted with shorter rest periods should be treated with caution.
+
+---
+
+## Aluminium Current Collectors on Both Sides: Cost, Implications, and Modelling
+
+We established the thermodynamic basis for aluminium current collectors on both SIB electrodes in Chapter 4, Section 4.4. Here we consolidate the full picture — not just why it works, but what it changes for cell design, pack architecture, and simulation modelling.
+
+### Manufacturing Simplification
+
+Using a single current collector material (aluminium, 12–20 µm foil) for both electrodes eliminates the procurement, inventory management, and process qualification required for two different foil materials (copper and aluminium). In a manufacturing environment that processes millions of cells, simplifying from two material suppliers and two process lines to one is not a trivial advantage. The reduction in bimetallic joint interfaces (places where copper and aluminium busbars must be welded or bolted together, creating galvanic corrosion risks and mechanical joint reliability concerns) also simplifies pack assembly.
+
+The areal cost of aluminium foil is approximately \$0.08–0.12/m², compared to \$0.25–0.40/m² for copper foil of the same thickness. For an 18650-equivalent cell with approximately 0.4 m² of anode current collector area (both sides, one roll), the raw material saving from switching to aluminium is approximately \$0.07–0.12 per cell — modest per cell but significant at gigawatt-hour scale manufacturing volumes.
+
+### Electronic Resistance Increase
+
+Aluminium has a higher bulk resistivity than copper: $\rho_\text{Al} = 2.65 \times 10^{-8}$ Ω·m vs. $\rho_\text{Cu} = 1.72 \times 10^{-8}$ Ω·m — aluminium is approximately 54% more resistive per unit volume. For the same foil thickness (12 µm), the **sheet resistance** of the anode current collector increases from:
+
+$$R_\text{sheet,Cu} = \frac{1.72 \times 10^{-8}}{12 \times 10^{-6}} = 1.43 \; \text{m}\Omega/\square$$
+
+to:
+
+$$R_\text{sheet,Al} = \frac{2.65 \times 10^{-8}}{12 \times 10^{-6}} = 2.21 \; \text{m}\Omega/\square$$
+
+The unit "mΩ/□" (milliohms per square) is the standard unit of sheet resistance: it is the resistance of any square piece of the foil, regardless of the square's size, measured between two opposite edges. If you have worked with thin-film resistors or PCB copper layers, this is the same quantity. For a rectangular current collector of length $L$ and width $W$, the total resistance is $R = R_\text{sheet} \times (L/W)$.
+
+For a jelly-roll electrode with a current path of approximately 50 cm from the active area to the tab, the current collector contribution to cell resistance increases by the ratio 2.21/1.43 = 1.54. If the copper anode current collector contributed 2 mΩ to the cell's total internal resistance in an 18650-format LIB, the aluminium anode current collector in an equivalent SIB would contribute approximately 3 mΩ — an increase of 1 mΩ in total cell resistance, comparable to or smaller than the other differences in $R_0$ between LIB and SIB cells (which arise from SEI resistance and charge-transfer resistance differences). The current collector resistance increase is real but is a minor contribution to the overall higher DCIR of SIB cells.
+
+One advantage of the aluminium-for-copper substitution that is easy to overlook: weight. Aluminium's density is 2.70 g/cm³, compared to copper's 8.96 g/cm³. For the same foil thickness, the aluminium anode current collector is 3.3× lighter than the copper it replaces. In an 18650-format cell where the anode current collector contributes roughly 5–8 g of copper mass, switching to aluminium saves approximately 3.5–5.5 g per cell. This mass saving partially offsets the gravimetric energy density penalty of SIBs at the cell level — a small but non-negligible contribution to closing the Wh/kg gap with LIBs.
+
+### Implications for the Tabless and Large-Format Cell Design
+
+For large-format cells (4680-type cylindrical, large prismatic), current collector resistance becomes a more significant fraction of total cell resistance because the current path length is longer. The **tabless design** used in 4680-type cells (Chapter 4, Section 4.1) that reduces current collector resistance by creating distributed contact points along the electrode length is equally applicable to SIB large-format cells — and becomes more important for SIBs precisely because the base $R_0$ from Al is higher and the benefit of reducing the current path length is proportionally greater.
+
+For SIB simulation models, the current collector resistance is included as part of the total ohmic resistance $R_0$ in the DFN model or ECM. When parameterising from HPPC or EIS data, $R_0$ is measured as a lumped quantity that includes current collector, contact, and SEI contributions — the current collector fraction is not separately identifiable from terminal measurements alone. Post-mortem characterisation (measuring the current collector resistance independently by four-wire measurement on a harvested foil) is required if the current collector contribution is to be separated from the total.
+
+---
+
+## The Low-Temperature Advantage: Physical Origin and Quantification
+
+SIB cells are consistently better than LIB cells at low temperatures — not slightly better, but substantially better in some chemistries. The HiNa BC-1 retains approximately 88% of room-temperature capacity at −20°C and 70% at −40°C (Chapter 6, Section 6.8), while a typical NMC/graphite LIB retains 50–60% at −20°C and often cannot discharge at all at −40°C. This section provides the physical explanation and quantifies the mechanism.
+
+### The Activation Energy Story
+
+From Chapter 10, Section 10.3 (Equation 10.23), the charge-transfer resistance at temperature $T$ is:
+
+$$R_\text{ct}(T) = R_\text{ct}(T_0) \cdot \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \tag{13.5}$$
+
+This is the Arrhenius resistance scaling first introduced as Equation 10.23; we reproduce it here as Equation 13.5 for convenience and because it is the central equation of this section.
+
+The variable $E_{a,\text{ct}}$ is the activation energy for the rate-limiting interfacial step. The low-temperature performance is almost entirely determined by this activation energy: a lower $E_{a,\text{ct}}$ means $R_\text{ct}$ grows less severely as temperature decreases, and the cell maintains better rate capability at low temperature.
+
+For graphite anodes in LiPF₆/carbonate electrolytes, the rate-limiting step is the desolvation of Li⁺ from its carbonate solvation shell, with $E_{a,\text{ct}} \approx 40$–60 kJ/mol. For hard carbon anodes in SIBs, the situation depends on the electrolyte:
+
+In carbonate electrolytes (NaPF₆ in EC:DMC), the charge-transfer activation energy is $E_{a,\text{ct}} \approx 45$–65 kJ/mol — comparable to graphite in LIB carbonate electrolytes, so no significant low-temperature advantage arises. In ether electrolytes (NaPF₆ or NaFSI in DEGDME), $E_{a,\text{ct}}$ drops to approximately 25–40 kJ/mol — significantly lower than either the SIB-carbonate or LIB-carbonate value.
+
+The lower activation energy in ether electrolytes is the physical origin of the SIB low-temperature advantage. It arises from the different solvation structure of Na⁺ in ether: the linear ether molecules coordinate Na⁺ through sequential chelation (the flexible chain wraps around the ion), and this configuration is more easily disrupted during desolvation than the rigid carbonate cage around Li⁺. The result is a lower energy barrier for the ion transfer step at the electrode-electrolyte interface.
+
+Numerically, at −20°C (253 K) vs. 25°C (298 K), with $E_{a,\text{ct}} = 35$ kJ/mol (ether SIB) vs. 55 kJ/mol (carbonate LIB):
+
+$$\frac{R_\text{ct}(-20°\text{C})}{R_\text{ct}(25°\text{C})}\bigg|_\text{ether SIB} = \exp\!\left[\frac{35000}{8.314}\left(\frac{1}{253} - \frac{1}{298}\right)\right] = \exp(2.51) \approx 12.3 \quad (\text{since } e^{2.5} \approx 12.18)$$
+
+$$\frac{R_\text{ct}(-20°\text{C})}{R_\text{ct}(25°\text{C})}\bigg|_\text{carbonate LIB} = \exp\!\left[\frac{55000}{8.314}\left(\frac{1}{253} - \frac{1}{298}\right)\right] = \exp(3.95) \approx 52.5$$
+
+The carbonate LIB's $R_\text{ct}$ grows 52.5× at −20°C, while the ether SIB's grows only 12.3×. This 4.3-fold difference in resistance growth at low temperature is the quantitative basis of the SIB low-temperature advantage. In a cell where $R_\text{ct}$ is the dominant contributor to internal resistance (which it is at low temperatures), the SIB delivers substantially better power capability.
+
+This also explains why the low-temperature advantage of SIBs is electrolyte-dependent: an SIB using carbonate electrolyte does not have a significant low-temperature advantage over LIBs, because the charge-transfer activation energy for Na⁺ in carbonates is similar to that for Li⁺. The advantage is specific to ether electrolytes.
+
+### Implications for Pack and BMS Design
+
+The low-temperature advantage means that SIB packs may not need cell preheating systems in climates where temperatures drop to −20°C — a system simplification that reduces pack cost and complexity. For LIB packs designed for Nordic, Canadian, or high-altitude deployments, preheating is typically mandatory (adding 500–1500 W of heating power and the associated thermal management hardware). An SIB pack that can start charging and discharging at −20°C without preheating eliminates this cost.
+
+For BMS algorithms, the lower temperature sensitivity of $R_\text{ct}$ means the temperature-derated current limit (the algorithm that restricts charging current at low temperatures to prevent plating) is less aggressive for SIBs. The threshold current below which plating risk is negligible can be higher at a given temperature for SIBs, allowing faster cold-weather charging without safety compromise.
+
+---
+
+## The Safety Advantage: Physical Origin at Depth
+
+Chapter 8 (Section 8.7) quantified the SIB thermal safety advantage. Here we examine the physical mechanism more deeply, connecting the cathode crystal chemistry established in Chapter 6 to the calorimetric measurements that validate the safety claim.
+
+### Oxygen Release: The Dominant Heat Source
+
+As established in Chapter 8, the dominant exothermic event in LIB thermal runaway is the reaction between oxygen released from the delithiated cathode and the organic electrolyte. The oxygen release temperature is set by the thermodynamics of the transition metal oxide decomposition:
+
+For LCO (Co³⁺/Co⁴⁺ couple, fully delithiated → CoO₂): CoO₂ → ½Co₂O₃ + ¼O₂ begins at approximately 170–200°C for deeply delithiated states ($x > 0.5$ in $\text{Li}_{1-x}\text{CoO}_2$), with the onset temperature decreasing as the degree of delithiation increases. The Co⁴⁺ state is strongly oxidising and thermodynamically unstable.
+
+For NMC811 (dominated by Ni³⁺/Ni⁴⁺): Fully delithiated NiO₂-like phases are even more unstable, with decomposition beginning around 180–200°C.
+
+For O3-type SIB cathodes ($\text{Na[Ni}_{0.4}\text{Fe}_{0.3}\text{Mn}_{0.3}\text{]O}_2$, fully desodiated): The average oxidation state of the transition metals at full charge is lower than in the equivalent LIB cathode, because sodium-ion cathodes typically operate at lower voltages and the transition metal redox couples are partially different. Iron (Fe³⁺/Fe⁴⁺) and manganese (Mn³⁺/Mn⁴⁺) are involved alongside nickel, and these species are less aggressively oxidising than pure Ni⁴⁺. Oxygen release from fully charged O3-type SIB cathodes begins at approximately 240–280°C.
+
+The 60–100°C increase in oxygen release temperature for SIB layered oxides vs. NMC811 is the physical basis of the higher thermal runaway onset temperature measured by accelerating rate calorimetry (ARC). This difference arises from three factors: the lower average oxidation state of the transition metals in SIB cathodes at full charge, the presence of iron (which forms more stable oxides than nickel), and the different structural response of the O3 sodium oxide framework to decomposition compared to the nickel-rich NMC framework.
+
+For polyanionic SIB cathodes — NVPF, NFPP, and NASICON-type structures (Na Super Ionic CONductor; recall Chapter 6, Section 6.3) — the polyanion framework (PO₄³⁻, (PO₃F)²⁻) physically entraps the oxygen — the phosphate-oxygen bonds are strong covalent bonds that resist cleavage even at temperatures above 400°C. This is the same mechanism as LFP's exceptional thermal safety (Chapter 5, Section 5.3). NVPF shows no measurable oxygen release below 420°C — comparable to or better than LFP.
+
+For PBA cathodes (Prussian white, Na₂Fe[Fe(CN)₆]): Decomposition begins at approximately 300–350°C, but the product is not molecular oxygen — it is HCN (hydrogen cyanide) and CO from cyanide bridge cleavage, plus the metal oxide residue. HCN is toxic but not as rapidly combustion-supporting as O₂. The hazard profile of PBA cathode failure is different from layered oxide failure — less fire risk, but toxic gas generation. This difference must be addressed in the SIB safety concept.
+
+### Implications for ARC Test Interpretation
+
+ARC (accelerating rate calorimetry) tests performed on commercial SIB cells confirm the theoretical prediction. The self-heating onset temperature $T_\text{onset}$ — defined as the temperature at which the cell's self-heating rate exceeds the ARC detection threshold (typically 0.02°C/min) — is approximately 110–140°C for O3-type SIB cells, compared to 80–120°C for NMC811 at high SOC (depending on ARC sensitivity) and above 150°C for LFP. The peak temperature during runaway $T_\text{max}$ reaches approximately 400–500°C for O3 SIB, compared to 750–850°C for NMC811. The total heat released $Q_\text{total}$ is approximately 8–12 kJ for a 1.33 Ah 26650 SIB cell, compared to 28–38 kJ for a 3 Ah 18650 NMC811 cell. Note the capacity difference: on a per-ampere-hour basis, the comparison is approximately 8 kJ/Ah for SIB vs. 10 kJ/Ah for NMC811 — less dramatic than the raw cell-level numbers suggest.
+
+The total heat per ampere-hour is not dramatically different because the stored electrochemical energy per Ah is similar for both chemistries — the SIB advantage comes primarily from the higher initiation temperature (larger margin from ambient to $T_\text{onset}$), which determines whether a thermal event begins at all, rather than from a dramatically lower total energy release.
+
+For ASIL classification in the functional safety framework (Chapter 12), the question is whether the higher $T_\text{onset}$ justifies a Severity downgrade from S3. In typical ambient environments (up to 45°C), the margin from ambient to $T_\text{onset}$ is approximately 55–75°C for NMC811 ($T_\text{onset} - T_\text{amb} \approx 100 - 45$) and approximately 75–95°C for O3 SIB ($T_\text{onset} - T_\text{amb} \approx 120 - 45 = 75°\text{C}$ at the low end). The SIB's larger margin means that to trigger thermal runaway, the cell must undergo a more severe abuse event (longer-duration short circuit, higher overcharge overvoltage, more intense external heating). Whether this quantitatively justifies a Severity downgrade from S3 to S2 depends on the specific pack design and the abuse event scenarios — this is the formal HARA analysis that safety engineers must conduct with ARC test evidence.
+
+In practical safety testing, the difference is visible in the nail penetration test — the standard abuse test (IEC 62660-3, GB/T 31485) in which a steel nail is driven through a fully charged cell to create an internal short circuit. NMC811 LIB cells subjected to nail penetration typically exhibit violent venting, flame, and surface temperatures exceeding 500°C within seconds. O3-type SIB cells under the same test show a less energetic response: venting occurs but is less violent, flame is less likely (and when present, less sustained), and peak surface temperatures typically remain below 300°C. Polyanionic SIB cells (NVPF) often pass nail penetration without any flame or sustained thermal event. These results are direct consequences of the higher $T_\text{onset}$ and lower total energy release discussed above, translated from the controlled ARC environment into the violent, adiabatic conditions of a puncture event.
+
+---
+
+## SEI Differences in SIBs
+
+The SEI on hard carbon anodes in sodium-ion electrolytes differs from the graphite SEI in LIBs in composition, thickness, stability, and formation kinetics. These differences propagate into cell performance, calendar aging, and the accuracy of any physics-based degradation model.
+
+### Composition Differences
+
+The SEI on hard carbon in carbonate electrolytes (NaPF₆ or NaClO₄ in EC:DMC) contains different species than the LIB graphite SEI. The inorganic inner layer is dominated by NaF (from NaPF₆ → NaF + PF₅) and Na₂CO₃ (from carbonate solvent reduction), with $\text{Na}_2\text{O}$ (sodium oxide) contributing a smaller fraction than $\text{Li}_2\text{O}$ does in LIB SEIs. The organic outer layer contains sodium alkyl carbonates (analogous to lithium alkyl carbonates in LIBs), but with different chain structures reflecting different radical intermediates in the Na⁺-mediated reduction pathway.
+
+The ionic conductivity of NaF is lower than that of LiF (the dominant inorganic species in LIB SEIs). This is counterintuitive — a larger lattice might seem to give ions more room to move — but the critical factor is the activation energy for each ion hop between lattice sites. In NaF, the hop distance is larger and the saddle-point energy (the energy barrier the Na⁺ must surmount to move from one lattice site to the next) is higher than the corresponding barrier for Li⁺ in LiF. The net effect is lower Na⁺ mobility through the NaF crystal and higher ionic resistance contribution from the inorganic SEI layer. This contributes to higher SEI ionic resistance in SIBs and is one physical reason for the higher overall $R_0$ of SIB cells.
+
+In ether electrolytes (NaPF₆ or NaFSI in DEGDME), the SEI composition is dramatically different: the carbonate-derived organic species are absent, replaced by ether decomposition products (primarily sodium ethylene glycolate and related oligomers) and a higher fraction of inorganic NaF. The ether-derived SEI is generally thinner (5–15 nm vs. 20–50 nm for carbonate-derived SEI), more mechanically stable, and more ionically conductive — explaining the higher ICE (85–92%) and better cycling stability observed with ether electrolytes on hard carbon.
+
+### Formation and Evolution
+
+The formation of the hard carbon SEI during the first cycles shares the same general mechanism as graphite SEI formation: electrolyte reduction at the electrode surface below the electrolyte's reduction stability potential. For hard carbon in NaPF₆/EC:DMC, the SEI formation onset is at approximately 1.0–1.5 V vs. Na/Na⁺ (during the first charge). For comparison, the graphite SEI onset in LiPF₆/EC:DMC is ~0.8 V vs. Li/Li⁺, which on the SHE scale corresponds to −2.24 V — equivalent to about 0.47 V vs. Na/Na⁺. The hard carbon SEI onset is therefore at a substantially more positive potential than the graphite onset, even after accounting for the different reference scales. This difference reflects the catalytic activity of hard carbon's abundant surface functional groups (ether, carboxyl, hydroxyl residues from pyrolysis), which initiate electrolyte reduction reactions at more positive potentials than the relatively inert basal-plane surface of crystalline graphite.
+
+The key difference in formation kinetics is the **hard carbon surface chemistry**. Hard carbon has more surface functional groups than crystalline graphite (ether groups, carboxyl groups, hydroxyl groups from the pyrolysis of oxygen-containing precursors) that react with the sodium electrolyte in addition to the carbonate solvent reduction. These additional reactions are partly responsible for the lower ICE of hard carbon compared to graphite — the functional groups consume sodium irreversibly, and more surface area per unit mass (10–15 m²/g vs. 1–4 m²/g for graphite) means proportionally more surface reaction.
+
+For simulation models of SIB calendar aging, the SEI growth kinetics should follow the same parabolic $\sqrt{t}$ law as for LIBs (Chapter 7, Section 7.2), but with a different rate constant $k_\text{SEI}$ and activation energy $E_a$. The limited long-term calendar aging data published for SIB cells (most studies cover less than two years) makes it challenging to extract these parameters reliably. The $\sqrt{t}$ fits that are available suggest $k_\text{SEI}$ values somewhat higher than for LIB graphite in the same temperature range — consistent with the lower SEI stability and the higher surface area of hard carbon. This means SIB calendar aging at elevated temperature (40–45°C) may be faster than LFP/graphite (which has exceptionally stable calendar aging) but potentially comparable to or slower than NMC811/graphite at the same temperature.
+
+---
+
+## Degradation Modes Unique to or Amplified in SIBs
+
+Chapter 7 established the three-mode degradation framework (LLI, LAM, CL) and the specific mechanisms that drive each mode. For SIBs, all three modes are present, but the relative importance of mechanisms differs, and a small number of failure modes are unique to the sodium chemistry.
+
+### O3→P3 Phase Transition Fatigue in Layered Oxide Cathodes
+
+O3-type layered oxide SIB cathodes (the most commercially prevalent cathode type) undergo the O3→P3 phase transition during deep desodiation (Chapter 6, Section 6.2). This transition involves gliding of the MO₂ oxide layers relative to each other — a crystallographic shear deformation that creates structural disorder and, in polycrystalline cathode particles, stress concentrations at grain boundaries.
+
+Unlike the smooth solid-solution cycling of NMC cathodes in LIBs (which involves only continuous lattice parameter changes without layer gliding), the O3→P3 transition is a first-order phase transition with an associated discontinuous volume change. The repeated phase transition causes intergranular cracking at grain boundaries within polycrystalline cathode particles, contributing to loss of active material (LAM). It also drives accumulation of structural defects — stacking faults and anti-site defects — that reduce sodium mobility through the cathode lattice and increase impedance (contributing to conductivity loss, CL). In the first cycles, the transition is partially irreversible, adding a first-cycle capacity loss on top of the SEI-related losses at the anode.
+
+The O3→P3 phase transition can be suppressed or mitigated by several strategies. Limiting the upper voltage cutoff avoids complete desodiation and keeps the cathode below the transition composition — trading capacity for stability, which is a common commercial strategy. Doping the cathode with electrochemically inactive elements (Mg, Ti, Cu) stabilises the O3 stacking through the transition region by pinning the oxide layers and increasing the energy cost of the shear deformation. Using single-crystal cathode particles eliminates the grain boundaries where intergranular cracking initiates, analogous to the single-crystal NMC strategy in LIBs (Chapter 5). Finally, blending O3 and P2 phases in the same cathode creates a composite where the P2 component — which does not undergo the same shear transition — buffers the mechanical stress from the O3 component's transformation.
+
+For simulation models of SIB cathode degradation, the O3→P3 transition must be represented either explicitly (through a phase-transition model that switches between the O3 and P3 free-energy curves at the transition composition) or implicitly (through an empirical strain/stress model that captures the accumulated damage as a function of the depth of desodiation past the transition point). Neither approach has been as thoroughly developed for SIB cathodes as the analogous NMC degradation models for LIBs.
+
+### PBA Cathode-Specific Degradation: Water and Vacancy Evolution
+
+For PBA-based SIB cells (Chapter 6, Section 6.4), degradation mechanisms unique to the open framework structure are present.
+
+**Water release from the PBA structure**: As discussed in Chapter 6, PBA cathodes contain zeolitic water (in the channels) and coordinated water (at vacancy sites). During cycling, this water is released and reacts with the electrolyte salt — the dominant pathway being $\text{NaPF}_6 + \text{H}_2\text{O} \rightarrow \text{NaF} + \text{POF}_3 + 2\text{HF}$ — generating HF that attacks the SEI and promotes additional parasitic reduction reactions at the anode surface. These parasitic reactions consume mobile Na⁺ irreversibly, contributing to LLI. The rate of water release is temperature-dependent and accelerated at elevated temperature, making calendar aging at high SOC and high temperature the dominant degradation pathway for PBA cells.
+
+**Hexacyanometalate vacancy growth**: PBAs are synthesised with a fraction of vacancies (missing [M(CN)₆] units) that is controlled by synthesis conditions. During cycling, the electrochemical stress can cause additional vacancy formation — the crystal framework is locally disrupted as sodium ions enter and leave rapidly. Growing vacancy density reduces the capacity (fewer sites for sodium) and increases impedance (vacancies disrupt the electronic conductivity of the framework). This mechanism has no LIB analogue; it is unique to the open-framework PBA structure.
+
+### Sodium Plating: Less Dendrite-Prone but Still Damaging
+
+As established in Section 7.3 and Section 13.5, sodium metal deposits are less prone to sharp dendrite formation than lithium metal deposits. The difference arises from the different surface energy and diffusion kinetics of sodium metal: sodium's higher surface diffusion coefficient (at room temperature) promotes lateral spreading of deposits rather than needle growth, producing more equiaxed and less penetrating metallic sodium deposits.
+
+However, sodium metal deposits are not completely benign. Dead sodium (electrochemically isolated sodium metal) contributes to LLI — and because hard carbon's plateau region brings the anode potential very close to 0 V vs. Na/Na⁺ during full charging, the driving force for plating is always present near the top of charge. The lower dendrite tendency means catastrophic separator penetration is less likely, but the LLI contribution from dead sodium accumulates with cycling, particularly under fast charging at low temperatures.
+
+For simulation models of SIB cycle aging: the plating contribution to LLI should follow the same framework as for LIBs (conditional on the local anode potential reaching 0 V vs. Na/Na⁺), but with modified parameters for the plating rate constant (lower overpotential required to trigger measurable plating), the dead sodium fraction (likely higher than dead lithium fraction because sodium metal is less reactive with the SEI after plating), and the re-intercalation efficiency (how much plated sodium re-inserts on the subsequent discharge).
+
+### Hard Carbon Structural Evolution Over Cycling
+
+Hard carbon microstructure is not static over thousands of cycles. The repeated expansion and contraction of the turbostratic interlayer spacings during slope-region cycling causes gradual ordering — the hard carbon slowly evolves toward a more graphitic local structure — meaning the turbostratic carbon layers, which start out randomly oriented and irregularly spaced, gradually become more parallel and more uniformly spaced, approaching (though never reaching) the crystalline order of graphite. Think of it as a messy stack of papers that, after being repeatedly pressed and released, settles into a neater pile. This structural ordering is slow (thousands of cycles) but directional and irreversible, and occurs particularly in regions of the electrode that cycle most intensively.
+
+This structural evolution has three measurable consequences. First, it changes the slope of the hard carbon OCV curve: as the turbostratic character diminishes, the slope region becomes steeper and the plateau becomes less well-defined, altering the voltage signature that the BMS uses for SOC estimation. Second, it increases the local diffusion coefficient in slope-region intercalation sites, because the more uniform layer spacing allows faster sodium transport. Third, it reduces the closed-pore fraction available for nanopore filling, as crosslinks between disordered carbon layers break and pores either open to the electrolyte (becoming part of the accessible surface rather than storage sites) or collapse under mechanical stress.
+
+This structural evolution has no precise LIB analogue (graphite's crystal structure is more stable under Li cycling). It means that the SIB hard carbon anode parameters — $D_s$, OCV curve shape, and the ratio of slope to plateau capacity — evolve over the cell's life. A physics-based SIB model that assumes static electrode parameters will gradually diverge from experimental observations over extended cycling, and the divergence will be systematic (not random) because the structural evolution is directional. Capturing this evolution requires either periodic re-parameterisation of the model (practical for post-hoc analysis but not for real-time BMS prediction) or a physics-based model of the hard carbon structural evolution itself (a research-frontier challenge).
+
+---
+
+## What Changes for SIB Simulation Research: A Research Agenda
+
+We have now systematically identified every place in the battery physics framework where sodium differs from lithium. Let us consolidate this into an explicit research agenda — the list of open problems that a simulation-focused EE researcher can meaningfully address.
+
+The problems are arranged roughly in order of tractability (easier first, harder later). For each, I note which experimental or computational approach is needed to address it.
+
+**Problem 1 — DFN model parameterisation for hard carbon**: The solid-state diffusion coefficient $D_s(c_s, T)$ for Na⁺ in hard carbon, the charge-transfer rate constant $k_0(T)$, and the OCV thermodynamic factor have not been systematically characterised as functions of both composition and temperature for commercially relevant hard carbon materials. A complete GITT and EIS characterisation study at multiple temperatures and multiple hard carbon precursor/synthesis conditions would establish the parameter database needed for reliable DFN simulations. This is experimental rather than purely simulation work, but the experimental protocols (GITT, EIS, half-cell fabrication) are well-established and the data analysis follows standard methods.
+
+**Problem 2 — Two-mechanism hard carbon model development**: Implementing a DFN model with separate intercalation (slope) and nanopore-filling (plateau) mechanisms for the hard carbon anode, validating it against rate capability data and GITT, and comparing it to the single-mechanism model in terms of predictive accuracy. This is primarily simulation and model development work, with model validation against published experimental data.
+
+**Problem 3 — EKF-based SOC estimation for flat-OCV SIB cells**: Demonstrating quantitatively the SOC uncertainty growth during the plateau region, implementing the hysteresis-augmented EKF (or an alternative), and evaluating the improvement in SOC accuracy. This is pure algorithm development and can be done entirely in simulation using a parameterised SIB cell model.
+
+**Problem 4 — O3→P3 phase transition model**: Incorporating the O3→P3 transition into a physics-based cathode degradation model for O3-type SIB cathodes, analogous to the mechanical degradation models for NMC811 in LIBs. The transition provides a well-defined structural event that can be modelled using phase-field methods or empirical stress accumulation models.
+
+**Problem 5 — SIB calendar aging characterisation and modelling**: Systematically measuring the calendar aging rate of commercial SIB cells (HiNa BC-1 or equivalent) at multiple temperatures and SOC levels, fitting the parabolic growth model with Arrhenius temperature dependence, and comparing the resulting parameters to the equivalent LIB values. This establishes the calendar aging model needed for SIB lifetime prediction.
+
+**Problem 6 — Physics-based thermal runaway model for SIB chemistries**: Extending the Bernardi-based thermal models from Chapter 8 to include the specific exothermic reactions in SIB thermal abuse (O3 cathode decomposition at higher temperature, different electrolyte decomposition products, sodium plating exothermic reactions). Connecting the model to ARC test data to validate the simulated thermal runaway trajectory.
+
+Each of these problems is tractable for a simulation-focused researcher with access to published experimental data and standard simulation tools (PyBaMM, MATLAB/Simulink, COMSOL). Problems 2, 3, and 4 can be addressed entirely computationally; Problems 1, 5, and 6 require experimental data that may or may not be available from the published literature for the specific chemistry you study. Chapter 14 will return to this agenda in the context of the current research landscape.
+
+---
+
+## Chapter Summary
+
+**Key ideas:**
+
+- Na⁺ is 34% larger (1.02 Å vs. 0.76 Å), 3.3× heavier, and 0.33 V higher in reduction potential than Li⁺. Na⁺ has lower desolvation energy than Li⁺ (due to lower charge density), but the overall charge-transfer activation energy $E_{a,\text{ct}}$ for SIB cells is higher because of contributions from the less mature SEI and electrode-interface processes. These differences propagate into every level of the SIB engineering hierarchy.
+- Hard carbon anode behaviour is characterised by two mechanisms: turbostratic intercalation (slope region, $D_s \approx 10^{-12}$–$10^{-11}$ m²/s) and nanopore filling (plateau region, $D_s \approx 10^{-15}$–$10^{-14}$ m²/s). The dramatic drop in $D_s$ at the slope-plateau boundary requires a concentration-dependent diffusion coefficient in DFN models. A two-mechanism hard carbon model is physically more faithful than the standard single-particle DFN approach.
+- The flat OCV plateau (25–50 mV/unit SOC, spanning ~45% of the operational SOC range) makes voltage-based SOC estimation unreliable for approximately 56% of normal operation. Solutions include enhanced coulomb counting with OCV recalibration at the extremes, hysteresis-augmented EKF, EIS-based impedance fingerprinting, and physics-based DFN model observers. All are active research topics.
+- Aluminium current collectors on both electrodes save approximately \$0.07–0.12 per cell in raw material cost, simplify manufacturing, and reduce cell mass by 3.5–5.5 g (from the Cu→Al substitution), at the cost of ~54% higher current collector sheet resistance. The resistance increase is real but minor compared to other contributors to SIB's higher DCIR.
+- The low-temperature advantage of SIBs is electrolyte-specific: ether electrolytes have $E_{a,\text{ct}} \approx 25$–40 kJ/mol for Na⁺ charge transfer vs. 40–60 kJ/mol for Li⁺ in carbonate electrolytes, producing a 4–5× smaller $R_\text{ct}$ growth factor at −20°C and substantially better power capability.
+- The thermal safety advantage arises from higher oxygen release temperatures for SIB cathodes (>240°C for O3 oxides vs. ~180–200°C for NMC811; >400°C for polyanionic cathodes). $T_\text{onset}$ for SIB thermal runaway is ~110–140°C (vs. 80–120°C for NMC811), peak temperature ~400–500°C (vs. 750–850°C), and total heat release ~8–12 kJ/cell (vs. 28–38 kJ/cell for NMC).
+- SIB-specific degradation modes: O3→P3 phase transition fatigue in layered oxide cathodes (intergranular cracking, stacking disorder); PBA cathode water release and vacancy evolution; hard carbon structural evolution toward graphitisation over extended cycling (altering OCV shape and $D_s$ values). All three require model development beyond what is available for LIBs.
+
+**Key equations referenced from throughout the book:**
+
+All key equations from earlier chapters apply. New or emphasised equations in this chapter:
+
+$$D_s(c_s, T) = D_{s,0}(c_s) \cdot \exp(-E_{a,D}/RT) \quad \text{(concentration- and temperature-dependent } D_s \text{ for hard carbon)} \tag{13.4}$$
+
+$$\frac{R_\text{ct}(T)}{R_\text{ct}(T_0)} = \exp\!\left[\frac{E_{a,\text{ct}}}{R}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \quad \text{(Arrhenius resistance ratio)} \tag{13.5}$$
+
+At $T = -20°\text{C}$ (253 K) relative to $T_0 = 25°\text{C}$ (298 K), this gives growth factors of $\approx 12\times$ for ether SIBs ($E_{a,\text{ct}} = 35$ kJ/mol) vs. $\approx 52\times$ for carbonate LIBs ($E_{a,\text{ct}} = 55$ kJ/mol).
+
+$$\sigma_\text{SOC,plateau} = \frac{\sigma_V}{\left|\frac{dE_\text{OCV}}{d(\text{SOC})}\right|_\text{plateau}} \approx \frac{5 \; \text{mV}}{37 \; \text{mV}} \approx 13.5\% \quad \text{(SOC uncertainty in plateau region)} \tag{13.6}$$
+
+**Key open research problems identified:**
+
+DFN parameterisation for hard carbon; two-mechanism hard carbon model; hysteresis-augmented EKF for SIBs; O3→P3 phase transition degradation model; SIB calendar aging characterisation; physics-based SIB thermal runaway model.
+
+---
+
+## Deliverable
+
+The primary deliverable for Chapter 13 in the context of your research preparation is a personal document we will call the **SIB Simulation Parameter Table** — a structured reference that you will maintain and update throughout your research career.
+
+Create a table with the following structure. For each parameter in the DFN model (as defined in Newman's electrochemical systems framework or in PyBaMM's parameter set structure), record: the parameter name, its symbol, its LIB value (from literature, for a graphite/NMC reference), its SIB value (from literature, for a hard carbon/O3 cathode reference), the measurement technique used to extract it, the primary reference, and any notes about SOC or temperature dependence.
+
+Begin with the following parameters, using published literature values (search for "SIB DFN parameters" and "hard carbon electrochemical characterisation" in Google Scholar):
+
+Electrolyte conductivity $\kappa$ (mS/cm at 25°C), electrolyte diffusion coefficient $D_e$ (m²/s), transference number $t_+$, anode solid-state diffusion coefficient $D_{s,a}$ (m²/s at 50% SOC), cathode solid-state diffusion coefficient $D_{s,c}$, anode exchange current density $i_0$ (A/m²), cathode exchange current density $i_0$, anode OCV (curve: provide the qualitative description and reference source), cathode OCV (same), anode particle radius $r_{p,a}$ (µm), cathode particle radius $r_{p,c}$, anode porosity $\varepsilon_a$, cathode porosity $\varepsilon_c$, anode electrode thickness $L_a$ (µm), cathode electrode thickness $L_c$.
+
+For any SIB parameter that you cannot find in the literature, note it explicitly as "not characterised" — this is your research gap map. The gaps in your table are the highest-priority experimental and computational needs for SIB simulation research.
+
+Excellent starting points for SIB DFN parameters: Bhatt et al. (*Journal of Power Sources*, 2020) for hard carbon; Gonzalez-Robles et al. (*Advanced Energy Materials*, 2021) for NVPF cathodes; Kim et al. (*ACS Applied Materials and Interfaces*, 2022) for O3-type layered oxide cathodes. Note: as I cannot verify whether these specific citations are correct without database access, treat these as directional search terms rather than guaranteed sources, and verify each reference independently.
+
+---
+
+## Further Reading
+
+1. **Deng, J. et al., "Interplay between Solid Electrolyte Interface (SEI) and Dendrite Formation on the Anode of Sodium Ion Batteries," *Advanced Energy Materials* 11 (6), 2003987 (2021).** The most comprehensive recent review of SEI formation on hard carbon in sodium electrolytes, covering both carbonate and ether electrolyte systems. Includes quantitative comparison of SEI composition, thickness, and ionic conductivity across electrolyte types.
+
+2. **Bommier, C. and Ji, X., "Recent development on anodes for Na-ion batteries," *Israel Journal of Chemistry* 55 (5), 486–507 (2015).** A systematic review of hard carbon anode behaviour including the slope/plateau mechanism, the two-mechanism debate, GITT-derived diffusion coefficients, and rate capability data across multiple hard carbon types. The most thorough survey of the hard carbon electrochemistry that underlies Sections 13.2 and 13.3.
+
+3. **Nayak, P. K. et al., "From lithium-ion to sodium-ion batteries: advantages, challenges and surprises," *Angewandte Chemie International Edition* 57 (1), 102–120 (2018).** A comprehensive comparison of LIB and SIB across all relevant dimensions — materials, performance, cost, and safety — written specifically to highlight what is different and why. Well-organised around the "what changes" theme of this chapter.
+
+4. **Zhao, L. et al., "A Comprehensive Review on the Thermal Behavior of Lithium-ion Batteries and the Evaluation of Functional Safety," *Energy Storage Materials* 35, 313–333 (2021).** While focused primarily on LIBs, this review's framework for thermal characterisation (ARC methodology, onset temperature determination, heat generation separation) is the methodology directly applied to SIBs in the comparative studies referenced in Section 13.6. Reading this alongside the SIB ARC literature gives the methodological context for interpreting the safety comparison.
+
+5. **Muñoz-Márquez, M. A. et al., "Na-Ion Batteries for Large Scale Stationary Energy Storage," *Advanced Energy Materials* 7 (20), 1700470 (2017).** A review that situates SIB technology in the context of grid-scale stationary storage deployment — the application where the balance of SIB properties (cost, safety, longevity) most clearly outweigh its energy density limitations. Useful for understanding the commercial endpoint toward which the SIB simulation research in Chapter 14 is directed.
+
+*Note: As with all citations in this book, I cannot verify these references against a live database. Please confirm each title, volume, and page range independently before citing them in your own work.*
+
+
+\newpage
+
+# The SIB Research Landscape
+
+## Chapter Opening
+
+You have now spent thirteen chapters building a complete physical, chemical, and engineering understanding of battery technology, with sodium-ion batteries as a recurring thread that became the explicit focus in Chapters 6 and 13, and received dedicated SIB-adaptation sections in Chapters 8, 11, and 12. You understand what sodium-ion batteries are, why they exist, how they work physically, how they fail, how they are managed, and exactly where they differ from lithium-ion at every level of the engineering hierarchy. That understanding is the foundation. This chapter is the map of where to go next.
+
+The situation you are entering as a simulation-focused SIB researcher is genuinely unusual. It resembles, more than anything else, the position of researchers who entered lithium-ion battery modelling in approximately 2010–2012. The Doyle-Fuller-Newman model existed (published 1993). The electrochemical fundamentals were understood. A handful of validated parameter sets were available. But the ecosystem of validated degradation models, physics-based BMS algorithms, system-level studies, digital twin frameworks, and grid integration analyses that now constitutes the mature LIB simulation literature — most of that did not exist yet, and the researchers who built it between 2010 and 2020 published prolifically into a receptive and growing field. That is the window you are standing in for SIBs today, with one important advantage over those researchers: you have the entire LIB literature as a methodology library. Every technique that was laboriously developed for lithium-ion over fifteen years is available for you to re-parameterise and re-validate for sodium-ion.
+
+This chapter is organised in three parts. We begin with the past — surveying what has been accomplished in SIB simulation and modelling up through approximately early 2026, and identifying the key papers that defined each sub-domain. We then examine the present — the commercial landscape as it stands, the research groups most actively pushing the frontier, the tools and datasets available to you right now, and the publication venues where SIB simulation work can be published. Finally, and most importantly, we map the future in detail — the specific open problems, the research proposals that address them, and the strategic sequencing advice that will help you build a coherent publication portfolio.
+
+By the end of this chapter you will have a concrete, actionable research plan. You will know which problem to attack first, which dataset to use, which tool to deploy, and which journal to target. The research is waiting.
+
+---
+
+> **Prerequisites Check**
+>
+> This chapter draws on the entire book and on the uploaded research landscape documents. All chapters are prerequisite. Specifically:
+>
+> - Chapter 13 (all sections) — the physical differences that motivate every research gap in Part 3 of this chapter
+> - Chapters 10–12 — the BMS algorithms whose absence for SIBs defines the largest gap area
+> - Chapters 7–8 — the degradation and thermal physics whose SIB parameterisation is almost entirely missing
+
+---
+
+## The SIB Modelling Literature: What Has Been Accomplished
+
+### The Scale of the Gap
+
+To understand the research opportunity, you first need to understand the scale of what is missing. A scientometric analysis of the SIB literature through 2025 identified approximately 15,682 peer-reviewed SIB papers in total — but the overwhelming majority of these are materials science papers: cathode synthesis, anode processing, electrolyte composition, structural characterisation. The sub-literature specifically addressing the engineering modelling concerns that fill this book — equivalent circuit models, electrochemical models, thermal models, BMS algorithms, state estimation, degradation prediction, system-level optimisation — is perhaps 50–100 times smaller than the equivalent LIB engineering modelling literature. To give you a concrete sense of scale: a Google Scholar search for "lithium-ion equivalent circuit model" returns tens of thousands of results; "sodium-ion equivalent circuit model" returns fewer than fifty. The asymmetry holds across every topic in Chapters 9 through 12. In practical terms: for every topic in Chapters 9 through 12 of this book, there are hundreds or thousands of Li-ion papers and perhaps three to eight SIB papers. Most of those SIB papers were published after 2022.
+
+This is not a gap that will close quickly by itself. The Chinese research institutions that dominate SIB publication output (Section 14.3) are overwhelmingly focused on materials: cathode synthesis at Hu Yong-Sheng's IOP-CAS group, hard carbon precursor development at Wuhan University and Central South University, PBA chemistry at multiple institutions. The engineering simulation work — ECM parameterisation, state estimation, degradation modelling, pack-level simulation — is what the materials community does not typically produce and what an electrical engineering researcher is specifically positioned to contribute.
+
+### The Foundational Papers: An Annotated History
+
+**2018 — Baseline reviews.** Chayambuka et al. published "Sodium-Ion Battery Materials and Electrochemical Properties Reviewed" in *Advanced Energy Materials*, establishing the first comprehensive survey of SIB electrode materials properties from a modelling-relevant perspective — cataloguing the range of specific capacities, diffusion coefficients, and exchange current densities needed to parameterise any physics-based model.
+
+**2021 — First ECM papers.** Xiang et al. published "Equivalent circuit modeling of sodium-ion batteries" in the *Journal of Energy Storage*, systematically comparing 1RC, 2RC, and 3RC topologies for a 1 Ah pouch SIB cell using Bayesian Information Criterion model selection, finding 3RC optimal. This established the ECM baseline for SIBs, analogous to Chen and Rincón-Mora's 2006 paper for lithium-ion.
+
+**2022 — First validated DFN model.** Chayambuka, Mulder, Danilov, and Notten published "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination" and "Part II: Model and validation" in *Electrochimica Acta*. These two papers represent the inflection point in SIB simulation research. Part I systematically characterised a Tiamat NVPF/hard carbon cell to extract the full set of DFN parameters: solid-state diffusion coefficients for both electrodes, electrolyte transport parameters, exchange current densities, and OCV-SOC curves. Part II assembled these into a working P2D model validated against discharge curves at 0.1C to 1.4C with less than 2% voltage error. This parameter set was subsequently adopted by PyBaMM (v24.11) as `Chayambuka2022` — the standard SIB DFN parameter set that any researcher can use today without additional characterisation work.
+
+**2023 — First IEEE conference paper on SIB ECM.** Rabab et al. published "Equivalent Circuit Model For Sodium-Ion Batteries With Physical-Based Representations Of Their Non-Linearities" at IEEE VPPC 2023 in Milan — the first identifiable SIB simulation paper in any IEEE venue. It presented a modified ECM for the Tiamat NVPF/HC 18650 cell that separated charge transfer, SEI, and diffusion phenomena with Arrhenius temperature dependence for each component. This paper's existence confirms that IEEE conference venues are receptive to SIB simulation work. The following year, Sandri et al. published "Electrical Circuit Model for Sodium-Ion Batteries" at IECON 2024 Chicago, comparing 1RC through 4RC models for SIB accuracy-complexity trade-offs.
+
+**2023 — First SOC estimation paper.** Xiang et al. in the *Journal of Energy Storage* published "A comprehensive study on state-of-charge and state-of-health estimation of sodium-ion batteries," using a PSO-optimised third-order RC model with EKF, UKF, and particle filter comparison. The field of SIB state estimation began with this single paper.
+
+**2024 — Commercial cell characterisation becomes available.** Laufen et al. published "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell" in *Cell Reports Physical Science* with supplementary data — providing EIS at 21 SOC levels, C-rate tests, cyclic ageing with micro-CT, and validated ECM parameters for a real commercial 18650 SIB cell. Bischof et al. at KIT published "Evaluation of commercial 18650 and 26700 sodium-ion cells" in their institutional repository. These papers transformed SIB simulation from a purely theoretical exercise into one grounded in real commercial cell data.
+
+**2024 — PyBaMM and COMSOL integration.** The PyBaMM development team integrated the Chayambuka2022 parameter set (named after the paper's 2022 publication year) into PyBaMM v24.11, released in November 2024, creating `pybamm.sodium_ion.BasicDFN()` — the first ready-to-run, open-source, validated physics-based SIB model. Simultaneously, COMSOL added an official "1D Isothermal Sodium-Ion Battery" model (Application Library ID: 117341) using the same parameter set. These two events together made it possible for any engineer with a laptop to simulate an SIB cell without any experimental work.
+
+**2025 — The first SIB DFN comparison paper.** Garapati et al. published "Perspective and comparative analysis of physics-based models for sodium-ion batteries" in *Electrochimica Acta* — a purely simulation-based comparison of DFN, SPMe, and SPM for SIBs. This paper's existence is important for two reasons: it demonstrates that simulation-only SIB modelling work is publishable at a Q1 Elsevier journal, and it establishes SPM/SPMe for SIBs as a research topic. The first physics-based SIB degradation model appeared the same year, alongside the first electrochemical-thermal coupling models, the first microstructure-resolved SIB model (Cardenas-Sierra et al., ChemRxiv preprint), and the first ML-enhanced P2D hybrid (Liu et al.).
+
+**2025 — Wang et al. open dataset.** The first substantive open SIB cycling dataset was deposited on Zenodo (ID: 13836819), containing pulse characterisation at multiple C-rates and six temperatures (−5°C to 45°C) plus driving cycle validation data for both a 3.2 Ah Transimage cell and a 10 Ah HiNa cell. This dataset is the foundation upon which most current and near-future SIB BMS algorithm papers will be built.
+
+### The Current State in Numbers
+
+As of early 2026, the complete SIB engineering simulation literature can be enumerated in a single table — an exercise that would be absurd for Li-ion, where each row would contain thousands of entries:
+
+| Topic | SIB Papers (approx.) |
+| --- | --- |
+| Validated ECM papers | 4–5 |
+| Fully validated DFN parameter sets | 1 (Chayambuka2022, NVPF/HC) |
+| SOC estimation papers | 3–8 (EKF, UKF, PF, LSTM+UKF hybrids) |
+| DFN comparison studies | 1 (DFN vs SPMe vs SPM) |
+| Simplified electrochemical model papers | 1 |
+| Standalone validated SPMe papers | 0 |
+| Global sensitivity analyses | 0 |
+| Model-order reduction studies | 0 |
+| Physics-based degradation models | 1 (2025, calendar ageing only) |
+| Cycle-ageing physics-based models | 0 |
+| Multi-mechanism degradation models | 0 |
+| Thermal runaway kinetics models | 0 |
+| Pack-level balancing simulation papers | 0 |
+| Grid dispatch optimisation studies | 0 |
+| Digital twin frameworks | 0 |
+
+Compare this to the Li-ion simulation literature, which contains tens of thousands of papers in each of these categories. The gap is not a gap — it is an ocean.
+
+**Timeline of SIB Simulation Milestones.** The following diagram summarises the chronological development of SIB engineering simulation. Sketch or recreate this timeline and pin it above your desk — it tells you at a glance which sub-fields have prior art and which are empty.
+
+```text
+2018  Chayambuka — first modelling-relevant SIB property review (Adv. Energy Mater.)
+  |
+2021  Xiang — first SIB ECM (J. Energy Storage), 1RC/2RC/3RC comparison
+  |
+2022  Chayambuka — first validated DFN parameter set, NVPF/HC (Electrochim. Acta)
+  |
+2023  Rabab — first IEEE SIB simulation paper, ECM @ VPPC
+      Xiang — first SIB SOC estimation paper (J. Energy Storage)
+  |
+2024  Laufen — first full commercial SIB cell characterisation (Cell Rep. Phys. Sci.)
+      Sandri — SIB ECM comparison @ IECON
+      PyBaMM v24.11 — pybamm.sodium_ion.BasicDFN() released
+      COMSOL — official 1D Na-ion model added
+      Wang — first open SIB cycling dataset (Zenodo)
+  |
+2025  Garapati — DFN vs SPMe vs SPM comparison (Electrochim. Acta)
+      First physics-based SIB degradation model (calendar SEI)
+      First electrochemical-thermal coupling models
+      First ML-enhanced P2D hybrid
+  |
+2026  ← YOU ARE HERE
+      Every row with "0 papers" in the table above is an open door.
+```
+
+---
+
+## The Commercial Landscape: What Exists to Model
+
+Modelling and simulation research is only valuable if it models something real. The commercial landscape of sodium-ion batteries as of early-to-mid 2026 provides a growing set of real cells, real packs, and real deployment scenarios to anchor simulation work.
+
+### The Dominant Player: CATL and the Naxtra
+
+CATL's market position in SIB is analogous to their position in LIB: dominant, accelerating, and setting the performance and cost benchmarks against which everything else is measured.
+
+Their first-generation SIB (Prussian white / hard carbon, prismatic, ~160 Wh/kg) began shipping in 2023 for the Chery iCar EV. Their second-generation product, the **Naxtra**, launched in April 2025, represents a step change: 175 Wh/kg gravimetric energy density, >10,000 cycle life (claimed, pending independent verification), 5C fast charging (80% SOC in 15 minutes), and operation from −40°C to +70°C. The Naxtra achieves 93% capacity retention at −30°C and maintains highway-speed driving capability at −40°C — numbers that exceed any published LFP performance at low temperature. The first mass-production passenger vehicle using the Naxtra pack is the Changan Nevo A06 (45 kWh SIB pack, >400 km range), expected in mid-2026.
+
+CATL's "Freevoy Dual-Power Battery" concept — mixing SIB and LFP cells in a single hybrid pack — is a direct simulation research opportunity. A heterogeneous pack containing cells of different chemistry, different OCV curve shapes, different temperature characteristics, and different ageing rates creates state estimation and balancing challenges that are genuinely novel and commercially relevant. Think of it as a series string of resistors where each resistor has a different temperature coefficient and a different aging law — your balancing and estimation algorithms must track each component's individual state, not just the string aggregate. Every BMS technique from Chapters 10–12 must be re-derived for the two-chemistry case. This specific application has no Li-ion analogue.
+
+**For the simulation researcher**: CATL has not released open characterisation data for Naxtra cells. However, the cell's Chinese market specifications (available through Chinese battery industry databases and published technical reports) provide enough boundary conditions for model-building: nominal voltage, capacity, DCIR at multiple temperatures, and cycle life under stated conditions.
+
+### HiNa Battery Technology
+
+HiNa (中科海钠, or China Science Sodium Battery Technology) is the direct academic-to-industry pipeline from IOP-CAS, co-founded by Prof. Hu Yong-Sheng and Academician Chen Liquan, widely regarded as a founding figure of Chinese lithium battery research. HiNa operates a GWh-scale production line in Fuyang, Anhui Province, since late 2022, and has delivered cells to multiple commercial applications including a 100 MWh grid storage system in Hubei Province (42 battery containers, 185 Ah cells, operational July 2024) — the world's largest sodium-ion energy storage installation at its commissioning.
+
+HiNa's commercial cell portfolio spans 12 Ah, 80 Ah, 240 Ah, and their latest "Haixing" commercial vehicle cell at >165 Wh/kg with >8,000 cycle life. Their O3-type cathode (NaCuFeMnO₂ family, cobalt-free and nickel-free) paired with anthracite-derived hard carbon represents the most well-characterised commercial SIB chemistry for which published simulation data exists. The Laufen et al. (2024) characterisation paper, the Wang et al. (2025) Zenodo dataset (which includes a HiNa 10 Ah cell alongside a Transimage 3.2 Ah cell), and multiple Chinese-language publications from HiNa's technical partners provide the richest available data for SIB simulation validation.
+
+HiNa's heavy truck applications — where their packs show 15% lower energy consumption per kilometre compared to LIB packs, attributed to deeper permissible discharge — represent a compelling system-level simulation case study for efficiency modelling.
+
+### Tiamat Energy
+
+Tiamat occupies a unique niche in the SIB landscape: the **highest-voltage commercial SIB** (3.7 V nominal — matching NMC-type Li-ion cells, and exceeding LFP's 3.2 V) using NVPF (Na₃V₂(PO₄)₂F₃) cathodes, with the **highest power density** (up to 35C peak discharge, 2–5 kW/kg). Their 18650 format cell (1.0 Ah, 3.5 Wh, 15 mΩ internal resistance at 1 kHz) is the cell characterised by Chayambuka et al. and whose parameter set anchors the PyBaMM sodium-ion DFN implementation.
+
+For the simulation researcher, Tiamat's cell is uniquely attractive: it is the most comprehensively documented commercial SIB cell, the Chayambuka2022 DFN parameter set gives a starting point for physics-based modelling, and published datasheets (available through Tiamat's website and through the Rabab et al. ECM paper) provide boundary conditions. The cell's 3,200-cycle life at 2C/5C cycling and >90% capacity retention at 20C discharge also make it the best SIB candidate for high-power application modelling (fast-charging infrastructure, frequency regulation, power tools).
+
+### The Western Landscape: Setbacks and Survivors
+
+The Western commercial SIB landscape has experienced significant turbulence. **Natron Energy**, which had delivered sodium-ion batteries for data centre UPS applications at commercial scale, ceased all operations on September 3, 2025, unable to obtain UL certification in time to fulfil $25 million in orders — a reminder that technical performance alone does not guarantee commercial survival. **Northvolt** filed for Chapter 11 in November 2024 and Swedish bankruptcy in March 2025; its SIB intellectual property was acquired by Lyten (a lithium-sulphur company) in August 2025. **Bedrock Materials** (a Stanford spinout) wound down due to cost competition from falling lithium prices.
+
+**Peak Energy** is the sole remaining major US SIB commercial player, having secured a $500 million deployment deal with Jupiter Power for 4.75 GWh of grid storage through 2030 — the first large-scale US grid-scale SIB deployment. Their NFPP (Na₄Fe₃(PO₄)₂(P₂O₇)) cathode chemistry claims 30% less degradation than LFP in grid storage applications. In Europe, **Tiamat** and **Altris** (Sweden, developing Prussian white cathode with bio-derived hard carbon in a partnership with Clarios) continue to advance toward commercialisation. **Faradion** (now part of Reliance Industries India) is targeting the Indian two- and three-wheeler EV market and residential storage, with a Jamnagar gigafactory planned.
+
+### Commercial Status Summary Table
+
+| Company | Country | Cathode | Anode | Wh/kg | Cycle Life | Form Factor | Primary Application | Status (early 2026) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CATL (Naxtra) | China | Multi-element layered oxide | Hard carbon | 175 | >10,000 (claimed) | Prismatic | EV, grid storage | Mass production |
+| HiNa | China | O3 NaCuFeMnO₂ | Hard carbon | 140–166 | 4,500–13,000+ (best reported) | Prismatic | Grid storage, heavy trucks | GWh production |
+| BYD | China | Layered oxide (est.) | Hard carbon | 160 (target) | 10,000 (target) | Prismatic (est.) | EV | Pilot (30 GWh line) |
+| Tiamat | France | NVPF | Hard carbon | 105 | 3,200 | 18650 cylindrical | High-power (freq. reg., power tools) | Pilot, 5 GWh planned |
+| Peak Energy | USA | NFPP | Undisclosed | Undisclosed | Competitive | Prismatic (est.) | Grid storage | Early commercial |
+| Altris | Sweden | Prussian white | Hard carbon | >160 | Undisclosed | Prismatic | Grid storage | Pilot production |
+| Faradion | UK/India | O3 NaNiMnMgTiO₂ | Hard carbon | 150–160 | >1,000 | Pouch | Two/three-wheelers, residential | Pre-production |
+
+---
+
+## The Research Ecosystem: Groups, Institutions, and the Chinese Factor
+
+### Chinese Research Dominance: Understanding the Context
+
+No serious engagement with the SIB research literature is possible without confronting the scale of Chinese research dominance. Scientometric analysis of 2000–2024 SIB publications identifies approximately 15,682 peer-reviewed papers, with China as the overwhelmingly dominant contributor. By early 2026, 16 of 20 planned SIB factories worldwide are located in China, and China accounts for an estimated 95% of global SIB manufacturing capacity. As of 2025, the Chinese government's 14th Five-Year Plan for Scientific and Technological Innovation explicitly lists SIB as a funded priority, and the National Key Technologies R&D Programme directly funds IOP-CAS SIB research (grant 2022YFB3807800). Provincial governments have signed production agreements for hundreds of GWh of capacity.
+
+For an EE researcher in India or elsewhere, the practical implication is twofold. First, the literature you must engage with is predominantly Chinese in origin. Many of the most important recent results are published in Chinese-language journals (particularly *Energy Storage Science and Technology*, 储能科学与技术) or in English-language journals with Chinese first authors and Chinese institutional affiliations. Second, and more strategically important: Chinese research dominance in SIB is concentrated in materials science. The system-level engineering simulation work — ECM parameterisation, BMS algorithm development, pack-level degradation modelling, grid integration — is not where Chinese groups are primarily publishing. This is exactly the gap that an EE researcher is positioned to fill, and it is a gap that will remain open for several years even as materials research saturates.
+
+### The Key Groups
+
+**IOP-CAS, Beijing (Prof. Hu Yong-Sheng)**: The single most influential SIB research group globally. Hu's group bridges fundamental materials discovery with commercialisation through HiNa Battery. His publication record includes a landmark *Science* (2020) paper using machine learning to predict layered oxide compositions, multiple *Nature Energy* papers (2024 on interfacial engineering achieving >200 Wh/kg at the cell level; 2026 on a polymerisable non-flammable electrolyte achieving zero thermal runaway in 3.5 Ah cells), and extensive work on hard carbon anodes (416 mAh/g with P-O-C cross-linking, *Energy Storage Materials* 2024). Core group members Lu Yaxiang, Rong Xiaohui, and Qi Xingguo co-author nearly all major publications. Their HiNa cells are among the best-characterised commercial SIB cells and the best candidates for simulation validation work.
+
+**ICCAS, Beijing (Prof. Guo Yuguo)**: Electrolyte innovations and interface engineering. Published a comprehensive review in *Chemical Society Reviews* (2024) covering gel polymer and quasi-solid electrolytes for SIBs — directly relevant to any simulation study that includes electrolyte transport physics.
+
+**Wuhan University (Prof. Cao Yuliang)**: Polyanionic cathodes, tunnel-type oxides, and hard carbon anodes. Has published foundational work on hard carbon electrochemistry (>1,000 citations for the hollow carbon nanowire study, *Nano Letters* 2012). Also founded Jiana Energy for SIB cathode and anode production, providing a direct commercial application context.
+
+**USTC, Hefei (Prof. Yu Yan)**: A prolific group spanning PBA cathodes, high-entropy alloy nanolayers for anode-free sodium metal batteries, and ML-assisted materials screening. Published the most comprehensive PBA modification study (Ni/Cu co-doping, *Advanced Materials* 2024).
+
+**Tsinghua University (Prof. Zhang Qiang)**: Solid-state electrolytes and battery safety. Published a fluorinated polyether electrolyte enabling room-temperature solid-state SIB operation in *Nature* (2025) — directly relevant to thermal safety modelling.
+
+**Key non-Chinese groups**: The **Dahn group** at Dalhousie University (Canada) brings its systematic multi-cell cycling methodology to SIBs, particularly for P2-type layered oxides. The **Grey group** at Cambridge contributes operando NMR characterisation that clarifies hard carbon storage mechanisms. The **Tapia-Ruiz group** (Lancaster/Imperial, UK) focuses on layered oxide structure-property relationships. The **Chayambuka group** (formerly TU/Eindhoven) produced the foundational DFN model that anchors the simulation literature. **Tiamat Energy** itself has published extensively through Rabab et al. on NVPF ECM characterisation.
+
+### Navigating the Chinese Research Literature: A Practical Guide
+
+If you have never searched a Chinese academic database, the prospect can feel daunting. Here is a minimal practical toolkit. **CNKI** (cnki.net, also accessible via oversea.cnki.net for non-Chinese institutions) is the dominant Chinese academic database, analogous to Web of Science for Chinese-language publications. Search in English — CNKI indexes English titles and abstracts for most papers, even those published in Chinese-language journals. For papers published only in Chinese, Google Translate and DeepL produce readable translations of abstracts and figure captions, which is usually sufficient to determine whether a paper's data or methodology is relevant to your simulation work.
+
+**Google Scholar** indexes most Chinese SIB publications that have English-language abstracts, so your first search tool remains familiar. When you find a relevant Chinese-authored paper on Scholar, check whether it cites or is cited by Chinese-language papers that Scholar does not index — those are the papers to look up on CNKI.
+
+**Institutional repositories** at IOP-CAS (iop.cas.cn), Wuhan University, and USTC host preprints and supplementary data. HiNa's technical publications are sometimes available through Chinese battery industry portals. For the most recent commercial SIB specifications and industry news, **GaogongLithium** (gg-lb.com) and **SPIR Energy** (spir-energy.com) provide Chinese battery industry analysis with some English-language coverage.
+
+The key message: do not avoid Chinese-authored literature because of the language barrier. The data in Chinese SIB papers — OCV curves, cycle life plots, EIS spectra, DSC traces — is language-independent, and these data are exactly what you need for simulation parameterisation.
+
+---
+
+## Simulation Tools: The Complete Arsenal
+
+Every tool you need for publishable SIB simulation research is available right now, most of it open-source. This section describes each tool, its SIB readiness, and what it is good for.
+
+### PyBaMM: The Primary Tool
+
+**PyBaMM** (Python Battery Mathematical Modelling) is an open-source Python framework developed primarily at Oxford and now maintained by the PyBaMM team. It implements DFN, SPM, SPMe, and multiple degradation models for battery simulation. As of v24.11 (November 2024), it includes a working SIB DFN model via `pybamm.sodium_ion.BasicDFN()`, the `Chayambuka2022` parameter set (NVPF/HC, NaPF₆ in EC:PC electrolyte), an official example notebook demonstrating discharge simulation, OCV curves, concentration profiles, and overpotential decomposition (`pybamm.docs.sodium-ion`), support for electrochemical-thermal coupling using the same framework as Li-ion (requiring new SIB-specific parameter values), and PyBOP integration for parameter optimisation.
+
+PyBaMM is the right tool for DFN and SPMe simulation, sensitivity analysis, model order reduction comparisons, and degradation model development. Its Python ecosystem makes it compatible with machine learning libraries (scikit-learn, PyTorch, TensorFlow) for hybrid physics-ML approaches. The PyBaMM Discourse forum and GitHub repository are active, and sodium-ion questions receive responses.
+
+A minimal script to run the SIB DFN model. Verify the exact API against the current PyBaMM documentation at `docs.pybamm.org`, as class names and module paths may change between versions:
+
+```python
+import pybamm
+
+# Verify current API at docs.pybamm.org — module paths may differ by version
+model = pybamm.sodium_ion.BasicDFN()
+param = pybamm.ParameterValues("Chayambuka2022")
+sim = pybamm.Simulation(model, parameter_values=param)
+sol = sim.solve([0, 3600])  # 1-hour discharge
+sim.plot()
+```
+
+This runs on a laptop in under 30 seconds and produces terminal voltage, electrolyte concentration profiles, solid-phase concentrations, and overpotential decompositions. It is the starting point for essentially all physics-based SIB simulation research.
+
+### COMSOL Multiphysics
+
+COMSOL's Battery Design Module provides a downloadable "1D Isothermal Sodium-Ion Battery" model (Application Library path: `Battery_Design_Module/Batteries,_SodiumIon/sodium_ion_battery_1d`) using the same Chayambuka2022 parameters. COMSOL's advantage over PyBaMM is multi-physics coupling: 3D geometry, mechanical stress, complex thermal boundary conditions, and full Navier-Stokes electrolyte flow (for flow battery extensions). For 2D or 3D mechanical abuse simulations, nail penetration modelling, or thermal runaway propagation in three-dimensional pack geometries, COMSOL is the appropriate tool.
+
+A COMSOL webinar series specifically addressing sodium-ion batteries and "emerging battery technologies" is available through COMSOL's learning centre. Contact resistance modelling was added in COMSOL 6.2.
+
+### MATLAB/Simulink with Simscape Battery
+
+MATLAB remains the dominant tool for BMS algorithm development — Kalman filters, extended Kalman filters, sigma-point Kalman filters, recursive least squares parameter identification, and equivalent circuit model simulation are all most naturally implemented in MATLAB. Plett's three-volume *Battery Management Systems* textbook (specifically Volumes I and II for ECM methods, Volume III for physics-based methods) provides MATLAB code for every algorithm developed in Chapters 10–12 of this textbook. The Coursera specialisation "Algorithms for Battery Management Systems" by Plett delivers hands-on MATLAB implementations of these algorithms.
+
+MATLAB's Simscape Battery module provides a physics-based battery simulation environment suitable for pack-level electro-thermal simulation. It is chemistry-agnostic at the systems level and can be parameterised for SIBs using published characterisation data. The primary limitation is that it does not have a native SIB parameter set — parameterisation requires extracting values from the published literature and entering them manually.
+
+### Other Tools
+
+**LIONSIMBA** (Lithium-Ion Simulation BAttery toolbox) is an open-source MATLAB P2D finite-volume implementation whose clean numerical structure makes it a useful benchmark and algorithmic reference, even though it was developed for Li-ion. The equations are structurally identical for SIBs; parameter substitution is the only change required.
+
+**BattMo** (Battery Modelling Toolbox) is an MRST-based open-source continuum modelling stack supporting 1D through 3D electrochemical-thermal models with automatic differentiation for sensitivity analysis and optimisation. It is actively developed and accepts contributions. The recent 2025 arXiv paper describes its capabilities for multi-physics battery simulation.
+
+**PyBOP** (Python Battery Optimisation) is an open-source Python package for battery model parameter identification using deterministic and stochastic optimisation methods, including Bayesian parameter estimation. It interfaces directly with PyBaMM and enables publishable parameterisation pipelines with full uncertainty quantification.
+
+### The Simulation Workflow
+
+The recommended workflow for a simulation-first SIB paper follows a natural progression that mirrors the structure of the eventual paper itself. You begin by identifying a published SIB dataset from Section 14.5, or by using PyBaMM's synthetic data generation capability if no suitable experimental data exists. If your parameterisation requires data from published figures rather than raw numerical files, you digitise those curves using **WebPlotDigitizer** (automeris.io) — a step that many simulation researchers overlook but that is standard practice and methodologically accepted.
+
+With data in hand, you build or adapt the model: PyBaMM for DFN or SPMe physics-based models, MATLAB for ECM-based BMS work. Parameter identification follows, using PyBOP's Bayesian estimation for PyBaMM models or MATLAB's `lsqcurvefit` for ECMs. The critical methodological discipline is to validate against held-out data — different temperatures, different C-rates, or different ageing states than those used for identification. A model validated only on its training data is not publishable.
+
+With a validated model, you generate the publishable result: SOC estimation accuracy metrics, model-order comparison figures, degradation predictions, or thermal behaviour characterisation. Finally — and this step disproportionately increases citation impact — you document the code and upload it to GitHub or Zenodo with a CC BY licence. In a nascent field like SIB simulation, open-source code is not just good practice; it is the mechanism by which your work becomes the foundation that later researchers build on.
+
+---
+
+## Open Datasets: What Is Available and How to Use It
+
+SIB datasets are scarce compared to Li-ion. Only five substantive open SIB experimental datasets existed as of early 2026, compared to fifteen or more major open Li-ion datasets. This scarcity is both a challenge and an opportunity: the scarcity is itself a publishable observation, and strategies for working around it constitute part of any simulation paper's methodological contribution.
+
+### SIB-Specific Datasets
+
+**Wang et al. 2024 — Zenodo 13836819**: The single most valuable open SIB dataset, deposited in late 2024. Contains pulse characterisation at 0.25C–3C current rates and six temperatures (−5°C to 45°C) covering the full SOC range (0%–100% in 10% increments), plus FUDS, UDDS, and DST driving cycle data, for two commercial SIB cells: a **Transimage 3.2 Ah** layered oxide/hard carbon cell and a **HiNa 10 Ah** layered oxide/hard carbon cell. Six cell samples per type. Total data size approximately 256 MB. Licence: CC BY 4.0. This dataset is the primary target for any SIB SOC estimation paper, ECM parameterisation study, or temperature-dependent modelling work. If you do one thing before your first SIB simulation paper, download and explore this dataset.
+
+**BatteryLife NaIon Subset — Zenodo 14934405**: Part of a large 998-cell multi-chemistry cycling dataset (from the KDD 2025 competition), including 18650 cylindrical SIB cells (Zhuhai Punashidai cells at 2C–6C cycling rates, 2.0–4.0 V window, 25°C). Best used for battery lifetime prediction and cross-chemistry transfer learning.
+
+**Iontech SIB Characterisation — GitHub**: An open-source comparative characterisation dataset containing two commercial layered oxide/HC SIB cells alongside an LFP reference cell. Includes OCV curves, galvanostatic EIS at multiple SOC levels, DC resistance tests, and rate capability curves. Well-suited for ECM parameterisation and impedance modelling, and for the SIB-vs-LIB comparison that gives any SIB paper its context.
+
+**Laufen et al. 2024 — Cell Reports Physical Science (OA)**: A detailed characterisation of a commercial 1.2 Ah 18650 sodium-ion cell (NaFeMnCu oxide/HC, likely from a Chinese manufacturer), including EIS at 21 SOC levels, C-rate tests (0.1C to 5C), cyclic ageing with micro-CT imaging, and electrode porosity/thickness measurements from post-mortem physical analysis. The supplementary data PDF provides the numbers directly usable for DFN parameterisation. Licence: CC BY 4.0.
+
+**Droese et al. 2025 — depositonce.tu-berlin.de**: A recent dataset that includes HPPC tests, OCV measurements, and checkup capacity measurements across multiple temperatures for a commercial SIB cell alongside LIB baselines. This is particularly well-suited for ECM fitting (extracting $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ as functions of SOC and temperature) and for temperature-dependent thermal modelling.
+
+### Li-Ion Datasets for Methodology Transfer
+
+Because SIB datasets are scarce, a common and methodologically defensible approach is to develop and validate algorithms on well-characterised Li-ion datasets first, then demonstrate transferability to SIBs using the available SIB data. This "develop on Li-ion, transfer to Na-ion" approach has been explicitly validated: PyBaMM confirms that the DFN model structure — the coupled PDE system for solid-phase diffusion, electrolyte transport, and Butler-Volmer kinetics — is mathematically identical for Li-ion and Na-ion, with different parameter values. The important caveat is that the standard DFN assumes a single intercalation mechanism in each electrode, which is a good approximation for graphite but only partially captures hard carbon's two-mechanism storage (intercalation in the slope region and pore-filling in the plateau region, as discussed in Chapter 13). For the purposes of methodology transfer — developing algorithms, testing estimation frameworks, benchmarking model-order reduction — the structural identity holds. For precision parameterisation of the hard carbon anode, more detailed models may eventually be needed. The Laufen et al. paper explicitly states that LIB characterisation methods transfer to SIBs.
+
+The most valuable Li-ion datasets for this transfer learning approach:
+
+**Severson et al. (Stanford/MIT/Toyota)** — data.matr.io/1: 124 LFP/graphite cells, 72 fast-charging protocols, 4C discharge, 30°C. The richest single dataset for machine learning lifetime prediction; features extracted from early cycles predict long-term cycle life. Pre-training a degradation model on this dataset before fine-tuning on the limited SIB data is one of the most productive transfer-learning strategies available.
+
+**228-cell NMC Ageing Dataset** — Nature Scientific Data 2024 (LG INR18650HG2): 228 cells under 76 conditions, covering calendar ageing, cyclic ageing, and drive-cycle ageing at 0–40°C with 2-second resolution. The most comprehensive single aging dataset available; ideal for pre-training degradation models before adaptation to SIBs.
+
+**CALCE** (University of Maryland) — calce.umd.edu/battery-data: 100+ cells across LCO, LFP, NMC; partial cycling, storage ageing at −40°C to 50°C, OCV tests. Best for SOH estimation methodology development.
+
+**NASA PCoE** — NASA data portal: ~34 Li-ion 18650 cells at 4/24/43°C, with EIS. Classic RUL prediction benchmark; ECM structure transfers directly to SIBs.
+
+### Synthetic Data from PyBaMM
+
+When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can generate physically consistent synthetic SIB data for any C-rate, temperature profile, or ageing scenario. This approach — using a validated physics-based model to generate synthetic training and validation data — is accepted in JES, Electrochimica Acta, Batteries, and Journal of Energy Storage when the synthetic data generation process is transparent and the model is properly cited. The Garapati et al. (2025) *Electrochimica Acta* paper demonstrates this approach for a Q1 journal publication.
+
+---
+
+## Publication Venues: Where to Publish SIB Simulation Work
+
+Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their simulation policies, and their SIB track records. *This is the single most practically important table in this chapter.*
+
+| Venue | Impact Factor | Sim-Only? | SIB Papers Found? | Best EE Angle |
+| --- | --- | --- | --- | --- |
+| IEEE Trans. Smart Grid | 8.6 | ✅ Yes | BESS papers, no SIB yet | Microgrid integration, dispatch optimisation |
+| IEEE Access | 3.6 | ✅ Yes (most lenient) | Li-ion SOC reviews | ECM/SOC algorithms for SIB |
+| IEEE Trans. Transport. Electrif. | 7.0 | ⚠ Possible | Related BMS papers | SIB BMS for EVs |
+| IEEE Trans. Industrial Electronics | 7.2 | ⚠ Very limited | Li-ion SOC/SOH | Strongly prefers experimental validation |
+| J. Energy Storage (Elsevier) | 8.1 | ✅ Yes | **Multiple SIB ECM/SOC** | ECM, SOC/SOH, BMS |
+| Applied Energy (Elsevier) | 11.2 | ✅ Yes | SIB techno-economic | Grid integration, system-level |
+| eTransportation (Elsevier) | 16.6 | ✅ Yes | Li-ion BMS, growing SIB | EV thermal/BMS modelling |
+| J. Power Sources (Elsevier) | 7.9 | ⚠ Conditional | SIB modelling refs | Validated P2D/ECM |
+| J. Electrochem. Society (ECS) | 3.3 | ✅ Yes | **SIB P2D papers** | P2D, SPM, electrochemical modelling |
+| Electrochimica Acta (Elsevier) | 5.5 | ✅ Yes | **SIB DFN/SPMe comparison** | Physics-based model comparison |
+| Batteries (MDPI) | 4.8 | ✅ Yes | **SIB SOC (LSTM+UKF)** | BMS, SOC, thermal, any modelling |
+| Energies (MDPI) | 3.0 | ✅ Yes | SIB safety/characterisation | System-level, grid, power engineering |
+
+The most simulation-friendly Tier 1 venues for EE SIB work are **Journal of Energy Storage** (IF 8.1, proven SIB ECM home, 40–50% acceptance for well-executed simulation), **Applied Energy** (IF 11.2, system-level simulation standard, SIB grid integration papers appearing since 2024), and **Electrochimica Acta** (IF 5.5, simulation-only explicitly accepted, DFN comparison paper published 2025). **IEEE Transactions on Smart Grid** (IF 8.6) has no SIB papers yet — which means the first SIB simulation papers here will face zero competition and benefit from first-mover citation advantage.
+
+For conference publications to build a track record: **IEEE VPPC** (Rabab et al. 2023 first SIB IEEE paper, ~50% acceptance), **IECON** (Sandri et al. 2024, ~45–55% acceptance), and **ITEC** (SOC estimation papers, ~50–60% acceptance). These IEEE conferences accept simulation papers and provide peer-reviewed publication credit comparable to journal papers for conference proceedings.
+
+**MDPI Batteries** deserves special mention for early-career researchers: IF 4.8, dedicated BMS simulation section, ~19-day median first decision, 50–65% acceptance rate, and it has already published SIB SOC estimation papers. It is the fastest legitimate path to a first SIB journal publication.
+
+**Journals to avoid for EE simulation work**: Journal of Energy Chemistry (IF 14.9, materials only), Energy Storage Materials (IF 18–20, materials only), Nano Energy (IF 17.9, materials only), eScience (IF 42.9 — inflated by a small article base in its early years; materials-focused despite the name). The high impact factors of these venues are irrelevant — they will desk-reject simulation-only engineering papers.
+
+### Practical Submission Advice for Simulation-Only Papers
+
+Three mistakes sink simulation-only battery papers at the review stage, and all three are avoidable. First, failing to validate against experimental data. Even if your entire simulation uses synthetic data from PyBaMM, you must demonstrate that the underlying model (which generated the synthetic data) has been validated against real experimental measurements — cite the Chayambuka2022 validation or the Garapati et al. comparison. A simulation paper with no connection to experimental reality will be desk-rejected at every venue except MDPI.
+
+Second, omitting sensitivity analysis. Reviewers of simulation papers invariably ask "how sensitive are your results to parameter uncertainty?" If you have not performed at least a local sensitivity analysis (and ideally a global one using Sobol indices — see Proposal 6), you will receive a major revision request. Build sensitivity analysis into your methodology from the start.
+
+Third, framing the paper as a Li-ion methods paper that happens to use SIB parameters. Reviewers want to see SIB-specific insight: what is different about this problem for sodium-ion? What fails, what works better, what requires modification? If your paper's contribution would be identical for any battery chemistry, it is a methods paper, not an SIB paper — and the venue selection and framing must reflect that distinction.
+
+---
+
+## The Research Gaps: Thirteen Areas Where SIB Simulation Is Empty
+
+This section maps the thirteen most important research gaps in SIB simulation, ordered roughly from most-urgent to most-ambitious. Each gap description establishes the current state of the literature, identifies the Li-ion analogue that has not been ported, and characterises the contribution an EE simulation researcher can make. These gaps were identified through systematic analysis of the SIB simulation literature through early 2026 and form the basis of the 25 concrete proposals in Section 14.8.
+
+### Gap 1: SOC/SOH Estimation — Algorithm Breadth Is Missing
+
+Only six to eight papers address SIB SOC estimation as of early 2026, covering EKF, UKF, adaptive UKF, particle filter, LSTM+UKF hybrid, GRU+AUKF, and one fractional-order variant. Methods that have never been applied to SIBs include: sliding mode observer, H-infinity filter, cubature Kalman filter, moving horizon estimation, physics-based Luenberger observer, formal observability analysis (observability Gramian computation), and Transformer-based deep learning architectures for SOC.
+
+A crucial positive fact for SIB SOC estimation — noted explicitly in published commercial cell characterisation studies (e.g., Laufen et al. 2024; Bischof et al. 2024, KIT) — is that SIB layered oxide/hard carbon cells exhibit a **more monotonic and sloped** OCV curve than LFP. These studies confirm that the steepness of the quasi-OCV curve enables conventional diagnostic methods that rely on mapping OCV to SOC, an essential advantage over LFP/C cells. Higher $dE_\text{OCV}/d\text{SOC}$ means better Kalman filter observability (larger $\mathbf{C}_{11}$ element, as derived in Chapter 10), faster convergence, and less SOC uncertainty from voltage measurement. The one caveat — hard carbon's plateau region near 0 V vs. Na/Na⁺, typically responsible for 20–40% of total capacity — creates a band of reduced observability exactly as analysed in Chapters 10 and 13. This means SIB SOC estimation is easier than LFP estimation (for most of the SOC range) but harder in the plateau region. This duality is a natural research framing: demonstrate the advantage, characterise the limitation, propose and evaluate a solution.
+
+### Gap 2: ECM Parameter Database — No Open Repository Exists
+
+The Li-ion community has extensive open ECM parameter databases: LG M50 on Zenodo, Panasonic 18650 via CALCE, Samsung INR through multiple published papers. The SIB community has none. Every SIB modelling group must start from scratch with parameterisation.
+
+The existing SIB ECM literature (Xiang 2021, Rabab 2023, Jiao 2025) has not produced publicly deposited parameter tables in machine-readable format. No hysteresis ECM exists for SIB (despite hard carbon exhibiting well-documented OCV hysteresis in the plateau region). No coupled electro-thermal ECM exists. No calendar-ageing-dependent ECM exists. No systematic comparison across chemistries (layered oxide vs PBA vs NVPF) has been published.
+
+### Gap 3: DFN Parameter Sets — Only One Validated Set Exists
+
+The Chayambuka2022 NVPF/HC parameter set is the only fully validated DFN parameter set for SIBs in PyBaMM. There is no validated parameter set for the more commercially important O3 layered oxide/HC chemistry (which accounts for the majority of commercial SIB cells from CATL, HiNa, and Faradion). There is no validated parameter set for PBA/HC chemistry. There is no standalone validated SPMe. There is no global sensitivity analysis. There are no systematic model-order reduction studies.
+
+### Gap 4: Thermal Modelling and Runaway Kinetics
+
+Experimental SIB thermal safety data is now substantial (Section 14.1), but no computational thermal model has been built to match it. No Arrhenius-based thermal runaway kinetics model has been parameterised for SIB materials (comparable to Hatchard 2001, Spotnitz & Franklin 2003, or Feng 2018 for Li-ion). No validated numerical thermal runaway propagation model exists for SIB packs. The Bernardi heat generation equation has been adapted for SIBs conceptually (Chapter 8) but no paper has published SIB-specific entropy coefficient $\partial E/\partial T$ measurements across the full SOC range. Overcharge simulation and external short-circuit thermal modelling are absent.
+
+### Gap 5: Physics-Based Degradation Modelling
+
+The first physics-based SIB degradation model appeared only in 2025 (calendar ageing, SEI growth), and it modelled only the SEI contribution. No cycle-ageing physics-based model exists. No multi-mechanism model addresses the O3→P3 phase transition fatigue identified in Chapter 13. No PBA-specific degradation mechanisms (water release, vacancy evolution) have been modelled. No particle-cracking model for hard carbon exists. The hard carbon structural evolution with cycling — the gradual graphitisation that changes OCV shape and $D_s$ over thousands of cycles — has not been modelled at all.
+
+### Gap 6: System-Level BMS — Balancing, Power Limits, Diagnostics
+
+No paper has addressed SIB cell balancing simulation (passive or active). No paper has implemented incremental capacity analysis (ICA, $dQ/dV$ diagnostics) for SIB cells. No formal SIB FMEA exists in the published literature. No power limit calculation framework adapted to SIB's higher DCIR and different temperature characteristics exists. The CATL "Freevoy" hybrid SIB+LFP pack concept — which requires a BMS that manages two chemistries with different OCV curves, different temperature responses, and different ageing rates simultaneously — has received no simulation treatment whatsoever.
+
+### Gap 7: Grid Integration and Energy Management
+
+SIB cost and performance advantages (lower material cost, better low-temperature performance, wide operating temperature range, potential for 0 V discharge for transport) create distinct grid storage use cases that have never been quantitatively modelled. No SIB-specific grid dispatch optimisation study exists. No degradation-aware energy management system for SIB BESS has been published. No SIB frequency regulation study exists (despite Tiamat's cells being specifically marketed for this application). No lifetime cost modelling that properly accounts for SIB's cycle life advantage relative to LFP has appeared.
+
+### Gap 8: Fast Charging Optimisation
+
+CATL claims 5C charging for Naxtra (80% SOC in 15 minutes). Tiamat claims 35C capability. Fast charging is one of SIB's differentiating advantages over LFP, but no model predictive control (MPC) or optimised charging protocol has been developed for SIB. The constraint structure for SIB fast charging differs from Li-ion: the primary hard constraint is the sodium plating onset (anode potential approaching 0 V vs. Na/Na⁺), which depends on temperature, SOC, and the hard carbon's two-mechanism storage. An MPC framework that explicitly uses the DFN model to enforce the plating constraint while maximising charging speed represents a novel and commercially relevant contribution.
+
+### Gap 9: Low-Temperature Performance Modelling
+
+SIB's low-temperature advantage is real and well-documented experimentally (CATL Naxtra at 93% at −30°C; HiNa at 70% at −40°C) but has not been modelled computationally. No simulation study has quantified the physical origin of the low-temperature advantage through the Butler-Volmer framework (as Chapter 13 established qualitatively). The activation energy difference between carbonate-electrolyte SIBs (no significant advantage) and ether-electrolyte SIBs (4–5× smaller $R_\text{ct}$ growth factor at −20°C) has not been parameterised in a DFN or ECM simulation context.
+
+### Gap 10: Hybrid and Second-Life Applications
+
+CATL's hybrid SIB+LFP pack is commercially deployed but completely unmodelled in simulation. No energy management strategy for a heterogeneous chemistry pack has been published. Second-life SIB battery applications (repurposing end-of-life SIB packs, which will begin appearing in volume around 2028–2030 from early deployments) have received no techno-economic or simulation treatment. SIB second-life analysis would be one of the first papers in this area globally.
+
+### Gap 11: Machine Learning and Data-Driven Approaches
+
+No Transformer-based SOH estimation has been applied to SIBs. No transfer learning study has demonstrated the Li→Na chemistry transfer for degradation modelling (despite PyBaMM confirming structural model identity). No physics-informed neural network (PINN) has been developed for SIB state estimation, despite PINN being an active frontier for Li-ion. No Gaussian process regression-based RUL prediction exists for SIBs.
+
+### Gap 12: Digital Twins
+
+No SIB digital twin framework exists. A digital twin — a continuously updated simulation model whose parameters evolve with measured cell behaviour in real time — requires the combination of ECM or DFN modelling, Kalman filter-based parameter identification, and connection to real-time sensor data. For Li-ion, digital twins are now commercially deployed in several EV platforms. For SIB, the first paper to propose and demonstrate a digital twin architecture (even using synthetic data from PyBaMM to represent the "real" cell) will be the defining reference in this space.
+
+### Gap 13: Sodium Plating — Onset Prediction and Prevention
+
+The threshold conditions for sodium plating on hard carbon anodes — as a function of C-rate, temperature, and SOC — have not been characterised in a simulation model. Chapter 13 established that the driving force for plating (anode potential near 0 V vs. Na/Na⁺) is always present near the top of charge in SIB cells, and that the margin against plating is smaller than for graphite in LIBs. A simulation model that predicts the onset of sodium plating using DFN or SPMe with Butler-Volmer kinetics, calibrated against published experimental observations of plating (voltage plateau on discharge, CE reduction), and used to derive safe fast-charging limits — this is both technically achievable and commercially important.
+
+---
+
+## Twenty-Five Research Proposals
+
+The following proposals translate the thirteen gap areas into concrete, actionable research projects. They are classified by difficulty, estimated time to first submission, target venue tier, and hardware requirement. The Tier definitions are: Tier 1 = high-impact (Applied Energy, eTransportation, J. Power Sources, IEEE Trans. Smart Grid, JES, Electrochimica Acta); Tier 2 = solid mid-range (J. Energy Storage, IEEE TTE); Tier 3 = accessible (IEEE Access, Batteries MDPI, Energies MDPI).
+
+### Fast Track (3–6 months, Tier 2–3, no hardware needed)
+
+**Proposal 1: Kalman Filter Benchmark for SIB SOC Estimation**
+Implement and compare EKF, UKF, SRUKF, and AEKF (Adaptive EKF) on the same two-RC ECM parameterised from the Wang et al. 2024 Zenodo SIB dataset. Evaluate SOC accuracy (RMSE, MAE) at three temperatures (−5°C, 25°C, 45°C) and three driving profiles (FUDS, UDDS, DST). The SIB-specific contribution: quantify the observability improvement relative to LFP cells using the observability Gramian framework. Target: **IEEE Access** or **Batteries**. This is the most straightforward first SIB paper for an EE with MATLAB skills.
+
+**Proposal 2: Sliding Mode Observer for SIB**
+Implement a sliding mode observer (SMO) for SIB SOC estimation — a method widely used for Li-ion robustness that has never been applied to SIBs. Use the Wang et al. Zenodo dataset for validation. The SMO's insensitivity to parameter uncertainty makes it attractive for SIBs where the ECM parameters are less well-characterised than for Li-ion. Compare against EKF from Proposal 1. Target: **Journal of Energy Storage**.
+
+**Proposal 3: Open-Source SIB ECM Parameter Database**
+Build and publicly deposit a structured ECM parameter database for 2–3 commercial SIB cells using the Wang et al., Laufen et al., and Droese et al. datasets for parameterisation. Include temperature-dependent $R_0$, $R_1$, $C_1$, $R_2$, $C_2$ across 5 temperatures and 10 SOC levels, OCV-SOC curves for both charge and discharge directions, and Arrhenius fits for the temperature dependence. Deposit on Zenodo with CC BY 4.0. Publish in **Data in Brief** (Elsevier, fast turnaround for data papers) or **Batteries MDPI** with a companion methodology paper. This paper fills the single most cited gap in SIB simulation: the absence of publicly available parameterised models.
+
+**Proposal 4: Fractional-Order ECM vs Integer-Order Comparison for SIB**
+Implement a fractional-order impedance element (constant phase element, CPE) alongside standard integer-order RC models and compare accuracy-complexity trade-offs for the SIB cell characterised in the Laufen et al. (2024) dataset (which includes full EIS at 21 SOC levels, making it ideal for fractional-order model identification). Jiao et al. (2025) published the first fractional-order SIB ECM — your contribution is the systematic comparison and the explicit connection to the EIS-derived parameters. Target: **Energies MDPI** or **Batteries MDPI**.
+
+### Medium Track (5–8 months, Tier 1–2, no hardware needed)
+
+**Proposal 5: Formal Observability Analysis of SIB vs LFP vs NMC**
+Derive the analytical expression for the observability Gramian of the two-RC ECM as a function of the OCV slope $dE_\text{OCV}/d\text{SOC}$. Compute and plot the observability Gramian eigenvalue as a function of SOC for three cell chemistries (SIB layered oxide/HC, LFP/graphite, NMC/graphite) using published OCV curves. Quantify the observability advantage of SIB over LFP throughout most of the SOC range, and the observability reduction in the SIB plateau. Propose the optimal SOC windows for voltage-based recalibration in each chemistry. Pure analytical work — no datasets required. Target: **IEEE Trans. Transportation Electrification**.
+
+**Proposal 6: Global Sensitivity Analysis of the SIB DFN Parameter Set**
+Perform a Sobol indices global sensitivity analysis on the Chayambuka2022 DFN parameter set using PyBaMM. Identify which parameters most influence terminal voltage prediction accuracy, capacity utilisation, and thermal behaviour. Compare the sensitivity rankings for SIBs against published Li-ion sensitivity analyses (which show electrolyte diffusion coefficient and electrode particle radius as dominant at high C-rates). The SIB-specific result — different rankings from the hard carbon two-mechanism storage and the higher charge-transfer resistance — is the publishable finding. Target: **Electrochimica Acta** (where the DFN comparison paper already appeared).
+
+**Proposal 7: First Standalone Validated SPMe for SIB**
+The single-particle model with electrolyte dynamics (SPMe) is the work-horse of physics-based BMS estimation — computationally cheap enough for real-time implementation but more accurate than the simple SPM. No standalone validated SIB SPMe exists. Implement it in PyBaMM (the framework already exists; parameter substitution is required), validate against the DFN at multiple C-rates and temperatures, characterise the accuracy-speed trade-off, and implement a Luenberger observer based on the SPMe for real-time SOC estimation. Target: **Journal of Power Sources**.
+
+**Proposal 8: Coupled Electrochemical-Thermal SIB Model**
+Couple the PyBaMM SIB DFN model with a lumped thermal model (spherical or cylindrical cell geometry) and validate against published SIB thermal data from the characterisation literature. The PyBaMM thermal coupling framework already exists for Li-ion — this is a parameter substitution and extension project. The novel contribution: SIB-specific entropy coefficient $\partial E/\partial T$ estimation from published OCV-temperature data, and the first systematic comparison of SIB vs LFP heat generation as a function of C-rate and temperature using coupled electrochemical-thermal simulation. Target: **Journal of Power Sources** or **eTransportation**.
+
+**Proposal 9: Thermal Runaway Kinetics Model for SIB**
+Extract Arrhenius kinetic parameters for SIB thermal runaway reactions from published DSC (differential scanning calorimetry) and ARC data: SEI decomposition onset temperature and heat of decomposition for hard carbon SEI, oxygen release onset and enthalpy for NVPF/NFM cathodes, and electrolyte combustion parameters. Use these parameters to build a five-reaction Arrhenius thermal runaway model in COMSOL or MATLAB and validate against published ARC test data for SIB cells. Target: **Journal of the Electrochemical Society**.
+
+**Proposal 12: Semi-Empirical Ageing Model for SIB**
+Build a capacity fade and resistance rise model for SIBs following the Wang et al. (2014) empirical framework for Li-ion: $Q_\text{loss} = B \exp(-E_a/RT)\sqrt{t}$ for calendar ageing and a power-law cycle ageing term. Fit parameters from the BatteryLife dataset (which includes SIB cycle ageing data at 2C–6C rates) and validate against the Wang et al. Zenodo pulse characterisation data (which shows capacity evolution across multiple temperatures). Compare the SIB ageing parameters against published Li-ion values. Target: **Journal of Energy Storage**.
+
+**Proposal 16: City EV Drive Cycle Simulation with SIB**
+Simulate a small electric vehicle (representative of Indian or Chinese city EVs) over urban drive cycles (WLTC Class 1 or 2, Indian MIDC, Chinese CLTC) using an SIB pack model (ECM parameters from Proposal 3). Compare range, energy efficiency, cabin heating requirements, and pack temperature evolution against an equivalent LFP pack. Quantify the low-temperature range advantage (SIB) against the energy-density disadvantage (SIB). This is the kind of system-level validation that contextualises single-cell models and is directly publishable. Target: **Journal of Energy Storage** or **Energies MDPI**.
+
+**Proposal 17: Cell Balancing Simulation for SIB Packs**
+This is one of the three highest-priority proposals for first-mover advantage. No paper on cell balancing for SIB packs exists. Simulate passive and active balancing for a 16s SIB string using a multi-cell ECM model, implementing the balancing algorithms from Chapter 11 with SIB-specific complications: the flat-OCV plateau makes voltage-triggered balancing unreliable in the plateau region; OCV hysteresis causes spurious triggers; the higher DCIR changes the passive balancing time constants. Implement SOC-based balancing triggers from an EKF state estimator and compare against voltage-based triggers. Target: **IEEE Access** or **Journal of Energy Storage**. Because this paper occupies a completely empty space, it requires zero competitive framing — simply "this has not been done, here it is" is sufficient justification.
+
+**Proposal 23: Second-Life SIB Techno-Economic Model**
+Project forward: when will SIB cells from the first major commercial deployments (2023–2025) reach end-of-life (80% capacity retention)? At CATL's claimed 10,000 cycles, for cells cycled daily at 1C, this is approximately 27 years — almost certainly exceeding the cell's calendar life, which means calendar ageing would likely determine end-of-life rather than cycle count. (This inference assumes calendar ageing rates comparable to Li-ion; SIB-specific calendar ageing data is still sparse — see Gap 5.) At HiNa's more conservative 4,500 cycles at 1C daily, end-of-life is approximately 12 years. Model the second-life residual value of these cells for residential storage applications, using a coupled degradation model and a techno-economic framework. Compare against LFP second-life economics. Target: **Journal of Energy Storage** or **Energies MDPI**.
+
+**Proposal 25: SIB Frequency Regulation Simulation**
+Simulate an SIB BESS (10 MW/20 MWh) responding to a real frequency regulation signal (PJM RegD signal, publicly available) and compare performance, revenue, and degradation cost against an LFP BESS with equivalent energy capacity. SIB's 5C sustained rate capability (vs LFP's 1–2C) should produce substantially higher frequency regulation performance scores under PJM's pay-for-performance framework. This is the first SIB frequency regulation simulation anywhere. Target: **IEEE Transactions on Smart Grid** or **Applied Energy**.
+
+### Ambitious Track (6–12 months, Tier 1, no hardware)
+
+**Proposal 11: Multi-Mechanism Degradation Model for SIB**
+Build the first comprehensive physics-based degradation model for SIBs, incorporating: SEI growth on hard carbon (parabolic $\sqrt{t}$ law, Arrhenius temperature dependence); O3→P3 phase transition fatigue in the cathode (damage accumulation as a function of desodiation depth); sodium plating on hard carbon (onset criterion based on local anode potential, plating rate from Butler-Volmer); hard carbon structural evolution (gradual change in $D_s$ and OCV shape over cycling). Implement in PyBaMM using the existing degradation framework. Validate each mechanism independently against published experimental data. Target: **Journal of Power Sources**.
+
+**Proposal 13: Transfer Learning Li→Na for SOH Estimation**
+Pre-train a capacity fade prediction model on the 228-cell NMC ageing dataset (Nature Scientific Data 2024), then fine-tune on the limited SIB ageing data (BatteryLife NaIon subset, Laufen et al. cyclic ageing). Compare against a model trained from scratch on SIB data only. Demonstrate that transfer learning closes the SIB data scarcity gap. Use domain adaptation techniques to account for the chemistry differences. Target: **Applied Energy**.
+
+**Proposal 14: Physics-Informed Neural Network (PINN) for SIB State Estimation**
+Implement a PINN for SIB state estimation: the neural network predicts terminal voltage, with the DFN governing equations enforced as physics constraints in the training loss. This approach combines the flexibility of data-driven methods with the physical validity guarantees of physics-based models — particularly valuable for SIBs where data is scarce and the physics constraints prevent overfitting. Validate against the Wang et al. Zenodo dataset. Target: **Applied Energy** (where PINN for batteries papers are beginning to appear).
+
+**Proposal 15: MPC Optimal Fast Charging Protocol for SIB**
+Formulate a model predictive control (MPC) problem for SIB fast charging: maximise charging speed (minimise time to target SOC) subject to hard constraints on cell temperature ($T < 50°C$), terminal voltage ($V < V_\text{max}$), and anode potential remaining above the sodium plating threshold (the local anode overpotential $\eta_\text{anode} = \phi_s - \phi_e - U_\text{eq,anode} > 0$, ensuring sodium metal deposition does not become thermodynamically favourable). Implement in MATLAB using the SPMe as the prediction model (Proposal 7 provides the SPMe). Demonstrate 15–30% reduction in charging time compared to CC-CV at the same safety constraints, across temperatures from 0°C to 45°C. Target: **eTransportation**.
+
+**Proposal 19: SIB Digital Twin Framework**
+Design and implement the first SIB digital twin: an architecture that continuously updates an ECM or reduced-order electrochemical model from streaming current-voltage data using a dual EKF (one filter for state estimation, one for parameter identification). Demonstrate the framework on synthetic data generated from PyBaMM (with deliberately introduced parameter drift to represent ageing), tracking capacity fade and resistance rise over simulated years of operation. Define the software architecture, data flow, and computational requirements. Target: **Applied Energy** or **eTransportation**.
+
+**Proposal 20: Grid Dispatch Optimisation for SIB BESS**
+Formulate a stochastic optimal dispatch problem for a grid-scale SIB BESS (100 MW/400 MWh, representative of the Jupiter Power/Peak Energy deployment): maximise revenue from energy arbitrage and ancillary services subject to degradation constraints, temperature-dependent power limits, and SIB-specific cycling constraints. Compare the optimal dispatch strategy for SIB vs LFP under real electricity price and ancillary service price data (ISO-NE or PJM market data, publicly available). Target: **IEEE Transactions on Smart Grid**.
+
+**Proposal 21: Hybrid Li/Na Pack Energy Management**
+Model CATL's "Freevoy" hybrid SIB+LFP pack: cells of two different chemistries in the same series string, with different OCV curves, different DCIR, different temperature characteristics, and different ageing rates. Develop a state estimation framework that maintains separate SOC estimates for SIB and LFP cells simultaneously, a balancing strategy that accounts for their different OCV shapes, and an energy management strategy that dispatches the SIB cells preferentially in conditions where they have the performance advantage (low temperature, high power demand) and the LFP cells preferentially where they have the advantage (high energy demand, moderate temperature). Target: **eTransportation**.
+
+**Proposal 22: Sodium Plating Onset Prediction Model**
+Build the first computational model for sodium plating onset in hard carbon anodes: derive the plating onset criterion (local anode potential $\leq$ 0 V vs. Na/Na⁺) from the DFN model, compute the onset C-rate as a function of temperature and SOC, and validate against published experimental observations of plating signatures (CE reduction, voltage plateau on discharge, post-mortem sodium metal observation) in hard carbon half-cells and full cells. Parameterise the model from published half-cell data. Derive safe charging current limits as a function of temperature. Target: **Journal of the Electrochemical Society**.
+
+**Proposal 24: Transformer-Based SOH Estimation for SIB**
+Implement a Transformer architecture for SIB SOH estimation, exploiting the self-attention mechanism to identify the most informative time segments in the charging/discharging voltage-current profile. Pre-train on the 228-cell NMC dataset and fine-tune on SIB ageing data. Compare against LSTM-based methods from the Li-ion literature. The novelty framing: Transformers applied to SIB degradation prediction, with explicit transfer learning methodology for chemistry-to-chemistry transfer. Target: **Applied Energy**.
+
+### Summary Table of All 25 Proposals
+
+| # | Topic | Difficulty | Time (months) | Target Venue | Hardware? |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Kalman filter benchmark for SIB SOC | Low | 4–6 | Batteries / IEEE Access | No |
+| 2 | Sliding mode observer for SIB | Low-Med | 4–5 | J. Energy Storage | No |
+| 3 | Open-source SIB ECM parameter database | Low | 3–5 | Data in Brief / Batteries | Optional |
+| 4 | Fractional vs integer ECM comparison | Low | 4–5 | Energies / Batteries | No |
+| 5 | Formal observability analysis SIB vs LFP vs NMC | Medium | 5–7 | IEEE Trans. Transport. Electrif. | No |
+| 6 | Global sensitivity analysis SIB DFN | Medium | 4–6 | Electrochimica Acta | No |
+| 7 | First standalone validated SPMe for SIB | Medium | 5–7 | J. Power Sources | No |
+| 8 | Coupled electrochemical-thermal SIB model | Medium | 6–8 | J. Power Sources | No |
+| 9 | TR Arrhenius kinetics model for SIB | Med-High | 6–9 | J. Electrochem. Soc. | No |
+| 10 | TR propagation simulation SIB vs LIB packs | High | 8–12 | Applied Energy | Optional |
+| 11 | Multi-mechanism degradation model SIB | High | 8–12 | J. Power Sources | No |
+| 12 | Semi-empirical ageing model for SIB | Medium | 5–7 | J. Energy Storage | No |
+| 13 | Transfer learning Li→Na for SOH | Med-High | 6–9 | Applied Energy | No |
+| 14 | PINN for SIB state estimation | High | 8–10 | Applied Energy | No |
+| 15 | MPC optimal fast charging for SIB | High | 8–12 | eTransportation | No |
+| 16 | City EV drive cycle simulation with SIB | Low-Med | 5–7 | J. Energy Storage / Energies | No |
+| 17 | Cell balancing simulation for SIB packs | Low-Med | 5–7 | IEEE Access / J. Energy Storage | No |
+| 18 | Low-temperature SIB simulation vs LFP | Medium | 6–8 | J. Power Sources | No |
+| 19 | SIB digital twin framework | High | 8–12 | Applied Energy | No |
+| 20 | Grid dispatch optimisation for SIB BESS | Medium | 6–8 | IEEE Trans. Smart Grid | No |
+| 21 | Hybrid SIB+LFP pack energy management | Med-High | 7–10 | eTransportation | No |
+| 22 | Sodium plating onset prediction model | Med-High | 6–9 | J. Electrochem. Soc. | No |
+| 23 | Second-life SIB techno-economic model | Low-Med | 4–6 | J. Energy Storage | No |
+| 24 | Transformer-based SOH for SIB | Med-High | 7–10 | Applied Energy | No |
+| 25 | SIB frequency regulation simulation | Medium | 5–7 | IEEE Trans. Smart Grid | No |
+
+### Proposal Dependencies: What Enables What
+
+Not all 25 proposals are independent. Several share datasets, models, or intermediate results, and completing one makes subsequent proposals faster. The most important dependency chains are:
+
+Proposal 3 (ECM parameter database) feeds directly into Proposals 1, 2, 4, 16, 17, and 21 — any work requiring parameterised ECMs benefits from the database. This is why Proposal 3 appears in the recommended three-paper arc as Paper 1.
+
+Proposal 7 (standalone SPMe) feeds into Proposals 15 (MPC fast charging, which uses the SPMe as the prediction model) and 22 (sodium plating, which uses SPMe to compute anode potentials).
+
+Proposal 6 (global sensitivity analysis) informs Proposals 8 (coupled electrochemical-thermal model, by identifying which thermal parameters matter most) and 11 (multi-mechanism degradation, by identifying which degradation parameters are most sensitive).
+
+Proposal 12 (semi-empirical ageing model) feeds into Proposals 20 (grid dispatch, which needs a degradation cost model), 23 (second-life economics, which needs a lifetime projection), and 25 (frequency regulation, which needs degradation-aware dispatch).
+
+If you plan to pursue more than three proposals, map these dependencies before choosing your sequence. A well-ordered research programme reuses intermediate results; a poorly ordered one repeats work.
+
+---
+
+## Strategic Sequencing: Building a Research Portfolio
+
+The proposals above are not equally urgent or equally strategic. Here is a recommended approach to sequencing them for maximum impact and minimum wasted effort.
+
+### The First Paper: Build Credibility Quickly
+
+Your first SIB simulation paper should be one that (a) uses established methodology, (b) requires no hardware, (c) has available data, and (d) addresses a topic with no existing SIB competition. Proposals 1, 3, 17, and 23 all satisfy these criteria.
+
+**Proposal 17** (cell balancing simulation) stands out as the ideal first paper for an unusual reason: despite being a moderately complex topic, it occupies a completely empty space — no cell balancing paper for SIBs exists anywhere. The methodology is well-established (Chapters 9 and 11 of this book provide it), the dataset requirement is modest (any ECM from Proposal 3 or the published Xiang 2021 parameters is sufficient), and the SIB-specific complications (flat OCV, hysteresis) give the paper genuine novelty rather than mere replication. A first SIB cell balancing paper in IEEE Access or Journal of Energy Storage would face zero competitive papers and be the defining reference in that space for years.
+
+**Proposal 3** (ECM parameter database) is the highest-utility first paper if your goal is to enable your own subsequent work. The parameter database becomes the foundation for Proposals 1, 2, 7, 8, 11, 12, and 16 — it pays dividends across your entire research trajectory while also being a citable contribution in its own right.
+
+### The Three-Paper Arc
+
+The most impactful structured approach is a connected three-paper arc:
+
+**Paper 1**: ECM parameter database (Proposal 3) — establishes validated parameters for 2–3 commercial SIB cells. 3–5 months. Batteries MDPI or Data in Brief.
+
+**Paper 2**: SOC estimation benchmark (Proposal 1) using the parameters from Paper 1 — demonstrates that your ECM parameters enable accurate state estimation across temperatures and driving profiles. 4–5 months. IEEE Access or Journal of Energy Storage.
+
+**Paper 3**: EV drive cycle simulation (Proposal 16) using the same model — demonstrates system-level application, contextualises the SOC accuracy in an EV use case. 5–6 months. Journal of Energy Storage.
+
+This arc produces three publications in approximately 12–15 months, each building on the previous, forming a coherent research narrative around "validated SIB modelling from parameter identification through BMS algorithm to application." The coherent narrative increases citation cross-linking: Paper 2 cites Paper 1, Paper 3 cites both, and external papers that discover any one will discover the others through the citation trail.
+
+### Landmark Papers: The High-Impact Opportunities
+
+Three proposals stand out as potentially high-citation landmark papers that will be extensively cited as the SIB engineering simulation field matures:
+
+**Proposal 19** (SIB Digital Twin) — the first digital twin framework for SIBs will be the reference paper for all subsequent digital twin implementations in SIB systems. Even a conceptual framework demonstration on synthetic PyBaMM data establishes the architecture that later papers will build on. Applied Energy or eTransportation.
+
+**Proposal 21** (Hybrid SIB+LFP Pack) — CATL's Freevoy is deployed in real vehicles. The first energy management paper for a heterogeneous chemistry pack addresses a commercially deployed product and will be cited by every subsequent Freevoy modelling paper. eTransportation.
+
+**Proposal 20** (Grid Dispatch with SIB) — as SIB grid storage installations scale up (Peak Energy's 4.75 GWh Jupiter Power contract, HiNa's Chinese grid deployments), the demand for grid-level SIB modelling will grow. The first grid dispatch optimisation paper for SIB will anchor that literature. IEEE Transactions on Smart Grid.
+
+### The Timing Advantage
+
+The single most important strategic insight is this: the SIB simulation field is approximately where lithium-ion simulation was in 2010–2012. The researchers who entered Li-ion simulation in that period and produced systematic, well-parameterised, open-source-committed work became the most-cited contributors to the field. The papers that established ECM parameter databases, validated DFN models for commercial cells, and first applied EKF/Kalman frameworks to Li-ion BMS now accumulate hundreds or thousands of citations annually.
+
+The same window is open for SIBs today. Every systematic, well-executed, publicly deposited piece of SIB simulation infrastructure you create will accumulate citations as the field grows — because later researchers will need a foundation to build on, and if your work is the only foundation available, they will build on it. Open-source code, open datasets, and reproducible simulation pipelines are not just good scientific practice; for a first-mover in a nascent field, they are the mechanism by which early papers accumulate disproportionate long-term citation impact.
+
+---
+
+## Worked Interpretation Exercise: Planning Your First Research Paper
+
+Let us apply the chapter's framework to a concrete planning exercise that will take you from this page to a submitted manuscript.
+
+**Step 1 — Choose your entry proposal**: Based on your background and the time available, select one of the Fast Track proposals. If you have strong MATLAB/Simulink skills and have worked through Plett's BMS courses: Proposal 1 (Kalman filter benchmark). If you are more comfortable with Python and PyBaMM: Proposal 6 (global sensitivity analysis). If you want the fastest path to a completely uncontested publication: Proposal 17 (cell balancing).
+
+**Step 2 — Download your primary dataset**: For Proposals 1, 2, 12, and 16: Zenodo ID 13836819 (Wang et al. SIB dataset). For Proposal 4: Laufen et al. supplementary data from *Cell Reports Physical Science* (2024). For Proposals 6, 7, 8: use PyBaMM's `Chayambuka2022` parameter set for synthetic data generation. For Proposal 3: combine Wang et al. Zenodo + Droese et al. (TU Berlin depositonce) + Iontech GitHub.
+
+**Step 3 — Set up your simulation environment**: For ECM/BMS work: MATLAB with Plett's code from his Coursera course as a starting template. For DFN/SPMe work: `pip install pybamm` and run the sodium-ion DFN notebook from `docs.pybamm.org`. For parameter identification: install PyBOP (`pip install pybop`). For data digitisation from published figures: WebPlotDigitizer at automeris.io.
+
+**Step 4 — Define your contribution precisely**: Write one sentence that states your paper's contribution in the form "This paper [does X specific thing] for [SIB / SIB cells / SIB packs] which has not been done before, using [method] validated against [dataset], showing [key result]." If you cannot write this sentence, you do not yet have a paper — you have a project. Return to step 1.
+
+**Step 5 — Write the paper structure before writing the paper**: Abstract (4 sentences: context, gap, contribution, key result). Introduction (1,500–2,000 words: SIB background, simulation gap, previous SIB simulation work, your specific contribution). Methods (model, parameterisation, datasets, algorithm). Results (figures and tables showing the key result). Discussion (why the result matters, limitations). Conclusion. Write the structure before filling it in — this prevents the common error of accumulating results without a coherent narrative.
+
+**Step 6 — Submit to your target venue and move to the next proposal**: Do not wait for review to begin the next paper. If you have followed the three-paper arc structure (Proposal 3 → 1 → 16), Paper 2 can begin as soon as Paper 1 is submitted.
+
+---
+
+## Chapter Summary
+
+- **The landscape in brief:** The SIB commercial ecosystem has crossed the threshold from research to commercial reality: CATL Naxtra at 175 Wh/kg and >10,000 claimed cycles, HiNa at GWh-scale production with 100 MWh grid deployments, Tiamat offering the highest-power commercial SIB at 35C discharge. The Chinese research and industrial ecosystem dominates production (95% of manufacturing capacity) but is focused primarily on materials science. The engineering simulation literature — ECM parameterisation, state estimation, degradation modelling, thermal simulation, pack management, grid integration — is almost entirely absent.
+- **The open-source toolkit is ready:** PyBaMM `pybamm.sodium_ion.BasicDFN()` with `Chayambuka2022` parameters, COMSOL's 1D Na-ion model, MATLAB/Simulink for BMS algorithms, PyBOP for parameter identification, and WebPlotDigitizer for data extraction from published curves.
+- **Five open SIB datasets** are available: Wang et al. Zenodo 13836819 (primary), BatteryLife NaIon subset, Iontech characterisation, Laufen et al. (2024), and Droese et al. (2025) with supplementary data. These datasets, combined with the 228-cell NMC and Severson et al. LFP datasets for methodology development, are sufficient to support a full research portfolio.
+- **The publication route is proven:** Batteries MDPI for fast early papers; Journal of Energy Storage for first journal papers in ECM/SOC; Applied Energy for system-level work; IEEE Transactions on Smart Grid for grid integration; eTransportation for EV-framed high-impact papers; Electrochimica Acta and JES for physics-based modelling. IEEE conferences (VPPC, IECON, ITEC) as proven SIB conference venues.
+- **Thirteen gap areas and 25 concrete proposals** span from straightforward replications (3–6 months, Tier 3) to landmark contributions (8–12 months, Tier 1). The three highest first-mover-advantage proposals are Proposal 17 (cell balancing), Proposal 19 (digital twin), and Proposal 20 (grid dispatch). The three-paper arc of Proposals 3 → 1 → 16 provides the fastest path to a coherent three-publication research portfolio.
+- **The strategic insight:** SIBs are where Li-ion was in 2010–2012. The researchers who built the Li-ion simulation infrastructure in that window became the field's most-cited contributors. That window is open for SIBs today. Enter it now.
+
+---
+
+## Deliverable
+
+The chapter plan originally asked you to read three recent SIB review papers and produce a tagged "open questions" document — materials problems versus systems/modelling problems. That exercise is now subsumed by the more comprehensive deliverable below, which integrates the open-questions analysis into a full research plan. If you have not yet read three recent SIB review papers, do so before attempting this deliverable; the Garapati et al. (2025) and Chayambuka et al. (2022) papers from the Further Reading list count as two.
+
+Your task is to produce a **Research Plan Document** of approximately 2,000–3,000 words that covers:
+
+**Section 1 — Your selected entry proposal** (from the Fast Track or Medium Track): State the proposal, justify your selection, and describe the specific methodology you will use (which dataset, which tool, which algorithm, which metric of success).
+
+**Section 2 — Your three-paper arc**: Define Paper 1, Paper 2, and Paper 3 — the connected sequence of proposals that builds a coherent research narrative. Specify the target venue for each.
+
+**Section 3 — Your SIB Parameter Table** (from Chapter 13's deliverable): The completed version of the table with every DFN parameter filled in or explicitly noted as "not characterised in the literature." The gaps in this table are your highest-priority experimental needs.
+
+**Section 4 — Timeline**: A Gantt chart or similar visualisation showing paper 1 submission in month 4–6, paper 2 submission in month 8–10, and paper 3 in month 14–16. Include milestone events: dataset download and exploration (week 1–2), model implementation and initial results (month 1–2), draft paper (month 3–4), submission (month 4–6).
+
+This research plan is the product of everything in this book. It integrates the electrochemistry (Chapters 1–4), the chemistry families (Chapters 5–6), the degradation physics (Chapter 7), the thermal science (Chapter 8), the systems engineering (Chapters 9–12), the SIB-specific modifications (Chapter 13), and the landscape (Chapter 14) into a concrete personal research programme. Write it with care — it is the document you will return to repeatedly as your research progresses.
+
+---
+
+## Further Reading
+
+1. **Chayambuka, K. et al., "Physics-based modeling of sodium-ion batteries, Part I: Experimental parameter determination; Part II: Model and validation," *Electrochimica Acta* (2022).** The foundational DFN parameter set that underlies `pybamm.sodium_ion.BasicDFN()`. The two-part series is the most important single reference in SIB simulation, establishing both the parameterisation methodology and the model validation approach. Reading both parts carefully before beginning any DFN simulation work will save months of uncertainty about model assumptions.
+
+2. **Garapati, M. et al., "Perspective and comparative analysis of physics-based models for sodium-ion batteries," *Electrochimica Acta* 514, 145573 (2025).** The most recent and most complete comparison of DFN, SPMe, and SPM for SIBs, published open-access. This paper defines the current state of the art in SIB electrochemical modelling and is the reference against which any Proposal 5, 6, or 7 paper will be compared.
+
+3. **Wang, Y. et al., SIB SOC Estimation Dataset, Zenodo ID: 13836819 (2024–2025).** The primary experimental dataset for SIB BMS algorithm development. Download and explore this dataset before beginning any SOC estimation paper. The README describes the measurement protocol, the cell specifications, and the data format. The dataset's existence means that Proposals 1, 2, 12, and 16 can begin immediately without purchasing cells.
+
+4. **Laufen, T. et al., "Multi-method characterisation of a commercial 1.2 Ah 18650 sodium-ion battery cell," *Cell Reports Physical Science* (2024).** The most comprehensive published characterisation of a commercial SIB cell, including EIS at 21 SOC levels, micro-CT imaging, and post-mortem physical analysis. Supplementary data provides numbers directly usable for ECM and DFN parameterisation. This paper is the experimental reference for Proposals 3, 4, 8, and 9.
+
+5. **Sulzer, V. et al., "Python Battery Mathematical Modelling (PyBaMM)," *Journal of Open Research Software* 9 (1), 14 (2021).** The PyBaMM software paper — cite this alongside the `Chayambuka2022` parameter set whenever using PyBaMM's sodium-ion DFN. The paper describes the software architecture, the model library, and the validation approach. The PyBaMM GitHub repository (github.com/pybamm-team/PyBaMM) and Discourse forum (pybamm.discourse.group) are the primary technical support resources for anyone building SIB simulations with PyBaMM.
+
+6. **Plett, G. L., *Battery Management Systems, Volume I: Battery Modeling* and *Volume II: Equivalent-Circuit Methods*, Artech House (2015).** The EE-canonical reference for every ECM, Kalman filter, and state estimation algorithm referenced in this chapter's proposals. If you are implementing Proposals 1, 2, 3, 4, 5, or 17, Plett's MATLAB code — available through his Coursera specialisation "Algorithms for Battery Management Systems" — provides tested starting implementations that you can adapt for SIB parameters. These are the books to have open on your desk alongside PyBaMM documentation.
+
+---
+
+*This is the final chapter of the book. You now have the physics, the chemistry, the engineering, and the research roadmap. The battery technology field — and specifically the sodium-ion simulation sub-field — is ready for exactly the kind of rigorous, open, simulation-based research that a well-trained electrical engineer can produce. Begin.*
 

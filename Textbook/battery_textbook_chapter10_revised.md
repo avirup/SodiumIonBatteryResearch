@@ -17,20 +17,24 @@ By the end of this chapter, you will be able to describe the ECM + Kalman filter
 > **Prerequisites Check**
 >
 > From your EE/math background:
+>
 > - Linear algebra: matrix multiplication, matrix inverse, covariance matrices — essential for Sections 10.3 and beyond
 > - Probability and statistics: Gaussian distributions, variance, conditional probability — needed for the Kalman filter derivation
 > - State-space representations of dynamic systems ($\dot{x} = Ax + Bu$, $y = Cx + Du$) — the ECM is described in this form
 > - Recursive least squares or Wiener filter intuition — helpful but not required
 >
 > From Chapters 3–5:
+>
 > - OCV-SOC curves and their shapes (Chapter 3, Section 3.4; Chapter 5) — central to Section 10.2
 > - DCIR and the three resistance components (Chapter 3, Section 3.5) — needed for ECM parameterisation
 > - Coulombic efficiency and SOH definitions (Chapter 3, Sections 3.6, 3.7) — needed for Section 10.4
 >
 > From Chapter 6:
+>
 > - Hard carbon OCV flat plateau (Section 6.5) — the central motivation for Section 10.2's flat-curve analysis
 >
 > From Chapter 9:
+>
 > - Current sensing accuracy and its limits (Section 9.3) — motivates the drift analysis in Section 10.1
 > - CAN bus data availability (Section 9.4) — the measurement stream that feeds the estimator
 >
@@ -162,7 +166,7 @@ The dominant framework for this approach in commercial BMS applications is the *
 
 An equivalent circuit model represents the battery's electrical behaviour using a circuit consisting of an ideal voltage source (the OCV), a series resistance (the ohmic resistance $R_0$), and one or more parallel RC networks (representing the dynamic polarisation response). The most commonly used form is the **second-order RC model** (also called the **two-RC model** or **Dual Polarization model**):
 
-```
+```text
       R0         R1          R2
   +--/\/\/---+--/\/\---+--/\/\---+
   |          |         |         |
@@ -303,7 +307,7 @@ For a full ECM characterisation of a single cell chemistry, the experimental eff
 Before examining how the EKF performs specifically for SIBs, it is worth pausing to compare the three SOC estimation approaches we have developed. The table below summarises their key characteristics.
 
 | Property | Coulomb Counting | OCV Lookup | ECM + EKF |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Information source | Current sensor | Voltage sensor + OCV curve | Both, fused optimally |
 | Accuracy over short intervals | Excellent | N/A (requires rest) | Excellent |
 | Accuracy over long intervals | Poor (unbounded drift) | Good (absolute reference) | Good (drift corrected) |

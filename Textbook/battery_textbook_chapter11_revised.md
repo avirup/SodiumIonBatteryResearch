@@ -15,19 +15,23 @@ By the end of this chapter, you will be able to evaluate a balancing circuit sch
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Basic circuit analysis: resistive voltage dividers, switched circuits, inductor/capacitor energy storage
 > - DC-DC converter topologies (buck, boost, flyback) at a conceptual level — helpful for active balancing topologies
 > - Power dissipation calculations — needed throughout
 >
 > From Chapter 3:
+>
 > - SOC, DOD, OCV definitions (Section 3.3, 3.4) — the quantities being balanced
 > - Cycle life vs. DOD relationship (Section 3.7) — motivates shallow cycling via balancing
 >
 > From Chapter 9:
+>
 > - Cell-to-cell variation and the weak-link effect in series strings (Section 9.2) — the problem being solved
 > - Series/parallel pack topology (Section 9.1) — the system context
 >
 > From Chapter 10:
+>
 > - OCV-SOC curve shape and its effect on voltage-based SOC estimation (Section 10.2) — interacts with voltage-based balancing triggers
 > - The flat-OCV problem for SIBs (Section 10.2) — creates specific complications for balancing control
 
@@ -68,7 +72,7 @@ Unlike SOC imbalance, resistance imbalance cannot be corrected by charge redistr
 The table below summarizes the three imbalance types and their key characteristics. Keep it in mind as we discuss balancing strategies — it clarifies which problems balancing can solve and which it cannot.
 
 | Imbalance type | Physical quantity | Primary causes | Correctable by balancing? | Management strategy |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | SOC imbalance | Different states of charge ($\text{SOC}_i \neq \text{SOC}_j$) | Self-discharge variation, thermal gradients, Coulombic efficiency differences | Yes — redistribute or dissipate charge | Passive or active balancing |
 | Capacity imbalance | Different maximum capacities ($Q_{\text{max},i} \neq Q_{\text{max},j}$) | Differential degradation (temperature, cycling depth, plating) | No — the capacity is physically lost | Thermal management, SOC window limits, cell replacement |
 | Resistance imbalance | Different internal resistances ($R_i \neq R_j$) | Differential degradation (SEI growth, contact degradation) | No — the resistance is a physical property | Cell-specific power limits, SOH tracking |
@@ -141,7 +145,7 @@ Before we survey the more complex active balancing architectures, it is worth as
 Consider three representative applications:
 
 | Application | Cell capacity | Typical imbalance | Balancing window | Passive $I_b$ at 33 Ω | Time to correct | Verdict |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Consumer electronics (laptop, phone) | 3–5 Ah | 1–3% SOC | 2–4 h charge session | 110 mA | 5–25 min | Passive is more than adequate |
 | EV automotive (NMC pouch) | 50–80 Ah | 2–5% SOC | 6–10 h overnight charge | 110 mA | 15–60 h | Passive struggles; multiple sessions needed |
 | Grid storage (LFP prismatic) | 100–280 Ah | 1–5% SOC | Continuous availability | 110 mA | 15–200+ h | Passive alone is impractical for large imbalances |
@@ -307,7 +311,7 @@ That is far too slow for a single charge session. This illustrates a key limitat
 Let us apply the chapter's framework to a real commercial BMS. The **Texas Instruments BQ76952** is a 3–16 series cell monitor IC commonly used in automotive and industrial battery packs. It includes integrated passive balancing functionality. Here is an abbreviated version of its balancing-related specifications:
 
 | Parameter | BQ76952 Specification | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Voltage measurement resolution | ~0.19 mV | See ADC architecture discussion below |
 | Balancing switch type | Internal N-channel MOSFET | Cells 1–15 only; cell 16 requires external component |
 | Max balancing current | 200 mA | Limited by internal MOSFET path resistance (~18 Ω) |

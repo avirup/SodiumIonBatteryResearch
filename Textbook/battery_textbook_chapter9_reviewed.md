@@ -15,16 +15,19 @@ Pack architecture is the layer of engineering that converts electrochemistry int
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Series and parallel circuit analysis — essential for Section 9.1; if you can calculate the equivalent resistance of a network, you can calculate the equivalent capacity of a cell configuration
 > - Fuse and relay/contactor circuit operation — needed for Section 9.3
 > - Basic CAN bus or other serial communication protocol awareness — helpful for Section 9.4
 > - Inrush current and capacitor precharge — directly relevant to Section 9.3
 >
 > From Chapters 3 and 7:
+>
 > - Internal resistance, SOC, SOH definitions (Chapter 3, Sections 3.3, 3.5)
 > - Degradation mechanisms and why individual cells age differently (Chapter 7) — motivation for Section 9.2
 >
 > From Chapter 8:
+>
 > - Thermal runaway and propagation (Section 8.5) — motivates the safety design choices in Section 9.3
 
 ---
@@ -192,7 +195,7 @@ The solution is a **precharge circuit**: a small **precharge contactor** in seri
 
 The precharge circuit topology is simple enough to sketch. Imagine the following schematic (draw this in your notebook):
 
-```
+```text
        ┌──── Main Positive Contactor (K1) ────┐
        │          (normally open)               │
  PACK  │                                        │  LOAD
@@ -448,7 +451,7 @@ Precharge energy: $E = \frac{1}{2} \times 2 \times 10^{-3} \times 518.4^2 = 268.
 
 4. **Xiong, R. et al., *Battery Management Algorithm for Electric Vehicles*, Springer (2020), Chapter 2.** A detailed treatment of BMS hardware architecture including contactor circuits, precharge design, current sensing selection, and isolation monitoring — with automotive-specific design examples. Chapter 2 is the most directly relevant to Section 9.3.
 
-5. **Bosch, *CAN Specification Version 2.0*, Robert Bosch GmbH (1991), available at www.bosch-semiconductors.com.** The original CAN specification, still the authoritative reference. Remarkably readable for a hardware protocol spec. Section 3 (bit timing, arbitration, error handling) is directly relevant to understanding the robustness properties described in Section 9.4.
+5. **Bosch, *CAN Specification Version 2.0*, Robert Bosch GmbH (1991), available at <https://www.bosch-semiconductors.com/>.** The original CAN specification, still the authoritative reference. Remarkably readable for a hardware protocol spec. Section 3 (bit timing, arbitration, error handling) is directly relevant to understanding the robustness properties described in Section 9.4.
 
 ---
 

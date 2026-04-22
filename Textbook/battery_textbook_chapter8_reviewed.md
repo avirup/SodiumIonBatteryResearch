@@ -15,19 +15,23 @@ By the end of this chapter, you will be able to take a cell datasheet, a duty cy
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Thermal resistance networks (analogous to electrical resistance networks — if you can calculate voltage across a resistor divider, you can calculate temperature rise in a thermal network)
 > - Basic control system stability concepts (Section 8.5 uses a stability argument; familiarity with positive/negative feedback will help)
 > - Power dissipation calculations ($P = I^2 R$, $P = IV$)
 >
 > From Chapter 1:
+>
 > - The Gibbs free energy–voltage relationship $\Delta G = -nFE$ (Section 1.8)
 > - The temperature coefficient of cell voltage $(\partial E_\text{OCV}/\partial T)_P = \Delta S/(nF)$ (Section 1.8) — central to Section 8.2
 >
 > From Chapters 2 and 3:
+>
 > - The three overpotentials: ohmic, activation, concentration (Chapter 2, Section 2.7)
 > - Internal resistance: ohmic and charge-transfer components (Chapter 3, Section 3.5)
 >
 > From Chapter 7:
+>
 > - The Arrhenius temperature dependence of degradation rates (Section 7.2) — directly relevant to Section 8.6
 > - Thermal runaway as an endpoint of degradation (Section 7.3)
 
@@ -406,7 +410,7 @@ The statement "sodium-ion batteries are safer than lithium-ion batteries" appear
 The dominant heat source in a lithium-ion thermal runaway event is the exothermic reaction between oxygen released from the delithiated cathode and the flammable organic electrolyte. As noted in Section 8.4, the onset temperature for oxygen release varies dramatically by cathode chemistry. The following table summarises oxygen release onset temperatures for the major cathode families:
 
 | Chemistry Family | Type | Oxygen Release Onset (°C) | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | LCO | LIB | ~170–200 | Lower at extreme delithiation |
 | NMC811 | LIB | ~180–200 | Dominant EV cathode; lowest margin |
 | NMC622 | LIB | ~200–220 | Intermediate stability |
@@ -446,7 +450,7 @@ The electrolyte contributes to thermal runaway both as a fuel (organic solvents 
 Accelerating rate calorimetry (ARC) studies — measurements of self-heating rate versus temperature for cells in adiabatic conditions — provide quantitative data on thermal runaway severity. The following table compares representative cells:
 
 | ARC Parameter | NMC811/graphite 18650 (3 Ah) | SIB O3/hard carbon 26650 (1.33 Ah) | SIB Advantage |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Self-heating onset $T_\text{onset}$ | 55–65°C | 110–130°C | +55–65°C margin |
 | Peak temperature $T_\text{max}$ | 750–850°C | 400–500°C | ~300°C lower |
 | Total heat released | 28–38 kJ | 8–12 kJ | 3–4× lower |

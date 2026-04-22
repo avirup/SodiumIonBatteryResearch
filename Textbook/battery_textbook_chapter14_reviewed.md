@@ -15,6 +15,7 @@ By the end of this chapter you will have a concrete, actionable research plan. Y
 > **Prerequisites Check**
 >
 > This chapter draws on the entire book and on the uploaded research landscape documents. All chapters are prerequisite. Specifically:
+>
 > - Chapter 13 (all sections) — the physical differences that motivate every research gap in Part 3 of this chapter
 > - Chapters 10–12 — the BMS algorithms whose absence for SIBs defines the largest gap area
 > - Chapters 7–8 — the degradation and thermal physics whose SIB parameterisation is almost entirely missing
@@ -54,7 +55,7 @@ This is not a gap that will close quickly by itself. The Chinese research instit
 As of early 2026, the complete SIB engineering simulation literature can be enumerated in a single table — an exercise that would be absurd for Li-ion, where each row would contain thousands of entries:
 
 | Topic | SIB Papers (approx.) |
-|---|---|
+| --- | --- |
 | Validated ECM papers | 4–5 |
 | Fully validated DFN parameter sets | 1 (Chayambuka2022, NVPF/HC) |
 | SOC estimation papers | 3–8 (EKF, UKF, PF, LSTM+UKF hybrids) |
@@ -75,7 +76,7 @@ Compare this to the Li-ion simulation literature, which contains tens of thousan
 
 **Timeline of SIB Simulation Milestones.** The following diagram summarises the chronological development of SIB engineering simulation. Sketch or recreate this timeline and pin it above your desk — it tells you at a glance which sub-fields have prior art and which are empty.
 
-```
+```text
 2018  Chayambuka — first modelling-relevant SIB property review (Adv. Energy Mater.)
   |
 2021  Xiang — first SIB ECM (J. Energy Storage), 1RC/2RC/3RC comparison
@@ -139,7 +140,7 @@ The Western commercial SIB landscape has experienced significant turbulence. **N
 ### Commercial Status Summary Table
 
 | Company | Country | Cathode | Anode | Wh/kg | Cycle Life | Form Factor | Primary Application | Status (early 2026) |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | CATL (Naxtra) | China | Multi-element layered oxide | Hard carbon | 175 | >10,000 (claimed) | Prismatic | EV, grid storage | Mass production |
 | HiNa | China | O3 NaCuFeMnO₂ | Hard carbon | 140–166 | 4,500–13,000+ (best reported) | Prismatic | Grid storage, heavy trucks | GWh production |
 | BYD | China | Layered oxide (est.) | Hard carbon | 160 (target) | 10,000 (target) | Prismatic (est.) | EV | Pilot (30 GWh line) |
@@ -280,7 +281,7 @@ When experimental data is unavailable, PyBaMM's `Chayambuka2022` DFN model can g
 Not all journals welcome simulation-only battery papers, and the publication strategy for a researcher with no wet-lab access must be calibrated carefully. The table below summarises the key venues, their simulation policies, and their SIB track records. *This is the single most practically important table in this chapter.*
 
 | Venue | Impact Factor | Sim-Only? | SIB Papers Found? | Best EE Angle |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | IEEE Trans. Smart Grid | 8.6 | ✅ Yes | BESS papers, no SIB yet | Microgrid integration, dispatch optimisation |
 | IEEE Access | 3.6 | ✅ Yes (most lenient) | Li-ion SOC reviews | ECM/SOC algorithms for SIB |
 | IEEE Trans. Transport. Electrif. | 7.0 | ⚠ Possible | Related BMS papers | SIB BMS for EVs |
@@ -456,7 +457,7 @@ Implement a Transformer architecture for SIB SOH estimation, exploiting the self
 ### Summary Table of All 25 Proposals
 
 | # | Topic | Difficulty | Time (months) | Target Venue | Hardware? |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1 | Kalman filter benchmark for SIB SOC | Low | 4–6 | Batteries / IEEE Access | No |
 | 2 | Sliding mode observer for SIB | Low-Med | 4–5 | J. Energy Storage | No |
 | 3 | Open-source SIB ECM parameter database | Low | 3–5 | Data in Brief / Batteries | Optional |
@@ -535,7 +536,7 @@ Three proposals stand out as potentially high-citation landmark papers that will
 
 ### The Timing Advantage
 
-The single most important strategic insight is this: the SIB simulation field is approximately where lithium-ion simulation was in 2010–2012. The researchers who entered Li-ion simulation in that period and produced systematic, well-parameterised, open-source-committed work became the most-cited contributors to the field. The papers that established ECM parameter databases, validated DFN models for commercial cells, and first applied EKF/Kalman frameworks to Li-ion BMS now accumulate hundreds or thousands of citations annually. 
+The single most important strategic insight is this: the SIB simulation field is approximately where lithium-ion simulation was in 2010–2012. The researchers who entered Li-ion simulation in that period and produced systematic, well-parameterised, open-source-committed work became the most-cited contributors to the field. The papers that established ECM parameter databases, validated DFN models for commercial cells, and first applied EKF/Kalman frameworks to Li-ion BMS now accumulate hundreds or thousands of citations annually.
 
 The same window is open for SIBs today. Every systematic, well-executed, publicly deposited piece of SIB simulation infrastructure you create will accumulate citations as the field grows — because later researchers will need a foundation to build on, and if your work is the only foundation available, they will build on it. Open-source code, open datasets, and reproducible simulation pipelines are not just good scientific practice; for a first-mover in a nascent field, they are the mechanism by which early papers accumulate disproportionate long-term citation impact.
 

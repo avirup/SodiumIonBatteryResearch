@@ -13,10 +13,12 @@ By the end of this chapter, you will be able to read a BMS functional safety con
 > **Prerequisites Check**
 >
 > From your EE background:
+>
 > - Basic concept of system failure modes and fault analysis — helpful
 > - Familiarity with hardware reliability concepts (redundancy, fail-safe design) — helpful
 >
 > From Chapters 8–11:
+>
 > - Thermal runaway and its hazard profile (Chapter 8, Section 8.5) — the primary hazard being protected against
 > - BMS state machine and contactor control (Chapter 9, Section 9.4) — the protective functions that implement safety requirements
 > - SOC estimation and its uncertainty (Chapter 10) — relevant to safety-critical SOC limits
@@ -91,7 +93,7 @@ The full ASIL determination table has three dimensions (S × E × C). The slice 
 **ASIL determination at C3 (difficult to control or uncontrollable):**
 
 | Severity | E1 | E2 | E3 | E4 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **S1** | QM | QM | QM | ASIL A |
 | **S2** | QM | QM | ASIL A | ASIL B |
 | **S3** | QM | ASIL A | ASIL B | ASIL C |

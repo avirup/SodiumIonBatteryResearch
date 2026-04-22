@@ -1,65 +1,12 @@
-# Battery Technology for Electrical Engineers (and Sodium-Ion Focus)
+# Battery Technology for Electrical Engineers
+## With a Sodium-Ion Research Focus
 
-This repo contains a self-study, engineering-first battery textbook written for electrical engineers who want to understand (and model) modern rechargeable batteries—especially **sodium-ion batteries (SIBs)**—without having to “become a chemist first”.
+This book is written for electrical engineers, graduate students, and technically curious researchers who want to understand modern rechargeable batteries from an engineering point of view. Its aim is to make electrochemistry intelligible without assuming prior training in chemistry, and to connect the internal physics of a battery to the language engineers already use: energy, voltage, current, resistance, transients, efficiency, and dynamic models.
 
-The text builds a translation layer from familiar EE concepts (energy, RC dynamics, impedance, estimation) to battery concepts (half-reactions, overpotentials, diffusion limits, SEI, degradation), with the explicit goal of getting you fluent enough to read battery papers and start simulation/modeling research.
+The text begins with first principles—cell potential, half-reactions, thermodynamics, and charge transfer—and then moves steadily toward the phenomena that matter in real devices: polarization, transport limitation, interfacial films, test methods, cell construction, chemistry tradeoffs, and degradation. Throughout, the emphasis is not on memorizing terminology, but on building a working mental model of why batteries behave the way they do.
 
-## Who this benefits
+Special attention is given to sodium-ion batteries. While lithium-ion systems remain the reference point for much of modern battery engineering, sodium-ion chemistry is increasingly important for stationary storage, supply-chain resilience, and lower-cost electrification. This book therefore treats sodium-ion not as an afterthought, but as a serious engineering subject in its own right, grounded in comparison with the lithium-ion systems from which much of the field’s intuition has developed.
 
-- **Electrical engineers** transitioning into battery research or battery systems work (BMS, pack engineering, modeling).
-- **Graduate students** who need a structured ramp into the battery literature (Li-ion first, then SIB).
-- **Simulation-focused researchers** who need the physical meaning behind common model parameters and measurements.
-- **Practicing engineers** who want to read a cell datasheet and understand the “why” behind the curves.
+The intended outcome is practical fluency. By the end of the text, the reader should be able to interpret common battery measurements, understand the physical meaning of widely used model parameters, read technical papers with confidence, and begin serious work in battery modeling, simulation, or systems research.
 
-## Prerequisites
-
-- Undergraduate EE: circuits, basic linear algebra, ODEs, and comfort with units.
-- Helpful (not required): basic thermodynamics intuition (Gibbs free energy, equilibrium).
-
-## How to use this repo
-
-- Read the chapters in order (`battery_textbook_chapter1_edited.md` → `battery_textbook_chapter7_edited.md`).
-- Follow the self-study plan in `battery_textbook_syllabus.md`.
-- Treat the deliverables in the syllabus as checkpoints; they’re designed to force “active” understanding.
-
-## Repo contents
-
-- `battery_textbook_chapter1_edited.md` — Electrochemistry for engineers (half-reactions, Nernst, Faraday, voltage as free energy)
-- `battery_textbook_chapter2_revised.md` — What happens inside a working cell (SEI, kinetics, transport, overpotentials)
-- `battery_textbook_chapter3_revised.md` — Metrics + terminology (C-rate, OCV, resistance, efficiency, HPPC/GITT/PITT/EIS)
-- `battery_textbook_chapter4_revised.md` — Cell construction (form factors, electrodes, formation, manufacturing ↔ model parameters)
-- `battery_textbook_chapter5_revised.md` — Lithium-ion chemistry families and tradeoffs (LCO/LFP/NMC/NCA/LMO/LTO, application fit)
-- `battery_textbook_chapter6_revised.md` — Sodium-ion chemistry families (why SIB, cathodes/anodes/electrolytes, commercialization landscape)
-- `battery_textbook_chapter7_edited.md` — Degradation mechanisms (inventory loss, active material loss, impedance growth; diagnosis mindset)
-- `battery_textbook_syllabus.md` — 8–10 week self-study curriculum (with deliverables and suggested sources)
-
-## Brief syllabus (8–10 weeks, part-time)
-
-This is the short version of `battery_textbook_syllabus.md`.
-
-### Part I — Foundations (Weeks 1–2)
-
-- **Ch. 1:** Electrochemistry for engineers (half-reactions, potentials, Nernst, Faraday, Gibbs free energy → voltage)
-- **Ch. 2:** How a battery works in operation (intercalation, SEI, double layer, kinetics vs diffusion limits; Butler–Volmer intuition)
-
-### Part II — The language of batteries (Week 3)
-
-- **Ch. 3:** Performance metrics + test methods (capacity/energy, C-rate, SOC/SOH, resistance/polarization, CC–CV, HPPC/GITT/PITT/EIS)
-
-### Part III — Cells and chemistries (Week 4)
-
-- **Ch. 4:** Cell construction + manufacturing choices that drive performance and modeling parameters
-- **Ch. 5:** Li-ion families and application tradeoffs (energy–power–safety–cost–life “Pareto” thinking)
-- **Ch. 6:** Sodium-ion families and why they matter (cost/supply chain; hard carbon + SIB-specific implications)
-
-### Part IV — Why batteries die (Week 5)
-
-- **Ch. 7:** Degradation taxonomy and mechanisms; how to reason from external measurements to internal causes
-
-### Part V+ (Weeks 6–10, planned/outlined in the syllabus)
-
-The syllabus also outlines an extension track covering thermal behavior, pack architecture, BMS estimation/balancing/safety, and a deeper SIB research landscape review.
-
-## Status / scope note
-
-The repo currently contains Chapters **1–7** plus a longer curriculum outline that sketches Chapters **8–14** as future/self-directed study topics.
+This is an engineering text first: quantitative in spirit, physically grounded, and written to help the reader move from curiosity to competence.
