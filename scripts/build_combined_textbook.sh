@@ -12,10 +12,11 @@ COVER_IMAGE="${TEXTBOOK_DIR}/Book_Cover.png"
 
 COPYRIGHT_YEAR="${COPYRIGHT_YEAR:-2026}"
 COPYRIGHT_HOLDER="${COPYRIGHT_HOLDER:-Avirup Kundu}"
-ISBN_13="${ISBN_13:-978-0-00000-000-0}"
+ISBN_13="${ISBN_13:-978-93-5890-306-5}"
 PUBLISH_MONTH_YEAR="${PUBLISH_MONTH_YEAR:-May 2026}"
+PUBLISHER_INFO="${PUBLISHER_INFO:-Self Published by Avirup Kundu}"
 AUTHOR_NAME="${AUTHOR_NAME:-Avirup Kundu}"
-WEBSITE_URL="${WEBSITE_URL:-www.avirup.net}"
+WEBSITE_URL="${WEBSITE_URL:-https://www.avirup.net/}"
 COVER_DESIGN_CREDIT="${COVER_DESIGN_CREDIT:-AI-generated artwork}"
 COMPANION_VOLUME="${COMPANION_VOLUME:-Modelling and Simulation Companion to Battery Technology for Electrical Engineers}"
 
@@ -199,6 +200,7 @@ format_chapter() {
 \vspace{1.25\baselineskip}
 First edition\par
 Published ${PUBLISH_MONTH_YEAR}\par
+\textbf{Publisher:} ${PUBLISHER_INFO}\par
 
 \vspace{1.25\baselineskip}
 This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).\par

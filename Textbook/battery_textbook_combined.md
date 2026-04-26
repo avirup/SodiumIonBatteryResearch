@@ -27,6 +27,7 @@
 \vspace{1.25\baselineskip}
 First edition\par
 Published May 2026\par
+\textbf{Publisher:} Self Published by Avirup Kundu\par
 
 \vspace{1.25\baselineskip}
 This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).\par
@@ -39,11 +40,11 @@ License:\par
 \url{https://creativecommons.org/licenses/by-nc/4.0/}\par
 
 \vspace{1.25\baselineskip}
-\textbf{ISBN:} 978-0-00000-000-0\par
+\textbf{ISBN:} 978-93-5890-306-5\par
 
 \vspace{1.25\baselineskip}
 \textbf{Author:} Avirup Kundu\par
-\textbf{Website:} www.avirup.net\par
+\textbf{Website:} https://www.avirup.net/\par
 \textbf{Cover design:} AI-generated artwork\par
 
 \vspace{1.25\baselineskip}
